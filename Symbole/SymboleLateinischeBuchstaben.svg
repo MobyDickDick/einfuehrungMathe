@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.2"
+   width="289.26199"
+   height="301.54501"
+   viewBox="0 0 7653.3901 7978.3787"
+   preserveAspectRatio="xMidYMid"
+   xml:space="preserve"
+   id="svg163"
+   sodipodi:docname="SymboleLateinischeBuchstaben.svg"
+   style="fill-rule:evenodd;stroke-width:28.22200012;stroke-linejoin:round"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"><metadata
+   id="metadata167"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1920"
+   inkscape:window-height="1001"
+   id="namedview165"
+   showgrid="false"
+   units="px"
+   inkscape:zoom="0.67999921"
+   inkscape:cx="396.85039"
+   inkscape:cy="561.25984"
+   inkscape:window-x="-9"
+   inkscape:window-y="-9"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg163" />
+ <defs
+   id="defs45">
+  <font
+   id="EmbeddedFont_1"
+   horiz-adv-x="2048"
+   horiz-origin-x="0"
+   horiz-origin-y="0"
+   vert-origin-x="45"
+   vert-origin-y="90"
+   vert-adv-y="90">
+   <font-face
+   font-family="Arial"
+   units-per-em="2048"
+   font-weight="normal"
+   font-style="normal"
+   ascent="1852"
+   descent="450"
+   id="font-face2" />
+   <missing-glyph
+   horiz-adv-x="2048"
+   d="M 0,0 L 2047,0 2047,2047 0,2047 0,0 Z"
+   id="missing-glyph4" />
+   <glyph
+   unicode="ü"
+   horiz-adv-x="848"
+   d="M 831,0 L 831,156 C 748,36 636,-24 494,-24 431,-24 373,-12 319,12 264,36 224,66 198,103 171,139 153,183 142,236 135,271 131,327 131,404 L 131,1062 311,1062 311,473 C 311,379 315,316 322,283 333,236 357,199 394,172 431,145 476,131 530,131 584,131 635,145 682,173 729,200 763,238 783,286 802,333 812,402 812,493 L 812,1062 992,1062 992,0 831,0 Z M 281,1270 L 281,1475 469,1475 469,1270 281,1270 Z M 654,1270 L 654,1475 842,1475 842,1270 654,1270 Z"
+   id="glyph6" />
+   <glyph
+   unicode="u"
+   horiz-adv-x="848"
+   d="M 831,0 L 831,156 C 748,36 636,-24 494,-24 431,-24 373,-12 319,12 264,36 224,66 198,103 171,139 153,183 142,236 135,271 131,327 131,404 L 131,1062 311,1062 311,473 C 311,379 315,316 322,283 333,236 357,199 394,172 431,145 476,131 530,131 584,131 635,145 682,173 729,200 763,238 783,286 802,333 812,402 812,493 L 812,1062 992,1062 992,0 831,0 Z"
+   id="glyph8" />
+   <glyph
+   unicode="t"
+   horiz-adv-x="504"
+   d="M 528,161 L 554,2 C 503,-9 458,-14 418,-14 353,-14 302,-4 266,17 230,38 205,65 190,99 175,132 168,203 168,311 L 168,922 36,922 36,1062 168,1062 168,1325 347,1433 347,1062 528,1062 528,922 347,922 347,301 C 347,250 350,217 357,202 363,187 373,176 388,167 402,158 422,154 449,154 469,154 495,156 528,161 Z"
+   id="glyph10" />
+   <glyph
+   unicode="s"
+   horiz-adv-x="874"
+   d="M 63,317 L 241,345 C 251,274 279,219 325,181 370,143 434,124 516,124 599,124 660,141 700,175 740,208 760,248 760,293 760,334 742,366 707,389 682,405 621,425 523,450 391,483 300,512 249,537 198,561 159,595 133,638 106,681 93,728 93,780 93,827 104,871 126,912 147,952 177,985 214,1012 242,1033 280,1050 329,1065 377,1079 429,1086 484,1086 567,1086 641,1074 704,1050 767,1026 813,994 843,953 873,912 894,857 905,788 L 729,764 C 721,819 698,861 660,892 621,923 567,938 497,938 414,938 355,924 320,897 285,870 267,838 267,801 267,778 274,757 289,738 304,719 327,703 358,690 376,683 429,668 517,644 644,610 733,582 784,561 834,539 873,507 902,466 931,425 945,373 945,312 945,252 928,196 893,143 858,90 807,49 741,20 675,-9 600,-24 517,-24 379,-24 274,5 202,62 129,119 83,204 63,317 Z"
+   id="glyph12" />
+   <glyph
+   unicode="r"
+   horiz-adv-x="557"
+   d="M 133,0 L 133,1062 295,1062 295,901 C 336,976 375,1026 410,1050 445,1074 483,1086 525,1086 586,1086 647,1067 710,1028 L 648,861 C 604,887 560,900 516,900 477,900 441,888 410,865 379,841 356,808 343,766 323,702 313,632 313,556 L 313,0 133,0 Z"
+   id="glyph14" />
+   <glyph
+   unicode="n"
+   horiz-adv-x="848"
+   d="M 135,0 L 135,1062 297,1062 297,911 C 375,1028 488,1086 635,1086 699,1086 758,1075 812,1052 865,1029 905,998 932,961 959,924 977,879 988,828 995,795 998,736 998,653 L 998,0 818,0 818,646 C 818,719 811,774 797,811 783,847 758,876 723,898 687,919 645,930 597,930 520,930 454,906 399,857 343,808 315,716 315,580 L 315,0 135,0 Z"
+   id="glyph16" />
+   <glyph
+   unicode="l"
+   horiz-adv-x="186"
+   d="M 131,0 L 131,1466 311,1466 311,0 131,0 Z"
+   id="glyph18" />
+   <glyph
+   unicode="i"
+   horiz-adv-x="160"
+   d="M 136,1259 L 136,1466 316,1466 316,1259 136,1259 Z M 136,0 L 136,1062 316,1062 316,0 136,0 Z"
+   id="glyph20" />
+   <glyph
+   unicode="h"
+   horiz-adv-x="848"
+   d="M 135,0 L 135,1466 315,1466 315,940 C 399,1037 505,1086 633,1086 712,1086 780,1071 838,1040 896,1009 938,966 963,911 988,856 1000,777 1000,673 L 1000,0 820,0 820,673 C 820,763 801,829 762,870 723,911 667,931 596,931 543,931 493,917 446,890 399,862 365,824 345,777 325,730 315,664 315,581 L 315,0 135,0 Z"
+   id="glyph22" />
+   <glyph
+   unicode="g"
+   horiz-adv-x="927"
+   d="M 102,-88 L 277,-114 C 284,-168 305,-207 338,-232 383,-265 444,-282 521,-282 604,-282 669,-265 714,-232 759,-199 790,-152 806,-92 815,-55 820,22 819,139 740,46 642,0 525,0 379,0 266,53 186,158 106,263 66,390 66,537 66,638 84,732 121,818 158,903 211,969 281,1016 350,1063 432,1086 526,1086 651,1086 755,1035 836,934 L 836,1062 1002,1062 1002,144 C 1002,-21 985,-138 952,-207 918,-276 865,-331 792,-371 719,-411 629,-431 522,-431 395,-431 293,-402 215,-345 137,-288 99,-203 102,-88 Z M 251,550 C 251,411 279,309 334,245 389,181 459,149 542,149 625,149 694,181 750,245 806,308 834,408 834,544 834,674 805,772 748,838 690,904 620,937 539,937 459,937 391,905 335,840 279,775 251,678 251,550 Z"
+   id="glyph24" />
+   <glyph
+   unicode="e"
+   horiz-adv-x="980"
+   d="M 862,342 L 1048,319 C 1019,210 964,126 885,66 806,6 704,-24 581,-24 426,-24 303,24 212,120 121,215 75,349 75,522 75,701 121,839 213,938 305,1037 424,1086 571,1086 713,1086 829,1038 919,941 1009,844 1054,708 1054,533 1054,522 1054,506 1053,485 L 261,485 C 268,368 301,279 360,217 419,155 493,124 582,124 648,124 704,141 751,176 798,211 835,266 862,342 Z M 271,633 L 864,633 C 856,722 833,789 796,834 739,903 664,938 573,938 490,938 421,910 365,855 308,800 277,726 271,633 Z"
+   id="glyph26" />
+   <glyph
+   unicode="d"
+   horiz-adv-x="927"
+   d="M 824,0 L 824,134 C 757,29 658,-24 527,-24 442,-24 365,-1 294,46 223,93 168,158 129,242 90,325 70,421 70,530 70,636 88,732 123,819 158,905 211,971 282,1017 353,1063 432,1086 519,1086 583,1086 640,1073 690,1046 740,1019 781,983 812,940 L 812,1466 991,1466 991,0 824,0 Z M 255,530 C 255,394 284,292 341,225 398,158 466,124 544,124 623,124 690,156 745,221 800,285 827,383 827,515 827,660 799,767 743,835 687,903 618,937 536,937 456,937 389,904 336,839 282,774 255,671 255,530 Z"
+   id="glyph28" />
+   <glyph
+   unicode="c"
+   horiz-adv-x="927"
+   d="M 828,389 L 1005,366 C 986,244 936,149 857,80 777,11 679,-24 563,-24 418,-24 301,24 213,119 124,214 80,350 80,527 80,642 99,742 137,828 175,914 233,979 311,1022 388,1065 473,1086 564,1086 679,1086 774,1057 847,999 920,940 967,857 988,750 L 813,723 C 796,794 767,848 725,884 682,920 631,938 571,938 480,938 407,906 350,841 293,776 265,673 265,532 265,389 292,286 347,221 402,156 473,124 561,124 632,124 691,146 738,189 785,232 815,299 828,389 Z"
+   id="glyph30" />
+   <glyph
+   unicode="b"
+   horiz-adv-x="901"
+   d="M 301,0 L 134,0 134,1466 314,1466 314,943 C 390,1038 487,1086 605,1086 670,1086 732,1073 791,1047 849,1020 897,983 935,936 972,888 1002,830 1023,763 1044,696 1055,624 1055,547 1055,365 1010,224 920,125 830,26 722,-24 596,-24 471,-24 372,28 301,133 L 301,0 Z M 299,539 C 299,412 316,320 351,263 408,170 484,124 581,124 660,124 728,158 785,227 842,295 871,397 871,532 871,671 844,773 789,839 734,905 667,938 589,938 510,938 442,904 385,836 328,767 299,668 299,539 Z"
+   id="glyph32" />
+   <glyph
+   unicode="a"
+   horiz-adv-x="980"
+   d="M 828,131 C 761,74 697,34 636,11 574,-12 508,-24 437,-24 320,-24 231,5 168,62 105,119 74,191 74,280 74,332 86,380 110,423 133,466 164,500 203,526 241,552 284,572 332,585 367,594 421,603 492,612 637,629 744,650 813,674 814,699 814,714 814,721 814,794 797,846 763,876 717,917 649,937 558,937 473,937 411,922 371,893 330,863 300,810 281,735 L 105,759 C 121,834 147,895 184,942 221,988 274,1024 343,1049 412,1074 493,1086 584,1086 675,1086 748,1075 805,1054 862,1033 903,1006 930,974 957,941 975,900 986,851 992,820 995,765 995,685 L 995,445 C 995,278 999,172 1007,128 1014,83 1029,41 1052,0 L 864,0 C 845,37 833,81 828,131 Z M 813,533 C 748,506 650,484 519,465 445,454 393,442 362,429 331,416 308,396 291,371 274,345 266,316 266,285 266,237 284,197 321,165 357,133 410,117 480,117 549,117 611,132 665,163 719,193 759,234 784,287 803,328 813,388 813,467 L 813,533 Z"
+   id="glyph34" />
+   <glyph
+   unicode="S"
+   horiz-adv-x="1139"
+   d="M 92,471 L 275,487 C 284,414 304,354 336,307 367,260 416,222 483,193 550,164 625,149 708,149 782,149 847,160 904,182 961,204 1003,234 1031,273 1058,311 1072,353 1072,398 1072,444 1059,484 1032,519 1005,553 961,582 900,605 861,620 774,644 639,677 504,709 410,739 356,768 286,805 234,850 200,905 165,959 148,1020 148,1087 148,1161 169,1230 211,1295 253,1359 314,1408 395,1441 476,1474 565,1491 664,1491 773,1491 869,1474 952,1439 1035,1404 1098,1352 1143,1284 1188,1216 1212,1139 1215,1053 L 1029,1039 C 1019,1132 985,1202 928,1249 870,1296 785,1320 672,1320 555,1320 469,1299 416,1256 362,1213 335,1161 335,1100 335,1047 354,1004 392,970 429,936 527,901 685,866 842,830 950,799 1009,772 1094,733 1157,683 1198,623 1239,562 1259,493 1259,414 1259,336 1237,263 1192,194 1147,125 1083,71 1000,33 916,-6 822,-25 717,-25 584,-25 473,-6 384,33 294,72 224,130 173,208 122,285 95,373 92,471 Z"
+   id="glyph36" />
+   <glyph
+   unicode="E"
+   horiz-adv-x="1059"
+   d="M 162,0 L 162,1466 1222,1466 1222,1293 356,1293 356,844 1167,844 1167,672 356,672 356,173 1256,173 1256,0 162,0 Z"
+   id="glyph38" />
+   <glyph
+   unicode="B"
+   horiz-adv-x="1086"
+   d="M 150,0 L 150,1466 700,1466 C 812,1466 902,1451 970,1422 1037,1392 1090,1346 1129,1285 1167,1223 1186,1158 1186,1091 1186,1028 1169,969 1135,914 1101,859 1050,814 981,780 1070,754 1138,710 1186,647 1233,584 1257,510 1257,425 1257,356 1243,293 1214,234 1185,175 1149,129 1106,97 1063,65 1010,41 946,25 881,8 802,0 709,0 L 150,0 Z M 344,850 L 661,850 C 747,850 809,856 846,867 895,882 933,906 958,940 983,974 995,1017 995,1068 995,1117 983,1160 960,1197 937,1234 903,1259 860,1273 817,1286 742,1293 637,1293 L 344,1293 344,850 Z M 344,173 L 709,173 C 772,173 816,175 841,180 886,188 923,201 953,220 983,239 1008,266 1027,302 1046,337 1056,378 1056,425 1056,480 1042,527 1014,568 986,608 947,636 898,653 848,669 776,677 683,677 L 344,677 344,173 Z"
+   id="glyph40" />
+   <glyph
+   unicode=" "
+   horiz-adv-x="556"
+   id="glyph42" />
+  </font>
+ </defs>
+ <g
+   visibility="visible"
+   id="MasterSlide_1_Standard"
+   style="visibility:visible"
+   transform="translate(0,-21721.619)">
+  <desc
+   id="desc47">Master slide
+  </desc>
+  <rect
+   x="0"
+   y="0"
+   width="21000"
+   height="29700"
+   id="rect49"
+   style="fill:none;stroke:none" />
+ </g>
+ <g
+   visibility="visible"
+   id="Slide_1_page3"
+   style="visibility:visible"
+   transform="matrix(1,0,0,0.99999859,-2607.3057,-2218.3018)">
+  <g
+   id="g54">
+   <path
+   id="Drawing_1_0"
+   d="m 6434,3767 v 354"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+   <path
+   id="Drawing_1_1"
+   d="m 6434,4571 150,-450 h -300 z"
+   inkscape:connector-curvature="0"
+   style="fill:#000000;stroke:none" />
+  </g>
+  <g
+   id="g58">
+   <path
+   id="Drawing_2_0"
+   d="m 6579,4716 h 2298 v 499"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+   <path
+   id="Drawing_2_1"
+   d="m 8877,5665 150,-450 h -300 z"
+   inkscape:connector-curvature="0"
+   style="fill:#000000;stroke:none" />
+  </g>
+  <g
+   id="g62">
+   <path
+   id="Drawing_3_0"
+   d="m 6434,4861 v 355"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+   <path
+   id="Drawing_3_1"
+   d="m 6435,5665 149,-450 h -300 z"
+   inkscape:connector-curvature="0"
+   style="fill:#000000;stroke:none" />
+  </g>
+  <g
+   id="g66">
+   <path
+   id="Drawing_4_0"
+   d="M 6289,4716 H 3993 v 499"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+   <path
+   id="Drawing_4_1"
+   d="m 3993,5665 150,-450 h -300 z"
+   inkscape:connector-curvature="0"
+   style="fill:#000000;stroke:none" />
+  </g>
+  <g
+   id="Drawing_5">
+   <path
+   d="m 6435,3767 h 762 c 353,0 640,-284 640,-635 0,-351 -287,-635 -640,-635 H 5672 c -353,0 -640,284 -640,635 0,351 287,635 640,635 z"
+   id="path68"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+   <g
+   font-size="318"
+   font-style="normal"
+   font-weight="400"
+   id="g78"
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
+    <text
+   x="6098"
+   y="3064"
+   id="text72">      <tspan
+   x="6098"
+   id="tspan70">Start</tspan></text>
+
+    <text
+   x="5590"
+   y="3416"
+   id="text76"
+   style="fill:#000000;stroke:none">      <tspan
+   x="5590"
+   id="tspan74">Buchstaben</tspan></text>
+
+   </g>
+  </g>
+  <g
+   id="Drawing_6">
+   <path
+   d="m 6434,9918 h 765 c 353,0 640,-284 640,-635 0,-351 -287,-635 -640,-635 H 5669 c -353,0 -640,284 -640,635 0,351 287,635 640,635 z"
+   id="path81"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+   <g
+   font-size="318"
+   font-style="normal"
+   font-weight="400"
+   id="g91"
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
+    <text
+   x="6061"
+   y="9215"
+   id="text85">      <tspan
+   x="6061"
+   id="tspan83">Ende</tspan></text>
+
+    <text
+   x="5589"
+   y="9567"
+   id="text89"
+   style="fill:#000000;stroke:none">      <tspan
+   x="5589"
+   id="tspan87">Buchstaben</tspan></text>
+
+   </g>
+  </g>
+  <g
+   id="DrawingGroup_1">
+   <g
+   id="Drawing_7">
+    <path
+   d="M 5328,5664 H 7540 V 6752 H 5328 Z"
+   id="path94"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+    <rect
+   x="5329"
+   y="5665"
+   width="2212"
+   height="1088"
+   id="rect96"
+   style="fill:none;stroke:none" />
+    <g
+   font-size="318"
+   font-style="normal"
+   font-weight="400"
+   id="g106"
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
+     <text
+   x="5623"
+   y="6140"
+   id="text100">       <tspan
+   x="5623"
+   id="tspan98">griechische</tspan></text>
+
+     <text
+   x="5589"
+   y="6492"
+   id="text104"
+   style="fill:#000000;stroke:none">       <tspan
+   x="5589"
+   id="tspan102">Buchstaben</tspan></text>
+
+    </g>
+   </g>
+   <g
+   id="Drawing_8">
+    <path
+   d="M 7770,5664 H 9982 V 6752 H 7770 Z"
+   id="path109"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+    <rect
+   x="7771"
+   y="5665"
+   width="2212"
+   height="1088"
+   id="rect111"
+   style="fill:none;stroke:none" />
+    <g
+   font-size="318"
+   font-style="normal"
+   font-weight="400"
+   id="g121"
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
+     <text
+   x="8387"
+   y="6140"
+   id="text115">       <tspan
+   x="8387"
+   id="tspan113">übrige </tspan></text>
+
+     <text
+   x="8031"
+   y="6492"
+   id="text119"
+   style="fill:#000000;stroke:none">       <tspan
+   x="8031"
+   id="tspan117">Buchstaben</tspan></text>
+
+    </g>
+   </g>
+   <g
+   id="Drawing_9">
+    <path
+   d="M 2886,5664 H 5098 V 6752 H 2886 Z"
+   id="path124"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+    <rect
+   x="2887"
+   y="5665"
+   width="2212"
+   height="1088"
+   id="rect126"
+   style="fill:none;stroke:none" />
+    <g
+   font-size="318"
+   font-style="normal"
+   font-weight="400"
+   id="g136"
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
+     <text
+   x="3234"
+   y="6140"
+   id="text130">       <tspan
+   x="3234"
+   id="tspan128">lateinische</tspan></text>
+
+     <text
+   x="3147"
+   y="6492"
+   id="text134"
+   style="fill:#000000;stroke:none">       <tspan
+   x="3147"
+   id="tspan132">Buchstaben</tspan></text>
+
+    </g>
+   </g>
+  </g>
+  <g
+   id="g141">
+   <path
+   id="Drawing_10_0"
+   d="m 6434,4861 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+  </g>
+  <g
+   id="g144">
+   <path
+   id="Drawing_11_0"
+   d="m 6434,7845 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+  </g>
+  <g
+   id="g148">
+   <path
+   id="Drawing_12_0"
+   d="m 3993,6752 v 948 h 1846"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+   <path
+   id="Drawing_12_1"
+   d="m 6289,7700 -450,-150 v 300 z"
+   inkscape:connector-curvature="0"
+   style="fill:#000000;stroke:none" />
+  </g>
+  <g
+   id="g152">
+   <path
+   id="Drawing_13_0"
+   d="m 6435,6752 v 354"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+   <path
+   id="Drawing_13_1"
+   d="m 6434,7555 151,-450 h -300 z"
+   inkscape:connector-curvature="0"
+   style="fill:#000000;stroke:none" />
+  </g>
+  <g
+   id="g156">
+   <path
+   id="Drawing_14_0"
+   d="m 8877,6752 v 948 H 7029"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+   <path
+   id="Drawing_14_1"
+   d="m 6579,7700 450,150 v -300 z"
+   inkscape:connector-curvature="0"
+   style="fill:#000000;stroke:none" />
+  </g>
+  <g
+   id="g160">
+   <path
+   id="Drawing_15_0"
+   d="m 6434,7845 v 353"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />
+   <path
+   id="Drawing_15_1"
+   d="m 6434,8648 150,-450 h -300 z"
+   inkscape:connector-curvature="0"
+   style="fill:#000000;stroke:none" />
+  </g>
+ </g>
+</svg>
