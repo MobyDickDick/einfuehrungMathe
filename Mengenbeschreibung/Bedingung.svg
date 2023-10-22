@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="Bedingung.svg"
+   id="svg484"
+   xml:space="preserve"
+   stroke-linejoin="round"
+   stroke-width="28.222"
+   fill-rule="evenodd"
+   preserveAspectRatio="xMidYMid"
+   viewBox="0 0 4609.3854 11921.384"
+   height="450.57199"
+   width="174.213"
+   version="1.2"><metadata
+   id="metadata488"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><sodipodi:namedview
+   units="px"
+   inkscape:current-layer="Slide_1_page5"
+   inkscape:window-maximized="1"
+   inkscape:window-y="-9"
+   inkscape:window-x="-9"
+   inkscape:cy="308.60567"
+   inkscape:cx="231.52845"
+   inkscape:zoom="2.9576319"
+   showgrid="false"
+   id="namedview486"
+   inkscape:window-height="1001"
+   inkscape:window-width="1920"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="0"
+   guidetolerance="10"
+   gridtolerance="10"
+   objecttolerance="10"
+   borderopacity="1"
+   bordercolor="#666666"
+   pagecolor="#ffffff" />
+ <defs
+   id="defs323">
+  <font
+   vert-adv-y="1024"
+   vert-origin-y="768"
+   vert-origin-x="512"
+   horiz-origin-y="0"
+   horiz-origin-x="0"
+   horiz-adv-x="2048"
+   id="EmbeddedFont_1">
+   <font-face
+   id="font-face280"
+   descent="450"
+   ascent="1852"
+   font-style="normal"
+   font-weight="normal"
+   units-per-em="2048"
+   font-family="Arial embedded" />
+   <missing-glyph
+   id="missing-glyph282"
+   d="M 0,0 L 2047,0 2047,2047 0,2047 0,0 Z"
+   horiz-adv-x="2048" />
+   <glyph
+   id="glyph284"
+   d="M 87,0 L 87,209 280,209 280,44 C 280,-45 270,-110 249,-149 220,-203 176,-244 115,-271 L 71,-200 C 107,-185 134,-162 152,-130 169,-99 179,-55 181,0 L 87,0 Z M 397,0 L 397,209 590,209 590,44 C 590,-45 580,-110 559,-149 530,-203 486,-244 425,-271 L 381,-200 C 417,-185 444,-162 462,-130 479,-99 489,-55 491,0 L 397,0 Z"
+   horiz-adv-x="530"
+   unicode="„" />
+   <glyph
+   id="glyph286"
+   d="M 276,1220 L 276,1011 83,1011 83,1176 C 83,1265 94,1330 115,1370 143,1423 187,1464 248,1491 L 292,1421 C 255,1406 228,1383 211,1353 194,1322 184,1278 182,1220 L 276,1220 Z M 586,1220 L 586,1011 393,1011 393,1176 C 393,1265 404,1330 425,1370 453,1423 497,1464 558,1491 L 602,1421 C 565,1406 538,1383 521,1353 504,1322 494,1278 492,1220 L 586,1220 Z"
+   horiz-adv-x="504"
+   unicode="“" />
+   <glyph
+   id="glyph288"
+   d="M 127,-409 L 107,-240 C 146,-251 181,-256 210,-256 250,-256 282,-249 306,-236 330,-223 350,-204 365,-180 376,-162 395,-117 420,-46 423,-36 429,-21 436,-2 L 33,1062 227,1062 448,447 C 477,369 502,287 525,201 546,284 570,364 599,443 L 826,1062 1006,1062 602,-18 C 559,-135 525,-215 501,-259 469,-318 432,-362 391,-389 350,-417 300,-431 243,-431 208,-431 170,-424 127,-409 Z"
+   horiz-adv-x="928"
+   unicode="y" />
+   <glyph
+   id="glyph290"
+   d="M 831,0 L 831,156 C 748,36 636,-24 494,-24 431,-24 373,-12 319,12 264,36 224,66 198,103 171,139 153,183 142,236 135,271 131,327 131,404 L 131,1062 311,1062 311,473 C 311,379 315,316 322,283 333,236 357,199 394,172 431,145 476,131 530,131 584,131 635,145 682,173 729,200 763,238 783,286 802,333 812,402 812,493 L 812,1062 992,1062 992,0 831,0 Z"
+   horiz-adv-x="848"
+   unicode="u" />
+   <glyph
+   id="glyph292"
+   d="M 528,161 L 554,2 C 503,-9 458,-14 418,-14 353,-14 302,-4 266,17 230,38 205,65 190,99 175,132 168,203 168,311 L 168,922 36,922 36,1062 168,1062 168,1325 347,1433 347,1062 528,1062 528,922 347,922 347,301 C 347,250 350,217 357,202 363,187 373,176 388,167 402,158 422,154 449,154 469,154 495,156 528,161 Z"
+   horiz-adv-x="504"
+   unicode="t" />
+   <glyph
+   id="glyph294"
+   d="M 133,0 L 133,1062 295,1062 295,901 C 336,976 375,1026 410,1050 445,1074 483,1086 525,1086 586,1086 647,1067 710,1028 L 648,861 C 604,887 560,900 516,900 477,900 441,888 410,865 379,841 356,808 343,766 323,702 313,632 313,556 L 313,0 133,0 Z"
+   horiz-adv-x="557"
+   unicode="r" />
+   <glyph
+   id="glyph296"
+   d="M 68,531 C 68,728 123,873 232,968 323,1047 435,1086 566,1086 712,1086 831,1038 924,943 1017,847 1063,715 1063,546 1063,409 1043,302 1002,224 961,145 901,84 823,41 744,-2 659,-24 566,-24 417,-24 297,24 206,119 114,214 68,352 68,531 Z M 253,531 C 253,395 283,293 342,226 401,158 476,124 566,124 655,124 730,158 789,226 848,294 878,398 878,537 878,668 848,768 789,836 729,903 655,937 566,937 476,937 401,903 342,836 283,769 253,667 253,531 Z"
+   horiz-adv-x="980"
+   unicode="o" />
+   <glyph
+   id="glyph298"
+   d="M 135,0 L 135,1062 297,1062 297,911 C 375,1028 488,1086 635,1086 699,1086 758,1075 812,1052 865,1029 905,998 932,961 959,924 977,879 988,828 995,795 998,736 998,653 L 998,0 818,0 818,646 C 818,719 811,774 797,811 783,847 758,876 723,898 687,919 645,930 597,930 520,930 454,906 399,857 343,808 315,716 315,580 L 315,0 135,0 Z"
+   horiz-adv-x="848"
+   unicode="n" />
+   <glyph
+   id="glyph300"
+   d="M 135,0 L 135,1062 296,1062 296,913 C 329,965 374,1007 429,1039 484,1070 547,1086 618,1086 697,1086 761,1070 812,1037 862,1004 897,959 918,900 1002,1024 1111,1086 1246,1086 1351,1086 1432,1057 1489,999 1546,940 1574,850 1574,729 L 1574,0 1395,0 1395,669 C 1395,741 1389,793 1378,825 1366,856 1345,882 1314,901 1283,920 1247,930 1206,930 1131,930 1069,905 1020,856 971,806 946,726 946,617 L 946,0 766,0 766,690 C 766,770 751,830 722,870 693,910 645,930 578,930 527,930 481,917 438,890 395,863 363,824 344,773 325,722 315,648 315,551 L 315,0 135,0 Z"
+   horiz-adv-x="1457"
+   unicode="m" />
+   <glyph
+   id="glyph302"
+   d="M 131,0 L 131,1466 311,1466 311,0 131,0 Z"
+   horiz-adv-x="186"
+   unicode="l" />
+   <glyph
+   id="glyph304"
+   d="M 136,1259 L 136,1466 316,1466 316,1259 136,1259 Z M 136,0 L 136,1062 316,1062 316,0 136,0 Z"
+   horiz-adv-x="160"
+   unicode="i" />
+   <glyph
+   id="glyph306"
+   d="M 102,-88 L 277,-114 C 284,-168 305,-207 338,-232 383,-265 444,-282 521,-282 604,-282 669,-265 714,-232 759,-199 790,-152 806,-92 815,-55 820,22 819,139 740,46 642,0 525,0 379,0 266,53 186,158 106,263 66,390 66,537 66,638 84,732 121,818 158,903 211,969 281,1016 350,1063 432,1086 526,1086 651,1086 755,1035 836,934 L 836,1062 1002,1062 1002,144 C 1002,-21 985,-138 952,-207 918,-276 865,-331 792,-371 719,-411 629,-431 522,-431 395,-431 293,-402 215,-345 137,-288 99,-203 102,-88 Z M 251,550 C 251,411 279,309 334,245 389,181 459,149 542,149 625,149 694,181 750,245 806,308 834,408 834,544 834,674 805,772 748,838 690,904 620,937 539,937 459,937 391,905 335,840 279,775 251,678 251,550 Z"
+   horiz-adv-x="927"
+   unicode="g" />
+   <glyph
+   id="glyph308"
+   d="M 862,342 L 1048,319 C 1019,210 964,126 885,66 806,6 704,-24 581,-24 426,-24 303,24 212,120 121,215 75,349 75,522 75,701 121,839 213,938 305,1037 424,1086 571,1086 713,1086 829,1038 919,941 1009,844 1054,708 1054,533 1054,522 1054,506 1053,485 L 261,485 C 268,368 301,279 360,217 419,155 493,124 582,124 648,124 704,141 751,176 798,211 835,266 862,342 Z M 271,633 L 864,633 C 856,722 833,789 796,834 739,903 664,938 573,938 490,938 421,910 365,855 308,800 277,726 271,633 Z"
+   horiz-adv-x="980"
+   unicode="e" />
+   <glyph
+   id="glyph310"
+   d="M 824,0 L 824,134 C 757,29 658,-24 527,-24 442,-24 365,-1 294,46 223,93 168,158 129,242 90,325 70,421 70,530 70,636 88,732 123,819 158,905 211,971 282,1017 353,1063 432,1086 519,1086 583,1086 640,1073 690,1046 740,1019 781,983 812,940 L 812,1466 991,1466 991,0 824,0 Z M 255,530 C 255,394 284,292 341,225 398,158 466,124 544,124 623,124 690,156 745,221 800,285 827,383 827,515 827,660 799,767 743,835 687,903 618,937 536,937 456,937 389,904 336,839 282,774 255,671 255,530 Z"
+   horiz-adv-x="927"
+   unicode="d" />
+   <glyph
+   id="glyph312"
+   d="M 301,0 L 134,0 134,1466 314,1466 314,943 C 390,1038 487,1086 605,1086 670,1086 732,1073 791,1047 849,1020 897,983 935,936 972,888 1002,830 1023,763 1044,696 1055,624 1055,547 1055,365 1010,224 920,125 830,26 722,-24 596,-24 471,-24 372,28 301,133 L 301,0 Z M 299,539 C 299,412 316,320 351,263 408,170 484,124 581,124 660,124 728,158 785,227 842,295 871,397 871,532 871,671 844,773 789,839 734,905 667,938 589,938 510,938 442,904 385,836 328,767 299,668 299,539 Z"
+   horiz-adv-x="901"
+   unicode="b" />
+   <glyph
+   id="glyph314"
+   d="M 828,131 C 761,74 697,34 636,11 574,-12 508,-24 437,-24 320,-24 231,5 168,62 105,119 74,191 74,280 74,332 86,380 110,423 133,466 164,500 203,526 241,552 284,572 332,585 367,594 421,603 492,612 637,629 744,650 813,674 814,699 814,714 814,721 814,794 797,846 763,876 717,917 649,937 558,937 473,937 411,922 371,893 330,863 300,810 281,735 L 105,759 C 121,834 147,895 184,942 221,988 274,1024 343,1049 412,1074 493,1086 584,1086 675,1086 748,1075 805,1054 862,1033 903,1006 930,974 957,941 975,900 986,851 992,820 995,765 995,685 L 995,445 C 995,278 999,172 1007,128 1014,83 1029,41 1052,0 L 864,0 C 845,37 833,81 828,131 Z M 813,533 C 748,506 650,484 519,465 445,454 393,442 362,429 331,416 308,396 291,371 274,345 266,316 266,285 266,237 284,197 321,165 357,133 410,117 480,117 549,117 611,132 665,163 719,193 759,234 784,287 803,328 813,388 813,467 L 813,533 Z"
+   horiz-adv-x="980"
+   unicode="a" />
+   <glyph
+   id="glyph316"
+   d="M 92,471 L 275,487 C 284,414 304,354 336,307 367,260 416,222 483,193 550,164 625,149 708,149 782,149 847,160 904,182 961,204 1003,234 1031,273 1058,311 1072,353 1072,398 1072,444 1059,484 1032,519 1005,553 961,582 900,605 861,620 774,644 639,677 504,709 410,739 356,768 286,805 234,850 200,905 165,959 148,1020 148,1087 148,1161 169,1230 211,1295 253,1359 314,1408 395,1441 476,1474 565,1491 664,1491 773,1491 869,1474 952,1439 1035,1404 1098,1352 1143,1284 1188,1216 1212,1139 1215,1053 L 1029,1039 C 1019,1132 985,1202 928,1249 870,1296 785,1320 672,1320 555,1320 469,1299 416,1256 362,1213 335,1161 335,1100 335,1047 354,1004 392,970 429,936 527,901 685,866 842,830 950,799 1009,772 1094,733 1157,683 1198,623 1239,562 1259,493 1259,414 1259,336 1237,263 1192,194 1147,125 1083,71 1000,33 916,-6 822,-25 717,-25 584,-25 473,-6 384,33 294,72 224,130 173,208 122,285 95,373 92,471 Z"
+   horiz-adv-x="1139"
+   unicode="S" />
+   <glyph
+   id="glyph318"
+   d="M 162,0 L 162,1466 1222,1466 1222,1293 356,1293 356,844 1167,844 1167,672 356,672 356,173 1256,173 1256,0 162,0 Z"
+   horiz-adv-x="1059"
+   unicode="E" />
+   <glyph
+   id="glyph320"
+   d="M 150,0 L 150,1466 700,1466 C 812,1466 902,1451 970,1422 1037,1392 1090,1346 1129,1285 1167,1223 1186,1158 1186,1091 1186,1028 1169,969 1135,914 1101,859 1050,814 981,780 1070,754 1138,710 1186,647 1233,584 1257,510 1257,425 1257,356 1243,293 1214,234 1185,175 1149,129 1106,97 1063,65 1010,41 946,25 881,8 802,0 709,0 L 150,0 Z M 344,850 L 661,850 C 747,850 809,856 846,867 895,882 933,906 958,940 983,974 995,1017 995,1068 995,1117 983,1160 960,1197 937,1234 903,1259 860,1273 817,1286 742,1293 637,1293 L 344,1293 344,850 Z M 344,173 L 709,173 C 772,173 816,175 841,180 886,188 923,201 953,220 983,239 1008,266 1027,302 1046,337 1056,378 1056,425 1056,480 1042,527 1014,568 986,608 947,636 898,653 848,669 776,677 683,677 L 344,677 344,173 Z"
+   horiz-adv-x="1086"
+   unicode="B" />
+  </font>
+ </defs>
+ <defs
+   id="defs332">
+  <font
+   vert-adv-y="1024"
+   vert-origin-y="768"
+   vert-origin-x="512"
+   horiz-origin-y="0"
+   horiz-origin-x="0"
+   horiz-adv-x="2048"
+   id="EmbeddedFont_2">
+   <font-face
+   id="font-face325"
+   descent="397"
+   ascent="1640"
+   font-style="normal"
+   font-weight="normal"
+   units-per-em="2048"
+   font-family="Mathematica1 embedded" />
+   <missing-glyph
+   id="missing-glyph327"
+   d="M 0,0 L 2047,0 2047,2047 0,2047 0,0 Z"
+   horiz-adv-x="2048" />
+   <glyph
+   id="glyph329"
+   d="M 217,-193 L 217,1027 282,1027 282,-193 217,-193 Z"
+   horiz-adv-x="80"
+   unicode="|" />
+  </font>
+ </defs>
+ <defs
+   id="defs341">
+  <font
+   vert-adv-y="1024"
+   vert-origin-y="768"
+   vert-origin-x="512"
+   horiz-origin-y="0"
+   horiz-origin-x="0"
+   horiz-adv-x="2048"
+   id="EmbeddedFont_3">
+   <font-face
+   id="font-face334"
+   descent="450"
+   ascent="2064"
+   font-style="normal"
+   font-weight="normal"
+   units-per-em="2048"
+   font-family="Symbol embedded" />
+   <missing-glyph
+   id="missing-glyph336"
+   d="M 0,0 L 2047,0 2047,2047 0,2047 0,0 Z"
+   horiz-adv-x="2048" />
+   <glyph
+   id="glyph338"
+   d="M 1197,916 L 1197,820 784,820 C 696,820 622,806 561,777 500,748 453,709 420,659 397,623 378,572 365,507 L 1197,507 1197,407 366,407 C 393,300 440,222 505,172 570,122 664,97 786,97 L 1197,97 1197,0 799,0 C 682,0 587,17 514,52 441,87 381,142 335,218 289,294 266,374 266,459 266,588 312,696 404,784 496,872 627,916 796,916 L 1197,916 Z"
+   horiz-adv-x="900"
+   unicode="" />
+  </font>
+ </defs>
+ <g
+   id="MasterSlide_1_Standard"
+   visibility="visible">
+  <desc
+   id="desc343">Master slide
+  </desc>
+  <rect
+   id="rect345"
+   height="29700"
+   width="21000"
+   y="0"
+   x="0"
+   stroke="none"
+   fill="none" />
+ </g>
+ <g
+   id="Slide_1_page5"
+   visibility="visible">
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="g350">
+   <path
+   d="m 3040,4131 v 188"
+   stroke-linejoin="round"
+   id="Drawing_1_0"
+   stroke="#000000"
+   fill="none" />
+   <path
+   d="m 3039,4768 151,-450 h -300 z"
+   id="Drawing_1_1"
+   stroke="none"
+   fill="#000000" />
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="g354">
+   <path
+   d="m 3184,4913 h 1856 v 334"
+   stroke-linejoin="round"
+   id="Drawing_2_0"
+   stroke="#000000"
+   fill="none" />
+   <path
+   d="m 5040,5697 150,-450 h -300 z"
+   id="Drawing_2_1"
+   stroke="none"
+   fill="#000000" />
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="g358">
+   <path
+   d="m 3039,2839 v 190"
+   stroke-linejoin="round"
+   id="Drawing_3_0"
+   stroke="#000000"
+   fill="none" />
+   <path
+   d="m 3040,3478 149,-450 h -300 z"
+   id="Drawing_3_1"
+   stroke="none"
+   fill="#000000" />
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="g362">
+   <path
+   d="M 3039,5058 V 7584"
+   stroke-linejoin="round"
+   id="Drawing_4_0"
+   stroke="#000000"
+   fill="none" />
+   <path
+   d="m 3039,8034 150,-450 h -300 z"
+   id="Drawing_4_1"
+   stroke="none"
+   fill="#000000" />
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="Drawing_5">
+   <path
+   id="path364"
+   d="m 3040,2839 h 704 c 353,0 640,-284 640,-635 0,-351 -287,-635 -640,-635 H 2335 c -353,0 -640,284 -640,635 0,351 287,635 640,635 z"
+   stroke-linejoin="round"
+   stroke="#000000"
+   fill="none" />
+   <g
+   id="g374"
+   font-weight="400"
+   font-style="normal"
+   font-size="318px"
+   font-family="'Arial embedded'"
+   stroke="none"
+   fill="#000000">
+    <text
+   id="text368"
+   y="2136"
+   x="2703">      <tspan
+   id="tspan366"
+   x="2703">Start</tspan></text>
+    <text
+   id="text372"
+   y="2488"
+   x="2275"
+   stroke="none"
+   fill="#000000">      <tspan
+   id="tspan370"
+   x="2275">Bedingung</tspan></text>
+   </g>
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="Drawing_6">
+   <path
+   id="path377"
+   d="m 3040,12933 h 704 c 353,0 640,-284 640,-635 0,-351 -287,-635 -640,-635 H 2335 c -353,0 -640,284 -640,635 0,351 287,635 640,635 z"
+   stroke-linejoin="round"
+   stroke="#000000"
+   fill="none" />
+   <g
+   id="g387"
+   font-weight="400"
+   font-style="normal"
+   font-size="318px"
+   font-family="'Arial embedded'"
+   stroke="none"
+   fill="#000000">
+    <text
+   id="text381"
+   y="12230"
+   x="2667">      <tspan
+   id="tspan379"
+   x="2667">Ende</tspan></text>
+    <text
+   id="text385"
+   y="12582"
+   x="2275"
+   stroke="none"
+   fill="#000000">      <tspan
+   id="tspan383"
+   x="2275">Bedingung</tspan></text>
+   </g>
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="g391">
+   <path
+   d="m 3039,5058 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
+   stroke-linejoin="round"
+   id="Drawing_7_0"
+   stroke="#000000"
+   fill="none" />
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="g395">
+   <path
+   d="m 3039,11025 v 188"
+   stroke-linejoin="round"
+   id="Drawing_8_0"
+   stroke="#000000"
+   fill="none" />
+   <path
+   d="m 3039,11663 150,-450 h -300 z"
+   id="Drawing_8_1"
+   stroke="none"
+   fill="#000000" />
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="g399">
+   <path
+   d="m 5040,6350 v 189"
+   stroke-linejoin="round"
+   id="Drawing_9_0"
+   stroke="#000000"
+   fill="none" />
+   <path
+   d="m 5040,6989 150,-450 h -300 z"
+   id="Drawing_9_1"
+   stroke="none"
+   fill="#000000" />
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="Drawing_10">
+   <path
+   id="path401"
+   d="m 2357,3477 h 1364 v 654 H 2357 Z"
+   stroke-linejoin="round"
+   stroke="#000000"
+   fill="none" />
+   <rect
+   id="rect403"
+   height="654"
+   width="1364"
+   y="3478"
+   x="2358"
+   stroke="none"
+   fill="none" />
+   <g
+   id="g409"
+   font-weight="400"
+   font-style="normal"
+   font-size="318px"
+   font-family="'Arial embedded'"
+   stroke="none"
+   fill="#000000">
+    <text
+   id="text407"
+   y="3912"
+   x="2507">      <tspan
+   id="tspan405"
+   x="2507">Symbol</tspan></text>
+   </g>
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="g521"><g
+     id="Drawing_11">
+   <path
+   fill="none"
+   stroke="#000000"
+   stroke-linejoin="round"
+   d="m 4712,5696 h 654 v 654 h -654 z"
+   id="path412" />
+   <rect
+   fill="none"
+   stroke="none"
+   x="4713"
+   y="5697"
+   width="654"
+   height="654"
+   id="rect414" />
+   <g
+   fill="#000000"
+   stroke="none"
+   font-family="'Arial embedded'"
+   font-size="318px"
+   font-style="normal"
+   font-weight="400"
+   id="g418">
+    <text
+   x="4820"
+   y="6148"
+   id="text416">„</text>
+   </g>
+   
+   <g
+   fill="#000000"
+   stroke="none"
+   font-family="'Arial embedded'"
+   font-size="318px"
+   font-style="normal"
+   font-weight="400"
+   id="g426">
+    <text
+   x="5150"
+   y="6148"
+   id="text424">“</text>
+   </g>
+  <g
+   transform="translate(23.130024,1224.8473)"
+   fill="#000000"
+   stroke="none"
+   font-family="'Symbol embedded'"
+   font-size="318px"
+   font-style="normal"
+   font-weight="400"
+   id="g144"><g
+     id="text677"
+     style="font-style:normal;font-weight:400;font-size:318px;font-family:Symbol;visibility:visible;fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:28.222;stroke-linejoin:round"
+     aria-label=""
+     transform="translate(-6168.2197,-6783.3157)"><path
+       id="path1529"
+       style="stroke-width:1.06666"
+       d="m 190.39453,179.24219 c -0.99375,0 -1.76087,0.25895 -2.30078,0.77539 -0.53991,0.51643 -0.80859,1.15117 -0.80859,1.90625 0,0.45774 0.11488,0.89776 0.3457,1.32031 0.61578,0.80844 1.254,1.37305 2.78125,1.37305 h 2.33594 v -0.56836 h -2.41211 c -1.10369,-0.0296 -1.66926,-0.31019 -2.17188,-1.02735 -0.10564,-0.17608 -0.20298,-0.44086 -0.29297,-0.79296 h 4.87696 v -0.58594 h -4.88282 c 0.11347,-0.58292 0.36463,-1.03463 0.75196,-1.35547 0.38732,-0.32081 0.95585,-0.48047 1.70703,-0.48047 h 2.42383 v -0.56445 z"
+       transform="matrix(26.458333,0,0,26.458333,6168.2197,6783.3157)"
+       sodipodi:nodetypes="sssccccccccccssccs" /></g></g></g></g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="Drawing_12">
+   <path
+   id="path429"
+   d="m 4331,6988 h 1416 v 654 H 4331 Z"
+   stroke-linejoin="round"
+   stroke="#000000"
+   fill="none" />
+   <rect
+   id="rect431"
+   height="654"
+   width="1416"
+   y="6989"
+   x="4332"
+   stroke="none"
+   fill="none" />
+   <g
+   id="g437"
+   font-weight="400"
+   font-style="normal"
+   font-size="318px"
+   font-family="'Arial embedded'"
+   stroke="none"
+   fill="#000000">
+    <text
+   id="text435"
+   y="7423"
+   x="4507">      <tspan
+   id="tspan433"
+   x="4507">Symbol</tspan></text>
+   </g>
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="Drawing_13">
+   <path
+   id="path440"
+   d="m 2712,9080 h 654 v 654 h -654 z"
+   stroke-linejoin="round"
+   stroke="#000000"
+   fill="none" />
+   <rect
+   id="rect442"
+   height="654"
+   width="654"
+   y="9081"
+   x="2713"
+   stroke="none"
+   fill="none" />
+   <g
+   id="g446"
+   font-weight="400"
+   font-style="normal"
+   font-size="318px"
+   font-family="'Arial embedded'"
+   stroke="none"
+   fill="#000000">
+    <text
+   id="text444"
+   y="9515"
+   x="2884">„</text>
+   </g>
+   <g
+   id="g450"
+   font-weight="400"
+   font-style="normal"
+   font-size="318px"
+   font-family="'Mathematica1 embedded'"
+   stroke="none"
+   fill="#000000">
+    <text
+   id="text448"
+   y="9515"
+   x="2990">|</text>
+   </g>
+   <g
+   id="g454"
+   font-weight="400"
+   font-style="normal"
+   font-size="318px"
+   font-family="'Arial embedded'"
+   stroke="none"
+   fill="#000000">
+    <text
+   id="text452"
+   y="9515"
+   x="3087">“</text>
+   </g>
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="g458">
+   <path
+   d="m 3039,8324 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
+   stroke-linejoin="round"
+   id="Drawing_14_0"
+   stroke="#000000"
+   fill="none" />
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="g462">
+   <path
+   d="m 5040,7642 v 537 H 3634"
+   stroke-linejoin="round"
+   id="Drawing_15_0"
+   stroke="#000000"
+   fill="none" />
+   <path
+   d="m 3184,8179 450,150 v -300 z"
+   id="Drawing_15_1"
+   stroke="none"
+   fill="#000000" />
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="g466">
+   <path
+   d="m 3039,8324 v 308"
+   stroke-linejoin="round"
+   id="Drawing_16_0"
+   stroke="#000000"
+   fill="none" />
+   <path
+   d="m 3040,9081 149,-450 h -300 z"
+   id="Drawing_16_1"
+   stroke="none"
+   fill="#000000" />
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="g470">
+   <path
+   d="m 3040,9734 v 189"
+   stroke-linejoin="round"
+   id="Drawing_17_0"
+   stroke="#000000"
+   fill="none" />
+   <path
+   d="m 3039,10372 151,-450 h -300 z"
+   id="Drawing_17_1"
+   stroke="none"
+   fill="#000000" />
+  </g>
+  <g
+   transform="translate(-1416.3057,-1290.3057)"
+   id="Drawing_18">
+   <path
+   id="path472"
+   d="m 2413,10371 h 1253 v 654 H 2413 Z"
+   stroke-linejoin="round"
+   stroke="#000000"
+   fill="none" />
+   <rect
+   id="rect474"
+   height="654"
+   width="1253"
+   y="10372"
+   x="2413"
+   stroke="none"
+   fill="none" />
+   <g
+   id="g480"
+   font-weight="400"
+   font-style="normal"
+   font-size="318px"
+   font-family="'Arial embedded'"
+   stroke="none"
+   fill="#000000">
+    <text
+   id="text478"
+   y="10806"
+   x="2507">      <tspan
+   id="tspan476"
+   x="2507">Symbol</tspan></text>
+   </g>
+  </g>
+ </g>
+</svg>
