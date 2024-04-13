@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.2"
    width="264.884"
    height="383.901"
@@ -16,10 +9,17 @@
    id="svg401"
    sodipodi:docname="SymboleZahlen.svg"
    style="fill-rule:evenodd;stroke-width:28.22200012;stroke-linejoin:round"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"><metadata
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"><metadata
    id="metadata405"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><sodipodi:namedview
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><sodipodi:namedview
    pagecolor="#ffffff"
    bordercolor="#666666"
    borderopacity="1"
@@ -29,1191 +29,833 @@
    inkscape:pageopacity="0"
    inkscape:pageshadow="2"
    inkscape:window-width="1920"
-   inkscape:window-height="1001"
+   inkscape:window-height="1094"
    id="namedview403"
    showgrid="false"
    units="px"
-   inkscape:zoom="2.7199968"
-   inkscape:cx="241.11492"
-   inkscape:cy="808.17033"
-   inkscape:window-x="-9"
-   inkscape:window-y="-9"
+   inkscape:zoom="10.879987"
+   inkscape:cx="223.89732"
+   inkscape:cy="365.11992"
+   inkscape:window-x="-11"
+   inkscape:window-y="-11"
    inkscape:window-maximized="1"
-   inkscape:current-layer="svg401" />
- <defs
-   id="defs53">
-  <font
+   inkscape:current-layer="DrawingGroup_1"
+   inkscape:showpageshadow="2"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1" />&#10; <defs
+   id="defs53">&#10;  <font
    id="EmbeddedFont_1"
    horiz-adv-x="2048"
    horiz-origin-x="0"
    horiz-origin-y="0"
    vert-origin-x="45"
    vert-origin-y="90"
-   vert-adv-y="90">
-   <font-face
+   vert-adv-y="90">&#10;   <font-face
    font-family="Arial"
    units-per-em="2048"
    font-weight="normal"
    font-style="normal"
    ascent="1852"
    descent="450"
-   id="font-face2" />
-   <missing-glyph
+   id="font-face2" />&#10;   <missing-glyph
    horiz-adv-x="2048"
    d="M 0,0 L 2047,0 2047,2047 0,2047 0,0 Z"
-   id="missing-glyph4" />
-   <glyph
+   id="missing-glyph4" />&#10;   <glyph
    unicode="„"
    horiz-adv-x="530"
    d="M 87,0 L 87,209 280,209 280,44 C 280,-45 270,-110 249,-149 220,-203 176,-244 115,-271 L 71,-200 C 107,-185 134,-162 152,-130 169,-99 179,-55 181,0 L 87,0 Z M 397,0 L 397,209 590,209 590,44 C 590,-45 580,-110 559,-149 530,-203 486,-244 425,-271 L 381,-200 C 417,-185 444,-162 462,-130 479,-99 489,-55 491,0 L 397,0 Z"
-   id="glyph6" />
-   <glyph
+   id="glyph6" />&#10;   <glyph
    unicode="“"
    horiz-adv-x="504"
    d="M 276,1220 L 276,1011 83,1011 83,1176 C 83,1265 94,1330 115,1370 143,1423 187,1464 248,1491 L 292,1421 C 255,1406 228,1383 211,1353 194,1322 184,1278 182,1220 L 276,1220 Z M 586,1220 L 586,1011 393,1011 393,1176 C 393,1265 404,1330 425,1370 453,1423 497,1464 558,1491 L 602,1421 C 565,1406 538,1383 521,1353 504,1322 494,1278 492,1220 L 586,1220 Z"
-   id="glyph8" />
-   <glyph
+   id="glyph8" />&#10;   <glyph
    unicode="t"
    horiz-adv-x="504"
    d="M 528,161 L 554,2 C 503,-9 458,-14 418,-14 353,-14 302,-4 266,17 230,38 205,65 190,99 175,132 168,203 168,311 L 168,922 36,922 36,1062 168,1062 168,1325 347,1433 347,1062 528,1062 528,922 347,922 347,301 C 347,250 350,217 357,202 363,187 373,176 388,167 402,158 422,154 449,154 469,154 495,156 528,161 Z"
-   id="glyph10" />
-   <glyph
+   id="glyph10" />&#10;   <glyph
    unicode="r"
    horiz-adv-x="557"
    d="M 133,0 L 133,1062 295,1062 295,901 C 336,976 375,1026 410,1050 445,1074 483,1086 525,1086 586,1086 647,1067 710,1028 L 648,861 C 604,887 560,900 516,900 477,900 441,888 410,865 379,841 356,808 343,766 323,702 313,632 313,556 L 313,0 133,0 Z"
-   id="glyph12" />
-   <glyph
+   id="glyph12" />&#10;   <glyph
    unicode="n"
    horiz-adv-x="848"
    d="M 135,0 L 135,1062 297,1062 297,911 C 375,1028 488,1086 635,1086 699,1086 758,1075 812,1052 865,1029 905,998 932,961 959,924 977,879 988,828 995,795 998,736 998,653 L 998,0 818,0 818,646 C 818,719 811,774 797,811 783,847 758,876 723,898 687,919 645,930 597,930 520,930 454,906 399,857 343,808 315,716 315,580 L 315,0 135,0 Z"
-   id="glyph14" />
-   <glyph
+   id="glyph14" />&#10;   <glyph
    unicode="l"
    horiz-adv-x="186"
    d="M 131,0 L 131,1466 311,1466 311,0 131,0 Z"
-   id="glyph16" />
-   <glyph
+   id="glyph16" />&#10;   <glyph
    unicode="h"
    horiz-adv-x="848"
    d="M 135,0 L 135,1466 315,1466 315,940 C 399,1037 505,1086 633,1086 712,1086 780,1071 838,1040 896,1009 938,966 963,911 988,856 1000,777 1000,673 L 1000,0 820,0 820,673 C 820,763 801,829 762,870 723,911 667,931 596,931 543,931 493,917 446,890 399,862 365,824 345,777 325,730 315,664 315,581 L 315,0 135,0 Z"
-   id="glyph18" />
-   <glyph
+   id="glyph18" />&#10;   <glyph
    unicode="e"
    horiz-adv-x="980"
    d="M 862,342 L 1048,319 C 1019,210 964,126 885,66 806,6 704,-24 581,-24 426,-24 303,24 212,120 121,215 75,349 75,522 75,701 121,839 213,938 305,1037 424,1086 571,1086 713,1086 829,1038 919,941 1009,844 1054,708 1054,533 1054,522 1054,506 1053,485 L 261,485 C 268,368 301,279 360,217 419,155 493,124 582,124 648,124 704,141 751,176 798,211 835,266 862,342 Z M 271,633 L 864,633 C 856,722 833,789 796,834 739,903 664,938 573,938 490,938 421,910 365,855 308,800 277,726 271,633 Z"
-   id="glyph20" />
-   <glyph
+   id="glyph20" />&#10;   <glyph
    unicode="d"
    horiz-adv-x="927"
    d="M 824,0 L 824,134 C 757,29 658,-24 527,-24 442,-24 365,-1 294,46 223,93 168,158 129,242 90,325 70,421 70,530 70,636 88,732 123,819 158,905 211,971 282,1017 353,1063 432,1086 519,1086 583,1086 640,1073 690,1046 740,1019 781,983 812,940 L 812,1466 991,1466 991,0 824,0 Z M 255,530 C 255,394 284,292 341,225 398,158 466,124 544,124 623,124 690,156 745,221 800,285 827,383 827,515 827,660 799,767 743,835 687,903 618,937 536,937 456,937 389,904 336,839 282,774 255,671 255,530 Z"
-   id="glyph22" />
-   <glyph
+   id="glyph22" />&#10;   <glyph
    unicode="a"
    horiz-adv-x="980"
    d="M 828,131 C 761,74 697,34 636,11 574,-12 508,-24 437,-24 320,-24 231,5 168,62 105,119 74,191 74,280 74,332 86,380 110,423 133,466 164,500 203,526 241,552 284,572 332,585 367,594 421,603 492,612 637,629 744,650 813,674 814,699 814,714 814,721 814,794 797,846 763,876 717,917 649,937 558,937 473,937 411,922 371,893 330,863 300,810 281,735 L 105,759 C 121,834 147,895 184,942 221,988 274,1024 343,1049 412,1074 493,1086 584,1086 675,1086 748,1075 805,1054 862,1033 903,1006 930,974 957,941 975,900 986,851 992,820 995,765 995,685 L 995,445 C 995,278 999,172 1007,128 1014,83 1029,41 1052,0 L 864,0 C 845,37 833,81 828,131 Z M 813,533 C 748,506 650,484 519,465 445,454 393,442 362,429 331,416 308,396 291,371 274,345 266,316 266,285 266,237 284,197 321,165 357,133 410,117 480,117 549,117 611,132 665,163 719,193 759,234 784,287 803,328 813,388 813,467 L 813,533 Z"
-   id="glyph24" />
-   <glyph
+   id="glyph24" />&#10;   <glyph
    unicode="Z"
    horiz-adv-x="1166"
    d="M 41,0 L 41,180 792,1119 C 845,1186 896,1244 944,1293 L 126,1293 126,1466 1176,1466 1176,1293 353,276 264,173 1200,173 1200,0 41,0 Z"
-   id="glyph26" />
-   <glyph
+   id="glyph26" />&#10;   <glyph
    unicode="S"
    horiz-adv-x="1139"
    d="M 92,471 L 275,487 C 284,414 304,354 336,307 367,260 416,222 483,193 550,164 625,149 708,149 782,149 847,160 904,182 961,204 1003,234 1031,273 1058,311 1072,353 1072,398 1072,444 1059,484 1032,519 1005,553 961,582 900,605 861,620 774,644 639,677 504,709 410,739 356,768 286,805 234,850 200,905 165,959 148,1020 148,1087 148,1161 169,1230 211,1295 253,1359 314,1408 395,1441 476,1474 565,1491 664,1491 773,1491 869,1474 952,1439 1035,1404 1098,1352 1143,1284 1188,1216 1212,1139 1215,1053 L 1029,1039 C 1019,1132 985,1202 928,1249 870,1296 785,1320 672,1320 555,1320 469,1299 416,1256 362,1213 335,1161 335,1100 335,1047 354,1004 392,970 429,936 527,901 685,866 842,830 950,799 1009,772 1094,733 1157,683 1198,623 1239,562 1259,493 1259,414 1259,336 1237,263 1192,194 1147,125 1083,71 1000,33 916,-6 822,-25 717,-25 584,-25 473,-6 384,33 294,72 224,130 173,208 122,285 95,373 92,471 Z"
-   id="glyph28" />
-   <glyph
+   id="glyph28" />&#10;   <glyph
    unicode="E"
    horiz-adv-x="1059"
    d="M 162,0 L 162,1466 1222,1466 1222,1293 356,1293 356,844 1167,844 1167,672 356,672 356,173 1256,173 1256,0 162,0 Z"
-   id="glyph30" />
-   <glyph
+   id="glyph30" />&#10;   <glyph
    unicode="9"
    horiz-adv-x="954"
    d="M 112,339 L 285,355 C 300,274 328,215 369,178 410,141 463,123 528,123 583,123 632,136 674,161 715,186 749,220 776,263 803,305 825,362 843,434 861,506 870,579 870,654 870,662 870,674 869,690 833,633 784,586 722,551 659,515 592,497 519,497 398,497 295,541 211,629 127,717 85,833 85,977 85,1126 129,1245 217,1336 304,1427 414,1472 546,1472 641,1472 729,1446 808,1395 887,1344 947,1271 988,1176 1029,1081 1049,943 1049,763 1049,576 1029,427 988,316 947,205 887,120 807,62 726,4 632,-25 524,-25 409,-25 316,7 243,71 170,134 127,224 112,339 Z M 849,986 C 849,1089 822,1171 767,1232 712,1293 645,1323 568,1323 488,1323 418,1290 359,1225 300,1160 270,1075 270,971 270,878 298,802 355,744 411,685 480,656 563,656 646,656 715,685 769,744 822,802 849,883 849,986 Z"
-   id="glyph32" />
-   <glyph
+   id="glyph32" />&#10;   <glyph
    unicode="8"
    horiz-adv-x="954"
    d="M 362,795 C 287,822 232,861 196,912 160,963 142,1023 142,1094 142,1201 180,1290 257,1363 334,1436 436,1472 563,1472 691,1472 794,1435 872,1361 950,1286 989,1196 989,1089 989,1021 971,962 936,912 900,861 846,822 773,795 863,766 932,718 979,653 1026,588 1049,510 1049,419 1049,294 1005,188 916,103 827,18 711,-25 566,-25 421,-25 305,18 216,104 127,189 83,296 83,424 83,519 107,599 156,664 204,728 273,772 362,795 Z M 326,1100 C 326,1031 348,974 393,930 438,886 496,864 567,864 636,864 693,886 738,930 782,973 804,1027 804,1090 804,1156 781,1212 736,1257 690,1302 633,1324 565,1324 496,1324 439,1302 394,1258 349,1214 326,1161 326,1100 Z M 268,423 C 268,372 280,322 305,274 329,226 365,189 413,163 461,136 513,123 568,123 654,123 725,151 781,206 837,261 865,332 865,417 865,504 836,575 779,632 721,689 649,717 562,717 477,717 407,689 352,633 296,577 268,507 268,423 Z"
-   id="glyph34" />
-   <glyph
+   id="glyph34" />&#10;   <glyph
    unicode="7"
    horiz-adv-x="954"
    d="M 97,1274 L 97,1447 1046,1447 1046,1307 C 953,1208 860,1076 769,911 677,746 606,577 556,403 520,280 497,146 487,0 L 302,0 C 304,115 327,255 370,418 413,581 476,739 557,891 638,1042 724,1170 815,1274 L 97,1274 Z"
-   id="glyph36" />
-   <glyph
+   id="glyph36" />&#10;   <glyph
    unicode="5"
    horiz-adv-x="954"
    d="M 85,384 L 274,400 C 288,308 321,239 372,193 423,146 484,123 556,123 643,123 716,156 776,221 836,286 866,373 866,481 866,584 837,665 780,724 722,783 646,813 553,813 495,813 443,800 396,774 349,747 313,713 286,671 L 117,693 259,1446 988,1446 988,1274 403,1274 324,880 C 412,941 504,972 601,972 729,972 837,928 925,839 1013,750 1057,636 1057,497 1057,364 1018,250 941,153 847,34 719,-25 556,-25 423,-25 314,12 230,87 145,162 97,261 85,384 Z"
-   id="glyph38" />
-   <glyph
+   id="glyph38" />&#10;   <glyph
    unicode="4"
    horiz-adv-x="1007"
    d="M 662,0 L 662,351 26,351 26,516 695,1466 842,1466 842,516 1040,516 1040,351 842,351 842,0 662,0 Z M 662,516 L 662,1177 203,516 662,516 Z"
-   id="glyph40" />
-   <glyph
+   id="glyph40" />&#10;   <glyph
    unicode="3"
    horiz-adv-x="954"
    d="M 86,387 L 266,411 C 287,309 322,236 372,191 421,146 482,123 553,123 638,123 709,152 768,211 826,270 855,342 855,429 855,512 828,580 774,634 720,687 651,714 568,714 534,714 492,707 441,694 L 461,852 C 473,851 483,850 490,850 567,850 636,870 697,910 758,950 789,1012 789,1095 789,1161 767,1216 722,1259 677,1302 620,1324 549,1324 479,1324 421,1302 374,1258 327,1214 297,1148 284,1060 L 104,1092 C 126,1213 176,1306 254,1373 332,1439 429,1472 545,1472 625,1472 699,1455 766,1421 833,1386 885,1339 921,1280 956,1221 974,1158 974,1091 974,1028 957,970 923,918 889,866 839,825 772,794 859,774 926,733 974,670 1022,607 1046,528 1046,433 1046,305 999,197 906,108 813,19 695,-26 552,-26 423,-26 317,12 232,89 147,166 98,265 86,387 Z"
-   id="glyph42" />
-   <glyph
+   id="glyph42" />&#10;   <glyph
    unicode="2"
    horiz-adv-x="953"
    d="M 1031,173 L 1031,0 62,0 C 61,43 68,85 83,125 108,191 147,256 202,320 256,384 334,458 437,542 596,673 704,776 760,853 816,929 844,1001 844,1069 844,1140 819,1201 768,1250 717,1299 650,1323 568,1323 481,1323 412,1297 360,1245 308,1193 282,1121 281,1029 L 96,1048 C 109,1186 156,1291 239,1364 322,1436 433,1472 572,1472 713,1472 824,1433 906,1355 988,1277 1029,1180 1029,1065 1029,1006 1017,949 993,892 969,835 929,776 874,713 818,650 725,564 596,455 488,364 419,303 388,271 357,238 332,206 312,173 L 1031,173 Z"
-   id="glyph44" />
-   <glyph
+   id="glyph44" />&#10;   <glyph
    unicode="1"
    horiz-adv-x="530"
    d="M 763,0 L 583,0 583,1147 C 540,1106 483,1064 413,1023 342,982 279,951 223,930 L 223,1104 C 324,1151 412,1209 487,1276 562,1343 616,1409 647,1472 L 763,1472 763,0 Z"
-   id="glyph46" />
-   <glyph
+   id="glyph46" />&#10;   <glyph
    unicode="0"
    horiz-adv-x="954"
    d="M 85,723 C 85,896 103,1036 139,1142 174,1247 227,1329 298,1386 368,1443 456,1472 563,1472 642,1472 711,1456 770,1425 829,1393 878,1347 917,1288 956,1228 986,1155 1008,1070 1030,984 1041,868 1041,723 1041,551 1023,412 988,307 953,201 900,119 830,62 759,4 670,-25 563,-25 422,-25 311,26 230,127 133,249 85,448 85,723 Z M 270,723 C 270,482 298,322 355,243 411,163 480,123 563,123 646,123 715,163 772,243 828,323 856,483 856,723 856,964 828,1125 772,1204 715,1283 645,1323 561,1323 478,1323 412,1288 363,1218 301,1129 270,964 270,723 Z"
-   id="glyph48" />
-   <glyph
+   id="glyph48" />&#10;   <glyph
    unicode=" "
    horiz-adv-x="556"
-   id="glyph50" />
-  </font>
- </defs>
- <g
+   id="glyph50" />&#10;  </font>&#10; </defs>&#10; <g
    visibility="visible"
    id="MasterSlide_1_Standard"
    style="visibility:visible"
-   transform="translate(0,-19542.617)">
-  <desc
-   id="desc55">Master slide
-  </desc>
-  <rect
+   transform="translate(0,-19542.617)">&#10;  <desc
+   id="desc55">Master slide&#10;  </desc>&#10;  <rect
    x="0"
    y="0"
    width="21000"
    height="29700"
    id="rect57"
-   style="fill:none;stroke:none" />
- </g>
- <g
+   style="fill:none;stroke:none" />&#10; </g>&#10; <g
    visibility="visible"
    id="Slide_1_page3"
    style="visibility:visible"
-   transform="translate(-2504.3057,-2226.3136)">
-  <g
-   id="DrawingGroup_1">
-   <g
-   id="Drawing_1">
-    <path
+   transform="translate(-2504.3057,-2226.3136)">&#10;  <g
+   id="DrawingGroup_1">&#10;   <g
+   id="Drawing_1">&#10;    <path
    d="m 5671,5703 h 654 v 654 h -654 z"
    id="path60"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <rect
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <rect
    x="5672"
    y="5704"
    width="654"
    height="654"
    id="rect62"
-   style="fill:none;stroke:none" />
-    <g
+   style="fill:none;stroke:none" />&#10;    <g
    font-size="318"
    font-style="normal"
    font-weight="400"
    id="g70"
-   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
-     <text
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">&#10;     <text
    x="5802"
    y="6138"
-   id="text64">„</text>
-
-     <text
+   id="text64">„</text>&#10;&#10;     <text
    x="5908"
    y="6138"
    id="text66"
-   style="fill:#000000;stroke:none">2</text>
-
-     <text
+   style="fill:#000000;stroke:none">2</text>&#10;&#10;     <text
    x="6086"
    y="6138"
    id="text68"
-   style="fill:#000000;stroke:none">“</text>
-
-    </g>
-   </g>
-   <g
-   id="Drawing_2">
-    <path
+   style="fill:#000000;stroke:none">“</text>&#10;&#10;    </g>&#10;   </g>&#10;   <g
+   id="Drawing_2">&#10;    <path
    d="m 5674,7008 h 652 v 654 h -652 z"
    id="path73"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <rect
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <rect
    x="5675"
    y="7009"
    width="652"
    height="654"
    id="rect75"
-   style="fill:none;stroke:none" />
-    <g
+   style="fill:none;stroke:none" />&#10;    <g
    font-size="318"
    font-style="normal"
    font-weight="400"
    id="g83"
-   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
-     <text
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">&#10;     <text
    x="5804"
    y="7443"
-   id="text77">„</text>
-
-     <text
+   id="text77">„</text>&#10;&#10;     <text
    x="5910"
    y="7443"
    id="text79"
-   style="fill:#000000;stroke:none">4</text>
-
-     <text
+   style="fill:#000000;stroke:none">4</text>&#10;&#10;     <text
    x="6088"
    y="7443"
    id="text81"
-   style="fill:#000000;stroke:none">“</text>
-
-    </g>
-   </g>
-   <g
-   id="Drawing_3">
-    <path
+   style="fill:#000000;stroke:none">“</text>&#10;&#10;    </g>&#10;   </g>&#10;   <g
+   id="Drawing_3">&#10;    <path
    d="m 5671,4398 h 654 v 654 h -654 z"
    id="path86"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <rect
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <rect
    x="5672"
    y="4399"
    width="654"
    height="654"
    id="rect88"
-   style="fill:none;stroke:none" />
-    <g
+   style="fill:none;stroke:none" />&#10;    <g
    font-size="318"
    font-style="normal"
    font-weight="400"
    id="g96"
-   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
-     <text
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">&#10;     <text
    x="5802"
    y="4833"
-   id="text90">„</text>
-
-     <text
+   id="text90">„</text>&#10;&#10;     <text
    x="5908"
    y="4833"
    id="text92"
-   style="fill:#000000;stroke:none">0</text>
-
-     <text
+   style="fill:#000000;stroke:none">0</text>&#10;&#10;     <text
    x="6086"
    y="4833"
    id="text94"
-   style="fill:#000000;stroke:none">“</text>
-
-    </g>
-   </g>
-   <g
-   id="Drawing_4">
-    <path
+   style="fill:#000000;stroke:none">“</text>&#10;&#10;    </g>&#10;   </g>&#10;   <g
+   id="Drawing_4">&#10;    <path
    d="m 5671,5051 h 654 v 654 h -654 z"
    id="path99"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <rect
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <rect
    x="5672"
    y="5052"
    width="654"
    height="654"
    id="rect101"
-   style="fill:none;stroke:none" />
-    <g
+   style="fill:none;stroke:none" />&#10;    <g
    font-size="318"
    font-style="normal"
    font-weight="400"
    id="g109"
-   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
-     <text
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">&#10;     <text
    x="5802"
    y="5486"
-   id="text103">„</text>
-
-     <text
+   id="text103">„</text>&#10;&#10;     <text
    x="5908"
    y="5486"
    id="text105"
-   style="fill:#000000;stroke:none">1</text>
-
-     <text
+   style="fill:#000000;stroke:none">1</text>&#10;&#10;     <text
    x="6086"
    y="5486"
    id="text107"
-   style="fill:#000000;stroke:none">“</text>
-
-    </g>
-   </g>
-   <g
-   id="Drawing_5">
-    <path
+   style="fill:#000000;stroke:none">“</text>&#10;&#10;    </g>&#10;   </g>&#10;   <g
+   id="Drawing_5">&#10;    <path
    d="m 5671,6356 h 654 v 654 h -654 z"
    id="path112"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <rect
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <rect
    x="5672"
    y="6357"
    width="654"
    height="654"
    id="rect114"
-   style="fill:none;stroke:none" />
-    <g
+   style="fill:none;stroke:none" />&#10;    <g
    font-size="318"
    font-style="normal"
    font-weight="400"
    id="g122"
-   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
-     <text
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">&#10;     <text
    x="5802"
    y="6791"
-   id="text116">„</text>
-
-     <text
+   id="text116">„</text>&#10;&#10;     <text
    x="5908"
    y="6791"
    id="text118"
-   style="fill:#000000;stroke:none">3</text>
-
-     <text
+   style="fill:#000000;stroke:none">3</text>&#10;&#10;     <text
    x="6086"
    y="6791"
    id="text120"
-   style="fill:#000000;stroke:none">“</text>
-
-    </g>
-   </g>
-   <g
-   id="Drawing_6">
-    <path
+   style="fill:#000000;stroke:none">“</text>&#10;&#10;    </g>&#10;   </g>&#10;   <g
+   id="Drawing_6">&#10;    <path
    d="m 5671,7661 h 654 v 654 h -654 z"
    id="path125"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <rect
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <rect
    x="5672"
    y="7662"
    width="654"
    height="654"
    id="rect127"
-   style="fill:none;stroke:none" />
-    <g
+   style="fill:none;stroke:none" />&#10;    <g
    font-size="318"
    font-style="normal"
    font-weight="400"
    id="g135"
-   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
-     <text
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">&#10;     <text
    x="5802"
    y="8096"
-   id="text129">„</text>
-
-     <text
+   id="text129">„</text>&#10;&#10;     <text
    x="5908"
    y="8096"
    id="text131"
-   style="fill:#000000;stroke:none">5</text>
-
-     <text
+   style="fill:#000000;stroke:none">5</text>&#10;&#10;     <text
    x="6086"
    y="8096"
    id="text133"
-   style="fill:#000000;stroke:none">“</text>
-
-    </g>
-   </g>
-   <g
-   id="Drawing_7">
-    <path
+   style="fill:#000000;stroke:none">“</text>&#10;&#10;    </g>&#10;   </g>&#10;   <g
+   id="Drawing_7">&#10;    <path
    d="m 5671,8971 h 654 v 654 h -654 z"
    id="path138"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <rect
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <rect
    x="5672"
    y="8972"
    width="654"
    height="654"
    id="rect140"
-   style="fill:none;stroke:none" />
-    <g
+   style="fill:none;stroke:none" />&#10;    <g
    font-size="318"
    font-style="normal"
    font-weight="400"
    id="g148"
-   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
-     <text
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">&#10;     <text
    x="5802"
    y="9406"
-   id="text142">„</text>
-
-     <text
+   id="text142">„</text>&#10;&#10;     <text
    x="5908"
    y="9406"
    id="text144"
-   style="fill:#000000;stroke:none">8</text>
-
-     <text
+   style="fill:#000000;stroke:none">8</text>&#10;&#10;     <text
    x="6086"
    y="9406"
    id="text146"
-   style="fill:#000000;stroke:none">“</text>
-
-    </g>
-   </g>
-   <g
-   id="g152">
-    <path
+   style="fill:#000000;stroke:none">“</text>&#10;&#10;    </g>&#10;   </g>&#10;   <g
+   id="g152">&#10;    <path
    id="Drawing_8_0"
    d="m 3820,4898 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g156">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g156">&#10;    <path
    id="Drawing_9_0"
    d="m 4978,4750 h 248"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_9_1"
    d="m 5672,4754 -449,-154 -2,300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g159">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g159">&#10;    <path
    id="Drawing_10_0"
    d="m 4833,4895 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g163">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g163">&#10;    <path
    id="Drawing_11_0"
    d="m 3965,4753 h 276"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_11_1"
    d="m 4688,4750 -451,-147 2,300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g167">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g167">&#10;    <path
    id="Drawing_12_0"
    d="m 4833,4895 v 506 h 394"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_12_1"
    d="m 5672,5406 -448,-155 -4,300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g170">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g170">&#10;    <path
    id="Drawing_13_0"
    d="m 3820,6198 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g174">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g174">&#10;    <path
    id="Drawing_14_0"
    d="m 4978,6050 h 248"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_14_1"
    d="m 5672,6054 -449,-154 -2,300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g177">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g177">&#10;    <path
    id="Drawing_15_0"
    d="m 4833,6195 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g181">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g181">&#10;    <path
    id="Drawing_16_0"
    d="m 3965,6053 h 276"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_16_1"
    d="m 4688,6050 -451,-147 2,300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g185">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g185">&#10;    <path
    id="Drawing_17_0"
    d="m 4833,6195 v 489 h 389"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_17_1"
    d="m 5672,6684 -450,-150 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g189">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g189">&#10;    <path
    id="Drawing_18_0"
    d="m 3820,4898 v 560"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_18_1"
    d="m 3820,5908 150,-450 h -300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g192">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g192">&#10;    <path
    id="Drawing_19_0"
    d="m 3820,7480 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g196">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g196">&#10;    <path
    id="Drawing_20_0"
    d="m 4978,7335 h 248"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_20_1"
    d="m 5675,7336 -450,-151 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g199">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g199">&#10;    <path
    id="Drawing_21_0"
    d="m 4833,7480 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g203">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g203">&#10;    <path
    id="Drawing_22_0"
    d="m 3965,7335 h 273"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_22_1"
    d="m 4688,7335 -450,-150 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g207">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g207">&#10;    <path
    id="Drawing_23_0"
    d="m 4833,7480 v 509 h 389"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_23_1"
    d="m 5672,7989 -450,-150 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g210">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g210">&#10;    <path
    id="Drawing_24_0"
    d="m 4833,8790 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g214">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g214">&#10;    <path
    id="Drawing_25_0"
    d="m 4978,8645 h 245"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_25_1"
    d="m 5672,8646 -450,-151 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g218">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g218">&#10;    <path
    id="Drawing_26_0"
    d="m 3965,8635 h 283"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_26_1"
    d="m 4688,8645 -446,-160 -7,300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g222">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g222">&#10;    <path
    id="Drawing_27_0"
    d="m 3820,6198 v 542"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_27_1"
    d="m 3820,7190 150,-450 h -300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g226">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g226">&#10;    <path
    id="Drawing_28_0"
    d="m 4833,8790 v 509 h 389"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_28_1"
    d="m 5672,9299 -450,-150 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g229">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g229">&#10;    <path
    id="Drawing_29_0"
    d="m 7216,4870 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g233">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g233">&#10;    <path
    id="Drawing_30_0"
    d="m 6325,4726 h 297"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_30_1"
    d="m 7071,4725 -450,-149 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g237">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g237">&#10;    <path
    id="Drawing_31_0"
    d="m 6325,5379 h 317"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_31_1"
    d="m 7091,5378 -450,-149 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g240">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g240">&#10;    <path
    id="Drawing_32_0"
    d="m 7091,5378 v -8 h 125 v -500"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g243">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g243">&#10;    <path
    id="Drawing_33_0"
    d="m 8159,6170 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g247">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g247">&#10;    <path
    id="Drawing_34_0"
    d="m 7361,4725 h 798 v 705"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_34_1"
    d="m 8159,5880 150,-450 h -300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g250">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g250">&#10;    <path
    id="Drawing_35_0"
    d="m 7216,6170 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g254">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g254">&#10;    <path
    id="Drawing_36_0"
    d="m 6325,6031 h 302"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_36_1"
    d="m 7071,6025 -452,-144 4,300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g258">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g258">&#10;    <path
    id="Drawing_37_0"
    d="m 7361,6025 h 203"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_37_1"
    d="m 8014,6025 -450,-150 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g262">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g262">&#10;    <path
    id="Drawing_38_0"
    d="m 6325,6684 h 344"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_38_1"
    d="m 7103,6668 -455,-133 11,299 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g265">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g265">&#10;    <path
    id="Drawing_39_0"
    d="m 7103,6668 h 113 v -498"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g269">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g269">&#10;    <path
    id="Drawing_40_0"
    d="m 8159,6170 v 570"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_40_1"
    d="m 8159,7190 150,-450 h -300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g272">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g272">&#10;    <path
    id="Drawing_41_0"
    d="m 7216,7480 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g276">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g276">&#10;    <path
    id="Drawing_42_0"
    d="m 6326,7336 h 296"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_42_1"
    d="m 7071,7335 -450,-149 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g280">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g280">&#10;    <path
    id="Drawing_43_0"
    d="m 6325,7989 h 320"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_43_1"
    d="m 7085,7999 -446,-160 -7,300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g283">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g283">&#10;    <path
    id="Drawing_44_0"
    d="m 7085,7999 v 0 h 131 v -519"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g287">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g287">&#10;    <path
    id="Drawing_45_0"
    d="m 7361,7335 h 203"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_45_1"
    d="m 8014,7335 -450,-150 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g290">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g290">&#10;    <path
    id="Drawing_46_0"
    d="m 8159,7480 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g294">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g294">&#10;    <path
    id="Drawing_47_0"
    d="m 8159,7480 v 570"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_47_1"
    d="m 8159,8500 150,-450 h -300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="Drawing_48">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="Drawing_48">&#10;    <path
    d="m 5671,8318 h 654 v 654 h -654 z"
    id="path296"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <rect
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <rect
    x="5672"
    y="8319"
    width="654"
    height="654"
    id="rect298"
-   style="fill:none;stroke:none" />
-    <g
+   style="fill:none;stroke:none" />&#10;    <g
    font-size="318"
    font-style="normal"
    font-weight="400"
    id="g306"
-   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
-     <text
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">&#10;     <text
    x="5802"
    y="8753"
-   id="text300">„</text>
-
-     <text
+   id="text300">„</text>&#10;&#10;     <text
    x="5908"
    y="8753"
    id="text302"
-   style="fill:#000000;stroke:none">7</text>
-
-     <text
+   style="fill:#000000;stroke:none">7</text>&#10;&#10;     <text
    x="6086"
    y="8753"
    id="text304"
-   style="fill:#000000;stroke:none">“</text>
-
-    </g>
-   </g>
-   <g
-   id="g311">
-    <path
+   style="fill:#000000;stroke:none">“</text>&#10;&#10;    </g>&#10;   </g>&#10;   <g
+   id="g311">&#10;    <path
    id="Drawing_49_0"
    d="m 3830,3775 v 393"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_49_1"
    d="m 3820,4608 160,-446 -300,-7 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="Drawing_50">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="Drawing_50">&#10;    <path
    d="m 3831,3775 h 407 c 353,0 640,-284 640,-635 0,-351 -287,-635 -640,-635 h -815 c -353,0 -640,284 -640,635 0,351 287,635 640,635 z"
    id="path313"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <g
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <g
    font-size="318"
    font-style="normal"
    font-weight="400"
    id="g323"
-   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
-     <text
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">&#10;     <text
    x="3449"
    y="3072"
    id="text317">       <tspan
    x="3449"
-   id="tspan315">Start </tspan></text>
-
-     <text
+   id="tspan315">Start </tspan></text>&#10;&#10;     <text
    x="3341"
    y="3424"
    id="text321"
    style="fill:#000000;stroke:none">       <tspan
    x="3341"
-   id="tspan319">Zahlen</tspan></text>
-
-    </g>
-   </g>
-   <g
-   id="g327">
-    <path
+   id="tspan319">Ziffern</tspan></text>&#10;&#10;    </g>&#10;   </g>&#10;   <g
+   id="g327">&#10;    <path
    id="Drawing_51_0"
    d="m 7216,8790 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g331">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g331">&#10;    <path
    id="Drawing_52_0"
    d="m 6325,8646 h 297"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_52_1"
    d="m 7071,8645 -450,-149 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g335">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g335">&#10;    <path
    id="Drawing_53_0"
    d="m 6325,9298 h 320"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_53_1"
    d="m 7085,9308 -446,-160 -7,300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g338">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g338">&#10;    <path
    id="Drawing_54_0"
    d="m 7085,9308 v 0 h 131 v -518"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g342">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g342">&#10;    <path
    id="Drawing_55_0"
    d="m 7361,8645 h 203"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_55_1"
    d="m 8014,8645 -450,-150 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g345">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g345">&#10;    <path
    id="Drawing_56_0"
    d="m 8159,8790 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g349">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g349">&#10;    <path
    id="Drawing_57_0"
    d="m 8159,8790 v 560"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_57_1"
    d="m 8159,9800 150,-450 h -300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="Drawing_58">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="Drawing_58">&#10;    <path
    d="m 8160,12105 h 434 c 353,0 640,-284 640,-635 0,-351 -287,-635 -640,-635 h -868 c -353,0 -640,284 -640,635 0,351 287,635 640,635 z"
    id="path351"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <g
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <g
    font-size="318"
    font-style="normal"
    font-weight="400"
    id="g361"
-   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
-     <text
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">&#10;     <text
    x="7743"
    y="11402"
    id="text355">       <tspan
    x="7743"
-   id="tspan353">Ende </tspan></text>
-
-     <text
+   id="tspan353">Ende </tspan></text>&#10;&#10;     <text
    x="7671"
    y="11754"
    id="text359"
    style="fill:#000000;stroke:none">       <tspan
    x="7671"
-   id="tspan357">Zahlen</tspan></text>
-
-    </g>
-   </g>
-   <g
-   id="Drawing_59">
-    <path
+   id="tspan357">Ziffern</tspan></text>&#10;&#10;    </g>&#10;   </g>&#10;   <g
+   id="Drawing_59">&#10;    <path
    d="m 5671,9623 h 654 v 654 h -654 z"
    id="path364"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <rect
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <rect
    x="5672"
    y="9624"
    width="654"
    height="654"
    id="rect366"
-   style="fill:none;stroke:none" />
-    <g
+   style="fill:none;stroke:none" />&#10;    <g
    font-size="318"
    font-style="normal"
    font-weight="400"
    id="g374"
-   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">
-     <text
+   style="font-style:normal;font-weight:400;font-size:318px;font-family:Arial;fill:#000000;stroke:none">&#10;     <text
    x="5802"
    y="10058"
-   id="text368">„</text>
-
-     <text
+   id="text368">„</text>&#10;&#10;     <text
    x="5908"
    y="10058"
    id="text370"
-   style="fill:#000000;stroke:none">9</text>
-
-     <text
+   style="fill:#000000;stroke:none">9</text>&#10;&#10;     <text
    x="6086"
    y="10058"
    id="text372"
-   style="fill:#000000;stroke:none">“</text>
-
-    </g>
-   </g>
-   <g
-   id="g379">
-    <path
+   style="fill:#000000;stroke:none">“</text>&#10;&#10;    </g>&#10;   </g>&#10;   <g
+   id="g379">&#10;    <path
    id="Drawing_60_0"
    d="M 3820,8780 V 9946 H 5222"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_60_1"
    d="m 5672,9946 -450,-150 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g383">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g383">&#10;    <path
    id="Drawing_61_0"
    d="m 6325,9951 h 845 v -6 h 394"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_61_1"
    d="m 8014,9945 -450,-150 v 300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g386">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g386">&#10;    <path
    id="Drawing_62_0"
    d="m 8159,10090 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g389">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g389">&#10;    <path
    id="Drawing_63_0"
    d="m 3820,8780 c -27,0 -49,-6 -72,-19 -24,-14 -40,-30 -54,-53 -13,-24 -19,-46 -19,-73 0,-27 6,-49 19,-72 14,-24 30,-40 54,-54 23,-13 45,-19 72,-19 27,0 49,6 73,19 23,14 39,30 53,54 13,23 19,45 19,72 0,27 -6,49 -19,73 -14,23 -30,39 -53,53 -24,13 -46,19 -73,19 z"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-   </g>
-   <g
-   id="g393">
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;   </g>&#10;   <g
+   id="g393">&#10;    <path
    id="Drawing_64_0"
    d="m 3820,7480 v 560"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_64_1"
    d="m 3820,8490 150,-450 h -300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-   <g
-   id="g397">
-    <path
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;   <g
+   id="g397">&#10;    <path
    id="Drawing_65_0"
    d="m 8159,10090 v 296"
    inkscape:connector-curvature="0"
-   style="fill:none;stroke:#000000;stroke-linejoin:round" />
-    <path
+   style="fill:none;stroke:#000000;stroke-linejoin:round" />&#10;    <path
    id="Drawing_65_1"
    d="m 8160,10835 149,-450 h -300 z"
    inkscape:connector-curvature="0"
-   style="fill:#000000;stroke:none" />
-   </g>
-  </g>
- </g>
-</svg>
+   style="fill:#000000;stroke:none" />&#10;   </g>&#10;  </g>&#10; </g>&#10;</svg>
