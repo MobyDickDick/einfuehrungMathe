@@ -1,0 +1,6741 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsbook
+\begin_preamble
+% Präambel nicht verändern!!!
+%
+% Die Präambel stellt sicher, dass das Benutzerhandbuch korrekt
+% in die Formate pdf, ps und dvi exportiert werden kann.
+% Wenn Probleme beim Exportieren auftreten, können Sie sich
+% an das LyX-Dokumentationsteam wenden.
+% EMail: lyx-docs@lists.lyx.org
+
+% wenn pdflatex benutzt wird:
+\usepackage{ifpdf}
+\ifpdf
+
+% Fonts fuer huebschere PDF-Ansichten
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % Ende von: wenn pdflatex benutzt wird
+
+% Setzt den Link fuer Spruenge zu Gleitabbildungen
+% auf den Anfang des Gelitobjekts und nicht aufs Ende
+\usepackage[figure]{hypcap}
+
+% Ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC }
+
+% Damit der Index den Namen "Stichwortverzeichnis" erhält
+\addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% Definiere den Operator Id
+\DeclareMathOperator{\Id}{Id}
+
+\usepackage{xlop}
+\usepackage{paralist}
+
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage[makeroom]{cancel}
+
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+\newcommand{\includebackwardreferences}{<includebackwardreferences>}
+\newcommand{\includeforwardreferences}{<includeforwardreferences>}
+
+% Wasserzeichen
+
+% \usepackage{draftwatermark} % Das Paket mit der Funktionalität
+% \SetWatermarkText{Entwurf} % Der Hintergrundtext
+% \SetWatermarkLightness{0.9}
+% \SetWatermarkFontSize{2cm} % Die Ausgangsgröße
+
+\renewcommand{\numberline}[1]{#1~}
+\end_preamble
+\options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+fixltx2e
+todonotes
+backforwardref
+\end_modules
+\maintain_unincluded_children no
+\language ngerman
+\language_package auto
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "cmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Einfuehrung in Mathe"
+\pdf_author "Markus Demarmels"
+\pdf_subject "LyX"
+\pdf_keywords "LyX"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=blue, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\branch Frage
+\selected 1
+\filename_suffix 0
+\color #00ff00 #ff00ff
+\end_branch
+\branch Antwort
+\selected 0
+\filename_suffix 0
+\color #aa55ff #55aa00
+\end_branch
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Part
+Warum verwendet die Mathematik Symbole?
+\end_layout
+
+\begin_layout Standard
+Nun,
+ ich habe bis jetzt noch nie in einem Mathematikbuch einen Abschnitt über Symbole gelesen.
+ Das ist wahrscheinlich jedoch dem Umstand geschuldet,
+ dass ich keinen Überblick über die diesbezügliche Literatur besitze.
+ Aber ich möchte mich nachfolgend mit Symbolen beschäftigen.
+ Es soll Dir ein wenig die Furcht vor Symbolen in der Mathematik nehmen.
+\end_layout
+
+\begin_layout Chapter
+Was sind Symbole?
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Symbole"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Was soll in diesem Kapitel beschrieben werden
+\end_layout
+
+\begin_layout Standard
+Dieses Kapitel ist meines Erachtens originär in meinem Matheskript enthalten.
+ Es ist recht lang geraten.
+ Das Kapitel soll als Bindeglied von Mathematik und Sprache aufgefasst werden.
+ Zuerst einmal wird über die Eigenschaften von Symbolen gesprochen werden.
+ Dann wird darüber geschrieben,
+ dass in der Mathematik viele Symbole verwendet werden,
+ welche ansonsten im täglichen Umgang selten vorkommen.
+ Weiter wird darüber geschrieben,
+ dass in der Mathematik Symbole auf eine besondere Art verwendet werden.
+ Etwa,
+ weil beispielsweise auch die Fettschreibung als eine Symbolik verstanden werden kann.
+ Es folgt eine rein informative Auflistung über verschiedenste Arten von Symbolen.
+ Das Kapitel endet mit einer speziellen Art von Symbolen,
+ welche mit 
+\begin_inset Quotes gld
+\end_inset
+
+Metasymbolen
+\begin_inset Quotes grd
+\end_inset
+
+ bezeichnet werden.
+\end_layout
+
+\begin_layout Section
+Symbole als Grundbausteine der Logik
+\end_layout
+
+\begin_layout Standard
+Ich finde,
+ dass es sich lohnt,
+ ein eigenes Kapitel über Symbole zu schreiben.
+ Einerseits hat die Mathematik die Schreibweise und die Menge der Symbole erweitert,
+ andererseits benutzt sie die Symbole oft auf eine eigene Art.
+ In diesem Kapitel will ich mich mit Symbolen auseinandersetzen und das Kapitel über Aussagen und Aussagenlogik vorbereiten.
+ Diesen Teil findest Du wahrscheinlich in keinem anderen Lehrbuch über Mathematik.
+ Er ist stark von Entwicklungspsychologie motiviert und wäre nie zustande gekommen,
+ wenn ich nicht an der Universität Freiburg ein Diplom (entspricht in etwa einem Fachhochschulabschluss) in klinischer Heilpädagogik/ Sonderpädagogik gemacht hätte.
+ Die Idee ist,
+ dass der Umgang mit Symbolen in der menschlichen Entwicklung angelegt ist,
+ dass die viele Menschen Symbole als solche erkennen und mit ihrer Hilfe Denkvorgänge ausführen können.
+ 
+\end_layout
+
+\begin_layout Standard
+Doch was sind Symbole?
+ Mit Symbolen meine ich etwas,
+ was auf etwas anderes hinweist,
+ ohne das andere selbst zu sein.
+ Andere Wörter für Symbole können 
+\begin_inset Quotes gld
+\end_inset
+
+Bezeichner
+\begin_inset Quotes grd
+\end_inset
+
+ oder 
+\begin_inset Quotes gld
+\end_inset
+
+Benennung
+\begin_inset Quotes grd
+\end_inset
+
+,
+ sogar 
+\begin_inset Quotes gld
+\end_inset
+
+Name
+\begin_inset Quotes grd
+\end_inset
+
+ sein.
+ Nicht zuletzt dieser Text besteht aus lauter Symbolen:
+ Zuerst den Buchstaben,
+ welche auf eine eigentümliche Art und Weise Laute symbolisieren - aber nicht so,
+ wie wir es gerne hätten!
+ Da gibt es einerseits die Hochsprache einer Sprache.
+ Beispiele dafür sind das 
+\begin_inset Quotes gld
+\end_inset
+
+Oxford-Englisch
+\begin_inset Quotes grd
+\end_inset
+
+ oder das 
+\begin_inset Quotes gld
+\end_inset
+
+Hessisch-Deutsche
+\begin_inset Quotes grd
+\end_inset
+
+,
+ das Italienisch,
+ welches von Florenz her stammt.
+ Alle diese Dialekte wurden für die jeweiligen Sprachen als Vorbild für Englisch,
+ Deutsch der Italienisch erklärt.
+ Dabei spreche ich als Schweizer,
+ sogar wenn ich wollte,
+ kein Deutsch,
+ sondern eine Sprache,
+ welche so ähnlich wie Deutsch tönt - ohne es jedoch genau zu sein
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Um genau zu sein:
+ Diese Aussage ist halb ernst,
+ halb ironisch gemeint.
+\end_layout
+
+\end_inset
+
+.
+ Die Laute,
+ welche ich dabei spreche,
+ tönen nicht so,
+ wie wenn eine Schauspielerin oder ein Schauspieler den gleichen Text sprechen würde
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Das ist übrigens eine recht schmerzvolle Erfahrung,
+ welche ich oft beim Singen mache - nebst Mathematik,
+ Trompete spielen und Fahrrad fahren ein liebes Hobby von mir.
+ Ich töne einfach nicht schön,
+ weil meine Stimme nicht schön tönt und weil ich kein Bühnen-deutsch spreche.
+ Aber ich singe trotzdem fürs Leben gern
+\end_layout
+
+\end_inset
+
+.
+ Nur schon aus diesem Grund ist die Zuordnung von Lauten und Buchstaben nicht eindeutig.
+ Aber selbst die Sprache wird nicht Eins zu Eins als Schrift wiedergegeben.
+ Bei vielen Wörtern werden andere Laute geschrieben,
+ als dass sie gelesen werden.
+ Ich nehme als Beispiel das Wort 
+\begin_inset Quotes gld
+\end_inset
+
+Beispiel
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Kannst Du den Unterschied zwischen einem kleinem Buchstaben 
+\begin_inset Quotes gld
+\end_inset
+
+b
+\begin_inset Quotes grd
+\end_inset
+
+ und dem großen Buchstaben 
+\begin_inset Quotes gld
+\end_inset
+
+B
+\begin_inset Quotes grd
+\end_inset
+
+ hören?
+ Also ich nicht.
+ Vielleicht ist die Idee hinter Großbuchstaben,
+ dass diese Wörter,
+ oder zumindest diese Wortanfänge bei der Aussprache betont werden sollten.
+ Aber dann könnte ich schreiben:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Die Mäusebussardin hat den Mäuserich gejagt
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Ich hoffe,
+ die Aussage wird mir nicht als sexistisch ausgelegt.
+ Ich bemühe mich nach Kräften,
+ den Text geschlechtsneutral zu formulieren.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+,
+ oder 
+\begin_inset Quotes gld
+\end_inset
+
+Die Mäusebussardin hat den Mäuserich Gejagt
+\begin_inset Quotes grd
+\end_inset
+
+ oder gar 
+\begin_inset Quotes gld
+\end_inset
+
+Die Mäusebussardin hat Den Mäuserich gejagt
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Aber nichts da:
+ Ewig 
+\begin_inset Quotes gld
+\end_inset
+
+jagt der Mäusebussardin den Mäuserich
+\begin_inset Quotes grd
+\end_inset
+
+,
+ keine anderen Varianten sind erlaubt.
+ Und wie viele Kinder werden mit Rechtschreibung traktiert,
+ obwohl die einzige in meinen Augen vernünftige Rechtschreibung die in Form eines Open 
+\lang english
+Source
+\lang ngerman
+ Programms liegt,
+ welches als Rechtschreibprüfung über die Dokumente gejagt werden sollte,
+ damit diese einheitlich aussehen?
+ Das scheint mir nämlich der Sinn des Ganzen zu sein.
+ Indem die Grammatik eines geschriebenen Textes streng reglementiert ist,
+ wird er leichter lesbar,
+ weil der Aufwand,
+ welcher getrieben werden muss,
+ um die Information aus dem Text zu extrahieren,
+ durch diese reglementierte Schreibweise verkleinert werden kann.
+ Das wird spätestens dann klar,
+ wenn Texte gelesen werden sollen,
+ welche in einem schweizerischen Dialekt geschrieben wurden.
+ Weiter werden die Symbole nicht 1:1 ausgesprochen,
+ wie sie hingeschrieben wurden.
+ Im Wort 
+\begin_inset Quotes gld
+\end_inset
+
+Beispiel
+\begin_inset Quotes grd
+\end_inset
+
+ wird 
+\begin_inset Quotes gld
+\end_inset
+
+Ei
+\begin_inset Quotes grd
+\end_inset
+
+ geschrieben,
+ jedoch 
+\begin_inset Quotes gld
+\end_inset
+
+ai
+\begin_inset Quotes grd
+\end_inset
+
+ gesprochen.
+ Es scheint eine Form von Bildung zu sein,
+ die richtigen Wörter zu den Lauten hinschreiben zu können.
+ Doch genug der vielen Worte - und damit auch Symbole.
+ Das Prinzip,
+ dass jeder Buchstabe ein Symbol für einen Laut ist,
+ stimmt im Prinzip.
+ Falls dieser Text beispielsweise mit einer Lautschrift des Koreanischen aufgeschrieben würde,
+ wäre er meines Erachtens für mich als Schweizer nicht mehr lesbar.
+ 
+\end_layout
+
+\begin_layout Standard
+Zurück zu den Symbolen:
+ Es gibt natürlich noch weitere Symbole,
+ beispielsweise die Freiheitsstatue in New York als Symbol für die Freiheit der europäischen Auswanderer.
+ Weiter 
+\begin_inset Quotes gld
+\end_inset
+
+Yin
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+Yan
+\begin_inset Quotes grd
+\end_inset
+
+ als Symbole für die Dualität im Leben - und im Sterben.
+ Religionen sind ebenfalls mit Symbolen durchtränkt,
+ wenn nicht überflutet.
+ Überall Symbole - oder doch nicht?
+ Auch wenn es praktisch wäre,
+ von Luft und Liebe zu leben,
+ bleibt dies leider meist symbolisch wahr (ich bin stark übergewichtig\SpecialChar ldots
+).
+ Ich kann mich nicht von Symbolen ernähren.
+ Und auch kann ich nicht symbolisch mit dem Zug von Olten nach Bern und wieder zurück fahren.
+ Auch der Compi,
+ auf welchem ich diesen Text schreibe,
+ ist entweder vorhanden,
+ oder er ist es nicht.
+ Ich kann nicht symbolisch auf einem Compi schreiben.
+ Da gibt es einen Witz dazu der lautet so:
+ 
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+Konserven\SpecialChar softhyphen
+dosenwitz
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Konservendosenwitz"
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Konservendosenwitz
+\end_layout
+
+\end_inset
+
+Ein Physiker,
+ ein Chemiker und ein Mathematiker sind auf einer Insel gestrandet und haben Hunger.
+ Zu ihrem Glück kommt eine Konservendose angeschwemmt.
+ Zu ihrem Pech ist kein Dosenöffner dabei,
+ und sie selbst haben auch keinen.
+ Nun überlegen die drei Männer (nun ja,
+ es ist keine Frau dabei,
+ der Witz ist nicht genderneutral\SpecialChar ldots
+),
+ wie sie trotzdem an den Inhalt der Dose gelangen könnten.
+ Der Physiker macht den ersten Vorschlag:
+ Er schlägt vor,
+ die Konservendose auf den Steinen zu zerschmettern (mit roher Kraft,
+ wie es in den Teilchenbeschleunigern mit viel Ausdauer und Energie
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Energie ist,
+ wenn Du,
+ jemand oder etwas arbeiten musst,
+ um etwas zu erreichen.
+ Ein Beispiel dafür ist,
+ eine Kiste auf dem Boden zu verschieben.
+ Das braucht Arbeit,
+ oder eben Energie.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Energie
+\end_layout
+
+\end_inset
+
+ gemacht wird).
+ Da meint der Chemiker,
+ er hätte eine bessere Idee.
+ Er schlägt vor,
+ dass die Konservendose so lange im Salzwasser eingelegt werden könnte,
+ bis der Inhalt der Konservendose aus dieser herausgelöst werden könne.
+ Da meint der Mathematiker:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Angenommen,
+ die Dose wäre offen:
+ Guten Appetit
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Der Witz lebt zu einem guten Teil davon,
+ dass der Mathematiker vorschlägt,
+ so zu tun,
+ als ob die Dose bereits offen wäre.
+ Und dieses 
+\begin_inset Quotes gld
+\end_inset
+
+Tun als ob
+\begin_inset Quotes grd
+\end_inset
+
+ ist eine wichtige Voraussetzung für die symbolische menschliche Entwicklung.
+ Jedoch ist es in diesem Fall nicht von Nutzen,
+ sich vorzustellen,
+ die Büchse sei offen.
+ Da sie nicht offen ist,
+ kann ihr Inhalt dementsprechend nicht gegessen werden.
+\end_layout
+
+\begin_layout Standard
+Nun stellt sich vielleicht die Frage nach dem Sinn oder dem Unsinn von Symbolen.
+ Für was soll das gut sein?
+ Ich möchte anhand eines ziemlich großen Beispiels den Sinn der symbolischen Darstellung von Mathematik versuchen,
+ Dich davon zu überzeugen,
+ dass es Sinn macht,
+ wenn Mathematik mittels mathematischen 
+\begin_inset Quotes gld
+\end_inset
+
+Zauberformeln
+\begin_inset Quotes grd
+\end_inset
+
+ dargestellt wird.
+ Denn der Mathematik wird von eigens definierten Symbolen ausgiebig Gebrauch gemacht.
+ Ein Beispiel ist:
+ 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial^{2}}{\partial x^{2}}\psi\left(\vec{x}\right)+\frac{\partial^{2}}{\partial y^{2}}\psi\left(\vec{x}\right)+\frac{\partial^{2}}{\partial z^{2}}\psi\left(\vec{x}\right)-V\left(\vec{x}\right)=E\cdot\psi\left(\vec{x}\right)\label{eq:Schroedingergleichung}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dies ist die Schrödingergleichung,
+ welche für relativ einfache Randbedingungen noch exakt lösbar ist.
+ Sie beschreibt zum Beispiel,
+ mit welcher Wahrscheinlichkeit sich wo sich ein Elektron eines Wasserstoffatoms aufhält.
+ Das Wasserstoffatom ist nach heutigem Stand des Wissens der einfachste Teil der Stoffe,
+ welche uns umgeben.
+ Wasserstoffatome bestehen aus einem relativ sehr leichten Teil,
+ dem Elektron,
+ und einem relativ sehr schweren Teil,
+ dem Proton.
+ Das Elektron verhält sich gemäß der obigen Formel.
+ Ich möchte zuerst versuchen,
+ die Symbole der Formel ein wenig aufzuschlüsseln.
+ Doch es wird nicht so sein,
+ dass Du am Schluss das Gefühl haben wirst:
+ Jetzt habe ich die Formel ganz verstanden.
+ Das ist jedoch auch nicht nötig.
+ 
+\begin_inset Formula $V\left(\vec{x}\right)$
+\end_inset
+
+ beschreibt,
+ in welchem Kräftefeld sich das Elektron befindet.
+ Ein Kräftefeld kannst Du Dir so vorstellen:
+ Angenommen,
+ Du müsstest einen flachen Fluss derart überqueren,
+ dass Du überall im Fluss stehen kannst.
+ Dann scheint es irgendwie einleuchtend,
+ dass Du die Kraft,
+ welche durch das strömende Wasser verursacht wird,
+ nicht überall gleich stark ist.
+ Am Flussrand ist sie wahrscheinlich kleiner als in der Flussmitte.
+ Wenn der Fluss sich anschließend schlängelt,
+ dann fließt das Wasser auch nicht immer in die gleiche Richtung.
+ Angenommen,
+ es sei Dir langweilig.
+ Dann könntest Du bei einem Flussabschnitt von vielleicht 1000 Schritten immer im Abstand von einem Schritt den Fluss überqueren und Dir notieren,
+ wie stark und in welche Richtung das Wasser fließt.
+ Natürlich ist das nur ein Gedankenspiel.
+ Aber ist prinzipiell möglich,
+ dass Du Dir auf einer Karte notieren könntest,
+ in welche Richtung das Wasser wie stark fließt.
+ Dann könntest Du die Richtung der Kraft mit einem Pfeil darstellen,
+ welcher umso länger ist,
+ je stärker das Wasser an Deinen Körper drückt.
+ Diese Darstellung ist dann ein Kräftefeld.
+ Es ist jedoch nicht das Kräftefeld selbst,
+ sondern das Potential des Kräftefeldes,
+ welches in der Schrödingergleichung verwendet wird,
+ weil das Kräftefeld selbst komplizierter aufgebaut ist als das Potential.
+ Ein Potential ist,
+ falls es vorhanden ist,
+ die Energie,
+ welches das Elektron immer wieder speichert und abgibt.
+ So wie Du Dir alle Knochen brechen kannst,
+ wenn Du an einem Berg den Felsen hinunter stürzt,
+ so besitzt in der Vorstellung auch das Elektron eines Wasserstoffatoms ein Potential.
+ Das Potential ist sozusagen gespeicherter Schwung.
+ Es gibt jedoch nicht zu jedem Kräftefeld ein Potential.
+ Es gibt zum Beispiel kein Potential,
+ falls bei einer Bewegung Reibung im Spiel ist.
+ Oder wenn Wirbel vorkommen.
+ Aber im Fall der Reise des Elektrons um den Atomkern kann angenommen werden,
+ dass keine Reibung im Spiel ist.
+ Dieses Potential wird vorgegeben.
+ Jedoch frage ich mich immer wieder,
+ wie dann ein Potential erzeugt wird,
+ wenn die anderen Teilchen ebenfalls den Gesetzen der Quantenmechanik gehorchen.
+ Denn in diesem Fall ist kein Potential gegeben,
+ mit welchem die Schrödingergleichung berechnet werden kann.
+ Wie Du daraus erkennen kannst,
+ möchte ich noch so gerne weiter Physik lernen.
+ Ich habe zwar ein wenig darüber gelesen,
+ jedoch weiß ich noch zu wenig darüber,
+ so dass ich mich nicht getraue,
+ etwas darüber zu schreiben.
+\end_layout
+
+\begin_layout Standard
+Doch zurück zum Beispiel der Schrödingergleichung.
+ In dieser Formel sind weitere Symbole vorhanden,
+ wobei etliche in der üblichen lateinischen Schrift nicht vorkommen:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\partial$
+\end_inset
+
+:
+ Dieses Symbol heißt Delta,
+ ausgesprochen wird es haargenau gleich wie 
+\begin_inset Quotes gld
+\end_inset
+
+d
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Es beschreibt eine beliebig kleine,
+ jedoch nicht verschwindende Größe (vergleiche mit der Geschwindigkeitsmessung oben,
+ dort habe ich auch vorausgesetzt,
+ dass eine Größe beliebig klein,
+ jedoch nicht verschwindend ist).
+ Typisch daran ist,
+ dass die mathematischen Symbole aus der lateinischen respektive griechischen Schrift entnommen werden.
+ Selten gibt es ein hebräisches Symbol wie 
+\begin_inset Formula $\aleph$
+\end_inset
+
+ (genannt 
+\begin_inset Quotes gld
+\end_inset
+
+Aleph
+\begin_inset Quotes grd
+\end_inset
+
+).
+ Das 
+\begin_inset Formula $\delta$
+\end_inset
+
+ ist ein griechisches Symbol.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+:
+ Das x,
+ über welchem ein Pfeil hingeschrieben wurde (als wären wir bei den 
+\begin_inset Quotes gld
+\end_inset
+
+native 
+\lang english
+Americans
+\lang ngerman
+
+\begin_inset Quotes grd
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Früher mit 
+\begin_inset Quotes gld
+\end_inset
+
+Indianer
+\begin_inset Quotes grd
+\end_inset
+
+ bezeichnet.
+ Was für mich durchaus eine interessante Vorstellung wäre,
+ bei den Native 
+\lang english
+Americans
+\lang ngerman
+ zu sein!
+\end_layout
+
+\end_inset
+
+),
+ sagt gewöhnlich aus,
+ dass es sich bei der Größe um eine Position im Raum handelt.
+ Mit dem Pfeil wird sozusagen der Punkt im Raum abgeschossen und auf die Papierebene gelegt.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\psi$
+\end_inset
+
+:
+ Dieser Dreizack des 
+\emph on
+Poseidons
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Griechischer Gott des Meeres,
+ von welchem das Symbol wahrscheinlich seine Form hat.
+ Ich weiß es jedoch nicht,
+ denn der Buchstabe 
+\begin_inset Formula $\psi$
+\end_inset
+
+ entspricht der lateinischen Buchstabenfolge 
+\begin_inset Quotes gld
+\end_inset
+
+ps
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\emph default
+ist die gesuchte Größe.
+ Es beschreibt um sieben Ecken und Enden,
+ wie groß die Wahrscheinlichkeit ist,
+ dass ein Elektron an einer gegebenen Stelle ist.
+ Eine Wahrscheinlichkeit bedeutet in der Regel,
+ dass nicht mehr genau gesagt oder geschrieben werden kann,
+ dass etwas gilt oder nicht gilt,
+ sondern dass,
+ wenn ein bestimmter Vorgang ausgeführt wird,
+ erwartet werden kann,
+ dass gesamthaft ein bestimmte Anzahl das Ergebnis so oder nicht so ist.
+ Das berühmteste Beispiel ist ein Münzwurf.
+ Vorausgesetzt,
+ eine Münze sei so konstruiert,
+ dass nicht bevorzugt auf einer Seite zu liegen kommt,
+ falls sie auf den Boden fällt.
+ Die Münze besitze zwei Seiten.
+ Die eine Seite werde mit 
+\begin_inset Quotes gld
+\end_inset
+
+Kopf
+\begin_inset Quotes grd
+\end_inset
+
+,
+ die andere Seite werde mit 
+\begin_inset Quotes gld
+\end_inset
+
+Zahl
+\begin_inset Quotes grd
+\end_inset
+
+ bezeichnet.
+ Wenn ich dann eine Münze tausend Mal werfen würde,
+ dann könnte ich erwarten,
+ dass sie etwa 500 Mal auf die eine und 500 Mal auf die andere Seite fällt
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Falls es noch keinen Automaten gibt,
+ welcher dies macht,
+ dann wäre jetzt der Zeitpunkt gekommen,
+ einen solchen herzustellen und das Ergebnis auf dem Internet zu publizieren.
+ Ich habe auf dem Netz zwar einen für 
+\begin_inset CommandInset href
+LatexCommand href
+name "Würfel"
+target "https://www.youtube.com/watch?v=W9zJ0b91SQ0"
+literal "false"
+
+\end_inset
+
+ gefunden,
+ aber der überzeugt mich nicht ganz.
+\end_layout
+
+\end_inset
+
+.
+ Die Größe 
+\begin_inset Formula $\psi$
+\end_inset
+
+ selbst ist eine komplexe Zahl,
+ also eine Zahl,
+ welche es eigentlich gar nicht gibt,
+ mit welcher jedoch prima (und sogar besser als mit Zahlen,
+ welche 
+\begin_inset Quotes gld
+\end_inset
+
+existieren
+\begin_inset Quotes grd
+\end_inset
+
+) gerechnet werden kann.
+ Die Wellenfunktion beschreibt jedoch nicht die Wahrscheinlichkeit an und für sich.
+ Der Betrag der Wellenfunktion beschreibt die Wahrscheinlichkeit,
+ dass sich das Elektron zu einem bestimmten Zeitpunkt an einem bestimmten Ort befindet.
+ Wobei der Betrag einer Zahl eine 
+\begin_inset Quotes gld
+\end_inset
+
+nicht-negative
+\begin_inset Quotes grd
+\end_inset
+
+ Größe ist,
+ also eine Größe größer oder gleich Null,
+ mit welcher der Abstand einer Zahl zum Nullpunkt ausdrückt werden kann.
+ Nun stellt sich die Frage,
+ wie dem Ding gesagt werden soll.
+ In der Mathematik ist das häufig eine wichtige Frage:
+ Wie sag ich dem Kind?
+ In der Physik wird dieser Größe 
+\begin_inset Quotes gld
+\end_inset
+
+die Wellenfunktion
+\begin_inset Quotes grd
+\end_inset
+
+ des Elektrons gesagt.
+ Auch wenn diese Größe etwa mit einer Wasserwelle nichts zu tun hat.
+ Jedoch ist mit der Bezeichnung die Vorstellung verknüpft,
+ dass sich das Elektron wie eine Welle bewegt.
+ Es zeigt sich,
+ dass sich die Wahrscheinlichkeiten wie Wasserwellen verstärken oder abschwächen können,
+ wenn verschiedene Wellenfunktionen aufeinander treffen.
+ Diese Wellenfunktion wird gesucht.
+ Es sind etliche Überlegungen notwendig,
+ um selbst für relativ einfache Potentiale von Kräftefeldern die Lösungen oder Annäherungen derselben zu finden.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{\partial^{2}}{\partial x^{2}}$
+\end_inset
+
+:
+ Auch der Bruchstrich ist ein Symbol,
+ und zwar für die Operation der Division.
+ Vielleicht symbolisiert der Bruchstrich ein Bruch einer Linie,
+ wer weiß?
+ Es ist ebenfalls typisch,
+ dass bei den meisten Symbolen völlig unklar und rätselhaft ist,
+ was sie darstellen.
+ Der Bruchstrich in dieser Formel bedeutet zwar auch eine Division,
+ jedoch eher die Grenzwertbildung,
+ welche ich Dir oben beschrieben habe.
+ Diesmal wird jedoch nicht über eine Zeit,
+ sondern über einen Ort ein Grenzwert gebildet.
+ 
+\begin_inset Formula $\frac{\partial}{\partial x}$
+\end_inset
+
+ bedeutet im wesentlich,
+ dass ein Wert an einer Stelle mit einem Wert an einer beliebig kleinen,
+ jedoch immer anderen Stelle verglichen und die Differenz dann durch die Distanz geteilt werden soll.
+ Folgendes Beispiel soll dies verdeutlichen:
+ Um die Steilheit einer Straße zu ermitteln,
+ kann ich für benachbarte Punkte messen,
+ wie groß ihr Höhenunterschied ist und anschließend den einen Punkt gegen den andern Punkt gehen lassen - mit dem bekannten Makel:
+ Irgend einmal werde ich keinen Höhenunterschied mehr ausmachen können - und dann wird eigentlich der angeblich gesunde Menschenverstand mir sagen,
+ dass die Straße am gegebenen Punkt keine Steigung besitze.
+ Was jedoch der Anschauung in den meisten Fällen zuwiderläuft - zumindest in diesen Fällen,
+ in welchen die Straße tatsächlich ansteigt ober fällt.
+ Im obigen Fall bedeutet diese Grenzwertbildung,
+ dass geschaut wird,
+ wie stark sich die räumliche Veränderung der Wellenfunktion sich räumlich verändert.
+ Im übrigen wird 
+\begin_inset Formula $\partial$
+\end_inset
+
+ (der kleine griechische Buchstabe für d mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+delta
+\begin_inset Quotes grd
+\end_inset
+
+) hingeschrieben,
+ weil betont werden soll,
+ dass immer nur eine Richtung aufs Mal verändert wird.
+ Du fragst Dich wahrscheinlich:
+ Welche 
+\begin_inset Quotes gld
+\end_inset
+
+Richtung
+\begin_inset Quotes grd
+\end_inset
+
+?
+ Nun ja,
+ um einen Punkt im Raum beschreiben zu können,
+ reichen in der Regel drei Zahlen aus.
+ Diese Zahlen werden gemessen oder berechnet.
+ Nehme einen Kasten.
+ Dieser hat eine bestimmte Länge,
+ Breite und Höhe.
+ Die Größe des Kastens wird so festgelegt.
+ Dann wird die Länge des Kastens gemessen,
+ die Breite und die Höhe,
+ um zu bestimmen,
+ wie groß der Kasten ist.
+ Gleich lässt sich gedanklich die Länge,
+ Breite und Höhe messen,
+ wo sich unser Elektron befindet.
+ Also wird die Veränderung der räumlichen Veränderung der Wellenfunktion in derjenigen Richtung bestimmt,
+ in welcher die Länge,
+ die Breite oder Höhe des Orts des Elektrons gemessen wird.
+ Dann werden drei Richtungen angenommen und die Veränderungen der Veränderungen in diesen Richtungen bestimmt.
+ Der 
+\begin_inset Quotes gld
+\end_inset
+
+Trick
+\begin_inset Quotes grd
+\end_inset
+
+ dabei ist,
+ zu zeigen,
+ dass die gefundene Lösung überhaupt eine sinnvolle räumliche Veränderung der räumlichen Veränderung besitzt.
+ Das ist keinesfalls immer der Fall.
+ Es sind durchaus Fälle bekannt,
+ bei welchen eine räumliche Ableitung keinen Sinn macht.
+ Aber es war wiederum die Arbeit von Mathematikerinnen und Mathematikern,
+ zu überlegen,
+ unter welchen Voraussetzungen diese Verfahren durchgeführt werden können und ob bei den Lösungen der Schrödingergleichung diese Voraussetzungen gegeben waren.
+ Die Lösungen der Schrödingergleichung sind meines Wissens immer so 
+\begin_inset Quotes gld
+\end_inset
+
+gutartig
+\begin_inset Quotes grd
+\end_inset
+
+,
+ dass ihre räumlichen Ableitungen existieren.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $^{2}$
+\end_inset
+
+:
+ Die hochgestellten Zahlen bedeuten,
+ dass die Grenzwertbildung von vorher gleich zwei Mal hintereinander ausgeführt werden soll.
+ Was wird dann gemessen?
+ Es ist dann nicht die Steigung der Kurve,
+ sondern die räumliche Veränderung der räumlichen Veränderung.
+ Wieder vergleiche ich das Ganze mit einer Straße.
+ Wenn der Vorgang der Bestimmung der Steigung zwei Mal hintereinander ausgeführt wird,
+ dann bedeutet dies,
+ dass ich nicht etwa messe,
+ wie steil die Straße ansteigt oder abfällt,
+ sondern wie stark die Steilheit der Straße sich verändert.
+ Es ist also möglich,
+ dass eine Straße sehr stark ansteigt,
+ jedoch immer gleich steil ansteigt.
+ Dann ist die Veränderung der Steilheit der Straße trotzdem Null.
+ Es ist aber auch möglich,
+ dass die Straße recht steil abfällt und schnell gerade ist.
+ Dann ist die Veränderung der Steilheit der Straße recht groß.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $E$
+\end_inset
+
+:
+ Dieser Buchstabe bedeutet die Bewegungsenergie,
+ welche das Elektron besitzt.
+ Es kommt gerade in der Physik ziemlich häufig vor,
+ dass anstatt Wörter nur die Anfangsbuchstaben in einer Formel verwendet werden (vergleiche mit der Aussage 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:AbkuerzungAlsMathematischesStilmittel"
+nolink "false"
+
+\end_inset
+
+ im Vorwort).
+ Hier wird mit 
+\begin_inset Quotes gld
+\end_inset
+
+E
+\begin_inset Quotes grd
+\end_inset
+
+ die 
+\begin_inset Quotes gld
+\end_inset
+
+
+\series bold
+E
+\series default
+nergie
+\begin_inset Quotes grd
+\end_inset
+
+ bezeichnet,
+ sehr wahrscheinlich jedoch 
+\begin_inset Quotes gld
+\end_inset
+
+
+\lang english
+energy
+\lang ngerman
+
+\begin_inset Quotes grd
+\end_inset
+
+ (also die englische Form des Worts).
+ Dies besitzt den Vorteil,
+ dass die Formeln relativ übersichtlich werden.
+ Bei der obigen Formel wäre eine verbale Beschreibung so ausführlich,
+ dass sie noch undurchschaubar und überdies schwierig zu manipulieren wäre.
+\end_layout
+
+\begin_layout Itemize
+Und auch die Klammern 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Formula $\left(\right)$
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ sind Symbole.
+ Sie zeigen an,
+ auf welche Größe oder welche Größen sich eine bestimmte Rechenvorschrift (
+\begin_inset Quotes gld
+\end_inset
+
+Operation
+\begin_inset Quotes grd
+\end_inset
+
+) beziehen soll.
+ 
+\end_layout
+
+\begin_layout Standard
+Bei dieser (für mich wunderschönen Formel) stellt sich die Frage nach dem 
+\begin_inset Quotes gld
+\end_inset
+
+Warum?
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+Wozu?
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Ich weiß,
+ dass es für Dich,
+ falls Du diese Zeilen nur mit Widerwillen liest,
+ ein schwacher Trost ist,
+ jedoch:
+ Ich hätte dieses Dokument wohl nie schreiben können,
+ das Internet wäre nicht entstanden,
+ Mobilfunk und alle elektronischen Medien wären in der vorliegenden Form wahrscheinlich nicht möglich,
+ falls diese Formel nicht entdeckt worden wäre.
+ Denn diese Formel hat,
+ soweit ich weiß,
+ übertragen auf Festkörper,
+ das Wesen von Halbleiter erst entschlüsseln können und den Weg gezeigt,
+ wie denn die Halbleiter abgewandelt werden müssen,
+ damit mit ihnen Transistoren und Dioden (die Grundlage von Computer) gebaut werden können.
+ Weiter hat die Technologie schon einen großen Einfluss auf den Aufbau unserer Gesellschaft.
+ Demokratie,
+ so wie sie in Westeuropa bekannt und trotz allem geschätzt ist,
+ wurde entscheidend durch die moderneren Kommunikationsmittel (Radio,
+ Fernsehen,
+ Internet,
+ Zeitungswesen,
+ welches auch durch die Elektronik bestimmt wird) bestimmt.
+ Auch der sogenannte arabische Frühling (welcher im Frühling 2011) stattfand,
+ wurde meines Wissens wesentlich durch die neuen Medien ermöglicht.
+ Nun müsste die Formel jedoch weiter sprachlich ausgeführt werden.
+ Dies wäre dann die Gedankenarbeit,
+ welche gemacht werden müsste.
+ Damit die Formel anschaulich wird,
+ werden einfache Fälle untersucht.
+ Was passiert bei ganz einfachen Fällen?
+ Welches sind die Eigenschaften der Formel,
+ und welche Schlussfolgerungen können aus ihr gezogen werden?
+ Das bedeutet,
+ dass jede Formel an und für sich sagt nicht viel aussagt.
+ Es sind ganz viele Anwendungsbeispiele zu machen und Spezialfälle zu untersuchen,
+ bis klarer wird,
+ wo die Formel passt - und wo eben nicht.
+ Auch wenn sie eindrucksvoll aussehen sollte,
+ beschreibt sie eben nicht ganz genau die Vorgänge,
+ so wie sie in der Natur auftritt.
+ Diese ist einfach immer ein 
+\begin_inset Quotes gld
+\end_inset
+
+bisschen
+\begin_inset Quotes grd
+\end_inset
+
+ komplizierter,
+ als wir sie abbilden können.
+ Das ist einerseits faszinierend,
+ andererseits auch ein wenig beängstigend.
+ Denn wir einerseits können wird das Gefühl haben,
+ wir hätten die Spielregeln,
+ die Gesetze der Natur verstanden.
+ Andererseits müssen wir uns immer wieder eingestehen,
+ dass wir eben noch nicht alles begriffen haben.
+ 
+\end_layout
+
+\begin_layout Standard
+Die ähnliche Frage ist:
+ Wieso werden Formeln geschrieben und die Sachverhalte mittels Formeln beschrieben?
+ Das wäre doch einfacher,
+ die Dinge in Worte zu fassen.
+ Der Aufwand,
+ sich die formale Beschreibung einzuprägen,
+ ist immens.
+ Ich habe selbst etwa zwei Jahre gebraucht,
+ bis die obige Formel einigermaßen begriffen habe - und begreife sie zugegebenermaßen immer noch nicht so gut.
+ Ich finde jedoch auch,
+ frau oder man soll das eine tun und das andere nicht lassen.
+ Die sprachliche Formulierung ist immer auch wichtig,
+ denn wir Menschen denken nun einmal nicht in einer formalen Sprache.
+ Andererseits wäre die Bearbeitung der Formel praktisch unmöglich,
+ wenn sie als ausgeschriebener Satz aufgeschrieben würde.
+ Denn die Formel oben zeigt genau noch nicht die Wahrscheinlichkeit an,
+ das sich das Elektron an einem gegebenen Punkt im Raum befindet.
+ Sondern sie zeigt an,
+ welchen Regeln eine mit der Wahrscheinlichkeit verknüpfte Größe genügt.
+ Bis eine Formel selbst für das relativ einfache Wasserstoffatom gefunden wird,
+ braucht es noch einen großen Aufwand.
+ Bei komplizierteren Atomen (wie Gold) ist meines Wissens es nicht einmal mehr möglich,
+ eine exakte Lösung für diese Wahrscheinlichkeit zu finden.
+ Da werden Näherungen gesucht,
+ immer bessere zwar,
+ jedoch sind es immer noch Näherungen.
+ Und auch die Formel selbst,
+ welche dann entsteht,
+ ist immer noch nicht aussagekräftig.
+ Wieso soll ich wissen,
+ wo mit welcher Wahrscheinlichkeit sich ein Wasserstoffelektron sich relativ zum entsprechenden Kernproton befindet?
+ Die Formel für die Ortswahrscheinlichkeit muss dann ebenfalls noch bearbeitet werden,
+ bis am Schluss Voraussagen darüber gemacht werden können,
+ in welchen Farben eine 
+\begin_inset Quotes gld
+\end_inset
+
+Neonröhre
+\begin_inset Quotes grd
+\end_inset
+
+ leuchtet,
+ welche mit Wasserstoff gefüllt wird und betrieben wird.
+ Das Bearbeiten ist fast nur noch formal möglich,
+ also wenn die Symbole verwendet werden und nicht die sprachliche Beschreibung.
+ Ich selbst kenne leider die Umformungen auch nicht,
+ und diejenigen,
+ welche ich gesehen habe,
+ habe ich nicht begriffen\SpecialChar ldots
+ Aber falls Du per Zufall einen Flaschengeist findest,
+ welcher Dir drei Wünsche erfüllt,
+ und Du hast noch einen frei (ich würde ja als ersten Wunsch wünschen,
+ dass ich beliebig viele Wünsche frei hätte,
+ was den Flaschengeist sicher wütend machen würde,
+ und er mir genau diesen Wunsch nicht erfüllen würde),
+ dann kannst Du dir wünschen,
+ dass die mathematische-physikalische Literatur so geschrieben wird,
+ dass sie so spannend daherkommt wie vielleicht ein Harry-Potter-Roman (ja ich.
+ weiß,
+ das findest Du nicht spannend,
+ aber immerhin hat Frau Rowling damit zumindest geldmäßig einen durchschlagenden Erfolg erzielt).
+ Und dann könnte ich lesen und lesen und lesen und am Schluss hätte ich das Gefühl:
+ Ja,
+ jetzt weiß ich,
+ was alles gemacht werden musste,
+ um meinen Computer,
+ mit welchem ich diesen Text hinschreibe,
+ zu bauen.
+ Und weil es so spannend war,
+ könnte ich mir ausmalen,
+ dass ich ein anderes Gerät gerne bauen würde,
+ und ich könnte nachlesen,
+ wie ich das machen müsste.
+ Das wäre phantastisch!
+\end_layout
+
+\begin_layout Section
+Alles 
+\begin_inset Quotes gld
+\end_inset
+
+Meta
+\begin_inset Quotes grd
+\end_inset
+
+ oder was?
+\end_layout
+
+\begin_layout Standard
+So weit so gut,
+ aber leider ist damit noch nicht alles über Symbole gesagt,
+ was eigentlich gesagt werden müsste.
+ Der Grund ist der,
+ dass streng genommen nicht die Bezeichnungen in die Formeln und Sätze geschrieben werden müssten,
+ sondern deren Metasymbole
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Metasymbole
+\end_layout
+
+\end_inset
+
+.
+ Dabei ist ein Metasymbol ein Symbol,
+ welches andere Symbole symbolisiert.
+ Ich möchte den Begriff des Metasymbols noch ein wenig ausführen:
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:Metasymbol"
+
+\end_inset
+
+Es sei 
+\begin_inset Formula $A$
+\end_inset
+
+ ein Symbol.
+ Dann sei 
+\begin_inset Formula $A$
+\end_inset
+
+ ein Metasymbol,
+ wenn 
+\begin_inset Formula $A$
+\end_inset
+
+ auf ein oder mehrere andere Symbole verweist.
+ Jedoch werde vorausgesetzt,
+ dass auf höchstens endlich andere Metasymbole verwiesen wird und dass das Metasymbol 
+\begin_inset Formula $A$
+\end_inset
+
+ in sich widerspruchsfrei sei.
+ Das bedeute,
+ dass 
+\begin_inset Formula $A$
+\end_inset
+
+ nicht direkt oder indirekt auf sich selbst verweise.
+\end_layout
+
+\begin_layout Standard
+Lass mich dies an einem einfacheren Beispiel erklären:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\forall n\epsilon\mathbb{N}\:n\geq1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ausformuliert heißt diese Aussage 
+\begin_inset Quotes gld
+\end_inset
+
+Für alle natürlichen Zahlen,
+ welche mit 
+\begin_inset Formula $n$
+\end_inset
+
+ bezeichnet werden sollen,
+ gilt,
+ dass sie größer oder gleich Eins sind
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Dabei hat der Quantor 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Formula $\forall$
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ die Bedeutung von 
+\begin_inset Quotes gld
+\end_inset
+
+für alle
+\begin_inset Quotes grd
+\end_inset
+
+ Ich nehme an,
+ dass Du nichts gegen diese Aussage einzuwenden hast.
+ Obwohl sie ein Axiom - streng genommen eine Behauptung - ist und kein Satz,
+ welcher beweisbar ist.
+ Sie ist ein Axiom der natürlichen Zahlen von Peano.
+ Die Schwierigkeit bei der Formulierung dieser Formel besteht meines Erachtens darin,
+ dass sie eine Variablenbezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Formula $n$
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ besitzt.
+ Wieso 
+\begin_inset Formula $n$
+\end_inset
+
+ und nicht x,
+ y,
+ z oder 
+\begin_inset Formula $x_{\text{1}}$
+\end_inset
+
+?
+ Üblicherweise wird von Mathematikerinnen und Mathematikern gesagt,
+ es spiele keine Rolle,
+ wie die Variable bezeichnet werde,
+ es müsse einfach ein beliebiger Name verwendet werden.
+ Es komme nicht darauf an,
+ welcher dies sei.
+ Doch diese Position hat mindestens 15 Probleme in sich:
+ 
+\end_layout
+
+\begin_layout Enumerate
+Es wird stillschweigend vorausgesetzt,
+ dass diese Formel für beliebige Bezeichnungen gilt.
+ Du musst also sozusagen 
+\begin_inset Quotes gld
+\end_inset
+
+zwischen den Zeilen lesen
+\begin_inset Quotes grd
+\end_inset
+
+,
+ wie diese Formel gemeint ist.
+ Streng genommen müsste ich schreiben:
+\begin_inset Formula 
+\begin{equation}
+\forall x:\,\mbox{'x ist ein Bezeichner'}\:\wedge x\epsilon\mathbb{N\Rightarrow}x\geq1\label{eq:Bezeichner}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Dies würde bedeuten,
+ wobei das Wort 
+\begin_inset Quotes gld
+\end_inset
+
+Bezeichner
+\begin_inset Quotes grd
+\end_inset
+
+ ein anderes Wort für das Wort Symbol darstellt:
+ Für alle Bezeichner
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Bezeichner
+\end_layout
+
+\end_inset
+
+,
+ welche eine natürliche Zahlen darstellen,
+ gilt folgendes:
+ Stellen die Bezeichner eine natürliche Zahl dar,
+ dann gilt für die natürliche Zahl,
+ welche sie darstellen,
+ dass diese Zahl größer oder gleich Eins ist.
+ Dies würde bedeuten 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y\epsilon\mathbb{N\Rightarrow}y\geq1
+\]
+
+\end_inset
+
+ oder
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+z\epsilon\mathbb{N\Rightarrow}z\geq1
+\]
+
+\end_inset
+
+oder
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+k\epsilon\mathbb{N\Rightarrow}k\geq1
+\]
+
+\end_inset
+
+Dass anstelle eines (beliebigen Bezeichners) ein Bezeichner von beliebigen Bezeichnern verwendet wird,
+ wäre zwar korrekter,
+ wird jedoch nicht gemacht,
+ denn 
+\begin_inset Quotes gld
+\end_inset
+
+man weiß ja,
+ was gemeint ist
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Respektive:
+ Diejenigen,
+ welche es stillschweigend so akzeptieren und anwenden können,
+ werden als intelligent angesehen,
+ die anderen können schauen,
+ wie sie sich organisieren.
+ Weiter wird auch oben nicht zwischen dem Bezeichner und dem,
+ was mit dem Bezeichner bezeichnet wird,
+ unterschieden.
+ In den folgenden Kapitel werde ich immer wieder Satzteile verwenden wie 
+\begin_inset Quotes gld
+\end_inset
+
+es sei 
+\begin_inset Formula $A$
+\end_inset
+
+ das Symbol für eine Aussage
+\begin_inset Quotes grd
+\end_inset
+
+ (siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:AussagenDef"
+nolink "false"
+
+\end_inset
+
+ für die Bedeutung einer Aussage).
+ Das ist in den üblichen mathematischen Texten nicht üblich.
+ Üblicherweise wird geschrieben:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Es sei 
+\begin_inset Formula $A$
+\end_inset
+
+ eine Aussage
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Der Sinn dabei ist,
+ dass Du als Leser selbst erkennst,
+ dass 
+\begin_inset Formula $A$
+\end_inset
+
+ selbst keine Aussage ist (weil 
+\begin_inset Quotes gld
+\end_inset
+
+A
+\begin_inset Quotes grd
+\end_inset
+
+ grundsätzlich das Symbol für einen Laut ist),
+ sondern dass 
+\begin_inset Formula $A$
+\end_inset
+
+ das Symbol für die Aussage ist.
+ Welche Aussage,
+ das wird übrigens nicht gesagt.
+ Es kann eine beliebige Aussage sein (wie 
+\begin_inset Quotes gld
+\end_inset
+
+Morgen gibt es Brot und Tee
+\begin_inset Quotes grd
+\end_inset
+
+).
+ So merkwürdig dies ist,
+ so gewöhnlich ist es wiederum,
+ da 
+\begin_inset Quotes gld
+\end_inset
+
+Ursula und Domenico sind in Kalabrien in den Ferien
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ursula ist meine Schwester,
+ Domenico mein Schwager,
+ und sie sind jetzt (am 31.07.2011) wirklich in Kalabrien in den Ferien
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ und auch nicht gesagt wird:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Die Personen,
+ welche mit den Symbolen 
+\begin_inset Quotes gld
+\end_inset
+
+Ursula
+\begin_inset Quotes grd
+\end_inset
+
+ respektive 
+\begin_inset Quotes gld
+\end_inset
+
+Domenico
+\begin_inset Quotes grd
+\end_inset
+
+ bezeichnet werden,
+ sind im Moment in Kalabrien in den Ferien
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Trotzdem werde ich fürs erste weiter schreiben:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Es sei 
+\begin_inset Formula $A$
+\end_inset
+
+ das Symbol für eine Aussage
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Einfach,
+ weil es in meinen Ohren besser tönt als etwa:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Gilt 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ dann gilt 
+\begin_inset Formula $\neg A$
+\end_inset
+
+ nicht
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Weil im Beispiel nicht gesagt wird,
+ aus was 
+\begin_inset Quotes gld
+\end_inset
+
+A
+\begin_inset Quotes grd
+\end_inset
+
+ besteht oder wofür 
+\begin_inset Quotes gld
+\end_inset
+
+A
+\begin_inset Quotes grd
+\end_inset
+
+ steht.
+\end_layout
+
+\begin_layout Enumerate
+Was ein Bezeichner ist,
+ das ist auch durch eine stillschweigende Konvention geregelt:
+ Als Bezeichner werden üblicherweise Buchstaben des lateinischen und griechischen Alphabets (also a,
+ b,
+ c usw.
+ beziehungsweise 
+\begin_inset Formula $\alpha,\:\beta,\:\gamma$
+\end_inset
+
+ und so weiter
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Wikipedia zeigt Dir unter 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://de.wikipedia.org/wiki/Griechisches_Alphabet"
+literal "false"
+
+\end_inset
+
+ die einzelnen griechischen Buchstaben
+\end_layout
+
+\end_inset
+
+).
+ Dies bedeutet,
+ dass die Aussage 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Bezeichner"
+nolink "false"
+
+\end_inset
+
+ gerade keine korrekte Aussage ist.
+ Weiter gehorchen die Bezeichner einer Art 
+\begin_inset Quotes gld
+\end_inset
+
+Geheimkodex
+\begin_inset Quotes grd
+\end_inset
+
+,
+ welcher oft genug nicht offen gelegt wird.
+ Wenn Energien mit 
+\begin_inset Quotes gld
+\end_inset
+
+E
+\begin_inset Quotes grd
+\end_inset
+
+ bezeichnet werden,
+ dann leuchtet dies mir mehr oder weniger ein,
+ denn 
+\begin_inset Quotes gld
+\end_inset
+
+E
+\begin_inset Quotes grd
+\end_inset
+
+ ist der erste Buchstabe von 
+\begin_inset Quotes gld
+\end_inset
+
+Energie
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Für Volumen 
+\begin_inset Quotes gld
+\end_inset
+
+V
+\begin_inset Quotes grd
+\end_inset
+
+ zu verwenden,
+ finde ich ebenfalls keine schlechte Idee,
+ denn 
+\begin_inset Quotes gld
+\end_inset
+
+V
+\begin_inset Quotes grd
+\end_inset
+
+ ist wiederum der 1.
+ Buchstabe des Worts 
+\begin_inset Quotes gld
+\end_inset
+
+Volumen
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Weiter ist 
+\begin_inset Quotes gld
+\end_inset
+
+W
+\begin_inset Quotes grd
+\end_inset
+
+ oft der Bezeichner für 
+\begin_inset Quotes gld
+\end_inset
+
+
+\lang english
+Work
+\lang ngerman
+
+\begin_inset Quotes grd
+\end_inset
+
+ (zu deutsch:
+ Arbeit),
+ damit wird eine Energie gemeint.
+ Weiter ist beispielsweise 
+\begin_inset Quotes gld
+\end_inset
+
+p
+\begin_inset Quotes grd
+\end_inset
+
+ 
+\begin_inset Quotes gld
+\end_inset
+
+
+\lang english
+Pressure
+\lang ngerman
+
+\begin_inset Quotes grd
+\end_inset
+
+ (zu deutsch:
+ Druck),
+ jedoch 
+\begin_inset Quotes gld
+\end_inset
+
+P
+\begin_inset Quotes grd
+\end_inset
+
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Power
+\begin_inset Quotes grd
+\end_inset
+
+,
+ also auf Deutsch 
+\begin_inset Quotes gld
+\end_inset
+
+Leistung
+\begin_inset Quotes grd
+\end_inset
+
+ (definiert als Arbeit pro Zeiteinheit).
+ Das Unübliche an den Bezeichnern ist,
+ dass nur ein Buchstabe als Symbol für eine Größe verwendet wird.
+ Das gibt es sonst zumindest in der deutschen Sprache nicht - in der englischen jedoch sehr wohl:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+I
+\begin_inset Quotes grd
+\end_inset
+
+ heißt im englischen 
+\begin_inset Quotes gld
+\end_inset
+
+ich
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Aber sonst - wieso sollte ein Buchstabe für den Namen einer Person genommen werden?
+ In Gerichtsreportagen werden häufig die Namen mit den ersten Buchstaben des Vor- und des Nachnamens abgekürzt,
+ was schmerzhafte Konsequenzen haben kann,
+ falls eine Buchstabenkombination sehr selten vorkommt.
+ Es wird also statt Eduard Beckmann von E.B.
+ gesprochen.
+ Aber auch dies sind zwei Buchstaben als Symbole für eine Person.
+ Die Abkürzung mit einem Buchstaben hat jedoch den Vorteil,
+ dass damit die mathematischen Ausdrücke so kurz wie nur möglich werden.
+ Dies kann schneller geschrieben werden und außerdem werden die Formel übersichtlicher.
+ Da halbe Symbole nicht existieren (das wäre mal etwas Neues,
+ jedoch hat sich unser Alphabet im Laufe der Zeit immer mehr vereinfacht,
+ ich denke,
+ einfacher ist fast nicht möglich),
+ würde eine erneute Reduktion eines Symbols darin resultieren,
+ das Symbol überhaupt nicht zu schreiben
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Dies kannst Du Dir als 
+\begin_inset Quotes gld
+\end_inset
+
+maximal mögliche Reduktion
+\begin_inset Quotes grd
+\end_inset
+
+ vorstellen.
+ Es wird sozusagen alles,
+ was nicht überlebenswichtig ist,
+ von 
+\begin_inset Quotes gld
+\end_inset
+
+Bord gekippt
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Übrig bleibt der 
+\begin_inset Quotes gld
+\end_inset
+
+Kern der Gedanken
+\begin_inset Quotes grd
+\end_inset
+
+,
+ welcher dann leichter überblickt und manipuliert werden kann.
+\end_layout
+
+\end_inset
+
+.
+ Das würde jedoch in Richtung Gedankenübertragung gehen,
+ und da ich das nicht beherrsche,
+ begnüge ich mich damit,
+ ein einziges Symbol aufzuschreiben.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "not:erzwungene-Eindeutigkeit"
+
+\end_inset
+
+Außerdem kannst Du das Schreiben von jeweils ganzen Symbolen als erzwungene Eindeutigkeit
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+erzwungene Eindeutigkeit
+\end_layout
+
+\end_inset
+
+ betrachten.
+ Es wird erzwungen,
+ dass ein eindeutiges Symbol hingeschrieben wird.
+ Wenn Du mehr über dieses Thema in dieser Einführung lesen willst,
+ dann siehe doch in den Ausführungen über den Satz vom ausgeschlossenen Dritten (siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Satz-vom-ausgeschlossenen-Dritten"
+nolink "false"
+
+\end_inset
+
+) nach.
+ Dass eine Variable prinzipiell ein Buchstaben lang ist,
+ hat übrigens den Vorteil,
+ dass bei den Formeln das Formelzeichen der Multiplikation nicht hingeschrieben werden muss,
+ damit die Bedeutung der Formel eindeutig wird.
+ Beispielsweise wäre 
+\begin_inset Formula $V=xyz$
+\end_inset
+
+ die Formel eines Quaders mit den Seitenlängen x,
+ y,
+ z.
+ Dann müsste nicht ausdrücklich 
+\begin_inset Formula $V=x\cdot y\cdot z$
+\end_inset
+
+ hingeschrieben werden,
+ um von einem Bezeichner 
+\begin_inset Quotes gld
+\end_inset
+
+xyz
+\begin_inset Quotes grd
+\end_inset
+
+ zu unterscheiden.
+ Wenn also zwischen zwei Symbolen in einer mathematischen Formel keine Abstände eingefügt wurden,
+ dann ist der Grund dafür sehr wahrscheinlich der,
+ dass angenommen wird,
+ dass die beiden Größen miteinander multipliziert werden sollen
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Oder die Formel wurde falsch aufgeschrieben\SpecialChar ldots
+
+\end_layout
+
+\end_inset
+
+.
+ Jedoch ist diese Auslassung wahrscheinlich eher die Folge als die Ursache der Benennung einer Größe mit prinzipiell genau einem Symbol und nicht deren Ursache.
+ Damit meine ich,
+ dass wahrscheinlich wohl zuerst in mathematischen Formeln Größen mit prinzipiell einem Buchstaben hingeschrieben wurden und erst anschließend die Symbole der Multiplikation weggelassen wurden.
+ Es gibt noch subtile Details,
+ welche auch nicht außer Acht gelassen werden sollten:
+ Verwende nach Möglichkeit die Buchstaben o respektive O nicht als Symbole,
+ falls diese keine Funktionen (siehe Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Funktion"
+nolink "false"
+
+\end_inset
+
+) bezeichnen:
+ Denn in mathematischen Texten sind die Buchstaben o respektive O nur schwer von der Zahl Null (
+\begin_inset Formula $0$
+\end_inset
+
+) zu unterscheiden.
+ Groß O wird in der Differenzialrechnung häufig für eine Funktionen bezeichnet,
+ welche einen Rest bezeichnet.
+ Da wird die Nähe zur Null nicht nur in Kauf genommen,
+ sondern sogar gewünscht.
+ Denn diese Funktionen bezeichnet einen Rest,
+ welcher im weiteren Verlauf der Rechnungen vernachlässigt werden kann.
+ Vermeide nach Möglichkeit auch den Buchstaben i als Variablennamen.
+ Denn i wird gewöhnlich als Prototyp
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+ein Prototyp ist sozusagen eine besonders eindrückliche Vorlage für etwas
+\end_layout
+
+\end_inset
+
+ für imaginäre Zahlen verwendet.
+ In Texten,
+ in welchen mit elektrischen Stromstärken gerechnet wird,
+ wird bezeichnenderweise mit i die elektrische Stromstärke bezeichnet.
+ In diesem Fall wird j als Prototyp für imaginäre Zahlen verwendet.
+ Was auch ungünstig ist,
+ ist 
+\begin_inset Quotes gld
+\end_inset
+
+l
+\begin_inset Quotes grd
+\end_inset
+
+ (wie der Anfangsbuchstaben des Wortes 
+\begin_inset Quotes gld
+\end_inset
+
+lustig
+\begin_inset Quotes grd
+\end_inset
+
+,
+ 
+\begin_inset Quotes gld
+\end_inset
+
+luftig
+\begin_inset Quotes grd
+\end_inset
+
+ respektive 
+\begin_inset Quotes gld
+\end_inset
+
+leicht
+\begin_inset Quotes grd
+\end_inset
+
+) als Symbol zu verwenden,
+ denn dieser Buchstabe ähnelt der Ziffer 1.
+ Dann sieht 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+ wie 
+\begin_inset Formula $a_{l}$
+\end_inset
+
+ aus.
+ Nun gut,
+ in Latex
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Latex ist in diesem Zusammenhang übrigens weder ein medizinisches noch solches Material,
+ welches manche Erwachsene im sexuellen Sinn anregt,
+ sondern eine 
+\begin_inset CommandInset href
+LatexCommand href
+name "Software"
+target "http://www.latex-project.org/"
+literal "false"
+
+\end_inset
+
+,
+ mit welchen mathematische Formeln ansprechend dargestellt werden können.
+ 
+\end_layout
+
+\end_inset
+
+ ist der Unterschied gut sichtbar.
+ Aber trotzdem lohnt es sich aus meiner Sicht,
+ sich Gedanken darüber zu machen,
+ ob die Symbole optisch sich ähneln oder nicht.
+ Dies ist eine Folge der maximal möglich Reduktion.
+ Falls Du Übung im Lesen hast,
+ dann überliest Du Fehler in geschriebenen Texten,
+ falls diese nicht vor Fehler 
+\begin_inset Quotes gld
+\end_inset
+
+strotzen
+\begin_inset Quotes grd
+\end_inset
+
+ (also voller Fehler sind).
+ Wenn jetzt alles Überflüssige sozusagen 
+\begin_inset Quotes gld
+\end_inset
+
+über Bord gekippt wird
+\begin_inset Quotes grd
+\end_inset
+
+,
+ dann ist es umso wichtiger,
+ dass das,
+ was übrig bleibt,
+ sich gut voneinander unterscheiden lässt.
+\end_layout
+
+\begin_layout Enumerate
+Obwohl die Bezeichnung mittels eines Buchstabens oft genügt,
+ reicht diese Art der Bezeichnung vielfach genau wieder nicht.
+ Darum wurde das System aufgeweicht,
+ indem Subskripts eingefügt wurden wie beispielsweise 
+\begin_inset Formula $\alpha_{9}$
+\end_inset
+
+ oder so ähnlich.
+ Ein Subskript ist ein Zeichen,
+ welches unterhalb der Textzeile hingeschrieben wird.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Sub
+\begin_inset Quotes grd
+\end_inset
+
+ heisst dann auch entsprechend 
+\begin_inset Quotes gld
+\end_inset
+
+unter
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+Skript
+\begin_inset Quotes grd
+\end_inset
+
+ entsprechend 
+\begin_inset Quotes gld
+\end_inset
+
+das Geschriebene
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Also 
+\begin_inset Quotes gld
+\end_inset
+
+unterhalb des Geschriebenen
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Es sind auch noch kompliziertere Möglichkeiten vorhanden,
+ die Symbole zu erweitern.
+ Weiter unten werde ich weitere Arten aufschreiben,
+ wie zusätzliche Symbole erzeugt werden können - obwohl ich diese Arten in dieser einfachen Einführung sicher nicht abschließend aufzählen kann.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Die unter 3.
+ beschriebene Erweiterung reicht ebenfalls noch nicht,
+ denn es gibt noch mehr Symbole,
+ welche eingeführt wurden wie:
+ 
+\begin_inset Formula $\int,\:\infty,\:\exists$
+\end_inset
+
+.
+ Bei guten Mathematikbüchern gibt es eine Tabelle,
+ in welcher die Symbole zusammen mit dem Ort der Definition aufgeführt werden (der Heuser hat es).
+ Diese Sonderzeichen machen einen guten Teil des 
+\begin_inset Quotes gld
+\end_inset
+
+esoterischen
+\begin_inset Quotes grd
+\end_inset
+
+ Anstrichs der Mathematik aus.
+ Diese Symbole sind teilweise Standard (wie beispielsweise das Symbol 
+\begin_inset Formula $\infty$
+\end_inset
+
+ für unendlich große Zahlen.
+ Teilweise können sie auch durchaus dem Zeichentalent und der Phantasie der schreibenden Person entsprungen sein.
+ Jedoch ist bei selbst ausgedachten Symbolen große Vorsicht angezeigt.
+ Denn der Aufwand,
+ um sich an ein neues Symbol zu gewöhnen und dieses gewinnbringend anwenden zu können,
+ empfinde ich als gigantisch.
+ Aber solche Symbole wurden in der Vergangenheit ab und zu eingeführt werden wahrscheinlich auch in Zukunft eingeführt werden.
+\end_layout
+
+\begin_layout Enumerate
+Gleichwohl gibt es Symbole,
+ welche aus mehreren Buchstaben bestehen.
+ Ein Beispiel dafür ist die Sinusfunkton,
+ welche Du dir als die schönste Welle vorstellen kannst,
+ welche existiert
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mache einen Verweis auf das entsprechende Kapitel.
+\end_layout
+
+\end_inset
+
+.
+ Egal wie sie definiert ist,
+ an dieser Stelle ist wichtig,
+ dass die Bezeichnung der Sinusfunktion nicht etwa 
+\begin_inset Quotes gld
+\end_inset
+
+S
+\begin_inset Quotes gld
+\end_inset
+
+ oder 
+\begin_inset Quotes gld
+\end_inset
+
+s
+\begin_inset Quotes grd
+\end_inset
+
+ oder irgendwie ähnlich ist,
+ sondern 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Formula $\sin$
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Das sind drei Buchstaben.
+ Nun gut,
+ das wird Dich wahrscheinlich nicht groß stören.
+ Egal,
+ Du weißt,
+ was gemeint ist.
+ Es folgt noch eine seltsame Beschränkung,
+ welche mir erst jetzt,
+ ca.
+ sechs Jahre nach dem Beginn des Schreibens an diesem Text in den Sinn kommt:
+ Wenn ein Symbol aus mehreren anderen Symbolen (wie es Buchstaben sind) bestehen,
+ dann soll es aus höchstens endlich vielen Symbolen bestehen.
+ Natürlich stellt sich an dieser Stelle,
+ was 
+\begin_inset Quotes gld
+\end_inset
+
+Endlichkeit
+\begin_inset Quotes grd
+\end_inset
+
+ in diesem Zusammenhang wohl bedeutet.
+ Fürs erste scheint meines Erachtens zu genügen,
+ dass das Symbol,
+ wenn dessen Buchstaben oder Schriftzeichen niedergeschrieben wird,
+ innerhalb von endlicher Zeit niedergeschrieben werden können soll.
+ Aber ich werde natürlich weiter unten wieder auf diesen Begriff der Endlichkeit zurückkommen.
+\end_layout
+
+\begin_layout Enumerate
+Manchmal bedeutet eine Formatierung eine bestimmte Symbolart.
+ Beispiel werden für gelegentlich für zusammengesetzte Größen wie Punkte im Raum,
+ welche mit drei Zahlen beschrieben werden können,
+ fette Buchstaben wie 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ anstatt die Pfeildarstellung 
+\begin_inset Formula $\overrightarrow{x}$
+\end_inset
+
+ verwendet.
+\end_layout
+
+\begin_layout Enumerate
+Symbole werden teilweise auf eine andere Art als sonst üblich verwendet.
+ Ein Beispiel dafür sind Klammern.
+ In der Prosa werden die Klammern verwendet,
+ wenn etwas im üblichen Redefluss ein Einschub gemacht wird,
+ welcher mit dem sonstigen Text nicht unmittelbar zusammenhängt.
+ In der mathematischen Literatur hingegen werden Klammern verwendet,
+ um anzuzeigen,
+ dass das,
+ was innerhalb der Klammern steht,
+ zuerst ausgeführt wird.
+\end_layout
+
+\begin_layout Enumerate
+Es kommt noch 
+\begin_inset Quotes gld
+\end_inset
+
+schlimmer
+\begin_inset Quotes grd
+\end_inset
+
+:
+ Oft werden Symbole insofern 
+\begin_inset Quotes gld
+\end_inset
+
+überladen
+\begin_inset Quotes grd
+\end_inset
+
+,
+ indem indem das gleiche Symbol für verschiedene Größen verwendet wird.
+ Beispielsweise wird 
+\begin_inset Formula $'$
+\end_inset
+
+ manchmal als gewöhnlicher Bezeichner verwendet in Zusammenhängen wie 
+\begin_inset Quotes gld
+\end_inset
+
+es seien 
+\begin_inset Formula $f$
+\end_inset
+
+ und 
+\begin_inset Formula $f'$
+\end_inset
+
+ zwei Funktionen
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Du musst Dir Deinen Kopf an dieser Stelle nicht darüber zerbrechen,
+ was eine Funktion oder eine Abbildung bedeutet.
+ Wichtig an dieser Stelle ist nur,
+ dass mit 
+\begin_inset Formula $f$
+\end_inset
+
+ und 
+\begin_inset Formula $f'$
+\end_inset
+
+ zwei Objekte bezeichnet werden.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Andererseits wird der Apostroph (
+\begin_inset Formula $'$
+\end_inset
+
+) als Rechenvorschrift verwendet (für die Ableitung,
+ etwa für eine Geschwindigkeitsbestimmung).
+ Weiter ist es möglich,
+ dass verschiedene Symbole das Gleiche bedeuten (beispielsweise kann eine Ableitung einer Funktion mit 
+\begin_inset Formula $f'$
+\end_inset
+
+ oder mit 
+\begin_inset Formula $\frac{d}{dx}f(x)$
+\end_inset
+
+ bezeichnet werden).
+ Dann gibt es allgemein gebräuchliche Symbole und ad hoc-Symbole,
+ also solche,
+ welche die Autorin oder der Autor auf die Schnelle selbst definiert hat,
+ weil sich damit Sachverhalt besser aufzeigen lässt.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Überladung von Symbolbedeutungen
+\end_layout
+
+\end_inset
+
+Eine andere Art von Überladung kommt insofern vor,
+ als dass innerhalb von Texten die gleichen Benennungen für für verschiedene Dinge gebraucht werden.
+ Ich habe eine Zeitlang versucht,
+ eindeutige Bezeichner für Symbole zu verwenden.
+ Dies ist jedoch sehr mühsam,
+ und der Vorteil von dieser Übung im Vergleich zum benötigten Aufwand klein.
+ Es wird jedoch in Mathematikbücher oft eine sprachliche Abgrenzung verwendet,
+ welche dafür sorgt,
+ dass die Symbolbezeichnungen nicht völlig missverständlich werden:
+ Am Ende jedes Beweises oder am Ende einer Berechnung wird offenbar oft ein spezielles Zeichen wie etwa 
+\begin_inset Quotes gld
+\end_inset
+
+■
+\begin_inset Quotes grd
+\end_inset
+
+ oder eine Abkürzung wie 
+\begin_inset Quotes gld
+\end_inset
+
+q.e.d
+\begin_inset Quotes grd
+\end_inset
+
+ verwendet,
+ welches darauf hinweist,
+ dass der Beweis oder eine Abkürzung beendet ist.
+ Einerseits soll damit wohl ausgedrückt werden,
+ dass der Überzeugungsversuch für die Richtigkeit der zu beweisenden Aussage vorbei ist.
+ Andererseits bedeutet dies jedoch auch,
+ dass die reservierten Symbole wieder freigegeben sind.
+ Ich möchte ein Beispiel machen,
+ wobei die verwendeten Begriffe (Funktion respektive Stetigkeit) später erklärt werden sollen.
+ Wenn ich im Beweis die Aussage mache:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Es sei f eine stetige
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mache einen Verweis auf die Definition der Stetigkeit
+\end_layout
+
+\end_inset
+
+ Funktion
+\begin_inset Quotes grd
+\end_inset
+
+,
+ dann kann ich nach dem Beweis den Buchstaben f für eine andere Größe
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+beispielsweise für die Bezeichnung einer Tonhöhe.
+ f wird in diesem Fall als Frequenz bezeichnet.
+ 
+\end_layout
+
+\end_inset
+
+ verwenden,
+ ohne dass ich verwendeten Begriffe (Funktion,
+ Stetigkeit) dies groß begründen muss.
+ Was jedoch nicht geht,
+ ist,
+ wenn ich während des Beweises plötzlich f für eine andere Größe verwende,
+ beispielsweise weil ich die Anzahl der Punkte,
+ welche größer als Null sind,
+ ebenfalls mit f bezeichnen will.
+ Aber auch dies ist nicht so ungewöhnlich.
+ Wenn Du innerhalb eines Textes von zwei Personen schreibst,
+ welche den gleichen Vornamen besitzen (wie beispielsweise Flurina),
+ dann wirst Du im Text alles daran setzen,
+ dass diese beide Personen trotzdem irgendwie unterscheidbar sind.
+ Damit hilfst Du,
+ Verwirrung zu vermeiden.
+\end_layout
+
+\begin_layout Enumerate
+Als absoluten Gipfel des Wirrwarrs kann wahrscheinlich bezeichnet werden,
+ dass eben nicht beliebige Bezeichner für die Variablenbezeichnungen in Formeln verwendet werden können,
+ da teilweise die Bezeichner sehr wohl eine eindeutig festgelegte Bezeichnungen besitzen.
+ Wird in der obigen Formel 
+\begin_inset Formula 
+\[
+y\epsilon\mathbb{N\Rightarrow}y\geq1
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+anstatt der Buchstabe 
+\begin_inset Quotes gld
+\end_inset
+
+
+\series bold
+
+\begin_inset Formula $y$
+\end_inset
+
+
+\series default
+
+\begin_inset Quotes grd
+\end_inset
+
+ das Symbol 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ verwendet,
+ dann sieht die Formel so aus:
+ 
+\begin_inset Formula 
+\[
+\mathbb{N}\epsilon\mathbb{N\Rightarrow}\mathbb{N}\geq1
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Vielleicht könntest Du als geneigte Leserin oder geneigter Leser diese Formel noch auflösen,
+ da Du dir sagen könntest,
+ dass mit 
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+ zuerst die Menge der natürlichen Zahlen bezeichnet wurde und 
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+ anschließend neu definiert wurde als Exemplar einer natürlichen Zahl.
+ Wie wäre es jedoch damit?
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Rightarrow\epsilon\mathbb{N\Rightarrow}\Rightarrow\geq1
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Ich muss zugegeben,
+ dass ich diese Formel nur darum entschlüsseln könnte,
+ weil ich weiß,
+ wie ich sie selbst zusammengebastelt habe.
+\end_layout
+
+\begin_layout Enumerate
+Ein Bezeichner kann auch (und das ist ein wenig ein 
+\begin_inset Quotes gld
+\end_inset
+
+Schwanzbeisser
+\begin_inset Quotes grd
+\end_inset
+
+,
+ da ich auf etwas vorgreife,
+ was später kommt) ein Symbol für andere Symbole oder Verkettung von Symbolen,
+ also Aussagen (siehe Kapitel
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:AussagenDef"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) darstellen.
+ Dabei gilt meistens die Einschränkung,
+ dass die Symbole letztendlich auflösbar sein müssen.
+ Ein Beispiel,
+ in welchem dies nicht der Fall ist,
+ ist die Bezeichnung GNU („GNU
+\lang english
+ is not Unix
+\lang ngerman
+“) für freie Software,
+ falls GNU als Abkürzung interpretiert wird.
+ Denn ist der Namen folgendermaßen definiert (
+\begin_inset Formula $\equiv$
+\end_inset
+
+ wird als definiert gleich verstanden,
+ also es ist nicht gleich,
+ weil es so hergeleitet werden kann aus anderen Tatsachen,
+ sondern weil das so festgelegt ist):
+\begin_inset Formula 
+\[
+\mbox{GNU}\equiv\mbox{GNU is not Unix}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+und wird GNU als Abkürzung verstanden,
+ dann resultiert nach der ersten Auflösung des Namens:
+\begin_inset Formula 
+\[
+\mbox{GNU}\equiv\mbox{\left(\mbox{GNU is not Unix}\right) is not Unix}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+wobei die Klammern zeigen,
+ wo die Definition eingesetzt wurde.
+ Nach der zweiten Auflösung des Namens resultiert:
+\begin_inset Formula 
+\[
+\mbox{GNU}\equiv\mbox{\ensuremath{\mbox{\left(\left(\mbox{GNU is not Unix}\right)\mbox{ is not Unix }\right) is not Unix}}}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Das geht immer weiter so.
+ Ich nehme an,
+ dass dieser Effekt gewollt ist,
+ um auszudrücken,
+ dass auf keinen,
+ aber auch gar keinen Fall,
+ überhaupt nicht (usw.) GNU Unix sei.
+ Außerdem ist es ein augenzwinkernder Verweis auf die Tierart mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+Gnu
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Falls übrigens GNU nur als Bezeichner verwendet wird,
+ jedoch nicht als Abkürzung,
+ dann macht die Definition ebenfalls Sinn - dann ist diese Bezeichnung jedoch doppeldeutig - da ja bereits die gleichnamige Tierart damit bezeichnet wird.
+ Andererseits - schaue in der Definition der sogenannten natürlichen Zahlen nach (siehe Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:natuerliche-Zahlen-eigene-Definition"
+nolink "false"
+
+\end_inset
+
+)!
+ Dort wird ebenfalls mit einer rekursiven Definition gearbeitet.
+ Und niemand regt sich darüber auf\SpecialChar ldots
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Wenn ich jetzt schon ein problematisches Beispiel gebracht habe,
+ dann möchte ein unproblematisches Beispiel zeigen.
+ Beispielsweise ist das Symbol 
+\begin_inset Quotes gld
+\end_inset
+
+Fahrzeug
+\begin_inset Quotes grd
+\end_inset
+
+ das Symbol welches 
+\begin_inset Quotes gld
+\end_inset
+
+Velo
+\begin_inset Quotes grd
+\end_inset
+
+,
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Zug
+\begin_inset Quotes grd
+\end_inset
+
+,
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Auto
+\begin_inset Quotes grd
+\end_inset
+
+,
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Ochsenkarren
+\begin_inset Quotes grd
+\end_inset
+
+ und so weiter bedeuten kann.
+ Welches,
+ das ist jedoch nicht bestimmt.
+ Entsprechend kann ich,
+ wenn ich von 
+\begin_inset Quotes gld
+\end_inset
+
+Fahrzeug
+\begin_inset Quotes grd
+\end_inset
+
+ spreche,
+ nicht einfach von einer 
+\begin_inset Quotes gld
+\end_inset
+
+Klingel
+\begin_inset Quotes grd
+\end_inset
+
+ sprechen,
+ da zwar Fahrräder (oft) über eine Klingel verfügen,
+ Autos in der Regel jedoch nicht.
+\end_layout
+
+\begin_layout Enumerate
+Üblicherweise werden mit Symbolen,
+ welche keine Zahlen oder Operatoren (wie +,
+ - ,
+ / oder 
+\begin_inset Formula $\cdot$
+\end_inset
+
+) sind,
+ nicht nur auf ein einziges Objekt verwiesen.
+ Die folgende Formel ist daher unüblich:
+\begin_inset Formula 
+\begin{equation}
+x=10\Rightarrow x>1\label{eq:xGl10Gr1}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Statt die Formel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:xGl10Gr1"
+nolink "false"
+
+\end_inset
+
+ (obwohl sie korrekt geschrieben wurde) würde dann die Formel 
+\begin_inset Formula 
+\[
+10>1
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+geschrieben.
+ Eine Ausnahme sind die Zahlen wie 
+\begin_inset Formula $e$
+\end_inset
+
+ und 
+\begin_inset Formula $\pi$
+\end_inset
+
+,
+ welche Zahlen sind,
+ die nicht nicht als Bruchzahlen geschrieben werden können.
+ Diese Symbole 
+\begin_inset Formula $e$
+\end_inset
+
+ respektive 
+\begin_inset Formula $\pi$
+\end_inset
+
+ heißen dementsprechend 
+\series bold
+Konstanten
+\series default
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Konstanten
+\end_layout
+
+\end_inset
+
+.
+ Wenn ein Symbol gleich auf mehrere andere Objekte zeigen kann,
+ dann wird dieses Symbol im Unterschied zu Konstante 
+\series bold
+Variable
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\series medium
+Variable
+\end_layout
+
+\end_inset
+
+
+\series default
+ genannt.
+ Diese Schreibweise von Variablen erspart in der Regel Schreibarbeit,
+ ja,
+ es ermöglicht sogar,
+ mathematische Aussagen präzise hinzuschreiben,
+ welche sonst gar nicht genau fassbar wären.
+ Als Beispiel sei genannt:
+\begin_inset Formula 
+\[
+\forall x,y\in\mathbb{N\:}\left(x+y>x\;\wedge\;x+y>y\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Diese Formel bedeutet,
+ dass jede Summe von natürlichen Zahlen größer als ihre Summanden ist.
+ Diese Formel meint also
+\begin_inset Formula 
+\[
+\begin{array}{cccc}
+1+1>1 & \mbox{und} & 1+1>1 & \mbox{und}\\
+2+1>2 & \mbox{und} & 2+1>1 & \mbox{und}\\
+1+2>1 & \mbox{und} & 1+2>2 & \mbox{und}\\
+2+2>2 & \mbox{und} & 2+2>2 & \mbox{und}\\
+3+1>3 & \mbox{und} & 3+1>1 & \mbox{und}\\
+1+3>1 & \mbox{und} & 1+3>3 & \mbox{und}\\
+3+2>3 & \mbox{und} & 3+2>2 & \mbox{und}\\
+2+3>2 & \mbox{und} & 2+3>3 & \mbox{und}\\
+3+3>3 & \mbox{und} & 3+3>3 & \mbox{und}\\
+4+1>4 & \mbox{und} & 4+1>1 & \mbox{und}\\
+1+4>4 & \mbox{und} & 1+4>4 & \mbox{und}\\
+4+2>4 & \mbox{und} & 4+2>4 & \mbox{und}\\
+2+4>2 & \mbox{und} & 2+4>4 & \mbox{und}\\
+4+3>4 & \mbox{und} & 4+3>3 & \mbox{und}\\
+3+4>3 & \mbox{und} & 3+4>4 & \mbox{und}\\
+4+4>4 & \mbox{und} & 4+4>4 & \mbox{usw.}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Beachte,
+ dass 
+\begin_inset Quotes gld
+\end_inset
+
+und
+\begin_inset Quotes grd
+\end_inset
+
+ respektive 
+\begin_inset Quotes gld
+\end_inset
+
+usw.
+\begin_inset Quotes grd
+\end_inset
+
+ keine mathematische Schreibweisen sind,
+ sondern von mir der leichteren Lesbarkeit wegen so hingeschrieben wurde.
+ Beachte weiter dass es in der Mathematik möglich ist,
+ zwei Mal die gleiche Aussage hintereinander aufzuschreiben:
+ Eine Aussage ist 
+\begin_inset Quotes gld
+\end_inset
+
+genau dann
+\begin_inset Quotes grd
+\end_inset
+
+ richtig,
+ falls sie zwei Mal hintereinander aufgeschrieben richtig ist.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Genau dann
+\begin_inset Quotes grd
+\end_inset
+
+ meint,
+ dass diese zwei verschiedenen Aussagen gleichbedeutend sind,
+ vom logischen Standpunkt her also kein Unterschied auszumachen ist.
+ Wie auch immer,
+ das ist zwar logisch richtig,
+ wenn zwei Mal die gleiche Aussage hingeschrieben wird,
+ aber es stört wahrscheinlich Dich genau so,
+ wie es mich stört.
+ Die Problematik der obigen Darstellung besteht jedoch darin,
+ dass sie einerseits langatmig,
+ nervtötend und zudem nicht exakt ist.
+ Der Teufel steckt in der Formulierung 
+\begin_inset Quotes gld
+\end_inset
+
+usw.
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Er deutet darauf hin,
+ dass Du Dir als Leserin oder als Leser vorstellen musst,
+ wie das genau gemeint ist mit der Aussage.
+ Mit dieser Formulierung wird es schwierig,
+ einen mathematischen Beweis zu führen.
+ Und genau das ist das Schwierige.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Die Größen x und y werden als 
+\series bold
+Variablen
+\series default
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Variablen
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "def:Variablendefinition"
+
+\end_inset
+
+ bezeichnet.
+ Dies bedeutet,
+ dass x und y beliebige natürliche Zahlen darstellen können.
+ Variablen sind Metasymbole,
+ das heißt,
+ sie sind Symbole von anderen Symbolen.
+ Wobei das Wort 
+\begin_inset Quotes gld
+\end_inset
+
+andere
+\begin_inset Quotes grd
+\end_inset
+
+ wirklich wichtig ist,
+ denn eine Variable darf nie direkt oder indirekt (
+\begin_inset Quotes gld
+\end_inset
+
+über sieben Ecken und Enden
+\begin_inset Quotes grd
+\end_inset
+
+) wieder auf sich selbst verweisen.
+ Jedoch sind es sozusagen 
+\begin_inset Quotes gld
+\end_inset
+
+entpersonalisierte
+\begin_inset Quotes grd
+\end_inset
+
+ Metasymbole.
+ Der Fokus wird nicht auf eine bestimmtes Symbol gelegt,
+ sondern es wird überlegt,
+ welche Eigenschaften alle Größen besitzen,
+ auf welche die Variable verweisen kann.
+ Im weiteren Verlauf der Einführung in die Logik wird von logischen Variablen gesprochen.
+ Ist 
+\begin_inset Formula $A$
+\end_inset
+
+ das Symbol einer solchen logischen Variable
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Variable,
+ logische
+\end_layout
+
+\end_inset
+
+,
+ dann bedeutet dies einerseits,
+ dass 
+\begin_inset Formula $A$
+\end_inset
+
+ eine beliebige Aussage sein kann,
+ welcher wahr oder nicht wahr sein kann.
+ Im Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Mengen"
+nolink "false"
+
+\end_inset
+
+ walze ich dieses Thema noch einmal ausführlich breit.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Eine weitere Ausnahme von der Regel,
+ dass üblicherweise nicht von Aussagen wie Aussage 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:xGl10Gr1"
+nolink "false"
+
+\end_inset
+
+ vermieden werden,
+ besteht darin,
+ wenn Eigenschaften von Variablen besprochen werden.
+ Ich möchte ein Beispiel machen:
+ Es sei 
+\begin_inset Formula $n$
+\end_inset
+
+ das Symbol für alle natürlichen Zahlen,
+ welche kleiner als 11 seien.
+ Dann kann 
+\begin_inset Formula $n$
+\end_inset
+
+ das Symbol einer der folgenden Zahlen sein:
+\begin_inset Formula 
+\[
+1,\,2,\,3,\,4,\,5,\,6,\,7,\,8,\,9\,\mbox{oder}\,10.
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Dann ist könnte ich mich fragen,
+ für welche dieser 
+\begin_inset Formula $n$
+\end_inset
+
+ gilt,
+ dass 
+\begin_inset Formula $n\cdot n<10$
+\end_inset
+
+.
+ Dann kann ich sagen,
+ dass für 
+\begin_inset Formula $n=3$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\[
+n\cdot n=9<10
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Und in diesem Sinn kann ich sehr wohl schreiben,
+ dass gilt
+\begin_inset Formula 
+\[
+\left(n=3\right)\Rightarrow\left(n\cdot n=9\wedge n\leq10\right)
+\]
+
+\end_inset
+
+In Worten:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Ist 
+\begin_inset Formula $n$
+\end_inset
+
+ das Symbol für die Zahl 3,
+ dann gilt,
+ dass 
+\begin_inset Formula $n$
+\end_inset
+
+ mit sich selbst multipliziert 9,
+ also kleiner als 10 ist.
+\begin_inset Quotes grd
+\end_inset
+
+ Jetzt könnte ich weiter argumentieren,
+ bis ich herausfinde,
+ dass 
+\begin_inset Formula $n$
+\end_inset
+
+ eine der drei Zahlen 
+\begin_inset Formula $1,\,2\,oder\,3$
+\end_inset
+
+ sein könnte.
+ Jedoch,
+ möchte ich den ganzen Beweis nicht an dieser Stelle führen.
+ Das bedeutet also,
+ ich möchte nicht versuchen,
+ Dich an dieser Stelle davon zu überzeugen,
+ dass dem so ist.
+ Vielmehr möchte ich den Beweis auf später verschieben
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mache einen Verweis auf die entsprechende Stelle
+\end_layout
+
+\end_inset
+
+.
+ An dieser Stelle möchte ich bloß schreiben,
+ dass es unter bestimmten Umständen eben doch möglich sein könnte,
+ derartige Aussagen zu machen.
+ Nämlich dann,
+ wenn von Variablen gesprochen wird und dann eine bestimmte Größe,
+ welche mit dieser Variable ausgedrückt werden kann,
+ auf eine bestimmte Eigenschaft hin untersuchen möchte.
+\end_layout
+
+\begin_layout Enumerate
+Was weiter auch noch möglich ist,
+ ist die Möglichkeit,
+ dass innerhalb eines Satzes Größen mit verschiedenen Symbolen benennt werden (ich möchte dies die 
+\begin_inset Quotes gld
+\end_inset
+
+Möglichkeit der Alias-Bezeichnung nennen
+\begin_inset CommandInset label
+LatexCommand label
+name "def:Alias-Bezeichnung"
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Alias-Bezeichnung
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "def:Variable-logische"
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ nennen).
+ Ich mache ein Beispiel,
+ damit es klarer wird:
+ Sind a und b natürliche Zahlen,
+ so gilt:
+\begin_inset Formula 
+\[
+a\cdot b=b\cdot a
+\]
+
+\end_inset
+
+Dies ist das Kommutativgesetz der Addition
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mache einen Verweis auf die entsprechende Stelle
+\end_layout
+
+\end_inset
+
+.
+ Dann ist es
+\begin_inset Newline linebreak
+\end_inset
+
+möglich,dass a und b beide den Wert 933'094'713 besitzen (für einmal weder 1,
+ 2,
+ 3 noch 10).
+ Dies habe ich bereits im Punkt 11 so verwendet,
+ aber - ach du Schande - nicht so gesagt.
+ Was jedoch nicht geht,
+ ist das umgekehrte:
+ Dass ich für a auf der linken Seite der Gleichung den Wert 13'746'391 und auf der rechten Seite den Wert 3'989'737'111'367 verwende.
+ Das geht so nicht,
+ also mache das niemals
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+ist nur im Scherz so diktatorisch geschrieben
+\end_layout
+
+\end_inset
+
+!
+ Nein im Ernst,
+ davon ist dringend abzuraten,
+ weil die dadurch entstehenden Aussagen nicht wahr sind.
+ Und nicht wahre Aussagen wollen wir um jeden Preis der Welt vermeiden.
+\end_layout
+
+\begin_layout Enumerate
+Eine weitere Ausnahme der Regel,
+ dass ein Symbol,
+ welches keine Zahl oder kein Operator ist,
+ genau ein Objekt bezeichnet,
+ sind Unbekannte in Gleichungen.
+ Eine Unbekannte ist dabei ein Objekt,
+ von welcher der Name und Eigenschaften bekannt sind.
+ Es ist dann wie in einem Detektiv-Spiel:
+ Errate mehr oder weniger geschickt die Zahl,
+ welche gemeint ist - aber oft kann gezeigt werden,
+ dass es gar keine Zahl gibt (oder Objekt),
+ welches die Eigenschaft erfüllt.
+ Dies ist dann eine Gleichung ohne Lösung (auch das kommt vor,
+ nicht nur im 
+\begin_inset Quotes gld
+\end_inset
+
+richtigen Leben
+\begin_inset Quotes grd
+\end_inset
+
+ gibt es manchmal Aufgaben,
+ welche nicht gelöst werden können).
+ Üblicherweise werden für Unbekannte x oder y geschrieben (ich weiß auch nicht,
+ von wo das kommt.
+ Ich sollte einmal Wikipedia fragen).
+ Es gibt jedoch auch der Fall,
+ in welchem die Gleichung mehr als eine Lösung besitzt.
+ Im Extremfall gibt es sogar unendlich viele Lösungen!
+\end_layout
+
+\begin_layout Enumerate
+Es gibt auch lokale Variablen,
+ welche insbesondere nur innerhalb von Rechenausdrücken wie Summen oder Integralen vorkommen.
+ Dies bedeutet,
+ ein Symbol kann nur innerhalb einer Summe gültig eine bestimmte Bedeutung besitzen,
+ außerhalb der Summe wieder eine andere Bedeutung annehmen.
+ Übertreibe es bitte jedoch nicht mit der Redefinition von Symbolen - mache es so klar wie möglich,
+ denn falls Du Dich verrechnest,
+ weil Du zu sparsam mit den Symbolnamen umgegangen bist,
+ dann ist dies vor allem für Dich ärgerlich.
+\end_layout
+
+\begin_layout Standard
+Doch zurück zur ursprünglichen Aussage,
+ dass es spiele keine Rolle spiele,
+ wie eine Variable bezeichnet werde,
+ es müsse einfach ein beliebiger Name verwendet werden.
+ Ich habe jetzt 15 Punkte aufgezählt,
+ welche diese Behauptung in Frage stellen oder noch andere Aspekte aufzählen.
+ Gleichwohl kann ich nicht schreiben,
+ diese Liste sei abschließend.
+ Es kann noch andere Aspekte geben,
+ welche ich vergessen habe oder nicht kenne.
+ Jedoch habe ich Dir diese Punkte aufgeschrieben,
+ damit der Eintrittspreis in die Welt der mathematischen Symbole nicht allzu hoch ist.
+ Und dass die Freude über diese neue Sprache über die Sorge um das Verständnis derselben überwiegt.
+ 
+\end_layout
+
+\begin_layout Standard
+In der Mathematik wird nicht streng zwischen Symbolen und Metasymbolen unterschieden.
+ Aber ich denke,
+ es gibt eine Art 
+\begin_inset Quotes gld
+\end_inset
+
+Zauberspruch
+\begin_inset Quotes grd
+\end_inset
+
+,
+ welche in den Sätzen verwendet werden kann,
+ um auf die Problematik hinzuweisen.
+ Gelöst werden kann diese Problematik m.E.
+ im Rahmen der Mathematik ist.
+ Dieser 
+\begin_inset Quotes gld
+\end_inset
+
+Zauberspruch
+\begin_inset Quotes grd
+\end_inset
+
+ sieht m.E.
+ so aus:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Zauberspruch
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes gld
+\end_inset
+
+Es sei 
+\begin_inset Formula $A$
+\end_inset
+
+ ein Symbol,
+ welcher in Bezug auf sich selber wie auch auf die anderen Symbole dieses Satzes oder dieser Definition widerspruchsfrei sei
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Dabei sei 
+\begin_inset Formula $A$
+\end_inset
+
+ ein Metasymbol eines beliebigen (Meta\SpecialChar nobreakdash
+) Symbols.
+ Natürlich ist diese Unschärfe eigentlich ein konstantes Ärgernis.
+ Aber es ist auch eine Art Trost,
+ dass eine Art Geheimnis die Symbole umschwirren.
+ Dass noch nicht alles fertig gedacht ist.
+ Übrigens kannst Du im Skript nicht davon ausgehen,
+ dass ich den Zauberspruch immer anwende.
+ Das ist jedoch bloß eine Nachlässigkeit und bedeutet nicht,
+ dass er nicht angewendet werden müsste.
+\end_layout
+
+\begin_layout Standard
+Bezüglich der Diskussion über mathematische Symbole möchte ich an dieser Stelle die These
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+eine These ist eine unbewiesene Behauptung
+\end_layout
+
+\end_inset
+
+ aufstellen,
+ dass Tiere keine Metasymbole verstehen können.
+ Ich versteige mich zur Vermutung,
+ dass es genau das ausmacht,
+ was uns von allen anderen Lebewesen von diesem Planeten unterscheidet.
+ Aber ich kann es nicht beweisen.
+ Jedoch möchte ich mich auf keinen Fall missverstanden wissen in diesem Sinn,
+ dass ich die Behauptung aufstelle,
+ dass jemand ein Tier sei,
+ wer mit mathematischen Symbolen nichts anzufangen wisse oder nicht lesen könne.
+ Ich möchte mit dieser Aussage vielmehr betonen,
+ wie wichtig für die meisten Personen die Kommunikation und Metakommunikation (also Kommunikation über Kommunikation) ist und dass ich die Metakommunikation für das spezifisch menschliche halte.
+ Falls jemand weder über Kommunikation noch über Metakommunikation verfügt,
+ ist das jedoch noch lange keinen Grund,
+ sie oder ihn nicht als Menschen zu betrachten.
+ Ich verweise diesbezüglich auf die Randbemerkung mit der Nummer 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fn:Susanne"
+nolink "false"
+
+\end_inset
+
+,
+ in welcher ich meine diesbezügliche Ansicht dargelegt habe.
+ Auch möchte ich damit nicht ausdrücken,
+ dass wir Menschen per se mehr wert als Tiere seien.
+ Oder dass ich finde,
+ es müsse unbedingt ein Merkmal gefunden werden,
+ welches uns fundamental von Tieren unterscheidet.
+ Vielmehr würde ich mich freuen,
+ wenn meine Behauptung durch ein Experiment widerlegt werden könnte.
+\end_layout
+
+\begin_layout Standard
+Ein großer Teil der Mathematik entstand dadurch,
+ dass Vorgänge in der unbelebten und belebten Natur durch Symbole abgebildet wurde.
+ Anschließend wurde versucht,
+ die Vorgänge mittels Modellen zu erklären,
+ welche mittels Mathematik formuliert wurde.
+ Vor allem die logischen Schlussfolgerungen dieser Modelle wurden wieder in der Natur überprüft.
+ Dieser Kreislauf hat sich als überaus erfolgreich herausgestellt,
+ besonders in der Physik,
+ der Chemie und den Naturwissenschaften und der Technik,
+ jedoch auch in den Wirtschafts- und Sozialwissenschaften.
+ Dass wesentliche Teile der Mathematik völlig losgelöst von Vorgängen in der Natur und Technik sind,
+ soll auch nicht verschwiegen werden.
+ Jedoch sind die Symbole das erste Glied in der Kette,
+ um die Welt um uns zu begreifen.
+ Natürlich gibt es auch Größen,
+ welche sich bis heute hartnäckig einer mathematischen Beschreibung entziehen,
+ auch wenn ich mich fast nicht traue,
+ zu schreiben,
+ um welche Begriffe es sich handelt,
+ da ich immer Gefahr laufe,
+ von der Entwicklung überrollt zu werden.
+ Ich nehme als Beispiel:
+ Kampf gegen Ungerechtigkeit und gegen das Unglück in der Welt.
+\end_layout
+
+\begin_layout Standard
+Die Symbole der Lautschrift sind übrigens von den Phönizier erfunden worden,
+ ein Seefahrer- und Handelsvolk im heutigen Libanon,
+ welches offenbar ihren Göttern Kinder geopfert hat.
+ Dies wird in der Bibel beanstandet.
+ Jedoch wurden auch entsprechende archäologische Funde gemacht.
+ Die dabei gefundenen Kinderknochen könnten aber auch rituelle Kinderbestattungen gewesen sein,
+ wie ich einem Buch (für Laien) über die Archäologie des Nahen Ostens gelesen habe
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Komm,
+ dieses Buch kannst Du doch zitieren,
+ oder?
+\end_layout
+
+\end_inset
+
+.
+ Offenbar geht die Evolution eigene,
+ oft verschlungene Wege.
+ Der Gebrauch von Symbolen ist nicht auf Menschen beschränkt,
+ jedoch nur bei uns Menschen mit einer derartigen Verbissenheit ausgeprägt.
+ In der Entwicklungspsychologie ist die symbolische Entwicklung sehr wichtig.
+ Eine gute Einführung in dieses überraschend spannende Kapitel bietet beispielsweise Barbara Zollinger,
+ 
+\begin_inset Quotes gld
+\end_inset
+
+die Entdeckung der Sprache
+\begin_inset Quotes grd
+\end_inset
+
+ (Haupt Verlag).
+ Da Entwicklungspsychologie ein Teil der Psychologie ist,
+ kann ich auch das Buch 
+\begin_inset Quotes gld
+\end_inset
+
+Biologische Psychologie
+\begin_inset Quotes grd
+\end_inset
+
+ von Birbaumer und Schmidt empfehlen - aber Du willst ja etwas über Mathematik lernen und keine Psychologie.
+ Jedoch möchte ich dieses Kapitel nicht beenden,
+ ohne zu bemerken,
+ dass Symbole mit den Sinnen erfasst und verarbeitet werden müssen,
+ um als solche erkannt zu werden.
+ Es handelt sich somit im makroskopische Größen.
+ Wir müssen die Symbole sehen,
+ hören,
+ riechen,
+ schmecken,
+ fühlen oder tasten können,
+ damit wir sie als solche wahrnehmen.
+ Auch wenn sie beispielsweise in einem Computer so gespeichert werden,
+ dass niemand auf der Welt sie unmittelbar erfahren kann.
+ Übrigens werden in der Informatik Symbole ebenfalls gerne verwendet.
+ Dort werden sie Variablen genannt.
+ Eine Variable besitzt drei wichtige Merkmale:
+ Erstens eine Adresse,
+ welche der Variable zugeordnet ist.
+ Zweitens eine bestimmte Größe des Speicherplatzes,
+ welche die Variable benötigt.
+ Die Adresse und die Größe des Speicherplatzes der Variablen darf vom Computer nicht für andere Variablen verwendet werden.
+ Ansonsten würde das nackte Grauen ausbrechen.
+ Es wäre dann nicht mehr möglich von einer bestimmten Variablen zu sprechen.
+ Natürlich existieren auch Ausnahmen von dieser Regel,
+ aber diese sollen uns an dieser Stelle nicht groß kümmern.
+ Das dritte Merkmal einer Variable sind die Eigenschaften,
+ welche bestimmen,
+ was mit der Variable alles gemacht werden kann.
+ Dies wird in verschiedenen Programmsprachen zwar unterschiedlich behandelt.
+ Jedoch sind meines Wissen die meisten Programmiersprachen der Auffassung,
+ dass es nur nach entsprechender Definition es möglich sein sollte,
+ zwei Buchstaben zusammenzuzählen.
+ Es ist zwar in der Informatik 
+\begin_inset Quotes gld
+\end_inset
+
+alles Zahl
+\begin_inset Quotes grd
+\end_inset
+
+,
+ um es mit den alten Griechen zu sagen
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+entsprechend wütend und bestürzt seien sie gewesen,
+ als sie entdecken mussten,
+ dass sich nicht alles durch ihre Zahlen ausdrücken ließe,
+ schreibt beispielsweise Heuser,
+ S.
+ 29.
+ Heuser legt seine Quelle nicht offen,
+ wahrscheinlich ist sie im zu unwichtig.
+\end_layout
+
+\end_inset
+
+.
+ Dies bedeutet,
+ dass jedem Objekt,
+ welches in einem Computer bearbeitet wird,
+ auf Biegen und Brechen eine ganze oder gebrochene Zahl zugeordnet werden kann.
+ Jedoch würde es meines Erachtens keinen großen Sinn machen,
+ falls
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \text{\text{„E\text{“}}}+\text{\text{„i\text{“}}}+\text{\text{„n\text{“}}}+\text{\text{„s\text{“}}}\\
+ & = & 69+105+110+115\\
+ & = & 70-1+\left(100+5\right)+\left(100+10\right)+\left(100+15\right)\\
+ & = & 100+100+100+70-1+5+10+15\\
+ & = & 300+70+15+15-1\\
+ & = & 300+70+30-1\\
+ & = & 300+100-1\\
+ & = & 400-1\\
+ & = & 399
+\end{eqnarray*}
+
+\end_inset
+
+ gerechnet würde.
+ Denn die Buchstaben werden meistens mit diesen Zahlen in Verbindung gebracht,
+ wenn Sie in einem Computer gespeichert werden sollen.
+ Diese Zahlen habe einer 
+\begin_inset CommandInset href
+LatexCommand href
+target "ASCII-Tabelle"
+literal "false"
+
+\end_inset
+
+ entnommen.
+ Aber 399 als Summe der Zahlen entspricht dann nicht mehr dem Text 
+\begin_inset Quotes gld
+\end_inset
+
+Eins
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Darum macht es keinen großen Sinn,
+ wenn Buchstaben im Computer zusammengezählt werden.
+ Es gibt jedoch wieder eine Ausnahme von dieser Regel:
+ Falls überprüft werden soll,
+ ob Buchstaben richtig beispielsweise über das Internet übermittelt wurden.
+ In diesem Fall werden jedoch oft nicht die Zahlen einfach so zusammengezählt,
+ sondern in einer komplizierteren Art und Weise.
+ Mit dieser komplizierteren Art und Weise wird das Risiko,
+ dass irrtümlich gemeint wird,
+ Text oder Daten seien richtig übertragen worden,
+ obwohl dies nicht der Fall ist,
+ noch einmal deutlich verkleinert.
+ Falls Du mehr über dieses Thema erfahren möchtest,
+ schaue beispielsweise entsprechenden 
+\begin_inset CommandInset href
+LatexCommand href
+name "Wikipedia-Artikel"
+target "http://de.wikipedia.org/wiki/Message-Digest_Algorithm_5"
+literal "false"
+
+\end_inset
+
+ nach.
+\end_layout
+
+\begin_layout Standard
+Ich habe vorher kurz beschrieben,
+ welche Eigenschaften Symbole in der Informatik besitzen,
+ um zu überlegen,
+ ob dann auch in der Mathematik so verfahren werden muss.
+ Es gibt Gemeinsamkeiten im Verfahren,
+ jedoch auch Unterschiede.
+ Zwar musst Du Dir irgendwie in Deinem Gedächtnis behalten,
+ wenn von 
+\begin_inset Quotes gld
+\end_inset
+
+F
+\begin_inset Quotes grd
+\end_inset
+
+ als Kraft die Rede ist (
+\begin_inset Quotes gld
+\end_inset
+
+F
+\begin_inset Quotes grd
+\end_inset
+
+ ist der erste Buchstabe im englischen Wort 
+\begin_inset Quotes gld
+\end_inset
+
+
+\lang english
+Force
+\lang ngerman
+
+\begin_inset Quotes grd
+\end_inset
+
+,
+ was wieder Kraft auf Deutsch bedeutet).
+ Ich gebe zu,
+ dass ich nicht genau weiß,
+ welche Vorgänge dann in unseren Köpfen vor sich gehen.
+ So wie es aussieht,
+ wird die Information schon irgendwie abgelegt,
+ aber sehr wahrscheinlich nicht so wie in einem Computer.
+ Dementsprechend musst Du F auch nicht mit einer Adresse belegen.
+ Auch musst Du nicht intern speichern,
+ welchen Speicherbedarf es braucht,
+ um eine Kraft zu speichern.
+ Jedoch musst Du auch wissen,
+ was mit einer Kraft alles gemacht werden kann.
+ Es ist zum Beispiel nicht sinnvoll,
+ eine Kraft und einen Weg einfach zu addieren.
+ Aber - und vielleicht erstaunt es Dich - es macht sehr wohl Sinn,
+ eine Kraft und einen Weg miteinander zu multiplizieren!
+ Denn ein Produkt aus einer Kraft und einem Weg ergibt (unter bestimmten Umständen) eine Arbeit.
+ Stelle Dir vor,
+ Du solltest einen einen Mehlsack mit einem Flaschenzug senkrecht nach oben ziehen.
+ Ein Flaschenzug ist eine Vorrichtung,
+ mit welchem schwere Lasten mittels Seilen und Rollen gehoben werden können.
+ Dann leuchtet es Dir vielleicht irgendwie ein,
+ dass es zwei Mal so anstrengend ist,
+ den Mehlsack zwei Meter in die Höhe zu ziehen,
+ wie es anstrengend ist,
+ den Mehlsack einen Meter in die Höhe zu ziehen.
+ Und dass es (mindestens) doppelt so anstrengend ist,
+ einen doppelt so schweren Mehlsack einen Meter in die Höhe zu ziehen
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Wahrscheinlich ist es aufgrund von zusätzlich auftretender Reibung noch ein wenig anstrengender,
+ aber das weiß ich bereits nicht.
+\end_layout
+
+\end_inset
+
+.
+ Denn es gibt wohl keinen 
+\begin_inset Quotes gld
+\end_inset
+
+Mengenrabatt
+\begin_inset Quotes grd
+\end_inset
+
+ für das Heben von zwei Mehlsäcken.
+ Auch leuchtet es Dir vielleicht ein,
+ dass es mindestens vier Mal so schwer ist,
+ zwei Mehlsäcke zwei Meter in die Höhe zu ziehen.
+ Wenn ich jetzt dir Kraft mit dem Weg multipliziere,
+ dann sollte es in etwa gleich anstrengend sein,
+ einen Mehlsack zwei Meter in die Höhe zu ziehen,
+ wie es Anstrengung braucht,
+ zwei Mehlsäcke einen Meter in die Höhe zu ziehen.
+ Dies würde dann bedeuten,
+ dass das Produkt von Kraft und Weg (was der geleisteten Arbeit entsprechen würde) in etwa gleich wäre.
+ Dies ist jedoch kein strenger Beweis,
+ dass es Sinn macht unter bestimmten Umständen Kraft und Weg miteinander zu multiplizieren.
+ Gleichwohl möchte ich mit der ganzen Überlegung zum Ausdruck bringen,
+ dass Du wissen musst,
+ welche Eigenschaften die verschiedenen Größen haben.
+ 
+\end_layout
+
+\begin_layout Standard
+Meine Betrachtungen,
+ in welchen ich uns Menschen indirekt mit Computern vergleiche,
+ werden Dir vielleicht abwegig vorkommen.
+ Die Diskussion über die Vergleichbarkeit von Menschen mit Maschinen war übrigens der Inhalt einer der einzigen Vorlesungen über geistig behinderte Menschen,
+ welche mir in Erinnerung blieb.
+ Der Dozent vertrat die Ansicht,
+ dass systemisches Denken in der Heilpädagogik nicht angebracht sei,
+ weil wir Menschen und keine Maschinen seinen und darum dieses Denken,
+ welches aus der Kybernetik stammt (falls ich mich recht erinnere) nicht auf Menschen übertragen werden könne.
+ Die Schlussfolgerung ist also:
+ Wir sind keine Maschinen.
+ Was ich so nicht behauptet habe.
+ Aber ich habe mich gefragt,
+ was gemeinsam ist an Computern und Menschen.
+ Das,
+ was verschieden ist,
+ das ist einfacher zu beschreiben.
+ Ich möchte mit meinen Überlegungen weiter damit zum Ausdruck bringen,
+ dass ich gerne wüsste,
+ wie andere und ich besser lernen können.
+ Denn es interessiert mich.
+ Es gibt sicher irgendwie so super neurobiologische Forschungen,
+ welche genau zeigen wollen,
+ wie Mathematik gelernt wird.
+ Und die da behaupten,
+ sie wüssten,
+ was zu machen ist,
+ damit Du die 
+\begin_inset Quotes gld
+\end_inset
+
+Wahrheit mit dem Löffel fressen
+\begin_inset Quotes grd
+\end_inset
+
+ kannst.
+ Bis es dann so weit ist,
+ werde ich Dir meine Dienst anbieten,
+ damit Du zur Glückseligkeit kommst.
+ Das Fundament der Mathematik ist die Logik,
+ und diese wird Hilfe von Symbolen formuliert.
+ Also sind Symbole wirklich sehr wichtig in der Mathematik.
+\end_layout
+
+\begin_layout Section
+Über welche Symbole reden wir?
+\end_layout
+
+\begin_layout Standard
+Ich möchte schlussendlich in Form von Flussdiagrammen aufzeigen,
+ welche Symbole es in etwa gibt.
+ In der Symboltabelle des entsprechenden Kapitels 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Anhang-A:-Symboltabelle"
+nolink "false"
+
+\end_inset
+
+ wird dann aufgelistet,
+ wo die in den Flussdiagrammen definierten Symbole dann verwendet werden.
+ Die Flussdiagramme zeigen meines Erachtens aber auch die Grenzen auf,
+ welche der graphischen Darstellung der Symbole gesetzt werden.
+ Denn lange nicht alles,
+ was ich in diesem Kapitel zu zeigen versucht habe
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+ich hoffe,
+ Du erkennst den Witz dieser Aussage.
+ Wenn in einem Arbeitszeugnis steht:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Herr Demarmels versuchte unermüdlich,
+ die an ihn gestellten Anforderungen zu erfüllen
+\begin_inset Quotes grd
+\end_inset
+
+,
+ dann steht drin,
+ dass er es eben nicht geschafft hat,
+ die an ihn gestellten Anforderungen zu erfüllen - was übrigens wirklich mehr als einmal bei mir vorgekommen ist.
+\end_layout
+
+\end_inset
+
+,
+ kann ich auch nur annähernd graphisch beschreiben.
+ Ich denke,
+ dass eine Menge sogar nur mit einem großem Aufwand als sogenannte Anwendung einer Programmiersprache umsetzbar wäre.
+ Obwohl ich nichts dagegen hätte,
+ falls diesbezügliche Anstrengungen unternommen würden.
+ Aber es ist keinesfalls meine Meinung,
+ dass Du diese Graphen auswendig lernen solltest.
+ Sie sie sind eigentlich mehr spielerisch gedacht.
+ Falls ein Symbol nicht mit Anführungs- und Schlusszeichen geschrieben ist,
+ dann wird entweder auf einen anderen Graph verwiesen (falls die Box eckig ist) oder es sind Start- respektive Endmarken gemeint (falls die Boxen abgerundet sind).
+ Die Pfeile sind grundsätzlich Alternativen.
+ Die Meinung ist,
+ dass Du vom Anfang bis zum Ende zwar einen Weg gehen musst,
+ jedoch bei zwei oder mehr Pfeilen immerhin auswählen kannst,
+ welchen Weg Du gehen willst.
+ Das ist so wie bei einer Eisenbahn,
+ welche zwar theoretisch auf mehreren Gleisen fahren kann - jedoch nicht gleichzeitig.
+ Natürlich sind die Graphen auch ein wenig augenzwinkernd gedacht,
+ weil sie gleichzeitig die Buchstaben beschreiben und anwenden.
+ Jedoch ist genau der Symbolcharakter der Buchstaben gemeint.
+ Wenn ich beispielsweise eine Größe 
+\begin_inset Quotes gld
+\end_inset
+
+P
+\begin_inset Quotes grd
+\end_inset
+
+ nenne,
+ dann meine ich vermutlich eine Leistung und nicht der Buchstabe 
+\begin_inset Quotes gld
+\end_inset
+
+P
+\begin_inset Quotes grd
+\end_inset
+
+ an und für sich.
+ Ich beanspruche auch nicht,
+ eine vollständige Auflistung aller mathematischen Symbole zu präsentieren.
+ Ich möchte vielmehr eine Idee davon geben,
+ welche Symbole üblicherweise verwendet werden.
+ Ausdrücke wie «hochgestellt» sollen auf eine bestimmte Darstellungsart zeigen.
+ Im vorliegenden Fall soll also gezeigt werden,
+ dass die eine Zahl hochgestellt dargestellt werden soll
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Beispielsweise wird die Zahl Zwei (
+\begin_inset Formula $2$
+\end_inset
+
+) im Ausdruck 
+\begin_inset Formula $x^{2}$
+\end_inset
+
+ hochgestellt geschrieben.
+\end_layout
+
+\end_inset
+
+.
+ Auch dies ist ein Symbol.
+ Bitte störe Dich nicht daran,
+ wenn die Buchstaben des lateinische und griechischen Alphabets teilweise identisch sind.
+ Ich möchte nur zeigen,
+ was möglich wäre - nicht,
+ was wo üblicherweise verwendet wird.
+ Weiter sind die Symbole,
+ welche ähnlich wie Buchstaben aussehen,
+ nicht identisch mit den Symbolen,
+ welche ich sonst im Text verwende.
+ Denn die Graphen wurden mit Open Office erstellt,
+ der Text wurde mit Lux (somit Latex) geschrieben.
+ Zudem ist die ganze Sache insofern ein Witz,
+ also Du diese Symbole - aber noch viele mehr!
+ - siehst,
+ wenn Du mit Lyx
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/"
+literal "false"
+
+\end_inset
+
+,
+ ich kann
+\begin_inset Quotes grs
+\end_inset
+
+s wirklich nur empfehlen!
+\end_layout
+
+\end_inset
+
+ (m)ein Dokument öffnest und eine Formel eintippst.
+ Also hätte ich diese Symbole gar nicht aufzuschreiben brauchen.
+ Schlussendlich hoffe ich,
+ dass Du diese Abbildungen als das siehst,
+ als was ich sie gezeichnet habe:
+ Als Spiel der Symbole,
+ nicht mehr,
+ aber auch nicht weniger.
+ Eine Tabelle mit der Übersicht der einzelnen Flussdiagramme und eine kleine Beschreibung derselben ist in den Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Tabelle-Auflistung-Flussdiagramme-Teil-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ sowie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Tabelle-Auflistung-Flussdiagramme-Teil-2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ aufgelistet.
+ Bitte beachte übrigens,
+ dass für einmal zuerst die Verwendung und dann erst die Definitionen aufgelistet sind.
+ Also beispielsweise behaupte ich,
+ dass griechische Buchstaben aus kleinen und griechischen Buchstaben bestehen.
+ Ganz am Schluss liste ich die kleinen und großen griechischen Buchstaben auf.
+ 
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Tabelle-Auflistung-Flussdiagramme-Teil-1"
+
+\end_inset
+
+1.
+ Teil Auflistung der Flussdiagramme
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="14" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bezeichnung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Abbildung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Übersicht der Symbole
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Symbole-Uebersicht"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Ein Symbol kann ein}\\
+\text{-\,Symbol mit einer Auszeichnung}\\
+\text{-\,zusammengesetztes Symbol}\\
+\text{sein.}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+einfache Symbole
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:einfache-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Ein einfaches Symbol kann ein}\\
+\text{-\,Buchstabe}\\
+\text{-\,Operator}\\
+\text{-\,sonstiges Symbol}\\
+\text{sein.}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Buchstaben
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ziffern"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Ein Buchtabe kann ein}\\
+\text{-\,lateinischer}\\
+\text{-\,griechischer}\\
+\text{-\,sonstiger}\\
+\text{Buchstabe sein.}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lateinische Buchstabe
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:lateinische-Buchstaben"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Ein lateinischer Buchtabe kann ein}\\
+\text{-\,kleiner}\\
+\text{-\,grosser}\\
+\text{lateinischer Buchstabe sein.}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+kleiner lateinischer Buchstabe
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kleine-lateinische-Buchstabe"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Aufzählung der }\\
+\text{kleinen lateinischen Buchstaben}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+große lateinische Buchstabe
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:grosse-lateinische-Buchstaben"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Aufzählung der }\\
+\text{grossen lateinischen Buchstaben}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+griechische Buchstabe
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:griechische-Buchstaben"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Ein griechischer Buchtabe kann ein}\\
+\text{-\,kleiner}\\
+\text{-\,grosser}\\
+\text{griechischer Buchstabe sein.}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+kleiner griechischer Buchstabe
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kleine-griechische-Buchstaben"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Aufzählung von }\\
+\text{kleinen griechischen Buchstaben}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+große griechischer Buchstabe
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:große-griechische-Buchstaben"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Aufzählung von }\\
+\text{grossen griechische Buchstaben}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+übrige Buchstaben
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:uebrige-Buchstaben"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Aufzählung von }\\
+\text{übrigen Buchstaben}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Operatoren
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Operatoren"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Aufzählung von}\\
+\text{Operatoren}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+übrige Symbole
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:uebrige-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Aufzählung von}\\
+\text{weiteren Symbolen}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ausgezeichnete Symbole
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ausgezeichnete-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{ausgezeichnete Symbole sind}\\
+\text{Symbole, welchen}\\
+\text{Auszeichnungen vorangestellt}\\
+\text{sind.}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Tabelle-Auflistung-Flussdiagramme-Teil-2"
+
+\end_inset
+
+Auflistung der Flussdiagramme
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bezeichnung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Abbildung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Auszeichnungen}\\
+\text{von Symbolen}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Auszeichnung-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Aufzählungen von }\\
+\text{Auszeichnungen wie Schriftstil},\\
+\text{gefolgt von Auszeichnungen }\\
+\text{welche mehrfach vorhanden sein}\\
+\text{können.}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+zusammengesetzte Symbole
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:zusammengesetzte-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{zusammengesetzte Symbole}\\
+\text{können mehrfache einfache oder}\\
+\text{zusammengesetzte Symbole}\\
+\text{oder aber spezielle Funktions-}\\
+\text{bezeichnungen sein.}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{spezielle }\\
+\text{Funktionsbezeichnungen}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:spezielle-Funktionsbezeichnungen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}[t]{l}
+\text{Aufzählung von speziellen}\\
+\text{Funktionsbezeichnungen}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Symbole Übersicht
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Symbole-Uebersicht"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/Symbole.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Einfache Symbole
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:einfache-Symbole"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleEinfache.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ziffern
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ziffern"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleZahlen.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Buchstaben
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Buchstaben"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleLateinischeBuchstaben.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+lateinische Buchstaben
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:lateinische-Buchstaben"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleBuchstaben.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+kleine lateinische Buchstaben
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kleine-lateinische-Buchstabe"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleLateinischeBuchstabenKlein.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+große lateinische Buchstaben
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:grosse-lateinische-Buchstaben"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleLateinischeBuchstabenGross.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+griechische Buchstaben
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:griechische-Buchstaben"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleGriechischeBuchstaben.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+kleine griechische Buchstaben
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kleine-griechische-Buchstaben"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleGriechischeBuchstabenKlein.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+große griechische Buchstaben
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:große-griechische-Buchstaben"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleGriechischeBuchstabenGross.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+übrige Buchstaben
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:uebrige-Buchstaben"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleUebrigeBuchstaben.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Operatoren
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Operatoren"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleOperatoren.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+übrige Symbole
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:uebrige-Symbole"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleUebrige.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ausgezeichnete Symbole
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ausgezeichnete-Symbole"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleAusgezeichnete.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Auszeichnungen von Symbolen
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Auszeichnung-Symbole"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleAuszeichnung.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+zusammengesetzte Symbole
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:zusammengesetzte-Symbole"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleZusammengesetzte.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+spezielle Funktionsbezeichnungen
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:spezielle-Funktionsbezeichnungen"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../Symbole/SymboleSpezielleFunktionsbezeichnungen.svg
+	scale 80
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Diagramme können übrigens nicht dazu verwendet werden,
+ um irgendwelche mathematische Erkenntnisse zu erzeugen.
+ Mit Hilfe der obigen Flussdiagramme könnte ich zum Beispiels schreiben
+\begin_inset Formula 
+\[
+1=2
+\]
+
+\end_inset
+
+Das wäre,
+ wenn ich die Flussdiagramme oben durchlaufe,
+ möglich.
+ Aber diese Behauptung ist völliger Blödsinn.
+ Ich möchte mit den Flussdiagrammen nur spielerisch zeigen,
+ welche Symbole verwendet werden.
+ Damit Du in etwa siehst,
+ was mit ihnen gemacht werden könnten,
+ möchte ich noch ein Beispiel aufschreiben,
+ welches wirklich oft verwendet wird:
+\begin_inset Formula 
+\[
+x^{2}
+\]
+
+\end_inset
+
+Das ist ein zusammengesetztes Symbol mit der Bedeutung:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Nimm eine beliebige Zahl und multipliziere diese mit sich selbst.
+\begin_inset Quotes grd
+\end_inset
+
+ Also könnte ich beispielsweise anstelle von 
+\begin_inset Formula $x$
+\end_inset
+
+ die Zahl 
+\begin_inset Formula $4$
+\end_inset
+
+ nehmen.
+ Dann würde bedeuten
+\begin_inset Formula 
+\[
+x^{2}=4^{2}=4\cdot4=16
+\]
+
+\end_inset
+
+Und jetzt möchte ich zeigen,
+ dass 
+\begin_inset Formula $x^{2}$
+\end_inset
+
+ mit Hilfe der Flussdiagramme erzeugt werden kann.
+ 
+\begin_inset Formula $x^{2}$
+\end_inset
+
+ ist ein zusammengesetztes Symbol,
+ bestehend aus 
+\begin_inset Formula $x$
+\end_inset
+
+ und 
+\begin_inset Formula $^{2}.$
+\end_inset
+
+ Zuerst kann ich in der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Symbole-Uebersicht"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+Symbole Übersicht
+\begin_inset Quotes grd
+\end_inset
+
+ den Pfad ganz rechts hinunterfahren zum Kästchen mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+zusammengesetzte Symbole
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Anschließend geht es in der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:zusammengesetzte-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+zusammengesetzte Symbole
+\begin_inset Quotes grd
+\end_inset
+
+ in das Kästchen mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+einfache Symbole
+\begin_inset Quotes grd
+\end_inset
+
+.
+ In der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:einfache-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+einfache Symbole
+\begin_inset Quotes grd
+\end_inset
+
+ gehe ich in das Kästchen mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+Buchstaben
+\begin_inset Quotes grd
+\end_inset
+
+.
+ In der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Buchstaben"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+Buchstaben
+\begin_inset Quotes grd
+\end_inset
+
+ gehe ich in das Kästchen mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+lateinische Buchstaben
+\begin_inset Quotes grd
+\end_inset
+
+.
+ In der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:lateinische-Buchstaben"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+lateinische Buchstaben
+\begin_inset Quotes grd
+\end_inset
+
+ gehe ich in das Kästchen mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+kleine lateinische Buchstaben
+\begin_inset Quotes grd
+\end_inset
+
+.
+ In der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kleine-lateinische-Buchstabe"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+kleine lateinische Buchstaben
+\begin_inset Quotes grd
+\end_inset
+
+ gehe ich in das Kästchen mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+x
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Damit hätte ich gezeigt,
+ wie 
+\begin_inset Formula $x$
+\end_inset
+
+ als Symbol in mathematischen Texten verwendet werden kann.
+ Ich kann nun alle Kästchen zurück gehen (die Pfade rückwärts sind in diesem Zusammenhang immer eindeutig) - bis ich wieder in der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:zusammengesetzte-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+zusammengesetzte Symbole
+\begin_inset Quotes grd
+\end_inset
+
+ komme.
+ Dann kann ich nach dem Kästchen mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+Einfache Symbole
+\begin_inset Quotes grd
+\end_inset
+
+ in das Kästchen mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+Ausgezeichnete Symbole
+\begin_inset Quotes grd
+\end_inset
+
+ eintreten.
+ In der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ausgezeichnete-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+Ausgezeichnete Symbole
+\begin_inset Quotes grd
+\end_inset
+
+ gehe ich zuerst in das Kästchen mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+Auszeichnung Symbole
+\begin_inset Quotes grd
+\end_inset
+
+.
+ In der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Auszeichnung-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+Auszeichnung Symbole
+\begin_inset Quotes grd
+\end_inset
+
+ gehe ich in das Kästchen mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+Schriftstil ≪normal≫
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Anschließend gehe ich in das Kästchen mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+Schriftart ≪hochgestellt≫
+\begin_inset Quotes grd
+\end_inset
+
+ (ich verzichte darauf,
+ die Hochstellung gleich noch in der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+hochgestellt
+\begin_inset Quotes grd
+\end_inset
+
+ darzustellen).
+ Nun muss kann ich die Auszeichnung der Symbole verlassen.
+ In der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ausgezeichnete-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der ausgezeichneten Symbole kann ich in das Kästchen mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+einfache Symbole
+\begin_inset Quotes grd
+\end_inset
+
+ eintreten.
+ In der aufgerufenen Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:einfache-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kann ich in das Kästchen mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+Zahlen
+\begin_inset Quotes grd
+\end_inset
+
+ eintreten.
+ In der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ziffern"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kann ich in das Kästchen mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+2
+\begin_inset Quotes grd
+\end_inset
+
+ eintreten.
+ Anschließend kann ich alle Kästchen verlassen.
+ Insbesondere in der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:zusammengesetzte-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+zusammengesetzte Symbole
+\begin_inset Quotes grd
+\end_inset
+
+ kann ich den Ausgang wählen.
+ Damit hätte ich gezeigt,
+ wie das Symbol 
+\begin_inset Formula $x^{2}$
+\end_inset
+
+ mit Hilfe der Flussdiagramme gezeigt werden können.
+ Jedoch denke ich,
+ dass diese Erläuterungen wahrscheinlich extrem ausführlich sind für so etwas kleines wie den Ausdruck 
+\begin_inset Formula $x^{2}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bitte beachte übrigens,
+ dass bei zusammengesetzten Symbolen diese immer aus endlich vielen Elementen bestehen müssen (auch wenn ich den Begriff der 
+\begin_inset Quotes gld
+\end_inset
+
+Endlichkeit
+\begin_inset Quotes grd
+\end_inset
+
+ noch einmal neu fassen werde).
+\end_layout
+
+\begin_layout Standard
+Es ist mir erst jetzt aufgefallen,
+ dass ich den Gleichheitsbegriff von Symbolen bis jetzt nicht definiert habe.
+ Das Symbol 
+\begin_inset Formula 
+\[
+\Lleftarrow\mathllap{\Rrightarrow}
+\]
+
+\end_inset
+
+sei definiert als 
+\begin_inset Quotes gld
+\end_inset
+
+nach Übereinkunft gleichbedeutend
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Damit will ich zum Ausdruck bringen,
+ dass ich die Bedeutungen der Symbole Links und Rechts nach Übereinkunft gleich seien.
+ Das Symbol 
+\begin_inset Formula $\neg$
+\end_inset
+
+ bedeutet 
+\begin_inset Quotes gld
+\end_inset
+
+nicht
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Ich habe dem Symbol sogar ein einen eigenen Abschnitt gewidmet:
+ Schaue unter dem Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Negation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ nach,
+ was ich alles dazu zu sagen habe.
+\end_layout
+
+\begin_layout Standard
+Hier nun die entsprechende Definition der Gleichheit von Symbolen.
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:Gleichheit-von-Symbolen"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $A$
+\end_inset
+
+ sowie 
+\begin_inset Formula $B$
+\end_inset
+
+ Metasymbole.
+ Dann sei 
+\begin_inset Formula 
+\[
+A=B
+\]
+
+\end_inset
+
+falls beide Metasymbole aus einem Symbol bestehen,
+ welches bei beiden Symbolen gleich sind.
+ Besteht das eine Symbol aus einem Symbol und das andere Symbol aus mehreren Symbolen,
+ dann seien die Symbole verschieden.
+ Nun bestehen beide Symbole gemäß Voraussetzung aus mehreren Symbolen,
+ es sei also
+\begin_inset Formula 
+\begin{eqnarray*}
+A & = & A_{1}\,A_{2}\\
+B & = & B_{1}\,B_{2}
+\end{eqnarray*}
+
+\end_inset
+
+Dabei setze ich voraus,
+ dass 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $B_{1}$
+\end_inset
+
+ je aus einem einzelnen Symbol bestehen.
+ Dann seien die Symbole 
+\begin_inset Formula $A$
+\end_inset
+
+ und 
+\begin_inset Formula $B$
+\end_inset
+
+ gleich,
+ falls die Symbole 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $B_{1}$
+\end_inset
+
+ gleich sind und die Symbole 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ und 
+\begin_inset Formula $B_{2}$
+\end_inset
+
+ gleich sind.
+ Weiter sei 
+\begin_inset Formula 
+\[
+A\neq B\Lleftarrow\mathllap{\Rrightarrow}\neg\left(A=B\right)
+\]
+
+\end_inset
+
+In Worten.
+ Besteht sowohl 
+\begin_inset Formula $A$
+\end_inset
+
+ wie auch 
+\begin_inset Formula $B$
+\end_inset
+
+ aus einem Symbol,
+ dann seien diese zwei Symbole verschieden,
+ falls sie nicht gleich seien.
+ Natürlich ist diese Definition nahezu an der Grenze zum Sinnlosen.
+ Aber wenn Du Dir den Satz des ausgeschlossenen Dritten (siehe Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:ausgeschlossener-Dritter"
+nolink "false"
+
+\end_inset
+
+) vor Augen hältst,
+ dann macht es durch aus Sinn,
+ zu definieren,
+ dass etwas dann gelte,
+ falls etwas anderes nicht gelte.
+ Bestehen jedoch 
+\begin_inset Formula $A$
+\end_inset
+
+ wie auch 
+\begin_inset Formula $B$
+\end_inset
+
+ aus mehreren Symbolen,
+ ist also 
+\begin_inset Formula 
+\begin{eqnarray*}
+A & = & A_{1}\,A_{2}\\
+B & = & B_{1}\,B_{2}
+\end{eqnarray*}
+
+\end_inset
+
+und bestehen 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $B_{1}$
+\end_inset
+
+ aus genau einem Symbol,
+ dann ist 
+\begin_inset Formula $A_{1}\neq B_{1}$
+\end_inset
+
+ oder 
+\begin_inset Formula $A_{2}\neq B_{2}$
+\end_inset
+
+.
+ Besteht 
+\begin_inset Formula $A$
+\end_inset
+
+ aus einem Symbol und 
+\begin_inset Formula $B$
+\end_inset
+
+ aus mehreren Symbolen oder 
+\begin_inset Formula $A$
+\end_inset
+
+ aus mehreren Symbolen und 
+\begin_inset Formula $B$
+\end_inset
+
+ aus einem Symbol,
+ dann seien die beiden Symbole ebenfalls verschieden.
+ Weiter gelte einerseits
+\begin_inset Formula 
+\[
+A=A
+\]
+
+\end_inset
+
+In Worten:
+ Per Definition sei jedes Symbol gleich sich selbst.
+ Andererseits (und ich hoffe,
+ das sei kein 
+\begin_inset Quotes gld
+\end_inset
+
+Verbrechen
+\begin_inset Quotes grd
+\end_inset
+
+,
+ wenn ich das so fordere),
+ folgere aus der Gleichheit von 
+\begin_inset Formula $A$
+\end_inset
+
+ und 
+\begin_inset Formula $B$
+\end_inset
+
+ auch die Gleichheit von 
+\begin_inset Formula $B$
+\end_inset
+
+ und 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+Schlussendlich - und das ist wirklich einmalig in diesem Skript - liegt es außerhalb der Mathematik,
+ um zu entscheiden,
+ ob zwei verschiedene Symbole,
+ welche aus einem Symbol bestehen,
+ gleich sind oder nicht.
+ Es wird jedoch angenommen,
+ dass eine solche Unterscheidung zumindest mit einiger Übung möglich ist.
+\end_layout
+
+\begin_layout Standard
+Der letzte Abschnitt mag auf Dich seltsam wirken.
+ Trotzdem möchte ich Dich weitere Diskussion bezüglich den Symbolen möchte in das Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Vorbereitungen-natuerliche-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ über die Vorbereitungen zu den natürlichen Zahlen verschieben - etwa unter der entsprechenden Anmerkung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Anmerkung-bezueglich-Gleichheit-von-Symbolen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ Nachfolgend möchte ich die Untersuchungen über die naive Logik weiterführen.
+\end_layout
+
+\begin_layout Section
+Wie geht es nun weiter?
+\end_layout
+
+\begin_layout Standard
+Im Teil über die Logik versuche ich,
+ mir über den Wahrheitsgehalt von Symbolen und Aussagen (als Verknüpfungen von Symbolen) Gedanken zu machen und wie Aussagen verknüpft werden können.
+ Im Teil über die natürlichen Zahlen versuche ich mir,
+ einen mir Gedanken darüber machen zu können,
+ was über die Verkettung von gleichen Symbolen ausgesagt werden kann.
+\end_layout
+
+\begin_layout Section
+kleine Zusammenfassung des Kapitels
+\end_layout
+
+\begin_layout Standard
+Symbole sind sozusagen 
+\begin_inset Quotes gld
+\end_inset
+
+alles und nichts
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Sie können betrachtet werden als etwas,
+ was auf etwas anderes verweist,
+ ohne es selbst zu sein.
+ Aber nicht alles ist ein Symbol.
+ Beispielsweise kann nicht symbolisch gegessen oder getrunken werden (obwohl Kinder im Spiel so tun,
+ als würden sie es machen).
+ Es sind sehr viele Arten von Symbolen vorhanden.
+ Da gibt es etwa Buchstaben und Zahlen,
+ andere Zeichen und die Art der Darstellung (wie Hoch- oder Tiefstellung).
+ Symbole können verkettet werden.
+ Und es gibt Symbole,
+ welche auf andere Symbole verweisen.
+ Diese Art von Symbole werden 
+\begin_inset Quotes gld
+\end_inset
+
+Metasymbole
+\begin_inset Quotes grd
+\end_inset
+
+ geheißen
+\end_layout
+
+\end_body
+\end_document
