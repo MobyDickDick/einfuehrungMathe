@@ -2488,7 +2488,7 @@ Nun möchte ich die oberen zwei Lemmata zu einem Satz zusammenfügen:
 \begin_layout Proposition
 \begin_inset CommandInset label
 LatexCommand label
-name "prop:Kommutativitaet-Mengengleichheit"
+name "prop:Symmetrie-Mengengleichheit"
 
 \end_inset
 
@@ -3660,7 +3660,7 @@ nolink "false"
  Im Beweis des Satzes 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutativitaet-Mengengleichheit"
+reference "prop:Symmetrie-Mengengleichheit"
 plural "false"
 caps "false"
 noprefix "false"
@@ -4475,7 +4475,7 @@ A\Delta B=A\backslash B\cup B\backslash A
 Da die Mengengleichheit 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutativitaet-Mengengleichheit"
+reference "prop:Symmetrie-Mengengleichheit"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5758,7 +5758,7 @@ nolink "false"
 Da die Gleichheit von Mengen gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutativitaet-Mengengleichheit"
+reference "prop:Symmetrie-Mengengleichheit"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5934,7 +5934,7 @@ Dies entspricht jedoch dem ersten Teil der Behauptung.
  Da die Gleichheit von Mengen gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutativitaet-Mengengleichheit"
+reference "prop:Symmetrie-Mengengleichheit"
 plural "false"
 caps "false"
 noprefix "false"
@@ -7328,7 +7328,7 @@ M=M\backslashØ
 Da die Mengengleichheit gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutativitaet-Mengengleichheit"
+reference "prop:Symmetrie-Mengengleichheit"
 plural "false"
 caps "false"
 noprefix "false"
@@ -9316,7 +9316,7 @@ Aber es sind eben zwei verschiedene Dinge,
 \end_layout
 
 \begin_layout Section
-Eigenschaften von Schnittmengen
+Kommutativität von Schnittmengen
 \end_layout
 
 \begin_layout Standard
@@ -9807,7 +9807,18 @@ x\in A\Leftrightarrow x\in M\wedge\neg\left(x\in M\right)
 
 \end_inset
 
-Somit muss gelten
+Gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Definition-Menge-mit-Hilfe-Aussagenlogik"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Definition von Schnittmengen kann ich schreiben:
 \begin_inset Formula 
 \[
 x\in A\cap B\Leftrightarrow x\in A\wedge x\in B
@@ -10345,7 +10356,7 @@ Denn ich habe als Menge mit der Bezeichnung
  Gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutativitaet-Mengengleichheit"
+reference "prop:Symmetrie-Mengengleichheit"
 plural "false"
 caps "false"
 noprefix "false"
@@ -10686,6 +10697,1279 @@ nolink "false"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Kommutation-Schnittmenge-leere-Mengen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ In diesen Lemmata sind alle möglichen Fälle aufgelistet.
+ Da nun die Behauptung für alle möglichen Fälle wahr ist,
+ schliesse ich,
+ dass sie immer wahr ist.
+ Aus diesem Grund erachte ich den Beweis der Behauptung als erbracht und beende an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Section
+Kommutativität von Vereinigungsmengen
+\end_layout
+
+\begin_layout Standard
+Das letzte Kapitel kann in dieses Kapitel kopiert und angepasst werden.
+ Auch Vereinigungsmengen sind kommutativ.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Vereingiungsmengen-nichtleerer-Menge-sind-kommutativ"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $A,B$
+\end_inset
+
+ Mengen,
+ welche in sich selber und in Bezug auf die anderen Mengen nicht widersprüchlich seien.
+ Weiter seien weder 
+\begin_inset Formula $A$
+\end_inset
+
+ noch 
+\begin_inset Formula $B$
+\end_inset
+
+ leere Mengen.
+ Dann gilt:
+\begin_inset Formula 
+\[
+A\cup B=B\cup A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Da sowohl 
+\begin_inset Formula $A$
+\end_inset
+
+ wie auch 
+\begin_inset Formula $B$
+\end_inset
+
+ nicht leer sind,
+ gilt gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Definition-Menge-mit-Hilfe-Aussagenlogik"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Vereinigungsmenge oben,
+ insbesondere die Definition der Vereinigungsmenge:
+\begin_inset Formula 
+\[
+x\in A\cup B\Leftrightarrow x\in A\vee x\in B
+\]
+
+\end_inset
+
+Gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Kommutation-Disjunktion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Kommutation der Disjunktion gilt 
+\begin_inset Formula 
+\[
+x\in A\vee x\in B\Leftrightarrow x\in B\vee x\in A
+\]
+
+\end_inset
+
+Da die Äquivalenz gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ transitiv ist,
+ kann ich aufgrund der Aussagen
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+x\in A\cup B\Leftrightarrow x\in A\vee x\in B
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+x\in A\vee x\in B\Leftrightarrow x\in B\vee x\in A
+\]
+
+\end_inset
+
+dann schreiben:
+\begin_inset Formula 
+\[
+x\in A\cup B\Leftrightarrow x\in B\vee x\in A
+\]
+
+\end_inset
+
+Dann gilt gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Definition-Menge-mit-Hilfe-Aussagenlogik"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Menge oben,
+ insbesondere die Definition der Vereinigungsmenge wiederum:
+\begin_inset Formula 
+\[
+x\in B\cup A\Leftrightarrow x\in B\vee x\in A
+\]
+
+\end_inset
+
+Gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Kommutation-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Kommutativität der Äquivalenz kann ich gemäß dem abgeschwächten Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Schlussfolgerung-entschaerfte-Version"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Schlussfolgerung folgern,
+ dass auch gilt
+\begin_inset Formula 
+\[
+x\in B\vee x\in A\Leftrightarrow x\in B\cup A
+\]
+
+\end_inset
+
+Nun habe ich weiter oben gezeigt,
+ dass gilt
+\begin_inset Formula 
+\[
+x\in A\cup B\Leftrightarrow x\in B\vee x\in A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Somit kann ich gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Transitivität der Äquivalenz folgern,
+ dass gilt
+\begin_inset Formula 
+\[
+x\in A\cup B\Leftrightarrow x\in B\cup A
+\]
+
+\end_inset
+
+Gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Definition-Menge-mit-Hilfe-Aussagenlogik"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Menge,
+ insbesondere der Mengengleichheit,
+ bedeutet diese jedoch,
+ dass gilt:
+\begin_inset Formula 
+\[
+A\cup B=B\cup A
+\]
+
+\end_inset
+
+Damit hätte ich die Behauptung des Satzes bewiesen und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Backward References
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Flex Forward References
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im Gegensatz zum letzten Kapitel möchte ich diesmal auf eine Visualisierung des Satzes verzichten.
+\end_layout
+
+\begin_layout Standard
+Nun möchte ich den Beweis in demjenigen Fall führen,
+ dass die Menge 
+\begin_inset Formula $A$
+\end_inset
+
+ leer sei.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Kommuatitivitaet-Vereinigungsmenge-erste-Menge-leer"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $A$
+\end_inset
+
+ und 
+\begin_inset Formula $B$
+\end_inset
+
+ Mengen,
+ welche weder in sich selber noch in Bezug auf die anderen Symbole des Lemmas widersprüchlich seien.
+ Weiter sei die Menge 
+\begin_inset Formula $A$
+\end_inset
+
+ leer,
+ die Menge 
+\begin_inset Formula $B$
+\end_inset
+
+ jedoch nicht.
+ Dann gilt die Aussage 
+\begin_inset Formula 
+\[
+A\cup B=B\cup A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Nun sei 
+\begin_inset Formula $A$
+\end_inset
+
+ die leere Menge.
+ Weiter sei 
+\begin_inset Formula $M$
+\end_inset
+
+ eine beliebige,
+ jedoch nicht leere Menge.
+ Gemäß dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Existenz-nichtleere-Mengen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ muss es eine solche nichtleere Menge 
+\begin_inset Formula $M$
+\end_inset
+
+ geben.
+ Dann kann ich gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:leere-Menge-aussagenlogische-Definition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der leeren Menge schreiben:
+\begin_inset Formula 
+\[
+x\in A\Leftrightarrow x\in M\wedge\neg\left(x\in M\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Definition-Menge-mit-Hilfe-Aussagenlogik"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Definition von Vereinigungsmengen kann ich schreiben:
+\begin_inset Formula 
+\[
+x\in A\cap B\Leftrightarrow x\in A\wedge x\in B
+\]
+
+\end_inset
+
+Ich kann gemäß dem ersten erweiterten Substitutionssatz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:1.-erweiterter-Substitutionssatz-Disjunktion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Disjunktion schreiben:
+\begin_inset Formula 
+\begin{align*}
+\left(x\in A\Leftrightarrow x\in M\wedge\neg\left(x\in M\right)\right) & \Rightarrow\\
+\left(x\in A\vee x\in B\Leftrightarrow x\in M\wedge\neg\left(x\in M\right)\vee x\in B\right)
+\end{align*}
+
+\end_inset
+
+Die Aussage 
+\begin_inset Formula 
+\[
+\left(x\in A\Leftrightarrow x\in M\wedge\neg\left(x\in M\right)\right)
+\]
+
+\end_inset
+
+ist ja per Definition wahr.
+ Somit kann ich gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:1.-erweiterter-Substitutionssatz-Konjunktion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Schlussfolgerung folgern,
+ dass die Aussage 
+\begin_inset Formula 
+\[
+x\in A\vee x\in B\Leftrightarrow x\in M\wedge\neg\left(x\in M\right)\vee x\in B
+\]
+
+\end_inset
+
+ebenfalls wahr ist.
+ Also kann ich schreiben,
+ dass gilt:
+\begin_inset Formula 
+\begin{align*}
+x\in A\vee x\in B & \Leftrightarrow\\
+x\in M\wedge\neg\left(x\in M\right)\vee x\in B
+\end{align*}
+
+\end_inset
+
+Beachte,
+ dass ich die Klammern um die Aussage 
+\begin_inset Formula $x\in M\wedge\neg\left(x\in M\right)$
+\end_inset
+
+ weglassen kann,
+ weil die Konjunktion per Definition stärker als die Disjunktion bindet.
+\end_layout
+
+\begin_layout Proof
+Da die Äquivalenz gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ transitiv ist,
+ kann ich schreiben
+\begin_inset Formula 
+\begin{align*}
+\left(x\in A\cap B\Leftrightarrow x\in A\wedge x\in B\right) & \wedge\\
+\left(\left(x\in A\vee x\in B\right)\Leftrightarrow x\in M\wedge\neg\left(x\in M\right)\vee x\in B\right) & \Rightarrow\\
+\left(x\in A\cup B\Leftrightarrow x\in M\wedge\neg\left(x\in M\right)\vee x\in B\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Da die Disjunktoin gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Kommutation-Disjunktion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kommutativ ist,
+ kann ich dann auch schreiben:
+\begin_inset Formula 
+\[
+x\in M\wedge\neg\left(x\in M\right)\wedge x\in B\Leftrightarrow x\in B\wedge x\in M\wedge\neg\left(x\in M\right)
+\]
+
+\end_inset
+
+Und wiederum gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ Transitivität der Äquivalenz kann ich dann folgern,
+ dass gilt:
+\begin_inset Formula 
+\begin{align*}
+\left(x\in A\cap B\Leftrightarrow x\in M\wedge\neg\left(x\in M\right)\wedge x\in B\right) & \wedge\\
+\left(x\in M\wedge\neg\left(x\in M\right)\wedge x\in B\Leftrightarrow x\in B\wedge x\in M\wedge\neg\left(x\in M\right)\right) & \Rightarrow\\
+\left(x\in A\cap B\Leftrightarrow x\in B\wedge x\in M\wedge\neg\left(x\in M\right)\right)
+\end{align*}
+
+\end_inset
+
+Da die die Aussage 
+\begin_inset Formula 
+\[
+x\in A\Leftrightarrow x\in M\wedge\neg\left(x\in M\right)
+\]
+
+\end_inset
+
+als wahr angenommen wird und die Äquivalenz gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Kommutation-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kommutativ ist,
+ kann ich gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Schlussfolgerung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Schlussfolgerung schreiben,
+ dass auch gilt:
+\begin_inset Formula 
+\[
+x\in M\wedge\neg\left(x\in M\right)\Leftrightarrow x\in A
+\]
+
+\end_inset
+
+Nun kann ich mich wiederum der Aussage 
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+x\in B\wedge x\in M\wedge\neg\left(x\in M\right)
+\]
+
+\end_inset
+
+zuwenden.
+ Gemäß dem zweiten erweiterten Substitutionssatz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:2.-erweiterter-Substitutionssatz-Konjunktion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Konjunktion kann ich schreiben,
+ dass gilt
+\begin_inset Formula 
+\begin{align*}
+\left(x\in M\wedge\neg\left(x\in M\right)\Leftrightarrow x\in A\right) & \Rightarrow\\
+\left(x\in B\wedge x\in M\wedge\neg\left(x\in M\right)\Leftrightarrow x\in B\wedge x\in A\right)
+\end{align*}
+
+\end_inset
+
+Da ich oben geschlossen habe,
+ dass die Aussage
+\begin_inset Formula 
+\[
+x\in M\wedge\neg\left(x\in M\right)\Leftrightarrow x\in A
+\]
+
+\end_inset
+
+wahr ist,
+ kann ich gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Schlussfolgerung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Schlussfolgerung schließen,
+ dass gilt:
+\begin_inset Formula 
+\[
+x\in B\wedge x\in M\wedge\neg\left(x\in M\right)\Leftrightarrow x\in B\wedge x\in A
+\]
+
+\end_inset
+
+Und wiederum kann ich gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Transitivität der Äquivalenz schließen,
+ dass gilt:
+\begin_inset Formula 
+\begin{align*}
+\left(x\in A\cap B\Leftrightarrow x\in B\wedge x\in M\wedge\neg\left(x\in M\right)\right) & \wedge\\
+\left(x\in B\wedge x\in M\wedge\neg\left(x\in M\right)\Leftrightarrow x\in B\wedge x\in A\right) & \Rightarrow\\
+\left(x\in A\cap B\Leftrightarrow x\in B\wedge x\in A\right)
+\end{align*}
+
+\end_inset
+
+Nun bin ich fast am Ziel meiner Träume
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+schön wäre es.
+\end_layout
+
+\end_inset
+
+.
+ Gemäß der Definition der Menge 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Definition-Menge-mit-Hilfe-Aussagenlogik"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ insbesondere derjenigen der Schnittmenge,
+ kann ich schreiben:
+\begin_inset Formula 
+\[
+x\in B\cap A\Leftrightarrow x\in B\wedge x\in A
+\]
+
+\end_inset
+
+Da die Äquivalenz gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Kommutation-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kommutiert,
+ kann ich schreiben:
+\begin_inset Formula 
+\begin{align*}
+\left(x\in B\cap A\Leftrightarrow x\in B\wedge x\in A\right) & \Leftrightarrow\\
+\left(x\in B\wedge x\in A\Leftrightarrow x\in B\cap A\right)
+\end{align*}
+
+\end_inset
+
+Gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Implikation-Implikation-aus-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ welcher besagt,
+ dass aus der Äquivalenz die Implikation folgt,
+ kann ich dann schlussfolgern,
+ dass gilt:
+\begin_inset Formula 
+\begin{align*}
+\left(x\in B\cap A\Leftrightarrow x\in B\wedge x\in A\right) & \Rightarrow\\
+\left(x\in B\wedge x\in A\Leftrightarrow x\in B\cap A\right)
+\end{align*}
+
+\end_inset
+
+Gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Schlussfolgerung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Schlussfolgerung kann ich schreiben,
+ dass gilt
+\begin_inset Formula 
+\begin{align*}
+\left(x\in B\cap A\Leftrightarrow x\in B\wedge x\in A\right) & \wedge\\
+\left(\left(x\in B\cap A\Leftrightarrow x\in B\wedge x\in A\right)\right. & \Rightarrow\\
+\left.\left(x\in B\wedge x\in A\Leftrightarrow x\in B\cap A\right)\right) & \Rightarrow\\
+\left(x\in B\wedge x\in A\Leftrightarrow x\in B\cap A\right)
+\end{align*}
+
+\end_inset
+
+Das heißt,
+ dass ich annehmen kann,
+ dass die Aussage
+\begin_inset Formula 
+\[
+x\in B\wedge x\in A\Leftrightarrow x\in B\cap A
+\]
+
+\end_inset
+
+wahr ist.
+ Ich kann jetzt schreiben,
+ dass gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Transitivität der Äquivalenz gilt:
+\begin_inset Formula 
+\begin{align*}
+\left(x\in A\cap B\Leftrightarrow x\in B\wedge x\in A\right) & \wedge\\
+\left(x\in B\wedge x\in A\Leftrightarrow x\in B\cap A\right) & \Rightarrow\\
+\left(x\in A\cap B\Leftrightarrow x\in B\cap A\right)
+\end{align*}
+
+\end_inset
+
+Also kann ich schließen,
+ dass die Aussage gilt:
+\begin_inset Formula 
+\[
+x\in A\cap B\Leftrightarrow x\in B\cap A
+\]
+
+\end_inset
+
+Dies ist jedoch genau die Aussage,
+ welche ich beweisen wollte.
+ Da ich nun meine,
+ den Beweis für die Richtigkeit der Behauptung erbracht zu haben,
+ erlaube ich mir an dieser Stelle,
+ auf die weitere Beweisführung zu verzichten und den Beweis an dieser Stelle also zu beenden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Backward References
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Flex Forward References
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nun habe ich diesen Fall auch bewiesen.
+ Dann möchte ich denjenigen Fall beweisen in welchem die Menge nicht leer,
+ die Menge 
+\begin_inset Formula $B$
+\end_inset
+
+ jedoch leer sei.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Kommutation-Schnittmenge-zweite-Menge-leer-1"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $A$
+\end_inset
+
+ und 
+\begin_inset Formula $B$
+\end_inset
+
+ Mengen,
+ welche weder in sich selber noch in Bezug auf die anderen Symbole des Lemmas widersprüchlich seien.
+ Weiter sei die Menge 
+\begin_inset Formula $A$
+\end_inset
+
+ nicht leer,
+ die Menge 
+\begin_inset Formula $B$
+\end_inset
+
+ jedoch leer.
+ Dann gilt die Aussage 
+\begin_inset Formula 
+\[
+A\cap B=B\cap A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Gemäß dem letzten Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Kommuatitivitaet-Vereinigungsmenge-erste-Menge-leer"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kann ich mindestens folgern,
+ dass gilt:
+ 
+\begin_inset Formula 
+\[
+B\cap A=A\cap B
+\]
+
+\end_inset
+
+Denn ich habe als Menge mit der Bezeichnung 
+\begin_inset Formula $A$
+\end_inset
+
+ des letzten Lemmas die Menge mit der Bezeichnung 
+\begin_inset Formula $B$
+\end_inset
+
+ verwendet und als Menge mit der Bezeichnung 
+\begin_inset Formula $B$
+\end_inset
+
+ des letzten Lemmas die Menge mit der Bezeichnung 
+\begin_inset Formula $A$
+\end_inset
+
+ verwendet.
+ Gemäß dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Symmetrie-Mengengleichheit"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ist die Mengengleichheit kommutativ.
+ Darum kann ich auch schreiben,
+ dass gilt
+\begin_inset Formula 
+\[
+A\cap B=B\cap A
+\]
+
+\end_inset
+
+Dies ist jedoch gerade die Behauptung.
+ Darum bin ich der Meinung,
+ das ich den Beweis für die Richtigkeit der Behauptung erbracht und beende aus diesem Grund die weitere Beweisführung.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Backward References
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Flex Forward References
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Kommutation-Schnittmenge-leere-Mengen-1"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $A$
+\end_inset
+
+ und 
+\begin_inset Formula $B$
+\end_inset
+
+ Mengen,
+ welche weder in sich selber noch in Bezug auf die anderen Symbole des Lemmas widersprüchlich seien.
+ Weiter seien sowohl die Mengen 
+\begin_inset Formula $A$
+\end_inset
+
+ wie auch 
+\begin_inset Formula $B$
+\end_inset
+
+ leer.
+ Dann gilt die Aussage 
+\begin_inset Formula 
+\[
+A\cap B=B\cap A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Schnittmenge"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Schnittmenge kann ich schreiben,
+ dass gilt:
+\begin_inset Formula 
+\[
+x\in A\cap B\Leftrightarrow x\in A\wedge x\in B
+\]
+
+\end_inset
+
+Es sei 
+\begin_inset Formula $M$
+\end_inset
+
+ eine Menge,
+ welche nicht leer sei.
+ Eine solche Menge muss es gemäß dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Existenz-nichtleere-Mengen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ geben.
+ Dann kann ich gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:leere-Menge-aussagenlogische-Definition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der leeren Menge schreiben:
+\begin_inset Formula 
+\[
+x\in A\Leftrightarrow x\in M\wedge\neg\left(x\in M\right)
+\]
+
+\end_inset
+
+Gemäß dem ersten erweiterten Substitutionssatz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Substitutionssatz-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Äquivalenz kann ich schreiben,
+ dass gilt:
+\begin_inset Formula 
+\[
+x\in A\wedge x\in B\Leftrightarrow\left(x\in M\wedge\neg\left(x\in M\right)\right)\wedge x\in B
+\]
+
+\end_inset
+
+Da die Äquivalenz gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ transitiv ist,
+ kann ich schreiben,
+ dass gilt:
+\begin_inset Formula 
+\[
+x\in A\cap B\Leftrightarrow\left(x\in M\wedge\neg\left(x\in M\right)\right)\wedge x\in B
+\]
+
+\end_inset
+
+Weiter kann ich mit der Aussage 
+\begin_inset Formula 
+\[
+x\in B\Leftrightarrow\left(x\in M\wedge\neg\left(x\in M\right)\right)
+\]
+
+\end_inset
+
+ und dem zweiten erweiterten Substitutionssatz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:1.-erweiterter-Substitutionssatz-Disjunktion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Konjunktion schreiben,
+ dass gilt:
+\begin_inset Formula 
+\[
+\left(x\in M\wedge\neg\left(x\in M\right)\right)\wedge x\in B\Leftrightarrow\left(x\in M\wedge\neg\left(x\in M\right)\right)\wedge\left(x\in M\wedge\neg\left(x\in M\right)\right)
+\]
+
+\end_inset
+
+Wiederum kann ich von dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Transitivität der Äquivalenz Gebrauch machen und erhalte die Aussage
+\begin_inset Formula 
+\[
+x\in A\cap B\Leftrightarrow\left(x\in M\wedge\neg\left(x\in M\right)\right)\wedge\left(x\in M\wedge\neg\left(x\in M\right)\right)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Backward References
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Flex Forward References
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ich möchte die vorherigen Lemmata zusammenführen zum 
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Schnittmengenbildung-ist-kommutativ-1"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $A,B$
+\end_inset
+
+ beliebige Mengen,
+ welche in sich selbst und in Bezug auf die anderen Symbole des Satzes widerspruchsfrei seien.
+ Dann ist die Schnittmengenbildung von 
+\begin_inset Formula $A$
+\end_inset
+
+ und 
+\begin_inset Formula $B$
+\end_inset
+
+ kommutativ.
+ Es gilt also:
+\begin_inset Formula 
+\[
+A\cap B=B\cap A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Zum Beweis siehe die Lemmata 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Vereingiungsmengen-nichtleerer-Menge-sind-kommutativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Kommuatitivitaet-Vereinigungsmenge-erste-Menge-leer"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Kommutation-Schnittmenge-zweite-Menge-leer-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ sowie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Kommutation-Schnittmenge-leere-Mengen-1"
 plural "false"
 caps "false"
 noprefix "false"
@@ -11718,6 +13002,33 @@ B\backslash A & =B\backslash C
 \end_inset
 
 
+\end_layout
+
+\begin_layout Proof
+Ich schreibe schon ziemlich lange an diesem Beweis (zu lange).
+ Grundsätzlich ist zu bemerken,
+ dass die Unterscheidung zwischen leeren und nichtleeren Mengen in diesem Fall hinfällig ist.
+ Denn bei den Beweisen werden logische Sätze zitiert.
+ Und diese sind wahr,
+ unabhängig davon,
+ ob die einzelnen Aussagen wahr oder nicht wahr sind.
+ Bei der leeren Menge 
+\begin_inset Formula $\textrm{Ø}$
+\end_inset
+
+ ist es eben so,
+ dass die Aussage
+\begin_inset Formula 
+\[
+x\in\textrm{Ø}
+\]
+
+\end_inset
+
+immer falsch ist.
+ Trotzdem werde ich versuchen,
+ den Beweis aufzuschreiben,
+ falls die Mengen leer sind.
 \end_layout
 
 \begin_layout Proof
@@ -13635,16 +14946,7 @@ Damit habe ich die erste Behauptung im Fall bewiesen,
 \end_layout
 
 \begin_layout Proof
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-aktuelle Stelle 27.10.2024
-\end_layout
-
-\end_inset
-
- Ich möchte nun den Beweis der zweiten Behauptung erbringen.
+Ich möchte nun den Beweis der zweiten Behauptung erbringen.
  Da die Schnittmengenbildung gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -13751,6 +15053,19 @@ Damit habe ich endlich den Beweis für die zweite Behauptung erbracht,
 \end_inset
 
  leer ist.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+aktuelle Stelle 27.10.2024
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Proof
@@ -13984,16 +15299,16 @@ nolink "false"
 \begin_layout Proof
 \begin_inset Formula 
 \begin{align*}
-A\cap B & =A\cap\emptyset=\emptyset\\
-C\cap B & =C\cap\emptyset=\emptyset
+A\cup B & =A\cup\emptyset=A\\
+C\cup B & =C\cup\emptyset=B
 \end{align*}
 
 \end_inset
 
-Also kann ich erneut gemäss dem Satz 
+Also kann ich gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "def:Aequivalenzrelation"
+reference "prop:Symmetrie-Mengengleichheit"
 plural "false"
 caps "false"
 noprefix "false"
@@ -14002,12 +15317,77 @@ nolink "false"
 \end_inset
 
 ,
- dass die Menge eine Äquivalenzrelation ist,
+ welcher besagt,
+ dass dass die Mengengleichheit symmetrisch ist,
+ folgern,
+ dass die Mengengleichheit symmetrisch ist,
+ folgern:
+\begin_inset Formula 
+\begin{align*}
+A & =A\cup B
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Mit der Transitivität der Mengengleichheit gemäss Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Mengengleichheit"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kann ich mit der letzten Gleichung sowie der Gleichung 
+\begin_inset Formula 
+\[
+A\cup B=C\cup B
+\]
+
+\end_inset
+
+folgern,
+ dass gilt:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+A=C\cup B
+\]
+
+\end_inset
+
+Wiederum gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Mengengleichheit"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Transitivität der Mengengleichheit sowie der Gleichheit
+\begin_inset Formula 
+\[
+C\cup B=C
+\]
+
+\end_inset
+
  folgern,
  dass gilt:
 \begin_inset Formula 
 \[
-A\cap B=C\cap B
+A=C
 \]
 
 \end_inset
@@ -14016,7 +15396,7 @@ A\cap B=C\cap B
 \end_layout
 
 \begin_layout Proof
-Damit habe ich die erste Behauptung im Fall bewiesen,
+Damit habe ich die dritte Behauptung im Fall bewiesen,
  dass eine der Mengen 
 \begin_inset Formula $A,\,B$
 \end_inset
@@ -14026,6 +15406,11 @@ Damit habe ich die erste Behauptung im Fall bewiesen,
 \end_inset
 
  die leere Menge ist.
+ 
+\end_layout
+
+\begin_layout Proof
+Für den Beweis der vierten Behauptung möchte ich von Kommutativität der Vereinigungsmengen gemäss dem Satz xxx
 \end_layout
 
 \begin_layout Chapter
