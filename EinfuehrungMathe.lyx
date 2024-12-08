@@ -4754,7 +4754,7 @@ Den Beweis möchte ich in zwei Teilen gestalten.
 Dann muss zusammen mit dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Kommutation-n-1-natuerliche-Zahlen"
+reference "lem:Kommutativitaet-n-1-natuerliche-Zahlen"
 nolink "false"
 
 \end_inset
@@ -4818,7 +4818,7 @@ Den Anfang für
 Nun muss gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Kommutation-n-1-natuerliche-Zahlen"
+reference "lem:Kommutativitaet-n-1-natuerliche-Zahlen"
 nolink "false"
 
 \end_inset
@@ -4898,7 +4898,7 @@ n_{3}=1
 dann kann ich das Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Kommutation-n-1-natuerliche-Zahlen"
+reference "lem:Kommutativitaet-n-1-natuerliche-Zahlen"
 nolink "false"
 
 \end_inset
@@ -12124,7 +12124,7 @@ nolink "false"
 Also muss gemäß dem Korollar 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cor.Satz-Kommutation-Negation-Konjunktion"
+reference "cor.Satz-Kommutativitaet-Negation-Konjunktion"
 nolink "false"
 
 \end_inset
@@ -24269,7 +24269,7 @@ Zu Deiner Erinnerung:
  Dann gilt gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Konjunktion"
+reference "prop:Kommutativitaet-Konjunktion"
 nolink "false"
 
 \end_inset
@@ -24402,7 +24402,7 @@ Zu Deiner Erinnerung.
  Unter dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Disjunktion"
+reference "prop:Kommutativitaet-Disjunktion"
 nolink "false"
 
 \end_inset
@@ -24544,7 +24544,7 @@ Kommutation der Äquivalenz
 Zu Deiner Erinnerung an den Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Aequivalenz"
+reference "prop:Kommutativitaet-Aequivalenz"
 nolink "false"
 
 \end_inset
@@ -28435,7 +28435,7 @@ Zu Deiner Erinnerung:
  Dann gilt gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Konjunktion"
+reference "prop:Kommutativitaet-Konjunktion"
 nolink "false"
 
 \end_inset
@@ -28630,7 +28630,7 @@ Zu Deiner Erinnerung:
  Dann gilt gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Disjunktion"
+reference "prop:Kommutativitaet-Disjunktion"
 nolink "false"
 
 \end_inset
