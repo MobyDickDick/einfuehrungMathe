@@ -6049,7 +6049,7 @@ x\inØ\wedge x\in M
 Da gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Implikation-Aussage-aus-Konjunktion"
+reference "prop:Implikation-Aussage-aus-Konjunktion-erstes-Argument"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6305,7 +6305,7 @@ x\inØ\wedge x\in M
 Da gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Implikation-Aussage-aus-Konjunktion"
+reference "prop:Implikation-Aussage-aus-Konjunktion-erstes-Argument"
 plural "false"
 caps "false"
 noprefix "false"
@@ -28257,7 +28257,7 @@ m_{1}\cong m_{2}\wedge m_{2}\cong m_{3}
 Da gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Implikation-Aussage-aus-Konjunktion"
+reference "prop:Implikation-Aussage-aus-Konjunktion-erstes-Argument"
 plural "false"
 caps "false"
 noprefix "false"
@@ -28318,7 +28318,7 @@ m_{2}\cong m_{3}\wedge m_{1}\cong m_{2}
 Da gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Implikation-Aussage-aus-Konjunktion"
+reference "prop:Implikation-Aussage-aus-Konjunktion-erstes-Argument"
 plural "false"
 caps "false"
 noprefix "false"

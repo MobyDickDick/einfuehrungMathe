@@ -17490,13 +17490,12 @@ nolink "false"
 \begin_layout Proof
 Und aufgrund des 1.
  Substitutionssatzes 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:1.-Substitutionssatz-Implikation"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+aktuelle Stelle
+\end_layout
 
 \end_inset
 
