@@ -188,7 +188,7 @@ Einführung Mathematik
 
 
 \size large
-Version 0.1.196
+Version 0.1.197
 \end_layout
 
 \begin_layout Author
@@ -198,7 +198,7 @@ Markus Demarmels,
 
 \begin_layout Date
 letzte Änderung:
- 02.09.2024
+ 20.12.2024
 \end_layout
 
 \begin_layout Dedicatory
@@ -31142,7 +31142,7 @@ aus Konjunktion folgt Aussage
 Zu Deiner Erinnerung an den Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Implikation-Aussage-aus-Konjunktion"
+reference "prop:Implikation-Aussage-aus-Konjunktion-erstes-Argument"
 nolink "false"
 
 \end_inset
@@ -39028,42 +39028,37 @@ Die folgende Tabelle enthält alle Symbole,
  wie lange die erste Spalte sein wird.
  Falls das Buch einmal fertig ist,
  werde ich die Symbole spaltenweise ordnen.
+ Die nachfolgende Tabelle zeigt die Symboltabelle:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float table
-placement document
-alignment document
-wide false
-sideways false
-status open
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="30" columns="3">
+<features islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<row endhead="true">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Symboltabelle
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
 \end_layout
 
 \begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="30" columns="3">
-<features tabularvalignment="middle" tabularwidth="15cm">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
+Symbol
+\end_layout
 
 \begin_layout Plain Layout
-Symbol
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -39072,7 +39067,21 @@ Symbol
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 Bezeichnung
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -39081,13 +39090,15 @@ Bezeichnung
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\begin{array}{c}
-\mbox{weitere Informationen}\\
-\mbox{siehe Kapitel}
-\end{array}$
-\end_inset
+weitere
+\end_layout
 
- 
+\begin_layout Plain Layout
+Informationen
+\end_layout
+
+\begin_layout Plain Layout
+siehe Kapitel
 \end_layout
 
 \end_inset
@@ -39305,7 +39316,11 @@ nolink "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Menge der natürlichen Zahlen
+Menge der
+\end_layout
+
+\begin_layout Plain Layout
+natürlichen Zahlen
 \end_layout
 
 \end_inset
@@ -39344,7 +39359,7 @@ nolink "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Für alle\SpecialChar ldots
+Für alle \SpecialChar ldots
 
 \end_layout
 
@@ -39385,7 +39400,7 @@ nolink "false"
 
 \begin_layout Plain Layout
 Es gibt,
- es existiert\SpecialChar ldots
+ es existiert \SpecialChar ldots
 
 \end_layout
 
@@ -39425,7 +39440,11 @@ nolink "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Verneinung (Negation einer Aussage)
+Verneinung
+\end_layout
+
+\begin_layout Plain Layout
+(Negation einer Aussage)
 \end_layout
 
 \end_inset
@@ -39503,8 +39522,12 @@ nolink "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Für alle\SpecialChar ldots
- (gleichbedeutend mit 
+Für alle \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Plain Layout
+(gleichbedeutend mit 
 \begin_inset Formula $\forall$
 \end_inset
 
@@ -39587,8 +39610,12 @@ nolink "false"
 
 \begin_layout Plain Layout
 \SpecialChar ldots
- daraus folge per Übereinkunft\SpecialChar ldots
- 
+ daraus folge
+\end_layout
+
+\begin_layout Plain Layout
+per Übereinkunft \SpecialChar ldots
+
 \end_layout
 
 \end_inset
@@ -39627,12 +39654,54 @@ nolink "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\begin{array}{c}
-\mbox{...sei per Übereinkunft}\\
-\mbox{gleichbedeutend mit...}
-\end{array}$
-\end_inset
+\SpecialChar ldots
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+sei per Übereinkunft
+\end_layout
 
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+gleichbedeutend mit
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ \SpecialChar ldots
 
 \end_layout
 
@@ -39672,8 +39741,12 @@ nolink "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Es gibt\SpecialChar ldots
- (gleichbedeutend mit 
+Es gibt \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Plain Layout
+(gleichbedeutend mit 
 \begin_inset Formula $\exists$
 \end_inset
 
@@ -39717,8 +39790,8 @@ nolink "false"
 
 \begin_layout Plain Layout
 \SpecialChar ldots
- daraus folgt\SpecialChar ldots
- 
+ daraus folgt \SpecialChar ldots
+
 \end_layout
 
 \end_inset
@@ -39759,8 +39832,8 @@ nolink "false"
 \begin_layout Plain Layout
 \SpecialChar ldots
  falls gilt,
- dass\SpecialChar ldots
- 
+ dass \SpecialChar ldots
+
 \end_layout
 
 \end_inset
@@ -39800,9 +39873,13 @@ nolink "false"
 
 \begin_layout Plain Layout
 \SpecialChar ldots
- ist genau dann wahr,
- falls\SpecialChar ldots
- 
+ ist genau dann
+\end_layout
+
+\begin_layout Plain Layout
+wahr,
+ falls \SpecialChar ldots
+
 \end_layout
 
 \end_inset
@@ -39842,8 +39919,12 @@ nolink "false"
 
 \begin_layout Plain Layout
 \SpecialChar ldots
- ist ebenso wenig wahr wie \SpecialChar ldots
- 
+ ist ebenso
+\end_layout
+
+\begin_layout Plain Layout
+wenig wahr wie \SpecialChar ldots
+
 \end_layout
 
 \end_inset
@@ -39883,7 +39964,11 @@ nolink "false"
 
 \begin_layout Plain Layout
 \SpecialChar ldots
- ist nicht zusammen wahr wie \SpecialChar ldots
+ ist nicht zusammen
+\end_layout
+
+\begin_layout Plain Layout
+wahr wie \SpecialChar ldots
 
 \end_layout
 
@@ -40008,9 +40093,12 @@ nolink "false"
 
 \begin_layout Plain Layout
 Teilmenge,
- \SpecialChar ldots
- enthalten in\SpecialChar ldots
- 
+\end_layout
+
+\begin_layout Plain Layout
+\SpecialChar ldots
+ enthalten in \SpecialChar ldots
+
 \end_layout
 
 \end_inset
@@ -40050,9 +40138,12 @@ nolink "false"
 
 \begin_layout Plain Layout
 Obermenge,
- \SpecialChar ldots
- enthält\SpecialChar ldots
- 
+\end_layout
+
+\begin_layout Plain Layout
+\SpecialChar ldots
+ enthält \SpecialChar ldots
+
 \end_layout
 
 \end_inset
@@ -40169,7 +40260,15 @@ nolink "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Potenzmenge einer Menge 
+Potenzmenge
+\end_layout
+
+\begin_layout Plain Layout
+der Menge 
+\begin_inset Formula $M$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -40211,7 +40310,11 @@ nolink "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Menge der natürlichen Zahlen
+Menge der
+\end_layout
+
+\begin_layout Plain Layout
+natürlichen Zahlen
 \end_layout
 
 \end_inset
@@ -40250,7 +40353,14 @@ nolink "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Menge der reellen Zahlen
+\begin_inset Formula $\begin{array}{c}
+\text{Menge der}\\
+\text{\text{rellen Zahlen}}\\
+\text{\,\,\, }
+\end{array}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -40282,14 +40392,23 @@ nolink "false"
 
 \end_layout
 
+\begin_layout Standard
+\align center
+\begin_inset Newpage newpage
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\align center
-\begin_inset Newpage newpage
+
+\lang german-ch
+\begin_inset CommandInset index_print
+LatexCommand printindex
+type "idx"
+name "Stichwortverzeichnis"
+literal "true"
+
 \end_inset
 
 

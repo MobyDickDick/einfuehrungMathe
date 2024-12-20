@@ -5547,7 +5547,7 @@ nolink "false"
  Also kann ich an dieser Stelle den Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:logischer-Widerspruch-Version-1"
+reference "prop:logischer-Widerspruch-Version"
 plural "false"
 caps "false"
 noprefix "false"
@@ -7467,7 +7467,7 @@ B\,D>B
  Also kann ich gemäß dem Widerspruchssatz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:logischer-Widerspruch-Version-1"
+reference "prop:logischer-Widerspruch-Version"
 plural "false"
 caps "false"
 noprefix "false"
@@ -16406,7 +16406,7 @@ n+1=m+1\Rightarrow n=m
 Also kann ich gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:logischer-Widerspruch-Version-1"
+reference "prop:logischer-Widerspruch-Version"
 nolink "false"
 
 \end_inset

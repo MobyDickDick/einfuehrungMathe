@@ -3984,7 +3984,7 @@ B\leq C\Leftrightarrow B<C\vee B=C
 Da die Äquivalenz gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Aequivalenz"
+reference "prop:Kommutativitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -4072,7 +4072,7 @@ B\geq C\Leftrightarrow B=C\vee B>C
 Da die Äquivalenz gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Aequivalenz"
+reference "prop:Kommutativitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -4278,7 +4278,7 @@ B\leq C\Leftrightarrow B<C\vee B=C
 Da die Äquivalenz gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Aequivalenz"
+reference "prop:Kommutativitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -4383,7 +4383,7 @@ B=C\Rightarrow B=C\vee B<C
 Da die Disjunktion gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Disjunktion"
+reference "prop:Kommutativitaet-Disjunktion"
 plural "false"
 caps "false"
 noprefix "false"
@@ -4549,7 +4549,7 @@ B\geq C\Leftrightarrow B=C\vee B>C
 Da die Äquivalenz gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Aequivalenz"
+reference "prop:Kommutativitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -4652,7 +4652,7 @@ B>C\Rightarrow B>C\vee B=C
 Da die Disjunktion gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Disjunktion"
+reference "prop:Kommutativitaet-Disjunktion"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5111,7 +5111,7 @@ nolink "false"
 Da die Äquivalenz gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Aequivalenz"
+reference "prop:Kommutativitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5228,7 +5228,7 @@ nolink "false"
 Nun ist die Äquivalenz gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Aequivalenz"
+reference "prop:Kommutativitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5249,7 +5249,7 @@ nolink "false"
 Und da die Konjunktion gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Konjunktion"
+reference "prop:Kommutativitaet-Konjunktion"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5598,7 +5598,7 @@ nolink "false"
 Da die Äquivalenz gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Aequivalenz"
+reference "prop:Kommutativitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5669,7 +5669,7 @@ Nun bin ich fast am Ziel.
 Da die Äquivalenz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Aequivalenz"
+reference "prop:Kommutativitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5908,7 +5908,7 @@ B\leq C\Leftrightarrow\neg\left(\neg\left(B\leq C\right)\right)
 und gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Aequivalenz"
+reference "prop:Kommutativitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -7264,7 +7264,7 @@ nolink "false"
 Weiter ist gemäß die Disjunktion gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Disjunktion"
+reference "prop:Kommutativitaet-Disjunktion"
 plural "false"
 caps "false"
 noprefix "false"
@@ -12591,7 +12591,7 @@ n_{1}\cdot A\leq n_{2}\cdot A\Leftrightarrow n_{1}\cdot A=n_{2}\cdot A\vee n_{1}
 Da die Äquivalenz gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Aequivalenz"
+reference "prop:Kommutativitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -12718,7 +12718,7 @@ n_{1}\cdot A\geq n_{2}\cdot A\Leftrightarrow n_{1}\cdot A=n_{2}\cdot A\vee n_{1}
 Da die Äquivalenz gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Aequivalenz"
+reference "prop:Kommutativitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -12832,7 +12832,7 @@ welche in sich selbst und bezüglich den anderen Symbolen des Satzes widerspruch
 Da die Äquivalenz gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Aequivalenz"
+reference "prop:Kommutativitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -13199,7 +13199,7 @@ n_{3}\leq n_{4}\wedge\neg\left(n_{3}\geq n_{4}\right)
 wobei ich von der Kommutativität 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutation-Konjunktion"
+reference "prop:Kommutativitaet-Konjunktion"
 nolink "false"
 
 \end_inset
@@ -14852,7 +14852,7 @@ status open
 \begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
-name "lem:Kommutation-n-1-natuerliche-Zahlen"
+name "lem:Kommutativitaet-n-1-natuerliche-Zahlen"
 
 \end_inset
 
@@ -18022,7 +18022,7 @@ Den Beweis möchte ich in zwei Teilen gestalten.
 Dann muss zusammen mit dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Kommutation-n-1-natuerliche-Zahlen"
+reference "lem:Kommutativitaet-n-1-natuerliche-Zahlen"
 nolink "false"
 
 \end_inset
@@ -18086,7 +18086,7 @@ Den Anfang für
 Nun muss gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Kommutation-n-1-natuerliche-Zahlen"
+reference "lem:Kommutativitaet-n-1-natuerliche-Zahlen"
 nolink "false"
 
 \end_inset
@@ -18166,7 +18166,7 @@ n_{3}=1
 dann kann ich das Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Kommutation-n-1-natuerliche-Zahlen"
+reference "lem:Kommutativitaet-n-1-natuerliche-Zahlen"
 nolink "false"
 
 \end_inset

@@ -6094,7 +6094,7 @@ nolink "false"
  Also kann ich gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:logischer-Widerspruch-Version-1"
+reference "prop:logischer-Widerspruch-Version"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6350,7 +6350,7 @@ nolink "false"
  Also kann ich gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:logischer-Widerspruch-Version-1"
+reference "prop:logischer-Widerspruch-Version"
 plural "false"
 caps "false"
 noprefix "false"
