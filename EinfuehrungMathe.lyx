@@ -25035,15 +25035,7 @@ Zur Erinnerung:
 \end_inset
 
  Aussagen.
- Dann gilt gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Konjunktions-Disjunktionssatz"
-nolink "false"
-
-\end_inset
-
- 
+ Dann gilt gemäß dem Satz xx
 \begin_inset Formula 
 \[
 A\wedge B\Rightarrow A\vee B

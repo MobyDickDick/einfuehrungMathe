@@ -25038,7 +25038,10 @@ Zur Erinnerung:
  Dann gilt gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Konjunktions-Disjunktionssatz"
+reference "prop:Implikation-Disjunktion-aus-Aussage"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
@@ -40356,7 +40359,7 @@ nolink "false"
 \begin_inset Formula $\begin{array}{c}
 \text{Menge der}\\
 \text{\text{rellen Zahlen}}\\
-\text{\,\,\, }
+\text{ }
 \end{array}$
 \end_inset
 
