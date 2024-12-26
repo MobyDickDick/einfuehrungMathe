@@ -6094,7 +6094,7 @@ nolink "false"
  Also kann ich gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:logischer-Widerspruch-Version-1"
+reference "prop:logischer-Widerspruch-Version"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6350,7 +6350,7 @@ nolink "false"
  Also kann ich gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:logischer-Widerspruch-Version-1"
+reference "prop:logischer-Widerspruch-Version"
 plural "false"
 caps "false"
 noprefix "false"
@@ -17410,20 +17410,16 @@ nolink "false"
  der Konjunktion kann ich folgern,
  dass gilt
 \begin_inset Formula 
-\begin{equation}
-x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)\Rightarrow x\in M_{1}\wedge\left(x\in M_{1}\Rightarrow x\in M_{2}\right)\label{fact:Implikation-Mengenenthaltung}
-\end{equation}
+\[
+x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)\Rightarrow x\in M_{1}\wedge\left(x\in M_{1}\Rightarrow x\in M_{2}\right)
+\]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
-Da die Äquivalenz gemäß dem Satz 
+Nun kann ich den Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutativitaet-Aequivalenz"
+reference "prop:Schlussfolgerung"
 plural "false"
 caps "false"
 noprefix "false"
@@ -17431,71 +17427,136 @@ nolink "false"
 
 \end_inset
 
- folgern,
- dass aus der Voraussetzung
+ der Schlussfolgerung verwenden und erhalte die Aussage
 \begin_inset Formula 
 \[
-M_{1}\subset M_{2}\Leftrightarrow\left(x\in M_{1}\Rightarrow x\in M_{2}\right)
+x\in M_{1}\wedge\left(x\in M_{1}\Rightarrow x\in M_{2}\right)\Rightarrow x\in M_{2}
 \]
 
 \end_inset
 
+Und da die Implikation gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Implikation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ transitiv ist,
+ erhalte ich aus den Aussagen
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)\Rightarrow x\in M_{1}\wedge\left(x\in M_{1}\Rightarrow x\in M_{2}\right)
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\left(x\in M_{1}\Rightarrow x\in M_{2}\right)\Rightarrow x\in M_{2}
+\]
+
+\end_inset
+
+gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Schlussfolgerung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Schlussfolgerung die Aussage
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)\Rightarrow x\in M_{2}
+\]
+
+\end_inset
+
+Damit habe ich den ersten Beweis für die Richtigkeit der Behauptung erbracht.
+ 
+\end_layout
+
+\begin_layout Proof
+Nun möchte ich einen zweiten Beweis für die Richtigkeit der Behauptung erbringen.
+ Angenommen,
+ die Behauptung würde nicht gelten.
+ Dies wäre gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Implikation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Implikation genau dann der Fall,
+ falls die Aussage
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)
+\]
+
+\end_inset
+
+wahr wäre,
  die Aussage 
 \begin_inset Formula 
 \[
-\left(x\in M_{1}\Rightarrow x\in M_{2}\right)\Leftrightarrow M_{1}\subset M_{2}
+x\in M_{2}
 \]
 
 \end_inset
 
- folgt.
- Und mit dieser Aussage kann ich wiederum folgern,
- dass gilt
+jedoch nicht.
+\end_layout
+
+\begin_layout Proof
+Gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Implikation-Aussage-aus-Konjunktion-erstes-Argument"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ müsste auch die Aussage 
 \begin_inset Formula 
-\begin{equation}
-x\in M_{1}\wedge\left(x\in M_{1}\Rightarrow x\in M_{2}\right)\Rightarrow x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)\label{fact:Replikation-Mengenenthaltung}
-\end{equation}
+\[
+x\in M_{1}
+\]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
-Aus den Aussagen 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fact:Implikation-Mengenenthaltung"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
+wahr sein,
+ falls die Aussage 
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)
+\]
 
 \end_inset
 
- sowie 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fact:Replikation-Mengenenthaltung"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kann ich gemäss 
-\end_layout
-
-\begin_layout Proof
-Und aufgrund des 1.
- Substitutionssatzes 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-aktuelle Stelle
-\end_layout
+wäre.
+ Also müsste gelten
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\neg\left(x\in M_{2}\right)
+\]
 
 \end_inset
 

@@ -17410,16 +17410,175 @@ nolink "false"
  der Konjunktion kann ich folgern,
  dass gilt
 \begin_inset Formula 
-\begin{equation}
-x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)\Rightarrow x\in M_{1}\wedge\left(x\in M_{1}\Rightarrow x\in M_{2}\right)\label{fact:Implikation-Mengenenthaltung}
-\end{equation}
+\[
+x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)\Rightarrow x\in M_{1}\wedge\left(x\in M_{1}\Rightarrow x\in M_{2}\right)
+\]
 
 \end_inset
 
+Nun kann ich den Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Schlussfolgerung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
+\end_inset
+
+ der Schlussfolgerung verwenden und erhalte die Aussage
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\left(x\in M_{1}\Rightarrow x\in M_{2}\right)\Rightarrow x\in M_{2}
+\]
+
+\end_inset
+
+Und da die Implikation gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Implikation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ transitiv ist,
+ erhalte ich aus den Aussagen
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)\Rightarrow x\in M_{1}\wedge\left(x\in M_{1}\Rightarrow x\in M_{2}\right)
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\left(x\in M_{1}\Rightarrow x\in M_{2}\right)\Rightarrow x\in M_{2}
+\]
+
+\end_inset
+
+gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Schlussfolgerung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Schlussfolgerung die Aussage
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)\Rightarrow x\in M_{2}
+\]
+
+\end_inset
+
+Damit habe ich den ersten Beweis für die Richtigkeit der Behauptung erbracht.
+ 
 \end_layout
 
 \begin_layout Proof
+Nun möchte ich einen zweiten Beweis für die Richtigkeit der Behauptung erbringen.
+ Angenommen,
+ die Behauptung würde nicht gelten.
+ Dies wäre gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Implikation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Implikation genau dann der Fall,
+ falls die Aussage
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)
+\]
+
+\end_inset
+
+wahr wäre,
+ die Aussage 
+\begin_inset Formula 
+\[
+x\in M_{2}
+\]
+
+\end_inset
+
+jedoch nicht.
+\end_layout
+
+\begin_layout Proof
+Gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Implikation-Aussage-aus-Konjunktion-erstes-Argument"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ müsste auch die Aussage 
+\begin_inset Formula 
+\[
+x\in M_{1}
+\]
+
+\end_inset
+
+wahr sein,
+ falls die Aussage 
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)
+\]
+
+\end_inset
+
+wäre.
+ Also müsste gelten
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\neg\left(x\in M_{2}\right)
+\]
+
+\end_inset
+
+Gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Negation-Implikation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Negation der Implikation gilt
+\begin_inset Formula 
+\[
+\neg\left(x\in M_{1}\Rightarrow x\in M_{2}\right)\Leftrightarrow x\in M_{1}\wedge\neg\left(x\in M_{2}\right)
+\]
+
+\end_inset
+
 Da die Äquivalenz gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -17431,8 +17590,49 @@ nolink "false"
 
 \end_inset
 
- folgern,
- dass aus der Voraussetzung
+ kommutiert (oder symmetrisch ist),
+ kann ich schlussfolgern,
+ dass ebenfalls gilt
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\neg\left(x\in M_{2}\right)\Leftrightarrow\neg\left(x\in M_{1}\Rightarrow x\in M_{2}\right)
+\]
+
+\end_inset
+
+Das bedeutet,
+ dass gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Schlussfolgerung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Schlussfolgerung auch die Aussage
+\begin_inset Formula 
+\[
+\neg\left(x\in M_{1}\Rightarrow x\in M_{2}\right)
+\]
+
+\end_inset
+
+ wahr sein müsste.
+ Gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Teilmenge"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Teilmenge bedeutet
 \begin_inset Formula 
 \[
 M_{1}\subset M_{2}\Leftrightarrow\left(x\in M_{1}\Rightarrow x\in M_{2}\right)
@@ -17440,7 +17640,31 @@ M_{1}\subset M_{2}\Leftrightarrow\left(x\in M_{1}\Rightarrow x\in M_{2}\right)
 
 \end_inset
 
- die Aussage 
+Und da die Äquivalenz gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Kommutativitaet-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kommutiert (oder symmetrisch ist),
+ kann ich mit dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Schlussfolgerung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ folgern,
+ dass auch gilt:
 \begin_inset Formula 
 \[
 \left(x\in M_{1}\Rightarrow x\in M_{2}\right)\Leftrightarrow M_{1}\subset M_{2}
@@ -17448,24 +17672,49 @@ M_{1}\subset M_{2}\Leftrightarrow\left(x\in M_{1}\Rightarrow x\in M_{2}\right)
 
 \end_inset
 
- folgt.
- Und mit dieser Aussage kann ich wiederum folgern,
+Gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Negation-Aequivalenzsatz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kann ich dann mit dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Schlussfolgerung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ folgern,
  dass gilt
 \begin_inset Formula 
-\begin{equation}
-x\in M_{1}\wedge\left(x\in M_{1}\Rightarrow x\in M_{2}\right)\Rightarrow x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)\label{fact:Replikation-Mengenenthaltung}
-\end{equation}
+\[
+\neg\left(M_{1}\subset M_{2}\right)
+\]
 
 \end_inset
 
+Jedoch müsste gleichzeitig mit der Voraussetzung
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge\left(M_{1}\subset M_{2}\right)
+\]
 
-\end_layout
+\end_inset
 
-\begin_layout Proof
-Aus den Aussagen 
+auch gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fact:Implikation-Mengenenthaltung"
+reference "prop:Implikation-Aussage-aus-Konjunktion-zweites-Argument"
 plural "false"
 caps "false"
 noprefix "false"
@@ -17473,10 +17722,30 @@ nolink "false"
 
 \end_inset
 
- sowie 
+ auch die Aussage:
+\begin_inset Formula 
+\[
+M_{1}\subset M_{2}
+\]
+
+\end_inset
+
+im Widerspruch zur vorletzten Aussage.
+ Das bedeutet,
+ dass die Annahme dass die Aussage
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge M_{1}\subset M_{2}\Rightarrow x\in M_{2}
+\]
+
+\end_inset
+
+nicht wahr sei,
+ zu einem Widerspruch führt.
+ Gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fact:Replikation-Mengenenthaltung"
+reference "prop:ausgeschlossener-Dritter"
 plural "false"
 caps "false"
 noprefix "false"
@@ -17484,22 +17753,28 @@ nolink "false"
 
 \end_inset
 
- kann ich gemäss 
-\end_layout
-
-\begin_layout Proof
-Und aufgrund des 1.
- Substitutionssatzes 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-aktuelle Stelle
-\end_layout
+ des ausgeschlossenen Dritten kann ich nun mit dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Schlussfolgerung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
+ folgern,
+ dass gilt
+\begin_inset Formula 
+\[
+x\in M_{1}\wedge M_{1}\subset M_{2}\Rightarrow x\in M_{2}
+\]
 
+\end_inset
+
+Damit habe den Beweis für die Richtigkeit dieses Satzes auf eine (sperrigere) zweite Art erbracht und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+ 
 \end_layout
 
 \begin_layout Chapter
