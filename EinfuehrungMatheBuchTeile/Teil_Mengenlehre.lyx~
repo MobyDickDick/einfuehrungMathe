@@ -25843,6 +25843,12 @@ Es gilt (wenig überraschend) der Satz:
 \end_layout
 
 \begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Gleichmaechtigkeit-ist-Aequivalenzrelation"
+
+\end_inset
+
 Die Gleichmächtigkeit von Mengen (welche hinreichend in sich selbst widerspruchsfrei sind) bildet eine Äquivalenzrelation in der Menge aller nichtleere (in sich widerspruchsfreien) Mengen.
 \end_layout
 
@@ -26149,6 +26155,34 @@ nolink "false"
 \end_layout
 
 \begin_layout Proposition
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Satz 
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+der Ordnungsrelation der Kardinalität
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Kardinalitaet-ist-Ordnungsrelation"
+
+\end_inset
+
 Die Mengeninklusion ist eine Ordnungsrelation (welche jedoch nicht total ist).
 \end_layout
 
@@ -26413,6 +26447,12 @@ Es gibt Dinge im Leben,
 \end_layout
 
 \begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:bijektive-Abbildung-erzeugt-Gleichmaechtigkeit"
+
+\end_inset
+
 Es seien 
 \begin_inset Formula $M_{1},M_{2}$
 \end_inset
@@ -26450,7 +26490,142 @@ f:M_{1}\rightarrow M_{2}
 \end_inset
 
 eine bijektive Funktion.
- Dann muss gemäss dem Satz xxx
+ Dann muss gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Pruefung-auf-bijektive-Abbildung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ eine Funktion 
+\begin_inset Formula 
+\[
+g:M_{2}\rightarrow M_{1}
+\]
+
+\end_inset
+
+derart,
+ dass 
+\begin_inset Formula $g$
+\end_inset
+
+ ebenfalls bijektiv ist.
+ Das bedeutet,
+ dass sowohl die Abbildung 
+\begin_inset Formula $f$
+\end_inset
+
+ wie auch die Abbildung 
+\begin_inset Formula $g$
+\end_inset
+
+ injektiv sind.
+ Gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Kardinalitaet-Mengen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Kardinalität (Mächtigkeit) bedeutet dies,
+ dass aufgrund der Injektivität von 
+\begin_inset Formula $f$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left|M_{1}\right|\leq\left|M_{2}\right|
+\]
+
+\end_inset
+
+ist.
+ Da die Abbildung 
+\begin_inset Formula $g$
+\end_inset
+
+ injektiv ist,
+ muss gemäss der gleichen Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Kardinalitaet-Mengen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Kardinalität auch gelten muss 
+\begin_inset Formula 
+\[
+\left|M_{2}\right|\leq\left|M_{1}\right|
+\]
+
+\end_inset
+
+Da nun 
+\begin_inset Formula 
+\[
+\left|M_{1}\right|\leq\left|M_{2}\right|
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+\left|M_{2}\right|\leq\left|M_{1}\right|
+\]
+
+\end_inset
+
+gilt,
+ muss gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:gleichmaechtig"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Gleichmächtigkeit gelten,
+ dass
+\begin_inset Formula 
+\[
+\left|M_{2}\right|=\left|M_{1}\right|
+\]
+
+\end_inset
+
+in Worten,
+ die beiden Mengen gleichmächtig sind.
+ Damit meine ich den Beweis für die Richtigkeit erbracht zu haben und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Standard
+Ich vermute,
+ dass es nicht möglich ist,
+ zu zeigen,
+ dass aus der Gleichmächtigkeit von zwei Mengen folgen muss,
+ dass es eine bijektive Abbildung von den beiden Mengen gibt.
+ Wobei zu sagen gilt,
+ dass dies bei Mengen von höchstens abzählbar unendlich viel Elementen schon beweisbar wäre.
+ Aber alles darüber hinaus ist wohl einfach zu viel,
+ um noch sichere Aussagen darüber zu machen.
 \end_layout
 
 \begin_layout Standard
@@ -28092,7 +28267,7 @@ e_{3}\in K_{2}
 
 \end_inset
 
-Aufgrund der Defnition 
+Aufgrund der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:feinkoernige-Partition"
@@ -28116,7 +28291,7 @@ K_{1}=\left\{ e_{1}\right\} \wedge K_{2}=\left\{ e_{2}\right\}
 
 \end_inset
 
-Und gemäß der Defnition 
+Und gemäß der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Definition-einer-Menge"
@@ -28136,7 +28311,7 @@ e_{3}\in K_{1}
 \end_inset
 
 folgern,
- dasss gilt
+ dass gilt
 \begin_inset Formula 
 \[
 e_{3}=e_{1}
@@ -28144,7 +28319,7 @@ e_{3}=e_{1}
 
 \end_inset
 
-Ebenfalls kann ich auch der Defnition 
+Ebenfalls kann ich auch der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Definition-einer-Menge"
@@ -28164,7 +28339,7 @@ e_{3}\in K_{2}
 \end_inset
 
 folgern,
- dasss gilt
+ dass gilt
 \begin_inset Formula 
 \[
 e_{3}=e_{2}
@@ -28572,16 +28747,6 @@ gelten muss.
 sein.
  Da ich genau dies zeigen wollte,
  erachte ich den Beweis für die Richtigkeit der Behauptung als erbracht und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-aktuelle Stelle 26.12.2024
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -29789,7 +29954,18 @@ gleich derjenigen von
 \end_inset
 
  sein.
- Und weil die Mächtigkeit gemäß dem Satz xxx transitiv ist,
+ Und weil die Mächtigkeit gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Kardinalitaet-ist-Ordnungsrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ transitiv ist,
  kann ich also schlissen,
  dass auch gilt 
 \begin_inset Formula 
@@ -30314,10 +30490,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-Es gibt aber noch eine einfachere Partition:
-\end_layout
-
-\begin_layout Standard
 Nun habe ich in den Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -30352,6 +30524,12 @@ nolink "false"
 \end_layout
 
 \begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Maechtigkeit-von-Partitionen"
+
+\end_inset
+
 Es sei 
 \begin_inset Formula $M$
 \end_inset
@@ -31151,6 +31329,12 @@ Jetzt möchte ich zeigen,
 \end_layout
 
 \begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Machtigkeit-der-durch-die-surjektvie-Abbildung-erzeugte-Partition"
+
+\end_inset
+
 Es seien 
 \begin_inset Formula $M_{1}$
 \end_inset
@@ -32079,50 +32263,10 @@ Da gilt
 
 \end_inset
 
-kann ich gemäß des Satzes xxx folgern,
- dass 
-\begin_inset Formula $M_{2}$
-\end_inset
-
- und 
-\begin_inset Formula $\mathbb{P}$
-\end_inset
-
- gleichmächtig sind
-\end_layout
-
-\begin_layout Proposition
-Es seien 
-\begin_inset Formula $M_{1}$
-\end_inset
-
- und 
-\begin_inset Formula $M_{2}$
-\end_inset
-
- Mengen,
- welche in sich selber und bezüglich den anderen Symbolen des Satzes widerspruchsfrei seien.
- Gibt es eine bijektive Abbildung
-\begin_inset Formula 
-\[
-f:M_{1}\rightarrow M_{2}
-\]
-
-\end_inset
-
-dann sind die Mächtigkeiten der beiden Mengen gleich.
-\end_layout
-
-\begin_layout Proof
-Es sei 
-\begin_inset Formula $f$
-\end_inset
-
- eine bijektive Abbildung.
- Dann muss es gemäß des Satzes 
+kann ich gemäß des Satzes 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Pruefung-auf-bijektive-Abbildung"
+reference "prop:bijektive-Abbildung-erzeugt-Gleichmaechtigkeit"
 plural "false"
 caps "false"
 noprefix "false"
@@ -32130,7 +32274,50 @@ nolink "false"
 
 \end_inset
 
- eine Abbildung
+ folgern,
+ dass 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ und 
+\begin_inset Formula $\mathbb{P}_{f}$
+\end_inset
+
+ gleichmächtig sind.
+ Aus diesem Grund bin ich der Meinung,
+ dass ich den Beweis für die Richtigkeit der Behauptung erbracht habe und beende darum an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Standard
+Nun möchte ich den Satz formulieren und beweisen,
+ welcher mich seit geraumer Zeit beschäftigt.
+\end_layout
+
+\begin_layout Proposition
+Es seien 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ Symbole von Mengen,
+ welche in sich selbst und in Bezug auf die anderen Symbole des Satzes widerspruchsfrei seien.
+ Dann ist die Mächtigkeit von 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ genau dann kleiner oder gleich derjenigen von 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+,
+ falls 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ die leere Menge ist oder es eine surjektive Abbildung
 \begin_inset Formula 
 \[
 g:M_{2}\rightarrow M_{1}
@@ -32138,57 +32325,73 @@ g:M_{2}\rightarrow M_{1}
 
 \end_inset
 
-derart geben,
- dass
+gibt.
+\end_layout
+
+\begin_layout Proof
+Ich habe also zwei Dinge zu beweisen:
+ Einerseits muss ich beweisen,
+ dass es eine surjektive Abbildung 
 \begin_inset Formula 
 \[
-f\circ g=\text{Id}_{M\left(1\right)}
+g:M_{2}\rightarrow M_{2}
 \]
 
 \end_inset
 
-und 
-\begin_inset Formula 
-\[
-g\circ f=\text{Id}_{M\left(2\right)}
-\]
+gibt,
+ sofern 
+\begin_inset Formula $M_{1}$
+\end_inset
 
+ nicht die leere Menge ist und die Mächtigkeit von 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ kleiner als oder gleich derjenigen von 
+\begin_inset Formula $M_{2}$
 \end_inset
 
  ist.
- Dies bedeutet jedoch auch,
- dass 
-\begin_inset Formula $g$
+ Andererseits muss ich zeigen,
+ dass die Mächtigkeit von 
+\begin_inset Formula $M_{1}$
 \end_inset
 
- ebenso eine bijektive Abbildung ist.
- Denn es gilt
+ kleiner als oder gleich derjenigen von 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ ist,
+ falls es eine surjektive Abbildung 
 \begin_inset Formula 
 \[
-g\circ f=\text{Id}_{M\left(2\right)}
+g:M_{2}\rightarrow M_{2}
 \]
 
 \end_inset
 
-sowie
-\begin_inset Formula 
-\[
-f\circ g=\text{Id}_{M\left(1\right)}
-\]
+gibt.
+ 
+\end_layout
 
+\begin_layout Proof
+Zum Beweis der ersten Behauptung:
+ Die Mächtigkeit von 
+\begin_inset Formula $M_{1}$
 \end_inset
 
-Da nun 
-\begin_inset Formula $f$
+ sei kleiner als oder gleich derjenigen von 
+\begin_inset Formula $M_{2}$
 \end_inset
 
- und 
-\begin_inset Formula $g$
+.
+ Weiter sei die Menge 
+\begin_inset Formula $M_{1}$
 \end_inset
 
- bijektiv sind,
- sind beide Funktionen injektiv.
- Also gilt gemäß der Definition 
+ nicht leer.
+ Dann muss es gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Kardinalitaet-Mengen"
@@ -32199,45 +32402,258 @@ nolink "false"
 
 \end_inset
 
- der Mengen,
- dass die beiden Mengen die gleiche Kardinalität besitzen.
- Damit wäre die eine Richtung der Behauptung bewiesen.
+ der Kardinalität eine injektive Abbildung 
+\begin_inset Formula 
+\[
+f:M_{1}\rightarrow M_{2}
+\]
+
+\end_inset
+
+geben.
+ Da die Menge 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ nicht leer ist,
+ muss diese Menge mindestens ein Element 
+\begin_inset Formula $m_{1}\in M_{1}$
+\end_inset
+
+ enthalten.
+ Nun konstruiere ich die Abbildung 
+\begin_inset Formula $g$
+\end_inset
+
+ wie folgt:
+\begin_inset Formula 
+\begin{align*}
+g & : & M_{2} & \rightarrow & M_{1}\\
+ &  & m\in f\left(M_{1}\right) & \mapsto & x\in f^{-1}\left(m\right)\\
+ &  & m\notin f\left(M_{1}\right) & \mapsto & m_{1}
+\end{align*}
+
+\end_inset
+
+In Worten:
  
+\begin_inset Formula $g$
+\end_inset
+
+ sei eine Funktion von der Menge 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ in die Menge 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+.
+ Ist 
+\begin_inset Formula $m$
+\end_inset
+
+ in der Bildmenge von 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ unter der Abbildung 
+\begin_inset Formula $f$
+\end_inset
+
+,
+ dann werde 
+\begin_inset Formula $m$
+\end_inset
+
+ auf das Urbild von unter der Abbildung 
+\begin_inset Formula $f$
+\end_inset
+
+ abgebildet.
+ Dieses Urbild muss eindeutig vorhanden sein,
+ da die Abbildung 
+\begin_inset Formula $f$
+\end_inset
+
+ injektiv ist.
+ Ist jedoch 
+\begin_inset Formula $m$
+\end_inset
+
+ nicht in der Bildmenge von 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ unter der Abbildung 
+\begin_inset Formula $f$
+\end_inset
+
+,
+ dann werde 
+\begin_inset Formula $m$
+\end_inset
+
+ auf das Element 
+\begin_inset Formula $m_{1}$
+\end_inset
+
+ abgebildet.
+ Nun habe ich zu zeigen,
+ dass die Relation 
+\begin_inset Formula $g$
+\end_inset
+
+ wirklich eine Abbildung darstellt.
+ Dazu muss ich gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Funktion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Abbildung (Funktion) zeigen,
+ dass 
+\begin_inset Formula $g$
+\end_inset
+
+ linkstotal und rechtseindeutig ist.
+ Gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:ausgeschlossener-Dritter"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ muss eine der Aussagen 
+\begin_inset Formula 
+\[
+m\in f\left(M_{1}\right)
+\]
+
+\end_inset
+
+sowie
+\begin_inset Formula 
+\[
+m\notin f\left(M_{1}\right)
+\]
+
+\end_inset
+
+wahr sein.
+ Das bedeutet,
+ dass für alle Elemente 
+\begin_inset Formula $m$
+\end_inset
+
+ der Menge 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ gilt,
+ dass 
+\begin_inset Formula $m$
+\end_inset
+
+ im Bild von 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ unter der Abbildung 
+\begin_inset Formula $f$
+\end_inset
+
+ enthalten ist oder eben nicht enthalten ist.
+ Somit ist die Relation 
+\begin_inset Formula $g$
+\end_inset
+
+ linkstotal.
+ Die Abbildung 
+\begin_inset Formula $g$
+\end_inset
+
+ ist jedoch auch rechtseindeutig.
+ Ist 
+\begin_inset Formula $m$
+\end_inset
+
+ nicht im Bild von 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ unter der Abbildung 
+\begin_inset Formula $f$
+\end_inset
+
+,
+ dann ist das Bild von 
+\begin_inset Formula $m$
+\end_inset
+
+ nach Definition das Element 
+\begin_inset Formula $m_{1}$
+\end_inset
+
+,
+ welches ja vorhanden sein muss.
+ Ist jedoch 
+\begin_inset Formula $m$
+\end_inset
+
+ im Bild von 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+unter der Abbildung 
+\begin_inset Formula $f$
+\end_inset
+
+ enthalten,
+ dann enthält die Urbildmenge,
+ wie oben schon geschrieben,
+ genau ein Element.
+ Denn die Abbildung 
+\begin_inset Formula $f$
+\end_inset
+
+ ist ja gemäss Definition injektiv.
+ Also muss es genau ein Element 
+\begin_inset Formula $m_{3}\in M_{1}$
+\end_inset
+
+ mit 
+\begin_inset Formula $f\left(m_{3}\right)=m$
+\end_inset
+
+ sein.
+ Somit ist auch in diesem Fall die Relation 
+\begin_inset Formula $g$
+\end_inset
+
+ rechtseindeutig.
+ Also ist die Relation in allen möglichen Fällen rechtseindeutig.
 \end_layout
 
 \begin_layout Proof
-Nun seien die Kardinalitäten der Mengen gleich.
- Das bedeutet,
- dass es injektive Funktionen 
-\begin_inset Formula 
-\[
-f_{1}:M_{1}\rightarrow M_{2}
-\]
-
+Da jedoch die Relation 
+\begin_inset Formula $g$
 \end_inset
 
- sowie 
-\begin_inset Formula 
-\[
-g_{1}:M_{2}\rightarrow M_{1}
-\]
-
-\end_inset
-
- gibt.
- Dann definiere ich die Abbildung
-\begin_inset Formula 
-\begin{align*}
-h_{1} & :M_{1}\rightarrow M_{1}\\
- & e_{1}\rightarrow g\circ f\left(e_{1}\right)
-\end{align*}
-
-\end_inset
-
-Gemäß dem Lemma 
+ linkstotal und rechtseindeutig ist,
+ ist sie gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Transitvitaet-injektiver-Funktionen"
+reference "def:Funktion"
 plural "false"
 caps "false"
 noprefix "false"
@@ -32245,15 +32661,85 @@ nolink "false"
 
 \end_inset
 
- muss jetzt die Abbildung 
-\begin_inset Formula $h_{1}$
+ eine Funktion (Abbildung).
+ Nun ist jedoch zu zeigen,
+ dass die Abbildung 
+\begin_inset Formula $g$
 \end_inset
 
- injektiv sein.
- Gemäß dem Lemma 
+ auch wirklich surjektiv ist.
+ Dies ist jedoch darum der Fall,
+ weil ja für alle Elemente 
+\begin_inset Formula $m_{4}\in M_{1}$
+\end_inset
+
+ gilt,
+ dass das Bild
+\begin_inset Formula 
+\[
+f\left(m_{4}\right)
+\]
+
+\end_inset
+
+durch die Abbildung 
+\begin_inset Formula $g$
+\end_inset
+
+ wieder nach 
+\begin_inset Formula $m_{4}$
+\end_inset
+
+ abgebildet wird (in das Element der Urbildmenge).
+ Es gilt also
+\begin_inset Formula 
+\[
+g\circ f\left(m_{4}\right)=g\left(f\left(m_{4}\right)\right)=m_{4}
+\]
+
+\end_inset
+
+Somit kann ich schreiben,
+ dass für jedes Element 
+\begin_inset Formula $m_{4}\in M_{1}$
+\end_inset
+
+ mindestens ein Element (
+\begin_inset Formula $f\left(m_{4}\right)$
+\end_inset
+
+) aus der Menge 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ derart existiert,
+ dass gilt
+\begin_inset Formula 
+\[
+g\left(f\left(m_{4}\right)\right)=m_{4}
+\]
+
+\end_inset
+
+Also meine ich,
+ den Beweis für den ersten Teil der Behauptung erbracht zu haben.
+\end_layout
+
+\begin_layout Proof
+Nun möchte ich den Beweis des zweiten Teils der Behauptung erbringen.
+ Es sei 
+\begin_inset Formula 
+\[
+g:M_{2}\rightarrow M_{1}
+\]
+
+\end_inset
+
+ eine surjektive Abbildung.
+ Nun habe ich im Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Einschraenkung-injektive-Menge-auf-Bildmenge"
+reference "lem:surjektive-Abbildung-erzeugt-Aequivalenzrelation"
 plural "false"
 caps "false"
 noprefix "false"
@@ -32261,53 +32747,130 @@ nolink "false"
 
 \end_inset
 
- muss darum die Funktion
-\begin_inset Formula 
-\begin{align*}
-h_{2} & :M_{1}\rightarrow h_{1}\left(M_{1}\right)\\
- & e_{1}\rightarrow h_{1}\left(e_{1}\right)
-\end{align*}
+ gezeigt,
+ dass durch die surjektive Abbildung 
+\begin_inset Formula $g$
+\end_inset
+
+ eine Partition 
+\begin_inset Formula $\mathbb{P}_{g}$
+\end_inset
+
+ der Menge 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ erzeugt wird.
+ Gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Machtigkeit-der-durch-die-surjektvie-Abbildung-erzeugte-Partition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
-sogar bijektiv sein.
- Also muss es eine bijektive Umkehrfunktion 
-\begin_inset Formula $h_{3}$
+ ist die Mächtigkeit von 
+\begin_inset Formula $\mathbb{P}_{g}$
+\end_inset
+
+ gleich derjenigen von 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+.
+ Und im Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Maechtigkeit-von-Partitionen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ habe ich gezeigt,
+ dass die Mächtigkeit von 
+\begin_inset Formula $\mathbb{P}_{g}$
+\end_inset
+
+ kleiner als oder gleich derjenigen der feinkörnigen Partition 
+\begin_inset Formula $\mathbb{P}_{f}$
 \end_inset
 
  von 
-\begin_inset Formula $h_{2}$
+\begin_inset Formula $M_{2}$
 \end_inset
 
- geben:
- 
+ sein muss.
+ Im Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:fine-Partition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ habe ich schlussendlich gezeigt,
+ dass die Mächtgkeit der feinkörnigen Partition
+\begin_inset Formula $\mathbb{P}_{f}$
+\end_inset
+
+ gleich derjenigen von 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ ist.
+ Es muss somit gelten
 \begin_inset Formula 
-\[
-h_{3}:h_{1}\left(M_{1}\right)\rightarrow M_{1}
-\]
+\begin{align*}
+\left|M_{1}\right| & \leq\left|\mathbb{P}_{g}\right|\\
+\left|\mathbb{P}_{g}\right| & \leq\left|\mathbb{P}_{f}\right|\\
+\left|\mathbb{P}_{f}\right| & =\left|M_{2}\right|
+\end{align*}
 
 \end_inset
 
-mit der Eigenschaft 
-\end_layout
+Aus den ersten zwei Ungleichung kann ich folgern,
+ dass die Mächtigkeit von 
+\begin_inset Formula $M_{1}$
+\end_inset
 
-\begin_layout Standard
-Es wäre natürlich interessant,
- wenn ich auch die umgekehrte Richtung des Satzes beweisen könnte.
- Wenn also aus der Gleichmächtigkeit von zwei Mengen gezeigt werden könnte,
- dass es auch eine bijektive Abbildung von einer Abbildung zur anderen geben müsste.
- Aber ich kann das nicht beweisen.
- Wobei ich jedoch betonen möchte,
- dass das Problem schon sehr abstrakt ist.
- Denn es kommt nur dann zu tragen,
- wenn beide Mengen mindestens überabzählbar unendlich viele Elemente haben.
- Doch wie viele Elemente sind das?
- Das sind so viele Elemente,
- dass es unendlich viele davon gibt und diese nicht alle einzeln auf ein Blatt Papier geschrieben werden können.
- Das sind sehr,
- sehr viele.
- Doch nun möchte ich mich den natürlichen Zahlen zuwenden.
- Und damit zu etwas praktischerem.
+ kleiner also oder gleich derjenigen von 
+\begin_inset Formula $\mathbb{P}_{f}$
+\end_inset
+
+ ist (die Kardinalität ist gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Kardinalitaet-ist-Ordnungsrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ eine Ordnungsrelation).
+ Also muss es eine injektive Funktion von 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ nach der Partition 
+\begin_inset Formula $\mathbb{P}_{f}$
+\end_inset
+
+ (der feinkörnigen Partition von 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+) geben.
 \end_layout
 
 \end_body
