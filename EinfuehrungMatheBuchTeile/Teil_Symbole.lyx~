@@ -1440,9 +1440,9 @@ Lass mich dies an einem einfacheren Beispiel erklären:
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\forall n\epsilon\mathbb{N}\:n\geq1
-\]
+\begin{equation}
+\forall n\epsilon\mathbb{N}\:n\geq1\label{ex:Meta-symbole}
+\end{equation}
 
 \end_inset
 
