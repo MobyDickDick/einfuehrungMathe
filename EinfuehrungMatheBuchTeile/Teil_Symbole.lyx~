@@ -1363,6 +1363,12 @@ Neonröhre
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Alles-Meta-oder-was"
+
+\end_inset
+
 Alles 
 \begin_inset Quotes gld
 \end_inset
@@ -6734,7 +6740,7 @@ Metasymbole
 \begin_inset Quotes grd
 \end_inset
 
- geheißen
+ geheißen.
 \end_layout
 
 \end_body

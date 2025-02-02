@@ -11228,7 +11228,7 @@ Es seien
 \end_inset
 
 .
- Dies ist gemäss der formalen Definition 
+ Dies ist gemäß der formalen Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Mengengleichheit-Definition-Formal"
@@ -11248,7 +11248,7 @@ x\in A\Leftrightarrow x\in B
 
 \end_inset
 
-Gemäss der formalen Mengendefinition 
+Gemäß der formalen Mengendefinition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Definition-Menge-mit-Hilfe-Aussagenlogik"
@@ -11275,7 +11275,7 @@ x\in B\Leftrightarrow x=b
 
 \end_inset
 
-Gemäss dem Äquivalenzsatz 
+Gemäß dem Äquivalenzsatz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Aequivalenzsatz-der-Aequivalenz"
@@ -11294,7 +11294,7 @@ nolink "false"
 
 \end_inset
 
-Da die Symbolgleichheit gemäss dem Lemma 
+Da die Symbolgleichheit gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -20668,7 +20668,7 @@ Relation,
 
 \end_inset
 
- Relation,
+ oder Relation,
  falls gilt:
 \begin_inset Formula 
 \[
@@ -22368,7 +22368,29 @@ eine Funktion (oder Abbildung),
 \begin_inset Formula $f$
 \end_inset
 
- linkstotal und rechtseindeutig sei.
+ linkstotal (siehe Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:linkstotal"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) und rechtseindeutig (siehe Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:rechtstotal"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) sei.
  Die Funktion wird üblicherweise so geschrieben
 \begin_inset Formula 
 \begin{align*}
@@ -26490,7 +26512,7 @@ f:M_{1}\rightarrow M_{2}
 \end_inset
 
 eine bijektive Funktion.
- Dann muss gemäss dem Satz 
+ Dann muss gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Pruefung-auf-bijektive-Abbildung"
@@ -26525,7 +26547,7 @@ derart,
 \end_inset
 
  injektiv sind.
- Gemäss der Definition 
+ Gemäß der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Kardinalitaet-Mengen"
@@ -26555,7 +26577,7 @@ ist.
 \end_inset
 
  injektiv ist,
- muss gemäss der gleichen Definition 
+ muss gemäß der gleichen Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Kardinalitaet-Mengen"
@@ -26591,7 +26613,7 @@ sowie
 \end_inset
 
 gilt,
- muss gemäss der Definition 
+ muss gemäß der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:gleichmaechtig"
@@ -26702,6 +26724,150 @@ Ich muss jedoch gestehen,
  wie ich es gerne hätte.
  Darum werde ich erneut einen neuen Abschnitt beginnen - damit Du diesen getrost überlesen kannst,
  wenn es Dir zu blöd wird.
+\end_layout
+
+\begin_layout Standard
+Diesen Abschnitt möchte mit der Bemerkung abschließen,
+ das die Rechtseindeutigkeit aufgeweicht werden kann.
+ Ein berühmtes Beispiel ist die Wurzel einer Zahl.
+ Wenn ich eine Zahl wie etwa 
+\begin_inset Formula $4$
+\end_inset
+
+ habe,
+ dann kann ich diejenige andere Zahl suchen,
+ welche mit dem Symbol 
+\begin_inset Formula $x$
+\end_inset
+
+ bezeichnet werde,
+ für welche gilt:
+\begin_inset Formula 
+\[
+x\cdot x=4
+\]
+
+\end_inset
+
+Dann heisse 
+\begin_inset Formula $x$
+\end_inset
+
+ 
+\begin_inset Quotes gld
+\end_inset
+
+die Quadratwurzel von 
+\begin_inset Formula $4$
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Das kann (leicht unscharf) so aufgeschrieben werden:
+\begin_inset Formula 
+\[
+x=\sqrt{4}
+\]
+
+\end_inset
+
+Wie durch Nachrechnen gut bestätigt werden kann,
+ ist 
+\begin_inset Formula 
+\[
+x=2
+\]
+
+\end_inset
+
+eine Lösung dieser Gleichung.
+ Denn es gilt
+\begin_inset Formula 
+\[
+2\cdot2=4
+\]
+
+\end_inset
+
+Jedoch gibt es noch eine zweite Lösung dieser Gleichung.
+ Und zwar lautet diese 
+\begin_inset Formula 
+\[
+-2
+\]
+
+\end_inset
+
+Denn es gilt:
+\begin_inset Formula 
+\[
+\left(-2\right)\cdot\left(-2\right)=4
+\]
+
+\end_inset
+
+Wenn ich jetzt die folgende Funktion definieren möchte
+\begin_inset Formula 
+\begin{align*}
+f: & \mathbb{N}\rightarrow\mathbb{Z}\\
+ & n\mapsto\sqrt{n^{2}}
+\end{align*}
+
+\end_inset
+
+Dann habe ich grundsätzlich ein Problem.
+ Denn die Funktion ist nicht mehr rechtseindeutig.
+ Es gibt immer zwei Bildpunkte
+\begin_inset Formula 
+\[
+\sqrt{n^{2}}=\left\{ -n,n\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Was machen?
+ Es gibt da zwei Möglichkeiten,
+ das Problem zu umschiffen.
+ Entweder nehme ich an,
+ dass durch die Funktion immer nur die positiven Lösungen der Wurzelfunktion verstanden werden.
+ Das wird üblicherweise auch so gemacht.
+ Aber ich könnte alternativ die folgende Funktion definieren:
+\begin_inset Formula 
+\begin{align*}
+g & :\mathbb{N}\rightarrow\mathcal{P}\left(\mathbb{Z}\right)\\
+ & n\mapsto\left\{ -\sqrt{n^{2}},\sqrt{n^{2}}\right\} 
+\end{align*}
+
+\end_inset
+
+Dabei wird unter 
+\begin_inset Formula 
+\[
+\sqrt{n^{2}}
+\]
+
+\end_inset
+
+zwar immer noch bloß die positive Lösung der Gleichung verstanden.
+ Aber es sind eben doch zwei Lösungen der Gleichungen vorhanden.
+ Dennoch die Zahl 
+\begin_inset Formula $n$
+\end_inset
+
+ wird dennoch rechtseindeutig auf eine Teilmenge von 
+\begin_inset Formula $\mathbb{Z}$
+\end_inset
+
+ abgebildet.
+ Dennoch ist dieser Fall so meines Erachtens selten.
+ Denn mit dieser diese Art der Lösung kann recht schlecht weiter gerechnet werden.
 \end_layout
 
 \begin_layout Section
@@ -31461,7 +31627,7 @@ Da
 \begin_inset Formula $g\left(m_{2}\right)=P_{2}$
 \end_inset
 
- so müssten gemäss Konstruktion von 
+ so müssten gemäß Konstruktion von 
 \begin_inset Formula $\mathbb{P}_{f}$
 \end_inset
 
@@ -31509,7 +31675,7 @@ ist.
 \begin_inset Formula $g$
 \end_inset
 
- gemäss der Definition 
+ gemäß der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Funktion"
@@ -31560,7 +31726,7 @@ Wieder ist zu zeigen,
 \begin_inset Formula $M_{1}$
 \end_inset
 
- gemäss Voraussetzung nicht die leere Menge sein.
+ gemäß Voraussetzung nicht die leere Menge sein.
  Also muss es mindestens ein Element 
 \begin_inset Formula $m_{1}\in M_{1}$
 \end_inset
@@ -31580,7 +31746,7 @@ Wieder ist zu zeigen,
 \end_inset
 
  ist eindeutig bestimmt,
- da ja gemäss Definition über die Partition 
+ da ja gemäß Definition über die Partition 
 \begin_inset Formula $\mathbb{P}_{f}$
 \end_inset
 
@@ -31628,7 +31794,7 @@ Es sei
 \begin_inset Formula $P$
 \end_inset
 
- gemäss Voraussetzung der Definition 
+ gemäß Voraussetzung der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Partition"
@@ -31697,7 +31863,7 @@ f^{-1}\left(f\left(m_{1}\right)\right)=P
 \end_inset
 
  sein.
- Da die Symbolgleichheit gemäss dem Satz 
+ Da die Symbolgleichheit gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -31708,7 +31874,7 @@ nolink "false"
 
 \end_inset
 
- eine Äquivalenzrelation und daher gemäss der Definition 
+ eine Äquivalenzrelation und daher gemäß der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Aequivalenzrelation"
@@ -31761,7 +31927,7 @@ Nun sei
 \begin_inset Formula $M_{2}$
 \end_inset
 
- gemäss Voraussetzung nicht leer sein darf.
+ gemäß Voraussetzung nicht leer sein darf.
  Also möchte ich zeigen,
  dass gelten muss
 \begin_inset Formula 
@@ -31822,7 +31988,7 @@ f\left(m_{1}\right)=m_{2}
 
 \end_inset
 
-Nun muss jedoch gemäss Konstruktion von 
+Nun muss jedoch gemäß Konstruktion von 
 \begin_inset Formula $h$
 \end_inset
 
@@ -31913,7 +32079,7 @@ nolink "false"
 \end_inset
 
  folgt,
- dass die Symbolgleichheit auch transitiv ist) gemäss dem Satz 
+ dass die Symbolgleichheit auch transitiv ist) gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Schlussfolgerung"
@@ -31954,7 +32120,7 @@ sowie
 
 \end_inset
 
-Das bedeutet gemäss dem Satz 
+Das bedeutet gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Pruefung-auf-bijektive-Abbildung"
@@ -32304,6 +32470,11 @@ Es seien
 
  Symbole von Mengen,
  welche in sich selbst und in Bezug auf die anderen Symbole des Satzes widerspruchsfrei seien.
+ Die Menge 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ sei nicht leer.
  Dann ist die Mächtigkeit von 
 \begin_inset Formula $M_{1}$
 \end_inset
@@ -32313,11 +32484,7 @@ Es seien
 \end_inset
 
 ,
- falls 
-\begin_inset Formula $M_{1}$
-\end_inset
-
- die leere Menge ist oder es eine surjektive Abbildung
+ falls es eine surjektive Abbildung
 \begin_inset Formula 
 \[
 g:M_{2}\rightarrow M_{1}
@@ -32329,31 +32496,57 @@ gibt.
 \end_layout
 
 \begin_layout Proof
-Ich habe also zwei Dinge zu beweisen:
- Einerseits muss ich beweisen,
- dass es eine surjektive Abbildung 
+Gemäß dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Aequivalenz-Aequivalenz-zwei-Implikationen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ist die Aussage,
+ dass die Mächtigkeit von 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ genau dann kleiner oder gleich derjenigen von 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ ist,
+ es eine surjektive Abbildung
 \begin_inset Formula 
 \[
-g:M_{2}\rightarrow M_{2}
+g:M_{2}\rightarrow M_{1}
 \]
 
 \end_inset
 
 gibt,
- sofern 
+ äquivalent zu zwei Aussagen:
+ Die erste Aussage ist,
+ dass es eine surjektive Abbildung
+\begin_inset Formula 
+\[
+g:M_{2}\rightarrow M_{1}
+\]
+
+\end_inset
+
+geben muss,
+ falls die Mächtigkeit von 
 \begin_inset Formula $M_{1}$
 \end_inset
 
- nicht die leere Menge ist und die Mächtigkeit von 
-\begin_inset Formula $M_{1}$
-\end_inset
-
- kleiner als oder gleich derjenigen von 
+kleiner als oder gleich derjenigen von 
 \begin_inset Formula $M_{2}$
 \end_inset
 
  ist.
- Andererseits muss ich zeigen,
+ Die zweite Aussage ist,
  dass die Mächtigkeit von 
 \begin_inset Formula $M_{1}$
 \end_inset
@@ -32372,7 +32565,6 @@ g:M_{2}\rightarrow M_{2}
 \end_inset
 
 gibt.
- 
 \end_layout
 
 \begin_layout Proof
@@ -32391,7 +32583,7 @@ Zum Beweis der ersten Behauptung:
 \end_inset
 
  nicht leer.
- Dann muss es gemäss der Definition 
+ Dann muss es gemäß der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Kardinalitaet-Mengen"
@@ -32505,7 +32697,7 @@ In Worten:
 \end_inset
 
  wirklich eine Abbildung darstellt.
- Dazu muss ich gemäss der Definition 
+ Dazu muss ich gemäß der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Funktion"
@@ -32522,7 +32714,7 @@ nolink "false"
 \end_inset
 
  linkstotal und rechtseindeutig ist.
- Gemäss dem Satz 
+ Gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:ausgeschlossener-Dritter"
@@ -32626,7 +32818,7 @@ unter der Abbildung
 \begin_inset Formula $f$
 \end_inset
 
- ist ja gemäss Definition injektiv.
+ ist ja gemäß Definition injektiv.
  Also muss es genau ein Element 
 \begin_inset Formula $m_{3}\in M_{1}$
 \end_inset
@@ -32650,7 +32842,7 @@ Da jedoch die Relation
 \end_inset
 
  linkstotal und rechtseindeutig ist,
- ist sie gemäss der Definition 
+ ist sie gemäß der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Funktion"
@@ -32761,7 +32953,7 @@ nolink "false"
 \end_inset
 
  erzeugt wird.
- Gemäss dem Lemma 
+ Gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Machtigkeit-der-durch-die-surjektvie-Abbildung-erzeugte-Partition"
@@ -32818,7 +33010,7 @@ nolink "false"
 \end_inset
 
  habe ich schlussendlich gezeigt,
- dass die Mächtgkeit der feinkörnigen Partition
+ dass die Mächtigkeit der feinkörnigen Partition
 \begin_inset Formula $\mathbb{P}_{f}$
 \end_inset
 
@@ -32907,7 +33099,7 @@ g_{2}\circ g_{1} & :M_{1}\rightarrow M_{2}\\
 
 \end_inset
 
-Also Verkettung zweier injektiver Funktionen gemäss dem Lemma 
+Also Verkettung zweier injektiver Funktionen gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Transitvitaet-injektiver-Funktionen"
@@ -32931,6 +33123,74 @@ sein.
  Damit meine ich,
  den zweiten Teil der Behauptung und somit den Beweis für Richtigkeit der ganzen Behauptung erbracht zu haben.
  Darum beende ich an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Chapter
+Kleine Zusammenfassung des Teils der Mengenlehre
+\end_layout
+
+\begin_layout Standard
+Zunächst sieht es so aus,
+ als sei die Mengenlehre bloß die Umschreibung der Logik.
+ Denn eigentlich besitzt praktisch jeder Satz der Logik eine Entsprechung in der Mengenlehre.
+ Etwa wie derjenige der Transformation des Satzes 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "example:Der-Ball-is-Rund"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ über die Umwandlung Allquantors in den Existenzquantor und umgekehrt.
+ Das ist weitgehend mühsam und hirntötend.
+ Aber ich habe es aufgeschrieben,
+ damit es klar wird,
+ um was es geht.
+\end_layout
+
+\begin_layout Standard
+Das wirklich Neue ist aus meiner Sicht vor allem geordnete Mengen und Relationen.
+ Wobei ich mich frage,
+ wieso geordnete Mengen in der Ausbildung nicht schon früher thematisiert werden.
+ Denn ich finde das Konzept von geordneten Mengen (als Mengen von Teilmengen mit einem sehr speziellen Charakter) schon noch faszinierend.
+ Relationen dagegen finde ich vielsagend nichtssagend.
+ Bis sie mit Leben gefüllt werden.
+\end_layout
+
+\begin_layout Standard
+Und wo ich beim schreiben endgültig staunte,
+ war,
+ als ich feststellen musste,
+ dass auch Funktionen eigentlich als Teil der Mengenlehre angesehen werden können.
+ Dass Funktionen als Relationen betrachtet werden können,
+ war mir schon bekannt.
+ Aber als Teil der Mengenlehre?
+ Das war mir wirklich neu.
+\end_layout
+
+\begin_layout Standard
+Die Eigenschaften von Partitionen so auszuloten und die Äquivalenz der Definition der Mächtigkeit mit Hilfe von injektiven respektive surjektiven Abbildungen festzustellen,
+ war für mich selbst auch Neuland.
+ Ich hoffe,
+ diese Überlegungen sind richtig und halten im Lauf der Zeit.
+ 
+\end_layout
+
+\begin_layout Standard
+Was für mich auch Neuland war,
+ war die Überlegung,
+ dass ich nicht die Äquivalenz von Gleichmächtigkeit und bijektiven Funktionen zeigen kann.
+ Ich denke,
+ das ist wahrscheinlich prinzipiell nicht möglich,
+ zu zeigen,
+ dass diese Begriffe nicht äquivalent sind.
+ Aber das Gute und auch Tröstliche daran ist meines Erachtens,
+ dass es gar nicht nötig ist,
+ die zeigen zu müssen.
+ 
 \end_layout
 
 \end_body
