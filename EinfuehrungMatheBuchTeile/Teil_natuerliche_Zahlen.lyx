@@ -224,7 +224,7 @@ Reverse-Engineering
  damit die bekannten Eigenschaften als Sätze beweisbar sind.
  Jedoch finde ich das nicht schön.
  Denn was auf der Strecke bleibt,
- bleibt die Anschauung und das Verständnis auf der Strecke.
+ bleibt die Anschauung und das Verständnis.
  Darum schlage ich eine andere Definition der natürlichen Zahlen vor und leite daraus die übliche Definition der natürlichen Zahlen als Sätze ab.
  M.E.
  lassen sich Zahlen als Metasymbole für Verkettungen von gleichen Symbolen begreifen.
@@ -258,7 +258,18 @@ Das wäre dann schon alles,
  was über Zahlen bekannt sein müsste.
  Alle weiteren Eigenschaften der natürlichen Zahlen lassen sich dann von Verkettungen von gleichen Symbolen ableiten.
  Damit ist der Inhalt dieses Abschnitts eigentlich schon beschrieben.
- Und jetzt wir das Ganze noch praktisch beliebig ausführlich noch einmal beschrieben.
+ Und jetzt wird das Ganze noch praktisch beliebig ausführlich noch einmal beschrieben
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Als ich diesen Satz nach langer Zeit durchgelesen habe,
+ musste ich spontan lachen.
+\end_layout
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -370,7 +381,7 @@ status open
 Vergleiche mit der Bemerkung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:kleiner-als-Symbolvergleich-ist-transitiv"
+reference "def:Gleichheit-von-Symbolen"
 plural "false"
 caps "false"
 noprefix "false"
@@ -867,7 +878,7 @@ C=B
 
 \end_inset
 
-müsste in diesem Fall gelten
+Also müsste in diesen Fällen gelten
 \begin_inset Formula 
 \[
 B\neq B
@@ -882,16 +893,180 @@ Denn das Symbol
  müsste,
  je nachdem welche Gleichheit zuerst betrachtet würde,
  unterschiedlich viele Symbole besitzen.
- Somit meine ich,
- auch in diesem Fall gezeigt zu haben,
- dass gelten müsste:
+ Wäre 
 \begin_inset Formula 
 \[
-A=C
+A=D\,E
 \]
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Proof
+sowie 
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+C=D
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Dann müsste mit 
+\begin_inset Formula 
+\[
+A=B
+\]
+
+\end_inset
+
+ auch gelten
+\begin_inset Formula 
+\[
+B=D\,E
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Mit der Voraussetzung 
+\begin_inset Formula 
+\[
+B=C
+\]
+
+\end_inset
+
+wäre auch 
+\begin_inset Formula 
+\[
+B=D
+\]
+
+\end_inset
+
+Somit könnte ich die Gleichung 
+\begin_inset Formula 
+\[
+B=B
+\]
+
+\end_inset
+
+(welche gemäss der Identität der Symbolgleichheit gilt) auch schreiben als
+\begin_inset Formula 
+\[
+D\,E=D
+\]
+
+\end_inset
+
+was jedoch gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Gleichheit-von-Symbolen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Symbolgleichheit nicht wahr sein kann.
+\end_layout
+
+\begin_layout Proof
+Wäre hingegen 
+\begin_inset Formula 
+\[
+A=D
+\]
+
+\end_inset
+
+und 
+\begin_inset Formula 
+\[
+C=D\,E
+\]
+
+\end_inset
+
+Dann wäre mit der Voraussetzung 
+\begin_inset Formula 
+\[
+A=B
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+auch 
+\begin_inset Formula 
+\[
+B=D
+\]
+
+\end_inset
+
+Wegen der Voraussetzung 
+\begin_inset Formula 
+\[
+B=C
+\]
+
+\end_inset
+
+wäre auch 
+\begin_inset Formula 
+\[
+B=D\,E
+\]
+
+\end_inset
+
+Somit könnte ich die Gleichung 
+\begin_inset Formula 
+\[
+B=B
+\]
+
+\end_inset
+
+(welche gemäss der Identität der Symbolgleichheit gilt) auch schreiben als
+\begin_inset Formula 
+\[
+D=D\,E
+\]
+
+\end_inset
+
+was jedoch gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Gleichheit-von-Symbolen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Symbolgleichheit nicht wahr sein kann.
  Somit erachte ich den Beweis als erbracht und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
  
 \end_layout
@@ -921,6 +1096,16 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Im nächsten Lemma möchte ich mich mit der Frage beschäftigen,
+ ob Symbole immer noch gleich sind,
+ welche sie gleich sind und ein weiteres Symbol ihnen voran- oder nachgestellt wird.
+ Hier liegt der Fokus vor allem darauf,
+ dass ich mich vergewissere,
+ dass der Prinzip der Gleichheit widerspruchsfrei bleibt.
+ 
 \end_layout
 
 \begin_layout Lemma
@@ -965,6 +1150,15 @@ B\,A_{1}=B\,A_{2}
 \end_layout
 
 \begin_layout Proof
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+aktuelle Stelle
+\end_layout
+
+\end_inset
+
 Der Beweis ist zwar einfach,
  jedoch aufwändig.
  Denn sowohl die Symbole 
@@ -1500,7 +1694,8 @@ C\neq D
 \end_inset
 
 sein.
- Denn dafür müssten gleich viele Symbole vorhanden sein.
+ Denn um gleich zu sein,
+ müssten gleich viele Symbole vorhanden sein.
  Das ist jedoch nicht der Fall.
  Denn besteht das Symbol,
  welches durch das Metasymbol 
@@ -1524,7 +1719,7 @@ sein.
 
  symbolisiert wird,
  aus mehreren Symbolen bestehen.
- Also kann in diesem Falls die Gleichheit von 
+ Also kann in diesem Fall die Gleichheit von 
 \begin_inset Formula $C$
 \end_inset
 
@@ -2466,7 +2661,199 @@ A\,B=B\,A
 \end_inset
 
 sein muss und beende somit den Beweis an dieser Stelle.
- 
+ Wobei - nein,
+ ich kann es noch besser zeigen:
+ Ich schreibe 
+\begin_inset Formula 
+\[
+A\,B
+\]
+
+\end_inset
+
+und 
+\begin_inset Formula 
+\[
+B\,A
+\]
+
+\end_inset
+
+ auf.
+ Wenn ich jetzt diese Symbole aufschreibe,
+ wobei ich das Symbol 
+\begin_inset Formula $B$
+\end_inset
+
+ durch die Verkettung der Symbole 
+\begin_inset Formula $A$
+\end_inset
+
+ ersetze,
+ dann werde ich in beiden Fällen die gleiche Anzahl der Symbole 
+\begin_inset Formula $A$
+\end_inset
+
+ sehen.
+ Ich kann nicht unterscheiden,
+ ob wo das zusätzliche 
+\begin_inset Formula $A$
+\end_inset
+
+ hingeschrieben habe.
+ Ob am Anfang oder am Ende.
+ Also müssen beide Symbole gleich sein.
+ Damit hätte ich den Beweis für die Behauptung erbracht.
+\end_layout
+
+\begin_layout Proof
+Ich möchte noch einen Beweis aufschreiben.
+ Dabei ersetze ich das Symbol 
+\begin_inset Formula $A$
+\end_inset
+
+ durch einen senkrechten Strich (
+\begin_inset Formula $|$
+\end_inset
+
+).
+ Ich schreibe die Zeichenketten
+\begin_inset Formula 
+\[
+A\,B
+\]
+
+\end_inset
+
+ respektive 
+\begin_inset Formula 
+\[
+B\,A
+\]
+
+\end_inset
+
+ um und erhalte
+\begin_inset Formula 
+\[
+|\,B
+\]
+
+\end_inset
+
+respektive 
+\begin_inset Formula 
+\[
+B\:|
+\]
+
+\end_inset
+
+Dabei möchte ich betonen,
+ dass die Leerzeichen zwischen den Symbolen nicht zu den Symbolketten gezählt werden sollen.
+ Die durch das Symbol 
+\begin_inset Formula $B$
+\end_inset
+
+ symbolisierte Zeichenkette sieht dann irgendwie in der Art
+\begin_inset Formula 
+\[
+|\,|\,|\,\left(\ldots\right)\,|\,|\,|
+\]
+
+\end_inset
+
+aus.
+ Somit sieht die Zeichenkette
+\begin_inset Formula 
+\[
+B\,|
+\]
+
+\end_inset
+
+in der Art
+\begin_inset Formula 
+\[
+|\,|\,|\,\left(\ldots\right)\,|\,|\,|\;\;|
+\]
+
+\end_inset
+
+ und die Zeichenkette 
+\begin_inset Formula 
+\[
+|\,B
+\]
+
+\end_inset
+
+sieht dann irgendwie so aus:
+\begin_inset Formula 
+\[
+|\;\;|\,|\,|\,\left(\ldots\right)\,|\,|\,|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Nun nehme ich die letzte Zeichenkette und zeichne sie ab,
+ in dem ich sie von oben herab her lese.
+ Ich stelle diese Zeichenkette sozusagen auf den Kopf.
+ Also sieht diese dann wie folgt aus:
+\begin_inset Formula 
+\[
+|\,|\,|\,\left(\ldots\right)\,|\,|\,|\;\;|
+\]
+
+\end_inset
+
+Die Erfahrung der Objektpermanenz lehrt mich jedoch,
+ dass sich die Anzahl der senkrechten Striche sich nicht geändert haben darf.
+ Aber die auf den Kopf gestellte Zeichenkette muss gleich der Zeichenkette 
+\begin_inset Formula $B\,|$
+\end_inset
+
+ sein.
+ Denn nehme ich den letzten senkrechten Strich weg,
+ dann bleiben genau die vom Symbol 
+\begin_inset Formula $B$
+\end_inset
+
+ symbolisierten senkrechten Striche übrig.
+ Also muss die ursprüngliche Zeichenkette wiederum gleich der Zeichenkette 
+\begin_inset Formula $B\,|$
+\end_inset
+
+ sein.
+ Da ich Leerschläge nicht zähle,
+ kann ich also daraus folgern,
+ dass die Zeichenketten 
+\begin_inset Formula 
+\[
+|\,B
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+B\,|
+\]
+
+\end_inset
+
+ebenfalls gleich sein müssen.
+\end_layout
+
+\begin_layout Proof
+Darum erlaube ich mir,
+ zu behaupten,
+ dass ich den Beweis für die Richtigkeit der Behauptung erbracht habe und beende darum an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Standard
@@ -2921,7 +3308,183 @@ C\,B
 \end_inset
 
 identisch sein müssen.
- Damit hoffe ich,
+ Ich versuche noch einen weiteren Beweis aufzuschreiben.
+ Angenommen,
+ es sei 
+\begin_inset Formula 
+\[
+B\,C\neq\,C\,B
+\]
+
+\end_inset
+
+ Dann könnte ich zuerst die durch 
+\begin_inset Formula $B$
+\end_inset
+
+ und 
+\begin_inset Formula $C$
+\end_inset
+
+ symbolisierten Zeichenketten aus den Symbolen 
+\begin_inset Formula $A$
+\end_inset
+
+ aufschreiben.
+ Anschliessend würde ich so viele Zeichen 
+\begin_inset Formula $A$
+\end_inset
+
+ wegnehmen und auf die Seite legen,
+ bis wiederum die durch das Symbol 
+\begin_inset Formula $B$
+\end_inset
+
+ symbolisierte Zeichenkette auf der Seite legen würde.
+ Dies muss gehen.
+ Denn ich habe ja zuerst die Zeichenkette,
+ welche durch 
+\begin_inset Formula $B$
+\end_inset
+
+ symbolisiert wird,
+ aufgeschrieben und anschliessend die Zeichenkette,
+ welche durch das Symbol 
+\begin_inset Formula $C$
+\end_inset
+
+ aufgeschrieben wird.
+ Also kann ich auch die Zeichenkette,
+ welche durch die Zeichenkette symbolisiert wird,
+ wieder entfernen (das lehrt mich die Objektpermanenz).
+ Anschschliessend nehme ich die auf die Seite gelegte Zeichenkette und hänge diese nach der Zeichenkette,
+ welche von 
+\begin_inset Formula $C$
+\end_inset
+
+ symbolisiert wird,
+ wieder an.
+ Somit lehrt mich die Objektpermanenz erneut,
+ dass ich die Zeichenkette,
+ welche durch 
+\begin_inset Formula $C\,B$
+\end_inset
+
+ symbolisiert habe,
+ aufgeschrieben habe.
+ Jedoch wäre das ein Widerspruch zur Annahme,
+ dass diese Zeichenketten nicht gleich sein können.
+ Also kann die Annahme nicht wahr sein.
+ Somit müsste wirklich
+\begin_inset Formula 
+\[
+B\,C=C\,D
+\]
+
+\end_inset
+
+ sein.
+\end_layout
+
+\begin_layout Proof
+Auch dieses Lemma kann ich beweisen,
+ indem ich eine geeignete Symbolkette sozusagen auf den Kopf stelle.Dabei ersetze ich das Symbol 
+\begin_inset Formula $A$
+\end_inset
+
+ durch einen senkrechten Strich (
+\begin_inset Formula $|$
+\end_inset
+
+).
+ Ich schreibe die Zeichenketten
+\begin_inset Formula 
+\[
+B\,C
+\]
+
+\end_inset
+
+ respektive 
+\begin_inset Formula 
+\[
+C\,B
+\]
+
+\end_inset
+
+ um und erhalte im ersten Fall etwas von der Art
+\begin_inset Formula 
+\[
+|\,|\,|\,\left(\ldots\right)\,|\,|\,|\;\;|\,|\,\left(\ldots\right)\,|\,|
+\]
+
+\end_inset
+
+(für den ersten Fall) und 
+\begin_inset Formula 
+\[
+|\,|\,\left(\ldots\right)\,|\,|\;\;|\,|\,|\,\left(\ldots\right)\,|\,|\,|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Nun nehme ich die letzte Zeichenkette und zeichne sie ab,
+ in dem ich sie von oben herab her lese.
+ Ich stelle diese Zeichenkette sozusagen auf den Kopf.
+ Also sieht diese dann wie folgt aus:
+\begin_inset Formula 
+\[
+|\,|\,|\,\left(\ldots\right)\,|\,|\,|\;\;|\,|\,\left(\ldots\right)\,|\,|
+\]
+
+\end_inset
+
+Die Erfahrung der Objektpermanenz lehrt mich jedoch,
+ dass sich die Anzahl der senkrechten Striche sich nicht geändert haben darf.
+ Aber die auf den Kopf gestellte Zeichenkette muss gleich der Zeichenkette 
+\begin_inset Formula $B\,|$
+\end_inset
+
+ sein.
+ Denn nehme ich den letzten senkrechten Strich weg,
+ dann bleiben genau die vom Symbol 
+\begin_inset Formula $B$
+\end_inset
+
+ symbolisierten senkrechten Striche übrig.
+ Also muss die ursprüngliche Zeichenkette wiederum gleich der Zeichenkette 
+\begin_inset Formula $B\,|$
+\end_inset
+
+ sein.
+ Da ich Leerschläge nicht zähle,
+ kann ich also daraus folgern,
+ dass die Zeichenketten 
+\begin_inset Formula 
+\[
+|\,B
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+B\,|
+\]
+
+\end_inset
+
+ebenfalls gleich sein müssen.
+\end_layout
+
+\begin_layout Proof
+Damit hoffe ich,
  den Beweis für die Richtigkeit der Behauptung erbracht zu haben und beende darum an dieser Stelle wiederum die weitere Beweisführung.
 \end_layout
 

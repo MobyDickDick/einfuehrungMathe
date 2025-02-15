@@ -1427,7 +1427,7 @@ Es sei
 
  auf ein oder mehrere andere Symbole verweist.
  Jedoch werde vorausgesetzt,
- dass auf höchstens endlich andere Metasymbole verwiesen wird und dass das Metasymbol 
+ dass auf höchstens endlich andere Symbole verwiesen wird und dass das Metasymbol 
 \begin_inset Formula $A$
 \end_inset
 
@@ -1438,6 +1438,9 @@ Es sei
 \end_inset
 
  nicht direkt oder indirekt auf sich selbst verweise.
+ Ich fordere weiter,
+ dass es immer möglich sein muss,
+ ein Metasymbol letztendlich auf eine Verkettung oder Aneinanderreihung von endlich vielen Symbolen aufzulösen.
 \end_layout
 
 \begin_layout Standard
@@ -6469,7 +6472,18 @@ Es seien
 \begin_inset Formula $B$
 \end_inset
 
- Metasymbole.
+ Metasymbole gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Metasymbol"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
  Dann sei 
 \begin_inset Formula 
 \[
@@ -6707,7 +6721,7 @@ Im Teil über die Logik versuche ich,
 \end_layout
 
 \begin_layout Chapter
-kleine Zusammenfassung des Teil I über Symbole
+kleine Zusammenfassung des Teils I über Symbole
 \end_layout
 
 \begin_layout Standard

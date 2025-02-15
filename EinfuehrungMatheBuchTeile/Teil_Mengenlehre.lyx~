@@ -19493,8 +19493,29 @@ pageformat default
 status open
 
 \begin_layout Plain Layout
-Relation,
- identitiv
+Relation
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+identitiv
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+identitiv
 \end_layout
 
 \end_inset
@@ -19807,13 +19828,48 @@ pageformat default
 status open
 
 \begin_layout Plain Layout
-Relation,
- symmetrisch
+Relation
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+symmetrisch
 \end_layout
 
 \end_inset
 
-Relation,
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+symmetrisch
+\end_layout
+
+\end_inset
+
+ Relation,
  falls für alle 
 \begin_inset Formula 
 \[
@@ -20123,8 +20179,29 @@ pageformat default
 status open
 
 \begin_layout Plain Layout
-Relation,
- transitiv
+Relation
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+transitiv
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+transitiv
 \end_layout
 
 \end_inset
@@ -23122,6 +23199,27 @@ Schweizer Franken
  ob dieser Diebstahl rückgängig gemacht werden kann.
  Damit habe ich ein erstes Beispiel für eine Funktion gemacht.
  Es werden wahrscheinlich schier unzählige weitere Beispiele folgen.
+\end_layout
+
+\begin_layout Example
+Weiter möchte ich hinzufügen,
+ dass die Bildmenge auch ein kartesisches Produkt von verschiedenen Mengen sein kann.
+ Hiervon wird in der Informatik ausgiebig Gebrauch gemacht.
+ Dort ist die Urbildmenge etwa eine Krankenversicherungsnummer einer Patientin oder eines Patienten und die Bildmenge entspricht bspw.
+ den Angaben,
+ wann durch wen welche Behandlung durchgeführt wurde.
+ Auch für Datenbanken werden Abbildung fleissig und ausgiebig verwendet.
+ Damit können beispielsweise Abfragen gemacht werden wie:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+In welchen Altersgruppen werden welche Behandlungen durchgeführt?
+\begin_inset Quotes grd
+\end_inset
+
+ Natürlich muss die Abfrage ein wenig genauer formuliert werden.
+ Ich mache hier nur ein grobes Beispiel.
 \end_layout
 
 \begin_layout Standard
@@ -33176,6 +33274,21 @@ Die Eigenschaften von Partitionen so auszuloten und die Äquivalenz der Definiti
  war für mich selbst auch Neuland.
  Ich hoffe,
  diese Überlegungen sind richtig und halten im Lauf der Zeit.
+ 
+\end_layout
+
+\begin_layout Standard
+Was für mich auch Neuland war,
+ war die Überlegung,
+ dass ich nicht die Äquivalenz von Gleichmächtigkeit und bijektiven Funktionen zeigen kann.
+ Ich denke,
+ das ist wahrscheinlich prinzipiell nicht möglich,
+ zu zeigen,
+ dass diese Begriffe nicht äquivalent sind.
+ Aber das Gute und auch Tröstliche daran ist meines Erachtens,
+ dass es gar nicht nötig ist,
+ die zeigen zu müssen.
+ 
 \end_layout
 
 \end_body

@@ -188,7 +188,7 @@ Einführung Mathematik
 
 
 \size large
-Version 0.1.197
+Version 0.1.198
 \end_layout
 
 \begin_layout Author
@@ -25035,18 +25035,7 @@ Zur Erinnerung:
 \end_inset
 
  Aussagen.
- Dann gilt gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Implikation-Disjunktion-aus-Aussage"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- 
+ Dann gilt gemäß dem Satz xx
 \begin_inset Formula 
 \[
 A\wedge B\Rightarrow A\vee B
