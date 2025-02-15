@@ -3439,7 +3439,7 @@ Nun nehme ich die letzte Zeichenkette und zeichne sie ab,
  Also sieht diese dann wie folgt aus:
 \begin_inset Formula 
 \[
-|\,|\,|\,\left(\ldots\right)\,|\,|\,|\;\;|
+|\,|\,|\,\left(\ldots\right)\,|\,|\,|\;\;|\,|\,\left(\ldots\right)\,|\,|
 \]
 
 \end_inset
