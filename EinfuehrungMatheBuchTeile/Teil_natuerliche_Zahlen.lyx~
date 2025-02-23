@@ -316,6 +316,32 @@ nolink "false"
  weil ich eben noch nicht von der Möglichkeit der natürlichen Zahlen Gebrauch machen kann und will.
  Mein Ziel ist es eben,
  die Zahlen als Anzahl der Symbole von Symbolketten mit lauter gleichartigen Symbolen zu motivieren.
+ Auf der anderen Seite ist es so,
+ dass dieses Kapitel sich eigentlich eher zum Nachschlagen als zum Durchlesen eignet.
+\end_layout
+
+\begin_layout Standard
+Das Bemerkenswerte dieses Kapitels ist,
+ dass die neue Voraussetzung,
+ um es zu verstehen,
+ eigentlich in der Objektpermanenz
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+siehe https://de.wikipedia.org/wiki/Objektpermanenz,
+ falls Du mehr darüber erfahren möchtest
+\end_layout
+
+\end_inset
+
+ liegt.
+ Dieses Konzept eignen sich Kinder im Laufe einer unauffälligen Entwicklung ab ca.
+ ihrem achten Lebensmonat an.
+\end_layout
+
+\begin_layout Standard
+Nun möchte ich mit den Vorbereitungen der natürlichen Zahlen beginnen:
 \end_layout
 
 \begin_layout Standard
@@ -1150,15 +1176,6 @@ B\,A_{1}=B\,A_{2}
 \end_layout
 
 \begin_layout Proof
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-aktuelle Stelle
-\end_layout
-
-\end_inset
-
 Der Beweis ist zwar einfach,
  jedoch aufwändig.
  Denn sowohl die Symbole 
@@ -2531,7 +2548,20 @@ Also kann ich die Zeichenketten
 \end_inset
 
  vergleichen.
- Dann sind bei beiden Zeichenketten das erste Symbol gleich.
+ Dann sind bei beiden Zeichenketten das erste Symbol gleich,
+ da die Verkettung von Symbolen gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Assoziativitaet-Symbolketten"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ assoziativ ist.
+ .
  Also muss ich die beiden Symbole 
 \begin_inset Formula $C\,A$
 \end_inset
@@ -3308,179 +3338,7 @@ C\,B
 \end_inset
 
 identisch sein müssen.
- Ich versuche noch einen weiteren Beweis aufzuschreiben.
- Angenommen,
- es sei 
-\begin_inset Formula 
-\[
-B\,C\neq\,C\,B
-\]
-
-\end_inset
-
- Dann könnte ich zuerst die durch 
-\begin_inset Formula $B$
-\end_inset
-
- und 
-\begin_inset Formula $C$
-\end_inset
-
- symbolisierten Zeichenketten aus den Symbolen 
-\begin_inset Formula $A$
-\end_inset
-
- aufschreiben.
- Anschliessend würde ich so viele Zeichen 
-\begin_inset Formula $A$
-\end_inset
-
- wegnehmen und auf die Seite legen,
- bis wiederum die durch das Symbol 
-\begin_inset Formula $B$
-\end_inset
-
- symbolisierte Zeichenkette auf der Seite legen würde.
- Dies muss gehen.
- Denn ich habe ja zuerst die Zeichenkette,
- welche durch 
-\begin_inset Formula $B$
-\end_inset
-
- symbolisiert wird,
- aufgeschrieben und anschliessend die Zeichenkette,
- welche durch das Symbol 
-\begin_inset Formula $C$
-\end_inset
-
- aufgeschrieben wird.
- Also kann ich auch die Zeichenkette,
- welche durch die Zeichenkette symbolisiert wird,
- wieder entfernen (das lehrt mich die Objektpermanenz).
- Anschschliessend nehme ich die auf die Seite gelegte Zeichenkette und hänge diese nach der Zeichenkette,
- welche von 
-\begin_inset Formula $C$
-\end_inset
-
- symbolisiert wird,
- wieder an.
- Somit lehrt mich die Objektpermanenz erneut,
- dass ich die Zeichenkette,
- welche durch 
-\begin_inset Formula $C\,B$
-\end_inset
-
- symbolisiert habe,
- aufgeschrieben habe.
- Jedoch wäre das ein Widerspruch zur Annahme,
- dass diese Zeichenketten nicht gleich sein können.
- Also kann die Annahme nicht wahr sein.
- Somit müsste wirklich
-\begin_inset Formula 
-\[
-B\,C=C\,D
-\]
-
-\end_inset
-
- sein.
-\end_layout
-
-\begin_layout Proof
-Auch dieses Lemma kann ich beweisen,
- indem ich eine geeignete Symbolkette sozusagen auf den Kopf stelle.Dabei ersetze ich das Symbol 
-\begin_inset Formula $A$
-\end_inset
-
- durch einen senkrechten Strich (
-\begin_inset Formula $|$
-\end_inset
-
-).
- Ich schreibe die Zeichenketten
-\begin_inset Formula 
-\[
-B\,C
-\]
-
-\end_inset
-
- respektive 
-\begin_inset Formula 
-\[
-C\,B
-\]
-
-\end_inset
-
- um und erhalte im ersten Fall etwas von der Art
-\begin_inset Formula 
-\[
-|\,|\,|\,\left(\ldots\right)\,|\,|\,|\;\;|\,|\,\left(\ldots\right)\,|\,|
-\]
-
-\end_inset
-
-(für den ersten Fall) und 
-\begin_inset Formula 
-\[
-|\,|\,\left(\ldots\right)\,|\,|\;\;|\,|\,|\,\left(\ldots\right)\,|\,|\,|
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Nun nehme ich die letzte Zeichenkette und zeichne sie ab,
- in dem ich sie von oben herab her lese.
- Ich stelle diese Zeichenkette sozusagen auf den Kopf.
- Also sieht diese dann wie folgt aus:
-\begin_inset Formula 
-\[
-|\,|\,|\,\left(\ldots\right)\,|\,|\,|\;\;|\,|\,\left(\ldots\right)\,|\,|
-\]
-
-\end_inset
-
-Die Erfahrung der Objektpermanenz lehrt mich jedoch,
- dass sich die Anzahl der senkrechten Striche sich nicht geändert haben darf.
- Aber die auf den Kopf gestellte Zeichenkette muss gleich der Zeichenkette 
-\begin_inset Formula $B\,|$
-\end_inset
-
- sein.
- Denn nehme ich den letzten senkrechten Strich weg,
- dann bleiben genau die vom Symbol 
-\begin_inset Formula $B$
-\end_inset
-
- symbolisierten senkrechten Striche übrig.
- Also muss die ursprüngliche Zeichenkette wiederum gleich der Zeichenkette 
-\begin_inset Formula $B\,|$
-\end_inset
-
- sein.
- Da ich Leerschläge nicht zähle,
- kann ich also daraus folgern,
- dass die Zeichenketten 
-\begin_inset Formula 
-\[
-|\,B
-\]
-
-\end_inset
-
-sowie 
-\begin_inset Formula 
-\[
-B\,|
-\]
-
-\end_inset
-
-ebenfalls gleich sein müssen.
+ 
 \end_layout
 
 \begin_layout Proof
@@ -3616,6 +3474,18 @@ Dann sei das Metasymbol
 
  kleiner als das Metasymbol 
 \begin_inset Formula $C$
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Differenz von zwei Symbolketten
+\end_layout
+
 \end_inset
 
  (geschrieben als 
@@ -3889,7 +3759,7 @@ Wobei ich zugeben muss,
  Was,
  wenn das einige Goldstück nur eine dünne Schicht aus Gold als Überzug besitzt,
  im Innern jedoch auch Blei besteht?
- Wogegen ein zweiten Goldstück äußerst rein ist,
+ Wogegen ein zweitens Goldstück äußerst rein ist,
  so rein wie nur möglich?
  Aber Unterschiede in den durch die Symbole repräsentierten Größen werden an dieser Stelle absichtlich außer Acht gelassen.
  Das einzige,
@@ -4144,7 +4014,7 @@ B>C
 \end_layout
 
 \begin_layout Proposition
-Formal bedeutet dies:
+Formal bedeutet dies in etwa:
 \begin_inset Formula 
 \[
 B<C\vee B=C\vee B>C
@@ -4396,6 +4266,15 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+bis hier geprüft 17.2.2025
+\end_layout
+
+\end_inset
+
 Nun,
  es geht noch plumper:
 \end_layout
@@ -4481,7 +4360,7 @@ nolink "false"
  der Implikation der Disjunktion aus der Aussage kann ich schreiben
 \begin_inset Formula 
 \[
-B=C\Rightarrow C\vee B=C
+B=C\Rightarrow B=C\vee B=C
 \]
 
 \end_inset
@@ -4519,7 +4398,7 @@ nolink "false"
  der Disjunktion verwenden und erhalte die Aussage
 \begin_inset Formula 
 \begin{align*}
- & B<C\vee B=C\vee B>C\\
+ & B<C\vee B=C\phantom{\vee B=C}\vee B>C\\
 \Rightarrow & B<C\vee B=C\vee B=C\vee B=C
 \end{align*}
 
@@ -4716,6 +4595,31 @@ nolink "false"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Proof
+Da jetzt die Aussage
+\begin_inset Formula 
+\[
+B<C\vee B=C\vee B>C
+\]
+
+\end_inset
+
+wahr ist,
+ muss auch die Aussage
+\begin_inset Formula 
+\[
+B\leq C\vee B\geq C
+\]
+
+\end_inset
+
+ wahr sein.
+\end_layout
+
+\begin_layout Proof
 Aus diesem Grund behaupte ich,
  den Beweis für die Richtigkeit der Behauptung erbracht zu haben und beende also auch die weitere Beweisführung.
 \end_layout
@@ -4748,6 +4652,15 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+bis hier geprüft 17.2.2025
+\end_layout
+
+\end_inset
+
 Nun kommen ein paar logische Spitzfindigkeiten.
  Jedoch sind diese ungemein nützlich:
 \end_layout
@@ -5047,38 +4960,7 @@ Damit meine ich den Beweis für die Richtigkeit der zweiten Aussage erbracht zu 
 \end_layout
 
 \begin_layout Proof
-Zum Beweis der dritten Behauptung:
- Es sei 
-\begin_inset Formula $B=C$
-\end_inset
-
-.
- Da die Gleichheit von Symbolketten gemäß dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- eine Äquivalenzrelation und darum symmetrisch ist,
- kann ich auch schreiben,
- dass gilt
-\begin_inset Formula 
-\[
-C=B
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-dann kann ich wieder gemäß dem Satz 
+Zum Beweis der dritten Behauptung:Ich kann wieder gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Implikation-Disjunktion-aus-Aussage"
@@ -5176,7 +5058,7 @@ B=C\Rightarrow B\geq C
 \end_inset
 
 Damit meine ich,
- den Beweis für die Richtigkeit der zweiten Aussage erbracht zu haben.
+ den Beweis für die Richtigkeit der dritten Aussage erbracht zu haben.
 \end_layout
 
 \begin_layout Proof
@@ -5448,7 +5330,7 @@ C>B
 \end_inset
 
 Das war jedoch gerade zu beweisen.
- Diese Überlegungen können nur genau gleich rückwärts angewandt werden:
+ Diese Überlegungen können nun genau gleich rückwärts angewandt werden:
 \end_layout
 
 \begin_layout Proof
@@ -5607,7 +5489,7 @@ Es seien
 
  Metasymbole sein,
  welche aus jeweils aus einem oder mehreren (aber nur endlich vielen) Symbolen 
-\begin_inset Formula $C$
+\begin_inset Formula $A$
 \end_inset
 
  bestehen sollen.
@@ -5643,7 +5525,20 @@ In Worten:
 \end_layout
 
 \begin_layout Proof
-Ich möchte nun zeigen,
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Der Beweis stimmt nicht.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Ich möchte zeigen,
  dass diese Behauptung gleichbedeutend ist zur Behauptung
 \begin_inset Formula 
 \[
@@ -5887,10 +5782,31 @@ nolink "false"
 
 \end_inset
 
-Noch ein letztes Mal verwende ich den Satz 
+
+\end_layout
+
+\begin_layout Proof
+Die Aussage 
+\begin_inset Formula 
+\[
+\left(\left(B\leq C\right)\vee\left(B>C\right)\right)\wedge\neg\left(B\leq C\right)
+\]
+
+\end_inset
+
+ist äquivalent zur Aussage
+\begin_inset Formula 
+\[
+\neg\left(B\leq C\right)
+\]
+
+\end_inset
+
+Denn gemäss dem 2.
+ Minimumssatz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Transitivitaet-Aequivalenz"
+reference "lem:Minimum-Maximum-Saetze-Logik"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5898,14 +5814,26 @@ nolink "false"
 
 \end_inset
 
- der Transitivität der Äquivalenz und erhalte die Aussage
+ der Logik gilt
 \begin_inset Formula 
 \[
-\neg\left(B\leq C\right)\Rightarrow B>C
+\neg\left(B\leq C\right)\wedge\left(\left(B\leq C\right)\vee\left(B>C\right)\right)\Leftrightarrow\neg\left(B\leq C\right)
 \]
 
 \end_inset
 
+ da die Aussage 
+\begin_inset Formula $\left(\left(B\leq C\right)\vee\left(B>C\right)\right)$
+\end_inset
+
+ wahr ist.
+\end_layout
+
+\begin_layout Proof
+
+\end_layout
+
+\begin_layout Proof
 Damit meine ich,
  den Beweis für die eine Richtigkeit der einen Richtung der Behauptung erbracht zu haben.
  
@@ -6178,7 +6106,30 @@ nolink "false"
 
 \end_inset
 
-Und da aus der Äquivalenz gemäß dem Satz 
+
+\end_layout
+
+\begin_layout Proof
+Nun kann ich den Substitutionssatz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:1.-Substitutionssatz-Negation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Negation verwenden und erhalte die Äquivalenz
+\begin_inset Formula 
+\[
+\neg\left(B<C\right)\wedge\neg\left(B=C\right)\Leftrightarrow\neg\left(B\leq C\right)
+\]
+
+\end_inset
+
+Da gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Implikation-Implikation-aus-Aequivalenz"
@@ -6189,62 +6140,10 @@ nolink "false"
 
 \end_inset
 
- die Implikation folgt,
- kann ich schreiben:
+ der Implikation der Implikation aus der Äquivalenz anwenden und erhalte die 
 \begin_inset Formula 
 \[
-\neg\left(B<C\right)\wedge\neg\left(B=C\right)\Rightarrow\neg\left(B<C\vee B=C\right)
-\]
-
-\end_inset
-
-Somit kann ich gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Transitivitaet-Implikation"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Transitivität der Implikation folgern,
- dass gilt:
-\begin_inset Formula 
-\begin{align*}
- & \left(B>C\Rightarrow\neg\left(B<C\right)\wedge\neg\left(B=C\right)\right)\\
-\wedge & \left(\neg\left(B<C\right)\wedge\neg\left(B=C\right)\Rightarrow\neg\left(B<C\vee B=C\right)\right)\\
-\Rightarrow & B>C\Rightarrow\neg\left(B<C\vee B=C\right)
-\end{align*}
-
-\end_inset
-
-Nun bin ich fast am Ziel.
- Gemäß der Definition gilt
-\begin_inset Formula 
-\[
-\left(B\leq C\right)\Leftrightarrow\left(B<C\vee B=C\right)
-\]
-
-\end_inset
-
-Da die Äquivalenz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Kommutativitaet-Aequivalenz"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kommutativ ist,
- kann ich darum auch schreiben:
-\begin_inset Formula 
-\[
-\left(B<C\vee B=C\right)\Leftrightarrow\left(B\leq C\right)
+\neg\left(B<C\right)\wedge\neg\left(B=C\right)\Rightarrow\neg\left(B\leq C\right)
 \]
 
 \end_inset
@@ -6253,27 +6152,27 @@ nolink "false"
 \end_layout
 
 \begin_layout Proof
-Darum muss gemäß dem 2.
- Substitutionssatz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:2.-Substitutionssatz-Negation"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Negation gelten:
+Mit den Aussagen
 \begin_inset Formula 
 \[
-\neg\left(B<C\vee B=C\right)\Rightarrow\neg\left(B\leq C\right)
+B>C\Rightarrow\neg\left(B<C\right)\wedge\neg\left(B=C\right)
 \]
 
 \end_inset
 
-Dann kann ich das letzte Mal den Satz 
+sowie 
+\begin_inset Formula 
+\[
+\neg\left(B<C\right)\wedge\neg\left(B=C\right)\Rightarrow\neg\left(B\leq C\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+sowie dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Transitivitaet-Implikation"
@@ -6284,7 +6183,7 @@ nolink "false"
 
 \end_inset
 
- der Transitivität der Implikation verwenden und erhalte das wenig überraschende Resultat:
+ der Transitivität der Implikation erhalte ich das wenig überraschende Resultat:
 \begin_inset Formula 
 \[
 B>C\Rightarrow\neg\left(B\leq C\right)
