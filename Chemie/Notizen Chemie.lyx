@@ -1,0 +1,472 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsbook
+\begin_preamble
+% Präambel nicht verändern!!!
+%
+% Die Präambel stellt sicher, dass das Benutzerhandbuch korrekt
+% in die Formate pdf, ps und dvi exportiert werden kann.
+% Wenn Probleme beim Exportieren auftreten, können Sie sich
+% an das LyX-Dokumentationsteam wenden.
+% EMail: lyx-docs@lists.lyx.org
+
+% wenn pdflatex benutzt wird:
+\usepackage{ifpdf}
+\ifpdf
+
+% Fonts fuer huebschere PDF-Ansichten
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % Ende von: wenn pdflatex benutzt wird
+
+% Setzt den Link fuer Spruenge zu Gleitabbildungen
+% auf den Anfang des Gelitobjekts und nicht aufs Ende
+\usepackage[figure]{hypcap}
+
+% Ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC }
+
+% Damit der Index den Namen "Stichwortverzeichnis" erhält
+\addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% Definiere den Operator Id
+\DeclareMathOperator{\Id}{Id}
+
+\usepackage{xlop}
+\usepackage{paralist}
+
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage[makeroom]{cancel}
+
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+\newcommand{\includebackwardreferences}{<includebackwardreferences>}
+\newcommand{\includeforwardreferences}{<includeforwardreferences>}
+
+% Wasserzeichen
+
+% \usepackage{draftwatermark} % Das Paket mit der Funktionalität
+% \SetWatermarkText{Entwurf} % Der Hintergrundtext
+% \SetWatermarkLightness{0.9}
+% \SetWatermarkFontSize{2cm} % Die Ausgangsgröße
+
+\renewcommand{\numberline}[1]{#1~}
+\end_preamble
+\options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+fixltx2e
+todonotes
+backforwardref
+\end_modules
+\maintain_unincluded_children no
+\language ngerman
+\language_package auto
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "cmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Einfuehrung in Mathe"
+\pdf_author "Markus Demarmels"
+\pdf_subject "LyX"
+\pdf_keywords "LyX"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=blue, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\branch Frage
+\selected 1
+\filename_suffix 0
+\color #00ff00 #ff00ff
+\end_branch
+\branch Antwort
+\selected 0
+\filename_suffix 0
+\color #aa55ff #55aa00
+\end_branch
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Part
+Aufgaben
+\end_layout
+
+\begin_layout Solution
+Übungsaufgabe 1.4 a 
+\begin_inset Formula 
+\[
+d=\frac{m}{V}=\frac{374.5\,\text{g}}{41.8\,\text{cm}^{3}}=8.96\cdot\frac{10^{-3}\text{kg}}{10^{-6}\text{m}^{3}}=8.96\cdot10^{3}\frac{\text{kg}}{\text{\ensuremath{\text{m}}}^{3}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Übungsaufgabe 1.4 b
+\end_layout
+
+\begin_layout Solution
+\begin_inset Formula 
+\[
+d=\frac{m}{V}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V=\frac{m}{d}=\frac{15.0\,\text{g}}{0.789\,\text{\ensuremath{\frac{\text{g}}{\text{ml}}}}}=19.0\,\text{ml}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Übungsaufgabe 1.4 c
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+d=\frac{m}{V}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+m=V\cdot d=25.0\,\text{ml}\cdot13.6\,\frac{\text{g}}{\text{ml}}=340\,\text{g}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Übungsaufgabe 1.5
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+1\,\text{cal} & =4.184\,\text{J}\\
+547\,\text{kcal} & =547\cdot10^{3}\cdot4.184\,\text{J}=2.28\text{MJ}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Übungsaufgabe 1.9
+\end_layout
+
+\begin_layout Solution
+\begin_inset Formula 
+\begin{align*}
+v & =\frac{\triangle s}{\triangle t}=\frac{100\,\text{\ensuremath{\text{m}}}}{10.5\,\text{\ensuremath{\text{s}}}}\\
+ & \doteq9.52\,\text{\ensuremath{\frac{\text{m}}{\text{s}}}}\\
+ & =9.52\,\frac{\text{km}/1000}{\text{s}/3600}\\
+ & =9.52\cdot\frac{3600}{1000}\cdot\frac{\text{km}}{\text{s}}\\
+ & =34.3\frac{\text{km}}{\text{s}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Nebenbemerkung:
+ Das ist ein Affenzahl,
+ welcher der Läufer da hinlegt!
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Übungsaufgabe 1.11
+\end_layout
+
+\begin_layout Solution
+\begin_inset Formula 
+\begin{align*}
+500.0\,\text{Meile =} & 500.0\,\text{Meile}\cdot\frac{1.6093\,\text{km}}{1\,\text{Meile}}\\
+= & 804.7\,\text{\ensuremath{\text{km}}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Übungsaufgabe 1.12
+\end_layout
+
+\begin_layout Solution
+\begin_inset Formula 
+\begin{align*}
+5280\,\text{ft} & =1.6093\,\text{km}\\
+1\,\text{ft} & =\frac{1.6093}{5280}\cdot10^{3}\,\text{m}\\
+ & \approx0.30\,m\\
+1\,\text{ft}^{3} & =\left(\frac{1.6093}{5280}\cdot10^{3}\right)^{3}\text{m}^{3}\\
+ & \approx0.02\,\text{m}^{3}\\
+5\,\text{ft}^{3} & =5\cdot\left(\frac{1.6093}{5280}\cdot10^{3}\right)^{3}\text{m}^{3}\\
+ & \approx0.14\,\text{m}^{3}\\
+ & \approx140\,\text{L}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Überschlagsrechnung:
+ 
+\begin_inset Formula $1\,\text{ft}$
+\end_inset
+
+ entspricht rund 30 cm oder 
+\begin_inset Formula $3\,\text{dk}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $1\,\text{ft}^{3}$
+\end_inset
+
+ entspricht also rund 
+\begin_inset Formula $27\text{dk}$
+\end_inset
+
+,
+ also rund 
+\begin_inset Formula $27$
+\end_inset
+
+Liter.
+ Somit sind 
+\begin_inset Formula $5\text{ft}^{3}$
+\end_inset
+
+ rund 
+\begin_inset Formula $5\cdot27$
+\end_inset
+
+ Liter,
+ also rund 
+\begin_inset Formula $135$
+\end_inset
+
+ Liter.
+ Somit denke ich,
+ dass das Resultat schon noch stimmig ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Die Dichte 
+\begin_inset Formula $\rho$
+\end_inset
+
+ von Benzol ist
+\begin_inset Formula 
+\[
+\rho=0.879\,\frac{\text{g}}{\text{ml}}
+\]
+
+\end_inset
+
+Gesucht ist die Masse von 1 Quart Benzol.
+ Es gelten 
+\begin_inset Formula 
+\[
+1=\frac{1\,\text{L}}{1.0567\,\text{qt}}
+\]
+
+\end_inset
+
+Also auch
+\begin_inset Formula 
+\[
+1=\frac{1.0567\,\text{qt}}{1\,\text{L}}
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+1\,\text{ml} & =10^{-3}\text{L}\\
+ & =10^{-3}\cdot\text{L}\cdot\frac{1.0567\,\text{qt}}{1\,\text{L}}
+\end{align*}
+
+\end_inset
+
+Folglich ist
+\begin_inset Formula 
+\[
+1\,\text{qt}=\frac{10^{3}}{1.0567}\text{ml}
+\]
+
+\end_inset
+
+Somit ist die Masse eines Quants Benzol
+\begin_inset Formula 
+\begin{align*}
+m & =1\,\text{qt}\,0.879\,\frac{\text{g}}{\text{ml}}\\
+ & =\frac{10^{3}}{1.0567}\text{ml}\cdot0.879\,\frac{\text{g}}{\text{ml}}\\
+ & \approx832\,\text{g}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -338,10 +338,17 @@ siehe https://de.wikipedia.org/wiki/Objektpermanenz,
  liegt.
  Dieses Konzept eignen sich Kinder im Laufe einer unauffälligen Entwicklung ab ca.
  ihrem achten Lebensmonat an.
+ Es wäre m.E.
+ möglich,
+ recht viele Aussagen über Symbolketten machen.
+ Aber ich denke,
+ das ist extrem ermüdend.
+ Daher ist es vor allem meine Absicht,
+ möglichst schnell die natürlichen Zahlen zu begründen und dann deren Eigenschaften auszuloten.
 \end_layout
 
 \begin_layout Standard
-Nun möchte ich mit den Vorbereitungen der natürlichen Zahlen beginnen:
+Nun möchte ich mit den Vorbereitungen der natürlichen Zahlen beginnen.
 \end_layout
 
 \begin_layout Standard
@@ -990,7 +997,7 @@ B=B
 
 \end_inset
 
-(welche gemäss der Identität der Symbolgleichheit gilt) auch schreiben als
+(welche gemäß der Identität der Symbolgleichheit gilt) auch schreiben als
 \begin_inset Formula 
 \[
 D\,E=D
@@ -998,7 +1005,7 @@ D\,E=D
 
 \end_inset
 
-was jedoch gemäss der Definition 
+was jedoch gemäß der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Gleichheit-von-Symbolen"
@@ -1073,7 +1080,7 @@ B=B
 
 \end_inset
 
-(welche gemäss der Identität der Symbolgleichheit gilt) auch schreiben als
+(welche gemäß der Identität der Symbolgleichheit gilt) auch schreiben als
 \begin_inset Formula 
 \[
 D=D\,E
@@ -1081,7 +1088,7 @@ D=D\,E
 
 \end_inset
 
-was jedoch gemäss der Definition 
+was jedoch gemäß der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Gleichheit-von-Symbolen"
@@ -2549,7 +2556,7 @@ Also kann ich die Zeichenketten
 
  vergleichen.
  Dann sind bei beiden Zeichenketten das erste Symbol gleich,
- da die Verkettung von Symbolen gemäss dem Lemma 
+ da die Verkettung von Symbolen gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Assoziativitaet-Symbolketten"
@@ -3468,6 +3475,13 @@ Brot
 
 \end_inset
 
+
+\begin_inset CommandInset label
+LatexCommand label
+name "def:kleiner-oder-gleich-von-Symbolketten"
+
+\end_inset
+
 Dann sei das Metasymbol 
 \begin_inset Formula $B$
 \end_inset
@@ -3607,19 +3621,19 @@ Wieder sei
 \begin_layout Definition
 Und nun zwei Abkürzungen,
  welche sich als ungemein nützlich erweisen:
- Es sei definiert
+ Es sei definiert 
 \begin_inset Formula 
-\[
-B\leq C\Lleftarrow\mathllap{\Rrightarrow}B<C\vee B=C
-\]
+\begin{equation}
+B\leq C\Lleftarrow\mathllap{\Rrightarrow}B<C\vee B=C\label{def:kleiner-oder-gleich}
+\end{equation}
 
 \end_inset
 
 respektive 
 \begin_inset Formula 
-\[
-B\geq C\Lleftarrow\mathllap{\Rrightarrow}B=C\vee B>C
-\]
+\begin{equation}
+B\geq C\Lleftarrow\mathllap{\Rrightarrow}B=C\vee B>C\label{def:groesser-oder-gleich}
+\end{equation}
 
 \end_inset
 
@@ -4266,15 +4280,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-bis hier geprüft 17.2.2025
-\end_layout
-
-\end_inset
-
 Nun,
  es geht noch plumper:
 \end_layout
@@ -4301,7 +4306,7 @@ Es seien
 
  Metasymbole sein,
  welche aus jeweils aus einem oder mehreren (aber nur endlich vielen) Symbolen 
-\begin_inset Formula $C$
+\begin_inset Formula $Aa$
 \end_inset
 
  bestehen sollen.
@@ -5385,6 +5390,16 @@ nolink "false"
 
  der Transitivität der Äquivalenz folgern,
  dass gilt
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \[
 B\,D=C
@@ -5407,7 +5422,7 @@ nolink "false"
  dass gilt
 \begin_inset Formula 
 \[
-B<D
+B<C
 \]
 
 \end_inset
@@ -5525,19 +5540,6 @@ In Worten:
 \end_layout
 
 \begin_layout Proof
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Der Beweis stimmt nicht.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
 Ich möchte zeigen,
  dass diese Behauptung gleichbedeutend ist zur Behauptung
 \begin_inset Formula 
@@ -5603,34 +5605,15 @@ nolink "false"
  dass gilt:
 \begin_inset Formula 
 \[
-\left(B<C\right)\vee\left(B=C\right)\vee\left(B>C\right)\Rightarrow\left(B\leq C\right)\vee\left(B>C\right)
-\]
-
-\end_inset
-
-Gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:totale-Ordnung-Symbolketten-gleicher-Symbole"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- über die Vergleichbarkeit von Symbolketten von gleichen Symbolen muss gelten:
-\begin_inset Formula 
-\[
 \left(B<C\right)\vee\left(B=C\right)\vee\left(B>C\right)
 \]
 
 \end_inset
 
-Nun kann mit Hilfe des Satzes 
+Somit kann ich gemäss dem Äquivalenzsatz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Schlussfolgerung"
+reference "prop:Disjunktion-Aequivalenzsatz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5638,22 +5621,23 @@ nolink "false"
 
 \end_inset
 
- der Schlussfolgerung folgern
-\begin_inset Formula 
-\begin{align*}
- & \left(\left(B<C\right)\vee\left(B=C\right)\vee\left(B>C\right)\right)\\
-\wedge & \left(\left(B<C\right)\vee\left(B=C\right)\vee\left(B>C\right)\Rightarrow\left(B\leq C\right)\vee\left(B>C\right)\right)\\
-\Rightarrow & \left(B\leq C\right)\vee\left(B>C\right)
-\end{align*}
-
-\end_inset
-
-Also habe ich jetzt nicht mehr,
- aber auch nicht weniger gezeigt,
- dass gilt
+ der Disjunktion schlussfolgern,
+ dass gilt:
 \begin_inset Formula 
 \[
 \left(B\leq C\right)\vee\left(B>C\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Nun gelte die Aussage
+\begin_inset Formula 
+\[
+\neg\left(B\leq C\right)
 \]
 
 \end_inset
@@ -5678,67 +5662,7 @@ nolink "false"
  ist ja wahr) kann ich folgern:
 \begin_inset Formula 
 \[
-\neg\left(B\leq C\right)\wedge\left(\left(B\leq C\right)\vee\left(B>C\right)\right)\Leftrightarrow\neg\left(B\leq C\right)
-\]
-
-\end_inset
-
-Nun ist die Äquivalenz gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Kommutativitaet-Aequivalenz"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- die Äquivalenz kommutativ ist,
- kann ich folgern,
- dass auch gilt:
-\begin_inset Formula 
-\[
 \neg\left(B\leq C\right)\Leftrightarrow\neg\left(B\leq C\right)\wedge\left(\left(B\leq C\right)\vee\left(B>C\right)\right)
-\]
-
-\end_inset
-
-Und da die Konjunktion gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Kommutativitaet-Konjunktion"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kommutativ ist,
- muss gelten
-\begin_inset Formula 
-\[
-\neg\left(B\leq C\right)\wedge\left(\left(B\leq C\right)\vee\left(B>C\right)\right)\Leftrightarrow\left(\left(B\leq C\right)\vee\left(B>C\right)\right)\wedge\neg\left(B\leq C\right)
-\]
-
-\end_inset
-
-Wiederum kann ich auf den Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Transitivitaet-Aequivalenz"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Transitivität der Äquivalenz zurückgreifen und erhalte die Aussage
-\begin_inset Formula 
-\[
-\neg\left(B\leq C\right)\Leftrightarrow\left(\left(B\leq C\right)\vee\left(B>C\right)\right)\wedge\neg\left(B\leq C\right)
 \]
 
 \end_inset
@@ -5758,11 +5682,105 @@ nolink "false"
  kann ich folgern
 \begin_inset Formula 
 \[
+\neg\left(B\leq C\right)\Rightarrow\neg\left(B\leq C\right)\wedge\left(\left(B\leq C\right)\vee\left(B>C\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Da die Konjunktion gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Kommutativitaet-Konjunktion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kommutiert,
+ kann ich schliessen,
+ dass gilt
+\begin_inset Formula 
+\begin{align*}
+\neg\left(B\leq C\right)\wedge\left(\left(B\leq C\right)\vee\left(B>C\right)\right) & \Leftrightarrow\\
+\left(\left(B\leq C\right)\vee\left(B>C\right)\right)\wedge\neg\left(B\leq C\right)
+\end{align*}
+
+\end_inset
+
+Und da aus der Äquivalenz gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Implikation-Implikation-aus-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ auch die Implikation folgt,
+ kann ich schreiben,
+ dass auch gilt
+\begin_inset Formula 
+\begin{align*}
+\neg\left(B\leq C\right)\wedge\left(\left(B\leq C\right)\vee\left(B>C\right)\right) & \Rightarrow\\
+\left(\left(B\leq C\right)\vee\left(B>C\right)\right)\wedge\neg\left(B\leq C\right)
+\end{align*}
+
+\end_inset
+
+Nun ist die Implikation gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Implikation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ transitiv,
+ und darum kann ich auch folgern,
+ dass aus den Aussagen
+\begin_inset Formula 
+\[
+\neg\left(B\leq C\right)\Rightarrow\neg\left(B\leq C\right)\wedge\left(\left(B\leq C\right)\vee\left(B>C\right)\right)
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\begin{align*}
+\neg\left(B\leq C\right)\wedge\left(\left(B\leq C\right)\vee\left(B>C\right)\right) & \Rightarrow\\
+\left(\left(B\leq C\right)\vee\left(B>C\right)\right)\wedge\neg\left(B\leq C\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+folgt:
+\begin_inset Formula 
+\[
 \neg\left(B\leq C\right)\Rightarrow\left(\left(B\leq C\right)\vee\left(B>C\right)\right)\wedge\neg\left(B\leq C\right)
 \]
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Proof
 Dann kann ich den Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5786,27 +5804,26 @@ nolink "false"
 \end_layout
 
 \begin_layout Proof
-Die Aussage 
+Nun kann ich die Aussagen 
 \begin_inset Formula 
 \[
-\left(\left(B\leq C\right)\vee\left(B>C\right)\right)\wedge\neg\left(B\leq C\right)
+\neg\left(B\leq C\right)\Rightarrow\left(\left(B\leq C\right)\vee\left(B>C\right)\right)\wedge\neg\left(B\leq C\right)
 \]
 
 \end_inset
 
-ist äquivalent zur Aussage
+sowie 
 \begin_inset Formula 
 \[
-\neg\left(B\leq C\right)
+\left(\left(B\leq C\right)\vee\left(B>C\right)\right)\wedge\neg\left(B\leq C\right)\Rightarrow B>C
 \]
 
 \end_inset
 
-Denn gemäss dem 2.
- Minimumssatz 
+gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Minimum-Maximum-Saetze-Logik"
+reference "prop:Transitivitaet-Implikation"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5814,29 +5831,19 @@ nolink "false"
 
 \end_inset
 
- der Logik gilt
+ der Transitivität der Implikation verketten und erhalte die Aussage
 \begin_inset Formula 
 \[
-\neg\left(B\leq C\right)\wedge\left(\left(B\leq C\right)\vee\left(B>C\right)\right)\Leftrightarrow\neg\left(B\leq C\right)
+\neg\left(B\leq C\right)\Rightarrow B>C
 \]
 
 \end_inset
 
- da die Aussage 
-\begin_inset Formula $\left(\left(B\leq C\right)\vee\left(B>C\right)\right)$
-\end_inset
-
- wahr ist.
-\end_layout
-
-\begin_layout Proof
 
 \end_layout
 
 \begin_layout Proof
-Damit meine ich,
- den Beweis für die eine Richtigkeit der einen Richtung der Behauptung erbracht zu haben.
- 
+Also habe ich die eine Richtung der Behauptung bewiesen.
 \end_layout
 
 \begin_layout Proof
@@ -5888,7 +5895,7 @@ nolink "false"
 
 \end_inset
 
- über die Ungleichheit von angehängten Symbolen 
+ über die Ungleichheit von angehängten Symbolen nicht 
 \begin_inset Formula $C\neq B$
 \end_inset
 
@@ -5920,7 +5927,30 @@ nolink "false"
 \end_inset
 
  sein - im Widerspruch zur Voraussetzung.
- Darum bin ich der Meinung,
+ Es müsste also gelten
+\begin_inset Formula 
+\[
+B=B\,D
+\]
+
+\end_inset
+
+was jedoch gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Ungleicheheit-angehaengte-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ nicht wahr sein kann.
+\end_layout
+
+\begin_layout Proof
+Darum bin ich der Meinung,
  dass
 \begin_inset Formula 
 \[
@@ -6002,7 +6032,24 @@ B=B\,E\,F
 
 \end_inset
 
-Das würde jedoch gemäß dem Lemma 
+
+\end_layout
+
+\begin_layout Proof
+Beachte bitte,
+ die Verkettung von gleichen Symbolen gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Assoziativitaet-Symbolketten"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ assoziativ ist.
+ Die Letzte Gleicheung würde jedoch gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Ungleicheheit-angehaengte-Symbole"
@@ -6110,10 +6157,10 @@ nolink "false"
 \end_layout
 
 \begin_layout Proof
-Nun kann ich den Substitutionssatz 
+Nun kann ich den Äquivalenzatz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:1.-Substitutionssatz-Negation"
+reference "prop:Negation-Aequivalenzsatz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6121,15 +6168,30 @@ nolink "false"
 
 \end_inset
 
- der Negation verwenden und erhalte die Äquivalenz
+ der Negation verwenden und erhalte die Äquivalenz aus der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:kleiner-oder-gleich"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ welche die kleiner oder gleich Beziehung von zwei Symbolketten definiert:
+\end_layout
+
+\begin_layout Proof
 \begin_inset Formula 
 \[
-\neg\left(B<C\right)\wedge\neg\left(B=C\right)\Leftrightarrow\neg\left(B\leq C\right)
+\neg\left(B<C\vee B=C\right)\Leftrightarrow\neg\left(B\leq C\right)
 \]
 
 \end_inset
 
-Da gemäss dem Satz 
+Da gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Implikation-Implikation-aus-Aequivalenz"
@@ -6140,7 +6202,7 @@ nolink "false"
 
 \end_inset
 
- der Implikation der Implikation aus der Äquivalenz anwenden und erhalte die 
+ der Implikation der Implikation aus der Äquivalenz anwenden und erhalte die Aussage
 \begin_inset Formula 
 \[
 \neg\left(B<C\right)\wedge\neg\left(B=C\right)\Rightarrow\neg\left(B\leq C\right)
@@ -6320,7 +6382,18 @@ nolink "false"
 
 \end_inset
 
- eine Äquivalenzrelation ist,
+ eine Äquivalenzrelation und somit auch gemäss deren Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ symmetrisch ist,
  muss daher auch gelten:
 \begin_inset Formula 
 \[
@@ -6340,7 +6413,7 @@ nolink "false"
 
 \end_inset
 
- kann ich dann auch schreiben
+ der Negation der Äquivalenz kann ich dann auch schreiben
 \begin_inset Formula 
 \[
 \neg\left(B>C\right)\Leftrightarrow\neg\left(\neg\left(B\leq C\right)\right)
@@ -6359,7 +6432,7 @@ nolink "false"
 
 \end_inset
 
- gilt
+ der doppelten Negation gilt gilt
 \begin_inset Formula 
 \[
 B\leq C\Leftrightarrow\neg\left(\neg\left(B\leq C\right)\right)
@@ -6398,7 +6471,7 @@ nolink "false"
 
 \end_inset
 
- eine Äquivalenzrelation ist,
+ eine Äquivalenzrelation und darum auch transitiv ist,
  muss daher auch gelten
 \begin_inset Formula 
 \[
@@ -6408,10 +6481,8 @@ nolink "false"
 \end_inset
 
 Das wäre jedoch gerade die Behauptung.
-\end_layout
-
-\begin_layout Proof
-Nun möchte ich zeigen:
+ Aus diesem Grund bin ich der Meinung,
+ dass ich den Beweis für die Richtigkeit der Behauptung erbracht habe und beende daher an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Standard
@@ -6441,6 +6512,10 @@ status open
 
 \end_layout
 
+\begin_layout Standard
+Nun möchte ich zeigen:
+\end_layout
+
 \begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
@@ -6458,7 +6533,7 @@ Es seien
 \end_inset
 
 ,C sowie 
-\begin_inset Formula $C$
+\begin_inset Formula $D$
 \end_inset
 
  Metasymbole seien,
@@ -6539,7 +6614,7 @@ Ersetze ich nun
 \end_inset
 
  in der vorletzten Gleichung,
- dann erhalte (auch gemäß dem Lemma 
+ dann erhalte ich (auch gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-von-Teilsymbolen"
@@ -6550,7 +6625,7 @@ nolink "false"
 
 \end_inset
 
-)
+ über die Gleichheit von Teilsymbole)
 \begin_inset Formula 
 \[
 B\,E\,F=D
@@ -6558,8 +6633,54 @@ B\,E\,F=D
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Proof
+Nun kann ich von der Tatsache Gebrauch machen,
+ dass die Verketten von Symbolen gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Assoziativitaet-Symbolketten"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ assoziativ ist.
+ Das bedeutet,
+ dass mit 
+\begin_inset Formula 
+\[
+G=B\,E
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+H=E\,F
+\]
+
+\end_inset
+
+gilt
+\begin_inset Formula 
+\[
+G\,F=B\,H
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
 Somit muss es ein Metasymbol 
-\begin_inset Formula $G$
+\begin_inset Formula $H$
 \end_inset
 
  (mit dem Wert 
@@ -6570,7 +6691,7 @@ Somit muss es ein Metasymbol
  dass gilt
 \begin_inset Formula 
 \[
-B\,G=D
+B\,H=D
 \]
 
 \end_inset
@@ -6700,12 +6821,19 @@ B=C
 
 \end_inset
 
-Ist 
-\begin_inset Formula $B<C$
+Ausgeschrieben gilt
+\begin_inset Formula 
+\[
+B\leq C\Leftrightarrow B<C\vee B=C
+\]
+
 \end_inset
 
-,
- dann gilt gemäß dem Korollar 
+
+\end_layout
+
+\begin_layout Proof
+Gemäss dem Korollar 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cor:Symbole-Umwandlung-kleiner-groesser"
@@ -6716,7 +6844,7 @@ nolink "false"
 
 \end_inset
 
-:
+ gilt
 \begin_inset Formula 
 \[
 B<C\Leftrightarrow C>B
@@ -6724,10 +6852,11 @@ B<C\Leftrightarrow C>B
 
 \end_inset
 
-Dies bedeutet gemäß dem Satz 
+Nun kann ich den 1.
+ Äquivalenzsatz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Implikation-Implikation-aus-Aequivalenz"
+reference "prop:Disjunktion-Aequivalenzsatz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6735,55 +6864,11 @@ nolink "false"
 
 \end_inset
 
-,
- welcher besagt,
- dass aus der Äquivalenz einer Aussage deren Implikation folgt:
+ der Disjunktion kann ich nun folgern,
+ dass gilt
 \begin_inset Formula 
 \[
-B<C\Rightarrow C>B
-\]
-
-\end_inset
-
-Gemäß der vierten Aussage des Lemmas 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kann ich nun schließen,
- dass gilt:
-\begin_inset Formula 
-\[
-C>B\Rightarrow C\geq B
-\]
-
-\end_inset
-
-Nun ist die Implikation immer noch gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Transitivitaet-Implikation"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- transitiv.
- Darum kann ich endlich schließen:
-\end_layout
-
-\begin_layout Proof
-\begin_inset Formula 
-\[
-B<C\Rightarrow C\geq B
+B<C\vee B=C\Leftrightarrow C>B\vee B=C
 \]
 
 \end_inset
@@ -6792,12 +6877,32 @@ B<C\Rightarrow C\geq B
 \end_layout
 
 \begin_layout Proof
-Ist 
-\begin_inset Formula $B=C$
+Da die Äquivalenzrelation gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
 \end_inset
 
-,
- dann ist gemäß dem Lemma 
+ transitiv ist,
+ kann ich schlussfolgern,
+ dass auch gilt:
+\begin_inset Formula 
+\[
+B\leq C\Leftrightarrow C>B\vee B=C
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Da die Gleichheit von Objektsymbolen gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -6808,20 +6913,10 @@ nolink "false"
 
 \end_inset
 
-,
- welches besagt,
- dass die Gleichheit von Symbolen eine Äquivalenzrelation ist,
-\begin_inset Formula 
-\[
-B=C\Leftrightarrow C=B
-\]
-
-\end_inset
-
-Dies bedeutet gemäß dem Satz 
+ eine Äquivalenzrelation ist und somit gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Implikation-Implikation-aus-Aequivalenz"
+reference "def:Aequivalenzrelation"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6829,91 +6924,9 @@ nolink "false"
 
 \end_inset
 
-,
- welcher besagt,
- dass aus der Äquivalenz einer Aussage deren Implikation folgt:
-\begin_inset Formula 
-\[
-B=C\Rightarrow C=B
-\]
-
-\end_inset
-
-Gemäß der dritten Aussage des Lemmas 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kann ich nun schließen,
- dass gilt:
-\begin_inset Formula 
-\[
-C=B\Rightarrow C\geq B
-\]
-
-\end_inset
-
-Nun ist die Implikation immer noch gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Transitivitaet-Implikation"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- transitiv.
- Darum kann ich endlich schließen:
-\end_layout
-
-\begin_layout Proof
-\begin_inset Formula 
-\[
-B=C\Rightarrow C\geq B
-\]
-
-\end_inset
-
-Also kann ich auf jeden Fall zeigen,
- dass gilt
-\begin_inset Formula 
-\[
-B\leq C\Rightarrow C\geq B
-\]
-
-\end_inset
-
-Damit habe ich diesen Teil der Behauptung bewiesen.
- 
-\end_layout
-
-\begin_layout Proof
-Nun möchte ich die umgekehrte Richtung zeigen.
- Es sei
-\begin_inset Formula 
-\[
-C\geq B
-\]
-
-\end_inset
-
-Dann ist 
-\begin_inset Formula 
-\[
-C>B
-\]
-
-\end_inset
-
-oder 
+ auch symmetrisch ist,
+ kann ich schlussfolgern,
+ dass auch gilt
 \begin_inset Formula 
 \[
 C=B
@@ -6921,15 +6934,10 @@ C=B
 
 \end_inset
 
-Ist 
-\begin_inset Formula $C>B$
-\end_inset
-
-,
- dann ist gemäß dem Korollar 
+Somit kann ich gemäss dem Äquivalenzsatz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cor:Symbole-Umwandlung-kleiner-groesser"
+reference "prop:Disjunktion-Aequivalenzsatz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6937,18 +6945,18 @@ nolink "false"
 
 \end_inset
 
-
+ der Disjunktion folgern dass gilt
 \begin_inset Formula 
 \[
-C>B\Leftrightarrow B<C
+C>B\vee B=C\Leftrightarrow C>B\vee C=B
 \]
 
 \end_inset
 
-Dies bedeutet gemäß dem Satz 
+Erneut verwende ich den Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Implikation-Implikation-aus-Aequivalenz"
+reference "prop:Transitivitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6956,22 +6964,18 @@ nolink "false"
 
 \end_inset
 
-,
- welcher besagt,
- dass aus der Äquivalenz einer Aussage deren Implikation folgt,
- dass ich daraus schließen kann,
- dass gilt
+ der Transitivität der Äquivalenz und erhalten die Asusage
 \begin_inset Formula 
 \[
-C>B\Rightarrow B<C
+B\leq C\Leftrightarrow C>B\vee C=B
 \]
 
 \end_inset
 
-Gemäß der ersten Aussage des Lemmas 
+ Gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
+reference "prop:Kommutativitaet-Disjunktion"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6979,19 +6983,18 @@ nolink "false"
 
 \end_inset
 
- kann ich nun schließen,
- dass gilt:
+ der Kommutativität der Disjunktion gilt:
 \begin_inset Formula 
 \[
-B<C\Rightarrow B\leq C
+C>B\vee C=B\Leftrightarrow C=B\vee C>B
 \]
 
 \end_inset
 
- Nun ist die Implikation immer noch gemäß dem Satz 
+Und wiederum greife ich auf den Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Transitivitaet-Implikation"
+reference "prop:Transitivitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6999,27 +7002,18 @@ nolink "false"
 
 \end_inset
 
- transitiv.
- Darum kann ich endlich schließen:
-\end_layout
-
-\begin_layout Proof
+ der Transitivität der Äquivalenz zurück und erhalte dic Aussage
 \begin_inset Formula 
 \[
-C\geq B\Rightarrow B\leq C
+B\leq C\Leftrightarrow C=B\vee C>B
 \]
 
 \end_inset
 
-Ist 
-\begin_inset Formula $C=B$
-\end_inset
-
-,
- dann ist gemäß dem Lemma 
+Gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
+reference "def:groesser-oder-gleich"
 plural "false"
 caps "false"
 noprefix "false"
@@ -7027,20 +7021,18 @@ nolink "false"
 
 \end_inset
 
-,
- welches besagt,
- dass die Gleichheit von Symbolen eine Äquivalenzrelation ist,
+ der grösser oder gleich Relation von Zeichenkette gilt:
 \begin_inset Formula 
 \[
-C=B\Leftrightarrow B=C
+C\geq B\Leftrightarrow C=B\vee C>B
 \]
 
 \end_inset
 
-Gemäß der zweiten Aussage des Lemmas 
+Wende ich den Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
+reference "prop:Kommutativitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -7048,19 +7040,20 @@ nolink "false"
 
 \end_inset
 
- kann ich nun schließen,
- dass gilt:
+ der Kommutativität der Äquivalenz an,
+ dann kann ich daraus schliessen,
+ dass ebenso gilt:
 \begin_inset Formula 
 \[
-B=C\Rightarrow B\leq C
+C=B\vee C>B\Leftrightarrow C\geq B
 \]
 
 \end_inset
 
- Nun ist die Implikation immer noch gemäß dem Satz 
+Und noch einmal wende ich den Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Transitivitaet-Implikation"
+reference "prop:Transitivitaet-Aequivalenz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -7068,32 +7061,7 @@ nolink "false"
 
 \end_inset
 
- transitiv.
- Darum kann ich endlich schließen:
-\end_layout
-
-\begin_layout Proof
-\begin_inset Formula 
-\[
-C=B\Rightarrow B\leq C
-\]
-
-\end_inset
-
-Also habe ich hoffentlich den Beweis für die Richtigkeit der umgekehrten Richtung der Behauptung erbracht.
- Somit habe ich gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Aequivalenz-Aequivalenz-zwei-Implikationen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- endlich gezeigt,
- dass gilt
+ der Äquivalenz an und erhalte die Aussage:
 \begin_inset Formula 
 \[
 B\leq C\Leftrightarrow C\geq B
@@ -7101,7 +7069,27 @@ B\leq C\Leftrightarrow C\geq B
 
 \end_inset
 
+Somit hätte ich mit rein logischen Mitteln gezeigt,
+ dass diese beiden Relationen (
+\begin_inset Quotes gld
+\end_inset
 
+kleiner oder gleich
+\begin_inset Quotes grd
+\end_inset
+
+ respektive 
+\begin_inset Quotes gld
+\end_inset
+
+grösser oder gleich
+\begin_inset Quotes grd
+\end_inset
+
+) symmetrisch sind.
+ Da ich nun der Meinung bin,
+ den Beweis für die Richtigkeit der Behauptung erbracht zu haben,
+ beende ich an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Standard
@@ -7320,7 +7308,7 @@ nolink "false"
  der Gleichheit von Teilsymbolen schreiben:
 \begin_inset Formula 
 \[
-B\,F=C\,F=D
+B\,F=C\,F\wedge C\,F=D
 \]
 
 \end_inset
@@ -7421,7 +7409,7 @@ dann kann ich wiederum folgern,
  dass gilt
 \begin_inset Formula 
 \[
-B\,E=C=D
+B\,E=C\wedge C=D
 \]
 
 \end_inset
@@ -7546,6 +7534,19 @@ B\leq D
 
 \end_inset
 
+Somit konnte ich schlissen,
+ dass eben auch in diesem Fall gilt
+\begin_inset Formula 
+\[
+B\leq D
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Proof
 Schlussendlich seien
 \begin_inset Formula 
 \[
@@ -7696,16 +7697,15 @@ B\leq C\wedge C\leq B\Rightarrow B=C
 \end_layout
 
 \begin_layout Proof
-Ich nehme an,
- dass 
-\begin_inset Formula $B\neq C$
+Ich nehme an dass 
+\begin_inset Formula $B<C$
 \end_inset
 
- sei,
- dann müsste gemäß dem dritten Substitutionssatz 
+ sein.
+ Also müsste gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:3.-Substitutionssatz-Konjunktion"
+reference "def:kleiner-oder-gleich-von-Symbolketten"
 plural "false"
 caps "false"
 noprefix "false"
@@ -7713,40 +7713,66 @@ nolink "false"
 
 \end_inset
 
- der Konjunktion gelten:
- 
-\begin_inset Formula 
-\begin{align*}
- & B\leq C\wedge B\neq C\wedge\left(B\leq C\Leftrightarrow B<C\vee B=C\right)\\
-\Rightarrow & \text{\left(B<C\vee B=C\right)\ensuremath{\wedge B\neq C}}
-\end{align*}
-
+ der Relation 
+\begin_inset Quotes gld
 \end_inset
 
-Weiter ist gemäß die Disjunktion gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Kommutativitaet-Disjunktion"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
 
+\begin_inset Formula $<$
 \end_inset
 
- kommutativ.
- Dann ist 
+
+\begin_inset Quotes grd
+\end_inset
+
+ von Symbolketten (Relation mit der Bezeichnung 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Formula $<$
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ es ein Metasymbol 
+\begin_inset Formula $D$
+\end_inset
+
+ aus einer Verkettung von Symbolen 
+\begin_inset Formula $A$
+\end_inset
+
+ derart geben,
+ dass gilt
 \begin_inset Formula 
 \[
-\left(B<C\vee B=C\right)\Leftrightarrow\left(B=C\vee B<C\right)
+C=B\,D
 \]
 
 \end_inset
 
-Dann gilt wiederum gemäß dem dritten Substitutionssatz 
+Da nun 
+\begin_inset Formula $B<C$
+\end_inset
+
+ ist,
+ könnte nicht 
+\begin_inset Formula $B=C$
+\end_inset
+
+ sein.
+ Also kann ich daraus schliessen,
+ dass auch nicht 
+\begin_inset Formula $C=B$
+\end_inset
+
+ sein kann (denn die Gleichheit von Symbolketten ist gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:3.-Substitutionssatz-Konjunktion"
+reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
 plural "false"
 caps "false"
 noprefix "false"
@@ -7754,20 +7780,10 @@ nolink "false"
 
 \end_inset
 
- der Konjunktion:
-\begin_inset Formula 
-\begin{align*}
- & \text{\left(B<C\vee B=C\right)\ensuremath{\wedge B\neq C}}\\
-\wedge & \left(\left(B<C\vee B=C\right)\Leftrightarrow\left(B=C\vee B<C\right)\right)\\
-\Rightarrow & \left(B=C\vee B<C\right)\ensuremath{\wedge B\neq C}
-\end{align*}
-
-\end_inset
-
-Da die Implikation gemäß dem Satz
+ eine Äquivalenzrelation und somit gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Transitivitaet-Implikation"
+reference "def:Aequivalenzrelation"
 plural "false"
 caps "false"
 noprefix "false"
@@ -7775,16 +7791,8 @@ nolink "false"
 
 \end_inset
 
- transitiv ist,kann ich schließen:
-\begin_inset Formula 
-\begin{align*}
- & B\leq C\wedge B\neq C\wedge\left(B\leq C\Leftrightarrow B<C\vee B=C\right)\\
-\Rightarrow & \left(B=C\vee B<C\right)\ensuremath{\wedge B\neq C}
-\end{align*}
-
-\end_inset
-
-Nun kann ich gemäß dem Ausschlusssatz 
+ der Äquivalenzrelation auch symmetrisch).
+ Also kann ich gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Ausschlusssatz"
@@ -7795,99 +7803,46 @@ nolink "false"
 
 \end_inset
 
- folgern:
-\begin_inset Formula 
-\begin{align*}
- & \left(B=C\vee B<C\right)\ensuremath{\wedge B\neq C}\\
-\Rightarrow & B<C
-\end{align*}
-
+ des Ausschlusses folgern,
+ dass 
+\begin_inset Formula $C<B$
 \end_inset
 
-Also kann ich wiederum gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Transitivitaet-Implikation"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
+ sein müsste.
+ Also müsste es ein Metasymbol 
+\begin_inset Formula $E$
 \end_inset
 
- der Transitivität der Implikation folgern
-\begin_inset Formula 
-\begin{align*}
- & B\leq C\wedge B\neq C\wedge\left(B\leq C\Leftrightarrow B<C\vee B=C\right)\\
-\Rightarrow & B<C
-\end{align*}
-
-\end_inset
-
-Somit müsste es gemäß der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Vergleichbarkeit-von-Metasymbole-fuer-gleiche-Symbolen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Vergleichbarkeit von Symbolketten gleichen Symbolen ein Symbol 
-\begin_inset Formula $D$
-\end_inset
-
- derart geben,
- dass gilt
+ mit der Eigenschaft geben,
+ dass gilt:
 \begin_inset Formula 
 \[
-B\,D=C
+C\,E=B
 \]
 
 \end_inset
 
-Nun ist gemäß der weiteren Voraussetzung über 
-\begin_inset Formula $B$
-\end_inset
-
- und 
+Jetzt kann ich das Symbol 
 \begin_inset Formula $C$
 \end_inset
 
- 
+ durch das Symbol 
+\begin_inset Formula $B\,D$
+\end_inset
+
+ ersetzen,
+ da diese zwei Symbole ja gemäss Konstruktion sind und erhalte
 \begin_inset Formula 
 \[
-C\leq B
+B\,D\,E=B
 \]
 
 \end_inset
 
-Also müsste gelten
-\begin_inset Formula 
-\[
-B\,D\leq C\leq B
-\]
-
-\end_inset
-
-Da die Relation 
-\begin_inset Quotes gld
-\end_inset
-
-
-\begin_inset Formula $\leq$
-\end_inset
-
-
-\begin_inset Quotes grd
-\end_inset
-
- (kleiner oder gleich) jedoch gemäß dem Lemma 
+Gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:kleiner-oder-gleich-von-Symbolen-ist-transitiv"
+reference "lem:Assoziativitaet-Symbolketten"
 plural "false"
 caps "false"
 noprefix "false"
@@ -7895,16 +7850,68 @@ nolink "false"
 
 \end_inset
 
- transitiv ist,
- müsste gelten
+ ist das Verknüpfen von Zeichenketten assoziativ.
+ Das bedeutet jedoch dass ich 
+\begin_inset Formula $D\,E$
+\end_inset
+
+ als weiteres Symbol mit der Bezeichnung 
+\begin_inset Formula $F$
+\end_inset
+
+ auffassen kann und gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gleichheit-von-Teilsymbolen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Gleichheit von Teilsymbolen schreiben kann,
+ dass gilt
 \begin_inset Formula 
 \[
-B\,D\leq B
+B\,F=B\,D\,E
 \]
 
 \end_inset
 
-Da ist jedoch ein Widerspruch zum Lemma 
+Da die Gleichheit von Symbolketten gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ eine Äquivalenzrelation und somit gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ auch transitiv ist,
+ kann ich daraus folgern,
+ dass gelten würde:
+\begin_inset Formula 
+\[
+B\,F=B
+\]
+
+\end_inset
+
+Das wäre jedoch ein Widerspruch zum Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Ungleicheheit-angehaengte-Symbole"
@@ -7915,21 +7922,23 @@ nolink "false"
 
 \end_inset
 
-,
+ der angehängten Symbolketten,
  welches besagt,
- dass
-\begin_inset Formula 
-\[
-B\,D>B
-\]
+ dass eine Symbolkette niemals gleich der Symbolkette und einem angehängten Symbol sein kann.
+ 
+\end_layout
 
+\begin_layout Proof
+Darum bin ich der Meinung,
+ dass die Voraussetzung 
+\begin_inset Formula $B<C$
 \end_inset
 
- sein muss.
- Also kann ich gemäß dem Widerspruchssatz 
+ nicht wahr sein kann.
+ Gemäss des Satzes 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:logischer-Widerspruch-Version-1"
+reference "prop:Ausschlusssatz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -7937,20 +7946,15 @@ nolink "false"
 
 \end_inset
 
- folgern,
- dass eben gelten muss:
-\begin_inset Formula 
-\[
-B=C
-\]
-
+ des Ausschlusses kann ich nun folgern,
+ dass gelten muss 
+\begin_inset Formula $B=C$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
-Damit meine ich den Beweis für die Richtigkeit der Behauptung erbracht zu haben und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+.
+ Dies wollte ich aber beweisen.
+ Also bin ich der Meinung,
+ dass ich den Beweis für die Richtigkeit der Behauptung erbracht habe und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Standard
@@ -8068,7 +8072,7 @@ In Worten:
 \begin_inset Formula $D$
 \end_inset
 
- das das Minimum der Symbole 
+ das das Maximum der Symbole 
 \begin_inset Formula $B$
 \end_inset
 
@@ -8097,7 +8101,7 @@ In Worten:
 \begin_inset Formula $D$
 \end_inset
 
- kleiner oder gleich 
+ grösser oder gleich 
 \begin_inset Formula $C$
 \end_inset
 
@@ -8203,7 +8207,18 @@ sowie
 \end_layout
 
 \begin_layout Proof
-Gemäß dem vorhergehenden Satz muss einer der drei Fälle gelten:
+Gemäß dem vorhergehenden Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:totale-Ordnung-Symbolketten-gleicher-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ muss genau einer der drei Fälle gelten:
 \begin_inset Formula 
 \begin{align*}
 B & <C\\
@@ -8368,7 +8383,7 @@ C\geq C
 Da gemäß Voraussetzung gilt
 \begin_inset Formula 
 \[
-B>C
+C>B
 \]
 
 \end_inset
@@ -8970,7 +8985,7 @@ Auch diese Definition ist nur dann gültig,
 \begin_inset Formula 
 \begin{align*}
  & C=\min\left\{ B\bigm|B\in M\right\} \\
-\Lleftarrow\mathllap{\Rrightarrow} & \left(\left(C\in M\wedge B\in M\right)\Rightarrow C\leq B\right)
+\Lleftarrow\mathllap{\Rrightarrow} & \left(C\in M\wedge\left(B\in M\Rightarrow C\leq B\right)\right)
 \end{align*}
 
 \end_inset
@@ -8982,7 +8997,7 @@ Auch diese Definition ist nur dann gültig,
 \begin_inset Formula 
 \begin{align*}
  & C=\max\left\{ B\bigm|B\in M\right\} \\
-\Lleftarrow\mathllap{\Rrightarrow} & \left(\left(C\in M\wedge B\in M\right)\Rightarrow C\geq B\right)
+\Lleftarrow\mathllap{\Rrightarrow} & \left(C\in M\wedge\left(B\in M\Rightarrow C\geq B\right)\right)
 \end{align*}
 
 \end_inset
@@ -9016,7 +9031,7 @@ Es seien
 \end_inset
 
 ,
- wobei jedes dieser Metasymbol auf eine Symbolkette aus einem oder mehreren,
+ wobei jedes dieser Metasymbol aus einer Symbolkette aus einem oder mehreren,
  jedoch endlich vielen Symbolen 
 \begin_inset Formula $S$
 \end_inset
@@ -9081,8 +9096,8 @@ Besitzt die Menge
  dann gilt
 \begin_inset Formula 
 \begin{align*}
-A & =\min\left\{ B\bigm|B\in M\right\} \,S\\
-A & =\max\left\{ B\bigm|B\in M\right\} \,S
+A & =\min\left\{ B\bigm|B\in M\right\} \\
+A & =\max\left\{ B\bigm|B\in M\right\} 
 \end{align*}
 
 \end_inset
@@ -9630,7 +9645,8 @@ Da dies für alle
 \begin_inset Formula $B\in M$
 \end_inset
 
- gilt habe ich den Beweis erbracht.
+ gilt,
+ habe ich den Beweis erbracht.
  
 \end_layout
 
@@ -10101,7 +10117,48 @@ Also kann ich daraus folgern,
 
 \end_inset
 
+Da nun 
+\begin_inset Formula 
+\[
+\min P=\min M
+\]
 
+\end_inset
+
+ist und die Symbolgleichheit gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ eine Äquivalenzrelation ist,
+ ist die Symbolgleichheit gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ auch symmetrisch.
+ Also kann ich daraus schliessen,
+ dass auch 
+\begin_inset Formula 
+\[
+\min M=\min P
+\]
+
+\end_inset
+
+ sein muss
 \end_layout
 
 \begin_layout Proof
@@ -10117,10 +10174,22 @@ nolink "false"
 \end_inset
 
  eine Äquivalenzrelation ist,
- kann ich aus 
+ ist sie gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ auch transitiv.
+ Also kann ich aus 
 \begin_inset Formula 
 \[
-\min P=\min M
+\min M=\min P
 \]
 
 \end_inset
@@ -10377,6 +10446,51 @@ Also kann ich daraus folgern,
 \end_layout
 
 \begin_layout Proof
+Da nun 
+\begin_inset Formula 
+\[
+\min Q=\min M
+\]
+
+\end_inset
+
+ist und die Symbolgleichheit gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ eine Äquivalenzrelation ist,
+ ist die Symbolgleichheit gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ auch symmetrisch.
+ Also kann ich daraus schliessen,
+ dass auch 
+\begin_inset Formula 
+\[
+\min M=\min Q
+\]
+
+\end_inset
+
+ sein muss
+\end_layout
+
+\begin_layout Proof
 Da die Symbolgleichheit gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -10389,15 +10503,27 @@ nolink "false"
 \end_inset
 
  eine Äquivalenzrelation ist,
- kann ich aus 
+ ist sie gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ auch transitiv.
+ Also kann ich aus 
 \begin_inset Formula 
 \[
-\min Q=\min M
+\min M=\min Q
 \]
 
 \end_inset
 
-und 
+
 \begin_inset Formula 
 \[
 \min Q=\min\left\{ \min P,\min Q\right\} 
@@ -10432,7 +10558,7 @@ Damit hätte ich den Satz unter der Voraussetzung bewiesen,
 \end_layout
 
 \begin_layout Proof
-Da ich jetzt annehme,
+Da ich jetzt gezeigt,
  dass ich für alle denkbaren Fälle gezeigt habe,
  dass gilt
 \begin_inset Formula 
@@ -10768,7 +10894,12 @@ Es sei
 \begin_inset Formula $M$
 \end_inset
 
- existieren.
+ existieren,
+ da 
+\begin_inset Formula $M$
+\end_inset
+
+ nicht die leere Menge ist.
  Dann muss mit 
 \begin_inset Formula 
 \begin{align*}
@@ -11410,7 +11541,15 @@ aus einer endlichen Anzahl von Symbolen
 \begin_inset Formula $\left(n_{k}\right)_{k\in\mathbb{N}}$
 \end_inset
 
- derart geben kann,
+ mit 
+\begin_inset Formula 
+\[
+\left\{ n_{k}\right\} _{k\in\mathbb{N}}\subset\mathbb{N}
+\]
+
+\end_inset
+
+derart geben kann,
  dass gilt
 \begin_inset Formula 
 \[
@@ -11420,6 +11559,31 @@ n_{k}>n_{k+1}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Definition
+Das heisst insbesondere,
+ dass nicht für alle Zahlen gelten kann
+\begin_inset Formula 
+\begin{align*}
+n_{1} & >n_{2}\\
+n_{2} & >n_{3}\\
+n_{3} & >n_{4}
+\end{align*}
+
+\end_inset
+
+und entsprechend für alle anderen natürlichen Zahlen.
+ Es bedeutet also,
+ dass immer nur endlich viele andere natürlichen Zahlen 
+\begin_inset Formula $m$
+\end_inset
+
+ kleiner als eine beliebige natürliche Zahl 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ sein kann.
 \end_layout
 
 \begin_layout Definition
@@ -12047,7 +12211,7 @@ dann benötige ich zusammen mit den Leerzeichen
 
  Kühe) einen Sinn macht.
  Zudem war und ist mit dem Lesen und Schreiben sowie mit dem Rechnen meines Erachtens die Gesellschaft so richtig aufgespalten worden in arme und reiche,
- in ungebildete (,
+ in ungebildete,
  
 \begin_inset Quotes gld
 \end_inset
@@ -12066,7 +12230,7 @@ Das sollte ein Witz sein.
 \begin_inset Quotes grd
 \end_inset
 
-) und gebildete Personen.
+ und gebildete Personen.
 \end_layout
 
 \begin_layout Standard
@@ -12195,9 +12359,19 @@ Nicht Äpfel und Birnen zusammen zählen!
  welches gezählt wird,
  angegeben wird.
  Also ist das m.E.
- der entscheidende Unterschi der natürlichen Zahlen von Zählstrichen:
+ der entscheidende Unterschied der natürlichen Zahlen von Zählstrichen:
  Währendem Zählstriche grundsätzlich keine Metasymbole sind,
  sind natürliche Zahlen grundsätzlich Metasymbole.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+aktuelle Stelle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -12605,10 +12779,10 @@ m\cdot A=p\cdot A
 
 \end_inset
 
-Gemäß der Definition der Gleichheit kann ich also schreiben:
+Gemäß der Definition der Gleichheit von natürlichen Zahlen kann ich also schreiben:
 \begin_inset Formula 
 \[
-m\cdot A=p\cdot A
+m=p
 \]
 
 \end_inset
@@ -12887,6 +13061,15 @@ nolink "false"
  dass die Mathematik aus diesen Fragestellungen heraus entstanden ist,
  also in solchen Gebieten,
  in welchen die Anwendung der Mathematik unproblematisch ist und kein Kopfzerbrechen bereitet.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+aktuelle Stelle
+\end_layout
+
+\end_inset
+
  Aber ich denke,
  die Mathematik tut gut daran,
  dass sie ihre Herkunft nicht vergisst.
@@ -12965,490 +13148,92 @@ n_{1}\leq n_{2}\wedge n_{1}\geq n_{2}\Leftrightarrow n_{1}=n_{2}
 \end_layout
 
 \begin_layout Proof
-Es sei 
-\begin_inset Formula $A$
+Im vorhergehenden Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:kleiner-gleich-natuerliche-Zahlen-ist-total"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
 \end_inset
 
- ein beliebiges Symbol,
- jedoch in sich selbst und in Bezug auf die anderen Symbole widerspruchsfrei sei.
- Weiter seien 
-\begin_inset Formula $n_{1},n_{2}\in\mathbb{N}$
+ versuchte ich zu zeigen,
+ dass gelten muss
+\begin_inset Formula 
+\[
+n_{1}\leq n_{2}\vee n_{1}\geq n_{2}
+\]
+
+\end_inset
+
+wobei 
+\begin_inset Formula $n_{1}$
 \end_inset
 
  und 
-\begin_inset Formula $n_{1}=n_{2}$
+\begin_inset Formula $n_{2}$
 \end_inset
 
-.
- Dies ist gemäß der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:natuerliche-Zahlen-eigene-Definition"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- dann der Fall,
- falls gilt
+ natürliche Zahlen seien.
+ Ich nehme an,
+ dass 
 \begin_inset Formula 
 \[
-n_{1}\cdot A=n_{2}\cdot A
+n_{1}\leq n_{2}
 \]
 
 \end_inset
 
-Gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Implikation-Disjunktion-aus-Aussage"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kann ich daraus folgern (mit dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Schlussfolgerung"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Schlussfolgerung),
- dass daraus folgt
-\begin_inset Formula 
-\[
-n_{1}\cdot A=n_{2}\cdot A\Rightarrow n_{1}\cdot A=n_{2}\cdot A\vee n_{1}\cdot A<n_{2}\cdot A
-\]
-
-\end_inset
-
-Gemäß der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Vergleichbarkeit-von-Metasymbole-fuer-gleiche-Symbolen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- gilt
-\begin_inset Formula 
-\[
-n_{1}\cdot A\leq n_{2}\cdot A\Leftrightarrow n_{1}\cdot A=n_{2}\cdot A\vee n_{1}\cdot A<n_{2}\cdot A
-\]
-
-\end_inset
-
-Da die Äquivalenz gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Kommutativitaet-Aequivalenz"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kommutiert,
- kann ich daraus auch schließen,
- dass auch gilt
-\begin_inset Formula 
-\[
-n_{1}\cdot A=n_{2}\cdot A\vee n_{1}\cdot A<n_{2}\cdot A\Leftrightarrow n_{1}\cdot A\leq n_{2}\cdot A
-\]
-
-\end_inset
-
-Da gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Implikation-Implikation-aus-Aequivalenz"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kann ich zusammen mit dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Schlussfolgerung"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Schlussfolgerung folgern,
- dass gilt
-\begin_inset Formula 
-\[
-n_{1}\cdot A=n_{2}\cdot A\vee n_{1}\cdot A<n_{2}\cdot A\Rightarrow n_{1}\cdot A\leq n_{2}\cdot A
-\]
-
-\end_inset
-
- Da die Implikation gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Transitivitaet-Implikation"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- transitiv ist,
- kann ich folgern,
- dass gilt:
-\begin_inset Formula 
-\[
-n_{1}\cdot A=n_{2}\cdot A\Rightarrow n_{1}\cdot A\leq n_{2}\cdot A
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Weiter kann ich gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Implikation-Disjunktion-aus-Aussage"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kann ich daraus folgern (mit dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Schlussfolgerung"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Schlussfolgerung),
- dass daraus folgt
-\begin_inset Formula 
-\[
-n_{1}\cdot A=n_{2}\cdot A\Rightarrow n_{1}\cdot A=n_{2}\cdot A\vee n_{1}\cdot A>n_{2}\cdot A
-\]
-
-\end_inset
-
-Gemäß der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Vergleichbarkeit-von-Metasymbole-fuer-gleiche-Symbolen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- gilt
-\begin_inset Formula 
-\[
-n_{1}\cdot A\geq n_{2}\cdot A\Leftrightarrow n_{1}\cdot A=n_{2}\cdot A\vee n_{1}\cdot A>n_{2}\cdot A
-\]
-
-\end_inset
-
-Da die Äquivalenz gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Kommutativitaet-Aequivalenz"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kommutiert,
- kann ich daraus auch schließen,
- dass auch gilt
-\begin_inset Formula 
-\[
-n_{1}\cdot A=n_{2}\cdot A\vee n_{1}\cdot A>n_{2}\cdot A\Leftrightarrow n_{1}\cdot A\geq n_{2}\cdot A
-\]
-
-\end_inset
-
-Da gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Implikation-Implikation-aus-Aequivalenz"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kann ich zusammen mit dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Schlussfolgerung"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Schlussfolgerung folgern,
- dass gilt
-\begin_inset Formula 
-\[
-n_{1}\cdot A=n_{2}\cdot A\vee n_{1}\cdot A>n_{2}\cdot A\Rightarrow n_{1}\cdot A\geq n_{2}\cdot A
-\]
-
-\end_inset
-
-Da die Implikation gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Transitivitaet-Implikation"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- transitiv ist,
- kann ich folgern,
- dass gilt:
-\begin_inset Formula 
-\[
-n_{1}\cdot A=n_{2}\cdot A\Rightarrow n_{1}\cdot A\geq n_{2}\cdot A
-\]
-
-\end_inset
-
-Insgesamt muss also gelten:
-\end_layout
-
-\begin_layout Proof
-\begin_inset Formula 
-\begin{align*}
- & \left(n_{1}\cdot A=n_{2}\cdot A\Rightarrow n_{1}\cdot A\leq n_{2}\cdot A\right)\wedge\\
- & \left(n_{1}\cdot A=n_{2}\cdot A\Rightarrow n_{1}\cdot A\geq n_{2}\cdot A\right)
-\end{align*}
-
-\end_inset
-
-Ich habe recht lange überlegt,
- wie ich den nächsten Gedanken aufschreiben muss:
- Gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Distribution-Implikation-Disjunktion"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- gilt für alle Symbole 
-\begin_inset Formula $U,V$
-\end_inset
-
- sowie 
-\begin_inset Formula $W,$
-\end_inset
-
-welche in sich selbst und bezüglich den anderen Symbolen des Satzes widerspruchsfrei seien:
-\begin_inset Formula 
-\[
-\left(U\Rightarrow V\wedge W\right)\Leftrightarrow\left(\left(U\Rightarrow V\right)\wedge\left(U\wedge W\right)\right)
-\]
-
-\end_inset
-
-Da die Äquivalenz gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Kommutativitaet-Aequivalenz"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kommutativ ist,
- kann ich mit Hilfe des Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Schlussfolgerung"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Schlussfolgerung folgern,
- dass auch gelten muss:
-\begin_inset Formula 
-\[
-\left(\left(U\Rightarrow V\right)\wedge\left(U\wedge W\right)\right)\Leftrightarrow\left(U\Rightarrow V\wedge W\right)
-\]
-
-\end_inset
-
-Da aus der Äquivalenz gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Implikation-Implikation-aus-Aequivalenz"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- aus der Äquivalenz auch die Implikation folgen muss,
- muss auch gelten:
-\begin_inset Formula 
-\[
-\left(\left(U\Rightarrow V\right)\wedge\left(U\wedge W\right)\right)\Rightarrow\left(U\Rightarrow V\wedge W\right)
-\]
-
-\end_inset
-
-Wenn ich jetzt definiere:
-\begin_inset Formula 
-\begin{align*}
-U & \Lleftarrow\mathllap{\Rrightarrow}n_{1}\cdot A=n_{2}\cdot A\\
-V & \Lleftarrow\mathllap{\Rrightarrow}n_{1}\cdot A\leq n_{2}\cdot A\\
-W & \Lleftarrow\mathllap{\Rrightarrow}n_{1}\cdot A\geq n_{2}\cdot A
-\end{align*}
-
-\end_inset
-
-dann kann ich also schreiben:
-\begin_inset Formula 
-\[
-n_{1}\cdot A=n_{2}\cdot A\Rightarrow n_{1}\cdot A\leq n_{2}\cdot A\wedge n_{1}\cdot A\geq n_{2}\cdot A
-\]
-
-\end_inset
-
-Gemäß der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:natuerliche-Zahlen-eigene-Definition"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der natürlichen Zahlen kann ich daraus folgern,
- dass gilt
-\begin_inset Formula 
-\[
-n_{1}=n_{2}\Rightarrow n_{1}\leq n_{2}\wedge n_{1}\geq n_{2}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Also habe ich die eine Richtung der Behauptung bewiesen.
-\end_layout
-
-\begin_layout Proof
-Nun gelte:
- 
-\begin_inset Formula 
-\[
-n_{1}\leq n_{2}\wedge n_{2}\leq n_{1}
-\]
-
-\end_inset
-
-Dann muss gemäß der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:natuerliche-Zahlen-eigene-Definition"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- muss gelten
-\begin_inset Formula 
-\[
-n_{1}\cdot A\leq n_{2}\cdot A\wedge n_{2}\cdot A\leq n_{1}\cdot A
-\]
-
-\end_inset
-
-Dann kann ich gemäß dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Gleichheit-aus-kleiner-oder-gleich-Symbole"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kann ich nun folgern
-\begin_inset Formula 
-\[
-n_{1}\cdot A=n_{2}\cdot A
-\]
-
-\end_inset
-
-Dies bedeutet jedoch gemäß der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:natuerliche-Zahlen-eigene-Definition"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
+ sei.
+ Das bedeutet,
+ dass es für ein Symbol 
+\begin_inset Formula $A$
 \end_inset
 
 ,
- dass gilt:
+ welches in sich selbst und in Bezug auf die anderen Symbole des Beweises widerspruchsfrei sei,
+ gelte
+\begin_inset Formula 
+\[
+n_{1}\cdot A\leq n_{2}\cdot A
+\]
+
+\end_inset
+
+Dabei bezieht jetzt die Vergleichsrelation 
+\begin_inset Formula $\leq$
+\end_inset
+
+ auf die entsprechende Relation beim Vergleich von Symbolketten mit endlich vielen Symbolen.
+ Nun gibt es zwei Möglichkeiten:
+ Entweder ist
+\begin_inset Formula 
+\[
+n_{1}\cdot A=n_{2}\cdot A
+\]
+
+\end_inset
+
+oder aber es ist 
+\begin_inset Formula 
+\[
+n_{1}\cdot A<n_{2}\cdot A
+\]
+
+\end_inset
+
+Falls 
+\begin_inset Formula 
+\[
+n_{1}\cdot A=n_{2}\cdot A
+\]
+
+\end_inset
+
+ist,
+ dann ist jedoch bereits 
 \begin_inset Formula 
 \[
 n_{1}=n_{2}
@@ -13456,11 +13241,20 @@ n_{1}=n_{2}
 
 \end_inset
 
-Damit habe ich die andere Richtung der Behauptung bewiesen.
- Gemäß dem Satz 
+ was genau zu beweisen war.
+ Ist jedoch 
+\begin_inset Formula 
+\[
+n_{1}\cdot A<n_{2}\cdot A
+\]
+
+\end_inset
+
+dann führt dies zu einem Widerspruch.
+ Denn dies wäre gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Aequivalenz-Aequivalenz-zwei-Implikationen"
+reference "lem:Equivalenz-Symbolvergleich-Negation-kleiner-gleich-grosser"
 plural "false"
 caps "false"
 noprefix "false"
@@ -13468,25 +13262,60 @@ nolink "false"
 
 \end_inset
 
- kann ich aus den Aussagen
-\begin_inset Formula 
-\begin{align*}
- & \left(n_{1}=n_{2}\Rightarrow n_{1}\leq n_{2}\wedge n_{1}\geq n_{2}\right)\wedge\\
- & \left(n_{1}\leq n_{2}\wedge n_{1}\geq n_{2}\Rightarrow n_{1}=n_{2}\right)
-\end{align*}
-
-\end_inset
-
-folgern,
- dass gilt
+ gleichbedeutend zum Satz 
 \begin_inset Formula 
 \[
-n_{1}=n_{2}\Leftrightarrow n_{1}\leq n_{2}\wedge n_{1}\geq n_{2}
+\neg\left(n_{2}\,A\leq n_{1}\cdot A\right)
 \]
 
 \end_inset
 
+und somit auch gemäss dem Äquivalenzsatz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Aequivalenz-Negations-Satz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
+\end_inset
+
+ der Negation
+\begin_inset Formula 
+\[
+\neg\left(n_{2}\leq n_{1}\right)
+\]
+
+\end_inset
+
+Das wäre jedoch ein Widerspruch zur Voraussetzung 
+\begin_inset Formula $n_{2}\leq n_{2}$
+\end_inset
+
+.
+ Das bedeutet,
+ dass auch in diesem Fall wirklich 
+\begin_inset Formula 
+\[
+n_{1}=n_{2}
+\]
+
+\end_inset
+
+ sein muss.
+ Damit ich ich in allen denkbaren Fällen gezeigt,
+ dass
+\begin_inset Formula 
+\[
+n_{1}=n_{2}
+\]
+
+\end_inset
+
+sein muss.
+ Darum bin ich der Meinung,
+ den Beweis für die Richtigkeit der Behauptung erbracht zu haben und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Standard
@@ -13653,47 +13482,106 @@ n_{4} & \equiv & n_{1}
 Dann gilt also
 \begin_inset Formula 
 \[
-n_{3}\leq n_{4}\wedge\neg\left(n_{3}\geq n_{4}\right)
+\neg\left(n_{4}\leq n_{3}\right)\wedge\phantom{\neg}\left.n_{4}\geq n_{3}\right.
 \]
 
 \end_inset
 
-wobei ich von der Kommutativität 
+Weiter muss gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutativitaet-Konjunktion"
+reference "lem:Equivalenz-Symbolvergleich-Negation-kleiner-gleich-grosser"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
 
- der Konjunktion und von der Tatsache Gebrauch gemacht habe,
- dass 
+ gelten
 \begin_inset Formula 
 \[
-n_{3}\leq n_{4}
+n_{4}\geq n_{3}\Leftrightarrow n_{3}\leq n_{4}
 \]
 
 \end_inset
 
-per Definition gleichbedeutend zu 
+Also kann ich gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Konjunktion-Aequivalenzsatz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ des Äquivalenzsatzes der Konjunktion folgern,
+ dass auch gelten muss
 \begin_inset Formula 
 \[
-n_{4}\geq n_{3}
+\neg\left(n_{4}\leq n_{3}\right)\wedge\phantom{\neg}n_{3}\leq n_{4}
 \]
 
 \end_inset
 
-ist.
- Und dies entspricht ja genau der Voraussetzung
+
+\end_layout
+
+\begin_layout Proof
+Da die Konjunktion gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Kommutativitaet-Konjunktion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kommutiert,
+ kann ich zusammen mit dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Schlussfolgerung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ schlussfolgern,
+ dass in diesem Fall auch die Ausssage
 \begin_inset Formula 
 \[
-n_{1}=n_{4}\geq n_{3}=n_{2}
+\phantom{\neg}n_{3}\leq n_{4}\wedge\neg\left(n_{4}\leq n_{3}\right)
 \]
 
 \end_inset
 
-Somit kann ich nach dem eben Gezeigtem folgern,
- dass auch in diesem Fall gelten muss
+
+\end_layout
+
+\begin_layout Proof
+Also glaube ich den Beweis für die Richtigkeit meiner Behauptung erbracht zu haben.
+ Jedoch ist diese Aussage (abgesehen von den Bezeichnungen der Symbole) identisch zur obigen Aussage:
+\begin_inset Formula 
+\[
+n_{1}\leq n_{2}\wedge\neg\left(n_{1}\geq n_{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Also kann ich folgern,
+ dass auch in diesem Fall gelten muss,
+ dass gilt
 \begin_inset Formula 
 \[
 n_{3}<n_{4}
@@ -13701,7 +13589,16 @@ n_{3}<n_{4}
 
 \end_inset
 
-Also ebenfalls
+Wenn ich jetzt anstelle von 
+\begin_inset Formula $n_{3}$
+\end_inset
+
+ und 
+\begin_inset Formula $n_{4}$
+\end_inset
+
+ die ursprünglichen Symbole verwendet,
+ dann erhalte ich die Aussage
 \begin_inset Formula 
 \[
 n_{2}<n_{1}
@@ -13709,7 +13606,35 @@ n_{2}<n_{1}
 
 \end_inset
 
-Per Definition 
+ Wenn ich diese Aussage in die Definition übersetzte,
+ dann erhalte ich die Aussage
+\begin_inset Formula 
+\[
+n_{2}\cdot A<n_{1}\cdot A
+\]
+
+\end_inset
+
+Gemäss dem Korrolar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cor:Symbole-Umwandlung-kleiner-groesser"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ist diese Aussage gleichbedeutend zur Aussage
+\begin_inset Formula 
+\[
+n_{1}\cdot A>n_{2}\cdot A
+\]
+
+\end_inset
+
+was gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:natuerliche-Zahlen-eigene-Definition"
@@ -13720,7 +13645,7 @@ nolink "false"
 
 \end_inset
 
- betreffend der natürlichen Zahlen ist die gleichbedeutend zu
+ der natürlichen Zahlen wiederum gleichbedeutend zu 
 \begin_inset Formula 
 \[
 n_{1}>n_{2}
@@ -13728,49 +13653,31 @@ n_{1}>n_{2}
 
 \end_inset
 
-Zuletzt sei 
+
+\end_layout
+
+\begin_layout Proof
+Also habe ich gezeigt,
+ dass genau einer der drei Fälle
+\begin_inset Formula 
+\begin{align*}
+n_{1} & =n_{2}\\
+n_{1} & <n_{2}
+\end{align*}
+
+\end_inset
+
+oder 
 \begin_inset Formula 
 \[
-\left(n_{1}\leq n_{2}\right)\wedge\left(n_{1}\geq n_{2}\right)
+n_{1}>n_{2}
 \]
 
 \end_inset
 
-Somit kann ich gemäß dem vorhergehenden Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:natuerliche-Zahlen-gleich-groesser-Gleichheit"
-nolink "false"
-
-\end_inset
-
- schreiben,
- dass gelten muss:
-\begin_inset Formula 
-\[
-n_{1}=n_{2}
-\]
-
-\end_inset
-
-Somit glaube ich schreiben zu können,
- dass für jeden möglichen Wert von 
-\begin_inset Formula $n_{1}$
-\end_inset
-
- und 
-\begin_inset Formula $n_{2}$
-\end_inset
-
- gilt:
-\begin_inset Formula 
-\[
-n_{1}<n_{2}\vee n_{1}=n_{2}\vee n_{1}>n_{2}
-\]
-
-\end_inset
-
-Also glaube ich den Beweis für die Richtigkeit meiner Behauptung erbracht zu haben.
+gelten muss.
+ Somit meine ich den Beweis für die Richtigkeit der Behauptung erbracht zu haben und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -13821,7 +13728,7 @@ Es seien
 \min\left\{ n_{1},n_{2}\right\} \equiv\begin{cases}
 n_{1} & \Leftarrow n_{1}<n_{2}\\
 n_{1} & \Leftarrow n_{1}=n_{2}\\
-n_{2} & \Leftarrow n_{1}=n_{2}
+n_{2} & \Leftarrow n_{1}>n_{2}
 \end{cases}
 \]
 
@@ -13930,7 +13837,7 @@ ein Minimum
 \begin_inset Formula $M$
 \end_inset
 
-enthalten ist und für welches gilt
+ enthalten ist und für welches gilt
 \begin_inset Formula 
 \[
 \forall n\in M\,m_{M}\leq m
@@ -14082,6 +13989,153 @@ Wenn ich dieses
 
  umbenenne,
  dann habe ich den Beweis für die Richtigkeit der Behauptung bewiesen.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+aktuelle Stelle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Ich möchte noch einen zweiten,
+ ähnlichen Beweis führen:
+ Es sei 
+\begin_inset Formula $n\in M$
+\end_inset
+
+ gegeben.
+ Nun kann sei 
+\begin_inset Formula 
+\[
+M_{>}\equiv\left\{ k\in M\bigm|k\geq n\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Dann muss gelten
+\begin_inset Formula 
+\[
+n=\min M_{>}
+\]
+
+\end_inset
+
+Denn da 
+\begin_inset Formula $\geq$
+\end_inset
+
+ identitiv ist,
+ gilt 
+\begin_inset Formula 
+\[
+n\geq n
+\]
+
+\end_inset
+
+Es ist ja gemäss der Definition 
+\begin_inset Formula 
+\[
+n=n
+\]
+
+\end_inset
+
+da die Gleichheit von natürlichen Zahlen gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gleichheit-natuerliche-Zahlen-ist-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ eine Äquivalenzrelation und darum gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Äquivalenzrelation auch symmetrisch ist.
+ Also ist auch gemäss dem 4.
+ Maximalsatz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Minimum-Maximum-Saetze-Logik"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+der Logik
+\begin_inset Formula 
+\[
+n=n\Leftrightarrow n=n\vee n>n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Denn die Aussage
+\begin_inset Formula 
+\[
+n=n
+\]
+
+\end_inset
+
+ist wahr.
+ Und darum gilt auch gemäss dem vierten Maximalsatz der Logik die Aussage:
+\begin_inset Formula 
+\[
+n>n\vee n=n\Leftrightarrow n=n
+\]
+
+\end_inset
+
+und da die Äquivalenz gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Kommutativitaet-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kommutiert,
+ kann ich schlussfolgern,
+ dass auch gilt auch 
+\begin_inset Formula 
+\[
+n>n\vee n=n\Leftrightarrow n=n
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -20711,7 +20765,7 @@ Weiter oben habe ich jedoch gezeigt,
 
 \end_inset
 
-Also kann ich gemäss der Transitivität und Symmetrie der Gleichheit von natürlichen Zahlen schreiben,
+Also kann ich gemäß der Transitivität und Symmetrie der Gleichheit von natürlichen Zahlen schreiben,
  dass gilt
 \begin_inset Formula 
 \[
