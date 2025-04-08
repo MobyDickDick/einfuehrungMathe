@@ -3630,6 +3630,82 @@ Es sei
 \end_layout
 
 \begin_layout Standard
+Als 
+\begin_inset Quotes gld
+\end_inset
+
+Kochrezept
+\begin_inset Quotes grd
+\end_inset
+
+ möchte ich anfügen,
+ dass darauf geachtet werden soll,
+ dass Symbole und Metasymbole nicht irgendwie vermischt werden.
+ Ich möchte zwei Beispiele aufschreiben.
+ Das erste Beispiel:
+ Ich werde darauf achte,
+ dass ich nicht ohne Erklärung schreibe:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Es sei 
+\begin_inset Formula $n=10$
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Wieso schreibe ich das nicht?
+ Oft wird in der Mathematik von 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Formula $n$
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ als 
+\begin_inset Quotes gld
+\end_inset
+
+number
+\begin_inset Quotes grd
+\end_inset
+
+ geschrieben.
+ Dabei sind natürliche Zahlen gemeint.
+ Aber es ist trotzdem bemühend,
+ wenn das einfach so geschrieben wird.
+ Angenehmer wäre:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Es sei 
+\begin_inset Formula $n$
+\end_inset
+
+ das Symbol einer natürlichen Zahl,
+ und es gelte:
+ 
+\begin_inset Formula $n=10$
+\end_inset
+
+.
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Bezüglich der Diskussion über mathematische Symbole möchte ich an dieser Stelle die These
 \begin_inset Foot
 status open
@@ -6721,7 +6797,7 @@ Im Teil über die Logik versuche ich,
 \end_layout
 
 \begin_layout Chapter
-kleine Zusammenfassung des Teil I über Symbole
+kleine Zusammenfassung des Teils I über Symbole
 \end_layout
 
 \begin_layout Standard

@@ -23220,6 +23220,11 @@ In welchen Altersgruppen werden welche Behandlungen durchgeführt?
 
  Natürlich muss die Abfrage ein wenig genauer formuliert werden.
  Ich mache hier nur ein grobes Beispiel.
+ Der Trick bei der Verwendung von Funktionen in der Informatik besteht darin,
+ sicherzustellen,
+ dass in den Werten der Urbildmenge ein bestimmtes Element schnell gefunden werden soll.
+ Dadurch wird es möglich,
+ wahnsinnig komplizierte Abfragen in einer extremen kurzen Zeit durchzuführen.
 \end_layout
 
 \begin_layout Standard
@@ -33289,6 +33294,17 @@ Was für mich auch Neuland war,
  dass es gar nicht nötig ist,
  die zeigen zu müssen.
  
+\end_layout
+
+\begin_layout Standard
+Und eine letzte Bemerkung:
+ Ich habe viel Aufwand betrieben,
+ um zu zeigen,
+ dass die Kontinuumshypothese gültig ist.
+ Diese ist letztlich auch ein Teil der Mengenlehre,
+ aber kann an dieser Stelle weder formuliert werden.
+ Ich denke,
+ ich kann den Beweis nicht erbringen.
 \end_layout
 
 \end_body

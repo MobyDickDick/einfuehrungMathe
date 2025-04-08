@@ -224,7 +224,7 @@ Reverse-Engineering
  damit die bekannten Eigenschaften als Sätze beweisbar sind.
  Jedoch finde ich das nicht schön.
  Denn was auf der Strecke bleibt,
- bleibt die Anschauung und das Verständnis.
+ ist die Anschauung und das Verständnis.
  Darum schlage ich eine andere Definition der natürlichen Zahlen vor und leite daraus die übliche Definition der natürlichen Zahlen als Sätze ab.
  M.E.
  lassen sich Zahlen als Metasymbole für Verkettungen von gleichen Symbolen begreifen.
@@ -575,6 +575,25 @@ nolink "false"
 \end_inset
 
  bezüglich der Definition einer Äquivalenz.
+\end_layout
+
+\begin_layout Proof
+Bevor ich den Beweis beginne,
+ möchte ich auf den Absatz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Alles-Meta-oder-was"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ verweisen,
+ in welchem ich darüber nachdenke,
+ wie die Handhabung von Symbolen und Metasymbolen innerhalb dieses Skripts geregelt werden soll.
+ 
 \end_layout
 
 \begin_layout Proof
@@ -1132,6 +1151,12 @@ status open
 \end_layout
 
 \begin_layout Standard
+Ich muss zugeben,
+ dass mich der Beweis nicht so überzeugt.
+ Aber vielleicht finde ich einmal einen besseren Beweis.
+\end_layout
+
+\begin_layout Standard
 Im nächsten Lemma möchte ich mich mit der Frage beschäftigen,
  ob Symbole immer noch gleich sind,
  welche sie gleich sind und ein weiteres Symbol ihnen voran- oder nachgestellt wird.
@@ -1606,7 +1631,7 @@ status open
 \begin_layout Standard
 Nun bin ich der Meinung,
  dass ich durchaus gezeigt habe,
- dass die Verkettung von Symbolen durchaus assoziativ ist.
+ dass die Verkettung von Symbolen  assoziativ ist.
  Um einen Beweis der anderen Art,
  welcher weniger formal,
  mir aber dafür um so einsichtiger erscheint,
@@ -13828,7 +13853,7 @@ Es sei
 \begin_inset Formula $M$
 \end_inset
 
-ein Minimum 
+ ein Minimum 
 \begin_inset Formula $m_{M}$
 \end_inset
 
@@ -13840,7 +13865,7 @@ ein Minimum
  enthalten ist und für welches gilt
 \begin_inset Formula 
 \[
-\forall n\in M\,m_{M}\leq m
+\forall m\in M\,m_{M}\leq m
 \]
 
 \end_inset
@@ -13849,10 +13874,36 @@ ein Minimum
 \end_layout
 
 \begin_layout Proof
-Gemäß dem Korollar 
+Es sei 
+\begin_inset Formula $M\subset\mathbb{N}$
+\end_inset
+
+ eine beliebige,
+ jedoch nichtleere Teilmenge von 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ Dann sei 
+\begin_inset Formula $A$
+\end_inset
+
+ ein Symbol,
+ für welches jedoch gilt,
+ dass es weder in sich selbst noch in Bezug auf die anderen Symbole des Beweises widerspruchsfrei sei.
+ Also sei 
+\begin_inset Formula 
+\[
+M_{A}\equiv\left\{ m\cdot A\bigm|m\in M\right\} 
+\]
+
+\end_inset
+
+ die entsprechende Symbolmenge.
+ Dann muss diese Menge gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cor:natuerliche-Zahlen-kleiner-gleich-groesser-Totalitaet"
+reference "lem:Minimum-beliebiger-Teilmenge-natuerlicher-Zahlen"
 plural "false"
 caps "false"
 noprefix "false"
@@ -13860,282 +13911,96 @@ nolink "false"
 
 \end_inset
 
- muss für alle 
-\begin_inset Formula $m,n$
+ ein Mininimum 
+\begin_inset Formula $B$
 \end_inset
 
- eine der drei Möglichkeiten zutreffen:
-\begin_inset Formula 
-\[
-m<n\vee m=n\vee m>n
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\]
-
-\end_inset
-
-Angenommen,
- 
-\begin_inset Formula $M$
-\end_inset
-
- würde nicht über ein Minimum verfügen.
- Das würde bedeuten,
- dass es für alle 
-\begin_inset Formula $m\in M$
-\end_inset
-
- ein 
-\begin_inset Formula $n\in M$
-\end_inset
-
-derart geben würde,
- dass gilt
-\begin_inset Formula 
-\[
-m>n
-\]
-
-\end_inset
-
-Dann könnte ich eine Folge 
-\begin_inset Formula $\left(n_{k}\right)_{k\in\mathbb{N}}$
-\end_inset
-
- derart bilden dass gilt 
-\begin_inset Formula 
-\[
-n_{1}\equiv m\wedge\forall k\in\mathbb{N}:n_{k+1}\in M\wedge n_{k}>n_{k+1}
-\]
-
-\end_inset
-
-Da jedoch alle Elemente in 
-\begin_inset Formula $M$
-\end_inset
-
- enthalten wären,
- müssten diese ebenfalls in 
-\begin_inset Formula $\mathbb{N}$
-\end_inset
-
- enthalten sein.
- Das wäre jedoch ein Widerspruch zur Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:natuerliche-Zahlen-eigene-Definition"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der natürlichen Zahlen.
- Denn das würde bedeuten,
- dass für ein beliebiges Metasymbol 
-\begin_inset Formula $A$
-\end_inset
-
- die Zeichenkette
-\begin_inset Formula 
-\[
-n\cdot A
-\]
-
-\end_inset
-
-beliebig viele Symbole 
-\begin_inset Formula $A$
-\end_inset
-
- besitzen würde.
- Also habe ich einen Widerspruch gefunden.
+ besitzen (im Sinn von minimale Symbolkette von gleichartigen Symbolen).
  Das bedeutet,
- dass die Annahme nicht wahr sein kann.
- Also muss es ein 
-\begin_inset Formula $m\in M$
+ dass es ein entsprechendes 
+\begin_inset Formula $B\in M_{A}$
 \end_inset
 
- derart geben,
- dass für alle 
-\begin_inset Formula $n\in M$
+ derart geben muss,
+ dass für alle anderen Symbolketten 
+\begin_inset Formula $C\in M_{A}$
 \end_inset
 
  gilt
 \begin_inset Formula 
 \[
-m\leq n
+B\leq C
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
-Wenn ich dieses 
-\begin_inset Formula $m$
+Da jedoch 
+\begin_inset Formula $B\in M_{A}$
 \end_inset
 
- in 
-\begin_inset Formula $m_{M}$
+ ist,
+ muss es folglich ein 
+\begin_inset Formula $m_{A}\in M$
 \end_inset
 
- umbenenne,
- dann habe ich den Beweis für die Richtigkeit der Behauptung bewiesen.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-aktuelle Stelle
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Ich möchte noch einen zweiten,
- ähnlichen Beweis führen:
- Es sei 
-\begin_inset Formula $n\in M$
-\end_inset
-
- gegeben.
- Nun kann sei 
+ derart geben,
+ dass
 \begin_inset Formula 
 \[
-M_{>}\equiv\left\{ k\in M\bigm|k\geq n\right\} 
+B=m_{A}\cdot A
 \]
 
 \end_inset
 
+ist.
+ Und ist 
+\begin_inset Formula $m\in M$
+\end_inset
 
-\end_layout
+,
+ dann muss es für 
+\begin_inset Formula $m\cdot A$
+\end_inset
 
-\begin_layout Proof
-Dann muss gelten
+ gelten,
+ dass
 \begin_inset Formula 
 \[
-n=\min M_{>}
+m\cdot A\in M_{A}
 \]
 
 \end_inset
 
-Denn da 
-\begin_inset Formula $\geq$
-\end_inset
-
- identitiv ist,
- gilt 
+ist und dass
 \begin_inset Formula 
 \[
-n\geq n
+m_{A}\cdot A\leq m\cdot A
 \]
 
 \end_inset
 
-Es ist ja gemäss der Definition 
+Das bedeutet jedoch,
+ dass auch gilt
 \begin_inset Formula 
 \[
-n=n
+m_{A}\leq m
 \]
 
 \end_inset
 
-da die Gleichheit von natürlichen Zahlen gemäss dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Gleichheit-natuerliche-Zahlen-ist-Aequivalenzrelation"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- eine Äquivalenzrelation und darum gemäss der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Aequivalenzrelation"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Äquivalenzrelation auch symmetrisch ist.
- Also ist auch gemäss dem 4.
- Maximalsatz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Minimum-Maximum-Saetze-Logik"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-der Logik
+ist.
+ Also kann ich daraus schliessen,
+ dass
 \begin_inset Formula 
 \[
-n=n\Leftrightarrow n=n\vee n>n
+m=\min M
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
-Denn die Aussage
-\begin_inset Formula 
-\[
-n=n
-\]
-
-\end_inset
-
-ist wahr.
- Und darum gilt auch gemäss dem vierten Maximalsatz der Logik die Aussage:
-\begin_inset Formula 
-\[
-n>n\vee n=n\Leftrightarrow n=n
-\]
-
-\end_inset
-
-und da die Äquivalenz gemäss dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Kommutativitaet-Aequivalenz"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kommutiert,
- kann ich schlussfolgern,
- dass auch gilt auch 
-\begin_inset Formula 
-\[
-n>n\vee n=n\Leftrightarrow n=n
-\]
-
-\end_inset
-
-
+ist.
+ Also bin ich der Meinung,
+ dass ich den Beweis für die Gültigkeit der Behauptung erbracht habe und beweise aus diesem Grund an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Standard
