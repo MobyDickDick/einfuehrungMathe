@@ -11226,7 +11226,7 @@ Nun gut,
  als die Schriftstücke geschrieben wurden.
  Das hatte den Effekt,
  dass der Vorgang des Lesens und Schreibens nur einer kleinen Elite vorbehalten war,
- so unter dem Motto (
+ so unter dem Motto 
 \begin_inset Quotes gld
 \end_inset
 
@@ -11234,7 +11234,7 @@ Wissen ist Macht
 \begin_inset Quotes grd
 \end_inset
 
-).
+.
  Mein Ziel ist es ja,
  Wissen zu demokratisieren.
  Und darum ist es mir wichtig,
@@ -11250,7 +11250,92 @@ Wissen ist Macht
 
 \begin_layout Standard
 Doch zurück zum eigentlichen Thema des Kapitels.
- Ich persönlich hasse Schulden.
+ Wie können Schulden gut sein?
+ Die heutige Wirtschaft ist ohne Schuldenwirtschaft nicht denkbar.
+ Die berühmteste Schuld heutzutage ist die Hypothekarschuld.
+ Diese besteht in ihrem Kern in einer Wette:
+ Eine oder mehrere Personen (oft sind es heute Paare,
+ welche ein Haus bauen oder kaufen wollen) wollen ein Haus oder wenigstens eine Wohnung kaufen.
+ Aber sie haben zu wenig Geld,
+ um den Betrag mittels einer Geldüberweisung von Bank zu Bank zu begleichen.
+ Meines Wissens ist es nicht mehr möglich,
+ einen Hauskauf mit Bargeld zu kaufen.
+ Das wäre vermutlich verboten,
+ weil damit Geld aus kriminellen Machenschaften 
+\begin_inset Quotes gld
+\end_inset
+
+gewaschen
+\begin_inset Quotes grd
+\end_inset
+
+ werden könnte.
+ Jemand begeht eine Straftat und verdient dabei Geld.
+ Damit der Person die kriminelle Straftat nicht nachgewiesen werden kann,
+ kauft sie sich ein Haus.
+ Die Person,
+ welche das Geld erhalten hat,
+ zahlt es etwa in eine Bank ein.
+ Dann ist es schnell einmal nicht mehr möglich,
+ aufgrund von Geldscheinen festzustellen,
+ wer diese ursprünglich erhalten hat.
+ Dies schreibe ich Dir,
+ weil ich zeigen möchte,
+ wie unglaublich schwierig das heutige Leben ist.
+ Aber zurück zur Hypothekarschuld:
+ Ein Paar will ein Haus kaufen,
+ hat jedoch zu wenig Geld für den Hauskauf angespart.
+ Dann können Sie zur Bank gehen,
+ und wenn sie Glück haben,
+ leiht ihnen die Bank das Geld.
+ Jedoch ist dieses Ausleihen nicht gratis.
+ Das Paar muss pro Jahr eine vereinbarte Summe zurückzahlen,
+ welche in der Regel proportional zur geleihten Summe ist.
+ Es wird also pro geleihtem Euro,
+ Franken,
+ Dollar pro Jahr ein bestimmter Betrag verlangt.
+ Dieser zurückzuzahlende Betrag wird 
+\begin_inset Quotes gld
+\end_inset
+
+Zins
+\begin_inset Quotes grd
+\end_inset
+
+ genannt.
+ Er ist sozusagen der Preis pro Jahr für das Ausleihen einer Geldsumme.
+ Wieso sollte die Bank das tun?
+ Weil ihr Geld anvertraut wird und sie es wieder ausleihen müssen,
+ damit sie ihr Geld verdienen können.
+ Es gibt also nirgends einen Geldspeicher,
+ wo das Geld vor sich hin gammelt.
+ Weil das in aller Regel unwirtschaftlich wäre.
+ Ein anderer Fall,
+ wo Schulden gut sind,
+ das Ausgleichen von Risiken.
+ Wenn ich damit rechnen kann,
+ dass ich mir etwas Ausleihen kann,
+ wenn ich es benötige,
+ dann werde ich auch wieder etwas ausleihen,
+ falls ich von etwas zu viel habe.
+ Damit ist es nicht notwendig,
+ dass alle Menschen alles jederzeit verfügbar haben müssen.
+ Unsere Gesellschaft wäre als ganzes nicht lebensfähig,
+ wenn es nicht so wäre.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+aktuelle Stelle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ich persönlich hasse Schulden.
  Ich finde es widerlich,
  dass Menschen mittels Schulden geknechtet werden.
  Dass in unserer Gesellschaft kein Konsens darüber herrscht,
@@ -11556,59 +11641,7 @@ aus einer endlichen Anzahl von Symbolen
 \end_inset
 
  bestehen.
- Dies beschreibe ich so,
- das ich fordere,
- dass es für eine bestimmte natürliche Zahl 
-\begin_inset Formula $n_{1}\in\mathbb{N}$
-\end_inset
-
- keine Folge 
-\begin_inset Formula $\left(n_{k}\right)_{k\in\mathbb{N}}$
-\end_inset
-
- mit 
-\begin_inset Formula 
-\[
-\left\{ n_{k}\right\} _{k\in\mathbb{N}}\subset\mathbb{N}
-\]
-
-\end_inset
-
-derart geben kann,
- dass gilt
-\begin_inset Formula 
-\[
-n_{k}>n_{k+1}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-Das heisst insbesondere,
- dass nicht für alle Zahlen gelten kann
-\begin_inset Formula 
-\begin{align*}
-n_{1} & >n_{2}\\
-n_{2} & >n_{3}\\
-n_{3} & >n_{4}
-\end{align*}
-
-\end_inset
-
-und entsprechend für alle anderen natürlichen Zahlen.
- Es bedeutet also,
- dass immer nur endlich viele andere natürlichen Zahlen 
-\begin_inset Formula $m$
-\end_inset
-
- kleiner als eine beliebige natürliche Zahl 
-\begin_inset Formula $n_{1}$
-\end_inset
-
- sein kann.
+ 
 \end_layout
 
 \begin_layout Definition
@@ -11840,22 +11873,46 @@ nolink "false"
 .
 \end_layout
 
-\begin_layout Standard
-Zur Begründung,
- wieso ich fordere,
- dass es für eine bestimmte Zahl 
-\begin_inset Formula $n_{1}\in\mathbb{N}$
-\end_inset
-
- keine Folge
+\begin_layout Conjecture
+Es kann keine Folge 
 \begin_inset Formula 
 \[
-\left(n_{k}\right)_{k\in\mathbb{N}}
+\left(a_{k}\right)_{k\in\mathbb{N}}
 \]
 
 \end_inset
 
-derart geben darf,
+mit 
+\begin_inset Formula 
+\[
+\left\{ a_{k}\right\} _{k\in\mathbb{N}}\subset\mathbb{N}
+\]
+
+\end_inset
+
+derart existieren,
+ dass gilt für alle 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ gilt
+\begin_inset Formula 
+\[
+a_{k}>a_{k+1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Angenommen,
+ es gäbe eine solche Folge 
+\begin_inset Formula $\left(a_{k}\right)_{k\in\mathbb{N}}$
+\end_inset
+
+ mit Bedingung derart geben darf,
  dass für alle 
 \begin_inset Formula $k\in\mathbb{N}$
 \end_inset
@@ -11863,32 +11920,12 @@ derart geben darf,
  gilt
 \begin_inset Formula 
 \[
-n_{k}>n_{k+1}
+a_{k}>a_{k+1}
 \]
 
 \end_inset
 
-Tatsächlich lässt sich das m.E.
- nicht ganz streng beweisen.
- Auf jeden Fall nicht so,
- wie es gerne hätte.
- Die Forderung,
- dass
-\begin_inset Formula 
-\[
-n_{k}>n_{k+1}
-\]
-
-\end_inset
-
-sein muss,
- hätte zur Folge,
- dass für ein beliebiges Metasymbol 
-\begin_inset Formula $A$
-\end_inset
-
- gelten müsste,
- dass für ein gegebenes 
+Also müsste es für ein gegebenes 
 \begin_inset Formula $k\in\mathbb{N}$
 \end_inset
 
@@ -11900,14 +11937,14 @@ sein muss,
  dass gelten würde 
 \begin_inset Formula 
 \[
-n_{k}\cdot A=n_{k+1}\cdot A\,p_{k+1}A
+a_{k}\cdot A=a_{k+1}\cdot A\,a_{k+1}A
 \]
 
 \end_inset
 
 geben würde.
  Also müsste die Zeichenkette 
-\begin_inset Formula $n_{k}$
+\begin_inset Formula $a_{k}$
 \end_inset
 
  mindestens ein Symbol 
@@ -11915,7 +11952,7 @@ geben würde.
 \end_inset
 
  länger als die Zeichenkette 
-\begin_inset Formula $n_{k+1}$
+\begin_inset Formula $a_{k+1}$
 \end_inset
 
  sein.
@@ -11927,7 +11964,7 @@ geben würde.
  Somit müsste das Symbol 
 \begin_inset Formula 
 \[
-n_{1}\cdot A
+a_{1}\cdot A
 \]
 
 \end_inset
@@ -11939,77 +11976,206 @@ mindestens ein Symbol
  mehr als das Symbol 
 \begin_inset Formula 
 \[
-n_{2}\cdot A
+a_{2}\cdot A
 \]
 
 \end_inset
 
 besitzen.
- Wird der ganze Vorgang 
-\begin_inset Formula $k$
+ Also muss das Symbol 
+\begin_inset Formula 
+\[
+a_{1}\cdot A
+\]
+
+\end_inset
+
+aus mindesten zwei Symbol 
+\begin_inset Formula $A$
+\end_inset
+
+ bestehen.
+ Also müsste gelten
+\begin_inset Formula 
+\[
+a_{1}\cdot A>A\,A=\left(1+1\right)\cdot A
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Proof
+Wird der ganze Vorgang 
+\begin_inset Formula $a_{1}$
 \end_inset
 
  Mal ausgeführt,
  dann bedeutet dies,
- dass es eine natürliche Zahl 
-\begin_inset Formula $n_{k+1}$
-\end_inset
-
- derart geben müsste,
- dass die Zahl
+ dass gelten müsste
 \begin_inset Formula 
 \[
-n_{1}\cdot A
+a_{1}\cdot A>\left(1+a_{1}\right)\cdot A
 \]
 
 \end_inset
 
-mindestens 
-\begin_inset Formula $k$
+ .
+ Aufgrund des Lemmas 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:kommutativ-Symboladdition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
 \end_inset
 
- Symbole 
-\begin_inset Formula $A$
-\end_inset
-
- mehr als das Symbol 
+ kann ich schreiben,
+ dass gelten muss
 \begin_inset Formula 
 \[
-n_{k+1}A
+\left(1+n_{1}\right)\cdot A=A\cdot n_{1}\,\cdot A=n_{1}\cdot A\,A=\left(n_{1}+1\right)\cdot A
 \]
 
 \end_inset
 
- besitzt.
- Da jedoch 
-\begin_inset Formula $k$
-\end_inset
-
- beliebig ist,
- bedeutet dies,
- dass die Zahl 
-\begin_inset Formula $n_{1}\cdot A$
-\end_inset
-
- eben aus beliebig vielen Symbolen 
-\begin_inset Formula $A$
-\end_inset
-
- bestehen müsste.
- Das wäre jedoch ein Widerspruch zur Voraussetzung,
- dass die Zahl 
+Also müsste auch gelten
 \begin_inset Formula 
 \[
-n_{1}A
+a_{1}\cdot A>\left(a_{1}+1\right)\cdot A
 \]
 
 \end_inset
 
- aus höchstens endlich vielen Aneinanderreihungen des Symbols 
-\begin_inset Formula $A$
+
+\end_layout
+
+\begin_layout Proof
+Nach Definition gilt
+\begin_inset Formula 
+\[
+\left(a_{1}+1\right)\cdot A=a_{1}\cdot A\,A
+\]
+
 \end_inset
 
- bestehen dürfte.
+
+\end_layout
+
+\begin_layout Proof
+Dias wäre jedoch ein Widerspruch zur Voraussetzung,
+ dass
+\begin_inset Formula 
+\[
+a_{1}\cdot A<a_{1}\cdot A\,A
+\]
+
+\end_inset
+
+sein muss (vergleiche mit dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Ungleicheheit-angehaengte-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ Also kann ich daraus schliessen,
+ dass keine solche Folge 
+\begin_inset Formula 
+\[
+\left(a_{k}\right)
+\]
+
+\end_inset
+
+ existieren kann.
+ Damit bin ich jedoch der Meinung,
+ dass ich den Beweis für die Richtigkeit der Behauptung erbracht habe und beende darum an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Standard
+Ich möchte jedoch darauf hinweisen,
+ dass der obige Beweis eventuell nicht richtig ist.
+ Dann eventuell kann ich nur zeigen,
+ dass für eine solche Folge gelten müsste,
+ dass das erste Folgeglied
+\begin_inset Formula 
+\[
+a_{1}\cdot A
+\]
+
+\end_inset
+
+beliebig viele Symbole haben müsste.
+ Aber eventuell habe ich bereits von der Tatsache einer vollständigen Induktion Gebrauch gemacht (vergleiche mit dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:vollstaendige-Induktion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ Vielleicht wäre eine weitere Form des Beweises,
+ darauf hinzuweisen,
+ dass für eine beliebige natürliche Zahl 
+\begin_inset Formula $a$
+\end_inset
+
+ und ein beliebiges,
+ in sich widerspruchsfreies Symbol nur endlich viele Symbolketten 
+\begin_inset Formula 
+\[
+k\cdot A
+\]
+
+\end_inset
+
+mit
+\begin_inset Formula 
+\[
+k\cdot A<a\,A
+\]
+
+\end_inset
+
+ geben kann.
+ Da jedoch für alle Folgenglieder 
+\begin_inset Formula 
+\[
+a_{k}\cdot A
+\]
+
+\end_inset
+
+ mit 
+\begin_inset Formula 
+\[
+k\in\mathbb{N}
+\]
+
+\end_inset
+
+ gelten müsste
+\begin_inset Formula 
+\[
+a_{k+1}<a_{k}
+\]
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
@@ -13640,7 +13806,7 @@ n_{2}\cdot A<n_{1}\cdot A
 
 \end_inset
 
-Gemäss dem Korrolar 
+Gemäss dem Korollar 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cor:Symbole-Umwandlung-kleiner-groesser"

@@ -459,9 +459,811 @@ Somit ist die Masse eines Quants Benzol
 \begin_inset Formula 
 \begin{align*}
 m & =1\,\text{qt}\,0.879\,\frac{\text{g}}{\text{ml}}\\
- & =\frac{10^{3}}{1.0567}\text{ml}\cdot0.879\,\frac{\text{g}}{\text{ml}}\\
+ & =\frac{10^{3}}{1.0567}\text{ml}\cdot\multimap0.879\,\frac{\text{g}}{\text{ml}}\\
  & \approx832\,\text{g}
 \end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Aufgabe 1.3,
+ S.
+ 41
+\end_layout
+
+\begin_layout Exercise
+Welcher Durchmesser hat eigentlich eine Kugel mit 
+\begin_inset Formula $196\,\text{cm}^{3}$
+\end_inset
+
+ Inhalt?
+\end_layout
+
+\begin_layout Exercise
+Es ist 
+\begin_inset Formula 
+\[
+V=\frac{4}{3}\cdot\pi\cdot r^{3}
+\]
+
+\end_inset
+
+Das kann ich nach 
+\begin_inset Formula $r$
+\end_inset
+
+ umformen (linke und rechte Vertauschen ergibt)
+\begin_inset Formula 
+\[
+\frac{4}{3}\cdot\pi\cdot r^{3}=V
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Ich multipliziere beide Seiten mit
+\begin_inset Formula 
+\[
+\frac{3}{4\cdot\pi}
+\]
+
+\end_inset
+
+und erhalte
+\begin_inset Formula 
+\[
+r^{3}=\frac{3\cdot V}{4\cdot\pi}
+\]
+
+\end_inset
+
+Dann nehme ich auch beiden Seiten die dritte Wurzel und erhalte
+\begin_inset Formula 
+\[
+r=\sqrt[3]{\frac{3\cdot V}{4\cdot\pi}}
+\]
+
+\end_inset
+
+Nun interessiere ich mich jedoch für den Durchmesser.
+ Es gilt bekanntlich 
+\begin_inset Formula 
+\[
+2\cdot r=
+\]
+
+\end_inset
+
+Also entsprechend also 
+\begin_inset Formula 
+\[
+r=\frac{d}{2}
+\]
+
+\end_inset
+
+Das bedeutet also
+\begin_inset Formula 
+\[
+\frac{d}{2}=\sqrt[3]{\frac{3\cdot V}{4\cdot\pi}}
+\]
+
+\end_inset
+
+und darum auch
+\begin_inset Formula 
+\[
+d=2\cdot\sqrt[3]{\frac{3\cdot V}{4\cdot\pi}}
+\]
+
+\end_inset
+
+Nun ist 
+\begin_inset Formula 
+\[
+2=\sqrt[3]{2^{3}}
+\]
+
+\end_inset
+
+Und 
+\begin_inset Formula 
+\[
+2^{3}=2\cdot2\cdot2=2\cdot4=8
+\]
+
+\end_inset
+
+Also ist 
+\begin_inset Formula 
+\[
+2=\sqrt[3]{8}
+\]
+
+\end_inset
+
+Dieses Resultat nehme ich in die obige Formel und erhalte
+\begin_inset Formula 
+\begin{align*}
+d & =\sqrt[3]{8}\cdot\sqrt[3]{\frac{3\cdot V}{4\cdot\pi}}\\
+ & =\sqrt[3]{8\cdot\frac{3\cdot V}{4\cdot\pi}}\\
+ & =\sqrt[3]{2\cdot\frac{3\cdot V}{\pi}}\\
+ & =\sqrt[3]{\frac{6\cdot V}{\pi}}
+\end{align*}
+
+\end_inset
+
+Also,
+ jetzt kommt die Nagelprobe
+\begin_inset Formula 
+\[
+V=196\,\text{cm}^{3}
+\]
+
+\end_inset
+
+Das bedeutet
+\begin_inset Formula 
+\begin{align*}
+d & =\sqrt[3]{\frac{6\cdot196\,\text{cm}^{3}}{\pi}}\\
+ & \approx7.2\text{cm}
+\end{align*}
+
+\end_inset
+
+Wie schwer ist die Alukugel?
+\begin_inset Formula 
+\[
+\rho=\frac{m}{V}
+\]
+
+\end_inset
+
+und entsprechend
+\begin_inset Formula 
+\[
+m=\rho\cdot V
+\]
+
+\end_inset
+
+Nun setze ich die Daten ein
+\begin_inset Formula 
+\begin{align*}
+m & =2.70\,\frac{\text{g}}{\text{cm}^{3}}\cdot196\,\text{cm}^{3}\\
+ & =529\,\text{g}
+\end{align*}
+
+\end_inset
+
+Wie schwer ist die Silberkugel?
+\begin_inset Formula 
+\begin{align*}
+m & =10.49\,\frac{\text{g}}{\text{cm}^{3}}\cdot196\,\text{cm}^{3}\\
+ & =2060\,\text{g}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+b) und c) Sowohl die potentielle wie auch die kinetische Energie ist bei der Silberkugel viermal so gross wie bei der Alukugel.
+\end_layout
+
+\begin_layout Exercise
+potentielle Energie
+\begin_inset Formula 
+\[
+E=m\cdot g\cdot h
+\]
+
+\end_inset
+
+Wenn ich 
+\begin_inset Formula $h=1.5\,\text{m}$
+\end_inset
+
+ annehme,
+ dann ist die potentielle Energie der Alukugel
+\begin_inset Formula 
+\begin{align*}
+E & =0.529\,\text{kg}\cdot9.81\,\frac{\text{m}}{\text{s}^{2}}\cdot1.5\,\text{m}\\
+ & \approx7.7\,\text{J}
+\end{align*}
+
+\end_inset
+
+Entsprechend ist die potentielle Energie der Silberkugel
+\begin_inset Formula 
+\begin{align*}
+E & =2.06\text{kg}\cdot9.81\,\frac{\text{m}}{\text{s}^{2}}\cdot1.5\,\text{m}\\
+ & \approx30\,\text{J}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Die kinetische Energie der beiden Kugeln,
+ wenn sie auf dem Boden aufprallen,
+ ist dann (fast) genau gleich gross.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Aufgabe 1.9.
+ S.
+ 42
+\end_layout
+
+\begin_layout Exercise
+Es seien 
+\begin_inset Formula 
+\[
+x\,\frac{\text{miles}}{\text{h}}
+\]
+
+\end_inset
+
+gegeben.
+ Bestimme 
+\begin_inset Formula $y$
+\end_inset
+
+ so,
+ dass gilt
+\begin_inset Formula 
+\[
+x\,\frac{\text{miles}}{\text{h}}=y\,\frac{\text{km}}{\text{s}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+(zur vorhergehenden Aufgabe 10)
+\end_layout
+
+\begin_layout Solution
+\begin_inset Formula 
+\[
+1\,\text{miles}=1.6093\text{km}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+1\,\text{h}=3600\,\text{s}
+\]
+
+\end_inset
+
+und entsprechend
+\begin_inset Formula 
+\begin{align*}
+\frac{1\,\text{miles}}{1\,\text{h}} & =\frac{1.6093\,\text{km}}{3600\,\text{s}}\\
+ & \approx447.0\,\mu\frac{\text{km}}{\text{s}}\\
+ & =0.4470\,\frac{\text{m}}{\text{s}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Somit ist 
+\begin_inset Formula 
+\[
+x\,\frac{\text{miles}}{\text{h}}=447.0\cdot x\,\mu\frac{\text{km}}{\text{s}}
+\]
+
+\end_inset
+
+Wie viel wäre 
+\begin_inset Formula 
+\[
+1\frac{\text{km}}{\text{s}}
+\]
+
+\end_inset
+
+ in 
+\begin_inset Formula 
+\[
+\frac{\text{m}}{\text{s}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+1\,\frac{\text{km}}{\text{h}} & =\frac{1}{3.6}\text{\ensuremath{\frac{\text{m}}{\text{s}}}}\\
+ & \approx0.28\,\frac{\text{m}}{\text{s}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Übungsbeispiel 2.1 Seite 52
+\end_layout
+
+\begin_layout Exercise
+Der Durchmesser eines Kohlenstoffatoms ist 
+\begin_inset Formula 
+\[
+d_{C}=154\,\text{pm}
+\]
+
+\end_inset
+
+Die Bedingung ist für die Anzahl der Kohlenstoffatome lautet
+\begin_inset Formula 
+\[
+x\cdot d_{C}=0.20\,\text{mm}
+\]
+
+\end_inset
+
+Das bedeutet
+\begin_inset Formula 
+\begin{align*}
+x & =\frac{0.20\,\text{mm}}{d_{C}}\\
+ & =\frac{0.20\cdot10^{-3}\,\text{m}}{154\,\text{pm}}\\
+ & =\frac{0.20\cdot10^{-3}\,\text{m}}{154\cdot10^{-12}\text{m}}\\
+ & =\frac{0.20}{154\cdot10^{-9}}\\
+ & =\frac{0.20\cdot10^{9}}{154\cdot}\\
+ & =1.3\cdot10^{6}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Welches Volumen hat eine Streichholzschachtel in etwa?
+\end_layout
+
+\begin_layout Exercise
+Ich habe gefunden
+\begin_inset Formula 
+\begin{align*}
+l & =5\,\text{cm}\\
+b & =3.5\,\text{cm}\\
+h & =1.5\,\text{cm}
+\end{align*}
+
+\end_inset
+
+Dies ergibt ein Volumen von ca.
+\begin_inset Formula 
+\begin{align*}
+V & =5\cdot3.5\cdot1.5\,\text{cm}^{3}\\
+ & =26\,\text{cm}^{3}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Wie schwer wäre eine Streichholzschachtel reiner Kernmaterie in etwa?
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Formula 
+\begin{align*}
+V & =26\,\text{cm}^{3}\\
+\rho & =10^{13}\frac{\text{g}}{\text{cm}^{3}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\rho=\frac{m}{V}
+\]
+
+\end_inset
+
+Also folgt daraus
+\begin_inset Formula 
+\begin{align*}
+m & =V\cdot\rho\\
+ & =26\,\text{cm}^{3}\cdot10^{13}\frac{\text{g}}{\text{cm}^{3}}\\
+ & =26\cdot10^{13}\text{g}\\
+ & =26\cdot10^{13}\text{g}\cdot\frac{\text{kg}}{10^{3}\,\text{g}}\cdot\frac{\text{t}}{10^{3}\text{kg}}\cdot\frac{G}{10^{9}}\\
+ & =26\cdot10^{-2}\text{Gt}\\
+ & =0.26\,\text{Gt}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Übungsaufgabe 2.4 (S.
+ 57)
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Isotop
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Atommasse in u
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Häufigkeit in %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Anteil an Atommasse in u
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Silizium-28
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+27.97693
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+92.23
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25.80
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Silizium-29
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+28.97649
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.68
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.356
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Silizium-30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+29.97377
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.09
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.9261
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Summe
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+28.09
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Wie viel gibt das Total der Häufigkeit
+\begin_inset Formula 
+\[
+92.23+4.68+3.09=100.0
+\]
+
+\end_inset
+
+Die nach Häufigkeit gewichtete Atommasse ist
+\begin_inset Formula 
+\[
+\left(27.97693\cdot92.23+28.97649\cdot4.68+29.97377\cdot3.09\right)/100\approx28.09
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Übungsaufgabe 2.7 Seite 66
+\end_layout
+
+\begin_layout Exercise
+Selen hat die Ordnungszahl 34.
+ Also beträgt die Anzahl der Protonen 34.
+ Wenn das Selen-Atom zweifach negativ geladen ist,
+ muss also die Differenz von Protonen und Elektronen = -2 sein.
+ Das bedeutet jedoch,
+ dass die Anzahl der Elektronen gleich der Anzahl der Elektronen plus zwei sein muss.
+ Also ist die Anzahl der Elektronen 36.
+\end_layout
+
+\begin_layout Exercise
+Somit muss es 34 Protonen und 36 Elektronen geben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Übungsaufgabe 2.10 Seite 69
+\end_layout
+
+\begin_layout Standard
+a) Die empirische Formel von 
+\begin_inset Formula $\text{Na}^{+}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $\text{PO}_{4}^{3-}$
+\end_inset
+
+:
+ Es braucht drei Natriumatome um die Ladung des Phosphats auszugleichen.
+ Also lautet die empirische Gleichung
+\begin_inset Formula 
+\[
+\text{Na}_{3}\text{PO}_{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+b) Die empirische Formel von 
+\begin_inset Formula $\text{Zn}^{2+}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $\text{SO}_{4}^{2-}$
+\end_inset
+
+.
+ Es braucht ein Zinkion um die Ladung eines Sulfations auszugleichen.
+ Also lautet die empirische Gleichung
+\begin_inset Formula 
+\[
+\text{ZnSO}_{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+c) Die empirische Formel von 
+\begin_inset Formula $\text{Fe}^{3+}$
+\end_inset
+
+ und 
+\begin_inset Formula $\text{CO}_{3}^{2-}$
+\end_inset
+
+.
+ Es braucht 2 Kationen 
+\begin_inset Formula $\text{Fe}^{3+}$
+\end_inset
+
+ um die Ladung von 3 Anionen 
+\begin_inset Formula $\text{CO}_{3}^{2-}$
+\end_inset
+
+ auszugleichen.
+ Also ist die empirische Formel
+\begin_inset Formula 
+\[
+\text{Fe}_{2}\left(\text{CO}_{3}\right)_{3}
+\]
 
 \end_inset
 

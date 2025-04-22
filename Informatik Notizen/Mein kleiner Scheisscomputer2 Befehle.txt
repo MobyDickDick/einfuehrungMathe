@@ -1,0 +1,69 @@
+Die Befehle sind
+
+Halte an:
+
+0) 	Halt oder ungültiger Befehl: Halt.
+	0000 0000
+
+Beschreibe den Wert des Datums:
+ 
+3) 	1000 Setze die unteren vier Bits des Datums: Die vier niederwertigen
+	Bits des Befehls sind die unteren vier Bits der Datenadresse.
+4) 	1100 Setze die oberen vier Bits des Datums der Datenadresse: 
+	Die vier niederwertigen Bits des Befehls sind die oberen vier Bits der 
+	Datenadresse.
+
+
+Lese und schreibe das Datum:
+
+5) 	1110 0000 Lese das Datum mit der gegebenen Datenadresse.
+6) 	1110 0001 Schreibe das Datum mit der gegebenen Datenadresse.
+
+
+Kopierbefehle, der Nichtstatusflags:
+
+7)  1110 0010 Schreibe den Programmzähler in das Register A
+8)  1110 0011 Schreibe den Befehl in das Register A
+9)  1110 0100 Schreibe das Datum in das Register A
+10) 1110 0101 Schreibe das Datum in das Register B
+11) 1110 0110 Schreibe das Datum in den Programmzähler, falls das Statusbit S gesetzt ist.
+12) 1110 0111 Schreibe das Datum in den Befehl, falls das Statusbit S gesetzt ist.
+13) 1110 1000 Schreibe das Regitster C in die Adresse des Datums, falls das Statusbit S 
+    gesetzt ist.
+
+Kopierbefehle der Statusflags:
+
+14) 1110 1001 Schreibe den Wert von E in das Statusbit.
+15) 1110 1010 Schreibe den Wert von LT (lower than) in das Statusbit.
+16) 1110 1011 Schreibe den Wert von LE (lower or equal) in das Statusbit.
+17) 1110 1100 Schreibe den Wert von Z (Zero) in die Daten, lösche alle höherwertigen Bits
+18) 1110 1110 Schreibe den Wert von NZ (Not Zero) in die Daten, lösche alle höherwertigen 
+    Bits
+19) 1110 1111 Setze den Wert des Statusbits
+
+Logische Operationen:
+
+20) 1111 0000 Kopiere den Wert von A ins Datum
+21) 1111 0001 Erhöhe den Wert von A um 1
+22) 1111 0010 Addiere A und B
+23) 1111 0011 Invertiere A bitweise
+23) 1111 0100 Subtrahiere B von A
+24) 1111 0101 Multipliziere A und B
+25) 1111 0110 Divitdiere A durch B ganzahlig
+26) 1111 0111 Bilde A & B (Bitweise)
+27) 1111 1000 Bile  A | B (Bitweise)
+
+Somit wären die folgenden Befehle noch nicht definiert:
+
+00000 0001
+- 
+01111 1111 (Das wären 127 Befehle)
+
+11111 1001
+11111 1010
+11111 1011
+11111 1100
+11111 1101
+11111 1110
+11111 1111 (Das wären 7 Befehle)
+

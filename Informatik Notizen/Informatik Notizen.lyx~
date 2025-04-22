@@ -1,0 +1,372 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsbook
+\begin_preamble
+% Präambel nicht verändern!!!
+%
+% Die Präambel stellt sicher, dass das Benutzerhandbuch korrekt
+% in die Formate pdf, ps und dvi exportiert werden kann.
+% Wenn Probleme beim Exportieren auftreten, können Sie sich
+% an das LyX-Dokumentationsteam wenden.
+% EMail: lyx-docs@lists.lyx.org
+
+% wenn pdflatex benutzt wird:
+\usepackage{ifpdf}
+\ifpdf
+
+% Fonts fuer huebschere PDF-Ansichten
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % Ende von: wenn pdflatex benutzt wird
+
+% Setzt den Link fuer Spruenge zu Gleitabbildungen
+% auf den Anfang des Gelitobjekts und nicht aufs Ende
+\usepackage[figure]{hypcap}
+
+% Ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC }
+
+% Damit der Index den Namen "Stichwortverzeichnis" erhält
+\addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% Definiere den Operator Id
+\DeclareMathOperator{\Id}{Id}
+
+\usepackage{xlop}
+\usepackage{paralist}
+
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage[makeroom]{cancel}
+
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+\newcommand{\includebackwardreferences}{<includebackwardreferences>}
+\newcommand{\includeforwardreferences}{<includeforwardreferences>}
+
+% Wasserzeichen
+
+% \usepackage{draftwatermark} % Das Paket mit der Funktionalität
+% \SetWatermarkText{Entwurf} % Der Hintergrundtext
+% \SetWatermarkLightness{0.9}
+% \SetWatermarkFontSize{2cm} % Die Ausgangsgröße
+
+\renewcommand{\numberline}[1]{#1~}
+\end_preamble
+\options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+fixltx2e
+todonotes
+backforwardref
+\end_modules
+\maintain_unincluded_children no
+\language ngerman
+\language_package auto
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "cmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Einfuehrung in Mathe"
+\pdf_author "Markus Demarmels"
+\pdf_subject "LyX"
+\pdf_keywords "LyX"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=blue, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\branch Frage
+\selected 1
+\filename_suffix 0
+\color #00ff00 #ff00ff
+\end_branch
+\branch Antwort
+\selected 0
+\filename_suffix 0
+\color #aa55ff #55aa00
+\end_branch
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Part
+Zur Mic-1 Maschine
+\end_layout
+
+\begin_layout Standard
+Ich finde die Mic-1,
+ welche im Buch von Tannenbaum beschrieben wird,
+ furchtbar kompliziert.
+ Ginge es nicht auch weniger kompliziert?
+ Ich denke da an zwei Vereinfachungen:
+\end_layout
+
+\begin_layout Enumerate
+Könnte die 1-Bit Maschine beispielsweise die 1-Bit ALU von Seite 184 zu einem vollständigen Computer ausgebaut werden?
+\end_layout
+
+\begin_layout Enumerate
+Könnte eventuell die Mic-1 Maschine radikal vereinfacht werden?
+\end_layout
+
+\begin_layout Standard
+Mir schwebt ein Modell vor,
+ welches die Anbindung zum Speicher als zentraler Bestandteil hätte.
+ Dann würde der Zyklus so gehen.
+ Der Aufbau wäre so,
+ dass der Bus 
+\begin_inset Formula $n$
+\end_inset
+
+-Bit hätte.
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ wäre typischerweise 
+\begin_inset Formula $2^{m}$
+\end_inset
+
+ mit 
+\begin_inset Formula $m\in\mathbb{N}$
+\end_inset
+
+ mit 
+\begin_inset Formula $m\geq2$
+\end_inset
+
+.
+ Die Befehle wäre immer 
+\begin_inset Formula $n$
+\end_inset
+
+-Bit breit.
+ Diese hätten gegebenenfalls auch einen Datenteil drin.
+ Ich möchte noch aufschreiben,
+ was ich unter den Datenbefehlen verstehen würde.
+ Zuerst möchte ich eine Maschine mit Taktung überlegen - anschliessend eine ohne.
+\end_layout
+
+\begin_layout Standard
+Der Speicher müsste zwei Anschlüsse haben.
+ Einen gegen die Aussenwelt,
+ einen gegen den Computer.
+ Das Lesen und schreiben müsste so vor sich gehen,
+ dass es zwei Bits 
+\begin_inset Formula $b_{0},b_{1}$
+\end_inset
+
+ geben würde.
+ Wäre 
+\begin_inset Formula $b_{0}$
+\end_inset
+
+ nicht gesetzt,
+ könnte der Computer auf den Speicher zugreifen.
+ Wäre 
+\begin_inset Formula $b_{0}$
+\end_inset
+
+ gesetzt,
+ könnte die Aussenwelt auf den Speicher zugreifen.
+ Ist 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+ nicht gesetzt,
+ bedeutet dies,
+ dass keine Daten abgegriffen werden können.
+ Es würde bedeuten,
+ dass der Computer nach jedem Befehl auf 
+\begin_inset Quotes gld
+\end_inset
+
+Halt
+\begin_inset Quotes grd
+\end_inset
+
+ gesetzt werden könnte.
+\end_layout
+
+\begin_layout Standard
+Der Befehl 
+\begin_inset Formula $0$
+\end_inset
+
+ bedeutet:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Halt
+\begin_inset Quotes grd
+\end_inset
+
+.
+ In diesem Moment passiert also nichts.
+ Das hätte zur Folge,
+ dass der Speicher zuerst beschrieben werden könnte.
+ Anschliessend könnte im Wort 
+\begin_inset Formula $0$
+\end_inset
+
+ der Sprung auf die Startadresse des Computers gesetzt werden.
+ Dann wird das Bit 
+\begin_inset Formula $b_{0}$
+\end_inset
+
+ zurückgesetzt werden.
+\end_layout
+
+\begin_layout Standard
+Ungültige Befehle:
+ Ist ein Befehl ungültig,
+ dann müsste 
+\begin_inset Formula $b_{0}$
+\end_inset
+
+ gesetzt werden.
+ Da 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+ zurückgesetzt ist,
+ wäre es dann klar,
+ dass das Programm nicht erfolgreich war.
+ 
+\end_layout
+
+\begin_layout Standard
+Alle Systemvariablen könnten am Ende des Speichers eingefügt werden.
+ Damit könnte ein Tracen erfolgen,
+ fallls etwas nicht gelungen ist.
+\end_layout
+
+\begin_layout Enumerate
+Lese den nächsten Befehl vom PC 
+\begin_inset Formula $\equiv$
+\end_inset
+
+ Programmzählers ein.
+ Zu Beginn des Programms hätte diesen den Wert 0.
+ Also würde beim Start der Befehl vom Speicherplatz 
+\begin_inset Formula $0$
+\end_inset
+
+ ein.
+ Das Einlesen des Programmzählers kann nur dann erfolgen,
+ falls 
+\begin_inset Formula $b_{0}$
+\end_inset
+
+ zurückgesetzt ist.
+\end_layout
+
+\begin_layout Enumerate
+Ja,
+ wenn der Befehl eingelesen ist,
+ dann beginnt die Arbeit:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Die Frage ist,
+ welche Befehle vorhanden sein sollen.
+ Und wie die CPU aufgebaut sein soll
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

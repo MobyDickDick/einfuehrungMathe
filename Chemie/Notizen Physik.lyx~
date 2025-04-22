@@ -1,0 +1,1090 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsbook
+\begin_preamble
+% Präambel nicht verändern!!!
+%
+% Die Präambel stellt sicher, dass das Benutzerhandbuch korrekt
+% in die Formate pdf, ps und dvi exportiert werden kann.
+% Wenn Probleme beim Exportieren auftreten, können Sie sich
+% an das LyX-Dokumentationsteam wenden.
+% EMail: lyx-docs@lists.lyx.org
+
+% wenn pdflatex benutzt wird:
+\usepackage{ifpdf}
+\ifpdf
+
+% Fonts fuer huebschere PDF-Ansichten
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % Ende von: wenn pdflatex benutzt wird
+
+% Setzt den Link fuer Spruenge zu Gleitabbildungen
+% auf den Anfang des Gelitobjekts und nicht aufs Ende
+\usepackage[figure]{hypcap}
+
+% Ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC }
+
+% Damit der Index den Namen "Stichwortverzeichnis" erhält
+\addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% Definiere den Operator Id
+\DeclareMathOperator{\Id}{Id}
+
+\usepackage{xlop}
+\usepackage{paralist}
+
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage[makeroom]{cancel}
+
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+\newcommand{\includebackwardreferences}{<includebackwardreferences>}
+\newcommand{\includeforwardreferences}{<includeforwardreferences>}
+
+% Wasserzeichen
+
+% \usepackage{draftwatermark} % Das Paket mit der Funktionalität
+% \SetWatermarkText{Entwurf} % Der Hintergrundtext
+% \SetWatermarkLightness{0.9}
+% \SetWatermarkFontSize{2cm} % Die Ausgangsgröße
+
+\renewcommand{\numberline}[1]{#1~}
+\end_preamble
+\options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+fixltx2e
+todonotes
+backforwardref
+\end_modules
+\maintain_unincluded_children no
+\language ngerman
+\language_package auto
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "cmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Einfuehrung in Mathe"
+\pdf_author "Markus Demarmels"
+\pdf_subject "LyX"
+\pdf_keywords "LyX"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=blue, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\branch Frage
+\selected 1
+\filename_suffix 0
+\color #00ff00 #ff00ff
+\end_branch
+\branch Antwort
+\selected 0
+\filename_suffix 0
+\color #aa55ff #55aa00
+\end_branch
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Dies sind Notizen zum Buch 
+\begin_inset Quotes gld
+\end_inset
+
+Moderne Physik
+\begin_inset Quotes grd
+\end_inset
+
+ von Randy Harris
+\end_layout
+
+\begin_layout Standard
+Zu den Gleichungen der Lorentz-Transformation
+\begin_inset Formula 
+\begin{align*}
+x' & =A\cdot x+B\cdot t\\
+t' & =C\cdot x+D\cdot t
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bedingung I) Objekt im Ursprung von 
+\begin_inset Formula $S'$
+\end_inset
+
+ festgehalten:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+x' & =0\\
+x & =v\cdot t
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bezüglich dem Koordinatensystem 
+\begin_inset Formula $S'$
+\end_inset
+
+ ist die 
+\begin_inset Formula $x'$
+\end_inset
+
+-Koordinate konstant 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Bezüglich dem Koordinatensystem 
+\begin_inset Formula $S$
+\end_inset
+
+ ist die 
+\begin_inset Formula $x$
+\end_inset
+
+-Koordinate
+\begin_inset Formula 
+\[
+x=v\cdot t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Gleichung
+\begin_inset Formula 
+\[
+x'=0
+\]
+
+\end_inset
+
+wird in die Gleichung
+\begin_inset Formula 
+\begin{align*}
+x' & =A\cdot x+B\cdot t
+\end{align*}
+
+\end_inset
+
+eingesetzt.
+ Es resultiert
+\begin_inset Formula 
+\[
+0=A\cdot x+B\cdot t
+\]
+
+\end_inset
+
+Weiter wird
+\begin_inset Formula 
+\[
+x=v\cdot t
+\]
+
+\end_inset
+
+in die letzte Gleichung eingesetzt.
+ Es resultiert:
+\begin_inset Formula 
+\[
+0=A\cdot v\cdot t+B\cdot t
+\]
+
+\end_inset
+
+Da diese Gleichung für alle 
+\begin_inset Formula $t\in\mathbb{R}$
+\end_inset
+
+ gelten muss,
+ kann ich 
+\begin_inset Formula $t\neq0$
+\end_inset
+
+ annehmen.
+ Also kann ich diese Gleichung durch 
+\begin_inset Formula $t$
+\end_inset
+
+ teilen und erhalte die Gleichung
+\begin_inset Formula 
+\[
+0=A\cdot v+B
+\]
+
+\end_inset
+
+Somit kann ich auf beiden Seiten 
+\begin_inset Formula $A\cdot v$
+\end_inset
+
+ subtrahieren und erhalten:
+\begin_inset Formula 
+\[
+-A\cdot v=B
+\]
+
+\end_inset
+
+Wenn ich die Seiten der Gleichung vertausche,
+ erhalte ich die Gleichung
+\begin_inset Formula 
+\[
+B=-A\cdot v
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Gleichung wird dann zu 
+\begin_inset Formula 
+\begin{align*}
+x' & =A\cdot x-A\cdot v\cdot t=A\cdot\left(x-vt\right)\\
+t' & =C\cdot x+D\cdot t
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bedingung II) Das Objekt werde im Ursprung des Koordinatensystems 
+\begin_inset Formula $S$
+\end_inset
+
+ festgehalten.
+ Dann gilt für die 
+\begin_inset Formula $x$
+\end_inset
+
+ Koordinate im System 
+\begin_inset Formula $S$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+x=0
+\]
+
+\end_inset
+
+Bezüglich dem System 
+\begin_inset Formula $S'$
+\end_inset
+
+ gilt dann
+\begin_inset Formula 
+\[
+x'=-v\cdot t'
+\]
+
+\end_inset
+
+Ich setze die Gleichung 
+\begin_inset Formula 
+\[
+x=0
+\]
+
+\end_inset
+
+in die Gleichung
+\begin_inset Formula 
+\begin{align*}
+t' & =C\cdot x-D\cdot t
+\end{align*}
+
+\end_inset
+
+ein und erhalte
+\begin_inset Formula 
+\[
+t'=C\cdot0+D\cdot t
+\]
+
+\end_inset
+
+oder aber
+\begin_inset Formula 
+\[
+t'=D\cdot t
+\]
+
+\end_inset
+
+Ich setzte die Gleichung
+\begin_inset Formula 
+\[
+x'=-v\cdot t'
+\]
+
+\end_inset
+
+ ein und erhalte
+\begin_inset Formula 
+\[
+-v\cdot t'=A\cdot\left(x-v\cdot t\right)
+\]
+
+\end_inset
+
+Mit 
+\begin_inset Formula $x=0$
+\end_inset
+
+ reduziert sich diese Gleichung zu
+\begin_inset Formula 
+\begin{align*}
+-v\cdot t' & =A\cdot\left(0-v\cdot t\right)\\
+ & =A\cdot\left(-v\cdot t\right)\\
+ & =-A\cdot v\cdot t
+\end{align*}
+
+\end_inset
+
+Also verkürzt
+\begin_inset Formula 
+\[
+-v\cdot t'=-A\cdot v\cdot t
+\]
+
+\end_inset
+
+Da ich 
+\begin_inset Formula $v\neq0$
+\end_inset
+
+ annehmen kann (
+\begin_inset Formula $v=0$
+\end_inset
+
+ wäre relativ witzlos,
+ kann ich die Gleichung durch 
+\begin_inset Formula $v$
+\end_inset
+
+ teilen und erhalte
+\begin_inset Formula 
+\[
+-t'=-A\cdot t
+\]
+
+\end_inset
+
+Weiter kann ich die Gleichung mit 
+\begin_inset Formula $-1$
+\end_inset
+
+ multiplizieren und erhalte
+\begin_inset Formula 
+\[
+t'=A\cdot t
+\]
+
+\end_inset
+
+Also kann ich die Variable 
+\begin_inset Formula $t'$
+\end_inset
+
+ in der Gleichung
+\begin_inset Formula 
+\[
+t'=D\cdot t
+\]
+
+\end_inset
+
+durch 
+\begin_inset Formula 
+\[
+A\cdot t
+\]
+
+\end_inset
+
+ersetzten und erhalte ersetzen und er halte 
+\begin_inset Formula 
+\[
+A\cdot t=D\cdot t
+\]
+
+\end_inset
+
+Da diese Gleichung für alle 
+\begin_inset Formula $t\in\mathbb{R}$
+\end_inset
+
+ gelten muss,
+ kann ich 
+\begin_inset Formula $t\neq0$
+\end_inset
+
+ annehmen.
+ Also kann ich die Gleichung durch 
+\begin_inset Formula $t$
+\end_inset
+
+ dividieren und erhalte 
+\begin_inset Formula 
+\[
+A=D
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Gleichungssystem lautet jetzt
+\begin_inset Formula 
+\begin{align*}
+x' & =A\cdot\left(x-v\cdot t\right)\\
+t' & =C\cdot x+A\cdot t
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bedingung III) Das ist jetzt die wirklich physikalische Bedingung.
+ Wenn sich etwas in einem System mit der Geschwindigkeit 
+\begin_inset Formula 
+\[
+v=c
+\]
+
+\end_inset
+
+ bewegt,
+ dann muss es sich auch im anderen System mit der Geschwindigkeit 
+\begin_inset Formula $c$
+\end_inset
+
+ bewegen.
+ Es muss dann also gelten:
+\begin_inset Formula 
+\begin{align*}
+x & =c\cdot t\\
+x' & =c\cdot t'
+\end{align*}
+
+\end_inset
+
+Ich ersetze in den zwei Gleichungen 
+\begin_inset Formula $x$
+\end_inset
+
+ durch 
+\begin_inset Formula $c\cdot t$
+\end_inset
+
+ und erhalte
+\begin_inset Formula 
+\begin{align*}
+x' & =A\cdot\left(c\cdot t-v\cdot t\right)=A\cdot\left(c-v\right)\cdot t\\
+t' & =C\cdot c\cdot t+A\cdot t=\left(C\cdot c+A\right)\cdot t
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In der ersten Gleichung
+\begin_inset Formula 
+\[
+x'=A\cdot\left(c-v\right)\cdot t
+\]
+
+\end_inset
+
+kann ich 
+\begin_inset Formula $x'$
+\end_inset
+
+ durch 
+\begin_inset Formula $c\cdot t'$
+\end_inset
+
+ ersetzen und erhalte die Gleichung
+\begin_inset Formula 
+\[
+c\cdot t'=A\cdot\left(c-v\right)\cdot t
+\]
+
+\end_inset
+
+Ich teile diese Gleichung durch die Konstante 
+\begin_inset Formula $c\neq0$
+\end_inset
+
+ und erhalte die Gleichung
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t'=A\cdot\frac{c-v}{c}\cdot t
+\]
+
+\end_inset
+
+Dieses 
+\begin_inset Formula $t'$
+\end_inset
+
+ setze ich in die Gleichung
+\begin_inset Formula 
+\[
+t'=\left(C\cdot c+A\right)\cdot t
+\]
+
+\end_inset
+
+ein und erhalte die Gleichung
+\begin_inset Formula 
+\[
+A\cdot\frac{c-v}{c}\cdot t=\left(C\cdot c+A\right)\cdot t
+\]
+
+\end_inset
+
+Auch diese Gleichung muss für alle 
+\begin_inset Formula $t\in\mathbb{R}$
+\end_inset
+
+ gelten,
+ insbesondere auch für alle 
+\begin_inset Formula $t\neq0$
+\end_inset
+
+.
+ Somit kann ich diese Gleichung durch 
+\begin_inset Formula $t$
+\end_inset
+
+ teilen und erhalte die Gleichung
+\begin_inset Formula 
+\[
+A\cdot\frac{c-v}{c}=C\cdot c+A
+\]
+
+\end_inset
+
+Wenn ich auf beiden Seiten der Gleichung 
+\begin_inset Formula $A$
+\end_inset
+
+ subtrahiere,
+ dann erhalte ich die Gleichung
+\begin_inset Formula 
+\[
+A\cdot\frac{c-v}{c}-A=C\cdot c
+\]
+
+\end_inset
+
+Der Ausdruck
+\begin_inset Formula 
+\begin{align*}
+A\cdot\frac{c-v}{c}-A & =A\cdot\left(1-\frac{v}{c}\right)-A\\
+ & =A-A\cdot\frac{v}{c}-A\\
+ & =-A\cdot\frac{v}{c}
+\end{align*}
+
+\end_inset
+
+Somit erhalte ich 
+\begin_inset Formula 
+\[
+-A\cdot\frac{v}{c}=C\cdot c
+\]
+
+\end_inset
+
+Diese Gleichung teile ich durch 
+\begin_inset Formula $c\ne0$
+\end_inset
+
+ und erhalte die Gleichung
+\begin_inset Formula 
+\[
+-A\cdot\frac{v}{c^{2}}=C
+\]
+
+\end_inset
+
+oder 
+\begin_inset Formula 
+\[
+C=-A\cdot\frac{v}{c^{2}}
+\]
+
+\end_inset
+
+Dieses Resultat kann ich wiederum in die Gleichungen einsetzen und erhalte die folgenden Gleichungen
+\begin_inset Formula 
+\begin{align*}
+x' & =A\cdot x-A\cdot v\cdot t\\
+t' & =-A\cdot\frac{v}{c^{2}}\cdot x+A\cdot t
+\end{align*}
+
+\end_inset
+
+oder kompakter geschrieben
+\begin_inset Formula 
+\begin{align*}
+x' & =A\cdot\left(x-v\cdot t\right)\\
+t' & =A\cdot\left(-\frac{v}{c^{2}}\cdot x+t\right)
+\end{align*}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Jetzt kommt die Knochenarbeit.
+ Das Gleichungssystem soll nach 
+\begin_inset Formula $x$
+\end_inset
+
+ und 
+\begin_inset Formula $t$
+\end_inset
+
+ auf gelöst werden.
+ Wenn ich die zweite Gleichung mit 
+\begin_inset Formula $v$
+\end_inset
+
+ multipliziere,
+ erhalte ich
+\begin_inset Formula 
+\[
+v\cdot t'=-A\cdot\frac{v^{2}}{c^{2}}\cdot x+A\cdot v\cdot t
+\]
+
+\end_inset
+
+Dann kann ich die beiden Gleichungen addieren und erhalte
+\begin_inset Formula 
+\[
+x'+v\cdot t'=A\cdot x-A\cdot\frac{v^{2}}{c^{2}}x=A\cdot x\cdot\left(1-\frac{v^{2}}{c^{2}}\right)
+\]
+
+\end_inset
+
+Dann kann ich die Seiten der Gleichung vertauschen und erhalte
+\begin_inset Formula 
+\[
+A\cdot x\cdot\left(1-\frac{v^{2}}{c^{2}}\right)=x'+v\cdot t'
+\]
+
+\end_inset
+
+Da 
+\begin_inset Formula $0<v<c$
+\end_inset
+
+ sein muss ist also auch 
+\begin_inset Formula 
+\[
+v^{2}<c^{2}
+\]
+
+\end_inset
+
+und somit (mit 
+\begin_inset Formula $c\neq0$
+\end_inset
+
+,
+ also auch 
+\begin_inset Formula $c^{2}\neq0$
+\end_inset
+
+)
+\begin_inset Formula 
+\[
+\frac{v^{2}}{c^{2}}<1
+\]
+
+\end_inset
+
+also auch mit 
+\begin_inset Formula $v^{2},y^{2}>0$
+\end_inset
+
+ und somit auch
+\begin_inset Formula 
+\[
+0\leq\frac{v^{2}}{c^{2}}<1
+\]
+
+\end_inset
+
+Bei der Ungleichung
+\begin_inset Formula 
+\[
+\frac{v^{2}}{c^{2}}<1
+\]
+
+\end_inset
+
+kann ich auf beiden Seiten 
+\begin_inset Formula 
+\[
+-\frac{v^{2}}{c^{2}}
+\]
+
+\end_inset
+
+ addieren und erhalte 
+\begin_inset Formula 
+\[
+0<1-\frac{v^{2}}{c^{2}}
+\]
+
+\end_inset
+
+Somit muss gelten
+\begin_inset Formula 
+\[
+1-\frac{v^{2}}{c^{2}}\neq0
+\]
+
+\end_inset
+
+Ich nehme zusätzlich an,
+ dass 
+\begin_inset Formula $A\neq0$
+\end_inset
+
+ ist.
+ Denn wäre 
+\begin_inset Formula $A=0$
+\end_inset
+
+,
+ müsste gelten
+\begin_inset Formula 
+\[
+x'=0
+\]
+
+\end_inset
+
+ sowie
+\begin_inset Formula 
+\[
+t'=0
+\]
+
+\end_inset
+
+was offenbar physikalisch keinen Sinn ergibt.
+ In der Gleichung
+\begin_inset Formula 
+\[
+A\cdot x\cdot\left(1-\frac{v^{2}}{c^{2}}\right)=x'+v\cdot t'
+\]
+
+\end_inset
+
+dividiere ich beide Seiten durch
+\begin_inset Formula 
+\[
+A\cdot\left(1-\frac{v^{2}}{c^{2}}\right)\neq0
+\]
+
+\end_inset
+
+und erhalte 
+\begin_inset Formula 
+\[
+x=\frac{1}{A\cdot\left(1-\frac{v^{2}}{c^{2}}\right)}\cdot\left(x'+v\cdot t'\right)
+\]
+
+\end_inset
+
+Ich setzte dieses 
+\begin_inset Formula $x$
+\end_inset
+
+ in die Gleichung
+\begin_inset Formula 
+\[
+v\cdot t'=-A\cdot\frac{v^{2}}{c^{2}}\cdot x+A\cdot v\cdot t
+\]
+
+\end_inset
+
+ein,,
+ um diese nach 
+\begin_inset Formula $t$
+\end_inset
+
+ aufzulösen.
+ Dies ergibt:
+\begin_inset Formula 
+\begin{align*}
+v\cdot t' & =-A\cdot\frac{v^{2}}{c^{2}}\cdot\frac{1}{A\cdot\left(1-\frac{v^{2}}{c^{2}}\right)}\cdot\left(x'+v\cdot t'\right)+A\cdot v\cdot t\\
+ & =-\cdot\frac{v^{2}}{c^{2}}\cdot\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot\left(x'+v\cdot t'\right)+A\cdot v\cdot t
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dabei habe ich noch 
+\begin_inset Formula $A$
+\end_inset
+
+ im Bruch rechts herausgekürzt.
+\end_layout
+
+\begin_layout Standard
+Ich subtrahiere von der gesamten Gleichung 
+\begin_inset Formula $v\cdot t'+A\cdot v\cdot t$
+\end_inset
+
+ und erhalte die Gleichung
+\begin_inset Formula 
+\[
+-A\cdot v\cdot t=-\frac{v^{2}}{c^{2}}\cdot\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot\left(x'+v\cdot t'\right)-v\cdot t'
+\]
+
+\end_inset
+
+Weiter kann ich die gesamte Gleichung mit 
+\begin_inset Formula $-1$
+\end_inset
+
+ multiplizieren und erhalte
+\begin_inset Formula 
+\[
+A\cdot v\cdot t=\frac{v^{2}}{c^{2}}\cdot\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot\left(x'+v\cdot t'\right)+v\cdot t'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ich kann die gesamte Gleichung durch 
+\begin_inset Formula $v$
+\end_inset
+
+ dividieren,
+ da ich 
+\begin_inset Formula $v\neq0$
+\end_inset
+
+ annehmen kann.
+ Es resultiert
+\begin_inset Formula 
+\[
+A\cdot t=\frac{v}{c^{2}}\cdot\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot\left(x'+v\cdot t'\right)+t'
+\]
+
+\end_inset
+
+Die rechte Seite muss ich noch ein wenig umformen:
+\begin_inset Formula 
+\begin{align*}
+ & \frac{v}{c^{2}}\cdot\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot\left(x'+v\cdot t'\right)+t'\\
+= & \frac{v}{c^{2}}\cdot\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot x'+\frac{v}{c^{2}}\cdot\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot v\cdot t'+t'\\
+= & \frac{v}{c^{2}}\cdot\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot x'+\frac{v^{2}}{c^{2}}\cdot\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot t'+t'\\
+= & \frac{v}{c^{2}}\cdot\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot x'+\frac{\frac{v^{2}}{c^{2}}}{1-\frac{v^{2}}{c^{2}}}\cdot t'+t'\\
+= & \frac{v}{c^{2}}\cdot\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot x'+\frac{\frac{v^{2}}{c^{2}}}{1-\frac{v^{2}}{c^{2}}}\cdot t'+\frac{1-\frac{v^{2}}{c^{2}}}{1-\frac{v^{2}}{c^{2}}}\cdot t'\\
+= & \frac{v}{c^{2}}\cdot\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot x'+\left(\frac{\frac{v^{2}}{c^{2}}}{1-\frac{v^{2}}{c^{2}}}+\frac{1-\frac{v^{2}}{c^{2}}}{1-\frac{v^{2}}{c^{2}}}\right)\cdot t'\\
+= & \frac{v}{c^{2}}\cdot\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot x'+\frac{\frac{v^{2}}{c^{2}}+1-\frac{v^{2}}{c^{2}}}{1-\frac{v^{2}}{c^{2}}}t'\\
+= & \frac{v}{c^{2}}\cdot\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot x'+\frac{1}{1-\frac{v^{2}}{c^{2}}}t'\\
+= & \frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot\left(\frac{v}{c^{2}}\cdot x'+t'\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zusammengefasst kann ich also schreiben
+\begin_inset Formula 
+\[
+A\cdot t=\frac{1}{1-\frac{v^{2}}{c^{2}}}\cdot\left(\frac{v}{c^{2}}\cdot x'+t'\right)
+\]
+
+\end_inset
+
+Wenn ich diese Gleichung noch durch 
+\begin_inset Formula $A$
+\end_inset
+
+ teile (was ich kann,
+ da ich 
+\begin_inset Formula $A\neq0$
+\end_inset
+
+ annehmen kann),
+ dann gilt:
+\begin_inset Formula 
+\[
+t=\frac{1}{A\cdot\left(1-\frac{v^{2}}{c^{2}}\right)}\cdot\left(\frac{v}{c^{2}}\cdot x'+t'\right)
+\]
+
+\end_inset
+
+Und der Symmetrie halber kann ich auch schreiben:
+ 
+\begin_inset Formula 
+\[
+t=\frac{1}{A\cdot\left(1-\frac{v^{2}}{c^{2}}\right)}\cdot\left(+\frac{v}{c^{2}}\cdot x'+t'\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Somit habe ich das System von Gleichungen
+\begin_inset Formula 
+\begin{align*}
+x' & =A\cdot\phantom{\frac{1}{\left(1-\frac{v^{2}}{c^{2}}\right)}}\left(\phantom{-\frac{v}{c^{2}}\cdot}x-v\cdot t\right)\\
+t' & =A\cdot\phantom{\frac{1}{\left(1-\frac{v^{2}}{c^{2}}\right)}}\left(-\frac{v}{c^{2}}\cdot x+\phantom{v\cdot}t\right)\\
+x & =\frac{1}{A\cdot\left(1-\frac{v^{2}}{c^{2}}\right)}\cdot\left(\phantom{+\frac{v}{c^{2}}\cdot}x'+v\cdot t'\right)\\
+t & =\frac{1}{A\cdot\left(1-\frac{v^{2}}{c^{2}}\right)}\cdot\left(+\frac{v}{c^{2}}\cdot x'+t'\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
