@@ -1,0 +1,921 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsbook
+\begin_preamble
+% Präambel nicht verändern!!!
+%
+% Die Präambel stellt sicher, dass das Benutzerhandbuch korrekt
+% in die Formate pdf, ps und dvi exportiert werden kann.
+% Wenn Probleme beim Exportieren auftreten, können Sie sich
+% an das LyX-Dokumentationsteam wenden.
+% EMail: lyx-docs@lists.lyx.org
+
+% wenn pdflatex benutzt wird:
+\usepackage{ifpdf}
+\ifpdf
+
+% Fonts fuer huebschere PDF-Ansichten
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % Ende von: wenn pdflatex benutzt wird
+
+% Setzt den Link fuer Spruenge zu Gleitabbildungen
+% auf den Anfang des Gelitobjekts und nicht aufs Ende
+\usepackage[figure]{hypcap}
+
+% Ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC }
+
+% Damit der Index den Namen "Stichwortverzeichnis" erhält
+\addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% Definiere den Operator Id
+\DeclareMathOperator{\Id}{Id}
+
+\usepackage{xlop}
+\usepackage{paralist}
+
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage[makeroom]{cancel}
+
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+\newcommand{\includebackwardreferences}{<includebackwardreferences>}
+\newcommand{\includeforwardreferences}{<includeforwardreferences>}
+
+% Wasserzeichen
+
+% \usepackage{draftwatermark} % Das Paket mit der Funktionalität
+% \SetWatermarkText{Entwurf} % Der Hintergrundtext
+% \SetWatermarkLightness{0.9}
+% \SetWatermarkFontSize{2cm} % Die Ausgangsgröße
+
+\renewcommand{\numberline}[1]{#1~}
+\end_preamble
+\options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+fixltx2e
+todonotes
+backforwardref
+\end_modules
+\maintain_unincluded_children no
+\language ngerman
+\language_package auto
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "cmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Einfuehrung in Mathe"
+\pdf_author "Markus Demarmels"
+\pdf_subject "LyX"
+\pdf_keywords "LyX"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=blue, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\branch Frage
+\selected 1
+\filename_suffix 0
+\color #00ff00 #ff00ff
+\end_branch
+\branch Antwort
+\selected 0
+\filename_suffix 0
+\color #aa55ff #55aa00
+\end_branch
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Dies sind Notizen zum Buch 
+\begin_inset Quotes gld
+\end_inset
+
+Moderne Physik
+\begin_inset Quotes grd
+\end_inset
+
+ von Jay Orear
+\end_layout
+
+\begin_layout Exercise
+Aufgabe 7.32
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Graphics
+	filename TypCarInTheLoop.svg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Lustigerweise habe ich jetzt mit viel Müh' und Not eine Skizze abgezeichnet - obwohl ich diese gar nicht gebraucht hätte....
+\end_layout
+
+\begin_layout Exercise
+Also:
+ Wenn das Spielzeugauto beim Punkt B gerade noch durchfahren können soll,
+ dann muss deren resultierende Kraft 
+\begin_inset Formula $F_{r}=-mg$
+\end_inset
+
+ sein (die y Achse in der Vertikalen sei nach oben gerichtet).
+ Diese Kraft soll genau der Zentripetalkraft 
+\begin_inset Formula 
+\[
+F_{z}=-m\frac{v^{2}}{R}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+entsprechen.
+ Gleichsetzung der Kräfte liefert
+\begin_inset Formula 
+\[
+-mg=-m\frac{v^{2}}{R}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Kürze ich auf beiden Seiten 
+\begin_inset Formula $-m$
+\end_inset
+
+ heraus (was unproblematisch ist,
+ da die Masse des Spielzeugautos grösser als 
+\begin_inset Formula $0$
+\end_inset
+
+ sein soll).
+ Dann erhalte ich 
+\begin_inset Formula 
+\[
+g=\frac{v^{2}}{R}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Nun ist die Frage,
+ wie gross 
+\begin_inset Formula $v$
+\end_inset
+
+ ist.
+ Aufgrund des Energieerhaltungsgesetzes kann ich schreiben
+\begin_inset Formula 
+\[
+E_{k}=\triangle E_{p}
+\]
+
+\end_inset
+
+In Worten:
+ Die Geschwindigkeit ist gleich der Veränderung der potentiellen Energie.
+ Ausgeschrieben ist dies
+\begin_inset Formula 
+\[
+\frac{1}{2}m\cdot v^{2}=m\cdot g\cdot\left(h-2R\right)
+\]
+
+\end_inset
+
+In dieser Gleichung kann ich wiederum 
+\begin_inset Formula $m$
+\end_inset
+
+ herauskürzen (die Masse des Spielzeugautos ist immer noch grösser als Null) und ich erhalte
+\begin_inset Formula 
+\[
+\frac{v^{2}}{2}=g\cdot\left(h-2R\right)
+\]
+
+\end_inset
+
+Nun erweitere ich die Gleichung mit 
+\begin_inset Formula $2$
+\end_inset
+
+ und erhalte 
+\begin_inset Formula 
+\[
+v^{2}=2\cdot g\cdot\left(h-2R\right)
+\]
+
+\end_inset
+
+Dann nehme ich diesen Ausdruck für 
+\begin_inset Formula $v^{2}$
+\end_inset
+
+ und setze diesen in die Gleichung
+\begin_inset Formula 
+\[
+g=\frac{v^{2}}{R}
+\]
+
+\end_inset
+
+ein.
+ Ich erhalte
+\begin_inset Formula 
+\[
+g=\frac{2\cdot g\cdot\left(h-2R\right)}{R}
+\]
+
+\end_inset
+
+In dieser Gleichung kann ich mit 
+\begin_inset Formula $g>0$
+\end_inset
+
+ kürzen (bei 
+\begin_inset Formula $g=0$
+\end_inset
+
+ würde das Spielzeugauto gar nicht die Rampe hinunterfahren).
+ Ich erhalte
+\begin_inset Formula 
+\[
+1=\frac{2\cdot\left(h-2R\right)}{R}
+\]
+
+\end_inset
+
+Nun erweitere ich die Gleichung mit 
+\begin_inset Formula $\frac{R}{2}$
+\end_inset
+
+ und erhalte
+\begin_inset Formula 
+\[
+\frac{R}{2}=h-2R
+\]
+
+\end_inset
+
+Ich addiere auf beiden Seiten 
+\begin_inset Formula $2R$
+\end_inset
+
+ und erhalte
+\begin_inset Formula 
+\[
+h=2R+\frac{R}{2}=\frac{5}{2}R
+\]
+
+\end_inset
+
+Dies ist das Endresultat.
+ Bei Vorhandensein von Reibung muss 
+\begin_inset Formula $h$
+\end_inset
+
+ natürlich grösser gemacht werden.
+ Im Grenzfall ist die resultierende Kraft im Punkt 
+\begin_inset Formula $B$
+\end_inset
+
+ wirklich 
+\begin_inset Formula $-mg$
+\end_inset
+
+,
+ also die Gewichtskraft.
+ Wie gross ist die Geschwindigkeit des Spielzeugautos?
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Formula 
+\[
+m\cdot g=m\frac{v^{2}}{R}
+\]
+
+\end_inset
+
+Also (nach Kürzung mit 
+\begin_inset Formula $m>0$
+\end_inset
+
+)
+\begin_inset Formula 
+\[
+g=\frac{v^{2}}{R}
+\]
+
+\end_inset
+
+Multipliziere ich beide Seiten mit 
+\begin_inset Formula $R$
+\end_inset
+
+ erhlate ich
+\begin_inset Formula 
+\[
+R\cdot g=v^{2}
+\]
+
+\end_inset
+
+Nun ziehe ich die Wurzel und erhalte
+\begin_inset Formula 
+\[
+v=\sqrt{R\cdot g}
+\]
+
+\end_inset
+
+Beispiel
+\begin_inset Formula 
+\[
+R=30\,\text{cm}=0.3\,\text{m}
+\]
+
+\end_inset
+
+Dann ist
+\begin_inset Formula 
+\begin{align*}
+v & =\sqrt{0.3\cdot9.81}\frac{\text{m}}{\text{s}}\\
+ & \approx1.7\,\frac{\text{m}}{\text{s}}
+\end{align*}
+
+\end_inset
+
+Also:
+ Im Prinzip fällt das Spielzeugauto herunter,
+ dass als einzige Kraft die Gewichtskraft vorhanden ist.
+ Aber dessen Geschwindkeit ist eben grösser als 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Darum fällt das Spielzeugauto zwar schon - aber hebt trotzdem nicht ab.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Aufgabe 7.33
+\end_layout
+
+\begin_layout Exercise
+Es sei also mit 
+\begin_inset Formula $E_{k}$
+\end_inset
+
+ als kinetische Energie,
+ 
+\begin_inset Formula $E_{T}$
+\end_inset
+
+ als transitive Energie und 
+\begin_inset Formula $E_{R}$
+\end_inset
+
+ als Energie der Rotation
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Formula $E_{k}=E_{T}+E_{R}$
+\end_inset
+
+ sowie nach Voraussetzung 
+\begin_inset Formula $E_{R}=E_{T}$
+\end_inset
+
+.
+ Also sei
+\begin_inset Formula 
+\[
+E_{k}=2\cdot E_{T}=m\cdot v^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Nach dem Energieerhaltungsgesetz sei also
+\begin_inset Formula 
+\[
+E_{p}=m\cdot g\cdot h
+\]
+
+\end_inset
+
+und 
+\begin_inset Formula 
+\[
+E_{k}=m\cdot v^{2}
+\]
+
+\end_inset
+
+sowie shlussendlich
+\begin_inset Formula 
+\[
+E_{p}=E_{k}
+\]
+
+\end_inset
+
+Damit wären wir bei
+\end_layout
+
+\begin_layout Exercise
+a)
+\begin_inset Formula 
+\[
+m\cdot g\cdot h=m\cdot v^{2}
+\]
+
+\end_inset
+
+und somit also
+\begin_inset Formula 
+\[
+g\cdot h=v^{2}
+\]
+
+\end_inset
+
+Also 
+\begin_inset Formula 
+\[
+v=\sqrt{g\cdot h}
+\]
+
+\end_inset
+
+Jedoch ist nicht 
+\begin_inset Formula $v\left(h\right)$
+\end_inset
+
+ sondern 
+\begin_inset Formula $v\left(s\right)$
+\end_inset
+
+ gefragt.
+ Es ist 
+\begin_inset Formula 
+\[
+\frac{h'}{h}=\frac{s}{l}
+\]
+
+\end_inset
+
+wobei 
+\begin_inset Formula $s$
+\end_inset
+
+ der zurückgelegte Weg sei und 
+\begin_inset Formula $h^{'}$
+\end_inset
+
+ die dabei verlorene Höhe.
+ Also ist
+\begin_inset Formula 
+\[
+h'=h\cdot\frac{s}{l}=\frac{h}{l}\cdot s
+\]
+
+\end_inset
+
+und somit 
+\end_layout
+
+\begin_layout Exercise
+b)
+\begin_inset Formula 
+\[
+v\left(s\right)=\sqrt{g\cdot\frac{h}{l}\cdot s}
+\]
+
+\end_inset
+
+Ist 
+\begin_inset Formula $s=l$
+\end_inset
+
+,
+ dann ist wieder die Formel 
+\begin_inset Formula 
+\[
+v\left(h\right)=\sqrt{g\cdot h}
+\]
+
+\end_inset
+
+ vorhanden.
+ 
+\end_layout
+
+\begin_layout Exercise
+c)
+\end_layout
+
+\begin_layout Exercise
+Die Kraft auf die Kugel sowie deren Beschleunigung ist zeitlich konstant.
+ Mit 
+\begin_inset Formula $v_{0}=0$
+\end_inset
+
+ und 
+\begin_inset Formula $x_{0}=0$
+\end_inset
+
+ kann ich darum Gleichung 2-10 verwenden und erhalte darum
+\begin_inset Formula 
+\[
+l=\frac{v^{2}}{2\cdot a}
+\]
+
+\end_inset
+
+Und also auch
+\begin_inset Formula 
+\[
+a=\frac{v^{2}}{2\cdot l}
+\]
+
+\end_inset
+
+Jedoch bin ich nicht sicher,
+ ob das auch wirklich so gilt für die Kugel.
+ Es gilt ja für Massenpunkte.
+ Aber für die Kugel?
+\end_layout
+
+\begin_layout Exercise
+Ich probiere es so:
+ Ich nehme an,
+ dass ein Klotz der Masse 
+\begin_inset Formula 
+\[
+m
+\]
+
+\end_inset
+
+ die schiefe Ebene hinuntergelassen wird,
+ wobei jedoch die Erdbeschleunigung 
+\begin_inset Formula 
+\[
+\frac{g}{2}
+\]
+
+\end_inset
+
+.
+ Ich hoffe nun,
+ die gleiche Funktion 
+\begin_inset Formula $v\left(h\right)$
+\end_inset
+
+ reproduzieren zu können.
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Graphics
+	filename InclinePlane.svg
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Die Masse des Klotzes sei also 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ Dann ist die Kraft 
+\begin_inset Formula $F_{G',||}=\frac{g}{2}\cdot m$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+F_{G',||}=m\cdot\frac{g}{2}\cdot\sin\left(\alpha\right)=m\cdot\frac{g}{2}\cdot\frac{h}{l}
+\]
+
+\end_inset
+
+Das bedeutet
+\begin_inset Formula 
+\[
+a=\frac{g}{2}\cdot\frac{h}{l}
+\]
+
+\end_inset
+
+Diese Beschleunigung ist konstant.
+ Also kann ich wirklich wieder mit Gleichung 2-10 schreiben
+\begin_inset Formula 
+\[
+l=\frac{v^{2}}{2\cdot a}
+\]
+
+\end_inset
+
+oder aber
+\begin_inset Formula 
+\[
+a=\frac{v^{2}}{2\cdot l}
+\]
+
+\end_inset
+
+Also kann ich das einsetzen und erhalte
+\begin_inset Formula 
+\[
+\frac{g}{2}\cdot\frac{h}{l}=\frac{v^{2}}{2\cdot l}
+\]
+
+\end_inset
+
+Dies bedeutet
+\begin_inset Formula 
+\[
+g\cdot h=v^{2}
+\]
+
+\end_inset
+
+und somit
+\begin_inset Formula 
+\[
+v=\sqrt{g\cdot h}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Das bedeutet jedoch:
+ Die Bewegung der Kugel entspricht derjenigen eines Klotzes,
+ welcher die schiefe Ebene hinunter rutscht,
+ wobei jedoch die Erdbeschleunigung nur halb so gross sei.
+ Also kann ich wirklich angeben,
+ dass die Beschleunigung der Kugel ebenfalls konstant ist und somit kann ich die Formel 2-10 auch für die Kugel anwenden und erhalte die Gleichung 
+\begin_inset Formula 
+\[
+a=\frac{v^{2}}{2\cdot l}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Aufgabe 7.23
+\end_layout
+
+\begin_layout Exercise
+Ich postuliere einen konstanten Reibungskoeffizient 
+\begin_inset Formula $\mu$
+\end_inset
+
+ sowie eine Reibungskraft
+\begin_inset Formula 
+\[
+F_{R}=\mu\cdot m\cdot g
+\]
+
+\end_inset
+
+Weiter sei die Reibungsenergie
+\begin_inset Formula 
+\[
+E_{R}=F_{R}\cdot s
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Diese Reibungsenergie entspricht der Differenz der potentiellen Energie der beiden Hügel.
+\begin_inset Formula 
+\[
+E_{R}=\Delta E_{p}
+\]
+
+\end_inset
+
+mit 
+\begin_inset Formula 
+\[
+\Delta E_{p}=m\cdot g\cdot\Delta h
+\]
+
+\end_inset
+
+Wenn ich das zusammensetze erhalte ich
+\begin_inset Formula 
+\[
+\mu\cdot m\cdot g\cdot s=m\cdot g\cdot\Delta h
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Der Faktor 
+\begin_inset Formula $m\cdot g>0$
+\end_inset
+
+ kann aus der Gleichung heraus gekürzt werden.
+ Es resultiert:
+\begin_inset Formula 
+\[
+\mu\cdot s=\Delta h
+\]
+
+\end_inset
+
+respektive 
+\begin_inset Formula 
+\[
+\mu=\frac{\Delta h}{s}
+\]
+
+\end_inset
+
+Durch Einsetzen der Zahlen wird
+\begin_inset Formula 
+\[
+\mu=\frac{10}{120}\approx0.083
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Und wie gross ist die konstante Kraft?
+\begin_inset Formula 
+\[
+F_{R}=\mu\cdot m\cdot g=\frac{10}{120}\cdot500\cdot9.81\,\text{N}\approx410\,\text{N}
+\]
+
+\end_inset
+
+Das ist ziemlich viel...
+ (entspricht etwa einer Gewichtskraft einer Masse von rund 
+\begin_inset Formula $41\,\text{kg}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename C:/Users/marku/OneDrive/Desktop/temp/Benzinverbrauch_Vega.svg
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -11873,313 +11873,95 @@ nolink "false"
 .
 \end_layout
 
-\begin_layout Conjecture
-Es kann keine Folge 
+\begin_layout Standard
+Es gibt jedoch noch eine kleine sprachliche Schwierigkeit.
+ Wenn ich schreibe
 \begin_inset Formula 
 \[
-\left(a_{k}\right)_{k\in\mathbb{N}}
+\left(1+1\right)\cdot A\,B
 \]
 
 \end_inset
 
-mit 
-\begin_inset Formula 
-\[
-\left\{ a_{k}\right\} _{k\in\mathbb{N}}\subset\mathbb{N}
-\]
-
-\end_inset
-
-derart existieren,
- dass gilt für alle 
-\begin_inset Formula $k\in\mathbb{N}$
-\end_inset
-
- gilt
-\begin_inset Formula 
-\[
-a_{k}>a_{k+1}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Angenommen,
- es gäbe eine solche Folge 
-\begin_inset Formula $\left(a_{k}\right)_{k\in\mathbb{N}}$
-\end_inset
-
- mit Bedingung derart geben darf,
- dass für alle 
-\begin_inset Formula $k\in\mathbb{N}$
-\end_inset
-
- gilt
-\begin_inset Formula 
-\[
-a_{k}>a_{k+1}
-\]
-
-\end_inset
-
-Also müsste es für ein gegebenes 
-\begin_inset Formula $k\in\mathbb{N}$
-\end_inset
-
- es eine natürliche Zahl 
-\begin_inset Formula $p_{k+1}$
-\end_inset
-
- derart geben müsste,
- dass gelten würde 
-\begin_inset Formula 
-\[
-a_{k}\cdot A=a_{k+1}\cdot A\,a_{k+1}A
-\]
-
-\end_inset
-
-geben würde.
- Also müsste die Zeichenkette 
-\begin_inset Formula $a_{k}$
-\end_inset
-
- mindestens ein Symbol 
+(mit geeignet definierten Symbolen 
 \begin_inset Formula $A$
 \end_inset
 
- länger als die Zeichenkette 
-\begin_inset Formula $a_{k+1}$
+ und 
+\begin_inset Formula $B$
 \end_inset
 
- sein.
- Dies müsste jedoch für alle natürlichen Zahlen 
-\begin_inset Formula $k$
-\end_inset
 
- gelten.
- Somit müsste das Symbol 
-\begin_inset Formula 
-\[
-a_{1}\cdot A
-\]
+\begin_inset Foot
+status open
 
-\end_inset
-
-mindestens ein Symbol 
-\begin_inset Formula $A$
-\end_inset
-
- mehr als das Symbol 
-\begin_inset Formula 
-\[
-a_{2}\cdot A
-\]
-
-\end_inset
-
-besitzen.
- Also muss das Symbol 
-\begin_inset Formula 
-\[
-a_{1}\cdot A
-\]
-
-\end_inset
-
-aus mindesten zwei Symbol 
-\begin_inset Formula $A$
-\end_inset
-
- bestehen.
- Also müsste gelten
-\begin_inset Formula 
-\[
-a_{1}\cdot A>A\,A=\left(1+1\right)\cdot A
-\]
-
-\end_inset
-
- 
+\begin_layout Plain Layout
+welche also in sich selbst sowie in Bezug auf die anderen Symbole des Satzes widerspruchsfrei seien sollten
 \end_layout
 
-\begin_layout Proof
-Wird der ganze Vorgang 
-\begin_inset Formula $a_{1}$
 \end_inset
 
- Mal ausgeführt,
- dann bedeutet dies,
- dass gelten müsste
+),
+ ist dann gemeint:
 \begin_inset Formula 
 \[
-a_{1}\cdot A>\left(1+a_{1}\right)\cdot A
+\left(1+1\right)\cdot A\,B=A\,A\,B
 \]
 
 \end_inset
 
- .
- Aufgrund des Lemmas 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:kommutativ-Symboladdition"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- kann ich schreiben,
- dass gelten muss
+oder 
 \begin_inset Formula 
 \[
-\left(1+n_{1}\right)\cdot A=A\cdot n_{1}\,\cdot A=n_{1}\cdot A\,A=\left(n_{1}+1\right)\cdot A
-\]
-
-\end_inset
-
-Also müsste auch gelten
-\begin_inset Formula 
-\[
-a_{1}\cdot A>\left(a_{1}+1\right)\cdot A
+\left(1+1\right)\cdot A\,B=A\,B\,A\,B
 \]
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Proof
-Nach Definition gilt
-\begin_inset Formula 
-\[
-\left(a_{1}+1\right)\cdot A=a_{1}\cdot A\,A
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Dias wäre jedoch ein Widerspruch zur Voraussetzung,
- dass
-\begin_inset Formula 
-\[
-a_{1}\cdot A<a_{1}\cdot A\,A
-\]
-
-\end_inset
-
-sein muss (vergleiche mit dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Ungleicheheit-angehaengte-Symbole"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-).
- Also kann ich daraus schliessen,
- dass keine solche Folge 
-\begin_inset Formula 
-\[
-\left(a_{k}\right)
-\]
-
-\end_inset
-
- existieren kann.
- Damit bin ich jedoch der Meinung,
- dass ich den Beweis für die Richtigkeit der Behauptung erbracht habe und beende darum an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Standard
-Ich möchte jedoch darauf hinweisen,
- dass der obige Beweis eventuell nicht richtig ist.
- Dann eventuell kann ich nur zeigen,
- dass für eine solche Folge gelten müsste,
- dass das erste Folgeglied
+Ich denke,
+ dass damit die erste Variante
 \begin_inset Formula 
 \[
-a_{1}\cdot A
+\left(1+1\right)\cdot A\,B
 \]
 
 \end_inset
 
-beliebig viele Symbole haben müsste.
- Aber eventuell habe ich bereits von der Tatsache einer vollständigen Induktion Gebrauch gemacht (vergleiche mit dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:vollstaendige-Induktion"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-).
- Vielleicht wäre eine weitere Form des Beweises,
- darauf hinzuweisen,
- dass für eine beliebige natürliche Zahl 
-\begin_inset Formula $a$
-\end_inset
-
- und ein beliebiges,
- in sich widerspruchsfreies Symbol nur endlich viele Symbolketten 
+gemeint ist.
+ Wenn ich die zweite Variante schreiben möchte,
+ könnte ich Beispielsweise ein Symbol
 \begin_inset Formula 
 \[
-k\cdot A
+C\equiv A\,B
 \]
 
 \end_inset
 
-mit
+ definieren und dann schreiben
 \begin_inset Formula 
 \[
-k\cdot A<a\,A
+\left(1+1\right)\cdot C
 \]
 
 \end_inset
 
- geben kann.
- Da jedoch für alle Folgenglieder 
+ Oder aber ich könnte schreiben
 \begin_inset Formula 
 \[
-a_{k}\cdot A
+\left(1+1\right)\,\left(A\,B\right)
 \]
 
 \end_inset
 
- mit 
-\begin_inset Formula 
-\[
-k\in\mathbb{N}
-\]
 
-\end_inset
-
- gelten müsste
-\begin_inset Formula 
-\[
-a_{k+1}<a_{k}
-\]
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Standard
-Damit die Definition der natürlichen Zahlen bereits erfolgt!
+Damit ist die Definition der natürlichen Zahlen bereits erfolgt!
  Ich muss jedoch schreiben,
  wieso ich diese Definition für sinnvoll halte.
  Es sei 
@@ -12694,7 +12476,18 @@ dumm
 \begin_inset Formula $M$
 \end_inset
 
- für 1000 (ich habe die Zahlwörter dem entsprechenden Wikipedia-Artikel über die römische Zahlwörter).
+ für 1000 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ich habe die Zahlwörter dem entsprechenden Wikipedia-Artikel über die römische Zahlwörter entnommen:
+ https://de.wikipedia.org/wiki/R%C3%B6mische_Zahlschrift
+\end_layout
+
+\end_inset
+
+.
  Diese Zahlwörter sind gut und recht - aber zum rechnen leider nicht besonders elegant.
  Es ist jedoch unüblich,
  zwei Zahlwörter hintereinander zu verwenden.
@@ -12719,7 +12512,7 @@ was recht gewöhnlich aussieht.
  Wie wäre es jedoch damit
 \begin_inset Formula 
 \[
-IV\left(III\left(VIII\text{\,Weitzenkrüge}\right)\right)
+IV\left(III\left(VIII\text{\,Weizenkrüge}\right)\right)
 \]
 
 \end_inset
@@ -12833,7 +12626,7 @@ nolink "false"
  nach und lese,
  dass ich zeigen muss,
  dass die Gleichheit von natürlichen Zahlen identitiv,
- symmetrisch und transitiv ist.
+ symmetrisch und transitiv sein muss.
  Nun denn,
  dann probiere ich es:
  Es sei 
@@ -12952,7 +12745,7 @@ m\cdot A=n\cdot A\wedge n\cdot A=p\cdot A
 
 \end_inset
 
-Da die Gleichheit von natürlichen Zahlen gemäß dem Lemma 
+Da die Gleichheit von Symbolketten gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
@@ -13056,7 +12849,7 @@ nolink "false"
 
 \end_inset
 
-
+ über Symbolketten
 \begin_inset Formula 
 \[
 n_{1}\cdot A\leq n_{2}\cdot A\vee n_{1}\cdot A\geq n_{2}\cdot A
@@ -13208,8 +13001,8 @@ Year
 \begin_layout Standard
 Also sieht es so aus,
  als ob das ganze Gedankengebäude für die Katz wäre.
- Als dass Zahlen zwar definiert werden könnten.
- Diese jedoch im Alltag nicht anwendbar seien.
+ Als dass Zahlen zwar definiert werden könnten,
+ diese jedoch im Alltag nicht anwendbar seien.
  Aber das scheint mir ebenfalls übertrieben.
  Also möchte ich ein drittes und letztes Gedankenexperiment durchführen.
  Angenommen,
@@ -13221,7 +13014,7 @@ Also sieht es so aus,
  Sie können es so durchführen:
  Sie nehmen 4 Gehege,
  wobei je zwei Gehege miteinander durch ein Tor verbunden sind.
- Ihre Herden haben Sie in getrennten Gehegen,
+ Ihre Herden haben sie in getrennten Gehegen,
  jedoch so,
  dass je ein Gehege eine Schafherde enthält und das mit ihm verbundene Gehege leer ist.
  Dann lassen sie immer gleichzeitig genau ein Schaf durch das Tor von einem Gehege in das andere Gehege.
@@ -13252,15 +13045,6 @@ nolink "false"
  dass die Mathematik aus diesen Fragestellungen heraus entstanden ist,
  also in solchen Gebieten,
  in welchen die Anwendung der Mathematik unproblematisch ist und kein Kopfzerbrechen bereitet.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-aktuelle Stelle
-\end_layout
-
-\end_inset
-
  Aber ich denke,
  die Mathematik tut gut daran,
  dass sie ihre Herkunft nicht vergisst.
@@ -13304,7 +13088,19 @@ einander zum Wachsen und Gedeihen anregen
 \end_inset
 
 .
- Ich möchte mit dem Satz 
+ 
+\end_layout
+
+\begin_layout Section
+Natürliche Zahlen und Zeichenketten
+\end_layout
+
+\begin_layout Standard
+In diesem Abschnitt möchte ich die Sätze und Lemmas der Zeichenketten in entsprechende Sätze der natürlichen Zahlen transformieren.
+\end_layout
+
+\begin_layout Standard
+Ich möchte mit dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:kleiner-gleich-natuerliche-Zahlen-ist-total"
@@ -13313,6 +13109,138 @@ nolink "false"
 \end_inset
 
  nun weiter zeigen:
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Totalitaeit-kleiner-oder-gleich"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $n_{1},n_{2}\in\mathbb{N}$
+\end_inset
+
+ also natürliche Zahlen.
+ Dann muss gelten
+\begin_inset Formula 
+\[
+n_{1}\leq n_{2}\vee n_{1}\geq n_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Es sein also 
+\begin_inset Formula $n_{1},n_{2}\in\mathbb{N}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $A$
+\end_inset
+
+ eine beliebiges Symbol,
+ welches nicht in sich sowie in Bezug auf die anderen Symbolen des Satzes widerspruchsfrei sei.
+ Dann sind
+\begin_inset Formula 
+\[
+n_{1}\cdot A
+\]
+
+\end_inset
+
+ sowie
+\begin_inset Formula 
+\[
+n_{2}\cdot A
+\]
+
+\end_inset
+
+gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:natuerliche-Zahlen-eigene-Definition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der natürlichen Zahlen Zeichenketten,
+ welche aus entsprechend langen Zeichenketten aus dem Symbol 
+\begin_inset Formula $A$
+\end_inset
+
+ bestehen.
+ Im Korollar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cor:Symbolvergleich-kleiner-groesser-gleich"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ habe ich zu zeigen versucht,
+ dass dann gelten muss
+\begin_inset Formula 
+\[
+n_{1}\cdot A\leq n_{2}\cdot A\vee n_{1}\cdot A\geq n_{2}\cdot A
+\]
+
+\end_inset
+
+Aus den Definitionen 
+\begin_inset Formula 
+\[
+n_{1}\cdot A\leq n_{2}\cdot A\Leftrightarrow n_{1}\leq n_{2}
+\]
+
+\end_inset
+
+sowie
+\begin_inset Formula 
+\[
+n_{1}\cdot A\geq n_{2}\cdot A\Leftrightarrow n_{1}\geq n_{2}
+\]
+
+\end_inset
+
+und dem Äquivalenzsatz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Disjunktion-Aequivalenzsatz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Disjunktion kann ich darum folgern,
+ dass auch gilt
+\begin_inset Formula 
+\[
+n_{1}\leq n_{2}\vee n_{1}\geq n_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Dies wollte ich jedoch zeigen.
+ Aus diesem Grund bin ich der Meinung,
+ dass ich den Beweis für die Richtigkeit der Behauptung erbracht habe und beende deshalb an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Lemma
@@ -13339,113 +13267,28 @@ n_{1}\leq n_{2}\wedge n_{1}\geq n_{2}\Leftrightarrow n_{1}=n_{2}
 \end_layout
 
 \begin_layout Proof
-Im vorhergehenden Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:kleiner-gleich-natuerliche-Zahlen-ist-total"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
+Zuerst einmal möchte ich die Implikation des Satzes beweisen:
+\end_layout
 
-\end_inset
-
- versuchte ich zu zeigen,
- dass gelten muss
-\begin_inset Formula 
-\[
-n_{1}\leq n_{2}\vee n_{1}\geq n_{2}
-\]
-
-\end_inset
-
-wobei 
-\begin_inset Formula $n_{1}$
-\end_inset
-
- und 
-\begin_inset Formula $n_{2}$
-\end_inset
-
- natürliche Zahlen seien.
- Ich nehme an,
- dass 
-\begin_inset Formula 
-\[
-n_{1}\leq n_{2}
-\]
-
-\end_inset
-
- sei.
- Das bedeutet,
- dass es für ein Symbol 
+\begin_layout Proof
+Es sei 
 \begin_inset Formula $A$
 \end_inset
 
-,
- welches in sich selbst und in Bezug auf die anderen Symbole des Beweises widerspruchsfrei sei,
- gelte
+ ein beliebiges Symbol,
+ welches jedoch weder in sich selbst noch bezüglich der anderen Symbole des Satzes widersprüchlich sei.
+ Dann lässt sich die Behauptung des Satzes umschreiben als Aussage:
 \begin_inset Formula 
 \[
-n_{1}\cdot A\leq n_{2}\cdot A
+n_{1}\cdot A\leq n_{2}\cdot A\wedge n_{2}\cdot A\geq n_{1}\cdot A
 \]
 
 \end_inset
 
-Dabei bezieht jetzt die Vergleichsrelation 
-\begin_inset Formula $\leq$
-\end_inset
-
- auf die entsprechende Relation beim Vergleich von Symbolketten mit endlich vielen Symbolen.
- Nun gibt es zwei Möglichkeiten:
- Entweder ist
-\begin_inset Formula 
-\[
-n_{1}\cdot A=n_{2}\cdot A
-\]
-
-\end_inset
-
-oder aber es ist 
-\begin_inset Formula 
-\[
-n_{1}\cdot A<n_{2}\cdot A
-\]
-
-\end_inset
-
-Falls 
-\begin_inset Formula 
-\[
-n_{1}\cdot A=n_{2}\cdot A
-\]
-
-\end_inset
-
-ist,
- dann ist jedoch bereits 
-\begin_inset Formula 
-\[
-n_{1}=n_{2}
-\]
-
-\end_inset
-
- was genau zu beweisen war.
- Ist jedoch 
-\begin_inset Formula 
-\[
-n_{1}\cdot A<n_{2}\cdot A
-\]
-
-\end_inset
-
-dann führt dies zu einem Widerspruch.
- Denn dies wäre gemäss dem Satz 
+Nun kann ich gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Equivalenz-Symbolvergleich-Negation-kleiner-gleich-grosser"
+reference "lem:Gleichheit-aus-kleiner-oder-gleich-Symbole"
 plural "false"
 caps "false"
 noprefix "false"
@@ -13453,18 +13296,45 @@ nolink "false"
 
 \end_inset
 
- gleichbedeutend zum Satz 
+ folgern,
+ dass gelten muss
 \begin_inset Formula 
 \[
-\neg\left(n_{2}\,A\leq n_{1}\cdot A\right)
+n_{1}\cdot A=n_{2}\cdot A
 \]
 
 \end_inset
 
-und somit auch gemäss dem Äquivalenzsatz 
+Das bedeutet jedoch,
+ dass gilt
+\begin_inset Formula 
+\[
+n_{1}=n_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Also bin ich der Meinung,
+ dass ich den Beweis für die Implikation der Behauptung erbracht habe.
+ Nun möchte ich zeigen,
+ dass auch die Replikation des Satzes gilt.
+ Es sei also
+\begin_inset Formula 
+\[
+n_{1}=n_{2}
+\]
+
+\end_inset
+
+für zwei ansonsten beliebige natürliche Zahlen.
+ Also kann ich gemäss dem Aussage-Dsijunktionssatz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Aequivalenz-Negations-Satz"
+reference "lem:Gleichheit-aus-kleiner-oder-gleich-Symbole"
 plural "false"
 caps "false"
 noprefix "false"
@@ -13472,41 +13342,77 @@ nolink "false"
 
 \end_inset
 
- der Negation
+ folgern,
+ dass gilt
 \begin_inset Formula 
 \[
-\neg\left(n_{2}\leq n_{1}\right)
+n_{1}=n_{2}\Rightarrow n_{1}=n_{2}\vee n_{1}<n_{2}
 \]
 
 \end_inset
 
-Das wäre jedoch ein Widerspruch zur Voraussetzung 
-\begin_inset Formula $n_{2}\leq n_{2}$
-\end_inset
-
-.
- Das bedeutet,
- dass auch in diesem Fall wirklich 
+sowie 
 \begin_inset Formula 
 \[
-n_{1}=n_{2}
+n_{1}=n_{2}\Rightarrow n_{1}=n_{2}\vee n_{1}>n_{2}
 \]
 
 \end_inset
 
- sein muss.
- Damit ich ich in allen denkbaren Fällen gezeigt,
- dass
+mit 
 \begin_inset Formula 
 \[
-n_{1}=n_{2}
+n_{1}\leq n_{2}\Leftrightarrow n_{1}=n_{2}\vee n_{1}<n_{2}
 \]
 
 \end_inset
 
-sein muss.
- Darum bin ich der Meinung,
- den Beweis für die Richtigkeit der Behauptung erbracht zu haben und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+ sowie 
+\begin_inset Formula 
+\[
+n_{1}\geq n_{2}\Leftrightarrow n_{1}=n_{2}\vee n_{1}>n_{2}
+\]
+
+\end_inset
+
+kann ich gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Kommutativitaet-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+der Kommutativität der Äquivalenz schlussfolgern,
+ dass auch gilt
+\begin_inset Formula 
+\[
+n_{1}=n_{2}\vee n_{1}<n_{2}\Leftrightarrow n_{1}\leq n_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+sowie 
+\begin_inset Formula 
+\[
+n_{1}=n_{2}\vee n_{1}>n_{2}\Leftrightarrow n_{1}\geq n_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Damit bin ich der Meinung,
+ dass ich den Beweis für die Richtigkeit der Behauptung erbracht habe und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Standard
@@ -13560,14 +13466,18 @@ n_{1}<n_{2}\vee n_{1}=n_{2}\vee n_{1}>n_{2}
 \end_layout
 
 \begin_layout Proof
-Ich habe im Beweis von Satz 
+Ich habe im Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:kleiner-gleich-natuerliche-Zahlen-ist-total"
+reference "lem:Totalitaeit-kleiner-oder-gleich"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
 
+ zu zeigen versucht,
  dass mindestens gelten muss
 \begin_inset Formula 
 \[
@@ -13639,12 +13549,12 @@ nolink "false"
  
 \begin_inset Formula 
 \[
-n_{1}=n_{2}
+n_{1}<n_{2}
 \]
 
 \end_inset
 
-Im zweiten Fall
+Im zweiten Fall gilt
 \begin_inset Formula 
 \[
 \neg\left(n_{1}\leq n_{2}\right)\wedge\phantom{\neg}\left.n_{1}\geq n_{2}\right.
@@ -13652,36 +13562,36 @@ Im zweiten Fall
 
 \end_inset
 
-kann ich die Rollen von 
-\begin_inset Formula $n_{1}$
-\end_inset
-
- und 
-\begin_inset Formula $n_{2}$
-\end_inset
-
- vertauschen.
- Ich erhalte
-\begin_inset Formula 
-\begin{eqnarray*}
-n_{3} & \equiv & n_{2}\\
-n_{4} & \equiv & n_{1}
-\end{eqnarray*}
-
-\end_inset
-
-Dann gilt also
+Also muss 
 \begin_inset Formula 
 \[
-\neg\left(n_{4}\leq n_{3}\right)\wedge\phantom{\neg}\left.n_{4}\geq n_{3}\right.
+n_{1}\neq n_{2}
 \]
 
 \end_inset
 
-Weiter muss gemäss dem Lemma 
+gelten.
+ Da jedoch immer noch gilt
+\begin_inset Formula 
+\[
+n_{1}\geq n_{2}
+\]
+
+\end_inset
+
+ muss 
+\begin_inset Formula 
+\[
+n_{1}>n_{2}\vee n_{1}=n_{2}
+\]
+
+\end_inset
+
+ sein.
+ Gemäss dem Satz des Ausschlusses 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Equivalenz-Symbolvergleich-Negation-kleiner-gleich-grosser"
+reference "prop:Ausschlusssatz"
 plural "false"
 caps "false"
 noprefix "false"
@@ -13689,30 +13599,11 @@ nolink "false"
 
 \end_inset
 
- gelten
+ kann ich daher schlussfolgern,
+ dass gelten muss
 \begin_inset Formula 
 \[
-n_{4}\geq n_{3}\Leftrightarrow n_{3}\leq n_{4}
-\]
-
-\end_inset
-
-Also kann ich gemäss dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Konjunktion-Aequivalenzsatz"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- des Äquivalenzsatzes der Konjunktion folgern,
- dass auch gelten muss
-\begin_inset Formula 
-\[
-\neg\left(n_{4}\leq n_{3}\right)\wedge\phantom{\neg}n_{3}\leq n_{4}
+n_{1}>n_{2}
 \]
 
 \end_inset
@@ -13721,10 +13612,10 @@ nolink "false"
 \end_layout
 
 \begin_layout Proof
-Da die Konjunktion gemäss dem Satz 
+Der dritte Fall habe ich im Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Kommutativitaet-Konjunktion"
+reference "lem:natuerliche-Zahlen-gleich-groesser-Gleichheit"
 plural "false"
 caps "false"
 noprefix "false"
@@ -13732,23 +13623,19 @@ nolink "false"
 
 \end_inset
 
- kommutiert,
- kann ich zusammen mit dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Schlussfolgerung"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- schlussfolgern,
- dass in diesem Fall auch die Ausssage
+ zu beweisen versucht.
+ Ist also 
 \begin_inset Formula 
 \[
-\phantom{\neg}n_{3}\leq n_{4}\wedge\neg\left(n_{4}\leq n_{3}\right)
+\phantom{\neg}\left.n_{1}\leq n_{2}\right.\wedge\phantom{\neg}\left.n_{1}\geq n_{2}\right.
+\]
+
+\end_inset
+
+ dann muss gelten
+\begin_inset Formula 
+\[
+n_{1}=n_{2}
 \]
 
 \end_inset
@@ -13758,93 +13645,6 @@ nolink "false"
 
 \begin_layout Proof
 Also glaube ich den Beweis für die Richtigkeit meiner Behauptung erbracht zu haben.
- Jedoch ist diese Aussage (abgesehen von den Bezeichnungen der Symbole) identisch zur obigen Aussage:
-\begin_inset Formula 
-\[
-n_{1}\leq n_{2}\wedge\neg\left(n_{1}\geq n_{2}\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Also kann ich folgern,
- dass auch in diesem Fall gelten muss,
- dass gilt
-\begin_inset Formula 
-\[
-n_{3}<n_{4}
-\]
-
-\end_inset
-
-Wenn ich jetzt anstelle von 
-\begin_inset Formula $n_{3}$
-\end_inset
-
- und 
-\begin_inset Formula $n_{4}$
-\end_inset
-
- die ursprünglichen Symbole verwendet,
- dann erhalte ich die Aussage
-\begin_inset Formula 
-\[
-n_{2}<n_{1}
-\]
-
-\end_inset
-
- Wenn ich diese Aussage in die Definition übersetzte,
- dann erhalte ich die Aussage
-\begin_inset Formula 
-\[
-n_{2}\cdot A<n_{1}\cdot A
-\]
-
-\end_inset
-
-Gemäss dem Korollar 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cor:Symbole-Umwandlung-kleiner-groesser"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- ist diese Aussage gleichbedeutend zur Aussage
-\begin_inset Formula 
-\[
-n_{1}\cdot A>n_{2}\cdot A
-\]
-
-\end_inset
-
-was gemäss der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:natuerliche-Zahlen-eigene-Definition"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der natürlichen Zahlen wiederum gleichbedeutend zu 
-\begin_inset Formula 
-\[
-n_{1}>n_{2}
-\]
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Proof
@@ -13866,6 +13666,10 @@ n_{1}>n_{2}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Proof
 gelten muss.
  Somit meine ich den Beweis für die Richtigkeit der Behauptung erbracht zu haben und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
  
@@ -14322,7 +14126,7 @@ Da
 
 \begin_layout Proof
 Das Besondere an der Definition von 
-\begin_inset Formula $\mathcal{M}{}_{u}\left(s\right)$
+\begin_inset Formula $\mathcal{M}{}_{u}\left(A\right)$
 \end_inset
 
  ist,
@@ -14354,6 +14158,17 @@ E_{n\left(1\right)}=E_{n\left(2\right)}\Leftrightarrow\left(B\in E_{n\left(1\rig
 
 \end_inset
 
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Falls Du Zeit und Lust hast,
+ kannst Du die Sätze heraussuchen.
+\end_layout
+
+\end_inset
+
 Falls 
 \begin_inset Formula $n_{1}\neq n_{2}$
 \end_inset
@@ -14377,7 +14192,7 @@ nolink "false"
 \end_inset
 
  sein müsste.
- Wäre jedoch 
+ Wäre 
 \begin_inset Formula 
 \[
 n_{1}<n_{2}
@@ -14385,132 +14200,8 @@ n_{1}<n_{2}
 
 \end_inset
 
-dann müsste es gemäß der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:natuerliche-Zahlen-eigene-Definition"
-nolink "false"
-
-\end_inset
-
- der kleiner-gleich Ordnungsrelation eine Zahl
-\begin_inset Formula 
-\[
-n_{3}\in\mathbb{N}
-\]
-
-\end_inset
-
-derart geben,
- dass gilt
-\begin_inset Formula 
-\[
-n_{1}\,A\,n_{3}\,A=n_{2}\,A
-\]
-
-\end_inset
-
-Somit müsste 
-\begin_inset Formula 
-\[
-E_{n\left(2\right)}
-\]
-
-\end_inset
-
-die Zeichenkette
-\begin_inset Formula 
-\[
-n_{1}\,A\,n_{3}\,A
-\]
-
-\end_inset
-
-enthalten Diese Zeichenkette kann jedoch nicht in 
-\begin_inset Formula 
-\[
-E_{n\left(1\right)}
-\]
-
-\end_inset
-
-enthalten sein,
- da für alle Zeichenketten 
-\begin_inset Formula $B\in E_{n\left(1\right)}$
-\end_inset
-
- gilt 
-\begin_inset Formula 
-\[
-B=n_{1}\cdot A\vee\exists n_{4}\in\mathbb{N}:\,B\,n_{3}\cdot A=n_{1}\cdot A
-\]
-
-\end_inset
-
-Ist 
-\begin_inset Formula 
-\[
-B=n_{1}\cdot A
-\]
-
-\end_inset
-
-dann gilt dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Ungleicheheit-angehaengte-Symbole"
-nolink "false"
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-B=n_{1}\cdot A\neq n_{1}\cdot A\,n_{3}\cdot A=n_{2}\cdot A
-\]
-
-\end_inset
-
-Gäbe es ein 
-\begin_inset Formula $n_{4}\in\mathbb{N}$
-\end_inset
-
- mit 
-\begin_inset Formula 
-\[
-B\,n_{4}\cdot A=n_{1}\cdot A
-\]
-
-\end_inset
-
-dann könnte mit der Zeichenkette 
-\begin_inset Formula 
-\[
-C\equiv n_{4}\cdot A\,n_{3}\cdot A
-\]
-
-\end_inset
-
-sowie dem gleichen Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Ungleicheheit-angehaengte-Symbole"
-nolink "false"
-
-\end_inset
-
- wiederum nicht gleich sein.
- Denn dieses Lemma besagt ja,
- das gilt
-\begin_inset Formula 
-\[
-B=n_{1}\cdot A\neq B\,C=n_{1}\cdot A\,n_{4}\cdot A\,n_{3}\cdot A=n_{2}\cdot A
-\]
-
-\end_inset
-
-Also meine ich für alle Fälle gezeigt zu haben,
- das 
+Dann muss gelten:
+ 
 \begin_inset Formula 
 \[
 n_{2}\cdot A\notin E_{n\left(1\right)}
@@ -14518,8 +14209,11 @@ n_{2}\cdot A\notin E_{n\left(1\right)}
 
 \end_inset
 
-sein könnte.
- Also kann nicht gelten
+
+\end_layout
+
+\begin_layout Proof
+Denn da 
 \begin_inset Formula 
 \[
 n_{1}<n_{2}
@@ -14527,7 +14221,140 @@ n_{1}<n_{2}
 
 \end_inset
 
-Ist jedoch 
+ ist,
+ kann gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:totale-Ordnung-Symbolketten-gleicher-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ nicht gelten,
+ dass die Zahlen 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $n_{2}$
+\end_inset
+
+ sind.
+ Gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:natuerliche-Zahlen-eigene-Definition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kann dann auch nicht gelten,
+ dass die Zeichenketten 
+\begin_inset Formula $n_{1}\cdot A$
+\end_inset
+
+ und 
+\begin_inset Formula $n_{2}\cdot A$
+\end_inset
+
+ gleich sind.
+ Ist jedoch 
+\begin_inset Formula 
+\[
+B\in E_{n\left(1\right)}
+\]
+
+\end_inset
+
+ und 
+\begin_inset Formula 
+\[
+B\neq n_{1}\cdot A
+\]
+
+\end_inset
+
+ dann muss gelten
+\begin_inset Formula 
+\[
+B<n_{1}\cdot A
+\]
+
+\end_inset
+
+Da die kleiner-als Relation von Zeichenketten gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:kleiner-als-Symbolvergleich-ist-transitiv"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ebenfalls transitiv ist,
+ muss mit
+\begin_inset Formula 
+\[
+n_{1}<n_{2}
+\]
+
+\end_inset
+
+und somit auch
+\begin_inset Formula 
+\[
+n_{1}\cdot A<n_{2}\cdot A
+\]
+
+\end_inset
+
+auch
+\begin_inset Formula 
+\[
+B<n_{2}\cdot A
+\]
+
+\end_inset
+
+sein.
+ Also kann auch gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:totale-Ordnung-Symbolketten-gleicher-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ auch nicht 
+\begin_inset Formula 
+\[
+B=n_{2}\cdot A
+\]
+
+\end_inset
+
+ sein.
+ Also kann 
+\begin_inset Formula $n_{2}\cdot A$
+\end_inset
+
+ nicht in der Menge 
+\begin_inset Formula $E_{n\left(1\right)}$
+\end_inset
+
+ enthalten sein.
+ Ist jedoch 
 \begin_inset Formula $n_{1}>n_{2}$
 \end_inset
 
@@ -14540,41 +14367,28 @@ Ist jedoch
 \begin_inset Formula $n_{2}$
 \end_inset
 
- umkehren.
- Ich erhalte in diesem Fall mit 
-\begin_inset Formula 
-\begin{eqnarray*}
-n_{3} & \equiv & n_{2}\\
-n_{4} & \equiv & n_{1}
-\end{eqnarray*}
-
-\end_inset
-
-gemäß den vorhergehenden Überlegungen das Resultat,
- dass nicht 
+vertauschen und genau die gleiche Überlegung durchführen.
+ Also habe ich den Beweis erbracht,
+ dass tatsächlich folgen muss,
+ dass gilt
 \begin_inset Formula 
 \[
-n_{3}<n_{4}
+E_{n\left(1\right)}=E_{n\left(2\right)}\Rightarrow n_{1}=n_{2}
 \]
 
 \end_inset
 
-sein kann.
- Somit es nicht möglich,
- dass 
-\begin_inset Formula $n_{1}\neq n_{2}$
-\end_inset
 
- sein kann.
- Also muss 
-\begin_inset Formula $n_{1}=n_{2}$
-\end_inset
-
- sein.
 \end_layout
 
 \begin_layout Proof
-Der Beweis ist wiederum so einfach,
+Damit hätte ich die eine Hälfte des Beweises erbracht.
+ 
+\end_layout
+
+\begin_layout Proof
+Nun möchte ich die Bijektivität der Abbildung beweisen.
+ Der Beweis ist wiederum so einfach,
  dass er schon fast wieder schwierig zu zeigen ist,
  da nicht klar ist,
  was überhaupt zu beweisen ist.
@@ -14593,7 +14407,7 @@ Jetzt möchte ich zeigen,
 \begin_inset Formula 
 \begin{eqnarray*}
 \forall n\in\mathbb{N} & : & g\circ f\left(n\right)=n\\
-\forall E\in\mathcal{M}{}_{u}\left(As\right) & : & f\circ g\left(E\right)=E
+\forall E\in\mathcal{M}{}_{u}\left(A\right) & : & f\circ g\left(E\right)=E
 \end{eqnarray*}
 
 \end_inset
@@ -14629,7 +14443,11 @@ Dieses Resultat habe ich erhalten,
 \begin_inset Formula $g\left(E\left(n\right)\right)$
 \end_inset
 
- habe ich ich die Definition der Funktion eingefügt und wiederum erhalten
+ habe ich die Definition der Funktion 
+\begin_inset Formula $g$
+\end_inset
+
+ eingefügt und wiederum erhalten
 \begin_inset Formula 
 \[
 g\left(E\left(n\right)\right)=n
@@ -14808,7 +14626,7 @@ E_{n\left(1\right)},E_{n\left(2\right)}\in\mathcal{M}{}_{u}\left(A\right)
 Dann gilt
 \begin_inset Formula 
 \[
-E_{n\left(1\right)}\subset E_{n\left(2\right)}\vee E_{n\left(2\right)}\subset M_{n\left(1\right)}
+E_{n\left(1\right)}\subset E_{n\left(2\right)}\vee E_{n\left(2\right)}\subset E_{n\left(1\right)}
 \]
 
 \end_inset
