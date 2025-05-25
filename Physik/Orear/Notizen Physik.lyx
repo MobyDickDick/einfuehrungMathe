@@ -908,9 +908,1812 @@ Das ist ziemlich viel...
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
+Aufgabe 7.35
+\end_layout
+
+\begin_layout Exercise
+Wie in der folgenden Abbildung ersichtlich ist,
+ ist der Benzinverbrauch in etwa durch die Formel gegeben
+\begin_inset Formula 
+\[
+f\left(x\right)=0.61\cdot x+27.95
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
 \begin_inset Graphics
 	filename C:/Users/marku/OneDrive/Desktop/temp/Benzinverbrauch_Vega.svg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Wenn 
+\begin_inset Formula 
+\[
+x=100\,\frac{\text{km}}{\text{h}}
+\]
+
+\end_inset
+
+eingegeben wird resultiert daraus 
+\begin_inset Formula 
+\begin{align*}
+f\left(x\right) & =\left(0.61\cdot100+27.95\right)\frac{\text{l}}{1000\,\text{km}}\\
+ & =\left(61+27.95\right)\,\text{l}\\
+ & \approx89\,\text{l}
+\end{align*}
+
+\end_inset
+
+Wird also der Wagen 1 Stunde gefahren,
+ dann ist er um 
+\begin_inset Formula $100\,\text{km}$
+\end_inset
+
+ weiter.
+ Gleichzeitig hat e 
+\begin_inset Formula $8.9\,\text{l }$
+\end_inset
+
+verbraucht.
+ Also verbraucht er in etwa
+\begin_inset Formula 
+\[
+8.9\,\frac{\text{l}}{\text{h}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Der Energieinhalt von Benzin beträgt ca.
+ 
+\begin_inset Formula 
+\[
+31\cdot10^{3}\frac{\text{J}}{c\text{m}^{3}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+1 Liter beinhaltet 
+\begin_inset Formula $1000$
+\end_inset
+
+ 
+\begin_inset Formula $c\text{m}^{3}$
+\end_inset
+
+.
+ Also beträgt der Energieinhalt von 
+\begin_inset Formula $1$
+\end_inset
+
+ Liter Benzin
+\begin_inset Formula 
+\[
+3.1\cdot10^{6}\text{J}
+\]
+
+\end_inset
+
+und entsprechend 
+\begin_inset Formula $89$
+\end_inset
+
+
+\begin_inset Formula $\text{l}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+2.8\cdot10^{8}\text{J}
+\]
+
+\end_inset
+
+Also ist die Leistung
+\begin_inset Formula 
+\[
+\frac{2.8\cdot10^{8}\text{J}}{3.6\cdot10^{3}\text{s}}\approx7.7\cdot10^{4}\,\text{W}\approx77\,\text{kW}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Aufgabe 7.36
+\end_layout
+
+\begin_layout Exercise
+a) Wieder einmal verwende ich den Satz der Energieerhaltung.
+ Vor dem Stoss beträgt die Energie 
+\begin_inset Formula 
+\[
+\frac{1}{2}m\cdot v^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Ist der 2.
+ Klotz am höchsten Punkt der Bahn,
+ dann beträgt die potentielle Energie des zweiten Klotzes
+\begin_inset Formula 
+\[
+m\cdot g\cdot h
+\]
+
+\end_inset
+
+Also kann ich die beiden Energien gleichsetzen und erhalte die Gleichung
+\begin_inset Formula 
+\[
+\frac{1}{2}m\cdot v^{2}=m\cdot g\cdot h
+\]
+
+\end_inset
+
+Da die Masse grösser als Null ist,
+ kann ich diese herauskürzen.
+ Also gilt
+\begin_inset Formula 
+\[
+\frac{1}{2}v^{2}=g\cdot h
+\]
+
+\end_inset
+
+oder auch
+\begin_inset Formula 
+\[
+h=\frac{v^{2}}{2\cdot g}
+\]
+
+\end_inset
+
+b) Hier gilt das Energieerhaltungsgesetz nicht mehr.
+ Aufgrund des Impulserhaltungssatzes gilt
+\begin_inset Formula 
+\[
+m\cdot v=2\cdot m\cdot v_{1}
+\]
+
+\end_inset
+
+und entsprechend
+\begin_inset Formula 
+\[
+v_{1}=\frac{v}{2}
+\]
+
+\end_inset
+
+Die neue kinetische Energie ist 
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2}\left(2\cdot m\right)\cdot v_{1}^{2} & =m\cdot\left(\frac{v}{2}\right)^{2}\\
+ & =m\cdot\frac{v}{4}^{2}\\
+ & =\frac{1}{2}\cdot\frac{1}{2}m\cdot v^{2}
+\end{align*}
+
+\end_inset
+
+Also wird die Hälfte der kinetischen Energie in thermische Energie umgesetzt.
+ Nun wird die kinetische Energie in potentielle Energie umgesetzt.
+\begin_inset Formula 
+\[
+\frac{1}{4}m\cdot v^{2}=2\cdot m\cdot h\cdot g
+\]
+
+\end_inset
+
+Die Masse kann wieder herausgekürzt werden,
+ da sie grösser als Null ist.
+\begin_inset Formula 
+\[
+\frac{1}{8}\frac{v^{2}}{g}=h
+\]
+
+\end_inset
+
+oder aber 
+\begin_inset Formula 
+\[
+h=\frac{1}{4}\cdot\frac{v^{2}}{2\cdot g}
+\]
+
+\end_inset
+
+Fazit:
+ Bei einem total inelastischen Stoss werden beide Klötze nur 
+\begin_inset Formula $\frac{1}{4}$
+\end_inset
+
+ so hoch gehoben.
+ Dabei geht die Hälfte des Höhenverlusts auf den Verlust der kinetischen Energie zurück.
+ Die andere Hälfte des Höhenverlusts geht darauf zurück,
+ dass jetzt die doppelte Masse in die Höhe gehoben werden muss.
+\end_layout
+
+\begin_layout Exercise
+Was bedeuten die beiden Teilaufgaben:
+ Dass in der realen Situation damit gerechnet werden muss,
+ dass der in die Höhe gehobene Klotz zwischen 
+\begin_inset Formula 
+\[
+\frac{v^{2}}{8\cdot g}
+\]
+
+\end_inset
+
+und 
+\begin_inset Formula 
+\[
+\frac{v^{2}}{2\cdot g}
+\]
+
+\end_inset
+
+gehoben wird.
+ Rechenbeispiel:
+ Der eine Klotz sein mit 
+\begin_inset Formula 
+\[
+30\frac{\text{km}}{\text{h}}
+\]
+
+\end_inset
+
+ unterwegs (Auto,
+ welches innerorts fährt).
+ Welches sind dann die Grenzen von 
+\begin_inset Formula $h$
+\end_inset
+
+?
+\begin_inset Formula 
+\[
+v=30\frac{1000\,\text{m}}{3600\,\text{s}}=\frac{30}{3.6}\frac{\text{m}}{\text{s}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+dann ist 
+\begin_inset Formula 
+\[
+h_{m}=\left(\frac{30}{3.6}\right)^{2}\big/\left(8\cdot g\right)\approx0.9\,\text{m}
+\]
+
+\end_inset
+
+als kleinst mögliche Hubhöhe.
+ Andererseits ist 
+\begin_inset Formula 
+\[
+h_{M}=\left(\frac{30}{3.6}\right)^{2}\big/\left(2\cdot g\right)\approx3.5\,\text{m}
+\]
+
+\end_inset
+
+die grösstmögliche Hubhöhe (das ist in etwa 1 Stockwerk und schon nicht so klein).
+\end_layout
+
+\begin_layout Exercise
+c) Die erzeugte Wärmeenegie beträgt 
+\begin_inset Formula 
+\[
+\frac{1}{4}\cdot m\cdot v^{2}
+\]
+
+\end_inset
+
+Beispiel:
+ Ein Personenwagen mit einer Masse von ca.
+ 
+\begin_inset Formula $1.5\,\text{t}$
+\end_inset
+
+ macht einen inelastischen Bums mit 
+\begin_inset Formula $30\,\frac{\text{km}}{\text{h}}$
+\end_inset
+
+.
+ Die dabei erzeugte thermische Energie beträgt dann
+\begin_inset Formula 
+\[
+\frac{1}{4}\cdot1.5\cdot1000\,\text{kg}\cdot\left(\frac{30}{3.6}\right)^{2}\approx2.6\,\text{kJ}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+1\,\text{kWh} & =1\cdot10^{3}\cdot\text{W}\cdot3.6\cdot10^{3}\text{s}\\
+ & =3.6\cdot10^{6}\text{J}
+\end{align*}
+
+\end_inset
+
+Also ist
+\begin_inset Formula 
+\begin{align*}
+2.6\,\text{kJ} & \approx2.6\cdot10^{3}\cdot\frac{\text{kWh}}{3.6\cdot10^{6}}\\
+ & \approx0.007\,\text{kWh}
+\end{align*}
+
+\end_inset
+
+Das tönt jetzt nicht nach wahnsinnig viel.
+ Aber ich möchte es trotzdem nicht erleben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Zu Aufgabe Kapitel 7.
+ Aufgabe 38b
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d^{2}}{ds^{2}}s=m\cdot g-\frac{d}{\sqrt{d^{2}+s^{2}}}k\cdot s
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Zu Aufgabe Kapitel 7.
+ Aufgabe 39
+\end_layout
+
+\begin_layout Exercise
+Dies Aufgabe narrt mich richtiggehend.
+ Darum möchte ich sie hier aufschreiben.
+\end_layout
+
+\begin_layout Exercise
+Aufgabenstellung:
+ Ein Körper 
+\begin_inset Formula $K_{1}$
+\end_inset
+
+ der Masse 
+\begin_inset Formula $m_{1}$
+\end_inset
+
+ startet bei 
+\begin_inset Formula $-l$
+\end_inset
+
+ und der Geschwindigkeit 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+.
+ Ein zweiter Körper der Masse 
+\begin_inset Formula $m_{2}$
+\end_inset
+
+ startet bei 
+\begin_inset Formula $l$
+\end_inset
+
+ und der der Geschwindigkeit 
+\begin_inset Formula $-v_{2}$
+\end_inset
+
+.
+ Beide Geschwindigkeiten seien positiv oder Null,
+ jedoch nicht negativ.
+ Sie stossen total elastisch aufeinander (Totale Erhaltung der kinetischen Energie).
+ Dann ist die Preisfrage:
+ Wie gross sind die Geschwindigkeiten 
+\begin_inset Formula $w_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $w_{2}$
+\end_inset
+
+ der beiden Körper nach dem Stoss?
+\end_layout
+
+\begin_layout Exercise
+Anbei die Bewegungsgleichungen (
+\begin_inset Formula $t\in\mathbb{R}$
+\end_inset
+
+ sei die Bezeichnung der Zeit) der Körper vor dem Stoss:
+\begin_inset Formula 
+\begin{align*}
+x_{1} & =\phantom{-}v_{1}\cdot t-l\\
+x_{2} & =-v_{2}\cdot t+l=l-v_{2}\cdot t
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Formula $x_{1}$
+\end_inset
+
+sei die Bewegungsgleichung des ersten Körpers,
+ 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ diejenige des zweiten Körpers.
+\end_layout
+
+\begin_layout Standard
+Nun berechne ich die Bewegungsgleichung des Schwerpunkts:
+\begin_inset Formula 
+\begin{align*}
+x_{S} & \equiv\frac{m_{1}\cdot x_{1}+m_{2}\cdot x_{2}}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot\left(v_{1}\cdot t-l\right)+m_{2}\cdot\left(l-v_{2}\cdot t\right)}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot v_{1}\cdot t-m_{1}\cdot l+m_{2}\cdot l-m_{2}\cdot v_{2}\cdot t}{m_{1}+m_{2}}\\
+ & =\frac{\left(m_{1}\cdot v_{1}-m_{2}\cdot v_{2}\right)\cdot t+\left(m_{2}-m_{1}\right)\cdot l}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t+\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l
+\end{align*}
+
+\end_inset
+
+Also bewegt sich auch der Schwerpunkt gleichförmig mit der Geschwindigkeit:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+v_{s}=\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}
+\]
+
+\end_inset
+
+Er startet bei 
+\begin_inset Formula $t=0$
+\end_inset
+
+ an der Stelle:
+\begin_inset Formula 
+\[
+x_{S}\left(0\right)=\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nun möchte ich die Bewegungsgleichungen der beiden Körpern in das Bezugssystem des Schwerpunkts umrechnen.
+ Es gilt:
+\begin_inset Formula 
+\[
+x=x^{'}+x_{S}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+oder aber auch
+\begin_inset Formula 
+\[
+x'=x-x_{S}
+\]
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $x'$
+\end_inset
+
+ die Koordinate im Bezugssystem des Schwerpunkts,
+ 
+\begin_inset Formula $x$
+\end_inset
+
+ die Koordinate im Ursprungssystems.
+ Es seien 
+\begin_inset Formula $x_{1}^{'}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $x_{2}^{'}$
+\end_inset
+
+ die Koordinaten der beiden Körper 
+\begin_inset Formula $K_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $K_{2}$
+\end_inset
+
+ im Bezugssystem des Schwerpunkts.
+ Dann ist 
+\begin_inset Formula 
+\begin{align*}
+x_{1}^{'} & =x-x_{S}\\
+ & =v_{1}\cdot t-l-\left(\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t+\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l\right)\\
+ & =v_{1}\cdot t-l-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t-\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l\\
+ & =v_{1}\cdot t-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t-\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l-l\\
+ & =v_{1}\cdot t-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t-\left(\frac{m_{2}-m_{1}}{m_{1}+m_{2}}+1\right)\cdot l\\
+ & =\left(v_{1}-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\right)\cdot t-\left(\frac{m_{2}-m_{1}}{m_{1}+m_{2}}+1\right)\cdot l
+\end{align*}
+
+\end_inset
+
+Nun berechne ich die Ausdrücke:
+ 
+\begin_inset Formula 
+\[
+v_{1}-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+\frac{m_{2}-m_{1}}{m_{1}+m_{2}}+1
+\]
+
+\end_inset
+
+separat:
+\begin_inset Formula 
+\begin{align*}
+v_{1}-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}} & =v_{1}\cdot\frac{m_{1}+m_{2}}{m_{1}+m_{2}}-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{v_{1}\cdot m_{1}+v_{1}\cdot m_{2}}{m_{1}+m_{2}}-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{v_{1}\cdot m_{1}+v_{1}\cdot m_{2}-\left(m_{1}\cdot v_{1}-m_{2}\cdot v_{2}\right)}{m_{1}+m_{2}}\\
+ & =\frac{v_{1}\cdot m_{1}+v_{1}\cdot m_{2}-m_{1}\cdot v_{1}+m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{v_{1}\cdot m_{2}+m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{m_{2}\cdot\left(v_{1}+v_{2}\right)}{m_{1}+m_{2}}\\
+ & =\frac{m_{2}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entsprechend ist:
+\begin_inset Formula 
+\begin{align*}
+\frac{m_{2}-m_{1}}{m_{1}+m_{2}}+1 & =\frac{m_{2}-m_{1}}{m_{1}+m_{2}}+\frac{m_{1}+m_{2}}{m_{1}+m_{2}}\\
+ & =\frac{m_{2}-m_{1}+m_{1}+m_{2}}{m_{1}+m_{2}}\\
+ & =\frac{2\cdot m_{2}}{m_{1}+m_{2}}
+\end{align*}
+
+\end_inset
+
+Somit ist 
+\begin_inset Formula 
+\[
+x'_{1}=\frac{m_{2}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)\cdot t-\frac{2\cdot m_{2}}{m_{1}+m_{2}}\cdot l
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nun berechne ich die relative Koordinate des Körpers 
+\begin_inset Formula $K_{2}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+x'_{2} & =x-x_{S}\\
+ & =l-v_{2}\cdot t-\left(\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t+\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l\right)\\
+ & =l-v_{2}\cdot t-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t-\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l\\
+ & =-v_{2}\cdot t-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t-\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l+l\\
+ & =-v_{2}\cdot t-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t+\left(-\frac{m_{2}-m_{1}}{m_{1}+m_{2}}+1\right)\cdot l\\
+ & =-\left(v_{2}+\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\right)\cdot t-\left(1-\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\right)\cdot l
+\end{align*}
+
+\end_inset
+
+Nun berechne ich die Ausdrücke :
+\begin_inset Formula 
+\[
+v_{2}+\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+1-\frac{m_{2}-m_{1}}{m_{1}+m_{2}}
+\]
+
+\end_inset
+
+separat:
+\begin_inset Formula 
+\begin{align*}
+v_{2}+\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}} & =v_{2}\cdot\frac{m_{1}+m_{2}}{m_{1}+m_{2}}+\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{v_{2}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}+\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{v_{2}\cdot m_{1}+v_{2}\cdot m_{2}+m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{v_{2}\cdot m_{1}+m_{1}\cdot v_{1}}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot\left(v_{1}+v_{2}\right)}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entsprechend ist:
+\begin_inset Formula 
+\begin{align*}
+1-\frac{m_{2}-m_{1}}{m_{1}+m_{2}} & =\frac{m_{1}+m_{2}}{m_{1}+m_{2}}+\frac{m_{2}-m_{2}}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}+m_{2}+m_{1}-m_{2}}{m_{1}+m_{2}}\\
+ & =\frac{2\cdot m_{1}}{m_{1}+m_{2}}
+\end{align*}
+
+\end_inset
+
+Somit ist 
+\begin_inset Formula 
+\[
+x'_{1}=-\frac{m_{1}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)\cdot t-\frac{2\cdot m_{2}}{m_{1}+m_{2}}\cdot l
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So,
+ jetzt kann ich endlich die Rechnung im Schwerpunktsystem durchführen.
+ Da sich dieses System ebenfalls gleichförmig bewegt,
+ gelten ebenfalls die kinetische Energieerhaltung und die Impulserhaltung.
+ Der Impulserhaltungssatz besagt.
+ Die Geschwindigkeiten der beiden Körper betragen:
+\begin_inset Formula 
+\begin{align*}
+v_{1}' & =\phantom{-}\frac{m_{2}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)\\
+v_{2}' & =-\frac{m_{1}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)
+\end{align*}
+
+\end_inset
+
+Ich führe noch die Abkürzung
+\begin_inset Formula 
+\[
+\kappa\equiv\frac{v_{1}+v_{2}}{m_{1}+m_{2}}
+\]
+
+\end_inset
+
+ein und erhalte dann:
+\begin_inset Formula 
+\begin{align*}
+v_{1}' & =\phantom{-}m_{2}\cdot\kappa\\
+v_{2}' & =-m_{1}\cdot\kappa
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nun seien 
+\begin_inset Formula $w_{1}'$
+\end_inset
+
+ sowie 
+\begin_inset Formula $w_{2}'$
+\end_inset
+
+ die Geschwindigkeiten der beiden Körper 
+\begin_inset Formula $K_{1}$
+\end_inset
+
+sowie 
+\begin_inset Formula $K_{2}$
+\end_inset
+
+ nach dem elastischen Stoss.
+ Dann besagt der Impulserhaltungssatz:
+\begin_inset Formula 
+\[
+m_{1}\cdot v_{1}'+m_{2}\cdot v_{2}'=m_{1}\cdot w_{1}'+m_{2}\cdot w_{2}'
+\]
+
+\end_inset
+
+Nun ist jedoch 
+\begin_inset Formula 
+\begin{align*}
+m_{1}\cdot v_{1}'+m_{2}\cdot v_{2}' & =m_{1}\cdot m_{2}\cdot\kappa+m_{2}\cdot\left(-m_{1}\cdot\kappa\right)\\
+ & =m_{1}\cdot m_{2}\cdot\kappa-m_{1}\cdot m_{2}\cdot\kappa\\
+ & =0
+\end{align*}
+
+\end_inset
+
+Also ist auch
+\begin_inset Formula 
+\[
+0=m_{1}\cdot w_{1}'+m_{2}\cdot w_{2}'
+\]
+
+\end_inset
+
+oder aber
+\begin_inset Formula 
+\[
+-m_{1}\cdot w_{1}'=m_{2}\cdot w_{2}'
+\]
+
+\end_inset
+
+Da 
+\begin_inset Formula $m_{1}>0$
+\end_inset
+
+ ist kann ich auch schreiben
+\begin_inset Formula 
+\[
+w_{1}'=-\frac{m_{2}}{m_{1}}\cdot w_{2}'
+\]
+
+\end_inset
+
+Nun ziehe ich den Energieerhaltungssatz heran:
+\begin_inset Formula 
+\[
+\frac{1}{2}\cdot m_{1}\cdot\left(v_{1}'\right)^{2}+\frac{1}{2}\cdot m_{2}\cdot\left(v_{2}'\right)^{2}=\frac{1}{2}\cdot m_{1}\cdot\left(w_{1}'\right)^{2}+\frac{1}{2}\cdot m_{2}\cdot\left(w_{2}'\right)^{2}
+\]
+
+\end_inset
+
+Ich multipliziere die Gleichung mit 
+\begin_inset Formula $2$
+\end_inset
+
+ und erhalte die Gleichung
+\begin_inset Formula 
+\[
+m_{1}\cdot\left(v_{1}'\right)^{2}+m_{2}\cdot\left(v_{2}'\right)^{2}=m_{1}\cdot\left(w_{1}'\right)^{2}+m_{2}\cdot\left(w_{2}'\right)^{2}
+\]
+
+\end_inset
+
+Dann setze ich die Ausdrücke für 
+\begin_inset Formula $v_{1}',v_{2}',w_{1}'$
+\end_inset
+
+ sowie 
+\begin_inset Formula $w_{2}'$
+\end_inset
+
+ ein und erhalte
+\begin_inset Formula 
+\[
+m_{1}\cdot\left(m_{2}\cdot\kappa\right)^{2}+m_{2}\cdot\left(-m_{2}\cdot\kappa\right)^{2}=m_{1}\cdot\left(-\frac{m_{2}}{m_{1}}\cdot w_{2}'\right)^{2}+m_{2}\cdot\left(w_{2}'\right)^{2}
+\]
+
+\end_inset
+
+Ich vereinfache die einzelnen Seiten.
+ Die linke Seite kann vereinfacht werden zu:
+\begin_inset Formula 
+\begin{align*}
+m_{1}\cdot\left(m_{2}\cdot\kappa\right)^{2}+m_{2}\cdot\left(-m_{2}\cdot\kappa\right)^{2} & =m_{1}\cdot m_{2}^{2}\cdot\kappa^{2}+m_{2}\cdot m_{1}^{2}\cdot\kappa^{2}\\
+ & =m_{1}\cdot m_{2}\cdot\kappa^{2}\cdot\left(m_{2}+m_{1}\right)\\
+ & =\left(m_{1}+m_{2}\right)\cdot m_{1}\cdot m_{2}\cdot\kappa^{2}
+\end{align*}
+
+\end_inset
+
+Die rechte Seite kann vereinfacht werden zu:
+\begin_inset Formula 
+\begin{align*}
+m_{1}\cdot\left(-\frac{m_{2}}{m_{1}}\cdot w_{2}'\right)^{2}+m_{2}\cdot\left(w_{2}'\right)^{2} & =m_{1}\cdot\frac{m_{2}^{2}}{m_{1}^{2}}\cdot w_{2}'+m_{2}\cdot w_{2}'^{2}\\
+ & =\frac{m_{2}^{2}}{m_{1}}\cdot w_{2}'^{2}+m_{2}\cdot w_{2}'{}^{2}\\
+ & =\frac{m_{2}^{2}}{m_{1}}\cdot w_{2}'^{2}+m_{2}\cdot w_{2}'{}^{2}\\
+ & =\left(\frac{m_{2}^{2}}{m_{1}}+m_{2}\right)\cdot w_{2}'{}^{2}\\
+ & =m_{2}\cdot\left(\frac{m_{2}+m_{1}}{m_{1}}\right)\cdot w_{2}'{}^{2}\\
+ & =m_{2}\cdot\left(\frac{m_{1}+m_{2}}{m_{1}}\right)\cdot w_{2}'{}^{2}
+\end{align*}
+
+\end_inset
+
+Also kann ich die einzelnen Seiten wieder zusammenfügen und erhalte:
+\begin_inset Formula 
+\[
+\left(m_{1}+m_{2}\right)\cdot m_{1}\cdot m_{2}\cdot\kappa^{2}=m_{2}\cdot\left(\frac{m_{1}+m_{2}}{m_{1}}\right)\cdot w_{2}'{}^{2}
+\]
+
+\end_inset
+
+Ich kann beide Seiten mit der positiven Grösse 
+\begin_inset Formula $\left(m_{1}+m_{2}\right)\cdot m_{2}$
+\end_inset
+
+ kürzen und erhalte:
+\begin_inset Formula 
+\[
+m_{1}\cdot\kappa^{2}=\frac{w_{2}'{}^{2}}{m_{1}}
+\]
+
+\end_inset
+
+Nun multipliziere ich beide Seiten mit der positiven Grösse 
+\begin_inset Formula $m_{1}$
+\end_inset
+
+ und erhalte:
+\begin_inset Formula 
+\[
+m_{1}^{2}\cdot\kappa^{2}=w_{2}'{}^{2}
+\]
+
+\end_inset
+
+Dann nehme ich auf beiden Seite die Wurzel (die Grössen sind positiv) und erhalte
+\begin_inset Formula 
+\[
+m_{1}\cdot\kappa=\pm w_{2}'
+\]
+
+\end_inset
+
+Mit 
+\begin_inset Formula $v_{2}'=-m_{1}\cdot\kappa$
+\end_inset
+
+ ist dann
+\begin_inset Formula 
+\[
+v_{2}'=\pm w_{2}'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+oder aber
+\begin_inset Formula 
+\[
+w_{2}'=\pm v_{2}'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mit
+\begin_inset Formula 
+\[
+w_{1}'=-\frac{m_{2}}{m_{1}}\cdot w_{2}'
+\]
+
+\end_inset
+
+ist dann (wenn ich 
+\begin_inset Formula 
+\[
+w_{2}'=\pm v_{2}'
+\]
+
+\end_inset
+
+ setze)
+\begin_inset Formula 
+\[
+w_{1}'=-\frac{m_{2}}{m_{1}}\cdot\left(\pm v_{2}'\right)=\pm\frac{m_{2}}{m_{1}}\cdot v_{2}'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ich betrachte noch einmal das Gleichungssytem
+\begin_inset Formula 
+\begin{align*}
+v_{1}' & =\phantom{-}m_{2}\cdot\kappa\\
+v_{2}' & =-m_{1}\cdot\kappa
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ich dividiere die zweite Gleichung durch die negative Grösse 
+\begin_inset Formula $-m_{1}$
+\end_inset
+
+ und erhalte die Gleichung
+\begin_inset Formula 
+\[
+\kappa=-\frac{v_{2}'}{m_{1}}
+\]
+
+\end_inset
+
+Diese Grösse setze ich in die obere Gliechung ein und erhalte dann die Gleichung
+\begin_inset Formula 
+\[
+v_{1}'=-\frac{m_{2}}{m_{1}}\cdot v_{2}'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also kann ich schreiben
+\begin_inset Formula 
+\[
+w_{1}'=\pm\frac{m_{2}}{m_{1}}\cdot v_{2}'=\pm v_{1}'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also habe ich die Lösungen
+\begin_inset Formula 
+\begin{align*}
+w_{1}' & =\pm v_{1}'\\
+w_{2}' & =\pm v_{2}'
+\end{align*}
+
+\end_inset
+
+Da ich annehme,
+ dass der Stoss tatsächlich stattgefunden hat,
+ schreibe ich 
+\begin_inset Formula 
+\begin{align*}
+w_{1}' & =-v_{1}'\\
+w_{2}' & =\phantom{-}v_{2}'
+\end{align*}
+
+\end_inset
+
+Nun kommt der mühsamste Teil (an dem ich gestern gescheitert bin):
+ Ich rechne die Geschwindigkeiten zurück in das ursprüngliche Koordinatensystem:
+ Dann erhalte ich
+\begin_inset Formula 
+\begin{align*}
+w_{1} & =v_{S}-v_{1}'\\
+w_{2} & =v_{S}+v_{2}'
+\end{align*}
+
+\end_inset
+
+Ich rechne das aus:
+\begin_inset Formula 
+\begin{align*}
+w_{1} & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}-\frac{m_{2}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)\\
+ & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}-\frac{m_{2}\cdot\left(v_{1}+v_{2}\right)}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}-m_{2}\cdot\left(v_{1}+v_{2}\right)}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}-m_{2}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{\left(m_{1}-m_{2}\right)\cdot v_{1}-2\cdot m_{2}\cdot v_{2}}{m_{1}+m_{2}}
+\end{align*}
+
+\end_inset
+
+Ebenso ist 
+\begin_inset Formula 
+\begin{align*}
+w_{2} & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}+\frac{m_{1}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)\\
+ & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}+\frac{m_{1}\cdot\left(v_{1}+v_{2}\right)}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}+m_{1}\cdot\left(v_{1}+v_{2}\right)}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}+m_{1}\cdot v_{1}+m_{1}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{2\cdot m_{1}\cdot v_{1}+\left(m_{1}-m_{2}\right)\cdot v_{2}}{m_{1}+m_{2}}
+\end{align*}
+
+\end_inset
+
+Also habe ich die Gleichungen
+\begin_inset Formula 
+\begin{align*}
+w_{1} & =\frac{\left(m_{1}-m_{2}\right)\cdot v_{1}-2\cdot m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+w_{2} & =\frac{\left(m_{1}-m_{2}\right)\cdot v_{2}+2\cdot m_{1}\cdot v_{1}}{m_{1}+m_{2}}
+\end{align*}
+
+\end_inset
+
+Diese Gleichungen stimmen darum,
+ weil ich 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+und 
+\begin_inset Formula $v_{2}$
+\end_inset
+
+ als positiv annehme.
+\end_layout
+
+\begin_layout Standard
+Ich berechne nun 
+\begin_inset Formula 
+\begin{align*}
+m_{1}\cdot w_{1}+m_{2}\cdot w_{2} & =\frac{m_{1}\cdot\left(m_{1}-m_{2}\right)\cdot v_{1}-2\cdot m_{1}\cdot m_{2}\cdot v_{2}}{m_{1}+m_{2}}+\\
+ & \phantom{=}\frac{m_{2}\cdot\left(m_{1}-m_{2}\right)\cdot v_{2}+2\cdot m_{1}\cdot m_{2}\cdot v_{1}}{m_{1}+m_{2}}\\
+ & =
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Zu Aufgabe Kapitel 7.
+ Aufgabe 39
+\end_layout
+
+\begin_layout Exercise
+Dies Aufgabe narrt mich richtiggehend.
+ Darum möchte ich sie hier aufschreiben.
+\end_layout
+
+\begin_layout Exercise
+Aufgabenstellung:
+ Ein Körper 
+\begin_inset Formula $K_{1}$
+\end_inset
+
+ der Masse 
+\begin_inset Formula $m_{1}$
+\end_inset
+
+ startet bei 
+\begin_inset Formula $-l$
+\end_inset
+
+ und der Geschwindigkeit 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+.
+ Ein zweiter Körper der Masse 
+\begin_inset Formula $m_{2}$
+\end_inset
+
+ startet bei 
+\begin_inset Formula $l$
+\end_inset
+
+ und der der Geschwindigkeit 
+\begin_inset Formula $-v_{2}$
+\end_inset
+
+.
+ Beide Geschwindigkeiten seien positiv oder Null,
+ jedoch nicht negativ.
+ Sie stossen total elastisch aufeinander (Totale Erhaltung der kinetischen Energie).
+ Dann ist die Preisfrage:
+ Wie gross sind die Geschwindigkeiten 
+\begin_inset Formula $w_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $w_{2}$
+\end_inset
+
+ der beiden Körper nach dem Stoss?
+\end_layout
+
+\begin_layout Exercise
+Anbei die Bewegungsgleichungen (
+\begin_inset Formula $t\in\mathbb{R}$
+\end_inset
+
+ sei die Bezeichnung der Zeit) der Körper vor dem Stoss:
+\begin_inset Formula 
+\begin{align*}
+x_{1} & =\phantom{-}v_{1}\cdot t-l\\
+x_{2} & =-v_{2}\cdot t+l=l-v_{2}\cdot t
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Formula $x_{1}$
+\end_inset
+
+sei die Bewegungsgleichung des ersten Körpers,
+ 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ diejenige des zweiten Körpers.
+\end_layout
+
+\begin_layout Standard
+Nun berechne ich die Bewegungsgleichung des Schwerpunkts:
+\begin_inset Formula 
+\begin{align*}
+x_{S} & \equiv\frac{m_{1}\cdot x_{1}+m_{2}\cdot x_{2}}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot\left(v_{1}\cdot t-l\right)+m_{2}\cdot\left(l-v_{2}\cdot t\right)}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot v_{1}\cdot t-m_{1}\cdot l+m_{2}\cdot l-m_{2}\cdot v_{2}\cdot t}{m_{1}+m_{2}}\\
+ & =\frac{\left(m_{1}\cdot v_{1}-m_{2}\cdot v_{2}\right)\cdot t+\left(m_{2}-m_{1}\right)\cdot l}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t+\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l
+\end{align*}
+
+\end_inset
+
+Also bewegt sich auch der Schwerpunkt gleichförmig mit der Geschwindigkeit:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+v_{s}=\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}
+\]
+
+\end_inset
+
+Er startet bei 
+\begin_inset Formula $t=0$
+\end_inset
+
+ an der Stelle:
+\begin_inset Formula 
+\[
+x_{S}\left(0\right)=\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nun möchte ich die Bewegungsgleichungen der beiden Körpern in das Bezugssystem des Schwerpunkts umrechnen.
+ Es gilt:
+\begin_inset Formula 
+\[
+x=x^{'}+x_{S}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+oder aber auch
+\begin_inset Formula 
+\[
+x'=x-x_{S}
+\]
+
+\end_inset
+
+Also ist 
+\begin_inset Formula $x'$
+\end_inset
+
+ die Koordinate im Bezugssystem des Schwerpunkts,
+ 
+\begin_inset Formula $x$
+\end_inset
+
+ die Koordinate im Ursprungssystems.
+ Es seien 
+\begin_inset Formula $x_{1}^{'}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $x_{2}^{'}$
+\end_inset
+
+ die Koordinaten der beiden Körper 
+\begin_inset Formula $K_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $K_{2}$
+\end_inset
+
+ im Bezugssystem des Schwerpunkts.
+ Dann ist 
+\begin_inset Formula 
+\begin{align*}
+x_{1}^{'} & =x-x_{S}\\
+ & =v_{1}\cdot t-l-\left(\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t+\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l\right)\\
+ & =v_{1}\cdot t-l-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t-\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l\\
+ & =v_{1}\cdot t-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t-\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l-l\\
+ & =v_{1}\cdot t-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t-\left(\frac{m_{2}-m_{1}}{m_{1}+m_{2}}+1\right)\cdot l\\
+ & =\left(v_{1}-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\right)\cdot t-\left(\frac{m_{2}-m_{1}}{m_{1}+m_{2}}+1\right)\cdot l
+\end{align*}
+
+\end_inset
+
+Nun berechne ich die Ausdrücke:
+ 
+\begin_inset Formula 
+\[
+v_{1}-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+\frac{m_{2}-m_{1}}{m_{1}+m_{2}}+1
+\]
+
+\end_inset
+
+separat:
+\begin_inset Formula 
+\begin{align*}
+v_{1}-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}} & =v_{1}\cdot\frac{m_{1}+m_{2}}{m_{1}+m_{2}}-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{v_{1}\cdot m_{1}+v_{1}\cdot m_{2}}{m_{1}+m_{2}}-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{v_{1}\cdot m_{1}+v_{1}\cdot m_{2}-\left(m_{1}\cdot v_{1}-m_{2}\cdot v_{2}\right)}{m_{1}+m_{2}}\\
+ & =\frac{v_{1}\cdot m_{1}+v_{1}\cdot m_{2}-m_{1}\cdot v_{1}+m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{v_{1}\cdot m_{2}+m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{m_{2}\cdot\left(v_{1}+v_{2}\right)}{m_{1}+m_{2}}\\
+ & =\frac{m_{2}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entsprechend ist:
+\begin_inset Formula 
+\begin{align*}
+\frac{m_{2}-m_{1}}{m_{1}+m_{2}}+1 & =\frac{m_{2}-m_{1}}{m_{1}+m_{2}}+\frac{m_{1}+m_{2}}{m_{1}+m_{2}}\\
+ & =\frac{m_{2}-m_{1}+m_{1}+m_{2}}{m_{1}+m_{2}}\\
+ & =\frac{2\cdot m_{2}}{m_{1}+m_{2}}
+\end{align*}
+
+\end_inset
+
+Somit ist 
+\begin_inset Formula 
+\[
+x'_{1}=\frac{m_{2}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)\cdot t-\frac{2\cdot m_{2}}{m_{1}+m_{2}}\cdot l
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nun berechne ich die relative Koordinate des Körpers 
+\begin_inset Formula $K_{2}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+x'_{2} & =x-x_{S}\\
+ & =l-v_{2}\cdot t-\left(\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t+\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l\right)\\
+ & =l-v_{2}\cdot t-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t-\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l\\
+ & =-v_{2}\cdot t-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t-\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l+l\\
+ & =-v_{2}\cdot t-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\cdot t+\left(-\frac{m_{2}-m_{1}}{m_{1}+m_{2}}+1\right)\cdot l\\
+ & =-\left(v_{2}+\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\right)\cdot t-\left(1-\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\right)\cdot l
+\end{align*}
+
+\end_inset
+
+Nun berechne ich die Ausdrücke :
+\begin_inset Formula 
+\[
+v_{2}+\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+1-\frac{m_{2}-m_{1}}{m_{1}+m_{2}}
+\]
+
+\end_inset
+
+separat:
+\begin_inset Formula 
+\begin{align*}
+v_{2}+\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}} & =v_{2}\cdot\frac{m_{1}+m_{2}}{m_{1}+m_{2}}+\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{v_{2}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}+\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{v_{2}\cdot m_{1}+v_{2}\cdot m_{2}+m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{v_{2}\cdot m_{1}+m_{1}\cdot v_{1}}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot\left(v_{1}+v_{2}\right)}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entsprechend ist:
+\begin_inset Formula 
+\begin{align*}
+1-\frac{m_{2}-m_{1}}{m_{1}+m_{2}} & =\frac{m_{1}+m_{2}}{m_{1}+m_{2}}+\frac{m_{2}-m_{2}}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}+m_{2}+m_{1}-m_{2}}{m_{1}+m_{2}}\\
+ & =\frac{2\cdot m_{1}}{m_{1}+m_{2}}
+\end{align*}
+
+\end_inset
+
+Somit ist 
+\begin_inset Formula 
+\[
+x'_{1}=-\frac{m_{1}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)\cdot t-\frac{2\cdot m_{2}}{m_{1}+m_{2}}\cdot l
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So,
+ jetzt kann ich endlich die Rechnung im Schwerpunktsystem durchführen.
+ Da sich dieses System ebenfalls gleichförmig bewegt,
+ gelten ebenfalls die kinetische Energieerhaltung und die Impulserhaltung.
+ Der Impulserhaltungssatz besagt.
+ Die Geschwindigkeiten der beiden Körper betragen:
+\begin_inset Formula 
+\begin{align*}
+v_{1}' & =\phantom{-}\frac{m_{2}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)\\
+v_{2}' & =-\frac{m_{1}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)
+\end{align*}
+
+\end_inset
+
+Ich führe noch die Abkürzung
+\begin_inset Formula 
+\[
+\kappa\equiv\frac{v_{1}+v_{2}}{m_{1}+m_{2}}
+\]
+
+\end_inset
+
+ein und erhalte dann:
+\begin_inset Formula 
+\begin{align*}
+v_{1}' & =\phantom{-}m_{2}\cdot\kappa\\
+v_{2}' & =-m_{1}\cdot\kappa
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nun seien 
+\begin_inset Formula $w_{1}'$
+\end_inset
+
+ sowie 
+\begin_inset Formula $w_{2}'$
+\end_inset
+
+ die Geschwindigkeiten der beiden Körper 
+\begin_inset Formula $K_{1}$
+\end_inset
+
+sowie 
+\begin_inset Formula $K_{2}$
+\end_inset
+
+ nach dem elastischen Stoss.
+ Dann besagt der Impulserhaltungssatz:
+\begin_inset Formula 
+\[
+m_{1}\cdot v_{1}'+m_{2}\cdot v_{2}'=m_{1}\cdot w_{1}'+m_{2}\cdot w_{2}'
+\]
+
+\end_inset
+
+Nun ist jedoch 
+\begin_inset Formula 
+\begin{align*}
+m_{1}\cdot v_{1}'+m_{2}\cdot v_{2}' & =m_{1}\cdot m_{2}\cdot\kappa+m_{2}\cdot\left(-m_{1}\cdot\kappa\right)\\
+ & =m_{1}\cdot m_{2}\cdot\kappa-m_{1}\cdot m_{2}\cdot\kappa\\
+ & =0
+\end{align*}
+
+\end_inset
+
+Also ist auch
+\begin_inset Formula 
+\[
+0=m_{1}\cdot w_{1}'+m_{2}\cdot w_{2}'
+\]
+
+\end_inset
+
+oder aber
+\begin_inset Formula 
+\[
+-m_{1}\cdot w_{1}'=m_{2}\cdot w_{2}'
+\]
+
+\end_inset
+
+Da 
+\begin_inset Formula $m_{1}>0$
+\end_inset
+
+ ist kann ich auch schreiben
+\begin_inset Formula 
+\[
+w_{1}'=-\frac{m_{2}}{m_{1}}\cdot w_{2}'
+\]
+
+\end_inset
+
+Nun ziehe ich den Energieerhaltungssatz heran:
+\begin_inset Formula 
+\[
+\frac{1}{2}\cdot m_{1}\cdot\left(v_{1}'\right)^{2}+\frac{1}{2}\cdot m_{2}\cdot\left(v_{2}'\right)^{2}=\frac{1}{2}\cdot m_{1}\cdot\left(w_{1}'\right)^{2}+\frac{1}{2}\cdot m_{2}\cdot\left(w_{2}'\right)^{2}
+\]
+
+\end_inset
+
+Ich multipliziere die Gleichung mit 
+\begin_inset Formula $2$
+\end_inset
+
+ und erhalte die Gleichung
+\begin_inset Formula 
+\[
+m_{1}\cdot\left(v_{1}'\right)^{2}+m_{2}\cdot\left(v_{2}'\right)^{2}=m_{1}\cdot\left(w_{1}'\right)^{2}+m_{2}\cdot\left(w_{2}'\right)^{2}
+\]
+
+\end_inset
+
+Dann setze ich die Ausdrücke für 
+\begin_inset Formula $v_{1}',v_{2}',w_{1}'$
+\end_inset
+
+ sowie 
+\begin_inset Formula $w_{2}'$
+\end_inset
+
+ ein und erhalte
+\begin_inset Formula 
+\[
+m_{1}\cdot\left(m_{2}\cdot\kappa\right)^{2}+m_{2}\cdot\left(-m_{2}\cdot\kappa\right)^{2}=m_{1}\cdot\left(-\frac{m_{2}}{m_{1}}\cdot w_{2}'\right)^{2}+m_{2}\cdot\left(w_{2}'\right)^{2}
+\]
+
+\end_inset
+
+Ich vereinfache die einzelnen Seiten.
+ Die linke Seite kann vereinfacht werden zu:
+\begin_inset Formula 
+\begin{align*}
+m_{1}\cdot\left(m_{2}\cdot\kappa\right)^{2}+m_{2}\cdot\left(-m_{2}\cdot\kappa\right)^{2} & =m_{1}\cdot m_{2}^{2}\cdot\kappa^{2}+m_{2}\cdot m_{1}^{2}\cdot\kappa^{2}\\
+ & =m_{1}\cdot m_{2}\cdot\kappa^{2}\cdot\left(m_{2}+m_{1}\right)\\
+ & =\left(m_{1}+m_{2}\right)\cdot m_{1}\cdot m_{2}\cdot\kappa^{2}
+\end{align*}
+
+\end_inset
+
+Die rechte Seite kann vereinfacht werden zu:
+\begin_inset Formula 
+\begin{align*}
+m_{1}\cdot\left(-\frac{m_{2}}{m_{1}}\cdot w_{2}'\right)^{2}+m_{2}\cdot\left(w_{2}'\right)^{2} & =m_{1}\cdot\frac{m_{2}^{2}}{m_{1}^{2}}\cdot w_{2}'+m_{2}\cdot w_{2}'^{2}\\
+ & =\frac{m_{2}^{2}}{m_{1}}\cdot w_{2}'^{2}+m_{2}\cdot w_{2}'{}^{2}\\
+ & =\frac{m_{2}^{2}}{m_{1}}\cdot w_{2}'^{2}+m_{2}\cdot w_{2}'{}^{2}\\
+ & =\left(\frac{m_{2}^{2}}{m_{1}}+m_{2}\right)\cdot w_{2}'{}^{2}\\
+ & =m_{2}\cdot\left(\frac{m_{2}+m_{1}}{m_{1}}\right)\cdot w_{2}'{}^{2}\\
+ & =m_{2}\cdot\left(\frac{m_{1}+m_{2}}{m_{1}}\right)\cdot w_{2}'{}^{2}
+\end{align*}
+
+\end_inset
+
+Also kann ich die einzelnen Seiten wieder zusammenfügen und erhalte:
+\begin_inset Formula 
+\[
+\left(m_{1}+m_{2}\right)\cdot m_{1}\cdot m_{2}\cdot\kappa^{2}=m_{2}\cdot\left(\frac{m_{1}+m_{2}}{m_{1}}\right)\cdot w_{2}'{}^{2}
+\]
+
+\end_inset
+
+Ich kann beide Seiten mit der positiven Grösse 
+\begin_inset Formula $\left(m_{1}+m_{2}\right)\cdot m_{2}$
+\end_inset
+
+ kürzen und erhalte:
+\begin_inset Formula 
+\[
+m_{1}\cdot\kappa^{2}=\frac{w_{2}'{}^{2}}{m_{1}}
+\]
+
+\end_inset
+
+Nun multipliziere ich beide Seiten mit der positiven Grösse 
+\begin_inset Formula $m_{1}$
+\end_inset
+
+ und erhalte:
+\begin_inset Formula 
+\[
+m_{1}^{2}\cdot\kappa^{2}=w_{2}'{}^{2}
+\]
+
+\end_inset
+
+Dann nehme ich auf beiden Seite die Wurzel (die Grössen sind positiv) und erhalte
+\begin_inset Formula 
+\[
+m_{1}\cdot\kappa=\pm w_{2}'
+\]
+
+\end_inset
+
+Mit 
+\begin_inset Formula $v_{2}'=-m_{1}\cdot\kappa$
+\end_inset
+
+ ist dann
+\begin_inset Formula 
+\[
+v_{2}'=\pm w_{2}'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+oder aber
+\begin_inset Formula 
+\[
+w_{2}'=\pm v_{2}'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mit
+\begin_inset Formula 
+\[
+w_{1}'=-\frac{m_{2}}{m_{1}}\cdot w_{2}'
+\]
+
+\end_inset
+
+ist dann (wenn ich 
+\begin_inset Formula 
+\[
+w_{2}'=\pm v_{2}'
+\]
+
+\end_inset
+
+ setze)
+\begin_inset Formula 
+\[
+w_{1}'=-\frac{m_{2}}{m_{1}}\cdot\left(\pm v_{2}'\right)=\pm\frac{m_{2}}{m_{1}}\cdot v_{2}'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ich betrachte noch einmal das Gleichungssytem
+\begin_inset Formula 
+\begin{align*}
+v_{1}' & =\phantom{-}m_{2}\cdot\kappa\\
+v_{2}' & =-m_{1}\cdot\kappa
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ich dividiere die zweite Gleichung durch die negative Grösse 
+\begin_inset Formula $-m_{1}$
+\end_inset
+
+ und erhalte die Gleichung
+\begin_inset Formula 
+\[
+\kappa=-\frac{v_{2}'}{m_{1}}
+\]
+
+\end_inset
+
+Diese Grösse setze ich in die obere Gliechung ein und erhalte dann die Gleichung
+\begin_inset Formula 
+\[
+v_{1}'=-\frac{m_{2}}{m_{1}}\cdot v_{2}'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also kann ich schreiben
+\begin_inset Formula 
+\[
+w_{1}'=\pm\frac{m_{2}}{m_{1}}\cdot v_{2}'=\pm v_{1}'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also habe ich die Lösungen
+\begin_inset Formula 
+\begin{align*}
+w_{1}' & =\pm v_{1}'\\
+w_{2}' & =\pm v_{2}'
+\end{align*}
+
+\end_inset
+
+Da ich annehme,
+ dass der Stoss tatsächlich stattgefunden hat,
+ schreibe ich 
+\begin_inset Formula 
+\begin{align*}
+w_{1}' & =-v_{1}'\\
+w_{2}' & =\phantom{-}v_{2}'
+\end{align*}
+
+\end_inset
+
+Nun kommt der mühsamste Teil (an dem ich gestern gescheitert bin):
+ Ich rechne die Geschwindigkeiten zurück in das ursprüngliche Koordinatensystem:
+ Dann erhalte ich
+\begin_inset Formula 
+\begin{align*}
+w_{1} & =v_{S}-v_{1}'\\
+w_{2} & =v_{S}+v_{2}'
+\end{align*}
+
+\end_inset
+
+Ich rechne das aus:
+\begin_inset Formula 
+\begin{align*}
+w_{1} & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}-\frac{m_{2}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)\\
+ & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}-\frac{m_{2}\cdot\left(v_{1}+v_{2}\right)}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}-m_{2}\cdot\left(v_{1}+v_{2}\right)}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}-m_{2}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{\left(m_{1}-m_{2}\right)\cdot v_{1}-2\cdot m_{2}\cdot v_{2}}{m_{1}+m_{2}}
+\end{align*}
+
+\end_inset
+
+Ebenso ist 
+\begin_inset Formula 
+\begin{align*}
+w_{2} & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}+\frac{m_{1}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)\\
+ & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}+\frac{m_{1}\cdot\left(v_{1}+v_{2}\right)}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}+m_{1}\cdot\left(v_{1}+v_{2}\right)}{m_{1}+m_{2}}\\
+ & =\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}+m_{1}\cdot v_{1}+m_{1}\cdot v_{2}}{m_{1}+m_{2}}\\
+ & =\frac{2\cdot m_{1}\cdot v_{1}+\left(m_{1}-m_{2}\right)\cdot v_{2}}{m_{1}+m_{2}}
+\end{align*}
+
+\end_inset
+
+Also habe ich die Gleichungen
+\begin_inset Formula 
+\begin{align*}
+w_{1} & =\frac{\left(m_{1}-m_{2}\right)\cdot v_{1}-2\cdot m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+w_{2} & =\frac{\left(m_{1}-m_{2}\right)\cdot v_{2}+2\cdot m_{1}\cdot v_{1}}{m_{1}+m_{2}}
+\end{align*}
+
+\end_inset
+
+Diese Gleichungen stimmen darum,
+ weil ich 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+und 
+\begin_inset Formula $v_{2}$
+\end_inset
+
+ als positiv annehme.
+\end_layout
+
+\begin_layout Standard
+Ich berechne nun 
+\begin_inset Formula 
+\begin{align*}
+m_{1}\cdot w_{1}+m_{2}\cdot w_{2} & =\frac{m_{1}\cdot\left(m_{1}-m_{2}\right)\cdot v_{1}-2\cdot m_{1}\cdot m_{2}\cdot v_{2}}{m_{1}+m_{2}}+\\
+ & \phantom{=}\frac{m_{2}\cdot\left(m_{1}-m_{2}\right)\cdot v_{2}+2\cdot m_{1}\cdot m_{2}\cdot v_{1}}{m_{1}+m_{2}}\\
+ & =
+\end{align*}
 
 \end_inset
 

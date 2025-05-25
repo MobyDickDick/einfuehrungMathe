@@ -14743,7 +14743,7 @@ TODO:
 
 \begin_inset Formula 
 \[
-E_{n\left(2\right)}\equiv\bigcup_{k=1}^{n_{2}}\left\{ k\cdot A\right\} =\bigcup_{k=1}^{n_{1}}\left\{ k\cdot A\right\} \cup\bigcup_{k=n_{1}+1}^{n_{2}}\left\{ k\cdot A\right\} 
+E_{n}\equiv\bigcup_{k=1}^{n_{2}}\left\{ k\cdot A\right\} =\bigcup_{k=1}^{n_{1}}\left\{ k\cdot A\right\} \cup\bigcup_{k=n_{1}+1}^{n_{2}}\left\{ k\cdot A\right\} 
 \]
 
 \end_inset
@@ -14776,115 +14776,12 @@ E_{r}=\bigcup_{k=n_{1}+1}^{n_{2}}\left\{ k\cdot A\right\}
 
 \begin_inset Formula 
 \[
-E_{n\left(2\right)}=E_{n\left(1\right)}\cup E_{r}
+E_{2}=E_{1}\cup E_{r}
 \]
 
 \end_inset
 
-Also folgt daraus gemäss dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Implikation-Teilmenge-aus-Mengengleichheit"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-,
- dass 
-\begin_inset Formula 
-\[
-E_{n\left(1\right)}\cup E_{r}\subset E_{n\left(2\right)}
-\]
-
-\end_inset
-
-ist.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Füge die Verweise ein
-\end_layout
-
-\end_inset
-
- Mit 
-\begin_inset Formula 
-\[
-E_{n\left(1\right)}\subset E_{n\left(1\right)}\cup E_{r}
-\]
-
-\end_inset
-
- und 
-\begin_inset Formula 
-\[
-E_{n\left(1\right)}\cup E_{r}\subset E_{n\left(2\right)}
-\]
-
-\end_inset
-
- ist gemäss dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Transitivitaet-von-Mengeninklusionen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- über die Transitivität der Mengeninklusion ebenfalls 
-\begin_inset Formula 
-\[
-E_{n\left(1\right)}\subset E_{n\left(2\right)}
-\]
-
-\end_inset
-
-Damit hätte ich (ohne Verweise) die Behauptung für 
-\begin_inset Formula $n_{1}<n_{2}$
-\end_inset
-
- bewiesen.
- Ist jedoch 
-\begin_inset Formula $n_{1}>n_{1}$
-\end_inset
-
-,
- dann kann ich setzen
-\begin_inset Formula 
-\begin{align*}
-n_{1}^{'} & \equiv n_{2}\\
-n_{2}^{'} & \equiv n_{1}
-\end{align*}
-
-\end_inset
-
-Also kann ich nach dem eben Bewiesen schlussfolgern,
- dsas
-\begin_inset Formula 
-\[
-E_{n^{'}\left(1\right)}\subset E_{n'\left(2\right)}
-\]
-
-\end_inset
-
- und darum eben auch 
-\begin_inset Formula 
-\[
-E_{n\left(2\right)}\subset E_{n\left(1\right)}
-\]
-
-\end_inset
-
-gilt.
- Also meine ich,
- den Beweis für die Richtigkeit dieses Satzes für alle möglichen Fälle erbracht zu haben und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+Also folg 
 \end_layout
 
 \begin_layout Proposition

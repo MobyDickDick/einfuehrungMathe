@@ -1677,7 +1677,7 @@ nolink "false"
  weil keine Menge ein Element enthält.
 \end_layout
 
-\begin_layout Proposition
+\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "prop:Identivitaet-Mengengleichheit"
@@ -2620,7 +2620,7 @@ Nun bleibt mir noch zu zeigen,
 \begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
-name "lem:Tranisitiviaet-Mengengleichheit-nichtleere-Mengen"
+name "lem:Transitiviaet-Mengengleichheit-nichtleere-Mengen"
 
 \end_inset
 
@@ -3001,7 +3001,7 @@ Nun möchte ich mir denjenigen Fall überlegen,
 \begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
-name "lem:Tranisitiviaet-Mengengleichheit-leere-Mengen"
+name "lem:Transitiviaet-Mengengleichheit-leere-Mengen"
 
 \end_inset
 
@@ -3535,7 +3535,7 @@ Ist die Menge
  dann ist der Beweis im Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Tranisitiviaet-Mengengleichheit-nichtleere-Mengen"
+reference "lem:Transitiviaet-Mengengleichheit-nichtleere-Mengen"
 plural "false"
 caps "false"
 noprefix "false"
@@ -3552,7 +3552,7 @@ nolink "false"
  dann ist der Beweis im Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Tranisitiviaet-Mengengleichheit-leere-Mengen"
+reference "lem:Transitiviaet-Mengengleichheit-leere-Mengen"
 plural "false"
 caps "false"
 noprefix "false"
@@ -15523,6 +15523,157 @@ B\backslash A=B\backslash C
 Damit habe ich auch die letzte Behauptung und somit alle sechs Behauptungen bewiesen und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
 \end_layout
 
+\begin_layout Standard
+Ich möchte nun noch einmal eines Lemma formulieren und beweisen:
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Implikation-Teilmenge-aus-Mengengleichheit"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $A$
+\end_inset
+
+ sowie 
+\begin_inset Formula $B$
+\end_inset
+
+ Symbole von Mengen,
+ welche sowohl in Bezug auf sich selbst wie auch in Bezug auf die anderen Symbole dieses Lemmas widerspruchsfrei seien.
+ Dann gilt
+\begin_inset Formula 
+\[
+A=B\Rightarrow A\subset B
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Es ist definiert
+\begin_inset Formula 
+\[
+A=B\Leftrightarrow A\subset B\wedge B\subset A
+\]
+
+\end_inset
+
+Das gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Implikation-Implikation-aus-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ aus der Äquivalenz die Implikation folgt,
+ kann ich daraus schliessen,
+ dass auch gilt
+\begin_inset Formula 
+\[
+A=B\Rightarrow A\subset B\wedge B\subset A
+\]
+
+\end_inset
+
+Da nun gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Implikation-Aussage-aus-Konjunktion-erstes-Argument"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ aus der Konjunktion die erste Aussage folgt,
+ kann ich schliessen,
+ dass gilt
+\begin_inset Formula 
+\[
+A\subset B\wedge B\subset A\Rightarrow A\subset B
+\]
+
+\end_inset
+
+Und da schlussendlich gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Implikation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ die Implikation transitiv ist,
+ kann ich auch schliessen,
+ dass gilt
+\begin_inset Formula 
+\[
+A=B\Rightarrow A\subset B
+\]
+
+\end_inset
+
+Da ich genau diese Aussage beweisen wollte,
+ bin ich der Meinung,
+ dass ich den Beweis der Richtigkeit der Behauptung erbracht habe und beende dementsprechend an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Standard
+Ich möchte gleich noch einen Hilfssatz anfügen:
+\end_layout
+
+\begin_layout Lemma
+Es seien 
+\begin_inset Formula $A$
+\end_inset
+
+ und 
+\begin_inset Formula $B$
+\end_inset
+
+ Symbole von Mengen,
+ welche in sich selbst und in Bezug auf die anderen Symbole des Lemmas widerspruchsfrei seien.
+ Dann gilt
+\begin_inset Formula 
+\begin{align*}
+A & \subset A\cup B\\
+B & \subset A\cup B\\
+A\cap B & \subset A\\
+A\cap B & \subset B
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Zuerst möchte ich den Fall untersuchen,
+ in welchem sowohl die Menge 
+\begin_inset Formula $A$
+\end_inset
+
+ als auch 
+\begin_inset Formula $B$
+\end_inset
+
+ nicht leer seien.
+\end_layout
+
 \begin_layout Chapter
 Was sind Quantoren?
 \begin_inset CommandInset label
@@ -25213,7 +25364,7 @@ m_{1}=g\left(n\right)\wedge g\left(n\right)=m_{2}
 Da nun die Gleichheit der Elemente von Mengen gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Tranisitiviaet-Mengengleichheit-leere-Mengen"
+reference "lem:Transitiviaet-Mengengleichheit-leere-Mengen"
 plural "false"
 caps "false"
 noprefix "false"
@@ -33305,6 +33456,7 @@ Und eine letzte Bemerkung:
  aber kann an dieser Stelle weder formuliert werden.
  Ich denke,
  ich kann den Beweis nicht erbringen.
+ Aber das Nachdenken darüber war schon interessant.
 \end_layout
 
 \end_body

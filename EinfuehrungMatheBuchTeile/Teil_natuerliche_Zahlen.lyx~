@@ -14200,7 +14200,8 @@ n_{1}<n_{2}
 
 \end_inset
 
-Dann wäre 
+Dann muss gelten:
+ 
 \begin_inset Formula 
 \[
 n_{2}\cdot A\notin E_{n\left(1\right)}
@@ -14208,6 +14209,179 @@ n_{2}\cdot A\notin E_{n\left(1\right)}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Proof
+Denn da 
+\begin_inset Formula 
+\[
+n_{1}<n_{2}
+\]
+
+\end_inset
+
+ ist,
+ kann gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:totale-Ordnung-Symbolketten-gleicher-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ nicht gelten,
+ dass die Zahlen 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $n_{2}$
+\end_inset
+
+ sind.
+ Gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:natuerliche-Zahlen-eigene-Definition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kann dann auch nicht gelten,
+ dass die Zeichenketten 
+\begin_inset Formula $n_{1}\cdot A$
+\end_inset
+
+ und 
+\begin_inset Formula $n_{2}\cdot A$
+\end_inset
+
+ gleich sind.
+ Ist jedoch 
+\begin_inset Formula 
+\[
+B\in E_{n\left(1\right)}
+\]
+
+\end_inset
+
+ und 
+\begin_inset Formula 
+\[
+B\neq n_{1}\cdot A
+\]
+
+\end_inset
+
+ dann muss gelten
+\begin_inset Formula 
+\[
+B<n_{1}\cdot A
+\]
+
+\end_inset
+
+Da die kleiner-als Relation von Zeichenketten gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:kleiner-als-Symbolvergleich-ist-transitiv"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ebenfalls transitiv ist,
+ muss mit
+\begin_inset Formula 
+\[
+n_{1}<n_{2}
+\]
+
+\end_inset
+
+und somit auch
+\begin_inset Formula 
+\[
+n_{1}\cdot A<n_{2}\cdot A
+\]
+
+\end_inset
+
+auch
+\begin_inset Formula 
+\[
+B<n_{2}\cdot A
+\]
+
+\end_inset
+
+sein.
+ Also kann auch gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:totale-Ordnung-Symbolketten-gleicher-Symbole"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ auch nicht 
+\begin_inset Formula 
+\[
+B=n_{2}\cdot A
+\]
+
+\end_inset
+
+ sein.
+ Also kann 
+\begin_inset Formula $n_{2}\cdot A$
+\end_inset
+
+ nicht in der Menge 
+\begin_inset Formula $E_{n\left(1\right)}$
+\end_inset
+
+ enthalten sein.
+ Ist jedoch 
+\begin_inset Formula $n_{1}>n_{2}$
+\end_inset
+
+,
+ dann kann ich die Rollen von 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $n_{2}$
+\end_inset
+
+vertauschen und genau die gleiche Überlegung durchführen.
+ Also habe ich den Beweis erbracht,
+ dass tatsächlich folgen muss,
+ dass gilt
+\begin_inset Formula 
+\[
+E_{n\left(1\right)}=E_{n\left(2\right)}\Rightarrow n_{1}=n_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
 Damit hätte ich die eine Hälfte des Beweises erbracht.
  
 \end_layout
@@ -14461,59 +14635,107 @@ E_{n\left(1\right)}\subset E_{n\left(2\right)}\vee E_{n\left(2\right)}\subset E_
 \end_layout
 
 \begin_layout Proof
-Ich habe im Satz 
+Ich habe im Korollar 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:kleiner-gleich-natuerliche-Zahlen-ist-total"
+reference "cor:natuerliche-Zahlen-kleiner-gleich-groesser-Totalitaet"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
 
  zu zeigen versucht,
- dass auf jeden Fall gelten muss,
- das
+ dass auf jeden Fall gelten muss
 \begin_inset Formula 
 \[
-n_{1}\leq n_{2}\vee n_{2}\leq n_{1}
+n_{1}<n_{2}\vee n_{1}=n_{2}\vee n_{1}>n_{2}
 \]
 
 \end_inset
 
 gelten muss.
- Es sei nun 
-\begin_inset Formula $n_{1}\leq n_{2}$
+ Ist 
+\begin_inset Formula $n_{1}=n_{2}$
 \end_inset
 
-.
- Nun definiere ich die Menge 
-\begin_inset Formula $T$
+ ,
+ dann muss gemäss der Identität der Mengengleichheit 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Identivitaet-Mengengleichheit"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
 \end_inset
 
- wie folgt:
+ von Mengen auch 
 \begin_inset Formula 
 \[
-T=\left\{ k\in\mathbb{N}|k>n_{1}\wedge k\leq n_{2}\right\} 
+E_{n\left(1\right)}=E_{n\left(2\right)}
 \]
 
 \end_inset
 
-Ist 
-\begin_inset Formula $n_{1}=n_{2}$
+ und somit auch gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Implikation-Teilmenge-aus-Mengengleichheit"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
 \end_inset
 
-,
- dann ist die Menge 
-\begin_inset Formula $T$
+
+\begin_inset Formula 
+\[
+E_{n\left(1\right)}\subset E_{n\left(2\right)}
+\]
+
 \end_inset
 
- leer.
- Ansonsten ist sie nicht leer.
- Es gilt jedoch auf jeden Fall
+gelten.
+ Nun sei 
+\begin_inset Formula $n_{1}<n_{2}$
+\end_inset
+
+.
+ Also muss es gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:natuerliche-Zahlen-eigene-Definition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ eine natürlich Zahl 
+\begin_inset Formula $n_{3}\in\mathbb{N}$
+\end_inset
+
+ derart geben,
+ dass gilt
+\begin_inset Formula 
+\[
+n_{1}+n_{3}=n_{2}
+\]
+
+\end_inset
+
+Also muss gelten
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Zeige dies gelegentlich
+TODO:
+ Das musst Du später noch einmal begründen.
 \end_layout
 
 \end_inset
@@ -14521,36 +14743,137 @@ Zeige dies gelegentlich
 
 \begin_inset Formula 
 \[
-\left\{ k\in\mathbb{N}\bigm|k\leq n_{2}\right\} =\left\{ k\in\mathbb{N}\bigm|k\leq n_{1}\right\} \vee\left\{ k\in\mathbb{N}\bigm|k>n_{1}\wedge k\leq n_{2}\right\} 
+E_{n\left(2\right)}\equiv\bigcup_{k=1}^{n_{2}}\left\{ k\cdot A\right\} =\bigcup_{k=1}^{n_{1}}\left\{ k\cdot A\right\} \cup\bigcup_{k=n_{1}+1}^{n_{2}}\left\{ k\cdot A\right\} 
 \]
 
 \end_inset
 
-Dann kann ich schreiben
+Nun ist jedoch
 \begin_inset Formula 
 \[
-E_{n\left(2\right)}=\bigcup_{k=1}^{n_{2}}\left\{ k\cdot A\right\} =\bigcup_{k=1}^{n_{1}}\left\{ k\cdot A\right\} \cup\bigcup_{k\in T}\left\{ k\cdot A\right\} 
+\bigcup_{k=1}^{n_{1}}\left\{ k\cdot A\right\} =E_{n\left(1\right)}
 \]
 
 \end_inset
 
-Wiederum gilt die Bemerkung,
- dass gilt,
- dass
+Somit gilt mit einer bestimmten Menge,
+ welche ich ein wenig 
+\begin_inset Quotes gld
+\end_inset
+
+Restmenge
+\begin_inset Quotes grd
+\end_inset
+
+ nenne und für welche gilt:
 \begin_inset Formula 
 \[
-\bigcup_{k\in T}\left\{ k\cdot A\right\} =\textrm{Ø}
+E_{r}=\bigcup_{k=n_{1}+1}^{n_{2}}\left\{ k\cdot A\right\} 
 \]
 
 \end_inset
 
-ist,
- falls 
-\begin_inset Formula $n_{1}=n_{2}$
+
+\begin_inset Formula 
+\[
+E_{n\left(2\right)}=E_{n\left(1\right)}\cup E_{r}
+\]
+
 \end_inset
 
- ist.
- 
+Also folgt daraus gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Implikation-Teilmenge-aus-Mengengleichheit"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ dass 
+\begin_inset Formula 
+\[
+E_{n\left(1\right)}\cup E_{r}\subset E_{n\left(2\right)}
+\]
+
+\end_inset
+
+ist.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Füge die Verweise ein
+\end_layout
+
+\end_inset
+
+ Mit 
+\begin_inset Formula 
+\[
+E_{n\left(1\right)}\subset E_{n\left(1\right)}\cup E_{r}
+\]
+
+\end_inset
+
+ und 
+\begin_inset Formula 
+\[
+E_{n\left(1\right)}\cup E_{r}\subset E_{n\left(2\right)}
+\]
+
+\end_inset
+
+ ist ebenfalls 
+\begin_inset Formula 
+\[
+E_{n\left(1\right)}\subset E_{n\left(2\right)}
+\]
+
+\end_inset
+
+Damit hätte ich (ohne Verweise) die Behauptung für 
+\begin_inset Formula $n_{1}<n_{2}$
+\end_inset
+
+ bewiesen.
+ Ist jedoch 
+\begin_inset Formula $n_{1}>n_{1}$
+\end_inset
+
+,
+ dann kann ich setzen
+\begin_inset Formula 
+\begin{align*}
+n_{1}^{'} & \equiv n_{2}\\
+n_{2}^{'} & \equiv n_{1}
+\end{align*}
+
+\end_inset
+
+Also kann ich nach dem eben Bewiesen schlussfolgern,
+ dsas
+\begin_inset Formula 
+\[
+E_{n^{'}\left(1\right)}\subset E_{n'\left(2\right)}
+\]
+
+\end_inset
+
+ und darum eben auch 
+\begin_inset Formula 
+\[
+E_{n\left(2\right)}\subset E_{n\left(1\right)}
+\]
+
+\end_inset
+
+gilt.
+ Also meine ich,
+ den Beweis für die Richtigkeit dieses Satzes für alle möglichen Fälle erbracht zu haben und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Proposition
