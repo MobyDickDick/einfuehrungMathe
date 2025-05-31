@@ -3067,11 +3067,132 @@ w_{2}
 \begin_layout Standard
 Dann ist
 \begin_inset Formula 
-\[
-\mathbf{w}=\left(\begin{array}{cc}
+\begin{align*}
+ & \mathbf{w}\\
+= & \frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
 m_{1}-m_{2} & 2\cdot m_{2}\\
 2\cdot m_{1} & m_{2}-m_{1}
+\end{array}\right)\mathbf{v}\\
+= & \frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
++\left(m_{1}-m_{2}\right) & 2\cdot m_{2}\\
+2\cdot m_{1} & -\left(m_{1}-m_{2}\right)
 \end{array}\right)\mathbf{v}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dann kann ich das so schreiben
+\begin_inset Formula 
+\begin{align*}
+ & \mathbf{w}\\
+= & \left(2\cdot\frac{1}{m_{1}+m_{2}}\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)\left(\begin{array}{cc}
+m_{1} & m_{2}\end{array}\right)-\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)\right)\mathbf{v}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wenn ich jetzt (endlich) das Zahlenbeispiel einfüge,
+ dann habe ich
+\begin_inset Formula 
+\begin{align*}
+m_{1} & =15\,\text{t}\\
+m_{2} & =1.5\,\text{t}\\
+v_{1} & =100\,\text{km/h}\\
+v_{2} & =-100\,\text{km/h}
+\end{align*}
+
+\end_inset
+
+Dann ergibt sich
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+w_{1} & =\boldsymbol{\frac{\left(m_{1}-m_{2}\right)\cdot v_{1}+2\cdot m_{2}\cdot v_{2}}{m_{1}+m_{2}}}\\
+ & =\frac{\left(15-1.5\right)\cdot100+2\cdot1.5\cdot(-100)}{15+1.5}\,\text{km/h}\\
+ & =63\,\text{km/h}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+w_{2} & =\boldsymbol{\frac{\left(m_{2}-m_{1}\right)\cdot v_{2}+2\cdot m_{1}\cdot v_{1}}{m_{1}+m_{2}}}\\
+ & =\frac{\left(1.5-15\right)\cdot\left(-100\right)+2\cdot15\cdot100}{15+1.5}\,\text{km/h}\\
+ & =263\,\text{km/h}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Irgendwie will Orear nicht das gleiche angeben.
+ Darum möchte ich weiter überlegen,
+ ob das stimmen kann.
+ Die Aufgabe hat eine spezielle Form
+\begin_inset Formula 
+\begin{align*}
+v_{1} & =-v_{2}\\
+m_{1} & =c\cdot m_{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dann lautet die Formel
+\begin_inset Formula 
+\begin{align*}
+w_{1} & =\frac{-\left(c\cdot m_{2}-m_{2}\right)\cdot v_{2}+2\cdot m_{2}\cdot v_{2}}{c\cdot m_{2}+m_{2}}\\
+ & =\frac{\left(-\left(c-1\right)+2\right)\cdot m_{2}\cdot v_{2}}{\left(c+1\right)\cdot m_{2}}\\
+ & =\frac{3-c}{c+1}\cdot v_{2}\\
+w_{2} & =\frac{\left(\left(1-c\right)-2\cdot c\right)\cdot m_{2}\cdot v_{2}}{\left(c+1\right)\cdot m_{2}}\\
+ & =\frac{1-3\cdot c}{c+1}v_{2}
+\end{align*}
+
+\end_inset
+
+Dann interessiert mich das Verhältnis
+\begin_inset Formula 
+\begin{align*}
+\frac{w_{2}}{w_{1}} & =\frac{1-3\cdot c}{c+1}\cdot v_{2}\cdot\frac{c+1}{3-c}\cdot\frac{1}{v_{2}}\\
+ & =\frac{1-3\cdot c}{3-c}
+\end{align*}
+
+\end_inset
+
+Wenn also 
+\begin_inset Formula $c=10$
+\end_inset
+
+ ist,
+ dann gilt
+\begin_inset Formula 
+\[
+\frac{w_{2}}{w_{1}}=\frac{1-3\cdot10}{3-10}=\frac{29}{7}\approx4.1
 \]
 
 \end_inset
@@ -3080,15 +3201,103 @@ m_{1}-m_{2} & 2\cdot m_{2}\\
 \end_layout
 
 \begin_layout Standard
-Nun kann ich probieren,
- die Matrix noch ein wenig schöner zu schreiben.
- Dazu bestimme ich ihre Eigenwerte:
+Wenn 
+\begin_inset Formula $c=1$
+\end_inset
+
+ ist,
+ dann gilt
 \begin_inset Formula 
 \[
-\left(\begin{array}{cc}
-m_{1}-m_{2} & 2\cdot m_{2}\\
-2\cdot m_{1} & m_{2}-m_{1}
-\end{array}\right)\mathbf{v}=\lambda\mathbf{v}
+\frac{w_{2}}{w_{1}}=\frac{1-3\cdot1}{3-1}=\frac{1-3}{3-1}=-1
+\]
+
+\end_inset
+
+Ist 
+\begin_inset Formula $0<c\ll1$
+\end_inset
+
+,
+ dann gilt
+\begin_inset Formula 
+\[
+w_{2}\approx w_{1}
+\]
+
+\end_inset
+
+Ist 
+\begin_inset Formula 
+\[
+c\gg1
+\]
+
+\end_inset
+
+dann ist
+\begin_inset Formula 
+\[
+w_{2}\approx-3\cdot w_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Probe:
+\begin_inset Formula 
+\[
+4.1\cdot63\,\text{km/h}\approx258\text{km/h}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wenn 
+\begin_inset Formula $c=\frac{1}{3}$
+\end_inset
+
+ oder 
+\begin_inset Formula $c=3$
+\end_inset
+
+ ist,
+ dann steht der eine Körper am Schluss still?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+w_{1} & =\frac{3-c}{c+1}\cdot v_{2}\\
+w_{2} & =\frac{1-3\cdot c}{c+1}v_{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $c=\frac{1}{3}$
+\end_inset
+
+:
+ Dann ist 
+\begin_inset Formula 
+\begin{align*}
+w_{1} & =\frac{3-\frac{1}{3}}{\frac{1}{3}+1}\cdot v_{2}\\
+w_{2} & =0
+\end{align*}
+
+\end_inset
+
+Wie viel ist 
+\begin_inset Formula 
+\[
+\frac{3-\frac{1}{3}}{\frac{1}{3}+1}
 \]
 
 \end_inset
@@ -3098,120 +3307,466 @@ m_{1}-m_{2} & 2\cdot m_{2}\\
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\lambda\cdot\mathbf{v}=\lambda\cdot\mathbf{1}\mathbf{v=}\left(\begin{array}{cc}
-\lambda & 0\\
-0 & \lambda
-\end{array}\right)\mathbf{v}
-\]
+\begin{align*}
+ & \frac{3-\frac{1}{3}}{\frac{1}{3}+1}\\
+= & \frac{\frac{9}{3}-\frac{1}{3}}{\frac{1}{3}+1}\\
+= & \frac{\frac{9-1}{3}}{\frac{4}{3}}\\
+= & \frac{8}{4}=2
+\end{align*}
 
 \end_inset
 
-Also habe ich
+Also ist in diesem Fall
 \begin_inset Formula 
-\[
-\left(\begin{array}{cc}
-m_{1}-m_{2}-\lambda & 2\cdot m_{2}\\
-2\cdot m_{1} & m_{2}-m_{1}-\lambda
-\end{array}\right)v=0
-\]
+\begin{align*}
+w_{1} & =2\cdot v_{2}\\
+w_{2} & =0
+\end{align*}
 
 \end_inset
 
-Dann lautet die Bedingung
-\begin_inset Formula 
-\[
-\det\left|\begin{array}{cc}
-m_{1}-m_{2}-\lambda & 2\cdot m_{2}\\
-2\cdot m_{1} & m_{2}-m_{1}-\lambda
-\end{array}\right|=0
-\]
-
+Ist 
+\begin_inset Formula $c=3$
 \end_inset
 
-
+ dann ist entsprechend
 \begin_inset Formula 
-\[
--\lambda+\left(m_{1}-m_{2}\right)\cdot\left(-\lambda-\left(m_{1}-m_{2}\right)\right)-4\cdot m_{1}\cdot m_{2}=0
-\]
+\begin{align*}
+w_{1} & =\frac{3-3}{3+1}\cdot v_{2}\\
+w_{2} & =\frac{1-3\cdot9}{3+1}v_{2}
+\end{align*}
 
 \end_inset
 
 Also
 \begin_inset Formula 
-\[
-\lambda^{2}-\left(m_{1}-m_{2}\right)^{2}-4\cdot m_{1}\cdot m_{2}=0
-\]
-
-\end_inset
-
-oder 
-\begin_inset Formula 
 \begin{align*}
- & \phantom{=}\lambda^{2}\\
- & =\left(m_{1}-m_{2}\right)^{2}+4\cdot m_{1}\cdot m_{2}\\
- & =m_{1}^{2}-2\cdot m_{1}\cdot m_{2}+4\cdot m_{1}\cdot m_{2}+m_{2}^{2}\\
- & =m_{1}^{2}+2\cdot m_{1}\cdot m_{2}+m_{2}^{2}\\
- & =\left(m_{1}+m_{2}\right)^{2}
+w_{1} & =\frac{3-3}{3+1}\cdot v_{2}=0\\
+w_{2} & =\frac{1-3\cdot9}{3+1}v_{2}=-2\cdot v_{2}
 \end{align*}
 
 \end_inset
 
-Alos ist 
+
+\end_layout
+
+\begin_layout Standard
+Ich habe gemeint,
+ eine Kugel nie stillstehen,
+ wenn zwei Kugeln gleicher Masse aufeinander treffen.
+ Weit gefehlt!
+ Aber ich muss es auf eine andere Art aufschreiben:
+ Ist 
+\begin_inset Formula $m_{1}=m_{2}$
+\end_inset
+
+ dann werden sie Stoosformeln zu:
 \begin_inset Formula 
 \begin{align*}
-\lambda_{1} & =+\left(m_{1}+m_{2}\right)\\
-\lambda_{2} & =-\left(m_{1}+m_{2}\right)
+w_{1} & =\frac{\left(m-m\right)\cdot v_{1}+2\cdot m\cdot v_{2}}{m+m}=v_{2}\\
+w_{2} & =\frac{\left(m-m\right)\cdot v_{2}+2\cdot m\cdot v_{1}}{m+m}=v_{1}
 \end{align*}
 
 \end_inset
 
-Und wie komme ich jetzt zu den Eigenvektoren?
- Ich untersuche
+Dann verkürzen sich die Formeln also zu
 \begin_inset Formula 
-\[
-\left(\begin{array}{cc}
-m_{1}-m_{2}-\left(m_{1}+m_{2}\right) & 2\cdot m_{2}\\
-2\cdot m_{1} & m_{2}-m_{1}-\left(m_{1}+m_{2}\right)
-\end{array}\right)\mathbf{v_{1}}=0
-\]
+\begin{align*}
+w_{1} & =v_{2}\\
+w_{2} & =v_{1}
+\end{align*}
 
 \end_inset
 
-Also ist
-\begin_inset Formula 
-\[
-\left(\begin{array}{cc}
--2\cdot m_{2} & \phantom{-}2\cdot m_{2}\\
-\mathbf{\phantom{-}}2\cdot m_{1} & -2\cdot m_{1}
-\end{array}\right)\mathbf{v_{1}}=0
-\]
-
+Das heisst,
+ die Körper tauschen ihre Geschwindigkeiten.
+ Ist also 
+\begin_inset Formula $v_{1}=0$
 \end_inset
 
-
-\begin_inset Formula 
-\[
-\left(\begin{array}{cc}
--m_{2} & \phantom{-}m_{2}\\
-\mathbf{\phantom{-}}m_{1} & -m_{1}
-\end{array}\right)\mathbf{v_{1}}=0
-\]
-
+ dann bleibt der Körper 
+\begin_inset Formula $K_{2}$
 \end_inset
 
-Also ist
+ nach dem Stoos stehen (wenn 
+\begin_inset Formula $K_{2}$
+\end_inset
+
+ schon vor dem Stoss stand,
+ dann findet kein Stoss statt und die Aussage gilt immer noch).
+ 
+\end_layout
+
+\begin_layout Standard
+Noch ein Letztes:
+ Ich möchte die Formel
 \begin_inset Formula 
-\[
-\mathbf{v}_{1}=\left(\begin{array}{c}
+\begin{align*}
+\mathbf{w}= & \left(2\cdot\frac{1}{m_{1}+m_{2}}\left(\begin{array}{c}
 1\\
 1
+\end{array}\right)\left(\begin{array}{cc}
+m_{1} & m_{2}\end{array}\right)-\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)\right)\mathbf{v}
+\end{align*}
+
+\end_inset
+
+noch als Folge von Abbildungen herleiten.
+\end_layout
+
+\begin_layout Standard
+1.
+ Schritt:
+\end_layout
+
+\begin_layout Standard
+Transformation von 
+\begin_inset Formula $\mathbf{v}$
+\end_inset
+
+ in das Schwerpunktsystem:
+ 
+\begin_inset Formula 
+\[
+v_{S}=\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbf{v}=\mathbf{v'+\left(\textrm{\begin{array}{c}
+v_{S}\\
+v_{S}
+\end{array}}\right)}
+\]
+
+\end_inset
+
+Also 
+\begin_inset Formula 
+\[
+\mathbf{v'}=\mathbf{v}-\left(\textrm{\begin{array}{c}
+v_{S}\\
+v_{S}
+\end{array}}\right)
+\]
+
+\end_inset
+
+Nun ist wieder einmal rechnen angesagt
+\begin_inset Formula 
+\begin{align*}
+ & v'_{1}\\
+= & v_{1}-v_{S}\\
+= & \frac{v_{1}\cdot\left(m_{1}+m_{2}\right)}{m_{1}+m_{2}}-\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}\\
+= & \frac{v_{1}\cdot m_{1}+v_{1}\cdot m_{2}}{m_{1}+m_{2}}-\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}\\
+= & \frac{v_{1}\cdot m_{1}+v_{1}\cdot m_{2}-\left(v_{1}\cdot m_{1}+v_{2}\cdot m_{2}\right)}{m_{1}+m_{2}}\\
+= & \frac{v_{1}\cdot m_{1}+v_{1}\cdot m_{2}-v_{1}\cdot m_{1}-v_{2}\cdot m_{2}}{m_{1}+m_{2}}\\
+= & \frac{m_{2}\left(v_{1}-v_{2}\right)}{m_{1}+m_{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ebenso ist
+\begin_inset Formula 
+\begin{align*}
+ & v'_{2}\\
+= & v_{2}-v_{S}\\
+= & \frac{v_{2}\cdot\left(m_{1}+m_{2}\right)}{m_{1}+m_{2}}-\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}\\
+= & \frac{v_{2}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}-\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}\\
+= & \frac{v_{2}\cdot m_{1}+v_{2}\cdot m_{2}-\left(v_{1}\cdot m_{1}+v_{2}\cdot m_{2}\right)}{m_{1}+m_{2}}\\
+= & \frac{v_{2}\cdot m_{1}+v_{2}\cdot m_{2}-v_{1}\cdot m_{1}-v_{2}\cdot m_{2}}{m_{1}+m_{2}}\\
+= & \frac{m_{1}\cdot\left(v_{2}-v_{1}\right)}{m_{1}+m_{2}}
+\end{align*}
+
+\end_inset
+
+Zusammengefasst
+\begin_inset Formula 
+\begin{align*}
+ & \left(\begin{array}{c}
+v'_{1}\\
+v'_{2}
+\end{array}\right)\\
+= & \left(\begin{array}{c}
+\frac{m_{2}\left(v_{1}-v_{2}\right)}{m_{1}+m_{2}}\\
+\frac{m_{1}\cdot\left(v_{2}-v_{1}\right)}{m_{1}+m_{2}}
+\end{array}\right)\\
+= & \frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{c}
+m_{2}\cdot\left(v_{1}-v_{2}\right)\\
+m_{1}\cdot\left(v_{2}-v_{1}\right)
+\end{array}\right)\\
+= & \frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right)\left(\begin{array}{c}
+m_{2}\\
+m_{1}
+\end{array}\right)\left(v_{1}-v_{2}\right)\\
+= & \frac{v_{1}-v_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right)\left(\begin{array}{c}
+m_{2}\\
+m_{1}
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+Also 
+\begin_inset Formula 
+\begin{align*}
+\mathbf{v'} & =\frac{v_{1}-v_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right)\left(\begin{array}{c}
+m_{2}\\
+m_{1}
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dann lehrt uns die Energie- und Impulserhaltung,
+ dass durch den Stoss gilt
+\begin_inset Formula 
+\[
+\mathbf{w'}=\mathbf{-v'}
+\]
+
+\end_inset
+
+Also ist
+\begin_inset Formula 
+\begin{align*}
+\mathbf{w'} & =-\frac{v_{1}-v_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right)\left(\begin{array}{c}
+m_{2}\\
+m_{1}
+\end{array}\right)\\
+ & =\phantom{-}\frac{v_{1}-v_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right)\left(\begin{array}{c}
+m_{2}\\
+m_{1}
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+Schlussendlich transformiere ich die Geschwindigkeiten nach dem Stoss wieder in das Ursprungssystem.
+ Mit 
+\begin_inset Formula 
+\[
+\mathbf{w}=\mathbf{w'}+\left(\begin{array}{c}
+v_{S}\\
+v_{S}
 \end{array}\right)
 \]
 
 \end_inset
 
-der erste Eigenvektor
+Also ist
+\begin_inset Formula 
+\begin{align*}
+\mathbf{} & \mathbf{w}\\
+= & \frac{v_{1}-v_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right)\left(\begin{array}{c}
+m_{2}\\
+m_{1}
+\end{array}\right)+\left(\begin{array}{c}
+v_{S}\\
+v_{S}
+\end{array}\right)\\
+= & \frac{v_{1}-v_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right)\left(\begin{array}{c}
+m_{2}\\
+m_{1}
+\end{array}\right)+\left(\begin{array}{c}
+\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}\\
+\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}
+\end{array}\right)\\
+= & \frac{v_{1}-v_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right)\left(\begin{array}{c}
+m_{2}\\
+m_{1}
+\end{array}\right)+\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)\\
+= & \frac{1}{m_{1}+m_{2}}\cdot\left(\left(v_{1}-v_{2}\right)\cdot\left(\begin{array}{c}
+-m_{2}\\
+\phantom{-}m_{1}
+\end{array}\right)+\left(v_{1}\cdot m_{1}+v_{2}\cdot m_{2}\right)\cdot\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)\right)\\
+= & \frac{1}{m_{1}+m_{2}}\cdot\left(\left(\begin{array}{c}
+-m_{2}\cdot\left(v_{1}-v_{2}\right)\\
+\phantom{-}m_{1}\cdot\left(v_{1}-v_{2}\right)
+\end{array}\right)+\left(v_{1}\cdot m_{1}+v_{2}\cdot m_{2}\right)\cdot\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)\right)\\
+= & \frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{c}
+-m_{2}\cdot\left(v_{1}-v_{2}\right)+v_{1}\cdot m_{1}+v_{2}\cdot m_{2}\\
+\phantom{-}m_{1}\cdot\left(v_{1}-v_{2}\right)+v_{1}\cdot m_{1}+v_{2}\cdot m_{2}
+\end{array}\right)\\
+= & \frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{c}
+-m_{2}\cdot v_{1}+m_{2}\cdot v_{2}+v_{1}\cdot m_{1}+v_{2}\cdot m_{2}\\
+\phantom{-}m_{1}\cdot v_{1}-m_{1}\cdot v_{2}+v_{1}\cdot m_{1}+v_{2}\cdot m_{2}
+\end{array}\right)\\
+= & \frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{c}
+\left(m_{1}-m_{2}\right)\cdot v_{1}+2\cdot m_{2}\cdot v_{2}\\
+\left(m_{2}-m_{1}\right)\cdot v_{2}+2\cdot m_{1}\cdot v_{1}
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+Ich probiere einmal nach den Massen umzuordnen
+\begin_inset Formula 
+\begin{align*}
+\mathbf{\mathbf{w}} & =\frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{c}
+\left(m_{1}-m_{2}\right)\cdot v_{1}+2\cdot m_{2}\cdot v_{2}\\
+\left(m_{2}-m_{1}\right)\cdot v_{2}+2\cdot m_{1}\cdot v_{1}
+\end{array}\right)\\
+ & =\frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{c}
+v_{1}\cdot m_{1}+\left(2\cdot v_{2}-v_{1}\right)\cdot m_{2}\\
+\left(2\cdot v_{1}-v_{2}\right)\cdot m_{1}+v_{2}\cdot m_{2}
+\end{array}\right)\\
+ & =\frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
+v_{1} & 2\cdot v_{2}-v_{1}\\
+2\cdot v_{1}-v_{2} & v_{2}
+\end{array}\right)\left(\begin{array}{c}
+m_{1}\\
+m_{2}
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+Die Frage ist:
+ Kann die Matrix
+\begin_inset Formula 
+\[
+\left(\begin{array}{cc}
+v_{1} & 2\cdot v_{2}-v_{1}\\
+2\cdot v_{1}-v_{2} & v_{2}
+\end{array}\right)
+\]
+
+\end_inset
+
+noch einfach aufgeschrieben werden?
+\begin_inset Formula 
+\begin{align*}
+ & \left(\begin{array}{cc}
+v_{1} & 2\cdot v_{2}-v_{1}\\
+2\cdot v_{1}-v_{2} & v_{2}
+\end{array}\right)\\
+= & \left(\begin{array}{cc}
+v_{1} & -v_{1}\\
+2\cdot v_{1} & 0
+\end{array}\right)+\left(\begin{array}{cc}
+0 & 2\cdot v_{2}\\
+-v_{2} & v_{2}
+\end{array}\right)\\
+= & v_{1}\cdot\left(\begin{array}{cc}
+1 & -1\\
+2 & 0
+\end{array}\right)+v_{2}\cdot\left(\begin{array}{cc}
+0 & 2\\
+-1 & 1
+\end{array}\right)\\
+= & \left(\left(\begin{array}{cc}
+1 & -1\\
+2 & 0
+\end{array}\right)\left(\begin{array}{cc}
+0 & 2\\
+-1 & 1
+\end{array}\right)\right)\left(\begin{array}{c}
+v_{1}\\
+v_{2}
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+Kann die Matrix 
+\begin_inset Formula 
+\[
+\left(\begin{array}{cc}
+1 & -1\\
+2 & 0
+\end{array}\right)
+\]
+
+\end_inset
+
+ invertiert werden?
+\begin_inset Formula 
+\[
+\left(\begin{array}{cc}
+1 & -1\\
+2 & 0
+\end{array}\right)\cdot\left(\begin{array}{cc}
+a_{1} & a_{2}\\
+a_{3} & a_{4}
+\end{array}\right)=\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)
+\]
+
+\end_inset
+
+Das ergibt
+\begin_inset Formula 
+\begin{align*}
+a_{1}-a_{3} & =1\\
+a_{2}-a_{4} & =0\\
+2\cdot a_{1} & =0\\
+2\cdot a_{2} & =1
+\end{align*}
+
+\end_inset
+
+Also
+\begin_inset Formula 
+\begin{align*}
+a_{1} & =0\\
+a_{2} & =\frac{1}{2}\\
+a_{3} & =1\\
+a_{4} & =-\frac{1}{2}
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \end_body
