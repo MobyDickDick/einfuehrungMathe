@@ -125,7 +125,7 @@ backforwardref
 \use_package cancel 0
 \use_package esint 1
 \use_package mathdots 1
-\use_package mathtools 0
+\use_package mathtools 1
 \use_package mhchem 1
 \use_package stackrel 0
 \use_package stmaryrd 0
@@ -1388,7 +1388,7 @@ sei die Bewegungsgleichung des ersten Körpers,
  diejenige des zweiten Körpers.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Nun berechne ich die Bewegungsgleichung des Schwerpunkts:
 \begin_inset Formula 
 \begin{align*}
@@ -1404,7 +1404,7 @@ x_{S} & \equiv\frac{m_{1}\cdot x_{1}+m_{2}\cdot x_{2}}{m_{1}+m_{2}}\\
 Also bewegt sich auch der Schwerpunkt gleichförmig mit der Geschwindigkeit:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 \begin_inset Formula 
 \[
 v_{s}=\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}}
@@ -1427,7 +1427,7 @@ x_{S}\left(0\right)=\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Nun möchte ich die Bewegungsgleichungen der beiden Körpern in das Bezugssystem des Schwerpunkts umrechnen.
  Es gilt:
 \begin_inset Formula 
@@ -1440,7 +1440,7 @@ x=x^{'}+x_{S}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 oder aber auch
 \begin_inset Formula 
 \[
@@ -1523,7 +1523,7 @@ v_{1}-\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}} & =v_{1}\cdot\frac{m
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Entsprechend ist:
 \begin_inset Formula 
 \begin{align*}
@@ -1545,7 +1545,7 @@ x'_{1}=\frac{m_{2}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)\cdot t-\frac{2\cdo
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Nun berechne ich die relative Koordinate des Körpers 
 \begin_inset Formula $K_{2}$
 \end_inset
@@ -1595,7 +1595,7 @@ v_{2}+\frac{m_{1}\cdot v_{1}-m_{2}\cdot v_{2}}{m_{1}+m_{2}} & =v_{2}\cdot\frac{m
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Entsprechend ist:
 \begin_inset Formula 
 \begin{align*}
@@ -1617,7 +1617,7 @@ x'_{1}=-\frac{m_{1}}{m_{1}+m_{2}}\cdot\left(v_{1}+v_{2}\right)\cdot t-\frac{2\cd
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 So,
  jetzt kann ich endlich die Rechnung im Schwerpunktsystem durchführen.
  Da sich dieses System ebenfalls gleichförmig bewegt,
@@ -1652,7 +1652,7 @@ v_{2}' & =-m_{1}\cdot\kappa
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Nun seien 
 \begin_inset Formula $w_{1}'$
 \end_inset
@@ -1832,7 +1832,7 @@ v_{2}'=\pm w_{2}'
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 oder aber
 \begin_inset Formula 
 \[
@@ -1844,7 +1844,7 @@ w_{2}'=\pm v_{2}'
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Mit
 \begin_inset Formula 
 \[
@@ -1872,7 +1872,7 @@ w_{1}'=-\frac{m_{2}}{m_{1}}\cdot\left(\pm v_{2}'\right)=\pm\frac{m_{2}}{m_{1}}\c
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Ich betrachte noch einmal das Gleichungssytem
 \begin_inset Formula 
 \begin{align*}
@@ -1885,7 +1885,7 @@ v_{2}' & =-m_{1}\cdot\kappa
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Ich dividiere die zweite Gleichung durch die negative Grösse 
 \begin_inset Formula $-m_{1}$
 \end_inset
@@ -1909,7 +1909,7 @@ v_{1}'=-\frac{m_{2}}{m_{1}}\cdot v_{2}'
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Also kann ich schreiben
 \begin_inset Formula 
 \[
@@ -1921,7 +1921,7 @@ w_{1}'=\pm\frac{m_{2}}{m_{1}}\cdot v_{2}'=\pm v_{1}'
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Also habe ich die Lösungen
 \begin_inset Formula 
 \begin{align*}
@@ -1998,7 +1998,7 @@ und
  als positiv annehme.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Wenn ich die Bezeichnung 
 \begin_inset Formula $V_{2}\equiv-v_{2}$
 \end_inset
@@ -2124,7 +2124,7 @@ sei die Bewegungsgleichung des ersten Körpers,
  diejenige des zweiten Körpers.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Nun berechne ich die Bewegungsgleichung des Schwerpunkts:
 \begin_inset Formula 
 \begin{align*}
@@ -2140,7 +2140,7 @@ x_{S} & \equiv\frac{m_{1}\cdot x_{1}+m_{2}\cdot x_{2}}{m_{1}+m_{2}}\\
 Also bewegt sich auch der Schwerpunkt gleichförmig mit der Geschwindigkeit:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 \begin_inset Formula 
 \[
 v_{s}=\frac{m_{1}\cdot v_{1}+m_{2}\cdot v_{2}}{m_{1}+m_{2}}
@@ -2163,7 +2163,7 @@ x_{S}\left(0\right)=\frac{m_{2}-m_{1}}{m_{1}+m_{2}}\cdot l
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Nun möchte ich die Bewegungsgleichungen der beiden Körpern in das Bezugssystem des Schwerpunkts umrechnen.
  Es gilt:
 \begin_inset Formula 
@@ -2176,7 +2176,7 @@ x=x^{'}+x_{S}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 oder aber auch
 \begin_inset Formula 
 \[
@@ -2259,7 +2259,7 @@ v_{1}-\frac{m_{1}\cdot v_{1}+m_{2}\cdot v_{2}}{m_{1}+m_{2}} & =v_{1}\cdot\frac{m
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Entsprechend ist:
 \begin_inset Formula 
 \begin{align*}
@@ -2281,7 +2281,7 @@ x'_{1}=\frac{m_{2}}{m_{1}+m_{2}}\cdot\left(v_{1}-v_{2}\right)\cdot t-\frac{2\cdo
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Nun berechne ich die relative Koordinate des Körpers 
 \begin_inset Formula $K_{2}$
 \end_inset
@@ -2332,7 +2332,7 @@ v_{2}-\frac{m_{1}\cdot v_{1}+m_{2}\cdot v_{2}}{m_{1}+m_{2}} & =v_{2}\cdot\frac{m
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Entsprechend ist:
 \begin_inset Formula 
 \begin{align*}
@@ -2354,7 +2354,7 @@ x'_{2}=-\frac{m_{1}}{m_{1}+m_{2}}\cdot\left(v_{1}-v_{2}\right)\cdot t+\frac{2\cd
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 So,
  jetzt kann ich endlich die Rechnung im Schwerpunktsystem durchführen.
  Da sich dieses System ebenfalls gleichförmig bewegt,
@@ -2389,7 +2389,7 @@ v_{2}' & =-m_{1}\cdot\kappa
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Nun seien 
 \begin_inset Formula $w_{1}'$
 \end_inset
@@ -2568,7 +2568,7 @@ v_{2}'=\pm w_{2}'
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 oder aber
 \begin_inset Formula 
 \[
@@ -2580,7 +2580,7 @@ w_{2}'=\pm v_{2}'
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Mit
 \begin_inset Formula 
 \[
@@ -2608,7 +2608,7 @@ w_{1}'=-\frac{m_{2}}{m_{1}}\cdot\left(\pm v_{2}'\right)=\pm\frac{m_{2}}{m_{1}}\c
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Ich betrachte noch einmal das Gleichungssytem
 \begin_inset Formula 
 \begin{align*}
@@ -2621,7 +2621,7 @@ v_{2}' & =-m_{1}\cdot\kappa
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Ich dividiere die zweite Gleichung durch die negative Grösse 
 \begin_inset Formula $-m_{1}$
 \end_inset
@@ -2645,7 +2645,7 @@ v_{1}'=-\frac{m_{2}}{m_{1}}\cdot v_{2}'
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Also kann ich schreiben
 \begin_inset Formula 
 \[
@@ -2657,7 +2657,7 @@ w_{1}'=\pm\frac{m_{2}}{m_{1}}\cdot v_{2}'=\pm v_{1}'
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Also habe ich die Lösungen
 \begin_inset Formula 
 \begin{align*}
@@ -2743,7 +2743,7 @@ Die Frage ist:
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 (Energieerhaltungsgesetz,
  der Faktor 
 \begin_inset Formula 
@@ -2771,7 +2771,7 @@ Die Frage ist:
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Ebenso ist
 \begin_inset Formula 
 \begin{align*}
@@ -2803,7 +2803,7 @@ Also ist
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Das bedeutet,
  dass der Impulserhaltungssatz immer noch gültig ist.
  Was daoch ein gutes Zeichen ist.
@@ -2837,7 +2837,7 @@ m_{1}\cdot\left(w_{1}^{2}-v_{1}^{2}\right) & =m_{2}\cdot\left(v_{2}^{2}-w_{2}^{2
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Oder ich kann auch zeigen,
  dass gilt
 \begin_inset Formula 
@@ -2850,7 +2850,7 @@ Oder ich kann auch zeigen,
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Weiter ist 
 \begin_inset Formula 
 \[
@@ -2885,7 +2885,7 @@ sowie
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Ebenso ist
 \begin_inset Formula 
 \begin{align*}
@@ -2905,7 +2905,7 @@ Ebenso ist
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Somit gilt
 \begin_inset Formula 
 \begin{align*}
@@ -2919,7 +2919,7 @@ Somit gilt
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Und jetzt das gleiche Theater noch mit 
 \begin_inset Formula $v_{2}$
 \end_inset
@@ -2946,7 +2946,7 @@ Und jetzt das gleiche Theater noch mit
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Ebenso ist
 \begin_inset Formula 
 \begin{align*}
@@ -2966,7 +2966,7 @@ Ebenso ist
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Somit gilt
 \begin_inset Formula 
 \begin{align*}
@@ -2991,7 +2991,7 @@ Also ist
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Doch genau dieses Resultat wollte ich zeigen.
  Also kann ich daraus schliessen,
  dass auch der Energieerhaltungssatz gültig ist.
@@ -2999,7 +2999,7 @@ Doch genau dieses Resultat wollte ich zeigen.
  dass ich den Beweis für die Richtigkeit der Behauptung erbracht habe.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Also denke ich,
  dass den Formeln wirklich vertraut werden kann:
 \begin_inset Formula 
@@ -3013,7 +3013,7 @@ w_{2} & =\frac{\left(m_{2}-m_{1}\right)\cdot v_{2}+2\cdot m_{1}\cdot v_{1}}{m_{1
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Ich kan die Formeln übrigens auch nach 
 \begin_inset Formula $m_{1},m_{2}$
 \end_inset
@@ -3050,7 +3050,7 @@ v_{2}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 \begin_inset Formula 
 \[
 \mathrm{w}=\left(\begin{array}{c}
@@ -3064,7 +3064,7 @@ w_{2}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Dann ist
 \begin_inset Formula 
 \begin{align*}
@@ -3084,7 +3084,7 @@ m_{1}-m_{2} & 2\cdot m_{2}\\
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Dann kann ich das so schreiben
 \begin_inset Formula 
 \begin{align*}
@@ -3104,7 +3104,7 @@ m_{1} & m_{2}\end{array}\right)-\left(\begin{array}{cc}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Wenn ich jetzt (endlich) das Zahlenbeispiel einfüge,
  dann habe ich
 \begin_inset Formula 
@@ -3120,7 +3120,7 @@ v_{2} & =-100\,\text{km/h}
 Dann ergibt sich
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 \begin_inset Formula 
 \begin{align*}
 w_{1} & =\boldsymbol{\frac{\left(m_{1}-m_{2}\right)\cdot v_{1}+2\cdot m_{2}\cdot v_{2}}{m_{1}+m_{2}}}\\
@@ -3133,7 +3133,7 @@ w_{1} & =\boldsymbol{\frac{\left(m_{1}-m_{2}\right)\cdot v_{1}+2\cdot m_{2}\cdot
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 \begin_inset Formula 
 \begin{align*}
 w_{2} & =\boldsymbol{\frac{\left(m_{2}-m_{1}\right)\cdot v_{2}+2\cdot m_{1}\cdot v_{1}}{m_{1}+m_{2}}}\\
@@ -3146,7 +3146,7 @@ w_{2} & =\boldsymbol{\frac{\left(m_{2}-m_{1}\right)\cdot v_{2}+2\cdot m_{1}\cdot
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Irgendwie will Orear nicht das gleiche angeben.
  Darum möchte ich weiter überlegen,
  ob das stimmen kann.
@@ -3162,7 +3162,7 @@ m_{1} & =c\cdot m_{2}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Dann lautet die Formel
 \begin_inset Formula 
 \begin{align*}
@@ -3200,7 +3200,7 @@ Wenn also
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Wenn 
 \begin_inset Formula $c=1$
 \end_inset
@@ -3246,7 +3246,7 @@ w_{2}\approx-3\cdot w_{1}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Probe:
 \begin_inset Formula 
 \[
@@ -3258,7 +3258,7 @@ Probe:
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Wenn 
 \begin_inset Formula $c=\frac{1}{3}$
 \end_inset
@@ -3271,7 +3271,7 @@ Wenn
  dann steht der eine Körper am Schluss still?
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 \begin_inset Formula 
 \begin{align*}
 w_{1} & =\frac{3-c}{c+1}\cdot v_{2}\\
@@ -3305,7 +3305,7 @@ Wie viel ist
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 \begin_inset Formula 
 \begin{align*}
  & \frac{3-\frac{1}{3}}{\frac{1}{3}+1}\\
@@ -3350,7 +3350,7 @@ w_{2} & =\frac{1-3\cdot9}{3+1}v_{2}=-2\cdot v_{2}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Ich habe gemeint,
  eine Kugel nie stillstehen,
  wenn zwei Kugeln gleicher Masse aufeinander treffen.
@@ -3394,10 +3394,9 @@ Das heisst,
 
  schon vor dem Stoss stand,
  dann findet kein Stoss statt und die Aussage gilt immer noch).
- 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Noch ein Letztes:
  Ich möchte die Formel
 \begin_inset Formula 
@@ -3417,12 +3416,12 @@ m_{1} & m_{2}\end{array}\right)-\left(\begin{array}{cc}
 noch als Folge von Abbildungen herleiten.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 1.
  Schritt:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Transformation von 
 \begin_inset Formula $\mathbf{v}$
 \end_inset
@@ -3439,10 +3438,10 @@ v_{S}=\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}
 
 \begin_inset Formula 
 \[
-\mathbf{v}=\mathbf{v'+\left(\textrm{\begin{array}{c}
-v_{S}\\
-v_{S}
-\end{array}}\right)}
+\mathbf{v}=\mathbf{v_{S}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+v'}
 \]
 
 \end_inset
@@ -3450,307 +3449,71 @@ v_{S}
 Also 
 \begin_inset Formula 
 \[
-\mathbf{v'}=\mathbf{v}-\left(\textrm{\begin{array}{c}
-v_{S}\\
-v_{S}
+\mathbf{v'}=\mathbf{v}-v_{S}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
 \end{array}}\right)
 \]
 
 \end_inset
 
-Nun ist wieder einmal rechnen angesagt
-\begin_inset Formula 
-\begin{align*}
- & v'_{1}\\
-= & v_{1}-v_{S}\\
-= & \frac{v_{1}\cdot\left(m_{1}+m_{2}\right)}{m_{1}+m_{2}}-\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}\\
-= & \frac{v_{1}\cdot m_{1}+v_{1}\cdot m_{2}}{m_{1}+m_{2}}-\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}\\
-= & \frac{v_{1}\cdot m_{1}+v_{1}\cdot m_{2}-\left(v_{1}\cdot m_{1}+v_{2}\cdot m_{2}\right)}{m_{1}+m_{2}}\\
-= & \frac{v_{1}\cdot m_{1}+v_{1}\cdot m_{2}-v_{1}\cdot m_{1}-v_{2}\cdot m_{2}}{m_{1}+m_{2}}\\
-= & \frac{m_{2}\left(v_{1}-v_{2}\right)}{m_{1}+m_{2}}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Ebenso ist
-\begin_inset Formula 
-\begin{align*}
- & v'_{2}\\
-= & v_{2}-v_{S}\\
-= & \frac{v_{2}\cdot\left(m_{1}+m_{2}\right)}{m_{1}+m_{2}}-\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}\\
-= & \frac{v_{2}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}-\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}\\
-= & \frac{v_{2}\cdot m_{1}+v_{2}\cdot m_{2}-\left(v_{1}\cdot m_{1}+v_{2}\cdot m_{2}\right)}{m_{1}+m_{2}}\\
-= & \frac{v_{2}\cdot m_{1}+v_{2}\cdot m_{2}-v_{1}\cdot m_{1}-v_{2}\cdot m_{2}}{m_{1}+m_{2}}\\
-= & \frac{m_{1}\cdot\left(v_{2}-v_{1}\right)}{m_{1}+m_{2}}
-\end{align*}
-
-\end_inset
-
-Zusammengefasst
-\begin_inset Formula 
-\begin{align*}
- & \left(\begin{array}{c}
-v'_{1}\\
-v'_{2}
-\end{array}\right)\\
-= & \left(\begin{array}{c}
-\frac{m_{2}\left(v_{1}-v_{2}\right)}{m_{1}+m_{2}}\\
-\frac{m_{1}\cdot\left(v_{2}-v_{1}\right)}{m_{1}+m_{2}}
-\end{array}\right)\\
-= & \frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{c}
-m_{2}\cdot\left(v_{1}-v_{2}\right)\\
-m_{1}\cdot\left(v_{2}-v_{1}\right)
-\end{array}\right)\\
-= & \frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
-1 & 0\\
-0 & -1
-\end{array}\right)\left(\begin{array}{c}
-m_{2}\\
-m_{1}
-\end{array}\right)\left(v_{1}-v_{2}\right)\\
-= & \frac{v_{1}-v_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
-1 & 0\\
-0 & -1
-\end{array}\right)\left(\begin{array}{c}
-m_{2}\\
-m_{1}
-\end{array}\right)
-\end{align*}
-
-\end_inset
-
-Also 
-\begin_inset Formula 
-\begin{align*}
-\mathbf{v'} & =\frac{v_{1}-v_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
-1 & 0\\
-0 & -1
-\end{array}\right)\left(\begin{array}{c}
-m_{2}\\
-m_{1}
-\end{array}\right)
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Dann lehrt uns die Energie- und Impulserhaltung,
- dass durch den Stoss gilt
+2.
+ Schritt:
+ Im Schwerpunktsytem gilt
 \begin_inset Formula 
 \[
-\mathbf{w'}=\mathbf{-v'}
+\mathbf{w'}=-\mathbf{v}'
 \]
 
 \end_inset
 
-Also ist
-\begin_inset Formula 
-\begin{align*}
-\mathbf{w'} & =-\frac{v_{1}-v_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
-1 & 0\\
-0 & -1
-\end{array}\right)\left(\begin{array}{c}
-m_{2}\\
-m_{1}
-\end{array}\right)\\
- & =\phantom{-}\frac{v_{1}-v_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
--1 & 0\\
-0 & 1
-\end{array}\right)\left(\begin{array}{c}
-m_{2}\\
-m_{1}
-\end{array}\right)
-\end{align*}
-
-\end_inset
-
-Schlussendlich transformiere ich die Geschwindigkeiten nach dem Stoss wieder in das Ursprungssystem.
- Mit 
+3.
+ Schritt:
+ Rücktransormation
 \begin_inset Formula 
 \[
-\mathbf{w}=\mathbf{w'}+\left(\begin{array}{c}
-v_{S}\\
-v_{S}
-\end{array}\right)
-\]
-
-\end_inset
-
-Also ist
-\begin_inset Formula 
-\begin{align*}
-\mathbf{} & \mathbf{w}\\
-= & \frac{v_{1}-v_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
--1 & 0\\
-0 & 1
-\end{array}\right)\left(\begin{array}{c}
-m_{2}\\
-m_{1}
-\end{array}\right)+\left(\begin{array}{c}
-v_{S}\\
-v_{S}
-\end{array}\right)\\
-= & \frac{v_{1}-v_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
--1 & 0\\
-0 & 1
-\end{array}\right)\left(\begin{array}{c}
-m_{2}\\
-m_{1}
-\end{array}\right)+\left(\begin{array}{c}
-\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}\\
-\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}
-\end{array}\right)\\
-= & \frac{v_{1}-v_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
--1 & 0\\
-0 & 1
-\end{array}\right)\left(\begin{array}{c}
-m_{2}\\
-m_{1}
-\end{array}\right)+\frac{v_{1}\cdot m_{1}+v_{2}\cdot m_{2}}{m_{1}+m_{2}}\cdot\left(\begin{array}{c}
+\mathbf{w}=v_{s}\cdot\left(\textrm{\begin{array}{c}
 1\\
 1
-\end{array}\right)\\
-= & \frac{1}{m_{1}+m_{2}}\cdot\left(\left(v_{1}-v_{2}\right)\cdot\left(\begin{array}{c}
--m_{2}\\
-\phantom{-}m_{1}
-\end{array}\right)+\left(v_{1}\cdot m_{1}+v_{2}\cdot m_{2}\right)\cdot\left(\begin{array}{c}
+\end{array}}\right)+\mathbf{w'}
+\]
+
+\end_inset
+
+Somit gilt
+\begin_inset Formula 
+\begin{align*}
+ & \mathbf{w}\\
+= & v_{s}\cdot\left(\textrm{\begin{array}{c}
 1\\
 1
-\end{array}\right)\right)\\
-= & \frac{1}{m_{1}+m_{2}}\cdot\left(\left(\begin{array}{c}
--m_{2}\cdot\left(v_{1}-v_{2}\right)\\
-\phantom{-}m_{1}\cdot\left(v_{1}-v_{2}\right)
-\end{array}\right)+\left(v_{1}\cdot m_{1}+v_{2}\cdot m_{2}\right)\cdot\left(\begin{array}{c}
+\end{array}}\right)+\mathbf{\left(-v'\right)}\\
+= & v_{s}\cdot\left(\textrm{\begin{array}{c}
 1\\
 1
-\end{array}\right)\right)\\
-= & \frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{c}
--m_{2}\cdot\left(v_{1}-v_{2}\right)+v_{1}\cdot m_{1}+v_{2}\cdot m_{2}\\
-\phantom{-}m_{1}\cdot\left(v_{1}-v_{2}\right)+v_{1}\cdot m_{1}+v_{2}\cdot m_{2}
-\end{array}\right)\\
-= & \frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{c}
--m_{2}\cdot v_{1}+m_{2}\cdot v_{2}+v_{1}\cdot m_{1}+v_{2}\cdot m_{2}\\
-\phantom{-}m_{1}\cdot v_{1}-m_{1}\cdot v_{2}+v_{1}\cdot m_{1}+v_{2}\cdot m_{2}
-\end{array}\right)\\
-= & \frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{c}
-\left(m_{1}-m_{2}\right)\cdot v_{1}+2\cdot m_{2}\cdot v_{2}\\
-\left(m_{2}-m_{1}\right)\cdot v_{2}+2\cdot m_{1}\cdot v_{1}
-\end{array}\right)
-\end{align*}
-
-\end_inset
-
-Ich probiere einmal nach den Massen umzuordnen
-\begin_inset Formula 
-\begin{align*}
-\mathbf{\mathbf{w}} & =\frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{c}
-\left(m_{1}-m_{2}\right)\cdot v_{1}+2\cdot m_{2}\cdot v_{2}\\
-\left(m_{2}-m_{1}\right)\cdot v_{2}+2\cdot m_{1}\cdot v_{1}
-\end{array}\right)\\
- & =\frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{c}
-v_{1}\cdot m_{1}+\left(2\cdot v_{2}-v_{1}\right)\cdot m_{2}\\
-\left(2\cdot v_{1}-v_{2}\right)\cdot m_{1}+v_{2}\cdot m_{2}
-\end{array}\right)\\
- & =\frac{1}{m_{1}+m_{2}}\cdot\left(\begin{array}{cc}
-v_{1} & 2\cdot v_{2}-v_{1}\\
-2\cdot v_{1}-v_{2} & v_{2}
-\end{array}\right)\left(\begin{array}{c}
-m_{1}\\
-m_{2}
-\end{array}\right)
-\end{align*}
-
-\end_inset
-
-Die Frage ist:
- Kann die Matrix
-\begin_inset Formula 
-\[
-\left(\begin{array}{cc}
-v_{1} & 2\cdot v_{2}-v_{1}\\
-2\cdot v_{1}-v_{2} & v_{2}
-\end{array}\right)
-\]
-
-\end_inset
-
-noch einfach aufgeschrieben werden?
-\begin_inset Formula 
-\begin{align*}
- & \left(\begin{array}{cc}
-v_{1} & 2\cdot v_{2}-v_{1}\\
-2\cdot v_{1}-v_{2} & v_{2}
-\end{array}\right)\\
-= & \left(\begin{array}{cc}
-v_{1} & -v_{1}\\
-2\cdot v_{1} & 0
-\end{array}\right)+\left(\begin{array}{cc}
-0 & 2\cdot v_{2}\\
--v_{2} & v_{2}
-\end{array}\right)\\
-= & v_{1}\cdot\left(\begin{array}{cc}
-1 & -1\\
-2 & 0
-\end{array}\right)+v_{2}\cdot\left(\begin{array}{cc}
-0 & 2\\
--1 & 1
-\end{array}\right)\\
-= & \left(\left(\begin{array}{cc}
-1 & -1\\
-2 & 0
-\end{array}\right)\left(\begin{array}{cc}
-0 & 2\\
--1 & 1
-\end{array}\right)\right)\left(\begin{array}{c}
-v_{1}\\
-v_{2}
-\end{array}\right)
-\end{align*}
-
-\end_inset
-
-Kann die Matrix 
-\begin_inset Formula 
-\[
-\left(\begin{array}{cc}
-1 & -1\\
-2 & 0
-\end{array}\right)
-\]
-
-\end_inset
-
- invertiert werden?
-\begin_inset Formula 
-\[
-\left(\begin{array}{cc}
-1 & -1\\
-2 & 0
-\end{array}\right)\cdot\left(\begin{array}{cc}
-a_{1} & a_{2}\\
-a_{3} & a_{4}
-\end{array}\right)=\left(\begin{array}{cc}
-1 & 0\\
-0 & 1
-\end{array}\right)
-\]
-
-\end_inset
-
-Das ergibt
-\begin_inset Formula 
-\begin{align*}
-a_{1}-a_{3} & =1\\
-a_{2}-a_{4} & =0\\
-2\cdot a_{1} & =0\\
-2\cdot a_{2} & =1
+\end{array}}\right)-\mathbf{v'}\\
+= & v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)-\mathbf{v'}\\
+= & v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)-\left(\mathbf{v}-v_{S}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)\right)\\
+= & v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)-\mathbf{v}+v_{S}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)\\
+= & 2\cdot v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)-\mathbf{v}
 \end{align*}
 
 \end_inset
@@ -3758,11 +3521,1407 @@ a_{2}-a_{4} & =0\\
 Also
 \begin_inset Formula 
 \begin{align*}
-a_{1} & =0\\
-a_{2} & =\frac{1}{2}\\
-a_{3} & =1\\
-a_{4} & =-\frac{1}{2}
+\mathbf{w}= & 2\cdot v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)-\mathbf{v}
 \end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Dann ist noch zu zeigen,
+ dass gilt
+\begin_inset Formula 
+\[
+2\cdot v_{S}\cdot\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)=2\cdot\frac{1}{m_{1}+m_{2}}\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)\left(\begin{array}{cc}
+m_{1} & m_{2}\end{array}\right)\mathbf{v}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Es ist
+\begin_inset Formula 
+\begin{align*}
+ & 2\cdot\frac{1}{m_{1}+m_{2}}\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)\left(\begin{array}{cc}
+m_{1} & m_{2}\end{array}\right)\mathbf{v}\\
+= & 2\cdot\frac{1}{m_{1}+m_{2}}\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)\left(\begin{array}{cc}
+m_{1} & m_{2}\end{array}\right)\left(\begin{array}{c}
+v_{1}\\
+v_{2}
+\end{array}\right)\\
+= & 2\cdot\frac{1}{m_{1}+m_{2}}\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)\left(m_{1}\cdot v_{1}+m_{2}\cdot v_{2}\right)\\
+= & 2\cdot\frac{m_{1}\cdot v_{1}+m_{2}\cdot v_{2}}{m_{1}+m_{2}}\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)\\
+= & 2\cdot v_{S}\cdot\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+Somit ist wirklich mit mit der Einheitsmatrix
+\begin_inset Formula 
+\[
+\mathbf{E}_{i,j}=\delta_{i,j}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\mathbf{w} & =2\cdot\frac{1}{m_{1}+m_{2}}\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)\left(\begin{array}{cc}
+m_{1} & m_{2}\end{array}\right)\mathbf{v}-\mathbf{v}\\
+\mathbf{w} & =\left(2\cdot\frac{1}{m_{1}+m_{2}}\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)\left(\begin{array}{cc}
+m_{1} & m_{2}\end{array}\right)-\mathbf{E}\right)\mathbf{v}
+\end{align*}
+
+\end_inset
+
+Damit meine ich,
+ den zentralen Stoss wirklich einigermassen verstanden zu haben.
+\end_layout
+
+\begin_layout Exercise
+So traurig es ist:
+ Es gibt noch mehr darüber zu erzählen.
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Formula 
+\begin{align*}
+\mathbf{w}= & 2\cdot v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)-\mathbf{v}
+\end{align*}
+
+\end_inset
+
+Bedeutet
+\begin_inset Formula 
+\[
+\mathbf{w}=v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+\left(v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)-\mathbf{v}\right)
+\]
+
+\end_inset
+
+Das heisst:
+ Der Vektor 
+\begin_inset Formula $\mathbf{v}$
+\end_inset
+
+ wird am Punkt
+\begin_inset Formula 
+\[
+v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)
+\]
+
+\end_inset
+
+gespiegelt.
+ Denn
+\begin_inset Formula 
+\begin{align*}
+ & \frac{1}{2}\cdot\left(\mathbf{v}+\mathbf{w}\right)\\
+= & \frac{1}{2}\left(\mathbf{v}+\left(v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+\left(v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)-\mathbf{v}\right)\right)\right)\\
+= & \frac{1}{2}\left(\mathbf{v}+v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+\left(v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)-\mathbf{v}\right)\right)\\
+= & \frac{1}{2}\left(\mathbf{v}+v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)-\mathbf{v}\right)\\
+= & \frac{1}{2}\left(v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+\mathbf{v}-\mathbf{v}\right)\\
+= & \frac{1}{2}\left(2\cdot v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)\right)\\
+= & v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)
+\end{align*}
+
+\end_inset
+
+oder abgekürzt
+\begin_inset Formula 
+\[
+\frac{1}{2}\cdot\left(\mathbf{v}+\mathbf{w}\right)=v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)
+\]
+
+\end_inset
+
+Und (banalerweise) sind 
+\begin_inset Formula $\mathbf{v}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\mathbf{w}$
+\end_inset
+
+ sowie
+\begin_inset Formula 
+\[
+v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)
+\]
+
+\end_inset
+
+kolinear.
+ Denn mit
+\begin_inset Formula 
+\[
+\mathbf{x}\left(0\right)=v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+t\cdot\left(\mathbf{v}-v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)\right)
+\]
+
+\end_inset
+
+Ist für 
+\begin_inset Formula $t=0$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+\mathbf{x}\left(0\right) & =v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+0\cdot\left(\mathbf{v}-v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)\right)\\
+ & =v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+0\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)\\
+ & =v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+\left(\textrm{\begin{array}{c}
+0\\
+0
+\end{array}}\right)\\
+ & =v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+\left(\textrm{\begin{array}{c}
+0\\
+0
+\end{array}}\right)
+\end{align*}
+
+\end_inset
+
+Ist 
+\begin_inset Formula $t=1$
+\end_inset
+
+,
+ dann ist
+\begin_inset Formula 
+\begin{align*}
+\mathbf{x}\left(1\right) & =v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+1\cdot\left(\mathbf{v}-v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)\right)\\
+ & =v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+\mathbf{v}-v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)\\
+ & =\mathbf{v}
+\end{align*}
+
+\end_inset
+
+Ist 
+\begin_inset Formula $t=-1$
+\end_inset
+
+,
+ dann ist
+\begin_inset Formula 
+\begin{align*}
+\mathbf{x}\left(-1\right) & =v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)+\left(-1\right)\cdot\left(\mathbf{v}-v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)\right)\\
+ & =v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)-\mathbf{v}+v_{s}\cdot\left(\textrm{\begin{array}{c}
+1\\
+1
+\end{array}}\right)\\
+ & =\mathbf{w}
+\end{align*}
+
+\end_inset
+
+Und noch eine Sache:
+ Mich interessiert die Funktion der der Betrag relativen Geschwindigkeitsdifferenz des schwerern Körpers,
+ falls zwei Körper mit unterschiedlichen Massen,
+ aber mit gleicher Geschwindigkeit aufeinanderprallen.
+ Es sei also (mit 
+\begin_inset Formula $c\geq1$
+\end_inset
+
+)
+\begin_inset Formula 
+\begin{align*}
+v_{2} & =-v_{1}\\
+m_{2} & =c\cdot m_{1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Formula 
+\begin{align*}
+ & w_{2}\\
+= & \frac{\left(m_{2}-m_{1}\right)\cdot v_{2}+2\cdot m_{1}\cdot v_{1}}{m_{1}+m_{2}}\\
+ & \frac{\left(c\cdot m_{1}-m_{1}\right)\cdot\left(-v_{1}\right)+2\cdot m_{1}\cdot v_{1}}{m_{1}+c\cdot m_{1}}\\
+= & \frac{\left(1-c\right)\cdot v_{1}+2\cdot v_{1}}{1+c}\\
+= & \frac{\left(1-c\right)+2}{1+c}\cdot v_{1}\\
+= & \frac{3-c}{1+c}\cdot v_{1}
+\end{align*}
+
+\end_inset
+
+Gesucht ist also
+\begin_inset Formula 
+\begin{align*}
+ & \frac{w_{2}-v_{2}}{v_{2}}\\
+= & \frac{\frac{3-c}{1+c}\cdot v_{1}-\left(-v_{1}\right)}{-v_{1}}\\
+= & \frac{\frac{3-c}{1+c}\cdot v_{1}+v_{1}}{-v_{1}}\\
+= & \frac{\frac{3-c}{1+c}+1}{-1}\\
+= & -\frac{3-c}{1+c}-1\\
+= & \frac{c-3}{1+c}-1\\
+= & \frac{c-3}{1+c}-\frac{1+c}{1+c}\\
+= & \frac{c-3-1-c}{1+c}\\
+= & \frac{-4}{1+c}
+\end{align*}
+
+\end_inset
+
+Und wie ist es für den kleineren Körper?
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Formula 
+\begin{align*}
+ & w_{1}\\
+= & \frac{\left(m_{1}-m_{2}\right)\cdot v_{1}+2\cdot m_{2}\cdot v_{2}}{m_{1}+m_{2}}\\
+= & \frac{\left(m_{1}-c\cdot m_{1}\right)\cdot v_{1}+2\cdot c\cdot m_{1}\cdot\left(-v_{1}\right)}{m_{1}+c\cdot m_{1}}\\
+= & \frac{\left(1-c\right)\cdot v_{1}-2\cdot c\cdot v_{1}}{1+c}\\
+= & \frac{\left(1-c\right)-2\cdot c}{1+c}\cdot v_{1}\\
+= & \frac{1-3\cdot c}{1+c}\cdot v_{1}
+\end{align*}
+
+\end_inset
+
+Dann ist
+\begin_inset Formula 
+\begin{align*}
+ & \frac{w_{1}-v_{1}}{v_{1}}\\
+= & \frac{\frac{1-3\cdot c}{1+c}\cdot v_{1}-v_{1}}{v_{1}}\\
+= & \frac{\frac{1-3\cdot c}{1+c}\cdot1-1}{1}\\
+= & \frac{1-3\cdot c}{1+c}-1\\
+= & \frac{1-3\cdot c}{1+c}-\frac{1+c}{1+c}\\
+= & \frac{1-3\cdot c-1-c}{1+c}\\
+= & -\frac{4\cdot c}{1+c}
+\end{align*}
+
+\end_inset
+
+Schlussendlich ist als
+\begin_inset Formula 
+\begin{align*}
+\frac{w_{1}-v_{1}}{v_{1}}=-\frac{4\cdot c}{1+c}\\
+\frac{w_{2}-v_{2}}{v_{2}}=-\frac{4}{1+c}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Wenn du die nachfolgende Abbildung betrachtest,
+ dann siehst du,
+ dass die beiden Kurven stark ansteigen respektive abfallen:
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Graphics
+	filename ZentralerStoss.svg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Obwohl es bei Autoumfällen immer ein Gemisch von elastischen und vollkommen inelastischen Stössen handelt,
+ lässt sich schreiben:
+ Darum fahren so viele elegante Damen mit Handtasche Range Rover.
+ Denn eine Panzerung bewirkt einen schweren Wagen,
+ was den Aufprall abmildert.
+ So einfach ist das.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Aufgabe 7.40
+\end_layout
+
+\begin_layout Exercise
+Ein Lastwagen und ein Personenwagen haben eine Frontalkollision (total inelastischer Stoss).
+ Der Lastwagen wiegt 15 t,
+ der Personenwagen 1.5 t.
+ Der Lastwagen ist mir 100 km/h unterwegs.
+ Die Geschwindigkeit des Personenwagens ist nicht bekannt.
+ Der Lastwagen sowie der Personen fahren nach dem Stoss mit einer Geschwindigkeit in Fahrrichtung des Lastwagens weiter.
+ Die Frage ist:
+ Wie schnell war der Personenwagen vor dem Stoss unterwegs?
+\end_layout
+
+\begin_layout Exercise
+Gemäss dem Impulserhaltungssatz gilt
+\begin_inset Formula 
+\[
+v_{1}\cdot m_{1}+v_{2}\cdot m_{2}=\left(m_{1}+m_{2}\right)\cdot v_{3}
+\]
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $m_{1}$
+\end_inset
+
+die Geschwindigkeit vor dem Stoss und die Masse des Lastwagens,
+ 
+\begin_inset Formula $v_{2}$
+\end_inset
+
+ und 
+\begin_inset Formula $m_{2}$
+\end_inset
+
+ die Geschwindigkeit vor dem Stoos und die Masse des Personenwagens,
+ sowie 
+\begin_inset Formula $v_{3}$
+\end_inset
+
+ die gemeinsame Geschwindigkeit des Lastwagens und des Personenwagens nach dem Stoss.
+ Also gilt
+\begin_inset Formula 
+\[
+v_{2}\cdot m_{2}=\left(m_{1}+m_{2}\right)\cdot v_{3}-v_{1}\cdot m_{1}
+\]
+
+\end_inset
+
+Die Masse von 
+\begin_inset Formula $m_{2}$
+\end_inset
+
+ ist grösser als Null.
+ Also gilt:
+\begin_inset Formula 
+\begin{align*}
+ & v_{2}\\
+= & \frac{\left(m_{1}+m_{2}\right)\cdot v_{3}-v_{1}\cdot m_{1}}{m_{2}}\\
+= & \frac{\left(15+1.5\right)\cdot70-100\cdot15}{1.5}\,\text{km/h}\\
+= & -230\,\text{km/h}
+\end{align*}
+
+\end_inset
+
+Welcher Anteil der kinetischen Energie wird in thermische Energie umgewandelt?
+\begin_inset Formula 
+\[
+\frac{E_{1}-E_{2}}{E_{1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Die kinetische Energie 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ des Lastwagens und des Personenwagens vor der Kollision sind:
+\begin_inset Formula 
+\[
+E_{1}=\frac{1}{2}\cdot m_{1}\cdot v_{1}^{2}+\frac{1}{2}\cdot m_{2}\cdot v_{2}^{2}
+\]
+
+\end_inset
+
+Die kinetische Energie 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+ des Lastwagens nach der Kollision sind:
+\begin_inset Formula 
+\[
+E_{2}=\frac{1}{2}\cdot\left(m_{1}+m_{2}\right)\cdot v_{3}^{2}
+\]
+
+\end_inset
+
+Somit ist
+\begin_inset Formula 
+\begin{align*}
+ & \frac{E_{1}-E_{2}}{E_{1}}\\
+= & \frac{\frac{1}{2}\cdot m_{1}\cdot v_{1}^{2}+\frac{1}{2}\cdot m_{2}\cdot v_{2}^{2}-\frac{1}{2}\cdot\left(m_{1}+m_{2}\right)\cdot v_{3}^{2}}{\frac{1}{2}\cdot m_{1}\cdot v_{1}^{2}+\frac{1}{2}\cdot m_{2}\cdot v_{2}^{2}}\\
+= & 1-\frac{\frac{1}{2}\cdot\left(m_{1}+m_{2}\right)\cdot v_{3}^{2}}{\frac{1}{2}\cdot m_{1}\cdot v_{1}^{2}+\frac{1}{2}\cdot m_{2}\cdot v_{2}^{2}}\\
+= & 1-\frac{\left(m_{1}+m_{2}\right)\cdot v_{3}^{2}}{m_{1}\cdot v_{1}^{2}+m_{2}\cdot v_{2}^{2}}\\
+= & 1-\frac{\left(15+1.5\right)\cdot70^{2}}{15\cdot100^{^{2}}+1.5\cdot\left(-230\right)^{2}}\\
+\approx & 65\%
+\end{align*}
+
+\end_inset
+
+Um es mit Worten auszudrücken:
+ Mit 65% Umwandlung der kinetischen Energie in thermische Energie ist diese Kollision zumindest für die Person im Personenkraftwagen absolut tödlich!
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Aufgabe 8.1)
+\end_layout
+
+\begin_layout Exercise
+a) Die Flugzeit vom Reflektor zur Quelle ist gefragt.
+ Wenn die Luft mit 
+\begin_inset Formula $v=30\frac{m}{s}$
+\end_inset
+
+ von rechts her blasen würde (was eigentlich wahrscheinlich fast ein Ding der Unmöglichkeit wäre),
+ dann wäre die resultierte Geschwindigkeit des Schalls
+\begin_inset Formula 
+\[
+v_{1}=\left(330+30\right)\,\frac{m}{s}=360\,\frac{m}{s}
+\]
+
+\end_inset
+
+Dann wäre mit 
+\begin_inset Formula 
+\[
+v_{1}=\frac{D}{t_{1}}
+\]
+
+\end_inset
+
+also auch
+\begin_inset Formula 
+\[
+t_{1}=\frac{D}{v_{1}}=\frac{2}{360}\frac{m}{\frac{m}{s}}=\frac{1}{180}s\approx556\,\mu s
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Leider ist das nicht die ganze Wahrheit.
+ Ich habe dummerweise die Aufgabe nicht richtig durchgelesen.
+ Gefragt ist die Zeit,
+ welche verstreicht,
+ bis die Schallwelle wieder beim Lautpsrecher angekommen ist.
+ Also muss ich zusätzlich noch die Zeit berechnen,
+ welche die Schallwelle braucht,
+ um vom Reflektor wieder zum Lautsprccher zu gelangen.
+ Diese Zeit beträgt.
+ Die Rückflugzeit habe ich ja bereits berechnet.
+ Diese beträgt
+\begin_inset Formula 
+\[
+t_{1}=\frac{D}{v+v_{S}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Um vom Lautsprecher zum Reflektor gelangen,
+ muss die Geschwindigkeit des Interferometers von der Schallgeschwindigkeit subtrahiert werden.
+ Dies resultiert in der Geschwindigkeit 
+\begin_inset Formula 
+\[
+v_{2}=v_{S}-v
+\]
+
+\end_inset
+
+Also wird 
+\begin_inset Formula 
+\[
+v_{2}=\frac{D}{t_{2}}
+\]
+
+\end_inset
+
+oder aber 
+\begin_inset Formula 
+\[
+t_{2}=\frac{D}{v_{2}}=\frac{D}{v_{S}-v}
+\]
+
+\end_inset
+
+Die gesamte Laufzeit beträgt demnach
+\begin_inset Formula 
+\begin{align*}
+t_{G\left(a\right)} & =t_{1}+t_{2}\\
+ & =\frac{D}{v_{S}+v}+\frac{D}{v_{S}-v_{S}}\\
+ & =\frac{\left(v_{S}-v\right)\cdot D}{\left(v_{S}+v\right)\cdot\left(v_{S}-v\right)}+\frac{\left(v_{S}+v\right)\cdot D}{\left(v_{S}+v\right)\cdot\left(v_{S}-v\right)}\\
+ & =\frac{\left(v_{S}-v\right)\cdot D+\left(v_{S}+v\right)\cdot D}{v_{S}^{2}-v^{2}}\\
+ & =\frac{\left(v_{S}-v+v_{S}+v\right)\cdot D}{v_{S}^{2}-v^{2}}\\
+ & =\frac{2\cdot v_{S}\cdot D}{v_{S}^{2}-v^{2}}\\
+ & =\frac{2\cdot330\cdot2}{330^{2}-30^{2}}\,s\\
+ & \approx0.012222\,s
+\end{align*}
+
+\end_inset
+
+Also 
+\begin_inset Formula 
+\[
+t_{G\left(a\right)}\approx0.012222\,s
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+b) Wenn das Interferometer senkrecht zur Luft steht,
+ dann wird's schwierig.
+ Denn dann ist zwar ist die Strecke,
+ welche der Schall zurückliegen muss,
+ grösser.
+ Dann liegt die Situation wie in Abbildung 8.4.
+ vor.
+\end_layout
+
+\begin_layout Exercise
+Die Strecke beträgt dann 
+\begin_inset Formula 
+\[
+D'=\sqrt{D^{2}+\left(v_{T}\cdot t\right)^{2}}
+\]
+
+\end_inset
+
+ Wobei 
+\begin_inset Formula $v_{T}$
+\end_inset
+
+ die Geschwindigkeit der Schiene sei.
+ Jedoch muss gleichzeitig
+\begin_inset Formula 
+\[
+D'=v_{L}\cdot t
+\]
+
+\end_inset
+
+ sein.
+ Also gilt
+\begin_inset Formula 
+\[
+v_{L}^{2}\cdot t^{2}=D^{2}+\left(v_{T}\cdot t\right)^{2}
+\]
+
+\end_inset
+
+oder aber 
+\begin_inset Formula 
+\begin{align*}
+t^{2}\cdot\left(v_{L}^{2}-v_{T}^{2}\right) & =D^{2}\\
+t^{2} & =\frac{D^{2}}{v_{L}^{2}-v_{T}^{2}}\\
+t & =\frac{D}{\sqrt{1-\left(\frac{v_{T}}{v_{L}}\right)^{2}}\cdot v_{L}}
+\end{align*}
+
+\end_inset
+
+Die Gleichung macht m.E.
+ durchaus Sinn.
+ Wenn 
+\begin_inset Formula $v_{T}>v_{L}>0$
+\end_inset
+
+,
+ dann ist 
+\begin_inset Formula 
+\[
+\frac{v_{T}}{v_{L}}>1
+\]
+
+\end_inset
+
+und ebenso
+\begin_inset Formula 
+\[
+\left(\frac{v_{T}}{v_{L}}\right)^{2}>1
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+1-\left(\frac{v_{T}}{v_{L}}\right)^{2}<0
+\]
+
+\end_inset
+
+Also ist die Wurzel 
+\begin_inset Formula 
+\[
+\sqrt{1-\left(\frac{v_{T}}{v_{L}}\right)^{2}}
+\]
+
+\end_inset
+
+ in diesem Fall imaginär.
+ Ebenso geht mit 
+\begin_inset Formula 
+\[
+v_{T}\rightarrow v_{L}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sqrt{1-\left(\frac{v_{T}}{v_{L}}\right)^{2}}\rightarrow+0
+\]
+
+\end_inset
+
+und also 
+\begin_inset Formula 
+\[
+t\rightarrow\infty
+\]
+
+\end_inset
+
+was durchaus Sinn macht.
+ Also ist
+\begin_inset Formula 
+\begin{align*}
+t_{1} & =\frac{D}{\sqrt{1-\left(\frac{v_{T}}{v_{L}}\right)^{2}}\cdot v_{L}}\\
+ & =\frac{2}{\sqrt{1-\left(\frac{30}{330}\right)^{2}}\cdot330}\frac{m}{\frac{m}{s}}\\
+ & =\frac{2}{328.63}\,s\\
+ & \approx609\,\mu s
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Da ich hier auch leider nur einen Weg berücksichtigt habe,
+ muss ich die Zeit verdoppeln.
+ Ich erhalte also 
+\begin_inset Formula 
+\begin{align*}
+t_{G\left(b\right)} & =\frac{2\cdot D}{\sqrt{1-\left(\frac{v_{T}}{v_{L}}\right)^{2}}\cdot v_{L}}\\
+ & =\frac{4}{\sqrt{1-\left(\frac{30}{330}\right)^{2}}\cdot330}\,\frac{m}{\frac{m}{s}}\\
+ & \approx0.012172\,s
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+c) Nun soll berechnet werden,
+ wie lange es 
+\begin_inset Quotes gld
+\end_inset
+
+gegen Wind
+\begin_inset Quotes grd
+\end_inset
+
+ braucht,
+ bis das Signal von der Quelle zum Reflektor gelangt ist.
+ In diesem Fall ist banalerweise
+\begin_inset Formula 
+\begin{align*}
+v & =v_{s}-v_{L}=\left(330-30\right)\,\text{\ensuremath{\frac{m}{s}}}\\
+ & =300\,\frac{m}{s}
+\end{align*}
+
+\end_inset
+
+Somit ist mit
+\begin_inset Formula 
+\[
+v=\frac{s}{t}
+\]
+
+\end_inset
+
+also 
+\begin_inset Formula 
+\begin{align*}
+t & =\frac{s}{v}=\frac{2}{300}\ s\\
+ & \approx667\ \mu s
+\end{align*}
+
+\end_inset
+
+Was mich noch interessieren würde:
+ Wie sieht es im allgemeinen Fall aus?
+ Also wenn die Messtrecke in einem Winkel von
+\begin_inset Formula 
+\[
+\alpha\in\mathbb{R}\cap\left[0,\pi\right]
+\]
+
+\end_inset
+
+zur Luftgeschwindigkeit aufgestellt worden wäre?
+ Dann ist nur eine Richtung interessant,
+ typischerweise von der Quelle zum Reflektor.
+ Die Situation von 
+\begin_inset Formula 
+\[
+\pi-\alpha
+\]
+
+\end_inset
+
+ist übrigens einfach spiegelbildlich von 
+\begin_inset Formula 
+\[
+\pi+\alpha
+\]
+
+\end_inset
+
+wobei 
+\begin_inset Formula 
+\[
+\alpha\in\mathbb{R}
+\]
+
+\end_inset
+
+ist.
+\end_layout
+
+\begin_layout Exercise
+Ich habe mit viel Liebe und Geduld die allgemeine Situation aufgezeichnet:
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Graphics
+	filename AusbreitungSchallInRoehre.svg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Ich überlege mir:
+ Die Luft sei in Ruhe,
+ das Messinstrument bewege sich mit der Geschwindigkeit und der Richtung welche Durch den Winkel 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ gegeben sei.
+ Weiter kann ich den Ursprung in den Sensor/ Reflektor verlegen und die Quelle sendet bei 
+\begin_inset Formula $-D$
+\end_inset
+
+ den Schall aus.
+ Der Sensor/ Reflektor bewegt sich dann auf der Linie 
+\begin_inset Formula 
+\[
+t\cdot\left(\begin{array}{c}
+v_{x}\\
+v_{y}
+\end{array}\right)
+\]
+
+\end_inset
+
+Wobei gelte
+\begin_inset Formula 
+\[
+v^{2}=v_{x}^{2}+v_{y}^{2}
+\]
+
+\end_inset
+
+sowie
+\begin_inset Formula 
+\[
+\tan\left(\alpha\right)=\frac{v_{y}}{v_{x}}
+\]
+
+\end_inset
+
+Dann ist schätzungweise
+\begin_inset Formula 
+\[
+t\cdot\left(\begin{array}{c}
+v\cdot\cos\left(\alpha\right)\\
+v\cdot\sin\left(\alpha\right)
+\end{array}\right)
+\]
+
+\end_inset
+
+Probe:
+ Mit 
+\begin_inset Formula 
+\[
+v=\left(\begin{array}{c}
+v\cdot\cos\left(\alpha\right)\\
+v\cdot\sin\left(\alpha\right)
+\end{array}\right)
+\]
+
+\end_inset
+
+ist 
+\begin_inset Formula 
+\begin{align*}
+ & v^{2}\\
+= & \left(v\cdot\cos\left(\alpha\right)\right)^{2}+\left(v\cdot\sin\left(\alpha\right)\right)^{2}\\
+= & v^{2}\cdot\left(\cos^{2}\left(\alpha\right)+\sin^{2}\left(\alpha\right)\right)\\
+= & v^{2}\cdot1\\
+= & v^{2}
+\end{align*}
+
+\end_inset
+
+Weiter ist 
+\begin_inset Formula 
+\[
+\frac{v_{y}}{v_{x}}=\frac{v\cdot\sin\left(\alpha\right)}{v\cdot\cos\left(\alpha\right)}=\tan\left(\alpha\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Also war meine Schätzung zutreffend.
+\end_layout
+
+\begin_layout Exercise
+Dann ist die Bedingung:
+ Einerseits ist in der Zeit 
+\begin_inset Formula $t$
+\end_inset
+
+ der Schall von der Quelle zum Sensor gekommen.
+ Da die Luft ruhend sei,
+ beträgt diese Strecke
+\begin_inset Formula 
+\[
+t\cdot v_{S}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Andererseits ist in dieser Zeit dieser Zeit das Messgerät bei 
+\begin_inset Formula 
+\[
+t\cdot\left(\begin{array}{c}
+v\cdot\cos\left(\alpha\right)\\
+v\cdot\sin\left(\alpha\right)
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Nun muss gelten,
+ dass die Distanz von der Quelle zum Senor ebenfalls 
+\begin_inset Formula $t\cdot v_{S}$
+\end_inset
+
+ sein muss.
+ Diese ist dann 
+\begin_inset Formula 
+\[
+t\cdot v_{S}=\sqrt{\left(t\cdot v\cdot\cos\left(\alpha\right)+D\right)^{2}+t^{2}\cdot v^{2}\cdot\sin^{2}\left(\alpha\right)}
+\]
+
+\end_inset
+
+Nun quadriere ich diese Gleichung und erhalte 
+\begin_inset Formula 
+\[
+t^{2}\cdot v_{S}^{2}=\left(t\cdot v\cdot\cos\left(\alpha\right)+D\right)^{2}+t^{2}\cdot v^{2}\cdot\sin^{2}\left(\alpha\right)
+\]
+
+\end_inset
+
+Es ist 
+\begin_inset Formula 
+\begin{align*}
+ & \left(t\cdot v\cdot\cos\left(\alpha\right)+D\right)^{2}\\
+= & t^{2}\cdot v^{2}\cdot\cos^{2}\left(\alpha\right)+2\cdot t\cdot v\cdot D\cdot\cos\left(\alpha\right)+D^{2}
+\end{align*}
+
+\end_inset
+
+und somit
+\begin_inset Formula 
+\begin{align*}
+ & \left(t\cdot v\cdot\cos\left(\alpha\right)+D\right)^{2}+t\cdot v\cdot\sin^{2}\left(\alpha\right)\\
+= & t^{2}\cdot v^{2}\cdot\cos^{2}\left(\alpha\right)+2\cdot t\cdot v\cdot D\cdot\cos\left(\alpha\right)+D^{2}+t^{2}\cdot v^{2}\cdot\sin^{2}\left(\alpha\right)\\
+= & t^{2}\cdot v^{2}\cdot\left(\sin^{2}\left(\alpha\right)+\cos^{2}\left(\alpha\right)\right)+2\cdot t\cdot v\cdot D\cdot\cos\left(\alpha\right)+D^{2}\\
+= & t^{2}\cdot v^{2}+2\cdot t\cdot v\cdot D\cdot\cos\left(\alpha\right)+D^{2}
+\end{align*}
+
+\end_inset
+
+Also erhalte ich die Bedingung
+\begin_inset Formula 
+\[
+0=\left(v^{2}-v_{S}^{2}\right)\cdot t^{2}+2\cdot t\cdot v\cdot D\cdot\cos\left(\alpha\right)+D^{2}=0
+\]
+
+\end_inset
+
+Diese quadratische Gleichung hat die Lösung
+\begin_inset Formula 
+\begin{align*}
+t_{1/2} & =\frac{-2\cdot D\cdot v\cdot\cos\left(\alpha\right)\pm\sqrt{4\cdot v^{2}\cdot D^{2}\cdot\cos^{2}\left(\alpha\right)-4\cdot\left(v^{2}-v_{S}^{2}\right)\cdot D^{2}}}{2\cdot\left(v^{2}-v_{S}^{2}\right)}\\
+ & =\frac{-2\cdot D\cdot v\cdot\cos\left(\alpha\right)\pm2\cdot D\cdot\sqrt{v^{2}\cdot\cos^{2}\left(\alpha\right)-\left(v^{2}-v_{S}^{2}\right)}}{2\cdot\left(v^{2}-v_{S}^{2}\right)}\\
+ & =\frac{-D\cdot v\cdot\cos\left(\alpha\right)\pm D\cdot\sqrt{v^{2}\cdot\cos^{2}\left(\alpha\right)-\left(v^{2}-v_{S}^{2}\right)}}{2\cdot\left(v^{2}-v_{S}^{2}\right)}\\
+ & =D\cdot\frac{-v\cdot\cos\left(\alpha\right)\pm\sqrt{v^{2}\cdot\cos^{2}\left(\alpha\right)-\left(v^{2}-v_{S}^{2}\right)}}{\left(v^{2}-v_{S}^{2}\right)}\\
+ & =D\cdot\frac{-v\cdot\cos\left(\alpha\right)\pm\sqrt{v_{S}+v^{2}\cdot\left(\cos^{2}\left(\alpha\right)-1\right)}}{\left(v^{2}-v_{S}^{2}\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Nun ist
+\begin_inset Formula 
+\[
+1-\cos^{2}\left(\alpha\right)=\sin^{2}\left(\alpha\right)
+\]
+
+\end_inset
+
+und entsprechend 
+\begin_inset Formula 
+\[
+\cos^{2}\left(\alpha\right)-1=-\sin^{2}\left(\alpha\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Somit wird
+\begin_inset Formula 
+\begin{align*}
+t_{1/2} & =D\cdot\frac{-v\cdot\cos\left(\alpha\right)\pm\sqrt{v_{S}^{2}-v^{2}\cdot\sin^{2}\left(\alpha\right)}}{\left(v^{2}-v_{S}^{2}\right)}\\
+ & =D\cdot\frac{v\cdot\cos\left(\alpha\right)\pm\sqrt{v_{S}^{2}-v^{2}\cdot\sin^{2}\left(\alpha\right)}}{v_{S}^{2}-v^{2}}
+\end{align*}
+
+\end_inset
+
+Dass die Lösung proportional zu 
+\begin_inset Formula $D$
+\end_inset
+
+ ist,
+ ist schon einmal gut.
+ Ich möchte eine Lösung mit dem Faktor
+\begin_inset Formula 
+\[
+\kappa=\frac{v}{v_{S}}
+\]
+
+\end_inset
+
+ Also ist
+\begin_inset Formula 
+\begin{align*}
+v & =\kappa\cdot v_{S}\\
+v^{2} & =\kappa^{2}\cdot v_{S}^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also ist
+\begin_inset Formula 
+\begin{align*}
+t_{1/2} & =D\cdot\frac{\kappa\cdot v_{S}\cdot\cos\left(\alpha\right)\pm\sqrt{v_{S}^{2}-\kappa^{2}\cdot v_{S}^{2}\cdot\sin^{2}\left(\alpha\right)}}{v_{S}^{2}-\kappa^{2}\cdot v_{S}^{2}}\\
+ & =D\cdot\frac{\kappa\cdot v_{S}\cdot\cos\left(\alpha\right)\pm\sqrt{v_{S}^{2}-\kappa^{2}\cdot v_{S}^{2}\cdot\sin^{2}\left(\alpha\right)}}{v_{S}^{2}-\kappa^{2}\cdot v_{S}^{2}}\\
+ & =D\cdot\frac{\kappa\cdot v_{S}\cdot\cos\left(\alpha\right)\pm\sqrt{v_{S}^{2}\cdot\left(1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)\right)}}{v_{S}^{2}\cdot\left(1-\kappa^{2}\right)}\\
+ & =D\cdot\frac{\kappa\cdot v_{S}\cdot\cos\left(\alpha\right)\pm v_{S}\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)}}{v_{S}^{2}\cdot\left(1-\kappa^{2}\right)}\\
+ & =D\cdot\frac{v_{S}\cdot\left(\kappa\cdot\cos\left(\alpha\right)\pm\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)}\right)}{v_{S}^{2}\cdot\left(1-\kappa^{2}\right)}\\
+ & =\frac{D}{v_{S}}\cdot\frac{\kappa\cdot\cos\left(\alpha\right)\pm\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)}}{1-\kappa^{2}}
+\end{align*}
+
+\end_inset
+
+Also insgesamt
+\begin_inset Formula 
+\[
+t=\frac{D}{v_{S}}\cdot\frac{\kappa\cdot\cos\left(\alpha\right)\pm\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)}}{1-\kappa^{2}}
+\]
+
+\end_inset
+
+Diskussion
+\begin_inset Formula 
+\[
+\alpha=0
+\]
+
+\end_inset
+
+Dann lautet die Formel
+\begin_inset Formula 
+\begin{align*}
+t & =\frac{D}{v_{S}}\cdot\frac{\kappa\cdot1\pm\sqrt{1-\kappa^{2}\cdot0}}{1-\kappa^{2}}\\
+ & =\frac{D}{v_{S}}\cdot\frac{\kappa\pm\sqrt{1}}{1-\kappa^{2}}\\
+ & =\frac{D}{v_{S}}\cdot\frac{\kappa\pm1}{1-\kappa^{2}}
+\end{align*}
+
+\end_inset
+
+Wenn 
+\begin_inset Formula $\kappa<1$
+\end_inset
+
+ ist,
+ dann ist 
+\begin_inset Formula 
+\[
+1-\kappa^{2}>0
+\]
+
+\end_inset
+
+Also muss die positive Lösung für 
+\begin_inset Formula $t$
+\end_inset
+
+ genommen werden,
+ da damit am Schluss eine positive Zeit resultiert.
+\begin_inset Formula 
+\begin{align*}
+t & =\frac{D}{v_{S}}\cdot\frac{\kappa+1}{1-\kappa^{2}}\\
+ & =\frac{D}{v_{S}}\cdot\frac{\kappa+1}{\left(1-\kappa\right)\cdot\left(1+\kappa\right)}\\
+ & =\frac{D}{v_{S}}\cdot\frac{1}{1-\kappa}
+\end{align*}
+
+\end_inset
+
+Mit 
+\begin_inset Formula 
+\[
+\kappa\rightarrow1
+\]
+
+\end_inset
+
+geht
+\begin_inset Formula 
+\[
+1-\kappa\rightarrow0
+\]
+
+\end_inset
+
+und somit 
+\begin_inset Formula 
+\[
+t\rightarrow\infty
+\]
+
+\end_inset
+
+so wie es sein muss.
+ Ansonsten ist
+\begin_inset Formula 
+\begin{align*}
+t & =\frac{D}{v_{S}}\cdot\frac{1}{1-\frac{v}{v_{s}}}\\
+t & =\frac{D}{v_{s}-v}
+\end{align*}
+
+\end_inset
+
+Was vernünftig ausschaut.
+ Nun sei 
+\begin_inset Formula 
+\[
+\alpha=\frac{\pi}{2}
+\]
+
+\end_inset
+
+Dann ist 
+\begin_inset Formula 
+\begin{align*}
+t & =\frac{D}{v_{S}}\cdot\frac{\pm\sqrt{1-\kappa^{2}}}{1-\kappa^{2}}\\
+ & =\pm\frac{D}{v_{S}\cdot\sqrt{1-\kappa^{2}}}\\
+ & =\pm\frac{D}{\sqrt{v_{S}^{2}-v^{2}}}
+\end{align*}
+
+\end_inset
+
+Da ich nur positive Zeiten gelten lasse,
+ gilt wiederum
+\begin_inset Formula 
+\[
+t=\frac{D}{\sqrt{v_{S}^{2}-v^{2}}}
+\]
+
+\end_inset
+
+Und wieder ist mit 
+\begin_inset Formula 
+\[
+v\rightarrow v_{S}
+\]
+
+\end_inset
+
+dass 
+\begin_inset Formula 
+\[
+v_{S}^{2}-v^{2}\rightarrow0
+\]
+
+\end_inset
+
+und darum 
+\begin_inset Formula 
+\[
+t\rightarrow\infty
+\]
+
+\end_inset
+
+Nun kommt der letzte Fall 
+\begin_inset Formula 
+\[
+\alpha=\pi
+\]
+
+\end_inset
+
+Dann ist
+\begin_inset Formula 
+\begin{align*}
+t & =\frac{D}{v_{S}}\cdot\frac{\kappa\cdot\cos\left(\alpha\right)\pm\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)}}{1-\kappa^{2}}\\
+ & =\frac{D}{v_{S}}\cdot\frac{-\kappa\pm\sqrt{1}}{1-\kappa^{2}}\\
+ & =\frac{D}{v_{S}}\cdot\frac{\pm1-\kappa}{1-\kappa^{2}}
+\end{align*}
+
+\end_inset
+
+Da ich für 
+\begin_inset Formula $v<v_{S}$
+\end_inset
+
+ wiederum positive Lösungen zulassen möchte ist wiederum bloss die Lösung mit dem positiven Vorzeichen gültig;
+\begin_inset Formula 
+\begin{align*}
+t & =\frac{D}{v_{S}}\cdot\frac{1-\kappa}{1-\kappa^{2}}\\
+ & =\frac{D}{v_{S}}\cdot\frac{1-\kappa}{\left(1-\kappa\right)\cdot\left(1+\kappa\right)}\\
+ & =\frac{D}{v_{S}\cdot\left(1+\kappa\right)}\\
+ & =\frac{D}{v_{S}+v}
+\end{align*}
+
+\end_inset
+
+Nun ist diese Lösung insofern vernünftig,
+ dass mit 
+\begin_inset Formula $v\rightarrow v_{S}$
+\end_inset
+
+ gilt
+\begin_inset Formula 
+\[
+t\rightarrow\frac{D}{2\cdot v_{S}}
+\]
+
+\end_inset
+
+was eben auch vernünftig ist.
+ Also glaube ich,
+ dass meine Lösung schon gut aussieht.
+ 
+\end_layout
+
+\begin_layout Standard
+Nun möchte ich den allgemeinen Fall des Hin- und Rückflugs berechnen.
+ Dann müssen zwei Zeiten berechnet werden.
+ Einer für die Zeit des Hinflugs vom Lautsprecher zum Reflektor,
+ eine für die Zeit des Rückflugs vom Reflektors zum Lautsprecher.
+ Das resultiert in 
+\begin_inset Formula 
+\begin{align*}
+t_{G} & =\frac{D}{v_{S}}\cdot\frac{\kappa\cdot\cos\left(\alpha\right)\pm\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)}}{1-\kappa^{2}}+\frac{D}{v_{S}}\cdot\frac{\kappa\cdot\cos\left(\alpha+\pi\right)\pm\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha+\pi\right)}}{1-\kappa^{2}}\\
+ & =\frac{D}{v_{S}}\cdot\frac{\kappa\cdot\cos\left(\alpha\right)\pm\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)}}{1-\kappa^{2}}+\frac{D}{v_{S}}\cdot\frac{\kappa\cdot\left(-\cos\left(\alpha\right)\right)\pm\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\pi\right)}}{1-\kappa^{2}}\\
+ & =\frac{D}{v_{S}}\cdot\left(\frac{\kappa\cdot\cos\left(\alpha\right)\pm\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)}}{1-\kappa^{2}}+\frac{-\kappa\cdot\cos\left(\alpha\right)\pm\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\pi\right)}}{1-\kappa^{2}}\right)\\
+ & =\frac{D}{v_{S}}\cdot\frac{\pm2\cdot\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)}}{1-\kappa^{2}}
+\end{align*}
+
+\end_inset
+
+Und weil ich mich im Unterschallbereich befinden,
+ kann ich die negative Lösung weglassen und erhalte:
+ 
+\begin_inset Formula 
+\[
+t_{G}=\frac{2\cdot D}{v_{S}}\cdot\frac{\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)}}{1-\kappa^{2}}
+\]
 
 \end_inset
 

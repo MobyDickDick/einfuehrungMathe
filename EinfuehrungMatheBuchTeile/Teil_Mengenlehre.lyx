@@ -537,7 +537,7 @@ M_{2}\supset M_{1}\label{def:Obermenge}
 falls gilt:
 \begin_inset Formula 
 \[
-M=\emptyset\wedge\left(m\in M_{1}\Rightarrow m\in M_{2}\right)
+M_{1}=\emptyset\vee\left(m\in M_{1}\Rightarrow m\in M_{2}\right)
 \]
 
 \end_inset
@@ -656,7 +656,7 @@ M_{1}=M_{2}
 falls die Aussage
 \begin_inset Formula 
 \[
-m\in M_{1}\Leftrightarrow m\in M_{2}
+M_{1}\subset M_{2}\wedge M_{2}\subset M_{1}
 \]
 
 \end_inset
@@ -1080,6 +1080,94 @@ Es gibt zwei Sorten von Mathematikern.
 .
  Nun,
  ich möchte gerne über die leere Menge sprechen.
+ Ich möhte mit einem kleinen Lemma beginnen:
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:aus-Gleichheit-folgt-Teilmenge"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ Symbole von Mengen,
+ welche in sich selbst und in Bezug auf die anderen Symbole des Lemmas widerspruchsfrei seien.
+ Weiter sei 
+\begin_inset Formula $M_{1}=M_{2}$
+\end_inset
+
+.
+ Dann gilt auch 
+\begin_inset Formula 
+\[
+M_{1}\subset M_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Da 
+\begin_inset Formula $M_{1}=M_{2}$
+\end_inset
+
+ ist,
+ gilt nach Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Mengengleichheit-Definition-Formal"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Mengengleichheit
+\begin_inset Formula 
+\[
+M_{1}\subset M_{2}\wedge M_{2}\subset M_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Implikation-Implikation-aus-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Implikation der Implikation aus er Äquivalenz folgt jedoch,
+ dass daraus auch folgt
+\begin_inset Formula 
+\[
+M_{1}\subset M_{2}
+\]
+
+\end_inset
+
+Das bedeutet jedoch,
+ dass die Beweis für die Richtigkeit der Behauptung bereits erbracht ist.
+ Aus diesem Grund beende ich an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Section
@@ -15637,6 +15725,12 @@ Ich möchte gleich noch einen Hilfssatz anfügen:
 \end_layout
 
 \begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Mengeninklusionen-von-Schnitt-und-Vereinigungsmengen"
+
+\end_inset
+
 Es seien 
 \begin_inset Formula $A$
 \end_inset
@@ -15680,7 +15774,501 @@ x\in A
 
 \end_inset
 
+Gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Implikation-Disjunktion-aus-Aussage"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
+\end_inset
+
+ kann ich dann schliessen,
+ dass auch gilt:
+\begin_inset Formula 
+\[
+x\in A\vee x\in B
+\]
+
+\end_inset
+
+Gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Vereinigungsmenge"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Vereinigungsmenge gilt dann auch
+\begin_inset Formula 
+\[
+x\in A\vee x\in B\Leftrightarrow x\in A\cup B
+\]
+
+\end_inset
+
+Und weil gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Implikation-Implikation-aus-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ aus der Implikation die Äquivalenz folgt,
+ kann ich in diesem Fall folgern,
+ dass auch gilt
+\begin_inset Formula 
+\[
+x\in A\vee x\in B\Rightarrow x\in A\cup B
+\]
+
+\end_inset
+
+Da die Implikation gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Implikation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ transitiv ist,
+ kann ich aus den Aussagen
+\begin_inset Formula 
+\[
+x\in A\Rightarrow x\in A\vee x\in B
+\]
+
+\end_inset
+
+sowie
+\begin_inset Formula 
+\[
+x\in A\vee x\in B\Rightarrow x\in A\cup B
+\]
+
+\end_inset
+
+ folgern,
+ dass gemäss der Defintion 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Teilmenge"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Teilmenge gilt
+\begin_inset Formula 
+\[
+A\subset B
+\]
+
+\end_inset
+
+Damit habe ich den ersten Teil der Behauptung erbracht,
+ falls die Teilmenge 
+\begin_inset Formula $A$
+\end_inset
+
+ nicht leer ist.
+ Ist jedoch die Teilmenge 
+\begin_inset Formula $A$
+\end_inset
+
+ leer,
+ dann ist diese per Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Teilmenge"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Teilmenge in der Menge 
+\begin_inset Formula $B$
+\end_inset
+
+ enthalten (es gilt also wiederum 
+\begin_inset Formula $A\subset B$
+\end_inset
+
+).
+ Damit hab ich den Beweeis ersten Teil der Behauptung erbracht.
+\end_layout
+
+\begin_layout Proof
+Zum zweiten Teil der Behauptung:
+ Gemäss dem ersten Teil der Behauptung gilt mindestens
+\begin_inset Formula 
+\[
+B\subset B\cup A
+\]
+
+\end_inset
+
+Gemäss dem Kommutativgesetz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Vereinigungsmengenbildung-ist-kommutativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ für Vereinigungsmengen gilt
+\begin_inset Formula 
+\[
+B\cup A=A\cup B
+\]
+
+\end_inset
+
+Gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Mengengleichheit"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Mengengleichheit 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Mengengleichheit-Definition-Formal"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ und da gemäss Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Implikation-Aussage-aus-Konjunktion-erstes-Argument"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ aus der Konjunktion die erste Aussage folgt,
+ folgt daraus auch,
+ dass gilt:
+\begin_inset Formula 
+\[
+B\cup A\subset A\cup B
+\]
+
+\end_inset
+
+ Da nun die Mengeninklusion gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-von-Mengeninklusionen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ transitiv ist,
+ folgt aus den Aussagen
+\begin_inset Formula 
+\[
+B\subset B\cup A\wedge B\cup A\subset A\cup B
+\]
+
+\end_inset
+
+die Aussge
+\begin_inset Formula 
+\[
+B\subset A\cup B
+\]
+
+\end_inset
+
+Damit ist die Richtigkeit der zweitenAussage erbracht.
+ Zum Beweis der dritten Aussage:
+ 
+\end_layout
+
+\begin_layout Proof
+Ist 
+\begin_inset Formula 
+\[
+A\cap B
+\]
+
+\end_inset
+
+ die leere Menge,
+ dann gilt per Definition
+\begin_inset Formula 
+\[
+A\cap B\subset A
+\]
+
+\end_inset
+
+Nun sei jedoch 
+\begin_inset Formula $A\cap B$
+\end_inset
+
+ nicht die leere Menge und 
+\begin_inset Formula $x\in A\cap B$
+\end_inset
+
+ Dann folgt gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Schnittmenge"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Schnittmenge sowie aufgrund des Satzes 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Implikation-Implikation-aus-Aequivalenz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ welcher besagt,
+ dass aus der Äquivalenz die Implikation folgt,
+ die Aussage
+\begin_inset Formula 
+\[
+x\in A\wedge x\in A
+\]
+
+\end_inset
+
+ Und da gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Implikation-Aussage-aus-Konjunktion-erstes-Argument"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ dann auch gilt
+\begin_inset Formula 
+\[
+x\in A\wedge x\in B\Rightarrow x\in A
+\]
+
+\end_inset
+
+ und die Implikaton gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Implikation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ transitiv ist,
+ kann ich aus den Aussagen 
+\begin_inset Formula 
+\begin{align*}
+x & \in A\cap B\Rightarrow x\in A\wedge x\in B
+\end{align*}
+
+\end_inset
+
+ sowie 
+\begin_inset Formula 
+\[
+x\in A\wedge x\in B\Rightarrow x\in A
+\]
+
+\end_inset
+
+schlussfolgern,
+ dass gilt:
+\begin_inset Formula 
+\[
+x\in A\cap B\Rightarrow x\in A
+\]
+
+\end_inset
+
+Da dies für jedes 
+\begin_inset Formula $x\in A\cap B$
+\end_inset
+
+ gilt,
+ gilt gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Teilmenge"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ auch 
+\begin_inset Formula 
+\[
+A\cap B\Rightarrow A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+bin ich der Meinung,
+ dass ich den Beweis für die dritte Behauptung erbracht habe.
+\end_layout
+
+\begin_layout Proof
+Nun kommt der Beweis für die vierte Behauptung an die Reihe.
+ Sicher kann ich folgern dass
+\begin_inset Formula 
+\[
+B\cap A\subset B
+\]
+
+\end_inset
+
+Gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Schnittmengenbildung-ist-kommutativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ gilt
+\begin_inset Formula 
+\[
+A\cap B=B\cap A
+\]
+
+\end_inset
+
+Und gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Mengengleichheit"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Mengengleichheit bedeutet diese Mengengleichheit,
+ dass
+\begin_inset Formula 
+\[
+A\cap B\subset B\cap A\wedge B\cap A\subset B\cap A
+\]
+
+\end_inset
+
+Da gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Implikation-Aussage-aus-Konjunktion-erstes-Argument"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ folgt,
+ dass auch 
+\begin_inset Formula 
+\[
+A\cap B\subset B\cap A
+\]
+
+\end_inset
+
+gilt,
+ kann ich also schlussfolgern,
+ dass die beiden folgenden Aussage gelten
+\begin_inset Formula 
+\[
+A\cap B\subset B\cap A\wedge B\cap A\subset B
+\]
+
+\end_inset
+
+Da jetzt die Mengeninklusion gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-von-Mengeninklusionen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ transitiv ist,
+ muss also wiederum gelten
+\begin_inset Formula 
+\[
+A\cap B\subset B
+\]
+
+\end_inset
+
+Damit meine ich,
+ die Richtigkeit aller vier Aussagen erbracht zu haben und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Chapter
@@ -25852,6 +26440,12 @@ Und ich möchte noch weitere Definitionen von Eigenschaften von Relationen vorst
 \end_layout
 
 \begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Maechtigkeit-und-Mengeninklusion"
+
+\end_inset
+
 Es seien 
 \begin_inset Formula $M_{1},M_{2}$
 \end_inset

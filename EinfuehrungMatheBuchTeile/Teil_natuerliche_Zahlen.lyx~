@@ -14001,6 +14001,163 @@ status open
 \end_layout
 
 \begin_layout Standard
+Ich möchte noch einen Satz transformieren (und,
+ wenn es dann sein muss,
+ andere auch).
+\end_layout
+
+\begin_layout Lemma
+Es seien 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $n_{2}$
+\end_inset
+
+ natürliche Zahlen.
+ weiter gelten
+\begin_inset Formula 
+\[
+\neg\left(n_{1}>n_{2}\right)
+\]
+
+\end_inset
+
+ dann muss gelten
+\begin_inset Formula 
+\[
+n_{1}\leq n_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Es sei 
+\begin_inset Formula $A$
+\end_inset
+
+ ein Symbol,
+ welches in sich selbst und in Bezug auf die anderen Symbole dieses Satzes widerspruchsfrei sei.
+ Gemäss der eigenen Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:natuerliche-Zahlen-eigene-Definition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der natürlich Zahlen ist dann die Aussage
+\begin_inset Formula 
+\[
+n_{1}>n_{2}
+\]
+
+\end_inset
+
+per Definition gleichbedeutend zur Aussage
+\begin_inset Formula 
+\[
+n_{1}\,A>n_{2}\,A
+\]
+
+\end_inset
+
+und also gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Aequivalenz-Negations-Satz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Äquivalenz der Äquivalenz von Aussagen und ihren Negationen ist dann 
+\begin_inset Formula 
+\[
+\neg\left(n_{1}>n_{2}\right)\Leftrightarrow\neg\left(n_{1}\,A>n_{2}\,A\right)
+\]
+
+\end_inset
+
+Da aus dem Korollar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cor:Equivalenz-Symbolvergleich-Negation-kleiner-gleich-grosser"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ die Aussage 
+\begin_inset Formula 
+\[
+\neg\left(n_{1}\,A>n_{2}\,A\right)
+\]
+
+\end_inset
+
+gleichbeutend ist mit der Aussage 
+\begin_inset Formula 
+\[
+n_{1}\,A\leq n_{2}\,A
+\]
+
+\end_inset
+
+kann ich auch folgern,
+ dass die folgende Aussage gilt
+\begin_inset Formula 
+\[
+\neg\left(n_{1}>n_{2}\right)\Leftrightarrow n_{1}\,A\leq n_{2}\,A
+\]
+
+\end_inset
+
+Gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:natuerliche-Zahlen-eigene-Definition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der natürlichen Zahlen gilt wiederum
+\begin_inset Formula 
+\[
+n_{1}\,A\leq n_{2}\,A\Leftrightarrow n_{1}\leq n_{2}
+\]
+
+\end_inset
+
+Also kann ich schlussendlich folgern,
+ dass wiederum gilt
+\begin_inset Formula 
+\[
+\neg\left(n_{1}>n_{2}\right)\Leftrightarrow n_{1}\leq n_{2}
+\]
+
+\end_inset
+
+Somit bin ich der Meinung,
+ dass ich den Beweis für die Richtigkeit der Behauptung erbracht habe und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+ 
+\end_layout
+
+\begin_layout Standard
 Somit möchte ich diesen Teil des Kapitels abschließen.
 \end_layout
 
@@ -14611,11 +14768,23 @@ Damit dürfte klar sein,
 \end_layout
 
 \begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Mengeninklusion-der-Symbolmenge"
+
+\end_inset
+
 Es seien 
 \begin_inset Formula $n_{1},n_{2}\in\mathbb{N}$
 \end_inset
 
- und mit den obigen Bezeichnungen 
+sowie 
+\begin_inset Formula $A$
+\end_inset
+
+ ein Symbol,
+ welches in sich selbst und in Bezug auf die anderen Symbole des Lemmas widerspruchsfrei sei.
+ Es gelte mit den obigen Bezeichnungen 
 \begin_inset Formula 
 \[
 E_{n\left(1\right)},E_{n\left(2\right)}\in\mathcal{M}{}_{u}\left(A\right)
@@ -14631,7 +14800,16 @@ E_{n\left(1\right)}\subset E_{n\left(2\right)}\vee E_{n\left(2\right)}\subset E_
 
 \end_inset
 
+ Weiter folgt 
+\begin_inset Formula $E_{n\left(1\right)}\subset E_{n\left(2\right)}$
+\end_inset
 
+ genau dann,
+ falls 
+\begin_inset Formula $n_{1}\leq n_{2}$
+\end_inset
+
+ ist.
 \end_layout
 
 \begin_layout Proof
@@ -14729,6 +14907,16 @@ n_{1}+n_{3}=n_{2}
 
 \end_inset
 
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+aktuelle Stelle
+\end_layout
+
+\end_inset
+
 Also muss gelten
 \begin_inset Note Note
 status open
@@ -14802,16 +14990,19 @@ E_{n\left(1\right)}\cup E_{r}\subset E_{n\left(2\right)}
 \end_inset
 
 ist.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Füge die Verweise ein
-\end_layout
+ Mit dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Mengeninklusionen-von-Schnitt-und-Vereinigungsmengen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
- Mit 
+ folgt,
+ dass
 \begin_inset Formula 
 \[
 E_{n\left(1\right)}\subset E_{n\left(1\right)}\cup E_{r}
@@ -14819,7 +15010,16 @@ E_{n\left(1\right)}\subset E_{n\left(1\right)}\cup E_{r}
 
 \end_inset
 
- und 
+ Gilt.
+ Also gilt gemäss der Gültigkeit der Aussagen
+\begin_inset Formula 
+\[
+E_{n\left(1\right)}\subset E_{n\left(1\right)}\cup E_{r}
+\]
+
+\end_inset
+
+sowie
 \begin_inset Formula 
 \[
 E_{n\left(1\right)}\cup E_{r}\subset E_{n\left(2\right)}
@@ -14827,7 +15027,18 @@ E_{n\left(1\right)}\cup E_{r}\subset E_{n\left(2\right)}
 
 \end_inset
 
- ist ebenfalls 
+gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-von-Mengeninklusionen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ über die Transitivität der Mengeninklusion ebenfalls 
 \begin_inset Formula 
 \[
 E_{n\left(1\right)}\subset E_{n\left(2\right)}
@@ -14876,14 +15087,27 @@ gilt.
  den Beweis für die Richtigkeit dieses Satzes für alle möglichen Fälle erbracht zu haben und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
 \end_layout
 
-\begin_layout Proposition
+\begin_layout Corollary
 Es seien 
 \begin_inset Formula $n_{1},n_{2}\in\mathbb{N}$
 \end_inset
 
 ,
- also natürliche Zahlen.
- Dann ist genau dann 
+ also natürliche Zahlen und 
+\begin_inset Formula $A$
+\end_inset
+
+ ein Symbol,
+ welches in sich selbst und in Bezug auf die anderen Symbole des Korollars widerspruchsfrei sei..
+ Dann ist genau dann
+\begin_inset Formula 
+\[
+\left|E_{n\left(1\right)}\right|\leq\left|E_{n\left(2\right)}\right|
+\]
+
+\end_inset
+
+falls die Aussage 
 \begin_inset Formula 
 \[
 n_{1}\leq n_{2}
@@ -14891,54 +15115,23 @@ n_{1}\leq n_{2}
 
 \end_inset
 
-falls 
-\begin_inset Formula 
-\[
-\left|E_{n\left(1\right)}\right|\leq\left|E_{n\left(1\right)}\right|
-\]
-
-\end_inset
-
-
+gilt.
 \end_layout
 
 \begin_layout Proof
-Es sei 
-\begin_inset Formula $n_{1}\leq n_{2}$
-\end_inset
-
-.
- Dann ist 
-\begin_inset Formula 
-\[
-E_{n\left(1\right)}=\bigcup_{k=1}^{n\left(1\right)}\left\{ k\cdot A\right\} 
-\]
+Ich habe im vorhergehenden Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Mengeninklusion-der-Symbolmenge"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
-Ist 
-\begin_inset Formula $n_{1}=n_{2},$
-\end_inset
-
- dann ist ebenfalls 
-\begin_inset Formula 
-\[
-E_{n\left(2\right)}=E_{n\left(1\right)}
-\]
-
-\end_inset
-
-und somit auch 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-zeige dies
-\end_layout
-
-\end_inset
-
-
+ gezeigt,
+ dass die Aussage 
 \begin_inset Formula 
 \[
 E_{n\left(1\right)}\subset E_{n\left(2\right)}
@@ -14946,25 +15139,102 @@ E_{n\left(1\right)}\subset E_{n\left(2\right)}
 
 \end_inset
 
-Ist jedoch 
-\begin_inset Formula $n_{1}<n_{2}$
-\end_inset
-
-,
- dann muss es ein 
-\begin_inset Formula $p\in\mathbb{N}$
-\end_inset
-
- derart geben,
- dass gilt
+ genau dann gilt,
+ falls
 \begin_inset Formula 
 \[
-n_{2}\cdot A=n_{1}\cdot A\,p\cdot A
+n_{1}\leq n_{2}
 \]
 
 \end_inset
 
+Ist jedoch 
+\begin_inset Formula 
+\[
+E_{n\left(1\right)}\subset E_{n\left(2\right)}
+\]
 
+\end_inset
+
+dann ist gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Maechtigkeit-und-Mengeninklusion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\left|E_{n\left(1\right)}\right|\leq\left|E_{n\left(2\right)}\right|
+\]
+
+\end_inset
+
+Ist also 
+\begin_inset Formula 
+\[
+n_{1}\leq n_{2}
+\]
+
+\end_inset
+
+dann muss also
+\begin_inset Formula 
+\[
+E_{n\left(1\right)}\subset E_{n\left(2\right)}
+\]
+
+\end_inset
+
+und darum auch
+\begin_inset Formula 
+\[
+\left|E_{n\left(1\right)}\right|\leq\left|E_{n\left(2\right)}\right|
+\]
+
+\end_inset
+
+gelten.Ist andererseits
+\begin_inset Formula 
+\[
+\left|E_{n\left(1\right)}\right|\leq\left|E_{n\left(2\right)}\right|
+\]
+
+\end_inset
+
+dann kann nicht 
+\begin_inset Formula 
+\[
+n_{1}>n_{2}
+\]
+
+\end_inset
+
+gelten.
+ Den in diesem Fall müsste gemäss der obigen Überlegung
+\begin_inset Formula 
+\[
+\left|E_{n\left(1\right)}\right|\geq\left|E_{n\left(2\right)}\right|
+\]
+
+\end_inset
+
+ gelten.
+ Was jedoch ein Widerspruch zur Voraussetzung 
+\begin_inset Formula 
+\[
+\left|E_{n\left(1\right)}\right|\leq\left|E_{n\left(2\right)}\right|
+\]
+
+\end_inset
+
+ wäre.
+ 
 \end_layout
 
 \begin_layout Standard
