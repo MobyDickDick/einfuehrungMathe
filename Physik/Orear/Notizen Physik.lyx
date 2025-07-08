@@ -4693,7 +4693,7 @@ v^{2} & =\kappa^{2}\cdot v_{S}^{2}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Also ist
 \begin_inset Formula 
 \begin{align*}
@@ -4896,10 +4896,9 @@ t\rightarrow\frac{D}{2\cdot v_{S}}
 was eben auch vernünftig ist.
  Also glaube ich,
  dass meine Lösung schon gut aussieht.
- 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Nun möchte ich den allgemeinen Fall des Hin- und Rückflugs berechnen.
  Dann müssen zwei Zeiten berechnet werden.
  Einer für die Zeit des Hinflugs vom Lautsprecher zum Reflektor,
@@ -4928,9 +4927,362 @@ t_{G}=\frac{2\cdot D}{v_{S}}\cdot\frac{\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alp
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Exercise
 Lustigerweise ist diese Lösung einfacher als die Berechnung der Laufzeit eines einfachen Wegs.
+\end_layout
+
+\begin_layout Exercise
+Interessanter ist für 
+\begin_inset Formula $\alpha=0$
+\end_inset
+
+ wie auch für 
+\begin_inset Formula $\alpha=\pi$
+\end_inset
+
+ die Laufzeit mit 
+\begin_inset Formula 
+\[
+\sin\left(0\right)=\sin\left(\pi\right)=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+t_{G\left(0\right)} & =\frac{2\cdot D}{v_{S}}\cdot\frac{\sqrt{1-\kappa^{2}\cdot0^{2}}}{1-\kappa^{2}}\\
+ & =\frac{2\cdot D}{v_{S}}\cdot\frac{\sqrt{1-0}}{1-\kappa^{2}}\\
+ & =\frac{2\cdot D}{v_{S}}\cdot\frac{\sqrt{1}}{1-\kappa^{2}}\\
+ & =\frac{2\cdot D}{v_{S}}\cdot\frac{1}{1-\kappa^{2}}\\
+ & =\frac{2\cdot D}{v_{S}}\cdot\frac{1}{1-\left(\frac{v}{v_{S}}\right)^{2}}\\
+ & =\frac{2\cdot D}{v_{S}}\cdot\frac{1}{1-\frac{v^{2}}{v_{S}^{2}}}\\
+ & =\frac{2\cdot D}{v_{S}}\cdot\frac{v_{S}^{2}}{v_{S}^{2}-v^{2}}\\
+ & =\frac{2\cdot D\cdot v_{S}}{v_{S}^{2}-v^{2}}
+\end{align*}
+
+\end_inset
+
+Also insgesamt
+\begin_inset Formula 
+\[
+t_{G\left(0\right)}=\frac{2\cdot D\cdot v_{S}}{v_{S}^{2}-v^{2}}
+\]
+
+\end_inset
+
+Bei 
+\begin_inset Formula 
+\[
+\alpha=\frac{\pi}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+ist
+\begin_inset Formula 
+\[
+\sin\left(\frac{\pi}{2}\right)=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+und somit
+\begin_inset Formula 
+\begin{align*}
+t_{G\left(\pi/2\right)} & =\frac{2\cdot D}{v_{S}}\cdot\frac{\sqrt{1-\kappa^{2}}}{1-\kappa^{2}}\\
+ & =\frac{2\cdot D}{v_{S}}\cdot\frac{1}{\sqrt{1-\kappa^{2}}}\\
+ & =\frac{2\cdot D}{v_{S}\cdot\sqrt{1-\left(\frac{v}{v_{S}}\right)^{2}}}\\
+ & =\frac{2\cdot D}{v_{S}\cdot\sqrt{1-\left(\frac{v}{v_{S}}\right)^{2}}}\\
+ & =\frac{2\cdot D}{\sqrt{v_{S}^{2}\left(1-\left(\frac{v}{v_{S}}\right)^{2}\right)}}\\
+ & =\frac{2\cdot D}{\sqrt{v_{S}^{2}-v_{S}^{2}\cdot\frac{v^{2}}{v_{S}^{2}}}}\\
+ & =\frac{2\cdot D}{\sqrt{v_{S}^{2}-v_{S}^{2}\cdot\frac{v^{2}}{v_{S}^{2}}}}\\
+ & =\frac{2\cdot D}{\sqrt{v_{S}^{2}-v^{2}}}
+\end{align*}
+
+\end_inset
+
+oder zusammengefasst
+\begin_inset Formula 
+\[
+t_{G\left(\pi/2\right)}=\frac{2\cdot D}{\sqrt{v_{S}^{2}-v^{2}}}
+\]
+
+\end_inset
+
+Die Differenz ist dann
+\begin_inset Formula 
+\begin{align*}
+t_{G\left(0\right)}-t_{G\left(\pi/2\right)} & =\frac{2\cdot D\cdot v_{S}}{v_{S}^{2}-v^{2}}-\frac{2\cdot D}{\sqrt{v_{S}^{2}-v^{2}}}\\
+ & =2\cdot D\cdot\left(\frac{v_{S}}{v_{S}^{2}-v^{2}}-\frac{1}{\sqrt{v_{S}^{2}-v^{2}}}\right)\\
+ & =2\cdot D\cdot\left(\frac{v_{S}}{v_{S}^{2}-v^{2}}-\frac{\sqrt{v_{S}^{2}-v^{2}}}{v_{S}^{2}-v^{2}}\right)\\
+ & =2\cdot D\cdot\frac{v_{S}-\sqrt{v_{S}^{2}-v^{2}}}{v_{S}^{2}-v^{2}}
+\end{align*}
+
+\end_inset
+
+oder zusammengefasst
+\begin_inset Formula 
+\[
+t_{G\left(0\right)}-t_{G\left(\pi/2\right)}=2\cdot D\cdot\frac{v_{S}-\sqrt{v_{S}^{2}-v^{2}}}{v_{S}^{2}-v^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Und jetzt noch einmal der allgemeine Fall:
  
+\begin_inset Formula 
+\begin{align*}
+t_{G\left(\alpha\right)}-t_{G\left(\alpha+\pi/2\right)} & =\frac{2\cdot D}{v_{S}\cdot\left(1-\kappa^{2}\right)}\cdot\left(\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)}-\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha+\frac{\pi}{2}\right)}\right)\\
+ & =\frac{2\cdot D}{v_{S}\cdot\left(1-\left(\frac{v}{v_{S}}\right)^{2}\right)}\cdot\left(\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)}-\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha+\frac{\pi}{2}\right)}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Ich möchte den Faktor:
+\begin_inset Formula 
+\[
+\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)}-\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha+\frac{\pi}{2}\right)}
+\]
+
+\end_inset
+
+noch einmal umformen
+\begin_inset Formula 
+\begin{align*}
+ & \sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha\right)}-\sqrt{1-\kappa^{2}\cdot\sin^{2}\left(\alpha+\frac{\pi}{2}\right)}\\
+= & \sqrt{1-\left(\kappa\cdot\sin\left(\alpha\right)\right)^{2}}-\sqrt{1-\left(\kappa\cdot\sin\left(\alpha+\frac{\pi}{2}\right)\right)^{2}}\\
+= & \sqrt{1-\left(\kappa\cdot\sin\left(\alpha\right)\right)^{2}}-\sqrt{1-\left(\kappa\cdot\cos\left(\alpha\right)\right)^{2}}\\
+= & \frac{\left(\sqrt{1-\left(\kappa\cdot\sin\left(\alpha\right)\right)^{2}}-\sqrt{1-\left(\kappa\cdot\cos\left(\alpha\right)\right)^{2}}\right)\cdot\left(\sqrt{1-\left(\kappa\cdot\sin\left(\alpha\right)\right)^{2}}+\sqrt{1-\left(\kappa\cdot\cos\left(\alpha\right)\right)^{2}}\right)}{\sqrt{1-\left(\kappa\cdot\sin\left(\alpha\right)\right)^{2}}+\sqrt{1-\left(\kappa\cdot\cos\left(\alpha\right)\right)^{2}}}\\
+= & \frac{1-\left(\kappa\cdot\sin\left(\alpha\right)\right)^{2}-\left(1-\left(\kappa\cdot\cos\left(\alpha\right)\right)^{2}\right)}{\sqrt{1-\left(\kappa\cdot\sin\left(\alpha\right)\right)^{2}}+\sqrt{1-\left(\kappa\cdot\cos\left(\alpha\right)\right)^{2}}}\\
+= & \frac{\left(\kappa\cdot\cos\left(\alpha\right)\right)^{2}-\left(\kappa\cdot\sin\left(\alpha\right)\right)^{2}}{\sqrt{1-\left(\kappa\cdot\sin\left(\alpha\right)\right)^{2}}+\sqrt{1-\left(\kappa\cdot\cos\left(\alpha\right)\right)^{2}}}\\
+= & \frac{\kappa^{2}\cdot\left(\cos^{2}\left(\alpha\right)-\sin^{2}\left(\alpha\right)\right)}{\sqrt{1-\left(\kappa\cdot\sin\left(\alpha\right)\right)^{2}}+\sqrt{1-\left(\kappa\cdot\cos\left(\alpha\right)\right)^{2}}}\\
+= & \frac{\kappa^{2}\cdot\cos\left(2\cdot\alpha\right)}{\sqrt{1-\left(\kappa\cdot\sin\left(\alpha\right)\right)^{2}}+\sqrt{1-\left(\kappa\cdot\cos\left(\alpha\right)\right)^{2}}}
+\end{align*}
+
+\end_inset
+
+Zusammengesetzt also
+\begin_inset Formula 
+\begin{align*}
+t_{G\left(\alpha\right)}-t_{G\left(\alpha+\pi/2\right)} & =\frac{2\cdot D}{v_{S}\cdot\left(1-\kappa^{2}\right)}\cdot\frac{\kappa^{2}\cdot\cos\left(2\cdot\alpha\right)}{\sqrt{1-\left(\kappa\cdot\sin\left(\alpha\right)\right)^{2}}+\sqrt{1-\left(\kappa\cdot\cos\left(\alpha\right)\right)^{2}}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+mit 
+\begin_inset Formula 
+\[
+\kappa=\frac{v}{v_{S}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Aufgabe 8.2 Hier wende ich an
+\begin_inset Formula 
+\begin{align*}
+t_{G\left(0\right)} & =\frac{2\cdot D\cdot v_{S}}{v_{S}^{2}-v^{2}}\\
+ & =\frac{2\cdot2\cdot330}{330^{2}-\left(\frac{20}{3.6}\right)^{2}}\,s\\
+ & =0.012125\,s
+\end{align*}
+
+\end_inset
+
+Ohne Wind wäre die Zeit
+\begin_inset Formula 
+\begin{align*}
+t_{G\left(1\right)} & =\frac{2\cdot D}{v_{S}}
+\end{align*}
+
+\end_inset
+
+Also beträgt die Differenz
+\begin_inset Formula 
+\begin{align*}
+t_{G\left(0\right)}-t_{G\left(1\right)} & =\frac{2\cdot D\cdot v_{S}}{v_{S}^{2}-v^{2}}-\frac{2\cdot D}{v_{S}}\\
+ & =2\cdot D\cdot\left(\frac{v_{S}}{v_{S}^{2}-v^{2}}-\frac{1}{v_{S}}\right)\\
+ & =2\cdot D\cdot\left(\frac{v_{S}}{v_{S}^{2}-v^{2}}-\frac{v_{S}}{v_{S}^{2}}\right)\\
+ & =2\cdot D\cdot v_{S}\cdot\left(\frac{1}{v_{S}^{2}-v^{2}}-\frac{1}{v_{S}^{2}}\right)\\
+ & =2\cdot D\cdot v_{S}\cdot\left(\frac{v_{S}^{2}}{v_{S}^{2}\cdot\left(v_{S}^{2}-v^{2}\right)}-\frac{v_{S}^{2}-v^{2}}{v_{S}^{2}\cdot\left(v_{S}^{2}-v^{2}\right)}\right)\\
+ & =2\cdot D\cdot v_{S}\cdot\frac{v_{S}^{2}-v_{S}^{2}+v^{2}}{v_{S}^{2}\cdot\left(v_{S}^{2}-v^{2}\right)}\\
+ & =2\cdot D\cdot v_{S}\cdot\frac{v^{2}}{v_{S}^{2}\cdot\left(v_{S}^{2}-v^{2}\right)}\\
+ & =\frac{2\cdot D\cdot v_{S}\cdot v^{2}}{v_{S}^{2}\cdot\left(v_{S}^{2}-v^{2}\right)}\\
+ & =\frac{2\cdot D\cdot v^{2}}{v_{S}\cdot\left(v_{S}^{2}-v^{2}\right)}\\
+ & =\frac{2\cdot D}{v_{S}\cdot\left(\left(\frac{v_{S}}{v}\right)^{2}-1\right)}
+\end{align*}
+
+\end_inset
+
+Zusammengefasst
+\begin_inset Formula 
+\begin{align*}
+t_{G\left(0\right)}-t_{G\left(1\right)} & =\frac{2\cdot D}{v_{S}\cdot\left(\left(\frac{v_{S}}{v}\right)^{2}-1\right)}\\
+ & =\frac{2\cdot2}{330\cdot\left(\left(\frac{330}{20/3.6}\right)^{2}-1\right)}\,s\\
+ & \approx0.3\,\mu s
+\end{align*}
+
+\end_inset
+
+Wie weit kommt der Schall in dieser Zeit?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Aufgabe 9.3)
+\end_layout
+
+\begin_layout Standard
+Ich halte mich an diee Formel
+\begin_inset Formula 
+\begin{align*}
+\Delta t & =\frac{2\cdot D}{v_{c}\cdot\left(\left(\frac{v_{c}}{v}\right)^{2}-1\right)}
+\end{align*}
+
+\end_inset
+
+Diese versuche ich dann nach 
+\begin_inset Formula $v$
+\end_inset
+
+ aufzulösen.
+ Es ist dann
+\begin_inset Formula 
+\[
+\left(\frac{v_{c}}{v}\right)^{2}-1=\frac{2\cdot D}{v_{c}\cdot\Delta t}
+\]
+
+\end_inset
+
+und entsprechend auch
+\begin_inset Formula 
+\[
+\left(\frac{v_{c}}{v}\right)^{2}=\frac{2\cdot D}{v_{c}\cdot\Delta t}+1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Werden auf der linken Seite die Quadrate ausgerechnet resultiert
+\begin_inset Formula 
+\[
+\frac{v_{c}^{2}}{v^{2}}=\frac{2\cdot D}{v_{c}\cdot\Delta t}+1
+\]
+
+\end_inset
+
+Ich multipliziere beide Seiten mit 
+\begin_inset Formula 
+\[
+\frac{v^{2}}{\frac{2\cdot D}{v_{c}\cdot\Delta t}+1}
+\]
+
+\end_inset
+
+und erhalte
+\begin_inset Formula 
+\[
+v^{2}=v_{c}^{2}\bigm/\left(\frac{2\cdot D}{v_{c}\cdot\Delta t}+1\right)
+\]
+
+\end_inset
+
+oder aber
+\begin_inset Formula 
+\begin{align*}
+v & =v_{c}\bigm/\sqrt{\frac{2\cdot D}{v_{c}\cdot\Delta t}+1}\\
+ & =v_{c}\bigm/\sqrt{\frac{2\cdot D+v_{c}\cdot\Delta t}{v_{c}\cdot\Delta t}}\\
+ & =v_{c}\cdot\sqrt{\frac{v_{c}\cdot\Delta t}{2\cdot D+v_{c}\cdot\Delta t}}
+\end{align*}
+
+\end_inset
+
+Zusammengefasst
+\begin_inset Formula 
+\[
+v=v_{c}\cdot\sqrt{\frac{v_{c}\cdot\Delta t}{2\cdot D+v_{c}\cdot\Delta t}}
+\]
+
+\end_inset
+
+Die Zeit sei
+\begin_inset Formula 
+\[
+v_{c}=\frac{d}{\Delta t}
+\]
+
+\end_inset
+
+mit 
+\begin_inset Formula 
+\[
+d=0.4\,\mu m
+\]
+
+\end_inset
+
+Also ist 
+\begin_inset Formula 
+\[
+\Delta t=\frac{d}{v_{c}}
+\]
+
+\end_inset
+
+Dies ergibt
+\begin_inset Formula 
+\begin{align*}
+v & =v_{c}\cdot\sqrt{\frac{v_{c}\cdot\frac{d}{v_{c}}}{2\cdot D+v_{c}\cdot\frac{d}{v_{c}}}}\\
+ & =v_{c}\cdot\sqrt{\frac{d}{2\cdot D+d}}\\
+ & =3\cdot10^{8}\cdot\sqrt{\frac{0.4\cdot10^{-6}}{2\cdot2+0.4\cdot10^{-6}}}\,\frac{m}{s}\\
+ & =9.5\cdot10^{4}\,\frac{m}{s}\\
+ & \approx95\,\frac{km}{s}\\
+ & \approx9.5\cdot3600\,\frac{km}{h}\\
+ & \approx34200\,\frac{km}{h}
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \end_body

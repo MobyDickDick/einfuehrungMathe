@@ -14907,138 +14907,8 @@ n_{1}+n_{3}=n_{2}
 
 \end_inset
 
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-aktuelle Stelle
-\end_layout
-
-\end_inset
-
-Also muss gelten
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO:
- Das musst Du später noch einmal begründen.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-E_{n\left(2\right)}\equiv\bigcup_{k=1}^{n_{2}}\left\{ k\cdot A\right\} =\bigcup_{k=1}^{n_{1}}\left\{ k\cdot A\right\} \cup\bigcup_{k=n_{1}+1}^{n_{2}}\left\{ k\cdot A\right\} 
-\]
-
-\end_inset
-
-Nun ist jedoch
-\begin_inset Formula 
-\[
-\bigcup_{k=1}^{n_{1}}\left\{ k\cdot A\right\} =E_{n\left(1\right)}
-\]
-
-\end_inset
-
-Somit gilt mit einer bestimmten Menge,
- welche ich ein wenig 
-\begin_inset Quotes gld
-\end_inset
-
-Restmenge
-\begin_inset Quotes grd
-\end_inset
-
- nenne und für welche gilt:
-\begin_inset Formula 
-\[
-E_{r}=\bigcup_{k=n_{1}+1}^{n_{2}}\left\{ k\cdot A\right\} 
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-E_{n\left(2\right)}=E_{n\left(1\right)}\cup E_{r}
-\]
-
-\end_inset
-
-Also folgt daraus gemäss dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Implikation-Teilmenge-aus-Mengengleichheit"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-,
- dass 
-\begin_inset Formula 
-\[
-E_{n\left(1\right)}\cup E_{r}\subset E_{n\left(2\right)}
-\]
-
-\end_inset
-
-ist.
- Mit dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Mengeninklusionen-von-Schnitt-und-Vereinigungsmengen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- folgt,
- dass
-\begin_inset Formula 
-\[
-E_{n\left(1\right)}\subset E_{n\left(1\right)}\cup E_{r}
-\]
-
-\end_inset
-
- Gilt.
- Also gilt gemäss der Gültigkeit der Aussagen
-\begin_inset Formula 
-\[
-E_{n\left(1\right)}\subset E_{n\left(1\right)}\cup E_{r}
-\]
-
-\end_inset
-
-sowie
-\begin_inset Formula 
-\[
-E_{n\left(1\right)}\cup E_{r}\subset E_{n\left(2\right)}
-\]
-
-\end_inset
-
-gemäss dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Transitivitaet-von-Mengeninklusionen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- über die Transitivität der Mengeninklusion ebenfalls 
+Ich möchte nun zeigen,
+ dass gilt
 \begin_inset Formula 
 \[
 E_{n\left(1\right)}\subset E_{n\left(2\right)}
@@ -15046,11 +14916,136 @@ E_{n\left(1\right)}\subset E_{n\left(2\right)}
 
 \end_inset
 
-Damit hätte ich (ohne Verweise) die Behauptung für 
-\begin_inset Formula $n_{1}<n_{2}$
+
+\end_layout
+
+\begin_layout Proof
+Es sei mit 
+\begin_inset Formula 
+\[
+k\in\mathbb{N}
+\]
+
 \end_inset
 
- bewiesen.
+ 
+\begin_inset Formula 
+\[
+k\cdot A\in E_{n\left(1\right)}
+\]
+
+\end_inset
+
+ Dann muss gemäss Defintion von 
+\begin_inset Formula 
+\[
+E_{n\left(1\right)}
+\]
+
+\end_inset
+
+gelten
+\begin_inset Formula 
+\[
+k\leq n_{1}
+\]
+
+\end_inset
+
+Ist nun
+\begin_inset Formula 
+\[
+k=n_{1}
+\]
+
+\end_inset
+
+ dann muss auch 
+\begin_inset Formula 
+\[
+k<n_{2}
+\]
+
+\end_inset
+
+ sein.
+ Und somit muss gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Implikation-Disjunktion-aus-Aussage"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ über die Implikation der Disjunktion der Aussage aus der Aussage folgen,
+ dass auch gilt
+\begin_inset Formula 
+\[
+k<n_{2}\vee k=n_{2}
+\]
+
+\end_inset
+
+Mit 
+\begin_inset Formula 
+\[
+k<n_{2}\vee k=n_{2}
+\]
+
+\end_inset
+
+ muss auch gemäss Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:natuerliche-Zahlen-eigene-Definition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ natürlichen Zahlen muss auch gelten
+\begin_inset Formula 
+\[
+k\leq n_{2}
+\]
+
+\end_inset
+
+Also muss gemäss der Definition von 
+\begin_inset Formula $E_{n\left(2\right)}$
+\end_inset
+
+auch gelten
+\begin_inset Formula 
+\[
+k\cdot A\in E_{n\left(2\right)}
+\]
+
+\end_inset
+
+Da dies nun für alle derartigen 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ mit 
+\begin_inset Formula $k\cdot A\in E_{n\left(1\right)}$
+\end_inset
+
+ gelten muss,
+ kann ich daraus folgern,
+ dass gilt
+\begin_inset Formula 
+\[
+E_{n\left(1\right)}\subset E_{n\left(2\right)}
+\]
+
+\end_inset
+
  Ist jedoch 
 \begin_inset Formula $n_{1}>n_{1}$
 \end_inset
@@ -15264,474 +15259,6 @@ status open
 
 \end_layout
 
-\begin_layout Standard
-Es gibt eine offizielle Definition der natürlichen Zahlen.
- Diese stammt von italienischen Mathematiker Giuseppe Peano.
- Aber da ich diese Definition aus meiner eigenen Definition herleiten möchte,
- möchte ich zuerst weiter über die Eigenschaften meiner Zahlen nachdenken und weitere Definitionen anfügen:
-\end_layout
-
-\begin_layout Definition
-\begin_inset CommandInset label
-LatexCommand label
-name "def:Addition-natuerlicher-Zahlen"
-
-\end_inset
-
-Es seien 
-\begin_inset Formula $m,n$
-\end_inset
-
- Symbole für natürliche Zahlen und 
-\begin_inset Formula $A$
-\end_inset
-
- ein Symbol,
- welches jedoch nicht in sich widersprüchlich sei und auch weder 
-\begin_inset Quotes gld
-\end_inset
-
-
-\begin_inset Formula $1$
-\end_inset
-
-
-\begin_inset Quotes grd
-\end_inset
-
- noch 
-\begin_inset Quotes gld
-\end_inset
-
-
-\begin_inset Formula $+$
-\end_inset
-
-
-\begin_inset Quotes grd
-\end_inset
-
- sei und auch sonst nicht mit den anderen Symbolen der nachfolgenden Gleichung in Konflikt komme.
- Dann sei 
-\begin_inset Formula 
-\[
-\left(m+n\right)\cdot A=m\cdot A\,n\cdot A
-\]
-
-\end_inset
-
-Es sei genau dann 
-\begin_inset Formula $m<n$
-\end_inset
-
-,
- falls es eine Zahl 
-\begin_inset Formula $k\in\mathbb{N}$
-\end_inset
-
- derart gibt,
- dass gilt
-\begin_inset Formula 
-\[
-n=m+k
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-Schlussendlich sei genau dann 
-\begin_inset Formula $m\leq n$
-\end_inset
-
-,
- falls entweder 
-\begin_inset Formula $m=n$
-\end_inset
-
- oder 
-\begin_inset Formula $m<n$
-\end_inset
-
- ist.
-\end_layout
-
-\begin_layout Standard
-Beispiel:
- Es sei 
-\begin_inset Formula $m\equiv1+1+1$
-\end_inset
-
- und 
-\begin_inset Formula $n\equiv1+1$
-\end_inset
-
- und 
-\begin_inset Formula $A$
-\end_inset
-
- das Symbol für 
-\begin_inset Quotes gld
-\end_inset
-
-Esel
-\begin_inset Quotes grd
-\end_inset
-
- (ich habe heute in meinen Ferien gerade ein solches Grautier gesehen).
- Dann ist
-\begin_inset Formula 
-\begin{eqnarray*}
- &  & \left(m+n\right)\cdot A\\
- & = & \left(\left(1+1+1\right)\cdot A\right)\,\cdot\left(\left(1+1\right)\cdot A\right)\\
- & = & \left(\left(1+1\right)\cdot A\,A\right)\,\left(1\cdot A\,A\right)\\
- & = & \left(1\cdot A\,A\,A\right)\,\left(A\,A\right)\\
- & = & \left(A\,A\,A\right)\,\left(A\,A\right)\\
- & = & AAA\,AA\\
- & = & AAAAA\\
- & = & \mbox{Esel\,Esel\,Esel\,Esel\,Esel}
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Natürlich ist das nicht sonderlich spannend.
- Aber es geht nur um die grundlegende Sachen.
-\end_layout
-
-\begin_layout Standard
-Ich möchte nun ganz einfach beginnen:
-\end_layout
-
-\begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:Addition-natuerliche-Zahlen-Gleichheit"
-
-\end_inset
-
-Es seien 
-\begin_inset Formula $n_{1},n_{2},n_{3}\in\mathbb{N}$
-\end_inset
-
-.
- Ist 
-\begin_inset Formula $n_{1}=n_{2}$
-\end_inset
-
- gilt
-\begin_inset Formula 
-\begin{align*}
-n_{1}+n_{3} & =n_{2}+n_{3}\\
-n_{3}+n_{1} & =n_{3}+n_{2}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Zur ersten Behauptung:
- Es sei 
-\begin_inset Formula $A$
-\end_inset
-
- ein Symbol,
- welches in sich und bezüglich den anderen Symbolen dieses Beweises widerspruchsfrei sei.
- Dann muss gelten
-\begin_inset Formula 
-\begin{align*}
- & \left(n_{1}+n_{3}\right)\cdot A\\
-\equiv & n_{1}\cdot A\,n_{3}\cdot A
-\end{align*}
-
-\end_inset
-
-Nun ist 
-\begin_inset Formula $n_{1}=n_{3}$
-\end_inset
-
- gerade so definiert,
- dass gilt
-\begin_inset Formula 
-\[
-n_{1}\cdot A=n_{2}\cdot A
-\]
-
-\end_inset
-
-Es muss gemäß der ersten Aussage des Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Gleichheit-von-Teilsymbolen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- über die Gleichheit von Teilsymbolen gelten,
- dass
-\begin_inset Formula 
-\[
-n_{1}\cdot A\,n_{3}\cdot A=n_{2}\cdot A\,n_{3}\cdot A
-\]
-
-\end_inset
-
-ist.
- Nun ist jedoch per Definition der Addition
-\begin_inset Formula 
-\[
-n_{2}\cdot A\,n_{3}\cdot A=\left(n_{2}+n_{3}\right)\cdot A
-\]
-
-\end_inset
-
- Da 
-\begin_inset Formula $A$
-\end_inset
-
- fast beliebig ist,
- glaube ich schließen zu können,
- dass gelten muss
-\begin_inset Formula 
-\[
-\left(n_{1}+n_{3}\right)\cdot A=\left(n_{2}+n_{3}\right)\cdot A
-\]
-
-\end_inset
-
-Also muss auch gemäß der Definition der Addition von natürlichen Zahlen gelten
-\begin_inset Formula 
-\[
-n_{1}+n_{3}=n_{2}+n_{3}
-\]
-
-\end_inset
-
-Damit glaube ich,
- den Beweis der ersten Behauptung erbracht zu.
-\end_layout
-
-\begin_layout Proof
-Zur zweiten Behauptung:
- Es sei 
-\begin_inset Formula $A$
-\end_inset
-
- ein Symbol,
- welches in sich und bezüglich den anderen Symbolen dieses Beweises widerspruchsfrei sei.
- Dann muss gelten
-\begin_inset Formula 
-\begin{align*}
- & \left(n_{3}+n_{1}\right)\cdot A\\
-\equiv & n_{3}\cdot A\,n_{1}\cdot A
-\end{align*}
-
-\end_inset
-
-Nun ist 
-\begin_inset Formula $n_{1}=n_{3}$
-\end_inset
-
- gerade so definiert,
- dass gilt
-\begin_inset Formula 
-\[
-n_{1}\cdot A=n_{2}\cdot A
-\]
-
-\end_inset
-
-Es muss gemäß der zweiten Aussage des Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Gleichheit-von-Teilsymbolen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- über die Gleichheit von Teilsymbolen gelten,
- dass
-\begin_inset Formula 
-\[
-n_{3}\cdot A\,n_{1}\cdot A=n_{3}\cdot A\,n_{2}\cdot A
-\]
-
-\end_inset
-
-ist.
- Nun ist jedoch per Definition der Addition
-\begin_inset Formula 
-\[
-n_{3}\cdot A\,n_{2}\cdot A=\left(n_{3}+n_{2}\right)\cdot A
-\]
-
-\end_inset
-
- Da 
-\begin_inset Formula $A$
-\end_inset
-
- fast beliebig ist,
- glaube ich schließen zu können,
- dass gelten muss
-\begin_inset Formula 
-\[
-\left(n_{3}+n_{1}\right)\cdot A=\left(n_{3}+n_{2}\right)\cdot A
-\]
-
-\end_inset
-
-Also muss auch gemäß der Definition der Addition von natürlichen Zahlen gelten
-\begin_inset Formula 
-\[
-n_{3}+n_{1}=n_{3}+n_{2}
-\]
-
-\end_inset
-
-Damit glaube ich,
- den Beweis der ersten Behauptung erbracht zu.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:Kommutativitaet-n-1-natuerliche-Zahlen"
-
-\end_inset
-
-Es sei 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
-.
- Dann ist 
-\begin_inset Formula $n+1=1+n$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Proof
-Es sei 
-\begin_inset Formula $A$
-\end_inset
-
- ein Symbol,
- welches in sich selbst und in Bezug auf die anderen Symbole dieses Beweises widerspruchsfrei ist.
- Dann gilt:
-\begin_inset Formula 
-\[
-\left(n+1\right)\cdot A=n\cdot A\,A
-\]
-
-\end_inset
-
-Gemäß dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Ununterscheidbarkeit-von-Symbolen"
-nolink "false"
-
-\end_inset
-
- glaube ich,
- schließen zu können,
- dass gilt
-\begin_inset Formula 
-\[
-n\cdot A\,A=A\,n\cdot A
-\]
-
-\end_inset
-
-Somit kann ich dann folgern
-\begin_inset Formula 
-\[
-A\,n\cdot A=\left(1+n\right)\cdot A
-\]
-
-\end_inset
-
-Somit gilt auch
-\begin_inset Formula 
-\[
-\left(n+1\right)\cdot A=\left(1+n\right)\cdot A
-\]
-
-\end_inset
-
-Damit glaube ich,
- die Richtigkeit des Lemmas erbracht zu haben und beweise aus diesem Grund an dieser Stelle die weitere Beweisführung.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Chapter
 Warum sind die Axiome von Peano keine?
 \begin_inset CommandInset label
@@ -15756,28 +15283,28 @@ name "def:Defintionnatuerliche-Zahlen-Peano"
 \end_inset
 
 Die Menge 
-\begin_inset Formula $\mathbb{N}$
+\begin_inset Formula $\mathbb{N}_{P}$
 \end_inset
 
- der natürlichen Zahlen ist wie folgt definiert:
+ der natürlichen Zahlen nach Peano ist wie folgt definiert:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $1\in\mathbb{N}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $n\in\mathbb{N}\Rightarrow n+1\in\mathbb{N}$
+\begin_inset Formula $1\in\mathbb{N}_{P}$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $\forall n\in\mathbb{N}:\,n+1\neq1$
+\begin_inset Formula $n\in\mathbb{N}_{P}\Rightarrow n+1\in\mathbb{N}_{P}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\forall n\in\mathbb{N}_{P}:\,n+1\neq1$
 \end_inset
 
 .
@@ -15785,7 +15312,7 @@ Die Menge
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $\forall m,n\in\mathbb{N}:\,n+1=m+1\Rightarrow n=m$
+\begin_inset Formula $\forall m,n\in\mathbb{N}_{P}:\,n+1=m+1\Rightarrow n=m$
 \end_inset
 
 
@@ -16355,7 +15882,7 @@ Beweis
  Dann muss gelten
 \begin_inset Formula 
 \[
-m+1=n+1\Rightarrow n=1
+m+1=n+1\Rightarrow n=m
 \]
 
 \end_inset
@@ -16758,6 +16285,7 @@ n=m+1
 
 Somit meine ich,
  den Beweis für die Richtigkeit der Behauptung erbracht zu haben und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -17054,204 +16582,7 @@ Natürlich ist es Dir überlassen,
 \end_layout
 
 \begin_layout Standard
-Der Satz der vollständigen Induktion ist ein Beispiel für eine Induktion
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-Induktion
-\end_layout
-
-\end_inset
-
-,
- also als Herleitung eines allgemeinen Prinzips ausgehend von Einzelfällen.
- Als Gegenprinzip der Deduktion kann der Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Schlussfolgerung"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Schlussfolgerung angesehen werden.
-\end_layout
-
-\begin_layout Standard
-Nun möchte ich mir noch den letzte zu beweisende Teil der Axiome von Peano vornehmen.
-\end_layout
-
-\begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:Peano-Rueckschritt"
-
-\end_inset
-
-Es seien 
-\begin_inset Formula $m,n\in\mathbb{N}$
-\end_inset
-
- mit 
-\begin_inset Formula $m+1=n+1$
-\end_inset
-
-.
- Dann ist 
-\begin_inset Formula $m=n$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Proof
-Gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Addition-natuerlicher-Zahlen-assoziativ"
-nolink "false"
-
-\end_inset
-
- der Kommutation der Addition gilt
-\begin_inset Formula 
-\[
-m+1=1+m
-\]
-
-\end_inset
-
-sowie
-\begin_inset Formula 
-\[
-n+1=1+n
-\]
-
-\end_inset
-
-Also muss für ein beliebiges Symbol 
-\begin_inset Formula $A$
-\end_inset
-
- gelten
-\begin_inset Formula 
-\begin{eqnarray*}
- &  & \left(m+1\right)\cdot A\\
- & = & \left(1+m\right)\cdot A\\
- & = & A\,m\cdot A\\
- & = & \left(n+1\right)\cdot A\\
- & = & A\,n\cdot A
-\end{eqnarray*}
-
-\end_inset
-
-Also muss gemäß der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Gleichheit-von-Symbolen"
-nolink "false"
-
-\end_inset
-
- der Gleichheit von Symbolen gelten:
- 
-\begin_inset Formula 
-\[
-m\cdot A=n\cdot A
-\]
-
-\end_inset
-
-sein.
- Somit kann ich behaupten,
- dass auch
-\begin_inset Formula 
-\[
-m=n
-\]
-
-\end_inset
-
-sein muss.
- Da ich nun zeigen kann,
- dass gilt 
-\begin_inset Formula 
-\[
-n+1=m+1\Rightarrow n=m
-\]
-
-\end_inset
-
-Also kann ich gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:logischer-Widerspruch-Version-1"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- folgern,
- das aus
-\begin_inset Formula 
-\[
-n\neq m\Rightarrow n+1\neq m+1
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Ich möchte nun überprüfen,
- ob die unter der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Definition-natuerliche-Zahlen-Eigen"
-nolink "false"
-
-\end_inset
-
- definierte Gleichheit von Symbolen eine Äquivalenzrelation ist.
- Das Besondere daran ist,
- dass ich davon ausgehe,
- das jedes Symbol (egal ob es aus einem oder mehreren Symbolen zusammengesetzt ist) aus einer endlichen Anzahl von Symbolen besteht.
- Damit kann ich jedoch bereits mit der vollständigen Induktion arbeiten.
+Nun möchte ich jedoch weitergehen.
 \end_layout
 
 \begin_layout Chapter
@@ -17661,14 +16992,6 @@ Schlussfolgerungen aus den Axiomen von Peano
 Es kommt jetzt ein wenig Knochenarbeit,
  welche jedoch durchaus reizvoll ist.
  Ich möchte das Prinzip der vollständigen Induktion immer wieder anwenden.
- 
-\end_layout
-
-\begin_layout Standard
-Der erste Satz ist derart einfach,
- dass er schon wieder sehr schwierig wird.
- Denn die Schwierigkeit besteht darin,
- dass Du Dir die Gleichheit neu denken musst.
 \end_layout
 
 \begin_layout Standard
@@ -17676,6 +16999,12 @@ Doch zuerst die Definition der Addition von natürlichen Zahlen:
 \end_layout
 
 \begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:Addition-natuerlicher-Zahlen"
+
+\end_inset
+
 Es seien 
 \begin_inset Formula $n,m\in\mathbb{N}$
 \end_inset
@@ -17684,8 +17013,10 @@ Es seien
 \begin_inset Formula $A$
 \end_inset
 
- ein Symbol.
- Dann sei 
+ ein Symbol,
+ welches .
+ Dann sei definiert:
+ :
 \begin_inset Formula 
 \[
 \left(n+m\right)\cdot A\equiv n\cdot A\,m\cdot A
@@ -17696,14 +17027,15 @@ Es seien
 
 \end_layout
 
-\begin_layout Standard
-Ich möchte nun zeigen:
+\begin_layout Definition
+Ich möchte zu allererst zeigen,
+ dass gilt:
 \end_layout
 
-\begin_layout Proposition
+\begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
-name "prop:Addition-mit-Eins"
+name "lem:Addition-mit-Eins"
 
 \end_inset
 
@@ -17881,7 +17213,7 @@ Die Gleichheit ist also im hinteren Teil des Symbols vorhanden.
  Und da die Gleichheit von Symbolen gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
+reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
 plural "false"
 caps "false"
 noprefix "false"
@@ -17894,7 +17226,7 @@ nolink "false"
  dass gilt
 \begin_inset Formula 
 \[
-\left(n+\left(m+1\right)\right)A=n\cdot A\,m\cdot A\,A
+\left(n+\left(m+1\right)\right)\cdot A=n\cdot A\,m\cdot A\,A
 \]
 
 \end_inset
@@ -17945,7 +17277,7 @@ Die Gleichheit ist jetzt jedoch auf dem vorderen Teil des Symbols vorhanden.
  Wiederum gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
+reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
 plural "false"
 caps "false"
 noprefix "false"
@@ -17987,7 +17319,7 @@ nolink "false"
 Und noch ein letztes Mal kann ich das Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
+reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
 plural "false"
 caps "false"
 noprefix "false"
@@ -18058,46 +17390,299 @@ status open
 \end_layout
 
 \begin_layout Standard
-Weiter geht es mit Definitionen:
+Ich möchte ein vorbereitendes Lemma formulieren und beweisen:
 \end_layout
 
-\begin_layout Definition
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Addition-gleicher-natuerlicher-Zahlen-mit-natuerlicher-Zahl"
+
+\end_inset
+
 Es seien 
-\begin_inset Formula $n_{1},n_{2}\in\mathbb{N}$
+\begin_inset Formula $n_{1},n_{2}$
 \end_inset
 
-.
- Dann ist 
+ sowie 
+\begin_inset Formula $n_{3}$
+\end_inset
+
+ natürliche Zahlen,
+ für welche gilt:
 \begin_inset Formula 
 \[
-n_{1}<n_{2}
+n_{1}=n_{2}
 \]
 
 \end_inset
 
- falls es ein 
-\begin_inset Formula $n_{3}\in\mathbb{N}$
-\end_inset
-
- derart gibt,
- dass 
+Dann gilt sowohl 
 \begin_inset Formula 
 \[
-n_{2}=n_{1}+n_{3}
+n_{1}+n_{3}=n_{2}+n_{3}
 \]
 
 \end_inset
 
- ist.
- Weiter bedeute
+wie auch 
 \begin_inset Formula 
 \[
-\left(n_{1}\leq n_{2}\right)\Lleftarrow\mathllap{\Rrightarrow}n_{1}<n_{2}\vee n_{1}=n_{2}
+n_{3}+n_{1}=n_{3}+n_{2}
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Proof
+Wieder ist das Lemma so unmittelbar einleuchtend,
+ dass es schwierig ist,
+ es gründlich zu beweisen.
+ 
+\end_layout
+
+\begin_layout Proof
+Es sei 
+\begin_inset Formula $A$
+\end_inset
+
+ ein beliebiges Symbol,
+ welches in sich selbst und in Bezug auf die anderen Symbole des Lemmas widerspruchsfrei sei.
+ Gemäss der Definition der natürlichen Zahlen 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:natuerliche-Zahlen-eigene-Definition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ als Metasymbole von Zeichenketten gleicher Symbole muss dann gelten
+\begin_inset Formula 
+\[
+n_{1}\cdot A=n_{2}\cdot A
+\]
+
+\end_inset
+
+Dann kann ich schreiben
+\begin_inset Formula 
+\[
+\left(n_{1}+n_{3}\right)\cdot A=n_{1}\cdot A\,n_{3}\cdot A
+\]
+
+\end_inset
+
+Gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gleichheit-von-Teilsymbolen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ über die Gleichheit von gleichen Teilketten kann ich schreiben
+\begin_inset Formula 
+\[
+n_{1}\cdot A\,n_{3}\cdot A=n_{2}\cdot A\,n_{3}\cdot A
+\]
+
+\end_inset
+
+Und da die Gleichheit von Symbolketten gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gleichheit-natuerliche-Zahlen-ist-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ eine Äquivalenzrelation ist,
+ kann ich schlussflgern,
+ dass auch gelten muss
+\begin_inset Formula 
+\[
+\left(n_{1}+n_{3}\right)\cdot A=n_{2}\cdot A\,n_{3}\cdot A
+\]
+
+\end_inset
+
+Gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Addition-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Addition der natürlichen zahlen ist
+\begin_inset Formula 
+\[
+n_{2}\cdot A\,n_{3}\cdot A=\left(n_{2}+n_{2}\right)\cdot A
+\]
+
+\end_inset
+
+Daraus kann ich wiederum gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gleichheit-natuerliche-Zahlen-ist-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ nach welchem die Gleichheit von Symbolketten eine Äquivalenzrelation ist,
+ folgern,
+ dass gilt
+\begin_inset Formula 
+\[
+\left(n_{1}+n_{3}\right)\cdot A=\left(n_{2}+n_{2}\right)\cdot A
+\]
+
+\end_inset
+
+Damit habe ich die erste Behauptung des Lemmas bewiesen.
+ Nun möchte ich den Beweis für die Richtigkeit der zweiten Behauptung erbringen.
+\end_layout
+
+\begin_layout Proof
+Es sei 
+\begin_inset Formula $A$
+\end_inset
+
+ ein beliebiges Symbol,
+ welches in sich selbst und in Bezug auf die anderen Symbole des Lemmas widerspruchsfrei sei.
+ Gemäss der Definition der natürlichen Zahlen 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:natuerliche-Zahlen-eigene-Definition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ als Metasymbole von Zeichenketten gleicher Symbole muss dann gelten
+\begin_inset Formula 
+\[
+n_{1}\cdot A=n_{2}\cdot A
+\]
+
+\end_inset
+
+Dann kann ich schreiben
+\begin_inset Formula 
+\[
+\left(n_{3}+n_{1}\right)\cdot A=n_{3}\cdot A\,n_{1}\cdot A
+\]
+
+\end_inset
+
+Gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gleichheit-von-Teilsymbolen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ über die Gleichheit von gleichen Teilketten kann ich schreiben
+\begin_inset Formula 
+\[
+n_{3}\cdot A\,n_{1}\cdot A=n_{3}\cdot A\,n_{2}\cdot A
+\]
+
+\end_inset
+
+Und da die Gleichheit von Symbolketten gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gleichheit-natuerliche-Zahlen-ist-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ eine Äquivalenzrelation ist,
+ kann ich schlussflgern,
+ dass auch gelten muss
+\begin_inset Formula 
+\[
+\left(n_{3}+n_{1}\right)\cdot A=n_{3}\cdot A\,n_{2}\cdot A
+\]
+
+\end_inset
+
+Gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Addition-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Addition der natürlichen zahlen ist
+\begin_inset Formula 
+\[
+n_{3}\cdot A\,n_{2}\cdot A=\left(n_{3}+n_{2}\right)\cdot A
+\]
+
+\end_inset
+
+Daraus kann ich wiederum gemäss dem Lemma emma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gleichheit-natuerliche-Zahlen-ist-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ nach welchem die Gleichheit von Symbolketten eine Äquivalenzrelation ist,
+ folgern,
+ dass gilt
+\begin_inset Formula 
+\[
+\left(n_{3}+n_{1}\right)\cdot A=\left(n_{3}+n_{2}\right)\cdot A
+\]
+
+\end_inset
+
+Damit habe ich die zweite Behauptung des Lemmas und somit das ganze Lemma bewiesen.
+ 
+\end_layout
+
+\begin_layout Standard
+Das letzte kleine Restulat möchte ich ich nun ausweiten:
 \end_layout
 
 \begin_layout Proposition
@@ -18137,7 +17722,7 @@ Der Beweis habe ich für
  Es ist ja gemäß dem vorhergehenden Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Addition-mit-Eins"
+reference "lem:Addition-mit-Eins"
 nolink "false"
 
 \end_inset
@@ -18148,6 +17733,14 @@ nolink "false"
 n_{1}+\left(n_{2}+1\right)=\left(n_{1}+n_{2}\right)+1
 \]
 
+\end_inset
+
+für beliebige natürliche Zahlen 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+und 
+\begin_inset Formula $n_{2}.$
 \end_inset
 
 Nun gelte der Satz für 
@@ -18163,10 +17756,10 @@ n_{1}+\left(n_{2}+n_{3}\right)=\left(n_{1}+n_{2}\right)+n_{3}
 
 \end_inset
 
-Dann gilt gemäß dem vorhergehenden Satz 
+Dann gilt gemäß dem vorhergehenden Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Addition-mit-Eins"
+reference "lem:Addition-mit-Eins"
 plural "false"
 caps "false"
 noprefix "false"
@@ -18174,7 +17767,8 @@ nolink "false"
 
 \end_inset
 
-
+ bezüglich der Addition gleicher natürlicher Zahlen mit einer dritten natürlichen Zahl folgern,
+ dass gilt:
 \begin_inset Formula 
 \[
 n_{2}+\left(n_{3}+1\right)=\left(n_{2}+n_{3}\right)+1
@@ -18185,7 +17779,7 @@ n_{2}+\left(n_{3}+1\right)=\left(n_{2}+n_{3}\right)+1
 Gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Addition-natuerliche-Zahlen-Gleichheit"
+reference "lem:Addition-gleicher-natuerlicher-Zahlen-mit-natuerlicher-Zahl"
 plural "false"
 caps "false"
 noprefix "false"
@@ -18215,38 +17809,9 @@ Jetzt kann ich die Induktionsvoraussetzung für
  Ich erhalte 
 \begin_inset Formula 
 \begin{eqnarray*}
- &  & \left(n_{1}+\left(n_{2}+n_{3}\right)\right)+1\\
- & = & n_{1}+\left(\left(n_{2}+n_{3}\right)+1\right)
+ &  & n_{1}+\left(\left(n_{2}+n_{3}\right)+1\right)\\
+ & = & \left(n_{1}+\left(n_{2}+n_{3}\right)\right)+1
 \end{eqnarray*}
-
-\end_inset
-
-Weiter kann ich den Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Addition-mit-Eins"
-nolink "false"
-
-\end_inset
-
- der Assoziativität der Addition mit 
-\begin_inset Formula $1$
-\end_inset
-
- auf die Zahlen 
-\begin_inset Formula $n_{1}$
-\end_inset
-
- sowie 
-\begin_inset Formula $\left(n_{2}+n_{3}\right)$
-\end_inset
-
- anwenden.
- Ich erhalte die Gleichheit
-\begin_inset Formula 
-\[
-n_{1}+\left(\left(n_{2}+n_{3}\right)+1\right)=\left(n_{1}+\left(n_{2}+n_{3}\right)\right)+1
-\]
 
 \end_inset
 
@@ -18262,7 +17827,7 @@ n_{1}+\left(n_{2}+n_{3}\right)=\left(n_{1}+n_{2}\right)+n_{3}
 Darum kann gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Addition-natuerliche-Zahlen-Gleichheit"
+reference "lem:Addition-gleicher-natuerlicher-Zahlen-mit-natuerlicher-Zahl"
 plural "false"
 caps "false"
 noprefix "false"
@@ -18270,10 +17835,11 @@ nolink "false"
 
 \end_inset
 
- über Gleichheit der Addition mit gleichen Zahlen schreiben:
+ über Gleichheit der Addition von natürlichen Zahlen mit einer dritten Zahll folgern,
+ dass gilt:
 \begin_inset Formula 
 \[
-\underline{}\left(n_{1}+\left(n_{2}+n_{3}\right)\right)+1=\left(\left(n_{1}+n_{2}\right)+n_{3}\right)+1
+\left(n_{1}+\left(n_{2}+n_{3}\right)\right)+1=\left(\left(n_{1}+n_{2}\right)+n_{3}\right)+1
 \]
 
 \end_inset
@@ -18281,7 +17847,7 @@ nolink "false"
 Nun kann ich den Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prop:Addition-mit-Eins"
+reference "lem:Addition-mit-Eins"
 nolink "false"
 
 \end_inset
@@ -18302,7 +17868,7 @@ nolink "false"
 Da die Gleichheit von Symbolen gemäß dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
+reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
 plural "false"
 caps "false"
 noprefix "false"
@@ -18450,7 +18016,7 @@ nolink "false"
 Da die Gleichheit von Symbolketten gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
+reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
 plural "false"
 caps "false"
 noprefix "false"
@@ -18511,7 +18077,7 @@ nolink "false"
  dass die Gleichheit von Symbolketten gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
+reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
 plural "false"
 caps "false"
 noprefix "false"
@@ -18557,10 +18123,10 @@ n_{1}\cdot A\,n_{2}\cdot A\,n_{3}\cdot A=n_{1}\cdot A\,\left(n_{2}+n_{3}\right)\
 
 \end_inset
 
- Da die Gleichheit von Symbolketten gemäß dem Lemma 
+Da die Gleichheit von Symbolketten gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
+reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
 plural "false"
 caps "false"
 noprefix "false"
@@ -18611,7 +18177,7 @@ nolink "false"
 Da die Gleichheit von Symbolketten gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
+reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
 plural "false"
 caps "false"
 noprefix "false"
@@ -18643,7 +18209,7 @@ Schlussendlich kann ich noch einmal die Transitivität der Gleichheit von Symbol
  welche gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
+reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
 plural "false"
 caps "false"
 noprefix "false"
@@ -18765,6 +18331,12 @@ Ich möchte weiter mit der vollständigen Induktion arbeiten:
 \end_layout
 
 \begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Addition-natuerlicher-Zahlen-ist-kommutativ"
+
+\end_inset
+
 Die Addition von natürlichen Zahlen ist kommutativ.
  Es ist also für alle 
 \begin_inset Formula $n_{1},n_{2}\in\mathbb{N}$
@@ -18806,22 +18378,35 @@ Den Beweis möchte ich in zwei Teilen gestalten.
 \end_layout
 
 \begin_layout Proof
-Dann muss zusammen mit dem Lemma 
+Dann kann ich mit Hifle des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Kommutativitaet-n-1-natuerliche-Zahlen"
+reference "lem:Ununterscheidbarkeit-von-Symbolen"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
 
- gelten
+ folgern,
+ dass gilt
 \begin_inset Formula 
-\begin{eqnarray*}
- &  & \left(n_{1}+1\right)\cdot A\\
- & = & n_{1}\cdot A\,A\\
- & = & A\,n_{1}\cdot A\\
- & = & \left(1+n_{1}\right)\cdot A
-\end{eqnarray*}
+\[
+n_{1}\cdot A\,A=A\,n_{1}\cdot A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Also kann ich schreiben:
+\begin_inset Formula 
+\[
+\left(n_{1}+1\right)\cdot A=\left(1+n_{1}\right)\cdot A
+\]
 
 \end_inset
 
@@ -18829,284 +18414,46 @@ Somit kann ich folgern,
  dass gilt
 \begin_inset Formula 
 \[
-n_{1}+1=1+n_{2}
+n_{1}+1=1+n_{1}
 \]
 
 \end_inset
 
-Nun sei 
-\begin_inset Formula $n_{2}\neq1$
+Damit hätte ich die Induktionsvoraussetzung beweisen.
+ Es gelte als für 
+\begin_inset Formula $n_{1},\,n_{2}\in\mathbb{N}$
 \end_inset
 
-.
- Ich möchte nun zeigen,
- dass es dann für 
-\begin_inset Formula $n_{4}\in\mathbb{N}$
-\end_inset
 
- mit 
-\begin_inset Formula $1\leq n_{4}<n_{2}$
-\end_inset
-
- gelten muss
 \begin_inset Formula 
 \[
-\left(n_{1}+n_{2}\right)\cdot A=\left(n_{2}-n_{4}\right)\cdot A\,n_{1}\cdot A\,\left(n_{4}\right)\cdot A
+n_{1}+n_{2}=n_{2}+n_{1}
 \]
 
 \end_inset
 
-Den Anfang für 
-\begin_inset Formula $n_{3}=1$
+Nun möchte ich zeigen,
+ dass dies auch für 
+\begin_inset Formula $n_{2}+1$
 \end_inset
 
- sei wie folgt gemacht
-\begin_inset Formula 
-\begin{eqnarray*}
- &  & \left(n_{1}+n_{2}\right)\cdot A\\
- & = & n_{1}\cdot A\,n_{2}\cdot A\\
- & = & n_{1}\cdot A\,n_{3}\cdot A\,A\\
-\end{eqnarray*}
-
-\end_inset
-
-Nun muss gemäß dem Lemma 
+ gelten muss.
+ Gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:Kommutativitaet-n-1-natuerliche-Zahlen"
+reference "prop:Addition-natuerlicher-Zahlen-assoziativ"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
 
- wiederum anwenden,
- diesmal jedoch auf das Symbol
+ ist die Addition natürlicher Zahlen assoziativ.
+ Also kann ich schreiben
 \begin_inset Formula 
 \[
-n_{1}\cdot A\,n_{3}\cdot A
-\]
-
-\end_inset
-
-Ich erhalte die Aussage
-\begin_inset Formula 
-\[
-n_{1}\cdot A\,n_{3}\cdot A=A\,n_{1}\cdot A\,n_{3}\cdot A
-\]
-
-\end_inset
-
-Dann kann ich genau die gleiche Aussage beliebig lange durchspielen,
- sofern 
-\begin_inset Formula $n_{3}$
-\end_inset
-
- ungleich 
-\begin_inset Formula $1$
-\end_inset
-
- ist.
- Also erhalte ich für solche beliebigen 
-\begin_inset Formula $n_{3}$
-\end_inset
-
- die Aussage 
-\begin_inset Formula 
-\[
-\left(n_{1}+n_{2}\right)\cdot A=\left(n_{2}-n_{3}\right)\cdot A\,n_{1}\cdot A\,n_{3}\cdot A
-\]
-
-\end_inset
-
- da die Summe 
-\begin_inset Formula $n_{2}-n_{4}+n_{4}$
-\end_inset
-
- immer gleich viel sein muss,
- nämlich 
-\begin_inset Formula $n_{2}$
-\end_inset
-
-.
- Denn jedes Symbol,
- welches ich vom Symbol 
-\begin_inset Formula 
-\[
-n_{2}\cdot A
-\]
-
-\end_inset
-
- wegnehme,
- muss ich links vom Symbol 
-\begin_inset Formula $n_{1}\cdot A$
-\end_inset
-
- wieder einfügen.
- Ist jedoch 
-\begin_inset Formula 
-\[
-n_{3}=1
-\]
-
-\end_inset
-
-dann kann ich das Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Kommutativitaet-n-1-natuerliche-Zahlen"
-nolink "false"
-
-\end_inset
-
- ein letztes Mal anwenden.
- Es resultiert
-\begin_inset Formula 
-\begin{eqnarray*}
- &  & \left(n_{1}+n_{2}\right)\cdot A\\
- & = & \left(n_{2}-1\right)\cdot A\,n_{1}\cdot A\,1\cdot A\\
- & = & \left(n_{2}-1\right)\cdot A\,n_{1}\cdot A\,A\\
- & = & \left(n_{2}-1\right)\cdot A\,A\,n_{1}\cdot A\\
- & = & n_{2}\cdot A\,n_{1}\cdot A
-\end{eqnarray*}
-
-\end_inset
-
-was jedoch die Behauptung ist.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:Peano-Eins-nicht-Nachfolger"
-
-\end_inset
-
-Es sei 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
-.
- Dann ist 
-\begin_inset Formula $n+1\neq1$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Proof
-Ist 
-\begin_inset Formula $n=1$
-\end_inset
-
-,
- dann möchte ich zeigen,
- dass 
-\begin_inset Formula 
-\[
-1+1\neq1
-\]
-
-\end_inset
-
- ist.
- Es sei 
-\begin_inset Formula $A$
-\end_inset
-
- ein Symbol für ein beliebiges Symbol,
- welches jedoch nicht leer sein darf.
- Dann ist
-\begin_inset Formula 
-\begin{eqnarray*}
-1\cdot A & \equiv & A\\
-\left(1+1\right)\cdot A & \equiv & 1\cdot A\,A=A\,A
-\end{eqnarray*}
-
-\end_inset
-
-Da jedoch gemäß der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Gleichheit-von-Symbolen"
-nolink "false"
-
-\end_inset
-
- gelten muss
-\begin_inset Formula 
-\[
-A\neq A\,A
-\]
-
-\end_inset
-
-kann darum auch nicht 
-\begin_inset Formula 
-\[
-1=1+1
-\]
-
-\end_inset
-
-sein.
- Denn 
-\begin_inset Formula $1$
-\end_inset
-
- und 
-\begin_inset Formula $1+1$
-\end_inset
-
- habe ich ja als Metasymbole definiert.
- Und wenn die erzeugen Symbole nicht gleich sind,
- können es auch die erzeugenden Metasymbole nicht sein.
-\end_layout
-
-\begin_layout Proof
-Es sei jetzt 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
-.
- Gemäß der Konstruktion von natürlichen Zahlen muss das Symbol
-\begin_inset Formula 
-\[
-\left(n+1\right)\cdot A
-\]
-
-\end_inset
-
-mindestens das Symbol 
-\begin_inset Formula 
-\[
-A\,A
+n_{1}+\left(n_{2}+1\right)=\left(n_{1}+n_{2}\right)+1
 \]
 
 \end_inset
@@ -19115,629 +18462,45 @@ A\,A
 \end_layout
 
 \begin_layout Proof
-enthalten.
- Also kann ich gemäß der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Gleichheit-von-Symbolen"
-nolink "false"
-
-\end_inset
-
- wiederum folgern,
- dass
+Dann kann ich wieder die Induktionsvoraussetzung einsetzen und erhalte die Gleichung
 \begin_inset Formula 
 \[
-1\cdot A\equiv A\neq\left(n+1\right)\cdot A
+\left(n_{1}+n_{2}\right)+1=1+\left(n_{1}+n_{2}\right)
 \]
 
 \end_inset
 
-und darum ebenso
-\begin_inset Formula 
-\[
-1\neq n+1
-\]
 
-\end_inset
-
-sein muss.
- Wiederum muss dies gelten,
- weil 
-\begin_inset Formula $1$
-\end_inset
-
- sowie 
-\begin_inset Formula $n+1$
-\end_inset
-
- als Metasymbole definiert sind.
- Wenn dann die erzeugten Symbole nicht gleich sind,
- können auch die erzeugenden Metasymbole auch nicht gleich sein.
- Darum habe ich meines Erachtens das ganze Lemma bewiesen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:erstes-Gleichheit-von-Symbolen"
-
-\end_inset
-
-Es seien 
-\begin_inset Formula $A$
-\end_inset
-
- sowie 
-\begin_inset Formula $B$
-\end_inset
-
- Metasymbole,
- welche gleich seien.
- Dann müssen die von 
-\begin_inset Formula $A$
-\end_inset
-
- respektive 
-\begin_inset Formula $B$
-\end_inset
-
- symbolisierten Symbolen aus gleich vielen einzelnen Symbolen zusammengesetzt sein.
-\end_layout
-
-\begin_layout Proof
-Das ist wieder so eine Fingerübung,
- welche daraus hinausläuft,
- dass Du zwar weniger über die Gleichheit von Symbolen,
- jedoch mehr über die vollständige Induktion erfahren kannst.
- Es seien also 
-\begin_inset Formula $A$
-\end_inset
-
- und 
-\begin_inset Formula $B$
-\end_inset
-
- Metasymbole und es sei 
-\begin_inset Formula $A=B$
-\end_inset
-
-.
- Das von 
-\begin_inset Formula $A$
-\end_inset
-
- symbolisierte Symbol sei aus einem einzelnen Symbol aufgebaut.
- Dann muss gemäß der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Gleichheit-von-Symbolen"
-nolink "false"
-
-\end_inset
-
- auch 
-\begin_inset Formula $B$
-\end_inset
-
- aus einem Symbol aufgebaut sein.
- Nun gelte die Behauptung für alle Symbole,
- welche aus 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
- Symbolen aufgebaut sei.
- Weiter sei 
-\begin_inset Formula $A$
-\end_inset
-
- ein Symbol,
- welches aus 
-\begin_inset Formula $n+1$
-\end_inset
-
- Symbolen aufgebaut sei.
- Also muss ein Metasymbol 
-\begin_inset Formula $A_{n+1}$
-\end_inset
-
- derart geben,
- dass das durch 
-\begin_inset Formula $A_{n+1}$
-\end_inset
-
- symbolisierte Symbol aus einem Symbol aufgebaut ist.
- Ebenfalls muss es ein Metasymbol 
-\begin_inset Formula $A_{n}$
-\end_inset
-
- derart derart geben,
- dass das durch 
-\begin_inset Formula $A_{n}$
-\end_inset
-
- symbolisierte Symbol aus 
-\begin_inset Formula $n$
-\end_inset
-
- Symbolen besteht.
- Weiter sei 
-\begin_inset Formula $A=A_{n+1}\,A_{n}$
-\end_inset
-
-.
- Nun sei 
-\begin_inset Formula $A=B$
-\end_inset
-
-.
- Gemäß der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Gleichheit-von-Symbolen"
-nolink "false"
-
-\end_inset
-
- muss darum das durch 
-\begin_inset Formula $B$
-\end_inset
-
- symbolisierte Symbol ebenfalls mit dem Symbol 
-\begin_inset Formula $A_{n+1}$
-\end_inset
-
- beginnen.
- Wenn 
-\begin_inset Formula $B$
-\end_inset
-
- keine weitere Symbole mehr enthalten würde,
- dann könnte 
-\begin_inset Formula $B$
-\end_inset
-
- nicht mehr gleich 
-\begin_inset Formula $A$
-\end_inset
-
- sein.
- Also muss auch das Symbol 
-\begin_inset Formula $B_{n}$
-\end_inset
-
- welches entsteht,
- indem beim Symbol 
-\begin_inset Formula $B$
-\end_inset
-
- das erste Symbol (
-\begin_inset Formula $A_{n+1}$
-\end_inset
-
-) entfernt wird ebenfalls gleich demjenigen von 
-\begin_inset Formula $A_{n}$
-\end_inset
-
- symbolisierten Symbol sein.
- Also muss gemäß der Induktionsvoraussetzung die Anzahl der Symbole von 
-\begin_inset Formula $A_{n}$
-\end_inset
-
- gleich derjenigen von 
-\begin_inset Formula $B_{n}$
-\end_inset
-
- sein.
- Das sind jedoch gemäß der Induktionsvoraussetzung 
-\begin_inset Formula $n$
-\end_inset
-
- Symbole.
- Also hat das durch 
-\begin_inset Formula $B$
-\end_inset
-
- symbolisierte Symbol ebenfalls 
-\begin_inset Formula $n+1$
-\end_inset
-
- Symbole besitzen.
- Damit ist jedoch die Induktionsvererbung und somit der ganze Induktionsbeweis erbracht.
- Da gemäß der Definition von Symbolen alle Symbole aus endlich viele Symbolen zusammengesetzt sind,
- halte ich den Beweis für erbracht.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Auch das folgende Lemma ist eigentlich eine Zumutung.
-\end_layout
-
-\begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:Gleichheit-Symbole-Aequivalenzrelation"
-
-\end_inset
-
-Die unter der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Definition-natuerliche-Zahlen-Eigen"
-nolink "false"
-
-\end_inset
-
- festgelegte Gleichheit ist eine Äquivalenzrelation.
 \end_layout
 
 \begin_layout Proof
-Es sei 
-\begin_inset Formula $A$
-\end_inset
-
- das Symbol für ein Symbol.
- Dann ist 
-\begin_inset Formula $A=A$
-\end_inset
-
-.
- Denn besteht das von 
-\begin_inset Formula $A$
-\end_inset
-
- symbolisierte Symbol aus einem einzelnen Symbol,
- dann muss das Symbol gleich dem Symbol selbst sein.
- Angenommen,
- die Anzahl der Symbole,
- aus welchen 
-\begin_inset Formula $A$
-\end_inset
-
- zusammengesetzt sei,
- sei 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
- und die Gleichheit von 
-\begin_inset Formula $A=A$
-\end_inset
-
- sei bewiesen.
- Besteht 
-\begin_inset Formula $A$
-\end_inset
-
- jedoch aus 
-\begin_inset Formula $n+1$
-\end_inset
-
- Symbolen,
- dann kann ich schreiben
-\begin_inset Formula 
-\[
-A=A_{n+1}\,A_{n}
-\]
-
-\end_inset
-
-Das Symbol 
-\begin_inset Formula $A_{n}$
-\end_inset
-
- besteht dabei aus 
-\begin_inset Formula $n$
-\end_inset
-
- Symbolen,
- das Symbol 
-\begin_inset Formula $A_{n+1}$
-\end_inset
-
- ist aus einem Symbol aufgebaut.
- Dann muss gemäß der Induktionsverankerung und der Voraussetzung der Induktionsvererbung gelten,
- dass 
-\begin_inset Formula 
-\[
-A_{n+1}=A_{n+1}
-\]
-
-\end_inset
-
-sowie
-\begin_inset Formula 
-\[
-A_{n}=A_{n}
-\]
-
-\end_inset
-
-ist.
- Also kann ich gemäß der Definition 
+Da die Gleichheit von Zahlen aufgrund des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:Definition-natuerliche-Zahlen-Eigen"
+reference "lem:Gleichheit-natuerliche-Zahlen-ist-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
 
- der Gleichheit von Symbolen schließen,
- dass 
-\begin_inset Formula 
-\[
-A_{n+1}\,A_{n}=A_{n+1}\,A_{n}
-\]
-
-\end_inset
-
-ist.
- Also muss die Behauptung auch für Symbole 
-\begin_inset Formula $A$
-\end_inset
-
- gelten,
- welche 
-\begin_inset Formula $n+1$
-\end_inset
-
- Symbole besitzen.
- Da gemäß Voraussetzung alle Symbole aus endlich vielen Elementen aufgebaut sind,
- glaube ich schließen zu dürfen,
- dass dies für alle Symbole gelten muss.
- Nun seien 
-\begin_inset Formula $A$
-\end_inset
-
- und 
-\begin_inset Formula $B$
-\end_inset
-
- Symbole von Symbolen,
- wobei 
-\begin_inset Formula 
-\[
-A=B
-\]
-
-\end_inset
-
-sei.
- Falls 
-\begin_inset Formula $A$
-\end_inset
-
- ein Symbol symbolisiert,
- dann muss gemäß der Definition 
+ eine Äquivalenzrelation ist und somit gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "def:Gleichheit-von-Symbolen"
+reference "def:Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
 
- der Gleichheit von Symbolen das Symbol 
-\begin_inset Formula $B$
-\end_inset
-
- ebenfalls ein Symbol symbolisieren.
- Also müssen die beiden Symbole identisch sein.
- Es sei 
-\begin_inset Formula $C$
-\end_inset
-
- das Symbol welches dieses gemeinsame Symbol symbolisiere.
- Also ist,
- da jedes Symbol gleich zu sich selbst ist.
+ aus transitiv ist,
+ kann ich aus den Gleichungen
 \begin_inset Formula 
 \[
-C=C
-\]
-
-\end_inset
-
-Darum kann ich auch schreiben
-\begin_inset Formula 
-\[
-B=A
-\]
-
-\end_inset
-
-Die Behauptung sei jetzt für 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
- Symbole bewiesen.
- Zeigt sowohl 
-\begin_inset Formula $A$
-\end_inset
-
- wie auch 
-\begin_inset Formula $B$
-\end_inset
-
- auf Symbole,
- welche auf 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
- aufgebaut sind,
- dann muss gelten,
- dass aus 
-\begin_inset Formula 
-\[
-A=B
-\]
-
-\end_inset
-
- ebenfalls 
-\begin_inset Formula 
-\[
-B=A
-\]
-
-\end_inset
-
- folgt.
- Nun sei 
-\begin_inset Formula $A$
-\end_inset
-
- ein Symbol,
- welches ein Symbol symbolisiert,
- welches aus 
-\begin_inset Formula $n+1$
-\end_inset
-
- Symbolen aufgebaut ist.
- Also muss gelten
-\begin_inset Formula 
-\[
-A=A_{n+1}\,A_{n}
-\]
-
-\end_inset
-
- wobei 
-\begin_inset Formula $A_{n+1}$
-\end_inset
-
- ein Symbol symbolisiert,
- welches aus einem Symbol aufgebaut ist.
- 
-\begin_inset Formula $A_{n}$
-\end_inset
-
- ist ein Symbol,
- welches aus 
-\begin_inset Formula $n$
-\end_inset
-
- Symbolen aufgebaut ist.
- Gemäß dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:erstes-Gleichheit-von-Symbolen"
-nolink "false"
-
-\end_inset
-
- muss ebenfalls gelten
-\begin_inset Formula 
-\[
-B=B_{n+1}\,B_{n}
-\]
-
-\end_inset
-
-wobei 
-\begin_inset Formula $B_{n}$
-\end_inset
-
- ebenfalls aus 
-\begin_inset Formula $n$
-\end_inset
-
- Symbolen aufgebaut ist.
- Also muss aufgrund der Definition der Gleichheit von Symbolen gelten,
- dass
-\begin_inset Formula 
-\[
-A_{n+1}=B_{n+1}
-\]
-
-\end_inset
-
-Da nun 
-\begin_inset Formula $A_{n}$
-\end_inset
-
- aus 
-\begin_inset Formula $n$
-\end_inset
-
- Symbolen zusammengesetzt ist,
- kann ich aufgrund der Induktionsvoraussetzung folgern,
- dass 
-\begin_inset Formula 
-\[
-A_{n}=B_{n}
-\]
-
-\end_inset
-
-sein muss und 
-\begin_inset Formula $A_{n}$
-\end_inset
-
- wie auch 
-\begin_inset Formula $B_{n}$
-\end_inset
-
- aus 
-\begin_inset Formula $n$
-\end_inset
-
- Symbolen zusammengesetzt sein müssen.
- Weiter kann ich aufgrund der Induktionsvoraussetzung ebenfalls folgern,
- dass 
-\begin_inset Formula 
-\[
-B_{n+1}=A_{n+1}
+n_{1}+\left(n_{2}+1\right)=\left(n_{1}+n_{2}\right)+1
 \]
 
 \end_inset
@@ -19745,292 +18508,26 @@ B_{n+1}=A_{n+1}
 sowie 
 \begin_inset Formula 
 \[
-B_{n}=A_{n}
+\left(n_{1}+n_{2}\right)+1=1+\left(n_{1}+n_{2}\right)
 \]
 
 \end_inset
 
-gelten muss.
- Das bedeutet jedoch auch,
- dass 
+schliessen,
+ dass auch gilt
 \begin_inset Formula 
 \[
-B=B_{n+1}\,B_{n}=A_{n+1}\,A_{n}=A
+n_{1}+\left(n_{2}+1\right)=1+\left(n_{1}+n_{2}\right)
 \]
 
 \end_inset
 
-sein muss.
- Also habe ich die Symmetrie der Gleichheit von Symbolen gezeigt.
- 
-\end_layout
-
-\begin_layout Proof
-Nun kommt die Frage der Transitivität der Gleichheit von Symbolen.
- Es seien 
-\begin_inset Formula $A,B$
-\end_inset
-
- sowie 
-\begin_inset Formula $C$
-\end_inset
-
- Metasymbole.
- Weiter sei 
-\begin_inset Formula $A=B$
-\end_inset
-
- sowie 
-\begin_inset Formula $B=C$
-\end_inset
-
-.
- Das von 
-\begin_inset Formula $A$
-\end_inset
-
- symbolisierte Symbol bestehe aus einem Symbol bestehe aus einem Symbol.
- Also muss auch 
-\begin_inset Formula $B$
-\end_inset
-
- gemäß der Definition von Symbolen aus einem Symbol bestehen.
- Da 
-\begin_inset Formula $B=C$
-\end_inset
-
- ist,
- muss gemäß der Definition von Symbolen ebenfalls 
-\begin_inset Formula $C$
-\end_inset
-
- aus einem Symbol bestehen.
- Wäre nun das von 
-\begin_inset Formula $C$
-\end_inset
-
- symbolisierte Symbol ungleich dem von 
-\begin_inset Formula $A$
-\end_inset
-
- symbolisierten Symbol,
- dann müsste,
- da 
-\begin_inset Formula $B=C$
-\end_inset
-
- ist,
- auch das von 
-\begin_inset Formula $B$
-\end_inset
-
- symbolisierte Symbol ungleich dem von 
-\begin_inset Formula $A$
-\end_inset
-
- symbolisierten Symbol sein.
- Das ist jedoch gemäß der Voraussetzung über 
-\begin_inset Formula $A$
-\end_inset
-
- und 
-\begin_inset Formula $B$
-\end_inset
-
- nicht wahr.
- Also muss das von 
-\begin_inset Formula $C$
-\end_inset
-
- symbolisierte Symbol gleich dem von 
-\begin_inset Formula $A$
-\end_inset
-
- symbolisierten Symbol sein.
- Darum glaube ich,
- schreiben zu können,
- dass 
+Nun kann ich wieder von der Induktionsvoraussetzung Gebrauch machen:
+ Es gilt also immer noch
 \begin_inset Formula 
 \[
-A=C
+n_{1}+n_{2}=n_{2}+n_{1}
 \]
-
-\end_inset
-
-ist.
- Nun sei die Behauptung für Symbolen bewiesen,
- welche aus 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
- Symbolen bestehen.
- Besteht als 
-\begin_inset Formula $A$
-\end_inset
-
- aus 
-\begin_inset Formula $n$
-\end_inset
-
- Symbolen und ist 
-\begin_inset Formula 
-\[
-A=B
-\]
-
-\end_inset
-
-sowie
-\begin_inset Formula 
-\[
-B=C
-\]
-
-\end_inset
-
-dann muss auch 
-\begin_inset Formula 
-\[
-A=C
-\]
-
-\end_inset
-
-sein.
- Nun bestehe 
-\begin_inset Formula $A$
-\end_inset
-
- aus 
-\begin_inset Formula $n+1$
-\end_inset
-
- Symbolen.
- Also muss es ein Symbole 
-\begin_inset Formula $A_{n+1}$
-\end_inset
-
- sowie 
-\begin_inset Formula $A_{n}$
-\end_inset
-
- derart geben,
- dass
-\begin_inset Formula 
-\[
-A=A_{n+1}\,A_{n}
-\]
-
-\end_inset
-
-Dabei besteht 
-\begin_inset Formula $A_{n+1}$
-\end_inset
-
- aus einem Symbol und 
-\begin_inset Formula $A_{n}$
-\end_inset
-
- aus 
-\begin_inset Formula $n$
-\end_inset
-
- Symbolen.
- Nun sei 
-\begin_inset Formula 
-\[
-A=B
-\]
-
-\end_inset
-
-Gemäß dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:erstes-Gleichheit-von-Symbolen"
-nolink "false"
-
-\end_inset
-
- muss 
-\begin_inset Formula $B$
-\end_inset
-
- ebenfalls aus 
-\begin_inset Formula $n+1$
-\end_inset
-
- Symbolen bestehen.
- Also kann ich wieder schreiben 
-\begin_inset Formula 
-\[
-B=B_{n+1}\,B_{n}
-\]
-
-\end_inset
-
-sein.
- Wobei 
-\begin_inset Formula $B_{n+1}$
-\end_inset
-
- aus einem Symbol und 
-\begin_inset Formula $B_{n}$
-\end_inset
-
- aus 
-\begin_inset Formula $n$
-\end_inset
-
- Symbolen besteht.
- Da 
-\begin_inset Formula $B=C$
-\end_inset
-
- ist,
- muss gemäß dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:erstes-Gleichheit-von-Symbolen"
-nolink "false"
-
-\end_inset
-
- wiederum gelten,
- dass 
-\begin_inset Formula $C$
-\end_inset
-
- wiederum aus 
-\begin_inset Formula $n+1$
-\end_inset
-
- Symbolen bestehen.
- Also kann ich wiederum schreiben
-\begin_inset Formula 
-\[
-C=C_{n+1}\,C_{n}
-\]
-
-\end_inset
-
-Nun kann ich schließen,
- dass aufgrund der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Gleichheit-von-Symbolen"
-nolink "false"
-
-\end_inset
-
-der Gleichheit von Symbolen gelten muss:
-\begin_inset Formula 
-\begin{eqnarray*}
-A_{n+1} & = & B_{n+1}\\
-B_{n+1} & = & C_{n+1}\\
-A_{n} & = & B_{n}\\
-B_{n} & = & C_{n}
-\end{eqnarray*}
 
 \end_inset
 
@@ -20038,53 +18535,101 @@ B_{n} & = & C_{n}
 \end_layout
 
 \begin_layout Proof
-Nun sind 
-\begin_inset Formula $A_{n},\,B_{n},\,C_{n},\,A_{n+1},\,B_{n+1}$
-\end_inset
-
- wie auch 
-\begin_inset Formula $C_{n+1}$
-\end_inset
-
- Metasymbole,
- welche auf Symbole verweisen,
- welche aus höchstens 
-\begin_inset Formula $n$
-\end_inset
-
- Symbolen zusammengesetzt sind.
- Darum kann ich aufgrund der Induktionsvoraussetzung und der Induktionsverankerung schließen,
- dass gelten muss 
-\begin_inset Formula 
-\begin{eqnarray*}
-A_{n+1} & = & C_{n+1}\\
-A_{n} & = & C_{n}
-\end{eqnarray*}
-
-\end_inset
-
-Somit muss aufgrund der Definition 
+Gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "def:Gleichheit-von-Symbolen"
+reference "lem:Addition-gleicher-natuerlicher-Zahlen-mit-natuerlicher-Zahl"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
 
- der Gleichheit von Symbolen schließen,
- dass 
+ gilt darum auch
 \begin_inset Formula 
 \[
-A=C
+1+\left(n_{1}+n_{2}\right)=1+\left(n_{2}+n_{1}\right)
 \]
 
 \end_inset
 
-ist.
- Somit hätte ich den Induktionsschritt und damit auch den ganzen Induktionsbeweis erbracht.
- Nun ist also klar,
- dass die Gleichheit von Symbolen ebenfalls transitiv sein muss.
- Damit hätte ich jedoch (endlich) den ganzen Induktionsbeweis erbracht.
+Und da die Gleichheit von natürlichen Zahlen immer noch transitiv ist,
+ kann ich darum auch folgern,
+ dass gilt
+\begin_inset Formula 
+\[
+n_{1}+\left(n_{2}+1\right)=1+\left(n_{2}+n_{1}\right)
+\]
+
+\end_inset
+
+Und erneut aufgrund des Assoziativitätsgesetzes 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-natuerlicher-Zahlen-assoziativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der natürlichen Zahlen kann ich schreiben,
+ dass gilt:
+\begin_inset Formula 
+\[
+1+\left(n_{2}+n_{1}\right)=\left(1+n_{2}\right)+n_{1}
+\]
+
+\end_inset
+
+Also muss erneut aufgrund des Transitivität der Gleichheit von natürlichen Zahlen kann ich schreiben,
+ dass auch gilt:
+\begin_inset Formula 
+\[
+n_{1}+\left(n_{2}+1\right)=\left(1+n_{2}\right)+n_{1}
+\]
+
+\end_inset
+
+Nun kann ich aufgrund der Induktionsverankerung schreiben,
+ dass gilt
+\begin_inset Formula 
+\[
+1+n_{2}=n_{2}+1
+\]
+
+\end_inset
+
+Also muss auch gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Addition-gleicher-natuerlicher-Zahlen-mit-natuerlicher-Zahl"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ wiederum gelten
+\begin_inset Formula 
+\[
+\left(1+n_{2}\right)+n_{1}=\left(n_{2}+1\right)+n_{1}
+\]
+
+\end_inset
+
+Und wegen der Transitivität der Gleichheit der natürlichen Zahlen muss darum auch gelten:
+\begin_inset Formula 
+\[
+n_{1}+\left(n_{2}+1\right)=\left(n_{2}+1\right)+n_{1}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -20115,544 +18660,238 @@ status open
 \end_layout
 
 \begin_layout Standard
-Was jetzt kommt,
- ist einerseits sehr einfach - andererseits äußerst kompliziert.
- Um was geht es?
- Ich habe die Gleichheit von natürlichen Zahlen habe ich unter dem Kapitel 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Definition-natuerliche-Zahlen-Eigen"
-nolink "false"
-
-\end_inset
-
- festgelegt.
- Nun möchte ich zeigen,
- dass diese Gleichheit wirklich eine Gleichheit im mathematischen Sinn
+Ich kann jetzt den Satz der Kommutation und der Assoziation zusammenfügen und hoffe,
+ dass das Chaos nicht zu gross wird.
+ 
 \end_layout
 
-\begin_layout Proposition
-Die Gleichheit von natürlichen Zahlen ist transitiv.
+\begin_layout Section
+Über Folgen
 \end_layout
 
-\begin_layout Proof
-Es sei 
-\begin_inset Formula $A$
-\end_inset
-
- ein beliebiges (jedoch 
+\begin_layout Standard
+Auch wenn sich jetzt den 
 \begin_inset Quotes gld
 \end_inset
 
-vernünftig
+Hardcore-Mathematiker*innen die Haare sträuben werden,
+ lassen sich bereits mit natürlichen Zahlen Folgen definieren.
+ 
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:Folgen-natuerlicher-Zahlen"
+
+\end_inset
+
+Dann sei
+\begin_inset Formula 
+\[
+\left(n_{k}\right)_{k\in\mathbb{N}}
+\]
+
+\end_inset
+
+dann eine Folge genannt,
+ wenn gelte
+\begin_inset Formula 
+\begin{align*}
+\left(n_{k}\right)_{k\in\mathbb{N}}: & N & \mathbb{\rightarrow}\mathbb{N}\\
+ & k & \mapsto n_{k} & \equiv n\left(k\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nun möchte ich ein paar Beispiele schreiben,
+ welche zeigen sollen,
+ wie eine Folge aussehen könnte:
+\end_layout
+
+\begin_layout Example
+Eine intuitive Folge wäre beispielsweise
+\begin_inset Formula 
+\[
+\left(k+1\right)_{k\in\mathbb{N}}
+\]
+
+\end_inset
+
+Diese Folge ordnet jede Zahl ihren Nachfolger zu.
+ Also würde die Zahl 1 auf die Zahl 2,
+ die Zahl 2 auf die Zahl 3,
+ die Zahl 3 auf die Zahl 4 abgebildet.
+ Entsprechend wird jede natürliche Zahl 
+\begin_inset Formula $k$
+\end_inset
+
+ auf die Zahl 
+\begin_inset Formula $k+1$
+\end_inset
+
+ abgebildet.
+ Nun,
+ ich nehme an,
+ das findest Du nicht besonders spannend.
+ Die einzige Frage könnte sein:
+ Wieso steht in der Definition nirgends ein 
+\begin_inset Formula $n$
+\end_inset
+
+?
+ Natürlich hätte ich auch
+\begin_inset Formula 
+\[
+\left(n_{k}\right)_{k\in\mathbb{N}}
+\]
+
+\end_inset
+
+ mit 
+\begin_inset Formula $n_{k}\equiv k+1$
+\end_inset
+
+ schreiben können.
+ Zuweilen sind beide Schreibweisen gebräuchlich.
+\end_layout
+
+\begin_layout Standard
+Und weiter geht's mit dem nächsten Beispiel,
+ welches empörend einfach ist.
+ 
+\end_layout
+
+\begin_layout Example
+Es höchst empörend langweilige Folge ist
+\begin_inset Formula 
+\[
+\left(1\right)_{k\in\mathbb{N}}
+\]
+
+\end_inset
+
+Wieso steht in der Definition der Folge weder 
+\begin_inset Formula $n$
+\end_inset
+
+ noch 
+\begin_inset Formula $k$
+\end_inset
+
+?
+ Es ist relativ einfach:
+ Die Bildmenge der Abbildung
+\begin_inset Formula 
+\begin{align*}
+\left(1\right)_{k\in\mathbb{N}}: & \mathbb{N} & \rightarrow & \mathbb{N}\\
+ & k & \mapsto & 1
+\end{align*}
+
+\end_inset
+
+besteht aus genau einer natürlichen Zahl.
+ Und zwar ist diese Zahl 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Und wenn Du Dich jetzt fragst?
+ Was soll das?
+ Dann lasse Dir gesagt sein,
+ dass die Folge zwar langweilig ist,
+ aber diese Folge trotzdem interessante Auswirkungen hat.
+ Das interessante daran ist,
+ das ich nicht alle Folgenglieder oder eine Rechenvorschrift kennen muss,
+ um zu wissen,
+ wohin die Reise geht.
+ Es genügt vollständig,
+ wenn ich das 
+\begin_inset Quotes gld
+\end_inset
+
+erste Folgeglied
 \begin_inset Quotes grd
 \end_inset
 
- gewähltes) Metasymbol sowie 
-\begin_inset Formula $a_{1},a_{2}$
-\end_inset
-
- sowie 
-\begin_inset Formula $a_{3}\in\mathbb{N}$
-\end_inset
-
- Weiter sei 
-\begin_inset Formula $a_{1}=a_{2}$
-\end_inset
-
- und 
-\begin_inset Formula $a_{1}=a_{3}$
-\end_inset
-
-.
- Doch was bedeutet dies?
- Ist 
-\begin_inset Formula $a_{1}=1$
-\end_inset
-
-,
- dann muss gelten
-\begin_inset Formula 
-\[
-a_{1}\cdot A\equiv A
-\]
-
-\end_inset
-
-Da nun 
-\begin_inset Formula 
-\[
-a_{1}\cdot A=a_{2}\cdot A
-\]
-
-\end_inset
-
-sein soll,
- muss auch gelten
-\begin_inset Formula 
-\[
-a_{2}\cdot A=A
-\]
-
-\end_inset
-
-Daraus kann ich schließen,
- dass gelten muss
-\begin_inset Formula 
-\[
-a_{2}=1
-\]
-
-\end_inset
-
-Da jetzt nach Voraussetzung gelten muss,
- dass 
-\begin_inset Formula $a_{2}=a_{3}$
-\end_inset
-
- ist,
- muss also gelten
-\begin_inset Formula 
-\[
-a_{3}\cdot A=1\cdot A=A
-\]
-
-\end_inset
-
-Also kann ich erneut schließen,
- dass gilt
-\begin_inset Formula 
-\[
-a_{3}=1
-\]
-
-\end_inset
-
-Somit wäre für 
-\begin_inset Formula $a_{1}=1$
-\end_inset
-
- die Behauptung bewiesen.
- Nun sei 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
- sowie 
-\begin_inset Formula $a_{1}=n+1$
-\end_inset
-
- und 
-\begin_inset Formula $a_{2}=a_{1}$
-\end_inset
-
-.
- Das Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Peano-Eins-nicht-Nachfolger"
-nolink "false"
-
-\end_inset
-
- lehrt mich nun,
- dass 
-\begin_inset Formula $a_{2}\neq1$
-\end_inset
-
- sein muss.
- Also muss es ein 
-\begin_inset Formula $m\in\mathbb{N}$
-\end_inset
-
- mit 
-\begin_inset Formula 
-\[
-a_{2}=m+1
-\]
-
-\end_inset
-
- geben.
- Also gilt
-\begin_inset Formula 
-\[
-n+1=m+1
-\]
-
-\end_inset
-
-Also kann ich gemäß dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Peano-Rueckschritt"
-nolink "false"
-
-\end_inset
-
- folgern,
- dass 
-\begin_inset Formula $m=n$
-\end_inset
-
- sein muss.
- Genau die gleiche Argumentation kann ich für 
-\begin_inset Formula $a_{3}$
-\end_inset
-
- anstellen.
- Aus 
-\begin_inset Formula 
-\[
-a_{3}=a_{2}=n+1
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-kann ich gemäß dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Peano-Eins-nicht-Nachfolger"
-nolink "false"
-
-\end_inset
-
- folgern
-\begin_inset Formula 
-\[
-m=n
-\]
-
-\end_inset
-
-Also ist wiederum 
-\begin_inset Formula 
-\[
-a_{3}=n+1
-\]
-
-\end_inset
-
-Also kann ich wiederum schließen:
- 
-\begin_inset Formula 
-\[
-a_{3}=a_{1}
-\]
-
-\end_inset
-
-Also hätte ich den Induktionsschritt und somit den ganzen Induktionsbeweis erbracht.
+ (also den Bildpunkt von 1 kenne - welcher ebenfalls 1 ist) kenne.
+ Und bei Folgen mit natürlichem Bildbereich ist das relativ witzlos.
+ Aber bei Folgen mit beliebigen Bildmengen ist das eine sehr interessante Fragestellung.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
+Also werde ich das nächste Beispiel hervorholen:
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-Es seien 
-\begin_inset Formula $n_{1},n_{2}$
-\end_inset
-
- natürliche Zahlen.
- Dann sei 
-\begin_inset Formula $n_{1}\leq n_{2}$
-\end_inset
-
- genau dann,
- falls 
-\begin_inset Formula $n_{1}=n_{2}$
-\end_inset
-
- ist oder es eine natürliche Zahl 
-\begin_inset Formula $n_{3}$
-\end_inset
-
- derart gibt,
- dass gilt
+\begin_layout Example
+Es sei die Folge 
 \begin_inset Formula 
 \[
-n_{1}+n_{3}=n_{2}
+\left(n_{k}\right)_{k\in\mathbb{N}}
 \]
 
 \end_inset
 
+wie folgt definiert:
+\end_layout
+
+\begin_layout Example
+1) 
+\begin_inset Formula $n_{1}\equiv1$
+\end_inset
+
 
 \end_layout
 
-\begin_layout Definition
-Umgangssprachlich kann ich den Sachverhalt so ausdrücken:
+\begin_layout Example
+2) Ist das Folgeglied 
+\begin_inset Formula $1$
+\end_inset
+
+,
+ dann ist das nächste Folgeglied 
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+3) Ist das Folgeglied 
+\begin_inset Formula $2$
+\end_inset
+
+,
+ dann ist das nächste Folgeglied 
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Die Folge besitzt jetzt als Elemente:
  
-\begin_inset Formula $n_{1}$
-\end_inset
-
- ist genau dann kleiner oder gleich 
-\begin_inset Formula $n_{2}$
+\begin_inset Formula $n_{1}\equiv1$
 \end_inset
 
 ,
- falls beide Zahlen identisch sind oder 
-\begin_inset Formula $n_{2}$
-\end_inset
-
- ein (direkter oder indirekter) Nachfolger von 
-\begin_inset Formula $n_{1}$
-\end_inset
-
- ist.
-\end_layout
-
-\begin_layout Standard
-Es kommt jetzt,
- was kommen muss:
- Der Satz der logischen Induktion kann variiert werden.
-\end_layout
-
-\begin_layout Proposition
-Es sei 
-\begin_inset Formula $A:\mathbb{N}\rightarrow\Omega$
-\end_inset
-
- Eine folge von Aussagen.
- Weiter gelte 
-\begin_inset Formula 
-\[
-A\left(1\right)
-\]
-
-\end_inset
-
- Gelten für alle 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
- für alle 
-\begin_inset Formula $m\in\mathbb{N}$
-\end_inset
-
- mit 
-\begin_inset Formula $m\leq n$
-\end_inset
-
- die Aussage 
-\begin_inset Formula $A\left(m\right)$
-\end_inset
-
- und folgt daraus,
- dass 
-\begin_inset Formula $A\left(n+1\right)$
-\end_inset
-
- ebenfalls gilt,
- dann gilt für alle 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
- die Aussage
-\begin_inset Formula 
-\[
-A\left(n\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proposition
-Anstelle von 
-\begin_inset Formula $A\left(1\right)$
-\end_inset
-
- und 
-\begin_inset Formula $A\left(n\right)$
-\end_inset
-
- kann auch 
-\begin_inset Formula $A_{1}$
-\end_inset
-
- und 
-\begin_inset Formula $A_{n}$
-\end_inset
-
- geschrieben werden.
-\end_layout
-
-\begin_layout Proof
-Der Beweis ist identisch zum Satz der logischen Induktion.
- Angenommen es gäbe ein 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
-,
- für welches die Aussage 
-\begin_inset Formula $A\left(n\right)$
-\end_inset
-
- nicht gelten würde,
- dann müsste die Menge 
-\begin_inset Formula $M_{n}\equiv\left\{ m\in\mathbb{N}\bigm|\neg\left(A_{m}\right)\right\} $
-\end_inset
-
- ein Minimum haben.
- Es sei 
-\begin_inset Formula $m_{0}\in\mathbb{N}$
-\end_inset
-
- diejenige natürliche Zahl,
- für welche diese Aussage zutrifft.
- Ist jetzt 
-\begin_inset Formula $m_{0}=1$
-\end_inset
-
-,
- dann wäre die Aussage 
-\begin_inset Formula $\neg A_{1}$
-\end_inset
-
- nicht wahr.
- Im Widerspruch zur Voraussetzung.
- Wäre 
-\begin_inset Formula $m_{0}>1$
-\end_inset
-
-,
- dann müsste es gemäß dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Vorgaenger-natuerliche-Zahl"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- ein 
-\begin_inset Formula $m_{1}\in\mathbb{N}$
-\end_inset
-
- einen Vorgänger von 
-\begin_inset Formula $m_{0}$
-\end_inset
-
- mit 
-\begin_inset Formula 
-\[
-m_{0}=m_{1}+1
-\]
-
-\end_inset
-
- geben.
- Für all 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
- mit 
-\begin_inset Formula $n\leq m_{0}$
-\end_inset
-
- wären dann die Aussagen 
-\begin_inset Formula $A_{n}$
-\end_inset
-
- wahr,
- für 
-\begin_inset Formula $A_{m\left(0\right)}=A_{m\left(1\right)+1}$
-\end_inset
-
- jedoch nicht.
- Das wäre dann aber gemäß dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Negation-Implikation"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- die Negation der Implikation der Widerspruch zur Voraussetzung,
- dass 
-\begin_inset Formula $A_{m\left(0\right)}$
-\end_inset
-
- in diesem Fall trotzdem wahr sein müsste.
- Also kann es ein derartiges 
-\begin_inset Formula $m_{0}$
-\end_inset
-
- nicht geben.
- Somit muss die Behauptung für alle 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
- wahr sein.
- Aus diesem Grund erachte ich den Beweis für die Richtigkeit der Behauptung als erbracht und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-aktuelle Stelle 18.08.2024,
- natürliche Zahlen
-\end_layout
-
-\end_inset
-
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
+\begin_inset Formula $n_{2}=2$
 \end_inset
 
-
-\begin_inset Newline linebreak
+,
+ 
+\begin_inset Formula $n_{3}=1$
 \end_inset
 
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
+,
+ 
+\begin_inset Formula $n_{4}=2$
 \end_inset
 
 
