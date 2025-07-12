@@ -1,5 +1,5 @@
 
-**Title:** How to prove that inner and outer measure coincide for all subsets of using compact and open approximations?
+**Title:** How to prove that inner and outer measure coincide for all subsets of [0,1][0,1] using compact and open approximations?
 
 ----------
 
@@ -59,32 +59,28 @@ If $T \subseteq M \subseteq [0,1]$ and $T$ is compact, then
 $\kappa(M\setminus T) = \kappa(M) - \kappa(T)$
 
 Assume, for contradiction:  
-$\Delta_M := \kappa(M)-  \nu(M) >0$
-$\Delta_{[0,1]\setminus M)} := \kappa([0,1]\setminus M])-\nu([0,1]\setminus M])$ > 0
+$\Delta:=1-\nu(M)-\nu([0,1]\setminus M)>0$
 
 define:  
-$\varepsilon_M:=\Delta_M/2$
-$\varepsilon_{[0,1[\setminus M}:=\Delta_M/2$
-
+$\varepsilon:=\Delta/4$
 
 Then we can find (by the definition of the suprema):
 
--   Compact $T_M \subseteq M$ with $\lambda(T_M) > \nu(M) - \varepsilon_M$
+-   Compact $T_M \subseteq M$ with $\lambda(T_M) > \nu(M) - \varepsilon$
     
 -   Compact $T_{[0,1] \setminus M} \subseteq [0,1] \setminus M$ with:  
-    $\lambda(T_{[0,1] \setminus M}) > \nu([0,1] \setminus M) - \varepsilon_{[0,1[\setminus M}$
+    $\lambda(T_{[0,1] \setminus M}) > \nu([0,1] \setminus M) - \varepsilon$
     
 
-This implies: $\nu(M \setminus T_M) = \nu(M) - \lambda(T_M) < \varepsilon_M  \Rightarrow -\lambda(T_M)<\varepsilon_M- \nu(M)$  
-
+This implies:  
+$\nu(M \setminus T_M) = \nu(M) - \lambda(T_M) < \varepsilon \Rightarrow - \lambda(T_M) < \varepsilon - \nu(M)$   
 as well as  
-$\kappa(M\setminus T_N) = \kappa(M) - \kappa( T_M) < \kappa(M) -\nu(T_M) + \varepsilon_M = \Delta_M  +\varepsilon_M$
+$\kappa(M\setminus T_M) = \kappa(M) - \kappa(T_M]) =\kappa(M) - \nu(T_M)= \kappa(M)- \nu(M)+ \varepsilon$
 
 Similarly:  
- $\nu(([0,1]\setminus M) \setminus T_{[0,1]\setminus M}) = \nu([0,1]\setminus M) - \lambda(T_{[0,1]\setminus M}) < \varepsilon_{[0,1]\setminus M} \Rightarrow -\lambda(T_{[0,1]\setminus M})<\varepsilon_{[0,1]\setminus M}- \nu([0,1]\setminus M)$  
-
-as well as  
-$\kappa(([0,1]\setminus M)\setminus T_N) = \kappa([0,1]\setminus M) - \kappa( T_{[0,1]\setminus M}) < \kappa([0,1]\setminus M) -\nu(T_{[0,1]\setminus M}) + \varepsilon_{[0,1]\setminus M} = \Delta_{[0,1]\setminus M}  +\varepsilon_M$
+$\nu(([0,1]\setminus M) \setminus T_{[0,1]\setminus M}) = \nu([0,1]\setminus M) - \lambda(T_[0,1]\setminus M) < \varepsilon \Rightarrow - \lambda(T_{[0,1]\setminus M}) < \varepsilon - \nu([0,1]\setminus M)$   
+and also  
+$\kappa([0,1]\setminus M\setminus T_{[0,1]\setminus }) = \kappa([0,1]\setminus M) - \kappa(T_{[0,1]\setminus M }) =\kappa([0,1]\setminus M) - \nu(T_{[0,1]\setminus M })= \kappa([0,1]\setminus M)- \nu([0,1]\setminus M)+ \varepsilon$
 
 Therefore:  
 $\kappa([0,1]) = \kappa(M \cup ([0,1] \setminus M)) \leq \kappa(M) + \kappa([0,1] \setminus M) < \nu(M) + \nu([0,1] \setminus M) + 2\varepsilon = 1 - \Delta + 2\varepsilon$
@@ -101,7 +97,7 @@ So for every $\varepsilon > 0$, there exist compact sets $T_M \subset M$ and $T_
 $\lambda(T_M \cup T_{[0,1] \setminus M}) > 1 - \varepsilon$
 
 Then both $(0,1)\setminus T_M$ and $(0,1)\setminus T_{[0,1]\setminus M}$ are open supersets of $(0,1)\setminus M$ and $M$, respectively, so:  
-$\kappa(M) + \kappa([0,1] \setminus M) <1+ \varepsilon$  
+$\kappa(M) + \kappa([0,1] \setminus M) < \varepsilon$  
 Letting $\varepsilon \to 0$ yields the desired result:
 
 $\kappa(M) + \kappa([0,1]\setminus M) = 1$  
@@ -123,9 +119,11 @@ _3.3 Additivity for Disjoint Sets_
 
 Let $M_1, M_2 \subseteq [0,1]$ be disjoint: $M_1 \cap M_2 = \emptyset$.
 
-Then: $\kappa([0,1] \setminus (M_1 \cup M_2)) = \kappa(([0,1] \setminus M_1) \setminus M_2) = \kappa([0,1] \setminus M_1) - \kappa(M_2)$
+Then:  
+$\kappa([0,1] \setminus (M_1 \cup M_2)) = \kappa(([0,1] \setminus M_1) \setminus M_2) = \kappa([0,1] \setminus M_1) - \kappa(M_2)$
 
-So: $1 - \kappa(M_1 \cup M_2) = 1 - \kappa(M_1) - \kappa(M_2)$  
+So:  
+$1 - \kappa(M_1 \cup M_2) = 1 - \kappa(M_1) - \kappa(M_2)$  
 $\Rightarrow \kappa(M_1 \cup M_2) = \kappa(M_1) + \kappa(M_2)$  
 $\Box$
 
