@@ -176,8 +176,37 @@ $\lambda(U_M) <\lambda(\bigcup_{k\in \mathbb{N} }T_{M\,,k}) + \epsilon = \nu(M) 
 and
 $\lambda(U_{[0,1]\setminus M}) <\lambda(\bigcup_{k\in \mathbb{N} }T_{[0,1]\setminus M\,,k}) + \epsilon = \nu([0,1]\setminus M)+\epsilon$
 
-Now we have the situation that $\lambda([0,1]\setminus(U_M\cup  U_{[0,1]\setminus M}) =1- \lambda(U_M) -\lambda(U_[0,1]\setminus M) =1-  \nu(M) -\nu([0,1]\setminus M) - 2\cdot \epsilon =\Delta - 2\cdot \epsilon =$
+Now we have the situation that $\lambda([0,1]\setminus(U_M\cup  U_{[0,1]\setminus M}) =1- \lambda(U_M) -\lambda(U_[0,1]\setminus M) =1-  \nu(M) -\nu([0,1]\setminus M) - 2\cdot \epsilon =\Delta - 2\cdot \epsilon =1-  \nu(M) -\nu([0,1]\setminus=\Delta - 2\cdot \epsilon =\Delta - 2\cdot \epsilon  >0$
 
+Let 
+
+$R:=\lambda([0,1]\setminus(U_M\cup  U_{[0,1]\setminus M})$
+
+That is:
+
+$\lambda(R) >0$
+
+This means that either $\kappa(M\cap R) >0 \vee \kappa(([0,1]\setminus M)\cap R)>0$
+
+If $\kappa(M\cap R)>0$ then  $\nu(M\cap R)) >0$
+
+Therefore, there must be a compact set $T_c$  with $\lambda(T_c)>0$ and $T_c\subset M\cap R$
+
+But the then, there must be a permutation $\sigma:\mathbb{R}\rightarrow \mathbb{R}$ and a natural Number $n$ with
+$\sum_{k\in\mathbb{N} ) \wedge k <n} \kappa(T_{\sigma(k)})>\nu(M)- \nu(T_c))$
+
+As $M\cap R\cap T_{k}=\emptyset$ for every natural $k$.
+Then $W:=\bigcup_{k\in\mathbb{N} ) \wedge k <n} T_{\sigma(k)}\cup T_c$
+is a compact set \subset M with $\lambda(W) > \nu(M)$, which is a contradiction to the definition of $\nu(M)$. The same argumentation is true in case of $\kappa(([0,1]\setminus M)\cap R)>0$
+
+At the end, it comes clear that the inequality $\nu(M)+\nu([0,1]\setminus M)<1$ must be wrong.
+
+Therefore, it must be true that  $\nu(M)+\nu([0,1]\setminus M)=1$ 
+For $\epsilon>0$ there must be a compact sets $T_M \subset M$ and $T_{[0,1]\setminus M}\subset [0,1]\setminus M$ with $\lambda(T_M) + \lambda(T_{[0,1]\setminus M}) > 1 - \epsilon/2$
+
+Therefore $(0,1)\setminus T_M$ must be an open superset of $[0,1]\setminus M$ and  $(0,1)\setminus T_{[0,1]\setminus M}$ must be an open superset with $M$ with $\kappa(M)+\kappa([0,1]\setminus M) < 1 + 2\cdot \varepsilon/2=1 + \varepsilon$. Letting $\epsilon \rightarrow 0$ gives the equation $\kappa(M)+\kappa([0,1]\setminus M)=1$
+
+ 
 $\Box$
 
 ----------
