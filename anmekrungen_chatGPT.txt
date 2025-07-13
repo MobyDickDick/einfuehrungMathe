@@ -1,0 +1,13 @@
+Zu "For compact $T \subseteq (0,1)$, we set:  
+    $\lambda(T) :=\{ 1 - \lambda((0,1) \setminus T)\}$ where $(0,1) "
+	
+Wenn T abgeschlossen und und in [0,1] enthalten und abgeschlossen ist, dann muss (0,1)\T offen sein und ein definierte äussers Mass besitzen.
+Wenn ich es so defnieren möchte wie von Dir vorgeschlagen, dann könnte ich beispielsweise das Mass der Cantormenge C_C nicht messen - obwohl diese kompakt ist. Aber bei meiner Definition ist das Mass jeder kompakte Menge definiert.
+
+Zu Einwand bei "Beweisskizze zu Komplementarität (4.1):"
+Ich schreibe "This means that either $\kappa(M\cap R) >0 \vee \kappa(([0,1]\setminus M)\cap R)>0$
+
+If $\kappa(M\cap R)>0$ then  $\nu(M\cap R)) >0$"
+
+Dass $\kappa(M\cap R)>0$ ist, ist also eine Annahme. Wie soll ich das schreiben, damit es besser zur Geltung kommt?
+
