@@ -63,25 +63,22 @@ $$\lambda(U) =\nu(U) = \kappa(U), \quad \lambda(T) =\nu(T) = \kappa(T)$$
 - *Case 2: Compact set $T$.*  
   Then $[0,1] \setminus T$ is open, and  
   $$\lambda(T) := 1 - \lambda([0,1] \setminus T)$$  
+  Moreover, $\nu(T) = \lambda(T)$ for compact sets.
 But $$\lambda(T)$$ can get approximated directly as well. Since 
 
 $$U := (0,1)\setminus T$$ is open, It can get constructed with a series 
 $$(I_k)_{k\in \mathbb{N}}$$ of open intervals with falling lengths:
-$$\sup(I_k) - \inf(I_k) > \sup(I_{k+1}) - \inf(I_{k+1})$$  for $$k\in\mathbb{N}$ 
-It is also possible that only for finite $k\in\mathbb{N}}$ xxx
+$$\sup(I_k) - \inf(I_k) > \sup(I_{k+1}) - \inf(I_{k+1})$$  for $k\in\mathbb{N}$ 
+It is also possible that only for finite natural numbers  the Intervals I_k are non-empty. That is, it is possible for a given $j\in \mathbb{N}$ and for all $k \in \mathbb{N}$ with $k>j$ is $I_k = \emptyset$
 
+The total length of $U_1$ can a get evaluated by $$\lambda(U_1)= \sum_{k\in \mathbb{N}} \lambda(I_k)$$
 
-The total length of $U$ can a get evaluated by $$\lambda(U) = \sum_{k\in \mathbb{N}} \lambda(I_k)$$
-As $$T\cup U = (0,1)$$ it follows that $$\lambda(T\cup U) = \lambda((0,1))= 1$$. For a given $\varepsilon > 0$
-
-
-
-  Since open supersets $U \supseteq T$ exist with $\lambda(U) \to \lambda(T)$,  
-  $$\kappa(T) = \lambda(T)$$  
-  Also, since $T$ is compact and $T \subseteq M$:  
-  $$\nu(T) = \lambda(T)$$  
-  So:  
-  $$\kappa(T) =\nu(T) = \lambda(T) \quad \blacksquare$$
+As $$T\cup U_1 = (0,1)$$ it follows that $$\lambda(T\cup U_1) = \lambda((0,1))= 1$$. For a given $\varepsilon > 0$ there must be a natural number $n\in \mathbb{N}$ with 
+$$\sum_{k = 1}^n \lambda(I_k) >1- \lambda(T)-\varepsilon/2 $$
+Then $$(0,1)\setminus\bigcup_{k=1}^n I_k$$ consists of at most {n+1} points and or Intervals. So  there must obviously be an open set $U_2 \supset T$ with 
+	$$\lambda(U_2) < \lambda(T) +  \varepsilon$$
+	and $$\lambda(T) +\varepsilon/2 < \lambda(U_2)<\lambda(T)+\epsilon$$
+letting $\varepsilon \rightarrow 0$ gives $$\kappa(T)=\lambda(T)$$
 
 ---
 
@@ -89,28 +86,9 @@ As $$T\cup U = (0,1)$$ it follows that $$\lambda(T\cup U) = \lambda((0,1))= 1$$.
 $$\kappa(M \setminus T) = \kappa(M) - \kappa(T)$$
 
 **Proof:**
+By definition, for every $\varepsilon >  \mathbb{R}$ there must be an open superset $U\supset M$ with $\kappa(U) < \kappa(M)+\varepsilon$. As $T\subseteq M \subseteq U$, $U\setminus T$ is a open set with $$\lambda(U/T) =  \lambda(U) -\lambda(T)$$ Therefore, $U\setminus T$ is an open superset of $M\setminus T$ with $$\lambda(U) - \lambda(T) \leq \kappa(M\setminus T) +\epsilon$$
 
-Let $U \supseteq M$ be open. Then $U \setminus T$ is open and $M \setminus T \subseteq U \setminus T$:
-
-$$\lambda(U) = \lambda(U \setminus T) + \lambda(U \cap T) \geq \lambda(U \setminus T) + \lambda(T)$$
-$$\Rightarrow \lambda(U \setminus T) \leq \lambda(U) - \lambda(T)$$
-
-Taking infimum over $U$:
-
-$$\kappa(M \setminus T) \leq \kappa(M) - \lambda(T) = \kappa(M) - \kappa(T)$$
-
-Conversely, let $V \supseteq M \setminus T$ be open. Then $V \cup T \supseteq M$, and
-
-$$\kappa(M) \leq \lambda(V \cup T) \leq \lambda(V) + \lambda(T)$$
-$$\Rightarrow \kappa(M) - \lambda(T) \leq \lambda(V)$$
-
-Taking infimum over $V$:
-
-$$\kappa(M) - \kappa(T) \leq \kappa(M \setminus T)$$
-
-Hence:
-
-$$\kappa(M \setminus T) = \kappa(M) - \kappa(T) \quad \blacksquare$$
+Letting $\epsilon \rightarrow 0$ gives $$\kappa(M) - \lambda(T) = \kappa(M\setminus T)$$ as demanded.
 
 ---
 
