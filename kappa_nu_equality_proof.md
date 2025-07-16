@@ -56,17 +56,30 @@ $$\lambda(U) =\nu(U) = \kappa(U), \quad \lambda(T) =\nu(T) = \kappa(T)$$
   Since $U$ is open, it belongs to the collection used to define $\kappa(U)$:  
   $$\kappa(U) \leq \lambda(U) \leq \kappa(U) \Rightarrow \kappa(U) = \lambda(U)$$
   Similarly, $U$ can be approximated from inside by compact $K_n \subset U$ with $\lambda(K_n) \to \lambda(U)$:  
-  $$u(U) = \lambda(U)$$  
+  $$\nu(U) = \lambda(U)$$  
   Hence:  
   $$\kappa(U) =\nu(U) = \lambda(U)$$
 
 - *Case 2: Compact set $T$.*  
   Then $[0,1] \setminus T$ is open, and  
   $$\lambda(T) := 1 - \lambda([0,1] \setminus T)$$  
+But $$\lambda(T)$$ can get approximated directly as well. Since 
+
+$$U := (0,1)\setminus T$$ is open, It can get constructed with a series 
+$$(I_k)_{k\in \mathbb{N}}$$ of open intervals with falling lengths:
+$$\sup(I_k) - \inf(I_k) > \sup(I_{k+1}) - \inf(I_{k+1})$$  for $$k\in\mathbb{N}$ 
+It is also possible that only for finite $k\in\mathbb{N}}$ xxx
+
+
+The total length of $U$ can a get evaluated by $$\lambda(U) = \sum_{k\in \mathbb{N}} \lambda(I_k)$$
+As $$T\cup U = (0,1)$$ it follows that $$\lambda(T\cup U) = \lambda((0,1))= 1$$. For a given $\varepsilon > 0$
+
+
+
   Since open supersets $U \supseteq T$ exist with $\lambda(U) \to \lambda(T)$,  
   $$\kappa(T) = \lambda(T)$$  
   Also, since $T$ is compact and $T \subseteq M$:  
-  $$u(T) = \lambda(T)$$  
+  $$\nu(T) = \lambda(T)$$  
   So:  
   $$\kappa(T) =\nu(T) = \lambda(T) \quad \blacksquare$$
 
