@@ -1,95 +1,118 @@
-
-
+z
 
 **Title:** How to prove that inner and outer measure coincide for all subsets of $(0,1)$ using compact and open approximations?
 
 ---
 
-I am studying a variant of outer and inner measure, defined as follows for arbitrary subsets $M \subseteq (0,1)$, using only compact subsets and open supersets of $M$, all within $\mathbb{R}$:
+I am studying a variant of outer and inner measure, defined for arbitrary subsets $M \subseteq (0,1)$, using only compact subsets and open supersets of $M$, all within $\mathbb{R}$:
 
 ---
 
 **1. Definitions**
 
-Let $M \subseteq (0,1)$ be any subset.
-Let $\mathbb{V}$ be the set of all open supersets of $M$.
+Let $M \subseteq (0,1)$ be any subset.  
+Let $\mathbb{V}$ be the set of all open supersets of $M$.  
 Let $\mathbb{W}$ be the set of all compact subsets of $M$.
 
 We define the following:
 
 - The outer measure:  
-  $\kappa(M) := \inf\{ \lambda(U) \mid U \supseteq M \wedge U \in \mathbb{V}\}$
+  $$\kappa(M) := \inf\{ \lambda(U) \mid M \subseteq U,\ U \in \mathbb{V} \}$$
 
 - The inner measure:  
-  $\nu(M) := \sup\{ \lambda(T) \mid T \subseteq M \wedge T \in \mathbb{W}\}$
+  $$
+\nu(M) := \sup\{ \lambda(T) \mid T \subseteq M,\ T \in \mathbb{W} \}$$
 
 Here, $\lambda$ is the standard length of open or compact subsets of $\mathbb{R}$, defined as:
 
-- For open $U = \bigcup_{k \in \mathbb{N}} (a_k, b_k)$, we set:  
-  $\lambda(U) := \sum_{k \in \mathbb{N}} (b_k - a_k)$
+- For open $U = \bigcup_{k \in \mathbb{N}} (a_k, b_k)$, define:  
+  $$\lambda(U) := \sum_{k \in \mathbb{N}} (b_k - a_k)$$
 
-- For compact $T \subseteq (0,1)$, we set:  
-  $\lambda(T) := 1 - \lambda((0,1) \setminus T)$ where $(0,1) \setminus T$ is open
+- For compact $T \subseteq (0,1)$, define:  
+  $$\lambda(T) := 1 - \lambda((0,1) \setminus T),$$ where $(0,1) \setminus T$ is open.
 
 ---
 
 **2. Goals**
 
-We aim to prove the following statements for all subsets $M \subseteq [0,1]$:
+We aim to prove the following properties for all subsets $M \subseteq [0,1]$:
 
-1. Complementarity: $\kappa(M) + \kappa([0,1] \setminus M) = 1$
-2. Equality of inner and outer measure: $\kappa(M) =\nu(M)$ and $\kappa([0,1] \setminus M) =\nu([0,1] \setminus M)$
-3. Strict additivity for disjoint sets: If $M_1, M_2 \subseteq [0,1]$ with $M_1 \cap M_2 = \emptyset$, then:  
-   $\kappa(M_1 \cup M_2) = \kappa(M_1) + \kappa(M_2)$
-4. Generalization: $\kappa(M) = \sum_{z \in \mathbb{Z}} \kappa([z,z+1] \cap M)$ for arbitrary $M \subseteq \mathbb{R}$
+1. **Complementarity**:  
+   $$\kappa(M) + \kappa([0,1] \setminus M) = 1$$
+
+2. **Equality of inner and outer measure**:  
+   $$\kappa(M) = 
+u(M), \quad \kappa([0,1] \setminus M) = 
+u([0,1] \setminus M)$$
+
+3. **Strict additivity for disjoint sets**:  
+   If $M_1, M_2 \subseteq [0,1]$ with $M_1 \cap M_2 = \emptyset$, then:  
+   $$\kappa(M_1 \cup M_2) = \kappa(M_1) + \kappa(M_2)$$
+
+4. **Generalization**:  
+   $$\kappa(M) = \sum_{z \in \mathbb{Z}} \kappa([z,z+1] \cap M) \quad 	ext{for all } M \subseteq \mathbb{R}$$
 
 ---
 
 **3. Lemmas and Proofs**
 
-**3.1 Lemma:** For any open set $U \subseteq [0,1]$, and any compact set $T \subseteq [0,1]$:
-$$\lambda(U) =\nu(U) = \kappa(U), \quad \lambda(T) =\nu(T) = \kappa(T)$$
+**3.1 Lemma:** For any open set $U \subseteq [0,1]$ and any compact set $T \subseteq [0,1]$, we have:  
+$$\lambda(U) = 
+u(U) = \kappa(U), \quad \lambda(T) = 
+u(T) = \kappa(T)$$
 
 **Proof:**
 
 - *Case 1: Open set $U$.*  
-  Since $U$ is open, it belongs to the collection used to define $\kappa(U)$:  
-  $$\kappa(U) \leq \lambda(U) \leq \kappa(U) \Rightarrow \kappa(U) = \lambda(U)$$
-  Similarly, $U$ can be approximated from inside by compact $K_n \subset U$ with $\lambda(K_n) \to \lambda(U)$:  
-  $$\nu(U) = \lambda(U)$$  
+  Since $U$ is open, $U$ belongs to the class used to define $\kappa(U)$:  
+  $$\kappa(U) \leq \lambda(U) \leq \kappa(U) \Rightarrow \kappa(U) = \lambda(U)$$  
+  Since $U$ can be approximated from within by an increasing sequence of compact subsets $K_n \subset U$ with $\lambda(K_n) 	\rightarrow  \lambda(U)$, we also get:  
+  $$
+u(U) = \lambda(U)$$  
   Hence:  
-  $$\kappa(U) =\nu(U) = \lambda(U)$$
+  $$\kappa(U) = 
+u(U) = \lambda(U)$$
 
 - *Case 2: Compact set $T$.*  
-  Then $[0,1] \setminus T$ is open, and  
-  $$\lambda(T) := 1 - \lambda([0,1] \setminus T)$$  
-  Moreover, $\nu(T) = \lambda(T)$ for compact sets.
-But $$\lambda(T)$$ can get approximated directly as well. Since 
+  Then $U := (0,1) \setminus T$ is open and can be expressed as a countable union of disjoint open intervals $(I_k)_{k\in\mathbb{N}}$, possibly empty for large $k$.
 
-$$U := (0,1)\setminus T$$ is open, It can get constructed with a series 
-$$(I_k)_{k\in \mathbb{N}}$$ of open intervals with falling lengths:
-$$\sup(I_k) - \inf(I_k) > \sup(I_{k+1}) - \inf(I_{k+1})$$  for $k\in\mathbb{N}$ 
-It is also possible that only for finite natural numbers  the Intervals I_k are non-empty. That is, it is possible for a given $j\in \mathbb{N}$ and for all $k \in \mathbb{N}$ with $k>j$ is $I_k = \emptyset$
+  Since $T \cup U = (0,1)$, we have:
+  $$\lambda(T) = 1 - \lambda(U) = 1 - \sum_{k\in\mathbb{N}} \lambda(I_k)$$
 
-The total length of $U_1$ can a get evaluated by $$\lambda(U_1)= \sum_{k\in \mathbb{N}} \lambda(I_k)$$
+  For any $\varepsilon> 0$, there exists a natural $n$ such that:
+  $$\sum_{k = 1}^n \lambda(I_k) > 1 - \lambda(T) - \varepsilon/2$$
 
-As $$T\cup U_1 = (0,1)$$ it follows that $$\lambda(T\cup U_1) = \lambda((0,1))= 1$$. For a given $\varepsilon > 0$ there must be a natural number $n\in \mathbb{N}$ with 
-$$\sum_{k = 1}^n \lambda(I_k) >1- \lambda(T)-\varepsilon/2 $$
-Then $$(0,1)\setminus\bigcup_{k=1}^n I_k$$ consists of at most {n+1} points and or Intervals. So  there must obviously be an open set $U_2 \supset T$ with 
-	$$\lambda(U_2) < \lambda(T) +  \varepsilon$$
-	and $$\lambda(T) +\varepsilon/2 < \lambda(U_2)<\lambda(T)+\epsilon$$
-letting $\varepsilon \rightarrow 0$ gives $$\kappa(T)=\lambda(T)$$
+  Then $$(0,1) \setminus \bigcup_{k=1}^n I_k$$ is a compact set containing $T$, which can be extended to an open set $U_2 \supset T$ with:
+  $$\lambda(U_2) < \lambda(T) + \varepsilon$$
 
----
+  Letting $\varepsilon 	\rightarrow  0$ gives:
+  $$\kappa(T) = \lambda(T)$$  
+  and since $T$ is compact:  
+  $$
+\nu(T) = \lambda(T)$$  
+  Hence:
+  $$\kappa(T) = 
+u(T) = \lambda(T)$$
 
 **3.2 Lemma:** If $T \subseteq M \subseteq [0,1]$ and $T$ is compact, then  
 $$\kappa(M \setminus T) = \kappa(M) - \kappa(T)$$
 
 **Proof:**
-By definition, for every $\varepsilon >  \mathbb{R}$ there must be an open superset $U\supset M$ with $\kappa(U) < \kappa(M)+\varepsilon$. As $T\subseteq M \subseteq U$, $U\setminus T$ is a open set with $$\lambda(U/T) =  \lambda(U) -\lambda(T)$$ Therefore, $U\setminus T$ is an open superset of $M\setminus T$ with $$\lambda(U) - \lambda(T) \leq \kappa(M\setminus T) +\epsilon$$
+Let $U \supseteq M$ be any open set. Then $U \setminus T$ is open and contains $M \setminus T$. Since:
+$$\lambda(U) = \lambda(U \setminus T) + \lambda(U \cap T) \geq \lambda(U \setminus T) + \lambda(T)$$
+we get:
+$$\lambda(U \setminus T) \leq \lambda(U) - \lambda(T)$$
+Taking infimum over such $U$, we obtain:
+$$\kappa(M \setminus T) \leq \kappa(M) - \lambda(T) = \kappa(M) - \kappa(T)$$
 
-Letting $\epsilon \rightarrow 0$ gives $$\kappa(M) - \lambda(T) = \kappa(M\setminus T)$$ as demanded.
+Conversely, let $V \supseteq M \setminus T$ be open. Then $V \cup T$ is open and contains $M$. Hence:
+$$\kappa(M) \leq \lambda(V \cup T) \leq \lambda(V) + \lambda(T) \Rightarrow \kappa(M) - \lambda(T) \leq \lambda(V)$$
+Taking infimum over such $V$ gives:
+$$\kappa(M) - \kappa(T) \leq \kappa(M \setminus T)$$
+Thus:
+$$\kappa(M \setminus T) = \kappa(M) - \kappa(T)$$
 
+---
 ---
 
 **4. Main Theorems**
@@ -216,16 +239,19 @@ $\Box$
 *Proof:*  
 As 
 
-$\kappa(M)=\nu(M)$ and $\kappa((0,1)\setminus M)=\nu((0,1)\setminus M)$, for every $\varepsilon > 0$ there must be two compact subsets $T_{M} \subset M$ and $T_{(0,1)\setminus M} \subset (0,1)\setminus M$ with  
-$\nu(M)-\varepsilon/2 < \lambda(T_{M}) \wedge  
-\nu((0,1)\setminus M)-\varepsilon/2 < \lambda(T_{(0,1)\setminus M})$
+$$\kappa(M)=\nu(M) \wedge \kappa((0,1)\setminus M)=\nu((0,1)\setminus M)$$
+for every $\varepsilon > 0$ there must be two compact subsets $T_{M} \subset M$ and $T_{(0,1)\setminus M} \subset (0,1)\setminus M$ with  
+$$\nu(M)-\varepsilon/2 < \lambda(T_{M}) \wedge  
+\nu((0,1)\setminus M)-\varepsilon/2 < \lambda(T_{(0,1)\setminus M})$$
 
 Then  
-$\nu(M)+ \nu((0,1)\setminus M) -\varepsilon < \lambda(T_{M})+\lambda(T_{(0,1)\setminus M}) < 1$  
+$$\nu(M)+ \nu((0,1)\setminus M) -\varepsilon < \lambda(T_{M})+\lambda(T_{(0,1)\setminus M}) < 1$$  
 or  
-$\nu(M)+ \nu((0,1)\setminus M)< 1+ \varepsilon$  
-With $\nu(M)=\kappa(M)$ and $\nu((0,1)\setminus M)=\kappa((0,1)\setminus M)$  
-$\kappa(M)+ \kappa((0,1)\setminus M)< 1+ \varepsilon$  
+$$\nu(M)+ \nu((0,1)\setminus M)< 1+ \varepsilon$$  
+With $$\nu(M)=\kappa(M) \wedge \nu((0,1)\setminus M)=\kappa((0,1)\setminus M)$$
+the last inequality results in 
+
+$$\kappa(M)+ \kappa((0,1)\setminus M)< 1+ \varepsilon$  
 Letting $\varepsilon \rightarrow 0$ gives $\kappa(M)+ \kappa((0,1)\setminus M) \leq 1$  
 With $\kappa(M)+ \kappa((0,1)\setminus M) \geq 1$ this results in  
 $\kappa(M)+ \kappa((0,1)\setminus M) = 1$
