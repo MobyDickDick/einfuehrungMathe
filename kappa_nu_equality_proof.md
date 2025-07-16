@@ -1,5 +1,3 @@
-z
-
 **Title:** How to prove that inner and outer measure coincide for all subsets of $(0,1)$ using compact and open approximations?
 
 ---
