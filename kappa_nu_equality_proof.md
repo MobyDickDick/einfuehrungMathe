@@ -1,5 +1,6 @@
 
 
+
 **Title:** How to prove that inner and outer measure coincide for all subsets of $(0,1)$ using compact and open approximations?
 
 ---
@@ -20,7 +21,7 @@ We define the following:
   $\kappa(M) := \inf\{ \lambda(U) \mid U \supseteq M \wedge U \in \mathbb{V}\}$
 
 - The inner measure:  
-  $u(M) := \sup\{ \lambda(T) \mid T \subseteq M \wedge T \in \mathbb{W}\}$
+  $\nu(M) := \sup\{ \lambda(T) \mid T \subseteq M \wedge T \in \mathbb{W}\}$
 
 Here, $\lambda$ is the standard length of open or compact subsets of $\mathbb{R}$, defined as:
 
@@ -154,7 +155,7 @@ $$
 Hence:
 
 $$
-\kappa(M) = \kappa(T) = \lim_{k \to \infty} \lambda(T_k) = \nu(M)
+\kappa(T) \leq \kappa(M) \leq \nu(T)
 $$
 
 Thus:
@@ -222,9 +223,11 @@ $\Box$
 **4.3 Complementarity: $\kappa(M) + \kappa((0,1) \setminus M) = 1$**
 
 *Proof:*  
-As $\kappa(M)=\nu(M)$ and $\kappa((0,1)\setminus M)=\nu((0,1)\setminus M)$, for every $\varepsilon > 0$ there must be two compact subsets $T_{M} \subset M$ and $T_{(0,1)\setminus M} \subset (0,1)\setminus M$ with  
-$\nu(M)-\varepsilon/2 < \lambda(T_{M})$ and  
-$\nu((0,1)\setminus M)-\varepsilon/2 < \lambda(T_{(0,1)\setminus M})$
+As 
+
+$\kappa(M)=\nu(M)$ and $\kappa((0,1)\setminus M)=\nu((0,1)\setminus M)$, for every $\varepsilon > 0$ there must be two compact subsets $T_{M} \subset M$ and $T_{(0,1)\setminus M} \subset (0,1)\setminus M$ with  
+$\nu(M)-\varepsilon/2 < \lambda(T_{M}) \wedge  
+\nu((0,1)\setminus M)-\varepsilon/2 < \lambda(T_{(0,1)\setminus M})$
 
 Then  
 $\nu(M)+ \nu((0,1)\setminus M) -\varepsilon < \lambda(T_{M})+\lambda(T_{(0,1)\setminus M}) < 1$  
@@ -243,13 +246,18 @@ $\kappa(M_1 \cup M_2) = \kappa(M_1) + \kappa(M_2)$
 
 *Proof:*  
 For every $\varepsilon > 0$ there must be two compact, disjoint subsets $T_1 \subset M_1$ and $T_2 \subset M_2$ with  
-$\kappa(M_1)-\varepsilon/2 < \lambda(T_1)$ and  
-$\kappa(M_2)-\varepsilon/2 < \lambda(T_2)$  
+$\kappa(M_1)-\varepsilon/2 < \lambda(T_1) \wedge \kappa(M_2)-\varepsilon/2 < \lambda(T_2)$  
 So  
 $\kappa(M_1) + \kappa(M_2) < \lambda(T_1) +\lambda(T_2)+\varepsilon$  
 As $T_1 \cup T_2 \subset M_1 \cup M_2$ we can state  
 $\lambda(T_1\cup T_2) \leq \kappa(M_1 \cup M_2)$  
-Therefore $\kappa(M_1) + \kappa(M_2) \leq \kappa(M_1 \cup M_2)$  
+Therefore $\kappa(M_1) + \kappa(M_2) \leq \kappa(M_1 \cup M_2) +\varepsilon$ 
+
+Letting $\varepsilon \rightarrow 0$ results to 
+
+$\kappa(M_1) + \kappa(M_2) \leq \kappa(M_1 \cup M_2)$ 
+
+
 With $\kappa(M_1 \cup M_2) \leq \kappa(M_1) + \kappa(M_2)$ the proof is complete.
 
 $\Box$
