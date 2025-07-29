@@ -1,0 +1,493 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+
+\usepackage{mathrsfs}
+
+
+\title{Beweis der Gleichheit von \(\kappa(M)\) und \(\nu(M)\)}
+\author{}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children no
+\language english
+\language_package none
+\inputencoding utf8
+\fontencoding default
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "lmodern" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+1.
+ Definitionen
+\end_layout
+
+\begin_layout Standard
+Es seien drei Funktionen auf Teilmengen des Einheitsintervalls definiert:
+ 
+\begin_inset Formula 
+\[
+\lambda,\nu,\kappa:\mathcal{P}\left([0,1]\right)\to[0,1]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für eine beliebige Menge 
+\begin_inset Formula $M\subseteq[0,1]$
+\end_inset
+
+ betrachten wir folgende Familien:
+ 
+\begin_inset Formula 
+\begin{align*}
+\mathbb{V} & :=\{U\subseteq[0,1]\mid U\text{ offen und }M\subseteq U\}\\
+\mathbb{W} & :=\{T\subseteq[0,1]\mid T\text{ kompakt und }T\subseteq M\}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für jede offene Menge 
+\begin_inset Formula $U\subseteq[0,1]$
+\end_inset
+
+,
+ die als disjunkte Vereinigung offener Intervalle 
+\begin_inset Formula $(a_{k},b_{k})$
+\end_inset
+
+ dargestellt werden kann,
+ definiere man:
+ 
+\begin_inset Formula 
+\[
+\lambda(U):=\sum_{k\in\mathbb{N}}(b_{k}-a_{k})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Daraus ergeben sich die folgenden Definitionen:
+ 
+\begin_inset Formula 
+\begin{align*}
+\kappa(M) & :=\inf\{\lambda(U)\mid U\in\mathbb{V}\}\\
+\nu(M) & :=\sup\{\lambda(T)\mid T\in\mathbb{W}\}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für kompakte Mengen 
+\begin_inset Formula $T\subseteq[0,1]$
+\end_inset
+
+ definiere man:
+ 
+\begin_inset Formula 
+\[
+\lambda(T):=1-\lambda([0,1]\setminus T)
+\]
+
+\end_inset
+
+vorausgesetzt,
+ das Komplement ist offen und 
+\begin_inset Formula $\lambda([0,1]\setminus T)$
+\end_inset
+
+ ist wohldefiniert.
+\end_layout
+
+\begin_layout Section*
+2.
+ Frage
+\end_layout
+
+\begin_layout Standard
+Gilt für alle 
+\begin_inset Formula $M\subseteq[0,1]$
+\end_inset
+
+:
+ 
+\begin_inset Formula 
+\[
+\kappa(M)=\nu(M)\,?
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+3.
+ Vorüberlegung
+\end_layout
+
+\begin_layout Standard
+Für offene Mengen 
+\begin_inset Formula $U\subseteq[0,1]$
+\end_inset
+
+ ist 
+\begin_inset Formula $\lambda(U)$
+\end_inset
+
+ wohldefiniert und endlich.
+\end_layout
+
+\begin_layout Standard
+Für kompakte Mengen 
+\begin_inset Formula $T\subseteq[0,1]$
+\end_inset
+
+ ergibt sich 
+\begin_inset Formula $\lambda(T)$
+\end_inset
+
+ über das Komplement,
+ das offen ist.
+ Da sich offene Mengen von innen durch kompakte Mengen und von außen durch offene Mengen approximieren lassen,
+ scheint zu gelten:
+ 
+\begin_inset Formula 
+\[
+\lambda(U)=\kappa(U)=\nu(U),\quad\lambda(T)=\kappa(T)=\nu(T)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+4.
+ Hauptargument:
+ Warum gilt 
+\begin_inset Formula $\kappa(M)=\nu(M)$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+Sei 
+\begin_inset Formula $M\subseteq[0,1]$
+\end_inset
+
+.
+ Nach Definition von 
+\begin_inset Formula $\nu(M)$
+\end_inset
+
+ existiert eine Folge kompakter Mengen 
+\begin_inset Formula $(T_{k})\subseteq\mathbb{W}$
+\end_inset
+
+ mit 
+\begin_inset Formula $T_{k}\subset T_{k+1}$
+\end_inset
+
+ und 
+\begin_inset Formula 
+\[
+\lim_{k\to\infty}\lambda(T_{k})=\nu(M)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Setze 
+\begin_inset Formula $T:=\bigcup_{k}T_{k}\subseteq M$
+\end_inset
+
+.
+ Angenommen,
+ es gilt im Widerspruch:
+ 
+\begin_inset Formula 
+\[
+\kappa(M\setminus T)>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dann existiert eine kompakte Menge 
+\begin_inset Formula $T_{W}\subseteq M\setminus T$
+\end_inset
+
+ mit 
+\begin_inset Formula $\lambda(T_{W})>0$
+\end_inset
+
+.
+ Da 
+\begin_inset Formula $T_{W}$
+\end_inset
+
+ disjunkt zu jedem 
+\begin_inset Formula $T_{k}$
+\end_inset
+
+ ist,
+ existiert ein 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ mit:
+ 
+\begin_inset Formula 
+\[
+\lambda(T_{n})>\nu(M)-\lambda(T_{W})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dann ist 
+\begin_inset Formula $T_{n}\cup T_{W}\subseteq M$
+\end_inset
+
+ kompakt und erfüllt:
+ 
+\begin_inset Formula 
+\[
+\lambda(T_{n}\cup T_{W})=\lambda(T_{n})+\lambda(T_{W})>\nu(M)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Widerspruch zur Supremum-Definition.
+ Also:
+ 
+\begin_inset Formula 
+\[
+\kappa(M\setminus T)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dann:
+ 
+\begin_inset Formula 
+\[
+\kappa(M)\leq\kappa(T)+\kappa(M\setminus T)=\kappa(T)\quad\text{und}\quad\kappa(T)\leq\kappa(M)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also:
+ 
+\begin_inset Formula 
+\[
+\kappa(M)=\kappa(T)=\lambda(T)=\nu(M)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+5.
+ Alternativargument (wechselseitige Approximation)
+\end_layout
+
+\begin_layout Standard
+Für jede Menge 
+\begin_inset Formula $M$
+\end_inset
+
+ gilt:
+ 
+\begin_inset Formula 
+\[
+\bigcap_{U\in\mathbb{V}}U=\bigcup_{T\in\mathbb{W}}T
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Daraus folgt:
+ 
+\begin_inset Formula 
+\[
+\bigcap_{U\in\mathbb{V}}\left(U\setminus\bigcup_{T\in\mathbb{W}}T\right)=\emptyset
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nach De Morgan:
+ 
+\begin_inset Formula 
+\[
+\bigcap_{U\in\mathbb{V}}\bigcap_{T\in\mathbb{W}}(U\setminus T)=\emptyset
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also:
+ 
+\begin_inset Formula 
+\[
+\inf\{\lambda(U\setminus T)\mid T\subset M\subset U,\ T\in\mathbb{W},\ U\in\mathbb{V}\}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Daraus:
+ 
+\begin_inset Formula 
+\[
+\inf\{\lambda(U)-\lambda(T)\mid T\subset M\subset U\}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Daher:
+ 
+\begin_inset Formula 
+\[
+\kappa(M)=\nu(M)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

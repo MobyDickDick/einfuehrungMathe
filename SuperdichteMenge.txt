@@ -1,0 +1,129 @@
+
+Title: Is every subset of ℝ equinumerous to a superdense subset of (0,1)?
+
+**Question:**  
+Let us define a subset $S \subseteq (0,1)]$ to be *superdense* if it is uncountable and intersects every non-empty open subinterval $(a,b) \subseteq [0,1]$ with $a,b\in (0,1) \wedge a <b$ in uncountably many points.
+
+> **Claim:** Every subset $A \subseteq \mathbb{R}$ is equinumerous to a *superdense* subset of \([0,1]\).
+
+This seems intuitively plausible:
+- Since $\mathbb{R} \sim (0,1)$, and every $A \subseteq \mathbb{R}$ has cardinality $\leq \mathfrak{c}$,
+- one can inject $A$ into \([0,1]\),
+- and potentially "spread out" the image of $A$ across many open intervals.
+
+However:
+- I have not seen this exact statement discussed in standard textbooks.
+- Is this claim known or even trivial in descriptive set theory or topology?
+- Does the image set $f(A) \subseteq [0,1]$ always admit a transformation into a *superdense* set (in the above sense), even if $A$ is strange (e.g. a Vitali set or Bernstein set)?
+- Are there canonical examples for such embeddings?
+
+---
+
+**Definitions (for clarity):**  
+Let's say a set $S \subseteq (0,1)$ is *superdense* if for every interval $(a,b) \subseteq [0,1]$ we have  
+
+$$
+|S \cap (a,b)| > \aleph_0.
+$$
+with $\aleph_0$ as the the cardinality of the natural numbers.
+
+---
+
+**Answer (constructive embedding):**  
+
+Let A bet a uncoutable subset of $\mathbb{R}$ and  $\psi: \mathbb{R} \to (0,1)$ be the bijection
+$$
+\psi(x) := \frac{1}{2} \cdot \left(1 +  \frac{x}{\sqrt {x^2+1}}\right)
+$$
+This function is continuous, strictly increasing, and maps $\mathbb{R}$ bijectively onto $(0,1)$.
+
+Now define
+$$
+B := \psi(A) \subseteq (0,1).
+$$
+
+Which must have the same cardinality as $A$
+Let $(0,1)$ divide up into two different disjunct subsets of $(0,1)$ named $L$ (as "lean") and $F$ (as "fat"). For every point $x$ in $L$ it is true that there is an open Interval $I_x$ with the property 
+
+$$
+|I \cap B)| \leq  \aleph_0  \wedge \{\inf I, \sup I \}\subset \mathbb{Q}
+$$
+
+Define simply 
+$$F := (0,1)\setminus L$$
+
+Then $L$ must be an open set and therefore $F$ must be a closed set.
+As there is only a countable number of such intervals $I$,  it must be true that 
+$$
+		|L| \leq \aleph_0
+$$
+Therefore, it can be concluded that
+$$
+		|F| > \aleph_0
+$$
+And it must be
+ $$\left|F\right|=|A|$$ 
+
+By construction, every single point $x\in F$ has to be a limit point. So $F$ is a perfect set and therefore bijective to (0,1). There must exist monotone and continuous function with maps $F$ subjectively to (0,1).
+
+Perhaps the function $\Psi$ could start with
+$$ 
+  x_0 := \sup F \cap  \left( \inf F, \frac{\inf F + \sup F} {2}\right)
+$$
+
+As $F$ is a closed set and nonempty, this suprema must exist. Then let set
+
+$$
+\Psi(x_0):= \frac{1}{2}
+$$
+
+Moreover, by construction it must be true that. 
+
+$$ 
+   \left|F\cap \left( \inf F, \frac{\inf F + \sup F} {2}\right)\right| > \aleph_0
+$$
+as well as 
+$$ 
+\left|F\cap \left(\frac{\inf F + \sup F} {2}, \sup F\right)\right| > \aleph_0
+$$
+
+Therefore, the whole process can be started again. For every $n\in \mathbb{N}$ can be established points $x,y \in B$ with $x\neq y$ and
+$$ 
+\left|\Psi(x)-\Psi(y)\right| \leq 2^{-n}
+$$
+And by construction, this function has to be continuous and because the $F$ is closed, the image $\Psi\left( A\right)$ must also be closed. Therefore it can be concluded that 
+$$
+\Psi\left(F\right)=\left(0,1\right)
+$$
+
+
+--
+
+Let  $S:=\Psi(F)$ and $(a,b) \subseteq (0,1)$ with $a<b$ be an arbitrary open interval. $S$ must be equonomerous to $F$ because only a countable number of point $x,y \in F$ can have the same image value under  the function$\Psi$. Let denote $\Phi$ the function with the property that $Phi(x)$ for all but at most countable number of  points in $F$ and $\Phi$ is bijective. Therefore, the new original set $F'$ is equonumerous to $F$ and therefore to $A$ and $S':= \Phi(F')$ is also equonumerous to $A$.
+Since $\Phi$ is continuous and strictly increasing, the preimage $\Phi^{-1}((a,b)) \subseteq \mathbb{R}$ is also an open interval.
+$$
+F' \cap \Phi^{-1}((a,b))
+$$
+is uncountable. Because $F'$ is uncountable and if $(a,b) \cap \Phi^{-1}((a,b))$ would be empty, by construction of $\Phi$ it would be
+$$
+\Phi\left(a\right) = \Phi\left(b\right) 
+$$
+which would be a contraction to the construction of $\Phi$. But as there exists at least one single point $x\in F' \cap \Phi^{-1}((a,b))$, this means that 
+$$
+\left|F'\cap\Phi^{-1}((a,b))\right| > \aleph_0
+$$
+
+Then
+$$
+S' \cap (a,b) = \Phi(F \cap \Phi^{-1}((a,b)))
+$$
+is uncountable as well.
+
+Thus, $S' \subseteq (0,1) \subseteq [0,1]$ is superdense and equinumerous to $A$.
+
+∎
+
+---
+
+**Tags:**  
+cardinality, real-analysis, general-topology, uncountable-sets, set-theory
