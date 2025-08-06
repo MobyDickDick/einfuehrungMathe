@@ -76,7 +76,7 @@ todonotes
 backforwardref
 \end_modules
 \maintain_unincluded_children no
-\language ngerman
+\language german-ch
 \language_package auto
 \inputencoding auto-legacy
 \fontencoding auto
@@ -162,7 +162,7 @@ backforwardref
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style german
+\quotes_style swiss
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 2
@@ -246,27 +246,61 @@ Was wird in diesem Vorwort besprochen?
 \end_layout
 
 \begin_layout Standard
-Zuerst werde ich in diesem Kapitel über meine Motivation schreiben,
- welche mich bewogen haben,
- das Skript oder Buch zu schreiben.
- Anschließend werde ich werde ich darüber schreiben,
- dass das Buch als Fundgrube für Ideen gelesen werden kann.
- Aus diesem Grund bin ich bestrebt,
- dass die einzelnen Teile möglichst unabhängig von den anderen Teilen gelesen werden können.
- Weiter werde ich darüber schreiben,
- an wen sich das Buch richtet.
- Dann werde ich über die Schwierigkeiten der Stoffvermittlung in Mathematik schreiben,
- um nachher zu schreiben,
- was mich an der Mathematik fasziniert.
- Anschließend werde ich versuchen,
- zu beschreiben,
- was ich in diesem Buch beschreiben möchte.
- Ich möchte noch besprechen,
- ob Aufgaben und Übungen auch Teil des Buchs sein werden,
- sowie die Limitierungen,
- welches dieses Skript besitzt.
- Anschließend möchte noch ein paar weitere Vorbereitungen zu diesem Buch schreiben (unter anderem,
- dass es nicht ausgedruckt werden soll und welche Hilfsmittel ich beim Schreiben dieses Buchs verwendet habe).
+In diesem Vorwort möchte ich zuerst über meine persönliche Motivation schreiben:
+ Warum habe ich dieses Skript – oder vielleicht besser:
+ dieses Buch – überhaupt begonnen?
+\end_layout
+
+\begin_layout Standard
+Anschließend erkläre ich,
+ in welcher Form das Buch gelesen werden kann:
+ Es soll als eine Art 
+\series bold
+Fundgrube
+\series default
+ dienen – ein Werk,
+ in dem man auch 
+\series bold
+abschnittsweise stöbern
+\series default
+ kann,
+ ohne jeden Teil in linearer Reihenfolge durchlesen zu müssen.
+\end_layout
+
+\begin_layout Standard
+Ein weiterer Abschnitt behandelt die Frage,
+ 
+\series bold
+an wen sich dieses Buch richtet
+\series default
+.
+ Darauf folgt eine Reflexion über die oft schwierige 
+\series bold
+Vermittlung mathematischer Inhalte
+\series default
+,
+ gefolgt von meinen eigenen Überlegungen zur 
+\series bold
+Faszination an der Mathematik
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Am Schluss dieses Vorworts werde ich darlegen:
+\end_layout
+
+\begin_layout Itemize
+was genau ich in diesem Buch vermitteln möchte,
+ 
+\end_layout
+
+\begin_layout Itemize
+und in welcher Form 
+\series bold
+Aufgaben und Übungen
+\series default
+ integriert werden – oder eben nicht.
 \end_layout
 
 \begin_layout Section
@@ -755,14 +789,10 @@ Ich hoffe,
  wo eigentlich niemand beginnen will,
  weil es mehr oder weniger langweilig ist.
  Ich nenne meine empfohlene Leseart einen 
-\lang english
-
 \begin_inset Quotes gld
 \end_inset
 
 Top Down Approach
-\lang ngerman
-
 \begin_inset Quotes grd
 \end_inset
 
@@ -933,11 +963,7 @@ Interessant wäre natürlich für mich,
 \begin_inset Quotes gld
 \end_inset
 
-
-\lang english
 There's plenty room at the bottom
-\lang ngerman
-
 \begin_inset Quotes grd
 \end_inset
 
@@ -2361,11 +2387,7 @@ denn
 \begin_inset Quotes gld
 \end_inset
 
-
-\lang english
 underflow
-\lang ngerman
-
 \begin_inset Quotes grd
 \end_inset
 
@@ -2747,11 +2769,7 @@ So weit wie ich weiß,
 \begin_inset Quotes gld
 \end_inset
 
-
-\lang latin
 dictum
-\lang ngerman
-
 \begin_inset Quotes grd
 \end_inset
 
@@ -5256,11 +5274,7 @@ ggT
 \begin_inset Quotes gld
 \end_inset
 
-
-\lang english
 greatest common divisor
-\lang ngerman
-
 \begin_inset Quotes grd
 \end_inset
 
@@ -5269,11 +5283,7 @@ greatest common divisor
 \begin_inset Quotes gld
 \end_inset
 
-
-\lang british
 greatest common divisor
-\lang ngerman
-
 \begin_inset Quotes grd
 \end_inset
 
@@ -7430,11 +7440,7 @@ Es seien
 
 \end_inset
 
-das kleinste gemeinsame Vielfache (
-\lang english
-lowest common multiple
-\lang ngerman
-) von 
+das kleinste gemeinsame Vielfache (lowest common multiple) von 
 \begin_inset Formula $n_{1}$
 \end_inset
 
@@ -19701,11 +19707,7 @@ Gerne würde ich
 \begin_inset Quotes gld
 \end_inset
 
-
-\lang english
 brute force
-\lang ngerman
-
 \begin_inset Quotes grd
 \end_inset
 
@@ -25969,14 +25971,10 @@ Nachbemerkung:
  dann muss oder besser geschrieben darf ich dich enttäuschen.
  Der Beweis ist nur darum um sieben Ecken und Enden geschrieben,
  weil ich beim 
-\lang english
-
 \begin_inset Quotes gld
 \end_inset
 
 brute force
-\lang ngerman
-
 \begin_inset Quotes grd
 \end_inset
 
@@ -30841,11 +30839,7 @@ Excel
 \begin_inset Quotes gld
 \end_inset
 
-Open Office 
-\lang english
-Calc
-\lang ngerman
-
+Open Office Calc
 \begin_inset Quotes grd
 \end_inset
 
@@ -36680,53 +36674,11 @@ nolink "false"
 
 \begin_layout Plain Layout
 \SpecialChar ldots
- 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-sei per Übereinkunft
+ sei per Übereinkunft
 \end_layout
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-gleichbedeutend mit
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\nospellcheck default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- \SpecialChar ldots
+gleichbedeutend mit \SpecialChar ldots
 
 \end_layout
 
@@ -37517,8 +37469,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang german-ch
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
