@@ -1,0 +1,49 @@
+Is every uncountable subset of $\mathbb R$ equinumerous to a superdense subset of (0,1)?
+
+This approach is based on minimal assumptions and avoids the axiom of choice (ZFC) and advanced measure-theoretic tools. Of course, it also avoids the continuum hypothesis.
+
+
+If correct, this step would form part of a complete proof.
+
+---
+
+## **Definitions (for clarity)**
+
+A set $M \subseteq (0,1)$ is **superdense** if
+$$
+\forall\, a,b \in (0,1),\; a < b\; \Rightarrow\; |M \cap (a,b)| > \aleph_0.
+$$
+
+The set $M$ is a **null set** (with respect to a naive outer measure $\kappa$) if
+$$
+\forall \varepsilon > 0,\; \exists \text{ open cover } U = \bigcup_{i \in \mathbb{N}} I_i \supseteq M \text{ with } \sum_i |I_i| < \varepsilon.
+$$
+
+---
+
+## **Proof**
+
+A compact perfect subset $K \subseteq M$ can be constructed recursively.
+
+Begin with the full interval $(0,1)$. Since $M$ is superdense, four distinct points $x_1, x_2, x_3, x_4 \in M$ can be selected such that $x_1 < x_2 < x_3 < x_4$ and
+$$
+x_2 - x_1 + x_4 - x_3 < \frac{2}{3}.
+$$
+These points define two closed intervals:  
+$I_{1,1} := [x_1, x_2]$ and $I_{1,2} := [x_3, x_4]$.
+
+Now proceed recursively:
+- In each of the left and right thirds of every interval at generation $n$, choose two new points in $M$ to form subintervals contained in $M$, ensuring that the length is at most $\frac{2}{3}$ of the parent interval (as in the Cantor set construction, the middle third is excluded).
+- Define $K_n := \bigcup_{k=1}^{2^n} I_{n,k}$.
+- Let $K := \bigcap_{n=1}^\infty K_n$.
+
+Then $K \subseteq M$, $K$ is closed (being a nested intersection of closed sets), bounded within $(0,1)$, and perfect (since every point is a limit point). Hence, $K$ is compact and perfect, so $K \sim \mathbb{R}$.
+
+Since $K \subseteq M$, and $M \setminus K$ remains superdense and null set, the process may be repeated to construct disjoint compact perfect sets $K_n \subseteq M$, each equinumerous to $\mathbb{R}$.
+
+Therefore:
+$$
+M \supseteq \bigcup_{n \in \mathbb{N}} K_n \sim \mathbb{R}.
+$$
+
+---

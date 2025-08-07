@@ -188,7 +188,7 @@ Einführung Mathematik
 
 
 \size large
-Version 0.1.200
+Version 0.1.201
 \end_layout
 
 \begin_layout Author
@@ -198,7 +198,7 @@ Version 0.1.200
 
 \begin_layout Date
 letzte Änderung:
- 06.08.2025
+ 17.08.2025
 \end_layout
 
 \begin_layout Dedicatory
@@ -310,57 +310,465 @@ Warum dieses Buch?
 \begin_layout Standard
 Ich schreibe dieses Buch,
  weil ich es selbst gerne gelesen hätte,
- als ich an der ETH Zürich Physik studierte – sechs Semester lang,
- ohne Abschluss.
- Stattdessen habe ich über Umwege zu meiner Leidenschaft für Mathematik gefunden:
- durch Studien in Heilpädagogik,
- durch die Arbeit mit Kindern mit besonderen Bedürfnissen,
- durch einen Fachhochschulabschluss in Automation und schließlich durch eine Ausbildung in Applikationsentwicklung.
+ als ich an der ETH in Zürich 6 Semester Physik studierte.
+ Ich habe also Physik nicht abgeschlossen,
+ was ich immer noch bedaure.
+ Jedoch habe ich in der Zwischenzeit mir die Grundlagen für das Erarbeiten dieses Buchs geschaffen:
+ Ich habe einen Diplomstudiengang in Heilpädagogik absolviert (dies entspricht in etwa einer Fachhochschulreife),
+ dann habe ich unter anderem im Früherziehungsbereich gearbeitet (das sind Kinder im Vorschulalter,
+ welche entweder in irgend einer Form behindert oder von Behinderung bedroht sind).
+ Da ich mit Menschen zusammengearbeitet habe,
+ welche behindert sind oder aber Verhaltensauffälligkeiten in irgend einer Form zeigten,
+ habe ich mich mit der Frage auseinander setzen müssen,
+ was die menschliche Entwicklung üblicherweise ausmacht und wie sie nach Möglichkeiten gefördert werden kann
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Wobei ich auch in der Arbeit mit verhaltensauffälligen Kindern in eine Rolle gedrängt wurde,
+ in welcher ich faktisch polizeiliche Funktion ausüben musste,
+ was mir jedoch überhaupt nicht behagte.
+ Auf der anderen Seite gibt es Grenzen der Förderung,
+ welche so akzeptiert und ausgehalten werden müssen.
+\end_layout
+
+\end_inset
+
+.
+ Weiter habe ich noch einen Fachhochschulabschluss in Automation gemacht.
+ Daneben habe ich mich ab und zu mit Mathematik auseinandergesetzt,
+ weil ich wissen wollte,
+ wie es funktioniert.
+ Aus dieser Beschäftigung ist mit der Zeit eine Leidenschaft geworden.
+ Lange Zeit wusste ich nicht,
+ wie ich das Buch schreiben könne.
+ Denn mit einem herkömmlichen Textverarbeitungsprogramm ist das Eintippen von Formeln schwierig bis unmöglich.
+ Durch Herumstöbern im Internet bin ich auf \SpecialChar LyX
+ gestoßen,
+ und so möchte ich jetzt mein Glück mit dieser Software versuchen.
+ Natürlich bin ich ein wenig futterneidisch auf alle,
+ welche sich mit Physik und Mathematik die Bäuche vollschlagen,
+ aber ich hoffe,
+ dass sich dies im Buch nicht allzu negativ durchschlägt.
+ Jetzt habe ich noch einen Studiengang an einer höheren Fachschule im Bereich der Applikationsentwicklung (Informatik) absolviert (in einem Monat erhalte ich das Diplom).
+ Als Diplomarbeit konnte ich eine Arbeit im Zusammenhang mit diesem Mathematikskript durchführen,
+ was mich sehr gefreut hat.
 \end_layout
 
 \begin_layout Standard
-Was mich dabei stets begleitet hat,
- war die Frage:
- Wie kann man Mathematik so vermitteln,
- dass sie wirklich verstanden wird?
+Dieses Buch ist an alle gerichtet,
+ welche wie ich Mühe in Mathematik haben,
+ jedoch gerne Mathematik verstehen würden.
+ Die Mathematik ist eine sehr esoterische Wissenschaft,
+ was einigermaßen erstaunt.
+ Lange Zeit habe ich gemeint,
+ 
+\begin_inset Quotes gld
+\end_inset
+
+esoterisch
+\begin_inset Quotes grd
+\end_inset
+
+ habe sei etwas,
+ das mit Religion zu tun hat.
+ Dies ist jedoch nicht der Fall.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Esoterik
+\begin_inset Quotes grd
+\end_inset
+
+ bedeutet so viel wie 
+\begin_inset Quotes gld
+\end_inset
+
+Geheimlehre
+\begin_inset Quotes grd
+\end_inset
+
+,
+ und da hat die Mathematik sehr viele Elemente davon.
+ Ich möchte mich in einem späteren Kapitel mit den Schwierigkeiten der Mathematik ausführlich auseinandersetzen.
+ Fürs erste sei jedoch so viel verraten:
+ 
+\begin_inset Formula 
+\begin{equation}
+W\,w_{1}\,w_{2}\,d_{1}\,M_{1}\,u\,M_{2}\,r\,w_{3},\,d_{2}\,w_{3}\,d_{2}\,S\,s\,a\label{eq:AbkuerzungAlsMathematischesStilmittel}
+\end{equation}
+
+\end_inset
+
+Kapiert?
+ Diese Abkürzungsfolge heißt:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Wenn wir wie die Mathematikerinnen und Mathematiker reden würden,
+ dann würde dieser Satz so aussehen
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Es ist nämlich eine Unart,
+ in der Mathematik alles abzukürzen,
+ was sich abkürzen lässt.
+ Die Subskripts (also die Zahlen 
+\begin_inset Formula $_{1}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $_{2}$
+\end_inset
+
+ oder 
+\begin_inset Formula $_{3}$
+\end_inset
+
+) habe ich hingeschrieben,
+ um zu verdeutlichen,
+ dass zwei verschiedene Wörter die gleichen Anfangsbuchstaben besitzen und darum es nicht reicht,
+ einfach den ersten Buchstaben zu nehmen.
+ Also werden weitere Unterscheidungsmittel hinzugenommen,
+ welche jedoch ziemlich willkürlich sind.
 \end_layout
 
 \begin_layout Standard
-Dieses Buch richtet sich an alle,
- die mit Mathematik Mühe haben – aber sie dennoch begreifen wollen.
- Mathematik ist oft verschlossen,
- beinahe esoterisch.
- Ich meine das wörtlich:
- als eine Art Geheimlehre.
- Die Sprache ist voller Abkürzungen,
- Symbole und impliziter Annahmen.
- Ich möchte helfen,
- diese Sprache zu entschlüsseln.
- Nicht durch Vereinfachung,
- sondern durch Klarheit.
+Muss dieses Buch gelesen werden?
+ Ich finde:
+ Nein,
+ das muss es wirklich nicht.
+ Aber es kann durchaus interessant sein,
+ es zu lesen.
+ Die Mathematik ist in der Naturwissenschaft und Technik eine tragende Säule.
+ Jedoch bin ich der Meinung,
+ dass die wahren Probleme unserer Zeit an einem anderen Ort zu finden sind:
+ Kriege und Terrorismus machen das Leben schwer,
+ dazu kommen Hunger,
+ Armut und Elend,
+ Übergewicht als Geißel der modernen Zivilisation (ich bin auch stark übergewichtig...) sowie der drohende Klimawandel.
+ Trotzdem bin ich ein Bildungsoptimist in dem Sinn,
+ dass ich finde,
+ dass Bildung das wichtigste Mittel im Kampf gegen Ungerechtigkeit und Elend ist.
 \end_layout
 
 \begin_layout Standard
-Nein,
+Ich persönlich empfinde den ersten Schritt einer Reise immer als den schwierigsten.
+ Soll ich mich auf die Reise machen?
+ Kommt es gut?
+ Lerne ich freundliche Menschen kennen,
+ oder ist es nur mühsam auf der Reise?
+ Wird es auf der Reise immer regnen oder zwischendurch auch einmal die Sonne scheinen?
+ Oder wird auf der Reise die Sonne so stark scheinen,
+ dass ich fast verdurste und mein Herz nicht mehr mitmacht
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Wie gesagt,
+ ich bin übergewichtig,
+ und so habe ich manchmal auf diese Art Mühe mit der Hitze.
+\end_layout
+
+\end_inset
+
+.
+ So geht es mir auch bei Büchern,
+ welche ich lese.
+ Wobei ich bekennen muss,
+ dass ich bei Fachbüchern regelmäßig bei 2/3 des Buchs zu lesen aufhöre.
+ Mir fehlt offenbar der Durchhaltewille,
+ etwas auch abzuschließen,
+ das ich begonnen habe.
+ Nein,
  dieses Buch muss nicht gelesen werden.
- Aber es darf.
- Vielleicht sogar mit Vergnügen.
- Die wahren Herausforderungen unserer Zeit – Krieg,
- Ungleichheit,
- Klimawandel - können nicht allein mit Mathematik gelöst werden.
- Aber Bildung bleibt ein zentraler Hebel.
- Und Mathematik kann ein Werkzeug der Freiheit sein.
+ Liebe Leserin,
+ lieber Leser,
+ Du kannst sicher auch glücklich auf Erden werden,
+ wenn Du keine Ahnung davon hast,
+ was Folgen und Reihen sind,
+ was die Minkowskische Ungleichung ist,
+ was das Riemann-Stieltjessche Integral bedeutet und so weiter und so fort.
+ Und selbst wenn Du dieses Buch liest,
+ so kann es sehr sinnvoll sein,
+ wenn Du das Buch nicht von vorne nach hinten durchliest,
+ sondern irgendwo anfängst und an einem beliebigen Punkt im Buch wieder aus dem Buch steigst.
+ Denn dieses Buch ist so angelegt,
+ dass die einzelnen Teile davon selbsterklärend sein sollten.
+ Und wo dies nicht der Fall ist
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Es ist eigentlich in einem mathematischen Buch fast fast immer der Fall,
+ dass sie nicht einmal dann verstanden werden,
+ wenn sie von vorne nach hinten durchgelesen werden!
+ Dass nur einzelne Teile davon gelesen werden können,
+ kommt meines Erachtens noch seltener vor.
+\end_layout
+
+\end_inset
+
+,
+ dann habe ich den Plan,
+ dass die einzelnen Verweise fein säuberlich aufgelistet werden sollen.
+ Eigentlich ist der Versuch,
+ ein Buch über Einführung in Mathematik zu schreiben,
+ in welchem wirklich alle Aussagen bewiesen werden,
+ und welches keine Voraussetzungen benötigt,
+ so sinnvoll,
+ wie mit bloßen Händen eine Drehbank fertigen zu wollen - sprich,
+ eigentlich ist es ein ziemlich idiotisches Vorhaben.
+ Weil es langweilig ist,
+ weil es mühsam ist,
+ umfangreich,
+ ein Moloch.
+ Weil es eigentlich niemand interessiert.
+ Und trotzdem möchte ich es schreiben - sozusagen als Rache dafür,
+ dass diese 
+\begin_inset Quotes gld
+\end_inset
+
+A\SpecialChar ldots
+
+\begin_inset Quotes grd
+\end_inset
+
+ es nicht zustande brachten,
+ den Stoff so rüber zu bringen,
+ dass ich es kapiert habe.
 \end_layout
 
 \begin_layout Standard
-Ich bin mir bewusst:
- Der Versuch,
- ein Buch zu schreiben,
- das ohne Vorkenntnisse alle Aussagen sauber beweist,
- ist zum Scheitern verurteilt.
- Es ist ein Don-Quijote-Projekt.
- Aber ich tue es trotzdem – als verspätete Antwort auf all die Lehrbücher,
- die mich einst ratlos zurückließen.
+Üblicherweise wird ein Kontakt angegeben.
+ Meinen kannst Du oben nachschlagen (zur Erinnerung:
+ markus.demarmels@bluewin.ch).
+\begin_inset Newline linebreak
+\end_inset
+
+Natürlich freue ich mich über jedes Mail,
+ falls die Kritik konstruktiv bleibt.
+ Ich habe den Text nicht für Superhirne geschrieben.
+ Die sollen besser ein seriöses Mathebuch sich zu Gemüt führen.
+ Ich habe das Buch für jene geschrieben,
+ welche keine Ahnung von der Mathematik haben.
+ Und in diesem Sinn wünsche ich viel Vergnügen bei der Lektüre.
+\end_layout
+
+\begin_layout Standard
+Braucht es dieses Buch noch?
+ Vorgestern (am 16.
+ Februar 2011) habe ich das Buch 
+\begin_inset Quotes gld
+\end_inset
+
+Mathematik
+\begin_inset Quotes grd
+\end_inset
+
+ (was für ein unbescheidener Name ;)) von Helmut Stachel,
+ Klaus Lichtenegger,
+ Ulrich Kockelkorn,
+ Christian Karpfinger,
+ Frank Hettlich sowie Tilo Arens gekauft.
+ Ca.
+ 95 Fr.,
+ 1200 Seiten,
+ ein Koloss,
+ welcher wahrscheinlich wesentlich tiefer geht,
+ als ich es jemals zu schreiben beabsichtige.
+ Schönere Bilder hat,
+ wirklich lesenswert ist.
+ Und im zweiten Abschnitt der Einführung wird von Mühe gesprochen,
+ von Arbeit.
+ Brrrr.
+ So quasi 
+\begin_inset Quotes gld
+\end_inset
+
+die Wahl der Qual
+\begin_inset Quotes grd
+\end_inset
+
+ darstellt.
+ Ich werde es wahrscheinlich trotzdem lesen \SpecialChar nobreakdash
+ so gut wie es kann.
+ Wahrscheinlich werden es wieder 50 bis 100 A4-Hefter werden,
+ welche es braucht,
+ um bis 2/3 des Buchs zu gelangen.
+ Aber lese das Buch,
+ falls Du es besser findest.
+ Und wenn es Dich nicht stört,
+ dass von 
+\begin_inset Quotes gld
+\end_inset
+
+Mathematikern
+\begin_inset Quotes grd
+\end_inset
+
+ und nicht von 
+\begin_inset Quotes gld
+\end_inset
+
+Mathematikerinnen und Mathematikern
+\begin_inset Quotes grd
+\end_inset
+
+ gesprochen wird.
+ Und um noch ein wenig zu sticheln,
+ soll sich mein Buch weniger mit der 
+\begin_inset Quotes gld
+\end_inset
+
+Höheren
+\begin_inset Quotes grd
+\end_inset
+
+ als mit der 
+\begin_inset Quotes gld
+\end_inset
+
+Niederen
+\begin_inset Quotes grd
+\end_inset
+
+ Mathematik beschäftigen.
+ Ich werde möglichst im Tiefflug Mathe
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Quotes gld
+\end_inset
+
+Mathe
+\begin_inset Quotes grd
+\end_inset
+
+ ist eine Abkürzung,
+ aber auch eine Verniedlichung oder sogar Kosewort von 
+\begin_inset Quotes gld
+\end_inset
+
+Mathematik
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ betreiben,
+ so dass Du wahrscheinlich immer wieder findest:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Wie kann der Demarmels nur
+\begin_inset Quotes grd
+\end_inset
+
+?
+ Einfach,
+ weil ich mit diesem Buch mehr will.
+ Ich will mich in meine Freiheit denken,
+ in die Freiheit meines Denkens.
+ Ansonsten kannst Du das Buch auch als moderne Don Quijote-Erzählung verstanden wissen.
+ Mit eigentlich nichts mehr als mit meinem Denken möchte ich etwas bewirken.
+ Ich möchte bewirken,
+ dass die Welt freier,
+ demokratischer,
+ lebenswerter und glücklicher wird.
+ Das Risiko,
+ dass ich scheitere,
+ ist sehr nahe bei 100 Prozent.
+ Aber ich probiere es trotzdem.
+\end_layout
+
+\begin_layout Standard
+Und noch eine Beschränkung gibt es:
+ Neuerdings gibt es computergestützte Beweise.
+ Die berühmteste diesbezügliche Programmiersprache ist 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Lean4"
+target "https://lean-lang.org/"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Mit Hilfe dieser Programmiersprache können Beweise mittels Computer geführt werden.
+ Braucht es dann dieses Skript immer noch?
+ Andererseits:
+ Es ist das,
+ was ich eben gern mache.
+ Und ich kann nicht anders.
+\end_layout
+
+\begin_layout Standard
+Es sind seit dem Schreiben des obigen Absatzes sieben Jahre vergangen.
+ Nun kommt der Zweifel zum schreiben und lesen dieses Buches auch aus der Ecke der sogenannten 
+\begin_inset Quotes gld
+\end_inset
+
+künstlichen Intelligenz
+\begin_inset Quotes grd
+\end_inset
+
+ (wobei ich mich immer noch frage,
+ was es dann mit der sogenannten 
+\begin_inset Quotes gld
+\end_inset
+
+natürlichen Intelligenz
+\begin_inset Quotes grd
+\end_inset
+
+ auf sich hat).
+ Lohnt es sich,
+ darüber nachzudenken,
+ was Zahlen sind,
+ wenn Computer drauf und dran sind viele Millionen Arbeitsplätze zu vernichten?
+ Ich glaube:
+ Ja,
+ das tut es.
+ Denn was uns Lebewesen ausmacht,
+ ist meines Erachtens die Geschichte.
+ Und diese Geschichte gilt es immer wieder und immer wieder neu zu erzählen.
+ Das möchte diese Erzähltradition weiterführen.
+\end_layout
+
+\begin_layout Standard
+Es gibt Bücher,
+ da bist Du eine andere oder ein anderer,
+ falls Du das Buch gelesen hast.
+ Bei mir war es beispielsweise 
+\begin_inset Quotes gld
+\end_inset
+
+Krieg und Frieden
+\begin_inset Quotes grd
+\end_inset
+
+ von Leo Tolstoi.
+ Ich möchte gerne ein Skript schreiben,
+ bei dem es genau so ist.
+ 
 \end_layout
 
 \begin_layout Section
@@ -368,101 +776,122 @@ Wie soll dieses Buch gelesen werden?
 \end_layout
 
 \begin_layout Standard
-IIch empfehle,
- dieses Buch nicht von vorne bis hinten durchzulesen,
- sondern gezielt dort nachzuschlagen,
- wo Dich ein Thema interessiert.
- In diesem Sinne ist es eher ein Nachschlagewerk als ein klassisches Lehrbuch.
- Es beginnt bewusst mit eher trockenen Grundlagen,
- die viele Leserinnen und Leser gerne überspringen möchten – und dürfen.
+Ich hoffe,
+ die beste Art,
+ dieses Buch zu lesen,
+ besteht darin,
+ dass Du dort nachschlägst,
+ wo es Dich interessiert.
+ So gesehen ist das Buch mehr Nachschlagewerk denn Lehrbuch.
+ Ich nehme an,
+ dass niemand das Buch von vorne nach hinten durchlesen will,
+ denn das Buch fängt dort an,
+ wo eigentlich niemand beginnen will,
+ weil es mehr oder weniger langweilig ist.
+ Ich nenne meine empfohlene Leseart einen 
+\begin_inset Quotes gld
+\end_inset
+
+Top Down Approach
+\begin_inset Quotes grd
+\end_inset
+
+ (der Begriff stammt aus der Pädagogik und bedeutet:
+ Annäherung von oben nach unten.
+ Also nicht vom Einzelnen her das Ganze betrachten,
+ sondern vom Ganzen her das Einzelne betrachten).
+ Falls Du den Rückgriffen auf bestehende Kapitel nicht traust oder es ganz genau nehmen willst,
+ dann kannst Du den Verweisen in den vorhergehenden Kapiteln folgen.
+ Falls es mir gelingt,
+ das Buch wirklich zu schreiben,
+ dann ist jedes Thema so entwickelt,
+ dass zuerst in Prosa die Thematik motiviert und ausgebreitet wird.
+ Der zweite Teil ist der formale Teil,
+ in welchem einerseits die Definitionen und Sätze vorgestellt werden.
+ Der dritte Teil dient zur Herleitung der Behauptungen (mit diesem Teil habe ich die meiste Zeit verbracht),
+ wobei Herleitung vielfach nur heißt,
+ die bereits hergeleiteten Sätze richtig mit den Sätzen des Kapitels zu verknüpfen.
+ Es folgen Beispiele der Anwendung der Sätze,
+ gefolgt von Aufgaben,
+ welche die Sätze beinhalten.
+ Schlussendlich wird aufgelistet,
+ welche Sätze und Definitionen gebraucht werden und welche Sätze und Definitionen die Sätze und Definitionen der Kapitel verwenden.
 \end_layout
 
 \begin_layout Standard
-Ich nenne meine empfohlene Leseweise einen Top-Down-Approach – ein Begriff aus der Pädagogik:
- Man nähert sich dem Thema vom Ganzen her und betrachtet erst später die einzelnen Details.
- Wenn Du es ganz genau nehmen willst oder den Querverweisen nicht vertraust,
- kannst Du natürlich auch systematisch den Verweisen zu früheren Kapiteln folgen.
+Ich möchte nicht verschweigen,
+ wie ich Mathematikbücher in der Regel lese:
+ Auf der rechten Seite auf dem Tisch (ich bin Linkshänder) habe ich das Mathematikbuch.
+ Weiter habe ich auf der linken Seite einen Notizblock samt Kugelschreiber (oder sonst ein Schreibwerkzeug 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ich muss gestehen,
+ dass ich auch oft im liegen schreibe ;
+ ).Das ist zwar mühsam,
+ aber ich bin oft ein derart fauler Sack,
+ dass ich das Liegen dem Sitzen vorziehe.
 \end_layout
 
-\begin_layout Standard
-Wenn es mir gelingt,
- das Buch so zu schreiben,
- wie ich es mir vorstelle,
- wird jedes Thema in mehreren Schritten entfaltet:
+\end_inset
+
+).
+ Und dann lese ich so lange,
+ bis eine Formel kommt.
+ Und dann weiß ich nicht,
+ wie diese Formel hergeleitet wurde.
+ Es leuchtet mir einfach nicht ein.
+ Und dann probiere ich,
+ diese Formel mehr oder weniger sinnvoll nachzuvollziehen.
+ Und das dauert quälende „Millisekunden“ (welche da schier zahllos verstreichen),
+ bis ich endlich merke,
+ dass es geht.
+ Und in der Regel verrechne ich mich ca.
+ 5 - 10 Mal,
+ bis ich auf die richtige Lösung komme.
+ Es kann vorkommen,
+ dass ich an einer Gleichung gut und gerne eine Woche oder länger herumprobiere,
+ bis ich sie so nachvollziehen kann,
+ das es für mich einleuchtend ist.
+ Ja,
+ ich gebe es zu,
+ ich bin „grottenschlecht
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+umgangssprachlicher Ausdruck für sehr,
+ sehr schlecht
 \end_layout
 
-\begin_layout Enumerate
-Prosa:
- Eine Einführung in das Thema,
- möglichst anschaulich,
- mit Beispielen,
- Fragen und Kommentaren.
-\end_layout
+\end_inset
 
-\begin_layout Enumerate
-Formaler Teil:
- Definitionen,
- Sätze,
- Begriffe.
-\end_layout
 
-\begin_layout Enumerate
-Herleitungen:
- Begründungen und Ableitungen der Aussagen (mit Abstand der aufwändigste Teil).
-\end_layout
+\begin_inset Quotes grd
+\end_inset
 
-\begin_layout Enumerate
-Beispiele und Aufgaben:
- Anwendungsbeispiele,
- gefolgt von Aufgaben.
-\end_layout
-
-\begin_layout Enumerate
-Zusammenfassungen:
- Übersicht über verwendete und verwendende Begriffe und Sätze.
-\end_layout
-
-\begin_layout Section
-Ein persönlicher Einschub
-\end_layout
-
-\begin_layout Standard
-Vielleicht hilft es Dir,
- wenn ich beschreibe,
- wie ich selbst Mathematikbücher lese.
- Ich bin Linkshänder:
- Auf der rechten Seite liegt das Buch,
- auf der linken mein Notizblock.
- Oft schreibe ich aber auch im Liegen – nicht unbedingt effizient,
- aber bequem.
- Dann lese ich – bis eine Formel auftaucht.
- Und plötzlich verstehe ich nicht,
- woher sie kommt.
- Ich starre sie an,
- probiere herum,
- rechne,
- verrechne mich fünf- bis zehnmal – bis es endlich „klick“ macht.
- Manchmal dauert das eine Woche.
- Ich bin,
- ehrlich gesagt,
- kein besonders guter Mathematiker – eher ein „grottenschlechter“ (umgangssprachlich für sehr schlecht) – aber ich mache es gern.
-\end_layout
-
-\begin_layout Standard
-Die andere Möglichkeit wäre:
- Ich glaube einfach,
- dass die Formel stimmt.
- Das wird an Hochschulen oft stillschweigend vorausgesetzt.
- Ich habe das auch versucht – aber irgendwann wusste ich nicht mehr,
+ in Mathematik - aber ich betreibe sie einfach gerne!
+ Die andere Möglichkeit ist,
+ es einfach zu glauben,
+ dass es richtig ist,
+ was das geschrieben steht.
+ Das wird ja auch an den Hochschulen mehr oder weniger offensichtlich so gefordert.
+ Ich habe das auch gemacht - und mit der Zeit wusste ich nicht mehr,
  was vorne und hinten ist.
- Das Gefühl für die Sache ging verloren.
- Damit Dir das nicht passiert,
- schreibe ich lieber zu viel als zu wenig.
- Wenn Du das Gefühl hast,
- ein Kapitel sei zu ausführlich – überspringe es.
- Wenn Du aber an einer Stelle nicht weiterkommst,
- weil ich zu wenig geschrieben habe,
- wird es schwieriger.
+ Weil mir das Gefühl für die Materie völlig verloren ging.
+ Damit Dir das nicht auch passiert,
+ möchte ich gerne so viel wie möglich über etwas schreiben und erst dann weiter gehen.
+ Es mag sein,
+ dass Du es schon lange kapiert hast.
+ Aber lasse Dich nicht verdrießen.
+ Du bist frei,
+ Kapitel zu überspringen,
+ falls Du es begriffen hast.
+ Ich bin der Meinung,
+ dass es im umgekehrten Fall einfach schwieriger ist,
+ wenn Du etwas nicht begreifst,
+ weil ich zu wenig geschrieben habe.
 \end_layout
 
 \begin_layout Section
@@ -483,153 +912,308 @@ Voraussetzungen
 
 \begin_layout Standard
 Ich denke,
- es ist hilfreich,
- wenn Du ein gewisses Interesse am Lesen mitbringst.
- Das klingt vielleicht selbstverständlich,
- ist es aber nicht.
- Vielleicht liest Du trotzdem einfach mal drauflos – in der Hoffnung,
- dass der Appetit mit dem Essen kommt.
- (Falls Du gerade wirklich hungrig bist:
- Entschuldige bitte meine Wortwahl.)
+ es ist von Vorteil,
+ wenn Du Interesse am Lesen hast.
+ Dies ist nicht so selbstverständlich,
+ wie es vielleicht tönt.
+ Ich hoffe jedoch,
+ dass im besten Fall 
+\begin_inset Quotes gld
+\end_inset
+
+der Appetit mit dem Essen kommt
+\begin_inset Quotes grd
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ich hoffe,
+ du liest das Buch nicht hungrig - in diesem Fall möchte ich mich für meine Wortwahl entschuldigen
 \end_layout
 
-\begin_layout Standard
-Ich habe keine klare Vorstellung vom Zielpublikum.
- Vielleicht liest diesen Text ein gelangweilter Teenager,
- eine pensionierte Physiklehrerin oder – warum nicht – eine südamerikanische Brillenbärin mit Kurzsichtigkeit.
- Abgesehen davon wäre ich glücklich,
- wenn dieser Text ab dem Jugendalter aufwärts verständlich und interessant wäre.
- Gerne irre ich mich – und jemand kann ihn noch viel früher brauchen.
-\end_layout
+\end_inset
 
-\begin_layout Standard
-Besonders spannend fände ich die Frage,
- wie sich die hier vorgestellten Konzepte schon früh in der kindlichen Bildung einsetzen ließen.
- Richard Feynman,
- der berühmte Physiker,
- sagte einmal:
- "There’s plenty of room at the bottom." Ich übertrage diesen Gedanken auf die Pädagogik:
- Auch in der frühen Kindheit gibt es „viel Raum“ für intellektuelle Anregung – vorausgesetzt,
- wir kombinieren abstrakte Gedanken mit Handlungen,
- Materialien,
- Spiel,
+.
+ Gemeint ist,
+ dass im guten Fall das Interesse am Lesen beim Lesen dieses Textes kommt.
+ Es ist schwierig,
+ sich ein Zielpublikum vorzustellen.
+ Ich weiß ja nicht einmal,
+ ob es irgendein Wesen (vielleicht eine südamerikanische Brillenbärin mit Kurzsichtigkeit oder so) gibt,
+ dem es derart langweilig ist,
+ das sie oder er sich mit diesem Text abplagt.
+ Von der Sprache her denke ich,
+ dass der Text für Menschen ab der Pubertät interessant werden könnte.
+ Gerne täusche ich mich jedoch
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Interessant wäre natürlich für mich,
+ wie die Konzepte,
+ die in diesem Text vorgestellt werden,
+ möglichst früh in die Bildung von Kindern gewinnbringend eingesetzt werden könnten.
+ Richard Feymann,
+ ein sehr bekannter Physiker,
+ hat einmal gesagt:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+There's plenty room at the bottom
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Will heißen:
+ Es gibt viel Platz,
+ wenn ganz kleine Dimensionen betrachtet werden.
+ Ich wandle diesen Slogan ab auf die kindliche Entwicklung.
+ Ich bin der Meinung,
+ dass Kinder viel früher gewinnbringend gefördert werden könnten.
+ Natürlich wäre für kleine Kinder nur die Handlung mit Materialien entscheidend,
+ keinesfalls ein Text.
+ Wichtig wären auch Spiel,
  Bewegung,
- Zärtlichkeit und Gruppenerleben.
- Kindern ist oft mehr zuzutrauen,
- als wir denken.
- Umgekehrt könnte auch die Mathematik davon profitieren,
- sich nicht als „Königin der Wissenschaften“ zu begreifen,
- sondern ihre Didaktik stärker mit Erkenntnissen aus Psychologie,
- Biologie und Sozialwissenschaften zu verweben.
+ Zärtlichkeit,
+ An - und Entspannung,
+ Begegnung in der Gruppe.
+ Aber wir sollten den kleinen Personen in unserer Gesellschaft in intellektueller Hinsicht vielmehr zutrauen.
+ Aber auch umgekehrt kann die Mathematik viel lernen,
+ wenn sie sich nicht als die absolute Königsdisziplin versteht,
+ sondern 
+\series bold
+endlich 
+\series default
+Erkenntnisse aus der Geistes- und Sozialwissenschaft,
+ der Entwicklungspsychologie und der Biologie in ihre Didaktik einbezieht.
+ 
+\end_layout
+
+\end_inset
+
+.
+ Leider habe ich das Gefühl,
+ dass dieser Text einige Fremdwörter und Wortspiele zu viel haben könnte.
+ Es kann jedoch ebenso wahr sein,
+ dass meine Sprache schon jetzt hoffnungslos veraltet und steif daherkommt.
+ Ich weiß es nicht.
+ Jedoch bin ich schon nur froh,
+ wenn ich Dir zwischendurch ein Schmunzeln entlocken kann.
+ Und wenn Du aus dem einen oder anderen Satz nicht klug wirst oder ein Abschnitt Dir nur spanisch vorkommt,
+ dann lese doch einfach weiter.
+ Denn falls etwas wirklich wichtig ist,
+ werde ich später im Buch darauf wieder Bezug nehmen.
+ Aber Du kannst mir natürlich auch mailen.
+ Ich werde dann versuchen,
+ die entsprechende Stelle klarer zu formulieren.
 \end_layout
 
 \begin_layout Standard
-Ich bin mir bewusst,
- dass mein Stil gelegentlich sperrig,
- veraltet oder überladen wirken kann – oder im Gegenteil,
- zu verspielt,
- zu locker.
- Vielleicht findest Du einige Formulierungen altmodisch oder manche Wortspiele seltsam.
- Vielleicht bringen sie Dich aber auch zum Schmunzeln.
- Das würde mich freuen.
- Und wenn Du einmal über einen Satz stolperst oder ein Abschnitt Dir „spanisch“ vorkommt:
- Lies einfach weiter.
- Wichtiges wird im Verlauf des Buches meist nochmals aufgegriffen.
- Und wenn etwas unklar bleibt,
- kannst Du mir auch gerne schreiben – ich werde versuchen,
- es besser zu erklären.
+Weiter sollte es Dich nicht stören,
+ wenn ich Dich duze.
+ Ich würde mir im täglichen Umgang mit Dir nicht erlauben,
+ Dich zu duzen.
+ Aber finde,
+ es ist einfacher,
+ wenn ich Dich stumm duze.
+ Du solltest Dich nicht nerven,
+ dass in diesem Buch relativ viele Wiederholungen vorkommen.
+ Wiederholungen scheinen in der Mathematik übrigens absolut verpönt zu sein
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Es scheint,
+ dass die lieben Mathematikerinnen und Mathematiker oft lieber etwas zu wenig als etwas zu viel sagen.
 \end_layout
 
-\begin_layout Section
-Noch ein paar Hinweise zum Stil
+\end_inset
+
+.
+ Die Wiederholungen in diesem Buch stammen davon,
+ dass ich versucht habe,
+ die einzelnen Kapitel möglichst selbsterklärend zu machen.
+ Eine Wiederholung ist beispielsweise,
+ wenn ich an dieser Stelle erwähne,
+ dass Du in der Lage sein solltest,
+ viele Teile dieses Buches einfach zu überlesen.
+ Denn das Buch wird,
+ falls es mir gelingt,
+ sehr umfangreich werden.
+ Des weiteren wird das Buch aus dem sehr monotonen 
+\begin_inset Quotes gld
+\end_inset
+
+Dreiklang
+\begin_inset Quotes grd
+\end_inset
+
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Definition,
+ Satz,
+ Beweis
+\begin_inset Quotes grd
+\end_inset
+
+ bestehen.
+ So weit wie möglich werde ich noch 
+\begin_inset Quotes gld
+\end_inset
+
+Beispiel
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+Anwendung
+\begin_inset Quotes grd
+\end_inset
+
+ hinzufügen.
+ Dies soll Dich jedoch nicht abschrecken.
+ Schlussendlich solltest Du Dich nicht daran stoßen,
+ dass ich praktisch alle Überschriften als Frage formuliere.
+ Die Fragen sind eigentlich Anregung zum Handeln.
+ Die Frage:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Könnten Sie mir sagen,
+ wo es zum Bahnhof geht?
+\begin_inset Quotes grd
+\end_inset
+
+ ist meines Erachtens eine höfliche Umformulierung der Anweisung:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Sagen Sie mir,
+ wo es zum Bahnhof geht
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Ich möchte,
+ dass dieses Buch zum Nachdenken anregt,
+ dass es Dich fesselt,
+ dass es Dich nicht loslässt,
+ dass Du immer das Gefühl hast,
+ gleichzeitig unheimlich viel,
+ andererseits überhaupt nichts verstanden zu haben.
+ 
 \end_layout
 
 \begin_layout Standard
-Ich duze Dich durchgehend.
- Im persönlichen Gespräch würde ich das vielleicht nicht tun – aber in einem Buch wie diesem finde ich das Duzen einfacher und direkter.
- Wenn es Dich stört:
- Verzeih mir bitte.
+Was ich Dir ans Herz legen möchte,
+ ist,
+ dass Du gut daran tust,
+ den Verweisen innerhalb des Textes nachgehst.
+ Wenn ich also schreibe 
+\begin_inset Quotes gld
+\end_inset
+
+gemäß dem Doppelreihensatz von Cauchy
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mache einen Querverweis auf den Doppelreihensatz von Cauchy
 \end_layout
 
-\begin_layout Standard
-Ebenfalls wirst Du bemerken,
- dass ich mich oft wiederhole.
- Das ist Absicht.
- Viele Kapitel sollen für sich verständlich sein,
- ohne dass Du ständig zurückblättern musst.
- Wiederholungen gelten in der Mathematik meist als verpönt – ich finde,
- manchmal helfen sie beim Verstehen.
-\end_layout
+\end_inset
 
-\begin_layout Standard
-Die Struktur des Buchs folgt meist dem Dreischritt „Definition – Satz – Beweis“.
- Wenn möglich,
- ergänze ich auch Beispiele und Anwendungen.
- Lass Dich davon nicht abschrecken.
- Und:
- Viele Kapitelüberschriften sind als Fragen formuliert.
- Das ist kein Zufall.
- Ich verstehe Fragen als Aufforderung zum Denken und Handeln – etwa wie:
- „Könnten Sie mir sagen,
- wo es zum Bahnhof geht?“ ist eigentlich ein höfliches „Sagen Sie mir,
- wo es zum Bahnhof geht!“
-\end_layout
 
-\begin_layout Standard
-Ich wünsche mir,
- dass dieses Buch Dich zum Nachdenken bringt.
- Dass es Dich fesselt.
- Dass Du manchmal das Gefühl hast,
- wahnsinnig viel verstanden zu haben – und gleichzeitig gar nichts.
- So geht es mir auch oft.
-\end_layout
+\begin_inset Quotes grd
+\end_inset
 
-\begin_layout Section
-Was Du beim Lesen beachten solltest
-\end_layout
-
-\begin_layout Standard
-Wenn ich im Text auf etwas verweise – z. B.
- „gemäß dem Doppelreihensatz von Cauchy“ – dann lohnt es sich,
- diese Stelle wirklich nachzuschlagen.
+,
+ dann tust Du wirklich gut daran,
+ den Satz kurz zu überfliegen,
+ falls Du ihn nicht so gut kennst,
+ dass Du diesen Satz nicht mehr hören kannst.
  Ich weiß,
- das ist mühsam.
- Ich selbst habe es während meiner Studienzeit oft nicht gemacht.
- Aber manchmal ist es eben unumgänglich.
- Ich gebe mir Mühe,
- die wichtigsten Dinge direkt zu erklären – aber ich kann nicht alles doppelt und dreifach ausführen.
+ das ist mühsam und hirntötend,
+ und ich habe es in meinen Mathematiksemestern auch nicht gemacht.
+ Und ich gebe mir auch wirklich Mühe,
+ Dir das Nachschlagen zu ersparen.
+ Aber es ist nun mal so,
+ dass es schlichtweg nicht möglich ist,
+ alle Verweise im Text noch einmal auszuführen.
 \end_layout
 
 \begin_layout Standard
-Noch etwas:
- Ich bin kein professioneller Mathematiker,
- sondern ein begeisterter Dilettant – im besten Sinne des Wortes.
- Ich entwickle die Mathematik in diesem Buch so,
- wie ich sie selbst verstehen möchte.
- Dabei versuche ich natürlich,
- keine Fantasiesätze über Parallelwelten aufzustellen,
- sondern alles so sauber zu begründen,
- wie es mir möglich ist.
- Aber ich bin mir bewusst,
- dass manches vielleicht nicht den akademischen Standards entspricht,
- die Du aus anderen Lehrwerken kennst.
+Schlussendlich solltest Du immer mit wachem Verstand dieses Buch lesen:
+ Ich bin nicht einmal ein Mathematiker,
+ sondern einfach ein Dilettant
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Das bedeutet,
+ dass mein Beruf nicht Mathematiker ist.
+\end_layout
+
+\end_inset
+
+,
+ welcher mit viel Begeisterung Mathematik betreibt.
+ Dann ist nie klar,
+ wie richtig das ist,
+ was ich so schreibe.
+ Außerdem werde ich die Mathematik so entwickeln,
+ wie Du sie sonst wahrscheinlich so nicht bei anderen liest.
+ Das bedeutet aber natürlich nicht,
+ dass ich nun Sätze erfinden würde,
+ welche sich nicht beweisen lassen (wie beispielsweise Sätze über Parallelwelten oder so).
+ Ich versuche nach bestem Wissen und Gewissen die Mathematik so aufzubereiten,
+ dass es für mich Sinn macht - und hoffentlich für Dich auch.
 \end_layout
 
 \begin_layout Standard
-Auch was die Sprache betrifft,
- bin ich manchmal unsicher.
- Manche Begriffe oder Witze könnten Dir fremd sein – etwa,
- wenn ich schreibe:
- „Ich habe es nicht so mit Männern,
- die sich mit Amphetaminen vollgepumpt haben.“ Wenn Du weißt,
- dass Bodybuilder manchmal Doping einsetzen,
- verstehst Du den Satz vielleicht.
- Wenn Du zwölf Jahre alt bist und nie etwas mit Krafttraining zu tun hattest,
- könnte er einfach seltsam wirken.
- Dann denk Dir nichts dabei.
- Der Witz war nicht wichtig.
- Wichtig ist,
- dass Du weiterliest – und Dich nicht entmutigen lässt.
+Leider weiß ich nicht,
+ ob die von mir verwendeten Wörter für Dich geläufig sind und Dir auch wirklich etwas bedeuten.
+ Dieser Satz tönt harmlos.
+ Ist er jedoch leider nicht.
+ Denn es ist möglich,
+ dass ich zum Beispiel einen Witz mache,
+ welchen Du nicht verstehst.
+ Mir ist das aufgefallen,
+ als ich die folgende Fußnote einfügte:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Ich habe es nicht so mit Männern,
+ welche sich mit Amphetaminen vollgepumpt haben.
+\begin_inset Quotes grd
+\end_inset
+
+ Natürlich ist die Chance groß,
+ dass Du weißt,
+ dass Bodybuilder ab und zu mit Medikamenten oder Drogen versuchen,
+ ihren Körpern noch mehr Muskelmasse zu verleihen.
+ Jedoch:
+ Vielleicht bist Du,
+ was weiß ich,
+ 12 Jahre alt und hast Dich noch nicht groß mit Krafttraining und Bodybuilding auseinander gesetzt.
+ Dann geht der obige Witz voll in die Hosen.
+ Und Du würdest das Gefühl bekommen,
+ dass ich eine Art geistige Selbstbefriedigung treibe,
+ schöne Texte schreiben möchte,
+ welche niemand versteht.
+ Das ist jedoch nicht die Absicht.
 \end_layout
 
 \begin_layout Section
@@ -652,200 +1236,1668 @@ name "sec:Suenden-der-Mathematik"
 \end_layout
 
 \begin_layout Standard
-Was läuft schief in der Mathematik?
-\end_layout
-
-\begin_layout Standard
-Ich gebe es zu:
- Ich habe ein ambivalentes Verhältnis zur Mathematik.
- Ich bewundere ihre Schönheit – aber ich hadere mit der Art,
- wie sie gelehrt,
- vermittelt und häufig verstanden wird.
- Deshalb möchte ich ein paar Dinge benennen,
- die ich – mit einem Augenzwinkern – als die „Sünden“ der Mathematik bezeichne:
+Wie Du aus der kurzen Einleitung bereits entnehmen konntest,
+ bin ich nicht unparteiisch.
+ Jedoch möchte es trotzdem ausformulieren,
+ was mich an der Mathematik,
+ wie ich sie kennengelernt habe,
+ so nicht schätze:
 \end_layout
 
 \begin_layout Enumerate
-Mathematik als Elitedisziplin
-\begin_inset Newline linebreak
-\end_inset
-
-Kaum eine Wissenschaft wird so stark als Unterscheidungsmerkmal zwischen „gescheiten“ und „dummen“ Menschen verwendet.
- Der Mathematiker oder die Mathematikerin gilt als Inbegriff der Intelligenz – schnell im Denken,
- scharf in der Analyse.
- Das stört mich.
- Ich halte nichts von der Vorstellung,
- Intelligenz sei einfach „vererbt“ – und wer sie nicht hat,
- hat eben Pech gehabt.
- Wer so denkt,
- hat wohl wenig Verständnis dafür,
- wie erbarmungslos in der menschlichen Geschichte Schwächen aussortiert wurden.
- Die breite Streuung von Denkstilen ist für mich ein Gewinn,
- kein Mangel.
-\end_layout
-
-\begin_layout Enumerate
-Beweise – zur Hälfte erzählt
-\begin_inset Newline linebreak
-\end_inset
-
-Beweise werden oft nur angedeutet oder unvollständig aufgeschrieben.
- Schritte werden „einfach gemacht“,
- ohne dass erklärt wird,
- was gemacht wurde.
- Manche Texte kommen mir vor wie:
+Keine andere Wissenschaft dient so wie die Mathematik dazu,
  
-\begin_inset Newline linebreak
+\begin_inset Quotes gld
 \end_inset
 
-
-\begin_inset Newline linebreak
+gescheite
+\begin_inset Quotes grd
 \end_inset
 
-„Es gelten alle wesentlichen Sätze der Mathematik.
+ von 
+\begin_inset Quotes gld
+\end_inset
+
+dummen
+\begin_inset Quotes grd
+\end_inset
+
+ Menschen zu unterscheiden.
+ Der Mathematiker (oder die Mathematikerin) ist zusammen mit der Physikerin (oder der Physiker) der Inbegriff der cleveren Person,
+ welche mehr weiß und alles ein wenig schneller als der Rest der Welt.
+ Das stört mich.
+ Auch wenn wir aufgrund von unseren Erbanlagen Menschen und keine Albatrosse
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Falls mich der liebe Gott noch einmal auf die Welt schickt,
+ dann wäre ich gerne ein Wanderalbatros,
+ welcher mit durchschnittlich 80 km/h die sturmgepeitschten röhrenden 60.
+ Breitengrade durchfliegt.
+ Das wäre Action pur!
+\end_layout
+
+\end_inset
+
+ sind,
+ halte ich rein gar nichts davon,
+ dass unsere Intelligenz maßgeblich mittels Erbanlagen zugeteilt wurden.
+ Wer diese Meinung vertritt,
+ hat meines Erachtens keine Ahnung davon,
+ wie unbarmherzig während dem größten Teil unseres Werdegangs alles ausgemerzt wurde,
+ was nur eine kleine Schwäche hatte.
+ Unter diesem Aspekt wäre eine breite Streuung des Merkmals 
+\begin_inset Quotes gld
+\end_inset
+
+Intelligenz
+\begin_inset Quotes grd
+\end_inset
+
+ unverzüglich durch andere Volksgruppen ausgerottet worden.
+ Lese doch einmal im Alten Testament der Bibel nach,
+ wie groß die Angst der Autoren war,
+ dass sie selbst wie andere Volksgruppen als Ganzes hätten aufgerieben oder ausgerottet werden können.
+ Das war die Währung früher:
+ Nicht das Individuum,
+ sprich der einzelne Mensch (egal ob Frau oder Mann),
+ sondern eine Volksgruppe musste als ganzes ums Überleben kämpfen.
+ Wenn es dann nicht so groß sein soll,
+ dann zumindest als Sippe (ca.
+ 150 Personen),
+ welche als Ganzes unterging oder Bestand hatte.
+ Aber auch innerhalb der Gruppen war bis jetzt der Selektionsdruck in der Regel schlichtweg brutal.
+ In Schwarzafrika gab es beispielsweise offenbar bis vor kurzem keine behinderten Kinder
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Das ist auch so eine Behauptung von mir,
+ welche ich nicht belege.
+ Ich habe es gelesen oder gehört in meiner Ausbildung im sozialen Bereich
+\end_layout
+
+\end_inset
+
+.
+ Die haben nicht lange gelebt.
+ Ich wehre mich dagegen mit allen mir zur Verfügung stehenden Mitteln dagegen,
+ dass die Evolution genau gleich wütet wie bisher.
+ Aus dem einfachen Grund,
+ weil sonst ein Leben gar nicht lebenswert wäre.
+ Das wäre nur Mord und Totschlag.
+ Bei den Tuareg haben in früheren Zeiten offenbar ca.
+ 1/3 der jungen Männer nicht überlebt,
+ weil diese durch Stammesfehden ausradiert wurden.
+ Willst Du das?
+ Ich nicht.
+ Ich finde,
+ es reicht.
+ Gerade höhere Bildung würde gegenstandslos,
+ wenn ein bedeutender Teil der gebildeten Personen dieses Wissen auch prinzipiell gar nicht gewinnbringend einbringen könnten,
+ weil sie aus einem banalen Grund vor dem eigentlichen Erwachsenenalter das Zeitliche segnen würden.
+ Ein ehemaliger Studienkollege von mir (Shane Schelter) hat mir gesagt,
+ er sei zwar in Brasilien aufgewachsen,
+ möchte jedoch dort nicht leben.
+ Weil es immer wieder scheinbar aus dem Nichts heraus Mord und Totschlag gegeben habe.
+ Dieser Text ist geradezu ein Manifest meiner These,
+ dass Alle die sogenannte höhere Mathematik verstehen können,
+ wenn der entsprechende Text geeignet aufbereitet ist.
+ Egal,
+ ob Du arm oder reich,
+ gebildet oder ungebildet,
+ sportlich oder unsportlich,
+ sogenannt hässlich oder schön,
+ eitel oder bescheiden bist,
+ Dich geliebt oder verhasst fühlst:
+ Falls Du es möchtest,
+ kannst Du höhere Bildung erlangen.
+ Und,
+ wie ich wirklich hoffe,
+ ein besserer Mensch werden.
+ Besser im Sinn von 
+\begin_inset Quotes gld
+\end_inset
+
+Mitgefühl zeigend
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Wenn Du besser bist als andere,
+ dann bedeutet dies in meinen Augen,
+ dass Du die Pflicht hast,
+ den anderen zu helfen.
+ Denn nur dann bist Du gut,
+ wenn die anderen es auch werden.
+ Ich habe mit Menschen zusammengearbeitet,
+ welche geistig behindert waren.
+ Das heißt nun auch nicht,
+ dass diese Personen,
+ falls sie nicht schwer geistig behindert waren,
+ überhaupt nichts verstanden hätten.
+ Es war und ist auch bei diesen Menschen unsere Aufgabe,
+ ihnen Freude am Leben zu vermitteln.
+ Bei schwer geistig behinderten Personen waren wirklich oft nur noch die physiologischen Funktionen vorhanden,
+ soweit diese physiologischen Funktionen vorhanden waren,
+ das ist wahr
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ich habe einmal mit Susanne
+\begin_inset CommandInset label
+LatexCommand label
+name "fn:Susanne"
+
+\end_inset
+
+ zusammengearbeitet,
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Suse
+\begin_inset Quotes grd
+\end_inset
+
+ genannt.
+ Susanne war eine schwer geistig behinderte erwachsene Frau.
+ Ich hatte keinen Zugang zu ihr.
+ Was mich jedoch bis in mein Innerstes berührt hat,
+ war die Tatsache,
+ dass eine Betreuerin mir gesagt hat:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Schau,
+ Suse lacht,
+ weil sie Kinderstimmen hört
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Das wäre für Suse ein lebenswertes Leben gewesen:
+ Einen oder einen halben Tag pro Woche zusammen mit Kindern im Kindergarten zu verbringen.
+ Ich hoffe,
+ dass ich das noch einmal erleben darf.
+ Das wäre schön - auch für die Kindergartenkinder.
+ Denn auch Kinder wollen ernst genommen werden und nicht in einem rosa Puppenhaus leben und immer brav sein müssen.
+ Sie möchten auch über den Sinn,
+ die Schönheit,
+ aber auch die Ungerechtigkeit des Lebens nachdenken dürfen.
+ Und da wäre es eben gut,
+ wenn sie schon früh ihre sozialen Kompetenzen trainieren könnten im Umgang mit Personen,
+ welche auf Hilfe angewiesen sind.
+\end_layout
+
+\end_inset
+
+.
+ Ihnen jedoch das Menschsein absprechen zu wollen,
+ fand und finde ich jedoch nicht legitim.
+ Gleich wie wir nicht bestimmen konnten,
+ wo und wie wir auf die Welt gekommen sind,
+ sollten wir nicht bestimmen,
+ ob andere Menschen leben.
+ Wenn wir an diesem Grundpfeiler unser menschlichen Gesellschaft ritzen,
+ dann haben wir schnell einmal wieder die Zustände,
+ wie sie in Nazideutschland geherrscht haben.
+ Ich möchte dies nicht erleben.
+ Und so mache ich mich also auf,
+ mein mühsam erworbenes Wissen mit allen zu teilen,
+ welche das wollen.
+\end_layout
+
+\begin_layout Enumerate
+Die Mathematiker gefallen sich ungemein darin,
+ bei Beweisen häufig nur die Hälfte zu erzählen.
+ Oftmals werden Schritte einfach ausgeführt und nicht erklärt,
+ was gemacht wurde.
+ Ich behaupte,
+ das kürzest mögliche Mathebuch sei:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Es gelten aufgrund der üblichen Definition alle wesentlichen Sätze der Mathematik.
  Beweis:
- Als Aufgabe.“
-\begin_inset Newline linebreak
+ Als Aufgabe.
+\begin_inset Quotes grd
 \end_inset
 
-
-\begin_inset Newline linebreak
-\end_inset
-
-Ja,
- das ist böse – aber manchmal trifft es genau.
+ Nun,
+ das ist bösartig,
+ ich weiß schon.
+ Aber bekanntlich ist Humor,
+ wenn man trotzdem lacht.
+ Außerdem möchte ich es ja besser machen,
+ muss daher den Beweis noch erbringen,
+ dass ich es denn besser kann.
 \end_layout
 
 \begin_layout Enumerate
-„Einmal gesagt – muss sitzen!“
-\begin_inset Newline linebreak
-\end_inset
-
-Viele Lehrtexte vermitteln:
- Einmal gehört,
- dann musst Du es verstanden haben.
- Aus lernpsychologischer Sicht ist das Unfug.
-\begin_inset Newline linebreak
-\end_inset
-
-
+Das Prinzip in Mathematik ist oft:
+ Einmal erzählt,
+ dann muss es sitzen.
+ Dies scheint mir aus lernpsychologischer Sicht ein Blödsinn zu sein.
 \end_layout
 
 \begin_layout Enumerate
-Beweise als „Aufgaben“ getarnt
-\begin_inset Newline linebreak
+Oftmals werden Beweise in Aufgaben abgeschoben oder als 
+\begin_inset Quotes gld
 \end_inset
 
-Was nicht in den Fließtext passt,
- wird oft einfach in eine Übung abgeschoben – mit dem Hinweis „trivial“.
- Ich empfinde das als Zumutung.
-\begin_inset Newline linebreak
+trivial
+\begin_inset Quotes grd
 \end_inset
 
-
+ abgetan.
 \end_layout
 
 \begin_layout Enumerate
-Es fehlt an anschaulichen Beispielen
-\begin_inset Newline linebreak
-\end_inset
-
-Viele Mathematikbücher verzichten auf konkrete,
- lebensnahe oder bildhafte Beispiele.
- Dabei könnten diese helfen,
- Abstraktes greifbar zu machen.
-\begin_inset Newline linebreak
-\end_inset
-
-
+Vielfach werden keine anschaulichen Beispiele gemacht.
 \end_layout
 
 \begin_layout Enumerate
-Fehlende Transparenz
-\begin_inset Newline linebreak
-\end_inset
-
-Oft wird nicht erklärt,
- wofür ein Satz gebraucht wird oder wo er später wieder auftaucht.
- Das erschwert Orientierung und Verstehen.
-\begin_inset Newline linebreak
-\end_inset
-
-
+Es wird oftmals nicht erzählt,
+ wo was wie verwendet wird.
 \end_layout
 
 \begin_layout Enumerate
-Herablassung gegenüber Einführungswerken
-\begin_inset Newline linebreak
+Viele Autoren von Einführungswerken legen eine Haltung an den Tag,
+ welche vermuten lässt,
+ dass es eigentlich unter ihrer Würde ist,
+ ein Einführungswerk zu schreiben,
+ ja nachgerade eine Zumutung
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Gerade heute (4.
+ Oktober 2011) habe ich von Richard Dedekind,
+ einem bedeutenden deutschen Mathematiker gelesen,
+ dass er nach dem Wegzug von der ETH Zürich an die Universität Göttingen darauf bestanden hatte,
+ sich nicht mehr mit der 
+\begin_inset Quotes gld
 \end_inset
 
-Einige Autor*innen schreiben ihre Einführungsbücher so,
- als sei es unter ihrer Würde,
- einfache Dinge zu erklären.
- Richard Dedekind z. B.
- lehnte es ab,
- sich mit „niederer Mathematik“ zu beschäftigen.
- Doch gerade die Grundlagen tragen eine über 3000-jährige Kulturgeschichte in sich.
-\begin_inset Newline linebreak
+niederen Mathematik
+\begin_inset Quotes grd
 \end_inset
 
+ beschäftigen zu müssen (Spektrum mathematischer Monatskalender,
+ 
+\begin_inset Formula $\text{www.spektrum.de}$
+\end_inset
 
+).
+ Da haben wir es!
+\end_layout
+
+\end_inset
+
+.
+ Ich finde diese Haltung unbefriedigend,
+ denn auch in der Einführung der Mathematik scheint mindestens etwa 3000 Jahre Kulturgeschichte verborgen zu sein.
 \end_layout
 
 \begin_layout Enumerate
-Zu viel Stoff,
- zu wenig Luft
-\begin_inset Newline linebreak
+Es wird so viel Stoff in die Bücher gepackt,
+ dass eigentlich unmöglich alles verstanden werden kann.
+ So mutieren viele Bücher zu 
+\begin_inset Quotes gld
 \end_inset
 
-Viele Bücher sind so überfrachtet,
- dass es unmöglich ist,
- alles zu verstehen.
- Die Folge:
- Die Lesenden sollen einfach glauben,
- was da steht.
+Glaubenslehren
+\begin_inset Quotes grd
+\end_inset
+
+:
+ Die Leserin oder der Leser werden aufgefordert,
+ zu glauben,
+ was da geschrieben steht.
 \end_layout
 
 \begin_layout Enumerate
-Populärwissenschaft ohne Substanz
-\begin_inset Newline linebreak
+Mit etwa 12 Jahren wollte ich ein populärwissenschaftliches Mathematikbuch lesen.
+ Es hatte zwar wunderschöne Bilder - aber verstanden habe ich so gut wie nichts.
+ Insbesondere wurde gezeigt,
+ wie viele Kanonenkugeln auf einem Haufen liegen,
+ deren unterste Schicht ein Quadrat mit einer bestimmten Zahl von Kugeln liegen und die restlichen Kugeln anschließend in Form einer Pyramide aufgeschichtet werden.
+ Dann wurde die Formel angegeben,
+ wie viele Kugeln auf dem Haufen liegen.
+ Ich kann mich nicht mehr daran erinnern,
+ dass ein Beweis für die Behauptung gegeben worden wäre
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Füge hier den Verweis auf das entsprechende Kapitel ein.
+\end_layout
+
 \end_inset
 
-Mit etwa 12 Jahren wollte ich ein populärwissenschaftliches Mathebuch lesen.
- Es zeigte schöne Bilder – zum Beispiel von einer Pyramide aus Kanonenkugeln – und gab eine Formel an,
- wie viele Kugeln es sind.
- Einen Beweis?
- Fehlanzeige.
- Ich fand das enttäuschend.
-\begin_inset Newline linebreak
-\end_inset
-
-
+.
+ Ich möchte dies hiermit ändern.
+ Ich finde,
+ es sollte möglich sein,
+ Mathematik so mitzuteilen,
+ dass sie etwas von ihrem Schrecken verliert.
 \end_layout
 
 \begin_layout Enumerate
-Beweise als Prüfstein – nicht als Einladung
-\begin_inset Newline linebreak
+Immer wieder wird mitgeteilt,
+ frau oder man solle gefälligst die Beweise nachvollziehen,
+ welche fast schon aus Prinzip nur zur Hälfte aufgeschrieben werden.
+ Ich frage mich,
+ viele Promille der geneigten Leserinnen und Leser (von den abgeneigten ganz zu schweigen) das wohl wirklich machen,
+ und das innerhalb der durch das Studium gesetzten Zeit!
+\end_layout
+
+\begin_layout Enumerate
+Der Anfang der Mathematik bleibt ziemlich im Trüben,
+ und ich vermute,
+ dass dadurch ein ziemlich wichtiger Teil der Mathematik nicht begrifflich fassbar ist.
+ Falls die Axiome der natürlichen Zahlen nur mit Peano erklärt werden,
+ so ist dies in meinen Augen ähnlich demjenigen Vorgang,
+ einen Baum zu fällen und dann zu behaupten,
+ dass der Baum ausschließlich aus dem Stamm,
+ den Ästen den Zweigen und den Nadeln (oder Blättern,
+ oder gar nichts,
+ falls gerade Winter ist) bestehen würde.
+ Das stimmt so nicht.
+ Die Wurzeln,
+ ja auch das umgebende Erdreich zusammen mit den darin enthaltenen Bewohnerinnen und Bewohnern muss für eine umfassende Betrachtung von Bäumen einbezogen werden.
+ Das im Hinblick auf die Mathematik zu machen,
+ hat mich einfach sehr interessiert.
+\end_layout
+
+\begin_layout Enumerate
+Das Problem der Verwechslung von Modell und Realität.
+ In der Mathematik und Wissenschaft werden oft Modelle erstellt.
+ Das Problem dabei ist,
+ wenn die Modelle mit der Realität verwechselt werden.
+ Das kann bisweilen fatale Folgen nach sich ziehen.
+ Zu einer soliden Diskussion eines Modells gehört es,
+ wenn das Modell mit der Realität validiert wird (also verglichen wird) und abgeschätzt wird,
+ wo das Modell nahe,
+ und wo es fern der Realität liegt.
+ Alles andere ist Vorspiegelung falscher Tatsachen und bisweilen sogar fahrlässig falsch.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Es gibt in der Mathematik eine Art 
+\begin_inset Quotes gld
 \end_inset
 
-Oft wird erwartet,
- man solle Beweise selbstständig nachvollziehen – obwohl diese nur zur Hälfte dastehen.
- Ich frage mich:
- Wie viele Studierende schaffen das wirklich?
- Und das noch innerhalb der straffen Studienzeit?
+Bilderverbot
+\begin_inset Quotes grd
+\end_inset
+
+:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Du sollst nicht versuchen,
+ mit Beispielen etwas zu erklären
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Natürlich ist es nicht korrekt,
+ wenn mit Beispielen allgemeingültige Sachverhalte geprüft werden.
+ Aber die bewusste Vereinfachung oder das Verwenden von Beispiel ist oftmals geradezu eine Triebfeder von neuen Ideen,
+ wie Probleme in leichtere Probleme umgewandelt werden.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Was mich auch wahnsinnig gestört hat,
+ war,
+ dass meiner Tochter Flurina verboten wurde,
+ mit den Händen zu rechnen.
+ Das ist meines Erachtens der falsche Fokus.
+ Es ist meines Erachtens nicht wichtig,
+ wie etwas gerechnet wird - sondern dass etwas gerechnet wird.
 \end_layout
 
 \begin_layout Standard
-Ich möchte es besser machen.
- Ich möchte zeigen,
- dass Mathematik verständlich sein kann – auch wenn es manchmal Mühe braucht.
- Ich möchte Dich nicht belehren,
- sondern einladen:
- zum Mitdenken,
- Hinterfragen,
- Staunen.
- Wenn ich das hinbekomme,
- dann war die Mühe dieses Buches nicht umsonst.
+Die Frage ist natürlich:
+ Warum betreibe ich trotzdem Mathematik,
+ wenn sie Dich scheinbar so anödet?
+ Die Begründung möchte ich bereits wieder in ein neues Unterkapitel schreiben.
+\end_layout
+
+\begin_layout Section
+Was soll denn an Mathematik so begeisternd sein?
+\end_layout
+
+\begin_layout Standard
+Ich möchte hiermit meine 
+\begin_inset Quotes gld
+\end_inset
+
+Liebeserklärung
+\begin_inset Quotes grd
+\end_inset
+
+ an die Mathematik formulieren.
+ Ich bin hin und weg von der Mathematik,
+ weil
+\end_layout
+
+\begin_layout Enumerate
+ich beim Nachvollziehen der Beweise und Definitionen immer wieder etwas entdecke,
+ welches ich vorher keine Vermutung gehabt hätte,
+ dass es überhaupt existiert.
+\end_layout
+
+\begin_layout Enumerate
+ich größten Respekt vor der rund 3000 jährigen Geschichte der Mathematik habe.
+\end_layout
+
+\begin_layout Enumerate
+ich gelernt habe,
+ dass es sich lohnt,
+ stundenlang über irgendwelche Beweise nachzudenken,
+ um am Schluss zu merken,
+ was gemacht werden muss,
+ damit sich vieles in Wohlgefallen auflöst.
+\end_layout
+
+\begin_layout Enumerate
+für mich Mathematik die pure Lust am Denken übers Denken ist - beste Philosophie eben.
+\end_layout
+
+\begin_layout Enumerate
+ich das Gefühl habe,
+ dass die Sachen noch viel anschaulicher erklärt werden könnten.
+ Weil ich das Gefühl habe,
+ dass eben noch nicht alles zur und über die Mathematik gesagt wurde.
+\end_layout
+
+\begin_layout Enumerate
+mit ihrer Hilfe Zusammenhänge aufgedeckt,
+ physikalische und technische Modelle erstellt werden können,
+ auf welche ich nie gekommen wäre.
+\end_layout
+
+\begin_layout Enumerate
+die Mathematik in meinen Augen nebst der klassischen Bildung,
+ der Kunst und der Religion eine wichtige Säule unserer (europäischen) Kultur ist
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ich möchte nicht verheimlichen,
+ dass die Mathematik,
+ so wir sie heute kennen,
+ eigentlich ein Importprodukt von den arabischen Ländern und Indien ist,
+ wofür ich mich herzlich bedanke.
+ Weiter muss ich gestehen,
+ dass ich zwar weitgehend die Bibel gelesen habe,
+ jedoch weder des (klassischen) Griechischen noch des Lateins mächtig bin.
+ 
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+ich finde,
+ dass die Mathematik immer eine Reise wert ist.
+\end_layout
+
+\begin_layout Enumerate
+ich das Gefühl habe,
+ dass es neben Prosa (Erzählungen,
+ Romane),
+ Lyrik mit Sachbüchern noch eine andere Literaturart gibt,
+ welche mich und hoffentlich auch Dich fesseln kann und welche neugierig auf das Leben machen kann.
+\end_layout
+
+\begin_layout Enumerate
+weil es zu ihrer Ausübung ein Mathematikbuch,
+ Papier und Schreibwerkzeug braucht,
+ und das finde ich großartig.
+ Es ist eigentlich die einzige exakte Wissenschaft,
+ welche ohne viel materiellem Aufwand betrieben werden kann.
+ Ja,
+ ich weiß,
+ Du sagst jetzt wahrscheinlich:
+ Stimmt nicht,
+ auch für Informatik braucht es eigentlich nur ein Laptop oder Desktop und wenn möglich ein Internetanschluss.
+ Ich bin jedoch noch vor dem PC-Zeitalter auf die Welt gekommen,
+ und die wirklich super leistungsstarken Computer gibt es meines Erachtens erst seit etwa 1995.
+ Vorher gab es zwar Compis
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Compi ist das schweizerdeutsche Kosewort für 
+\begin_inset Quotes gld
+\end_inset
+
+Computer
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+,
+ aber die waren teuer.
+ Außerdem gibt es viele gute Informatikbücher,
+ welche im Selbststudium gelesen werden können.
+ Da braucht es mich meines Erachtens nicht so dringend
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ich bin an C/C++ lernen mit einem entsprechenden Buch.
+ Langsam,
+ aber stetig.
+\end_layout
+
+\end_inset
+
+.
+ Ich habe einmal damit begonnen,
+ ein Physikbuch (Jay Orear,
+ Physik) zu lösen.
+ Hätte ich es zu Ende gelöst,
+ dann wäre ich jetzt Physiker.
+ Das Lösen der Aufgaben im Physikbuch war auch interessant.
+ Jedoch habe ich mich jetzt in Mathematik 
+\begin_inset Quotes gld
+\end_inset
+
+verbissen
+\begin_inset Quotes grd
+\end_inset
+
+,
+ denn beim Physikbuch konnte ich nur sogenannte 
+\begin_inset Quotes gld
+\end_inset
+
+Kreidephysik
+\begin_inset Quotes grd
+\end_inset
+
+ machen.
+ Ich hatte also nie die Möglichkeit,
+ die Theorie in den Experimenten zu überprüfen.
+ Das wäre jedoch meines Erachtens ebenfalls wichtig.
+ Erst im Zusammenwirken von Theorie und Praxis wäre es sinnvoll,
+ Physik zu betreiben.
+ Das würde mich zwar auch sehr reizen.
+ Beispielsweise eine Uhr mit bloßen Händen zu erzeugen
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ich denke an eine Wasseruhr,
+ bei welcher mit einer Quelle periodisch ein Wasserbehälter gefüllt würde und welche dann über ein Jahr geschaut würde,
+ wie viele Kübel gefüllt würden.
+ Dann könnte ein Zeitmaß berechnet werden:
+ 1 Sekunde sind so und so viele Teile eines Kübels.
+ Wenn dieser Kübel dann noch zylinderförmig wäre,
+ dann könnte eine Sekunde so bestimmt werden.
+ Ja,
+ ich weiß,
+ das hat es schon gegeben und wird es auch geben.
+ Aber ich habe noch keine wirklichen Daten gefunden,
+ welche das veranschaulichen.
+ Physik sozusagen 
+\begin_inset Quotes gld
+\end_inset
+
+mit bloßen Händen
+\begin_inset Quotes grd
+\end_inset
+
+ auszuüben,
+ nur mein Verstand und mit Schreibmaterial ausgerüstet die physikalischen Gesetze empirisch prüfen und natürlich entsprechend dokumentieren - das wäre schön!
+\end_layout
+
+\end_inset
+
+.
+ Aber weil das mit großem materiellem Aufwand verbunden wäre,
+ bleibt mir,
+ davon zu träumen.
+\end_layout
+
+\begin_layout Enumerate
+es sich lohnt,
+ wenn ich sozusagen 
+\begin_inset Quotes gld
+\end_inset
+
+Mathematik in Zeitlupe
+\begin_inset Quotes grd
+\end_inset
+
+ betreibe,
+ damit Du rasend schnell die Konzepte der Mathematik verinnerlichen kannst.
+\end_layout
+
+\begin_layout Enumerate
+zu schön ist,
+ um sie einfach den Mathematikerinnen und Mathematikern zu überlassen.
+ Das ist wahrscheinlich anmaßend,
+ wenn ich das so schreibe.
+ Aber ich finde,
+ die Wissenschaft soll zu den Menschen gebracht werden und nicht umgekehrt die Menschen zur Wissenschaft.
+\end_layout
+
+\begin_layout Enumerate
+ich der Meinung bin,
+ dass Mathematik einerseits der Linguistik und andererseits der Psychologie zugeordnet werden kann.
+ Das heißt,
+ ich bin der Meinung,
+ dass des der Mathematik gut tut,
+ wenn Sie sich darauf besinnt,
+ dass sie von Menschen für Menschen gemacht wurde (und nicht gegen Menschen,
+ wie sich boshaft vermuten ließe).
+ Damit das wieder so wird,
+ dafür kämpfe ich!
+ Ich habe lange gedacht,
+ Mathematik sei eine Naturwissenschaft.
+ Soweit ich Mathematiker kenne,
+ würden die sich sehr dagegen sträuben,
+ zu akzeptieren,
+ dass Mathematik eine Geisteswissenschaft wäre.
+ Denn in den Augen von 
+\begin_inset Quotes gld
+\end_inset
+
+guten
+\begin_inset Quotes grd
+\end_inset
+
+ Mathematikerinnen und Mathematikern sind Sozial- und Geisteswissenschaftler 
+\begin_inset Quotes gld
+\end_inset
+
+Stümper
+\begin_inset Quotes grd
+\end_inset
+
+,
+ solche,
+ die es im Leben zu nichts gebracht haben und darum sich den sozial- und geisteswissenschaftlichen Fächern zugewandt haben.
+ Eine Ausnahmen sind wahrscheinlich Ökonomen,
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Geili Sieche
+\begin_inset Quotes grd
+\end_inset
+
+,
+ wie ich auf schweizerdeutsch schwafeln würde,
+ also echte Kerle.
+ Aber die haben in der breiten Öffentlichkeit im Moment auch keinen so guten Ruf mehr.
+ Ein Bekannter von mir,
+ welcher in Fachkreisen wahrscheinlich äußerst bekannt ist,
+ Walter Gubler
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+welcher jetzt ordentlicher Professor für Mathematik ist
+\end_layout
+
+\end_inset
+
+,
+ hat mir einmal gesagt,
+ es könne darüber gestritten werden,
+ ob Mathematik eine Natur- oder Geisteswissenschaft sei.
+ Warum ist das so wichtig?
+ Gibt es nicht ernsthaftere Themen,
+ welche der Rede wert wären?
+ Gibt es sicher.
+ Aber der Punkt ist der:
+ In der Geistes- und Sozialwissenschaft scheint mir der 
+\begin_inset Quotes gld
+\end_inset
+
+Diskurs
+\begin_inset Quotes grd
+\end_inset
+
+,
+ das aufrichtige,
+ ehrliche,
+ empathische Fachgespräch weitaus wichtiger zu sein als in der Mathematik,
+ wo ich doch immer das Gefühl habe,
+ alle Mathematiker seien als unappetitliche,
+ besserwisserische,
+ lieblose,
+ gemeine,
+ hinterhältige Genies auf die Welt gekommen (das ist jetzt nicht nett - aber meinst Du,
+ die waren es zu mir?).
+ Ich möchte einen neuen Zugang zur Mathematik,
+ als praktische Philosophie betreiben.
+ Mit nichts als einem Mathebuch als Vorlage,
+ einem Laptop,
+ einem Schreibprogramm und viel,
+ viel Zeit möchte ich über Begriffe des täglichen Lebens nachdenken,
+ einen Weg zeigen,
+ wie das Sinn machen könnte,
+ Tipps und Tricks,
+ jedoch auch Fallen,
+ Irrwege,
+ Rätsel und ungelöste Fragen diskutieren.
+\end_layout
+
+\begin_layout Enumerate
+dieser Text eine Liebeserklärung an das Leben und die Wahrheit sein soll.
+\end_layout
+
+\begin_layout Section
+Was soll in diesem Buch besprochen werden?
+\end_layout
+
+\begin_layout Standard
+Ich hoffe,
+ viel und immer mehr!
+ Ich möchte dieses Buch schreiben,
+ so wie es eigentlich nie gemacht wird:
+ Aus einem Guss.
+ Das bedeutet,
+ ich möchte gerne Alles erklären und auf Alles eingehen.
+ Der Nachteil dieser Vorgehensweise ist,
+ dass das Buch im Grunde genommen unlesbar wird.
+ Denn es sind vor allem die kleinen,
+ mühsamen,
+ aber eigentlich klaren Beweise,
+ welche ermüdend zum lesen sind,
+ welche jedoch Übersicht erzeugen,
+ ein gewisses Gefühl für das Wesen,
+ aber auch die Widerhaken und Fallen des Stoffes geben.
+ Ich möchte fast die 
+\begin_inset Quotes gld
+\end_inset
+
+klassische Ochsentour
+\begin_inset Quotes grd
+\end_inset
+
+ beschreiten,
+ so weit dies möglich ist,
+ jedoch noch ein kleines bisschen darüber hinausgehen:
+ 
+\end_layout
+
+\begin_layout Itemize
+Symbole:
+ Das habe ich bis jetzt noch in keinem Mathebuch gelesen,
+ dass dieses sich mit Symbolen beschäftigt.
+ Es geht in diesem Kapitel darum,
+ sich mit dem Wesen von Symbolen zu beschäftigen,
+ denn diese sind die zentralen Bausteine in unserem Denken.
+ Es geht um die Eigentümlichkeiten von Symbolen.
+\end_layout
+
+\begin_layout Itemize
+Logik und Mengenlehre:
+ Die Logik beschäftigt sich mit Symbolen,
+ Aussagen,
+ Wahrheitsgehalte von Aussagen,
+ wie Aussagen miteinander verknüpft werden können und welche Gesetze dabei gelten.
+ Die Mengenlehre beschäftigt sich mit Zusammenfassungen von (anderen) Symbolen und den daraus abzuleitenden Gesetzmäßigkeiten 
+\end_layout
+
+\begin_layout Itemize
+natürliche Zahlen und ihre Eigenschaften:
+ Natürlichen Zahlen sind 1 sowie alle Zahlen,
+ welche aus der Addition einer natürlichen Zahl mit 1 entstehen.
+ Dies sind also die Zahlen 1,
+ 2,
+ 3,
+ 4,
+ 5,
+ 6 und so weiter.
+ Es können Operationen + und 
+\begin_inset Formula $\times$
+\end_inset
+
+ definiert werden,
+ welche bestimmte Eigenschaften besitzen.
+\end_layout
+
+\begin_layout Itemize
+ganze Zahlen:
+ Ganze Zahlen sind die natürlichen Zahlen und diejenigen Zahlen,
+ welche entstehen,
+ wenn zwei natürliche Zahlen voneinander subtrahiert werden.
+ Es sind dies die Zahlen 0,
+ 1,
+ -1,
+ 2,
+ -2,
+ 3,
+ -3 und so weiter.
+ Die ganzen Zahlen bilden bezüglich der Addition eine abelsche Gruppe.
+ Die abelsche Gruppe ist sozusagen der logische Kern der ganzen Zahlen.
+\end_layout
+
+\begin_layout Itemize
+rationale Zahlen:
+ Rationale Zahlen sind die ganzen Zahlen und diejenigen Zahlen,
+ welche entstehen,
+ wenn eine ganze Zahl durch eine andere ganze Zahl dividiert wird.
+ Wobei die zweite ganze Zahl nicht Null sein darf.
+ Die rationalen Zahlen bilden zusammen mit den Operationen + und 
+\begin_inset Formula $\times$
+\end_inset
+
+ einen Körper.
+ Wiederum ist der ein Körper sozusagen der logische Kern von rationalen Zahlen.
+\end_layout
+
+\begin_layout Itemize
+Funktionen:
+ Funktionen sind Abbildungen von Mengen auf andere Mengen,
+ was vielsagend nichtssagend ist.
+ Beispielsweise kann die Geschwindigkeit eines Zugs als Funktion (Abbildung) der Zeit verstanden werden.
+\end_layout
+
+\begin_layout Itemize
+stetige Funktionen in allen Varianten:
+ Eine Funktion heißt stetig in einem ihrer Definitionspunkte,
+ falls der Wert eines Punkts der Funktion in einer beliebigen (kleinen!) Umgebung vom Funktionswert im Punkt abhängt.
+ Umgangssprachlich 
+\begin_inset Newline linebreak
+\end_inset
+
+(aber ebenso missverständlich!) macht die Funktion keine 
+\begin_inset Newline linebreak
+\end_inset
+
+Sprünge.
+ Zuerst wird die Stetigkeit einer Funktion in einer Art 
+\begin_inset Quotes gld
+\end_inset
+
+Sandkasten
+\begin_inset Quotes grd
+\end_inset
+
+ gezeigt,
+ wo alles noch übersichtlich und 
+\begin_inset Newline linebreak
+\end_inset
+
+verständlich ist.
+ Dann jedoch wird die Stetigkeit auf immer abstrusere
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+will heißen:
+ seltsamere oder merkwürdigere
+\end_layout
+
+\end_inset
+
+ Mengen übertragen.
+ 
+\end_layout
+
+\begin_layout Itemize
+Folgen:
+ Auch wenn Kindern ihren Eltern folgen sollten,
+ dies jedoch oft genug nicht tun,
+ ist diese Art von Folgen nicht gemeint.
+ Folgen sind Abbildungen von natürlichen Zahlen auf beliebige Mengen - zuerst einmal werden jedoch Folgen von rationalen Zahlen untersucht.
+\end_layout
+
+\begin_layout Itemize
+reelle Zahlen:
+ Reelle Zahlen sind verschieden definierbar.
+ Am meisten Verwendung findet wohl die Definition von reellen Zahlen als Folgen von rationalen Zahlen.
+ Es gibt reelle Zahlen,
+ welche gar nicht mehr als Bruchzahlen aufgeschrieben werden können.
+ Die bekannteste davon ist sicher 
+\begin_inset Formula $\pi$
+\end_inset
+
+,
+ die 
+\begin_inset Quotes gld
+\end_inset
+
+Kreiszahl
+\begin_inset Quotes grd
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+tönt zwar wie 
+\begin_inset Quotes gld
+\end_inset
+
+Kreischzahl
+\begin_inset Quotes grd
+\end_inset
+
+,
+ ist es jedoch nicht 
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+imaginäre Zahlen:
+ Imaginäre Zahlen sind reelle Zahlen zusammen mit Vielfachen der Wurzel aus -1,
+ 
+\begin_inset Formula $i\equiv\sqrt{-1}.$
+\end_inset
+
+ Das merkwürdige an imaginären Zahlen ist,
+ dass es sie einerseits gar nicht gibt,
+ aber andererseits mit ihnen sehr gut gerechnet werden kann!
+\end_layout
+
+\begin_layout Itemize
+Differentiation:
+ Die Ableitung einer Funktion entspricht dem Vorgang,
+ aus der Ortsfunktion eines Körpers seine Geschwindigkeit zu berechnen.
+ Die Ortsfunktion gibt an,
+ wann ein Gegenstand sich wo befindet.
+ Niemand würde bezweifeln,
+ dass beispielsweise ein Zug eine gewisse Geschwindigkeit besitzt - doch genau das wurde in der Vergangenheit genau gemacht.
+ Ich möchte die Problematik
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Das tönt vielleicht in Deinen Ohren grauenhaft,
+ und Du könnest Dich fragen:
+ Wieso schwafelt der andauernd von Problemen.
+ Nun,
+ das mache ich darum,
+ dass Deine Aufmerksamkeit darauf zu lenken.
+ Nichts ist für Kinder so langweilig wie ein Spaziergang auf dem Asphalt.
+ Das langweilt.
+ Wenn es jedoch über das Geröll eines Bachbetts geht,
+ und die Kinder müssen sich ganz auf den nächsten Schritt konzentrieren,
+ damit sie nicht umfallen und sich wehtun,
+ dann wird es interessant.
+ Obwohl die Kinder dann nicht mehr so schnell vorwärts kommen.
+ Wir Menschen wollen Probleme haben.
+ Jedoch dürfen diese weder zu leicht noch zu schwierig sein.
+ Meine Aufgabe sehe ich darin,
+ Dich von einem Problem zum anderen zu leiten,
+ so dass es für Dich derart spannend wird,
+ dass Du immer mehr davon lösen willst.
+\end_layout
+
+\end_inset
+
+ skizzieren.
+ Denn erweist es sich sehr trügerisch,
+ die momentane Geschwindigkeit eines Zugs so berechnen zu wollen,
+ wie in der Mathematik dies gemacht würde.
+ Wie würde das in der Mathematik gemacht?
+ Angenommen,
+ die Geschwindigkeit eines Zugs soll ermittelt werden,
+ welcher von Bern um 15:00 Uhr abfährt und (sofern er keine Verspätung besitzt) um ca.
+ 16:03 Uhr in Zürich ankommt.
+ Dann fragt sich ein neunmalkluger Mathematiker (Männer mögen da ein wenig pingeliger zu sein als Frauen),
+ wie groß seine momentane Geschwindigkeit um 15:24 Uhr ist.
+ Und zwar 
+\emph on
+genau
+\emph default
+ um 15:24 Uhr,
+ keine Mikrosekunde früher und keine später.
+ Wobei eine Mikrosekunde
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ein Mikrosekunde ist 
+\begin_inset Formula $10^{-6}s=0.000001$
+\end_inset
+
+ Sekunden,
+ was bedeutet,
+ dass 1 Million davon eine Sekunde ist.
+ 1 zu 1 Million ist soviel wie 1 mm zu 1 km,
+ also wirklich sehr wenig
+\end_layout
+
+\end_inset
+
+.
+ immer noch zu ungenau für die Mathematiker ist.
+ Ich nehme jedoch an,
+ unser neunmalkluger Mathematiker würde sich unser erbarmen und sagen:
+ Also dann nehmen wir halt den über eine Mikrosekunden gemittelte Wert der Geschwindigkeit.
+ Dann schießt der Mathematiker zwei Bilder im Abstand von 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+ Sekunden,
+ das ist also 
+\begin_inset Formula $1/1000$
+\end_inset
+
+ von 
+\begin_inset Formula $1/1000$
+\end_inset
+
+ Sekunden (was ich schon einmal nicht könnte) und bestimmt dann,
+ wo der Zug sich befindet.
+ Wie weit kommt der Zug?
+ Dies ist schon fast eine Fermiaufgabe
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Siehe dazu das Physikbuch von Tipler:
+ Der italienisch-amerikanische Physiker Enrico Fermi hat Aufgaben gestellt,
+ welche gar nicht präzise beantwortet werden können,
+ welche aber eine einleuchtende Lösung besitzen,
+ wenn vernünftige Annahmen getroffen werden.
+ Ich habe den Begriff 
+\begin_inset Quotes gld
+\end_inset
+
+fast
+\begin_inset Quotes grd
+\end_inset
+
+ verwendet,
+ weil die Aufgabe wohl zu einfach ist,
+ um als Fermi-Aufgabe zu gelten.
+\end_layout
+
+\end_inset
+
+:
+ Ich nehme an,
+ der Zug fahre etwa 180 km/Stunde schnell (auf den Neubaustrecken ist dies offenbar ein vernünftiger Wert).
+ Da 1 km 1000 m und eine Stunde 3600 Sekunden sind,
+ beträgt die Geschwindigkeit des Zugs in m/s
+\begin_inset Formula 
+\[
+180\frac{km}{h}=180\frac{1000m}{3600s}=\frac{180000m}{3600s}=\frac{1800m}{36s}=50\frac{m}{s}
+\]
+
+\end_inset
+
+denn 
+\begin_inset Formula $5\times36=10\times36/2=360/2=180,$
+\end_inset
+
+ also ist 
+\begin_inset Formula $50\times36=1800$
+\end_inset
+
+.
+ Dies bedeutet,
+ dass der Zug pro Sekunde 50 m weiter kommt.
+ Also ist der Zug in 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+ Sekunden 
+\begin_inset Formula $50\times10^{-6}m=5\times10^{-5}m$
+\end_inset
+
+ weiter.
+ Das sind dann 
+\begin_inset Formula $50\times10^{-6}m$
+\end_inset
+
+,
+ das wären also 
+\begin_inset Formula $50\times1/1000\times1/1000m=50/1000mm$
+\end_inset
+
+.
+ Meinst Du,
+ du könntest diesen Unterschied auf diesen zwei Bildern feststellen?
+ Ich für mich halte dies für eher unwahrscheinlich.
+ Dann würde etwas geschehen,
+ was in der Numerik 
+\begin_inset Quotes gld
+\end_inset
+
+underflow
+\begin_inset Quotes grd
+\end_inset
+
+,
+ also wörtlich übersetzt 
+\begin_inset Quotes gld
+\end_inset
+
+Unterfluss
+\begin_inset Quotes grd
+\end_inset
+
+ genannt wird.
+ Die Differenz zwischen zwei Größen ist so klein,
+ dass sie verschwindet.
+ Prinzipiell wird die Momentangeschwindigkeit berechnet,
+ indem die gemessene Strecke durch die gemessene Zeit geteilt wird.
+ Im obigen Beispiel wäre dies 
+\begin_inset Formula 
+\[
+\frac{50\times1/1000\times1/1000m}{1/1000\times1/1000s}=50\frac{m}{s}
+\]
+
+\end_inset
+
+Dies würde aber bedeuten,
+ dass,
+ falls der geneigte Mathematiker den Zeitunterschied klein genug machen würde,
+ der Ortsunterschied nicht mehr also verschieden von Null gemessen werden könnte.
+ Was zur Folge hätte,
+ dass die gemessene Geschwindigkeit plötzlich Null würde.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Ja was denn?
+\begin_inset Quotes grd
+\end_inset
+
+,
+ wirst Du Dich vielleicht fragen.
+ Der Zug fährt doch,
+ dann kann er doch nicht plötzlich still stehen?
+ Jetzt sieht es so aus,
+ als ob die ganze Mathematik nichts wert wäre.
+ Doch das stimmt meines Erachtens so nicht.
+ In der Mathematik wird von praktischen Problemen zuerst einmal großzügig abstrahiert.
+ Falls trotzdem etwas berechnet werden soll,
+ wird das Problem der Numerik übergeben.
+ Innerhalb der Numerik wird versucht,
+ mit den Gegebenheiten der Computer so genau wie möglich das Resultat zu berechnen.
+ Schließlich wird dann die Mathematik in die Physik und Ingenieurwissenschaften umgesetzt,
+ um wirklich praktikable Lösungen zu erzielen.
+ Wie das gemacht wird?
+ Das weiß ich selbst nicht sehr gut.
+ Aber ein gewöhnlicher Tachometer arbeitet mit Wirbelströmen
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ich habe es schnell auf Wikipedia (
+\begin_inset CommandInset href
+LatexCommand href
+target "http://de.wikipedia.org/wiki/Wirbelstrom"
+literal "false"
+
+\end_inset
+
+) überflogen,
+ welche zwar keine 
+\begin_inset Quotes gld
+\end_inset
+
+gute
+\begin_inset Quotes grd
+\end_inset
+
+ Quelle ist,
+ jedoch denke ich,
+ sollte es für die Diskussion an dieser Stelle ausreichend sein.
+\end_layout
+
+\end_inset
+
+,
+ und damit diese verstanden werden können,
+ wird genau diese Art der Berechnung verwendet,
+ welche ich oben demonstriert habe.
+ Außerdem kann in der Praxis beispielsweise umgekehrt vorgegangen werden:
+ Es kann beispielsweise über zwei Sekunden gemittelt werden,
+ wie weit der Zug gekommen ist und daraus die Geschwindigkeit des Zugs abgeschätzt werden.
+ Diese Näherung ist umso besser,
+ je weniger der Zug während dieser Zeit beschleunigt oder abbremst.
+ Dieses Resultat wurde auch mit mathematischen und physikalischen Mitteln erarbeitet.
+ Was ich weiter weiß,
+ ist,
+ dass in den Ingenieurswissenschaften immer versucht wird,
+ das Unwesentliche wegzulassen,
+ so dass ein Naturprinzip einerseits verwendet werden kann.
+ Andererseits soll die Näherung immer noch so gut sein,
+ dass das Resultat noch brauchbar ist.
+ Das ist auch eine Kunst,
+ aber ich tue mich als Automationsingenieur mit Fachhochschulreife zugegebenermaßen immer schwer damit.
+ Ich habe immer Angst davor,
+ das Falsche zu vernachlässigen,
+ und dann stimmt es plötzlich nicht mehr.
+ Übrigens sind 
+\begin_inset Quotes gld
+\end_inset
+
+Abschätzungen
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Abschätzung
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "seq:Abschaetzung"
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+,
+ also Vernachlässigungen von Größen,
+ auch in der Mathematik sozusagen das Salz in der Suppe.
+ Auch in der Mathematik geht es oft darum,
+ das Wesentliche zu erfassen und das Unwesentliche wegzulassen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Zurück zur Ableitung:
+ Mit ihrer Hilfe können viele Sachen berechnet werden,
+ welche vorher entweder nur sehr mühsam oder überhaupt nicht berechnet werden können.
+\end_layout
+
+\begin_layout Itemize
+Reihen:
+ Der Sinn der Reihen besteht darin,
+ dass mit ihrer Hilfe Funktionen relativ schnell berechnet werden können,
+ welche sonst nur sehr mühsam berechnet werden können.
+\end_layout
+
+\begin_layout Itemize
+Satz von Taylor als Kulminationspunkt der Differentiation einer Funktion:
+ Mit Hilfe des Satzes von Taylors lassen sich viele Funktionen sehr schnell und genau berechnen.
+\end_layout
+
+\begin_layout Itemize
+Potenzreihen:
+ Der Satz von Taylor führt auf Potenzreihen.
+ Dies ist ein Mix von Reihen und Funktionen.
+\end_layout
+
+\begin_layout Itemize
+Integration:
+ Wenn es bei der Differentiation exemplarisch darum geht,
+ die Geschwindigkeit eines Zugs zu bestimmen,
+ dann geht es bei der Integration typischerweise um eine
+\begin_inset Newline linebreak
+\end_inset
+
+Flächenbestimmung.
+\end_layout
+
+\begin_layout Standard
+Nun,
+ ja eigentlich gibt es jetzt drei mögliche Reaktionsarten Deinerseits.
+ Entweder kennst Du die Begriffe,
+ und Du hast nur schnell überfliegen wollen,
+ was ich zu besprechen gedenke.
+ Vielleicht sagst Du Dir,
+ dass dies ein wenig mager sei.
+ Nun ja,
+ das stimmt wahrscheinlich auch.
+ In diesem Fall kannst Du diese Einführung getrost auf der Seite lassen und Dich wichtigeren Sachen zuwenden.
+ Dann entschuldige ich mich dafür,
+ dass ich Deine kostbare Zeit verschwendet habe.
+ Oder aber Du kennst diese Begriffe noch nicht und denkst etwa:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Folgen,
+ ist das nicht Terminator
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+da ich unbescheiden hoffe,
+ dass diese Einführung dereinst zeitlos werden wird (ist natürlich nicht frei von Selbstironie):
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Termintor
+\begin_inset Quotes grd
+\end_inset
+
+ ist eine Serie von und mit Arnold Schwarzenegger,
+ von welcher ich jedoch,
+ Schande über mich,
+ keinen einzigen Teil gesehen habe.
+ Ich habe es nicht so mit Männern,
+ welche sich mit Amphetaminen vollgepumpt haben.
+\end_layout
+
+\end_inset
+
+ Folge 1 bis X
+\begin_inset Quotes grd
+\end_inset
+
+ oder sonst eine Folge von mehr oder weniger abartigen,
+ unterhaltsamen oder lustigen Geschichten.
+ Wenn ich in diesem Fall Deine Neugier geweckt habe:
+ Das freut mich natürlich.
+ Die dritte Reaktionsmöglichkeit ist für mich eindeutig diejenige,
+ welche mir am meisten Kopfzerbrechen bereitet:
+ Du kennst diese Begriffe,
+ möchtest diese jedoch noch so gerne nicht kennen.
+ Weil sie langweilig und unverständlich sind.
+ Die Schwester meiner Ex-Frau hat vor vielen Jahren die Matura (oder Abitur im deutschen Sprachraum) absolviert.
+ Sie erzählte mir immer wieder,
+ sie habe den Mathematiklehrer gefragt,
+ für was Mathematik eigentlich gut sei - und dieser Mathematiklehrer habe es ihr nicht erklären können.
+ Ich glaube,
+ dies in einem schlechten Witz so darlegen zu können:
+ Mathematik ist ein Art Spiel.
+ Wer zuerst nach dem Sinn fragt,
+ hat verloren.
+ Damit Du verstehst,
+ worin der Sinn dieses Witzes bestehen soll:
+ Es gibt ein Spiel,
+ dass jemand jemandem anderen Fragen stellen darf,
+ und in den Antworten darauf dürfen bestimme Wörter nicht vorkommen.
+ Also zum Beispiel die Wörter oder 
+\begin_inset Quotes gld
+\end_inset
+
+Ja
+\begin_inset Quotes grd
+\end_inset
+
+ oder 
+\begin_inset Quotes gld
+\end_inset
+
+Nein
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Und dann kannst Du Dir die Mathematik so vorstellen,
+ dass so lange von Dingen gesprochen wird,
+ welche zwar logisch sinnvoll sind,
+ jedoch keinen praktischen Nutzen für irgend jemanden besitzen (außer zur Selektion von sogenannten guten Schülerinnen und Schülern),
+ dass jemand fragt:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Für was ist das gut?
+\begin_inset Quotes grd
+\end_inset
+
+ Dann können die anderen schreien:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Du hast verloren!
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Falls ich es trotzdem schaffe,
+ Dir den Sinn der Mathematik darzulegen,
+ habe ich mein Ziel erreicht.
+ Ich meine auch,
+ Mathematik ist eigentlich ein Lebensgefühl,
+ eine Geisteshaltung,
+ und weniger eine Technik.
+ Ich versuche,
+ Dir schmackhaft zu machen,
+ dass Mathematik ist eine Art geistiges Klettern ist,
+ welches witzig sein und Spaß machen kann.
+ Urteile doch selbst,
+ ob es mir gelingt.
+\end_layout
+
+\begin_layout Standard
+Mein Vorbild bezüglich Mathematik ist Eugen.
+ Eugen hat gelebt (oder lebt immer noch,
+ ich weiß es nicht) und hieß wirklich so,
+ er hatte ein Down-Syndrom und war überdies (was für eine grässliche Zeit) kastriert.
+ Er musste wirklich ein Leben als Eunuche führen,
+ das heißt,
+ die Hoden wurden ihm entfernt.
+ Also hatte Eugen eine hohe Stimme und eine unförmige Gestalt.
+ Ich verstand ihn nicht,
+ er war mir mehr oder weniger unzugänglich.
+ Ich habe ihn bei einem Praktikum in einem Behindertenheim kennengelernt.
+ Eugen zeichnete immer Striche und Kreise,
+ ich wusste nicht,
+ wieso.
+ Bis Mario,
+ ein völlig desillusionierter und auch ein wenig versoffener Betreuer,
+ mir sagte,
+ Eugen würde rechnen,
+ so wie er es an der heilpädagogischen Schule gelernt habe.
+ Mag sein,
+ dass Eugen nie wirklich etwas kapiert hatte,
+ dass diese Übung für ihn mehr oder weniger 
+\begin_inset Quotes gld
+\end_inset
+
+sinnfrei
+\begin_inset Quotes grd
+\end_inset
+
+ war,
+ jedoch hat er es durchgezogen.
+ Ich wäre froh,
+ wenn es mir gelingen würde,
+ dieses Dokument so zu gestalten,
+ dass es immer wieder neu erobert werden könnte,
+ auch von Personen,
+ welche 
+\begin_inset Quotes gld
+\end_inset
+
+bildungsfern
+\begin_inset Quotes grd
+\end_inset
+
+ sind.
+\end_layout
+
+\begin_layout Standard
+Es kann auch gefragt werden,
+ ob es in Zeiten von Wikipedia sinnvoll ist,
+ ein Mathebuch zu schreiben.
+ Ja,
+ ich denke schon.
+ Denn die Wikipedia-Texte über Mathematik,
+ welche ich überflogen habe,
+ sind meines Erachtens nicht wirklich berauschend.
+ Irgendwie ist denen jegliche Didaktik und Methodik abhanden gekommen.
+ Die Texte sind für meine Begriffe ähnlich 
+\begin_inset Quotes gld
+\end_inset
+
+diktatorisch
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+So weit wie ich weiß,
+ heißt 
+\begin_inset Quotes gld
+\end_inset
+
+dictum
+\begin_inset Quotes grd
+\end_inset
+
+ auf lateinisch etwa so viel wie:
+ Aussage oder Befehl.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ wie weiland die Gesetzestafeln von Moses.
+ Es stimmt m.E.
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+m.E.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+m.E.
+ heißt 
+\begin_inset Quotes gld
+\end_inset
+
+meines Erachtens
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Dies bedeutet also,
+ dass ich hier meine persönliche Meinung vertrete,
+ welche jedoch durchaus als falsch sein kann.
+\end_layout
+
+\end_inset
+
+ zwar,
+ was aufgeschrieben wird.
+ Jedoch:
+ Wie diese Wahrheiten errungen wurde,
+ was sie genau aussagen,
+ wie ich sie anwenden kann,
+ worauf ich aufpassen muss,
+ was sie genau meinen mit dem,
+ was sie gesagt haben:
+ Fehlanzeige.
+ Auch Witz oder Geist finde ich in diesen Texten keinen.
+ Es kommt mir daher wie ein Abgesang,
+ eine Grabrede auf die Mathematik vor.
+ Nur von Toten wird üblicherweise so trostlos ernst gesprochen
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Diesen Satz finde ich auch nicht mehr so witzig wie auch schon,
+ da ich gestern (22.
+ August 2011) bei einer Beerdigung war.
+ Nun,
+ ich lasse den Satz im Text drin,
+ denn das Ernste,
+ Erhabene,
+ Entrückte in der Wikipedia-Sprachregelung geht mir immer noch auf den Geist.
+\end_layout
+
+\end_inset
+
+.
+ Wobei ich natürlich nichts dagegen habe,
+ wenn ich eines Besseren belehrt werde!
+ Auch ist es irgendwie Faulheit oder fehlender Mut,
+ ein entsprechendes Wikipedia-Projekt zu starten.
+ Ich möchte einfach still vor mich hin werkeln können.
+ Darum werde ich diesen Text zumindest in der ersten Fassung für mich alleine schreiben.
+ Melde Dich doch,
+ wenn Du entsprechend weitere Texte,
+ Vertiefungen oder Korrekturen schreiben möchtest.
+ Gerne würde ich einer Schreibwerkstatt (auch nur schon per E-Mail-Austausch) weitere Texte im Bildungsbereich schreiben.
+\end_layout
+
+\begin_layout Standard
+Ich möchte mit diesem Skript einen radikalen Weg der 
+\begin_inset Quotes gld
+\end_inset
+
+Umkehr der Beweislast
+\begin_inset Quotes grd
+\end_inset
+
+ gehen.
+ Mein Prinzip soll sein:
+ Hast Du es nicht verstanden,
+ dann habe ich etwas falsch gemacht.
+ Und nicht:
+ Wenn Du es nicht verstehst,
+ dann hast Du etwas falsch gemacht.
+ Wenn es ein Vermächtnis dieses Skript geben soll,
+ dann soll es dieses sein:
+ Dass auch in Naturwissenschaften und Technik geschaut wir,
+ dass alle,
+ welche es wollen,
+ es auch verstehen.
+\end_layout
+
+\begin_layout Standard
+Und nun zur Frage:
+ Was soll in diesem Text nicht besprochen werden?
+ Nun,
+ ich habe auch dunkle Flecken,
+ über welche nicht sprechen kann und/ oder will.
+ Wenn ich auch viel zu viel in diesem Text über mich verrate,
+ so schreibe ich doch nicht alles auf.
+ Denn auch ich bin sehr limitiert.
+ Und ich möchte nicht,
+ dass meine Welt aus den Fugen gerät,
+ weil ich alles aufschreibe,
+ was mir gerade in den Sinn kommt.
 \end_layout
 
 \begin_layout Section
@@ -1976,6 +4028,10 @@ alle Handschläge wurden doppelt gezählt
  nach einem Beweis nicht alle weiteren Anstrengungen ruhen zu lassen - auch wenn die Funktion von Beweisen oftmals ist,
  ein Gefühl der Plausibilität zu erzeugen.
  Aber oft sind die Beweise recht vage.
+\end_layout
+
+\begin_layout Chapter
+
 \end_layout
 
 \begin_layout Chapter

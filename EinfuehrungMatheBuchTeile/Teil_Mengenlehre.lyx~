@@ -23114,6 +23114,714 @@ status open
 
 \end_layout
 
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Gleichheit-Symbole-Aequivalenzrelation-1"
+
+\end_inset
+
+Die unter der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Definition-natuerliche-Zahlen-Eigen"
+nolink "false"
+
+\end_inset
+
+ festgelegte Gleichheit ist eine Äquivalenzrelation.
+\end_layout
+
+\begin_layout Proof
+Es sei 
+\begin_inset Formula $A$
+\end_inset
+
+ das Symbol für ein Symbol.
+ Dann ist 
+\begin_inset Formula $A=A$
+\end_inset
+
+.
+ Denn besteht das von 
+\begin_inset Formula $A$
+\end_inset
+
+ symbolisierte Symbol aus einem einzelnen Symbol,
+ dann muss das Symbol gleich dem Symbol selbst sein.
+ Angenommen,
+ die Anzahl der Symbole,
+ aus welchen 
+\begin_inset Formula $A$
+\end_inset
+
+ zusammengesetzt sei,
+ sei 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ und die Gleichheit von 
+\begin_inset Formula $A=A$
+\end_inset
+
+ sei bewiesen.
+ Besteht 
+\begin_inset Formula $A$
+\end_inset
+
+ jedoch aus 
+\begin_inset Formula $n+1$
+\end_inset
+
+ Symbolen,
+ dann kann ich schreiben
+\begin_inset Formula 
+\[
+A=A_{n+1}\,A_{n}
+\]
+
+\end_inset
+
+Das Symbol 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ besteht dabei aus 
+\begin_inset Formula $n$
+\end_inset
+
+ Symbolen,
+ das Symbol 
+\begin_inset Formula $A_{n+1}$
+\end_inset
+
+ ist aus einem Symbol aufgebaut.
+ Dann muss gemäß der Induktionsverankerung und der Voraussetzung der Induktionsvererbung gelten,
+ dass 
+\begin_inset Formula 
+\[
+A_{n+1}=A_{n+1}
+\]
+
+\end_inset
+
+sowie
+\begin_inset Formula 
+\[
+A_{n}=A_{n}
+\]
+
+\end_inset
+
+ist.
+ Also kann ich gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Definition-natuerliche-Zahlen-Eigen"
+nolink "false"
+
+\end_inset
+
+ der Gleichheit von Symbolen schließen,
+ dass 
+\begin_inset Formula 
+\[
+A_{n+1}\,A_{n}=A_{n+1}\,A_{n}
+\]
+
+\end_inset
+
+ist.
+ Also muss die Behauptung auch für Symbole 
+\begin_inset Formula $A$
+\end_inset
+
+ gelten,
+ welche 
+\begin_inset Formula $n+1$
+\end_inset
+
+ Symbole besitzen.
+ Da gemäß Voraussetzung alle Symbole aus endlich vielen Elementen aufgebaut sind,
+ glaube ich schließen zu dürfen,
+ dass dies für alle Symbole gelten muss.
+ Nun seien 
+\begin_inset Formula $A$
+\end_inset
+
+ und 
+\begin_inset Formula $B$
+\end_inset
+
+ Symbole von Symbolen,
+ wobei 
+\begin_inset Formula 
+\[
+A=B
+\]
+
+\end_inset
+
+sei.
+ Falls 
+\begin_inset Formula $A$
+\end_inset
+
+ ein Symbol symbolisiert,
+ dann muss gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Gleichheit-von-Symbolen"
+nolink "false"
+
+\end_inset
+
+ der Gleichheit von Symbolen das Symbol 
+\begin_inset Formula $B$
+\end_inset
+
+ ebenfalls ein Symbol symbolisieren.
+ Also müssen die beiden Symbole identisch sein.
+ Es sei 
+\begin_inset Formula $C$
+\end_inset
+
+ das Symbol welches dieses gemeinsame Symbol symbolisiere.
+ Also ist,
+ da jedes Symbol gleich zu sich selbst ist.
+\begin_inset Formula 
+\[
+C=C
+\]
+
+\end_inset
+
+Darum kann ich auch schreiben
+\begin_inset Formula 
+\[
+B=A
+\]
+
+\end_inset
+
+Die Behauptung sei jetzt für 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ Symbole bewiesen.
+ Zeigt sowohl 
+\begin_inset Formula $A$
+\end_inset
+
+ wie auch 
+\begin_inset Formula $B$
+\end_inset
+
+ auf Symbole,
+ welche auf 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ aufgebaut sind,
+ dann muss gelten,
+ dass aus 
+\begin_inset Formula 
+\[
+A=B
+\]
+
+\end_inset
+
+ ebenfalls 
+\begin_inset Formula 
+\[
+B=A
+\]
+
+\end_inset
+
+ folgt.
+ Nun sei 
+\begin_inset Formula $A$
+\end_inset
+
+ ein Symbol,
+ welches ein Symbol symbolisiert,
+ welches aus 
+\begin_inset Formula $n+1$
+\end_inset
+
+ Symbolen aufgebaut ist.
+ Also muss gelten
+\begin_inset Formula 
+\[
+A=A_{n+1}\,A_{n}
+\]
+
+\end_inset
+
+ wobei 
+\begin_inset Formula $A_{n+1}$
+\end_inset
+
+ ein Symbol symbolisiert,
+ welches aus einem Symbol aufgebaut ist.
+ 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ ist ein Symbol,
+ welches aus 
+\begin_inset Formula $n$
+\end_inset
+
+ Symbolen aufgebaut ist.
+ Gemäß dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:erstes-Gleichheit-von-Symbolen"
+nolink "false"
+
+\end_inset
+
+ muss ebenfalls gelten
+\begin_inset Formula 
+\[
+B=B_{n+1}\,B_{n}
+\]
+
+\end_inset
+
+wobei 
+\begin_inset Formula $B_{n}$
+\end_inset
+
+ ebenfalls aus 
+\begin_inset Formula $n$
+\end_inset
+
+ Symbolen aufgebaut ist.
+ Also muss aufgrund der Definition der Gleichheit von Symbolen gelten,
+ dass
+\begin_inset Formula 
+\[
+A_{n+1}=B_{n+1}
+\]
+
+\end_inset
+
+Da nun 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ aus 
+\begin_inset Formula $n$
+\end_inset
+
+ Symbolen zusammengesetzt ist,
+ kann ich aufgrund der Induktionsvoraussetzung folgern,
+ dass 
+\begin_inset Formula 
+\[
+A_{n}=B_{n}
+\]
+
+\end_inset
+
+sein muss und 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ wie auch 
+\begin_inset Formula $B_{n}$
+\end_inset
+
+ aus 
+\begin_inset Formula $n$
+\end_inset
+
+ Symbolen zusammengesetzt sein müssen.
+ Weiter kann ich aufgrund der Induktionsvoraussetzung ebenfalls folgern,
+ dass 
+\begin_inset Formula 
+\[
+B_{n+1}=A_{n+1}
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+B_{n}=A_{n}
+\]
+
+\end_inset
+
+gelten muss.
+ Das bedeutet jedoch auch,
+ dass 
+\begin_inset Formula 
+\[
+B=B_{n+1}\,B_{n}=A_{n+1}\,A_{n}=A
+\]
+
+\end_inset
+
+sein muss.
+ Also habe ich die Symmetrie der Gleichheit von Symbolen gezeigt.
+ 
+\end_layout
+
+\begin_layout Proof
+Nun kommt die Frage der Transitivität der Gleichheit von Symbolen.
+ Es seien 
+\begin_inset Formula $A,B$
+\end_inset
+
+ sowie 
+\begin_inset Formula $C$
+\end_inset
+
+ Metasymbole.
+ Weiter sei 
+\begin_inset Formula $A=B$
+\end_inset
+
+ sowie 
+\begin_inset Formula $B=C$
+\end_inset
+
+.
+ Das von 
+\begin_inset Formula $A$
+\end_inset
+
+ symbolisierte Symbol bestehe aus einem Symbol bestehe aus einem Symbol.
+ Also muss auch 
+\begin_inset Formula $B$
+\end_inset
+
+ gemäß der Definition von Symbolen aus einem Symbol bestehen.
+ Da 
+\begin_inset Formula $B=C$
+\end_inset
+
+ ist,
+ muss gemäß der Definition von Symbolen ebenfalls 
+\begin_inset Formula $C$
+\end_inset
+
+ aus einem Symbol bestehen.
+ Wäre nun das von 
+\begin_inset Formula $C$
+\end_inset
+
+ symbolisierte Symbol ungleich dem von 
+\begin_inset Formula $A$
+\end_inset
+
+ symbolisierten Symbol,
+ dann müsste,
+ da 
+\begin_inset Formula $B=C$
+\end_inset
+
+ ist,
+ auch das von 
+\begin_inset Formula $B$
+\end_inset
+
+ symbolisierte Symbol ungleich dem von 
+\begin_inset Formula $A$
+\end_inset
+
+ symbolisierten Symbol sein.
+ Das ist jedoch gemäß der Voraussetzung über 
+\begin_inset Formula $A$
+\end_inset
+
+ und 
+\begin_inset Formula $B$
+\end_inset
+
+ nicht wahr.
+ Also muss das von 
+\begin_inset Formula $C$
+\end_inset
+
+ symbolisierte Symbol gleich dem von 
+\begin_inset Formula $A$
+\end_inset
+
+ symbolisierten Symbol sein.
+ Darum glaube ich,
+ schreiben zu können,
+ dass 
+\begin_inset Formula 
+\[
+A=C
+\]
+
+\end_inset
+
+ist.
+ Nun sei die Behauptung für Symbolen bewiesen,
+ welche aus 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ Symbolen bestehen.
+ Besteht als 
+\begin_inset Formula $A$
+\end_inset
+
+ aus 
+\begin_inset Formula $n$
+\end_inset
+
+ Symbolen und ist 
+\begin_inset Formula 
+\[
+A=B
+\]
+
+\end_inset
+
+sowie
+\begin_inset Formula 
+\[
+B=C
+\]
+
+\end_inset
+
+dann muss auch 
+\begin_inset Formula 
+\[
+A=C
+\]
+
+\end_inset
+
+sein.
+ Nun bestehe 
+\begin_inset Formula $A$
+\end_inset
+
+ aus 
+\begin_inset Formula $n+1$
+\end_inset
+
+ Symbolen.
+ Also muss es ein Symbole 
+\begin_inset Formula $A_{n+1}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ derart geben,
+ dass
+\begin_inset Formula 
+\[
+A=A_{n+1}\,A_{n}
+\]
+
+\end_inset
+
+Dabei besteht 
+\begin_inset Formula $A_{n+1}$
+\end_inset
+
+ aus einem Symbol und 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ aus 
+\begin_inset Formula $n$
+\end_inset
+
+ Symbolen.
+ Nun sei 
+\begin_inset Formula 
+\[
+A=B
+\]
+
+\end_inset
+
+Gemäß dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:erstes-Gleichheit-von-Symbolen"
+nolink "false"
+
+\end_inset
+
+ muss 
+\begin_inset Formula $B$
+\end_inset
+
+ ebenfalls aus 
+\begin_inset Formula $n+1$
+\end_inset
+
+ Symbolen bestehen.
+ Also kann ich wieder schreiben 
+\begin_inset Formula 
+\[
+B=B_{n+1}\,B_{n}
+\]
+
+\end_inset
+
+sein.
+ Wobei 
+\begin_inset Formula $B_{n+1}$
+\end_inset
+
+ aus einem Symbol und 
+\begin_inset Formula $B_{n}$
+\end_inset
+
+ aus 
+\begin_inset Formula $n$
+\end_inset
+
+ Symbolen besteht.
+ Da 
+\begin_inset Formula $B=C$
+\end_inset
+
+ ist,
+ muss gemäß dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:erstes-Gleichheit-von-Symbolen"
+nolink "false"
+
+\end_inset
+
+ wiederum gelten,
+ dass 
+\begin_inset Formula $C$
+\end_inset
+
+ wiederum aus 
+\begin_inset Formula $n+1$
+\end_inset
+
+ Symbolen bestehen.
+ Also kann ich wiederum schreiben
+\begin_inset Formula 
+\[
+C=C_{n+1}\,C_{n}
+\]
+
+\end_inset
+
+Nun kann ich schließen,
+ dass aufgrund der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Gleichheit-von-Symbolen"
+nolink "false"
+
+\end_inset
+
+der Gleichheit von Symbolen gelten muss:
+\begin_inset Formula 
+\begin{eqnarray*}
+A_{n+1} & = & B_{n+1}\\
+B_{n+1} & = & C_{n+1}\\
+A_{n} & = & B_{n}\\
+B_{n} & = & C_{n}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Nun sind 
+\begin_inset Formula $A_{n},\,B_{n},\,C_{n},\,A_{n+1},\,B_{n+1}$
+\end_inset
+
+ wie auch 
+\begin_inset Formula $C_{n+1}$
+\end_inset
+
+ Metasymbole,
+ welche auf Symbole verweisen,
+ welche aus höchstens 
+\begin_inset Formula $n$
+\end_inset
+
+ Symbolen zusammengesetzt sind.
+ Darum kann ich aufgrund der Induktionsvoraussetzung und der Induktionsverankerung schließen,
+ dass gelten muss 
+\begin_inset Formula 
+\begin{eqnarray*}
+A_{n+1} & = & C_{n+1}\\
+A_{n} & = & C_{n}
+\end{eqnarray*}
+
+\end_inset
+
+Somit muss aufgrund der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Gleichheit-von-Symbolen"
+nolink "false"
+
+\end_inset
+
+ der Gleichheit von Symbolen schließen,
+ dass 
+\begin_inset Formula 
+\[
+A=C
+\]
+
+\end_inset
+
+ist.
+ Somit hätte ich den Induktionsschritt und damit auch den ganzen Induktionsbeweis erbracht.
+ Nun ist also klar,
+ dass die Gleichheit von Symbolen ebenfalls transitiv sein muss.
+ Damit hätte ich jedoch (endlich) den ganzen Induktionsbeweis erbracht.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Backward References
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Flex Forward References
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
@@ -26440,6 +27148,12 @@ Und ich möchte noch weitere Definitionen von Eigenschaften von Relationen vorst
 \end_layout
 
 \begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Maechtigkeit-und-Mengeninklusion"
+
+\end_inset
+
 Es seien 
 \begin_inset Formula $M_{1},M_{2}$
 \end_inset

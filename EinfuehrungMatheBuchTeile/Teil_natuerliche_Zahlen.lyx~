@@ -76,7 +76,7 @@ todonotes
 backforwardref
 \end_modules
 \maintain_unincluded_children no
-\language ngerman
+\language german-ch
 \language_package auto
 \inputencoding auto-legacy
 \fontencoding auto
@@ -162,7 +162,7 @@ backforwardref
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style german
+\quotes_style swiss
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 2
@@ -447,7 +447,7 @@ nolink "false"
 \end_inset
 
  aus einem Symbol,
- dann sind diese gemäß der Definition 
+ dann sind diese gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Gleichheit-von-Symbolen"
@@ -518,7 +518,7 @@ Dabei setze ich voraus,
 \end_inset
 
  ist,
- dann weiß ich an dieser Stelle,
+ dann weiss ich an dieser Stelle,
  dass die beiden Symbole ungleich sind.
  Gilt jedoch 
 \begin_inset Formula $A_{1}=B_{1}$
@@ -550,7 +550,7 @@ Dabei setze ich voraus,
 \end_layout
 
 \begin_layout Standard
-Ich habe das folgende Lemma ursprünglich bloß in einem Beweis eines Lemmas aufgeschrieben.
+Ich habe das folgende Lemma ursprünglich bloss in einem Beweis eines Lemmas aufgeschrieben.
  Da ich jedoch eine Freunde daran habe,
  dass mir der Beweis der Transitivität der Identität der Gleichheit von Symbolen gelungen ist,
  möchte ich den Beweis separat aufschreiben:
@@ -616,7 +616,7 @@ nolink "false"
  falls diese identitiv,
  symmetrisch und transitiv ist.
  Nun,
- ich weiß nicht,
+ ich weiss nicht,
  ob ich dadurch schlauer geworden bin.
  Falls nicht,
  muss ich halt im Stichwortverzeichnis die Begriffe nachschlagen und die entsprechenden Definitionen lesen.
@@ -641,7 +641,7 @@ A=A
 
 \end_inset
 
-Gemäß der Definition 
+Gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Gleichheit-von-Symbolen"
@@ -743,7 +743,7 @@ Besteht das Symbol
 \end_inset
 
  bestehen.
- Also muss dann gemäß der Definition 
+ Also muss dann gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Gleichheit-von-Symbolen"
@@ -773,8 +773,8 @@ nolink "false"
 \begin_inset Formula $C$
 \end_inset
 
- aus bloß einem Symbol bestehen,
- dann wäre gemäß der Definition 
+ aus bloss einem Symbol bestehen,
+ dann wäre gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Gleichheit-von-Symbolen"
@@ -1016,7 +1016,7 @@ B=B
 
 \end_inset
 
-(welche gemäß der Identität der Symbolgleichheit gilt) auch schreiben als
+(welche gemäss der Identität der Symbolgleichheit gilt) auch schreiben als
 \begin_inset Formula 
 \[
 D\,E=D
@@ -1024,7 +1024,7 @@ D\,E=D
 
 \end_inset
 
-was jedoch gemäß der Definition 
+was jedoch gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Gleichheit-von-Symbolen"
@@ -1099,7 +1099,7 @@ B=B
 
 \end_inset
 
-(welche gemäß der Identität der Symbolgleichheit gilt) auch schreiben als
+(welche gemäss der Identität der Symbolgleichheit gilt) auch schreiben als
 \begin_inset Formula 
 \[
 D=D\,E
@@ -1107,7 +1107,7 @@ D=D\,E
 
 \end_inset
 
-was jedoch gemäß der Definition 
+was jedoch gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Gleichheit-von-Symbolen"
@@ -1244,7 +1244,7 @@ Der Beweis ist zwar einfach,
 \end_inset
 
  ein Metasymbol eines einfachen Symbols sein.
- Gemäß der Definition ist die Zeichenkette 
+ Gemäss der Definition ist die Zeichenkette 
 \begin_inset Formula $A_{1}\,B$
 \end_inset
 
@@ -1377,7 +1377,7 @@ hat sich jedoch in diesem Fall gegenüber demjenigen Fall,
 
  aus jeweils einem Symbol bestehen,
  nichts geändert.
- Also kann ich schließen,
+ Also kann ich schliessen,
  dass diese Gleichung immer noch wahr sein muss.
  Somit meine ich,
  den Beweis für die Richtigkeit dieser Aussage erbracht zu haben und beende darum an dieser Stelle die weitere Beweisführung.
@@ -1507,7 +1507,7 @@ D\,C=A\,E
 \end_layout
 
 \begin_layout Proof
-Gemäß dem vorhergehenden Lemma 
+Gemäss dem vorhergehenden Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-von-Teilsymbolen"
@@ -1526,7 +1526,7 @@ D\,C=A\,B\,C
 
 \end_inset
 
-Weiter kann ich gemäß dem gleichen Lemma ebenfalls folgern,
+Weiter kann ich gemäss dem gleichen Lemma ebenfalls folgern,
  dass gilt
 \begin_inset Formula 
 \[
@@ -1535,7 +1535,7 @@ A\,E=A\,B\,C
 
 \end_inset
 
-Da die Gleichheit von Symbolen gemäß dem Lemma 
+Da die Gleichheit von Symbolen gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
@@ -1547,7 +1547,7 @@ nolink "false"
 \end_inset
 
  eine Äquivalenzrelation ist,
- ist sie gemäß der Definition 
+ ist sie gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Aequivalenzrelation"
@@ -1572,7 +1572,7 @@ A\,B\,C=A\,E
 
 \begin_layout Proof
 Weiter muss die Gleichheit von Symbolen transitiv sein,
- weil sie ja eine gemäß dem Lemma 
+ weil sie ja eine gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
@@ -1584,7 +1584,7 @@ nolink "false"
 \end_inset
 
  eine Äquivalenzrelation ist.
- Darum kann ich auch schließen
+ Darum kann ich auch schliessen
 \begin_inset Formula 
 \[
 D\,C=A\,E
@@ -1703,7 +1703,7 @@ Es seien
 \end_inset
 
  Metasymbole,
- das heißt Symbole von Symbolen,
+ das heisst Symbole von Symbolen,
  welche in sich selbst und bezüglich den anderen Symbolen der Behauptung widerspruchsfrei seien.
  Dann gilt:
 \begin_inset Formula 
@@ -1824,7 +1824,7 @@ Nun stimmen zwar alle Symbole von
 \end_inset
 
  überein,
- aber gemäß der Vergleichsvorschrift tritt der Fall auf,
+ aber gemäss der Vergleichsvorschrift tritt der Fall auf,
  die beiden Symbole 
 \begin_inset Formula $F$
 \end_inset
@@ -1846,7 +1846,7 @@ Nun stimmen zwar alle Symbole von
 \end_inset
 
 ).
- Gemäß der Definition 
+ Gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:natuerliche-Zahlen-eigene-Definition"
@@ -1901,12 +1901,12 @@ name "Anmerkung-bezueglich-Gleichheit-von-Symbolen"
 status open
 
 \begin_layout Plain Layout
-Pferdefuß der Gleichheit von Symbolen
+Pferdefuss der Gleichheit von Symbolen
 \end_layout
 
 \end_inset
 
-Die Definition der Gleichheit von Symbolen hat einen sogenannten Pferdefuß (also eine Unschönheit,
+Die Definition der Gleichheit von Symbolen hat einen sogenannten Pferdefuss (also eine Unschönheit,
  welche in Kauf genommen werden muss):
  Ich habe geschrieben 
 \begin_inset Quotes gld
@@ -2229,7 +2229,7 @@ Demarmels
  dazu verwendet werden,
  um meine Person zu beschreiben.
  Aber wenn ich von Symbolen schreibe,
- dann meine ich die Symbole an und für sich und nicht die Größen oder Dingen,
+ dann meine ich die Symbole an und für sich und nicht die Grössen oder Dingen,
  welche sie damit beschreiben.
  Zum Schluss noch einfachere Beispiele:
  Ist 
@@ -2581,7 +2581,7 @@ Also kann ich die Zeichenketten
 
  vergleichen.
  Dann sind bei beiden Zeichenketten das erste Symbol gleich,
- da die Verkettung von Symbolen gemäß dem Lemma 
+ da die Verkettung von Symbolen gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Assoziativitaet-Symbolketten"
@@ -2634,7 +2634,7 @@ nolink "false"
 \end_inset
 
  hinzufüge.
- Darum schließe ich,
+ Darum schliesse ich,
  dass gelten muss:
  
 \begin_inset Formula 
@@ -2644,7 +2644,7 @@ C\,A=B
 
 \end_inset
 
-Somit kann ich gesamthaft schließen,
+Somit kann ich gesamthaft schliessen,
  dass
 \begin_inset Formula 
 \[
@@ -2654,7 +2654,7 @@ A\,B=A\,C\,A
 \end_inset
 
 gilt.
- Da jedoch gemäß Konstruktion von 
+ Da jedoch gemäss Konstruktion von 
 \begin_inset Formula $A\,C$
 \end_inset
 
@@ -2694,7 +2694,7 @@ A\,C\,A=B\,A
 \end_inset
 
 muss darum auch gelten,
- da die Gleichheit von Symbolen gemäß dem Lemma 
+ da die Gleichheit von Symbolen gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -3136,7 +3136,7 @@ dann muss diese aus einer Symbolkette bestehen,
 \end_inset
 
  der Symbolkette so durchgeführt.
- Gemäß der Definition 
+ Gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Gleichheit-von-Symbolen"
@@ -3168,7 +3168,7 @@ nolink "false"
  dem 8.
  Lebensmonat machen) lehrt mich jetzt,
  dass bei diesem Vorgang weder eine Beschriftung hinzugefügt wird noch weggenommen wird.
- Anschließend entnehme ich die Steinchen eins nach nach dem anderen dem Sack und schreibe die Beschriftungen wieder aufs Papier.
+ Anschliessend entnehme ich die Steinchen eins nach nach dem anderen dem Sack und schreibe die Beschriftungen wieder aufs Papier.
  Dann habe ich die Beschriftungen der Symbole,
  jedoch nicht die Symbole selbst aufgeschrieben.
  Also ersetze ich nachher jede Beschriftung der Symbole durch das Symbol,
@@ -3328,7 +3328,7 @@ Tarnkappennotation
 \end_inset
 
  entfernt wird,
- wird anschließend wieder hinzugefügt.
+ wird anschliessend wieder hinzugefügt.
  Am Schluss resultiert wieder die ursprüngliche Zeichenkette.
  Und die ist ja
 \begin_inset Formula 
@@ -3338,7 +3338,7 @@ B\,C
 
 \end_inset
 
-Somit schließe ich,
+Somit schliesse ich,
  dass,
  unabhängig von der Anzahl der Symbole 
 \begin_inset Formula $A$
@@ -3571,7 +3571,7 @@ Ich nenne
 \end_inset
 
 ,
- falls gemäß der Definition 
+ falls gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Gleichheit-von-Symbolen"
@@ -3594,7 +3594,7 @@ Schlussendlich sei das Metasymbol
 \begin_inset Formula $B$
 \end_inset
 
- größer als das Metasymbol 
+ grösser als das Metasymbol 
 \begin_inset Formula $C$
 \end_inset
 
@@ -3697,7 +3697,7 @@ In Worten:
 \begin_inset Formula $B$
 \end_inset
 
- sei größer oder gleich dem Symbol 
+ sei grösser oder gleich dem Symbol 
 \begin_inset Formula $C$
 \end_inset
 
@@ -3706,7 +3706,7 @@ In Worten:
 \begin_inset Formula $B$
 \end_inset
 
- größer als das Symbol 
+ grösser als das Symbol 
 \begin_inset Formula $C$
 \end_inset
 
@@ -3798,9 +3798,9 @@ Wobei ich zugeben muss,
  Was,
  wenn das einige Goldstück nur eine dünne Schicht aus Gold als Überzug besitzt,
  im Innern jedoch auch Blei besteht?
- Wogegen ein zweitens Goldstück äußerst rein ist,
+ Wogegen ein zweitens Goldstück äusserst rein ist,
  so rein wie nur möglich?
- Aber Unterschiede in den durch die Symbole repräsentierten Größen werden an dieser Stelle absichtlich außer Acht gelassen.
+ Aber Unterschiede in den durch die Symbole repräsentierten Grössen werden an dieser Stelle absichtlich ausser Acht gelassen.
  Das einzige,
  was verglichen wird,
  sind die Symbole.
@@ -3880,7 +3880,7 @@ Weizenkrüge
 status open
 
 \begin_layout Plain Layout
-offenbar gemäß dem entsprechenden Artikel der Deutschen Bibelgesellschaft (
+offenbar gemäss dem entsprechenden Artikel der Deutschen Bibelgesellschaft (
 \begin_inset Quotes gld
 \end_inset
 
@@ -3895,7 +3895,7 @@ offenbar gemäß dem entsprechenden Artikel der Deutschen Bibelgesellschaft (
 ) über Masse und Gewichte ein Krug mit einem Fassungsvermögen von ca.
  1.5 - 2 Liter,
  welcher mit Weizen gefüllt war.
- Ich weiß nicht,
+ Ich weiss nicht,
  ob auch der Krug mit verkauft wurde und ob der Käufer,
  der Verkäufer oder beide gemessen haben.
 \end_layout
@@ -4086,7 +4086,7 @@ nolink "false"
 \end_inset
 
 .
- Dann ist gemäß dem Lemma 
+ Dann ist gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kommutativ-Symboladdition"
@@ -4105,7 +4105,7 @@ B\,C=C\,B
 
 \end_inset
 
-Überdies muss gemäß der Definition 
+Überdies muss gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Vergleichbarkeit-von-Metasymbole-fuer-gleiche-Symbolen"
@@ -4357,7 +4357,7 @@ B & \leq C\vee B\geq C
 
 \begin_layout Proof
 Der Beweis basiert rein auf logischen Argumenten.
- Es gilt gemäß dem vorhergehenden Satz 
+ Es gilt gemäss dem vorhergehenden Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:totale-Ordnung-Symbolketten-gleicher-Symbole"
@@ -4376,7 +4376,7 @@ B<C\vee B=C\vee B>C
 
 \end_inset
 
-Gemäß dem Satz 
+Gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Implikation-Disjunktion-aus-Aussage"
@@ -4395,7 +4395,7 @@ B=C\Rightarrow B=C\vee B=C
 
 \end_inset
 
-Also kann ich gemäß dem vierten Substitutionssatz 
+Also kann ich gemäss dem vierten Substitutionssatz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:4.-Substitutionssatz-Disjunktion"
@@ -4453,7 +4453,7 @@ B\leq C\Leftrightarrow B<C\vee B=C
 
 \end_inset
 
-Da die Äquivalenz gemäß dem Satz 
+Da die Äquivalenz gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Kommutativitaet-Aequivalenz"
@@ -4473,7 +4473,7 @@ B<C\vee B=C\Leftrightarrow B\leq C
 
 \end_inset
 
-Somit kann ich gemäß dem dritten Substitutionssatz 
+Somit kann ich gemäss dem dritten Substitutionssatz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:3.-Substitutionssatz-Disjunktion"
@@ -4493,7 +4493,7 @@ nolink "false"
 
 \end_inset
 
-Da die Implikation gemäß dem Satz 
+Da die Implikation gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Transitivitaet-Implikation"
@@ -4515,14 +4515,14 @@ nolink "false"
 \end_inset
 
 Nun ja,
- Du weißt jetzt sicher,
+ Du weisst jetzt sicher,
  wie es weiter geht.
  Aber da ich die Dinge ganz klar aufschreiben möchte,
  schreibe ich weiter:
 \end_layout
 
 \begin_layout Proof
-Gemäß der Definition 
+Gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Vergleichbarkeit-von-Metasymbole-fuer-gleiche-Symbolen"
@@ -4541,7 +4541,7 @@ B\geq C\Leftrightarrow B=C\vee B>C
 
 \end_inset
 
-Da die Äquivalenz gemäß dem Satz 
+Da die Äquivalenz gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Kommutativitaet-Aequivalenz"
@@ -4565,7 +4565,7 @@ B=C\vee B>C\Leftrightarrow B\geq C
 \end_layout
 
 \begin_layout Proof
-Also kann ich gemäß dem vierten Substitutionssatz 
+Also kann ich gemäss dem vierten Substitutionssatz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:4.-Substitutionssatz-Disjunktion"
@@ -4584,7 +4584,7 @@ B\leq C\vee B=C\vee B>C\Rightarrow B\leq C\vee B\geq C
 
 \end_inset
 
-Da die Implikation gemäß dem Satz 
+Da die Implikation gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Transitivitaet-Implikation"
@@ -4751,7 +4751,7 @@ B<C
 
 \end_inset
 
-Dann muss gemäß dem Satz 
+Dann muss gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Implikation-Disjunktion-aus-Aussage"
@@ -4781,7 +4781,7 @@ B\leq C\Leftrightarrow B<C\vee B=C
 
 \end_inset
 
-Da die Äquivalenz gemäß dem Satz 
+Da die Äquivalenz gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Kommutativitaet-Aequivalenz"
@@ -4801,7 +4801,7 @@ B<C\vee B=C\Leftrightarrow B\leq C
 
 \end_inset
 
-Gemäß dem Satz 
+Gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Implikation-Implikation-aus-Aequivalenz"
@@ -4827,7 +4827,7 @@ B<C\vee B=C\Rightarrow B\leq C
 
 \end_inset
 
-Und da die Implikation gemäß dem Satz 
+Und da die Implikation gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Transitivitaet-Aequivalenz"
@@ -4863,7 +4863,7 @@ B=C
 
 \end_inset
 
-dann kann ich wieder gemäß dem Satz 
+dann kann ich wieder gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Implikation-Disjunktion-aus-Aussage"
@@ -4886,7 +4886,7 @@ B=C\Rightarrow B=C\vee B<C
 
 \end_inset
 
-Da die Disjunktion gemäß dem Satz 
+Da die Disjunktion gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Kommutativitaet-Disjunktion"
@@ -4906,7 +4906,7 @@ B=C\vee B<C\Leftrightarrow B<C\vee B=C
 
 \end_inset
 
-Da gemäß dem Satz 
+Da gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Implikation-Implikation-aus-Aequivalenz"
@@ -4927,7 +4927,7 @@ B=C\vee B<C\Rightarrow B<C\vee B=C
 
 \end_inset
 
-Da die Implikation gemäß dem Satz 
+Da die Implikation gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Transitivitaet-Aequivalenz"
@@ -4990,7 +4990,7 @@ Damit meine ich den Beweis für die Richtigkeit der zweiten Aussage erbracht zu 
 \end_layout
 
 \begin_layout Proof
-Zum Beweis der dritten Behauptung:Ich kann wieder gemäß dem Satz 
+Zum Beweis der dritten Behauptung:Ich kann wieder gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Implikation-Disjunktion-aus-Aussage"
@@ -5021,7 +5021,7 @@ B\geq C\Leftrightarrow B=C\vee B>C
 
 \end_inset
 
-Da die Äquivalenz gemäß dem Satz 
+Da die Äquivalenz gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Kommutativitaet-Aequivalenz"
@@ -5041,7 +5041,7 @@ B=C\vee B>C\Leftrightarrow B\geq C
 
 \end_inset
 
-Gemäß dem Satz 
+Gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Implikation-Implikation-aus-Aequivalenz"
@@ -5067,7 +5067,7 @@ B=C\vee B>C\Rightarrow B\geq C
 
 \end_inset
 
-Und da die Implikation gemäß dem Satz 
+Und da die Implikation gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Transitivitaet-Aequivalenz"
@@ -5101,7 +5101,7 @@ B>C
 
 \end_inset
 
-Dann kann ich wieder gemäß dem Satz 
+Dann kann ich wieder gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Implikation-Disjunktion-aus-Aussage"
@@ -5124,7 +5124,7 @@ B>C\Rightarrow B>C\vee B=C
 
 \end_inset
 
-Da die Disjunktion gemäß dem Satz 
+Da die Disjunktion gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Kommutativitaet-Disjunktion"
@@ -5174,7 +5174,7 @@ B=C\vee B>C\Rightarrow B\geq C
 
 \end_inset
 
-Und da die Implikation gemäß dem Satz 
+Und da die Implikation gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Transitivitaet-Aequivalenz"
@@ -5305,7 +5305,7 @@ B\,D=C
 
 \end_inset
 
-Gemäß dem Lemma 
+Gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -5319,7 +5319,7 @@ nolink "false"
  ist die Gleichheit von Zeichenketten eine Äquivalenzrelation.
  das bedeutet insbesondere,
  dass die Gleichheit symmetrisch ist.
- Also kann ich gemäß dem Satz 
+ Also kann ich gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Transitivitaet-Aequivalenz"
@@ -5339,7 +5339,7 @@ C=B\,D
 
 \end_inset
 
-Gemäß der Definition 
+Gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Vergleichbarkeit-von-Metasymbole-fuer-gleiche-Symbolen"
@@ -5388,7 +5388,7 @@ C=B\,D
 
 \end_inset
 
-Gemäß dem Lemma 
+Gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -5402,7 +5402,7 @@ nolink "false"
  ist die Gleichheit von Zeichenketten eine Äquivalenzrelation.
  das bedeutet insbesondere,
  dass die Gleichheit symmetrisch ist.
- Also kann ich gemäß dem Satz 
+ Also kann ich gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Transitivitaet-Aequivalenz"
@@ -5432,7 +5432,7 @@ B\,D=C
 
 \end_inset
 
-Gemäß der Definition 
+Gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Vergleichbarkeit-von-Metasymbole-fuer-gleiche-Symbolen"
@@ -5500,7 +5500,7 @@ kleiner oder gleich
 \begin_inset Quotes gld
 \end_inset
 
-größer als
+grösser als
 \begin_inset Quotes grd
 \end_inset
 
@@ -5556,7 +5556,7 @@ In Worten:
 \end_inset
 
 ,
- falls diese größer als 
+ falls diese grösser als 
 \begin_inset Formula $C$
 \end_inset
 
@@ -5574,7 +5574,7 @@ Ich möchte zeigen,
 
 \end_inset
 
-Gemäß der Definition 
+Gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Vergleichbarkeit-von-Metasymbole-fuer-gleiche-Symbolen"
@@ -5593,7 +5593,7 @@ nolink "false"
 
 \end_inset
 
-Da die Äquivalenz gemäß dem Satz 
+Da die Äquivalenz gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Kommutativitaet-Aequivalenz"
@@ -5614,7 +5614,7 @@ nolink "false"
 
 \end_inset
 
-Also kann ich gemäß dem 3.
+Also kann ich gemäss dem 3.
  Substitutionssatz 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5667,7 +5667,7 @@ Nun gelte die Aussage
 
 \end_inset
 
-Gemäß dem 2.
+Gemäss dem 2.
  Satz des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5692,7 +5692,7 @@ nolink "false"
 
 \end_inset
 
-Da aus der Äquivalenz gemäß dem Satz 
+Da aus der Äquivalenz gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Implikation-Implikation-aus-Aequivalenz"
@@ -5885,7 +5885,7 @@ Es sei also
 \end_inset
 
 .
- Dann müsste es gemäß der Definition 
+ Dann müsste es gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Vergleichbarkeit-von-Metasymbole-fuer-gleiche-Symbolen"
@@ -5935,7 +5935,7 @@ nolink "false"
 
 ,
  dann müsste,
- da gemäß dem Lemma 
+ da gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -6007,7 +6007,7 @@ C=B\,E
 \end_inset
 
 wäre.
- Da ja gemäß Voraussetzung
+ Da ja gemäss Voraussetzung
 \begin_inset Formula 
 \[
 B>C
@@ -6038,7 +6038,7 @@ wäre.
 \begin_inset Formula $B\,E$
 \end_inset
 
- ersetzt (was gemäß dem Lemma 
+ ersetzt (was gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-von-Teilsymbolen"
@@ -6074,7 +6074,7 @@ nolink "false"
 \end_inset
 
  assoziativ ist.
- Die Letzte Gleicheung würde jedoch gemäß dem Lemma 
+ Die Letzte Gleicheung würde jedoch gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Ungleicheheit-angehaengte-Symbole"
@@ -6095,7 +6095,7 @@ B\neq B
 \end_inset
 
 wäre.
- Gemäß der Definition 
+ Gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Gleichheit-von-Symbolen"
@@ -6158,7 +6158,7 @@ nolink "false"
 
 \end_inset
 
-Da die Äquivalenz gemäß dem Satz 
+Da die Äquivalenz gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Kommutativitaet-Aequivalenz"
@@ -6216,7 +6216,7 @@ nolink "false"
 
 \end_inset
 
-Da gemäß dem Satz 
+Da gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Implikation-Implikation-aus-Aequivalenz"
@@ -6279,7 +6279,7 @@ B>C\Rightarrow\neg\left(B\leq C\right)
 \end_inset
 
 Da ich nun endlich beide Richtungen der Behauptung bewiesen habe,
- habe ich gemäß dem Satz 
+ habe ich gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Aequivalenz-Aequivalenz-zwei-Implikationen"
@@ -6304,7 +6304,7 @@ nolink "false"
 
 \begin_layout Proof
 Damit hoffe ich,
- endlich den Beweis für die Richtigkeit der Behauptung erbracht zu haben und verzichte hiermit (einigermaßen erschöpft) auf die weitere Beweisführung.
+ endlich den Beweis für die Richtigkeit der Behauptung erbracht zu haben und verzichte hiermit (einigermassen erschöpft) auf die weitere Beweisführung.
 \end_layout
 
 \begin_layout Standard
@@ -6377,7 +6377,7 @@ Es seien
 \end_layout
 
 \begin_layout Proof
-Gemäß dem Lemma 
+Gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Equivalenz-Symbolvergleich-Negation-kleiner-gleich-grosser"
@@ -6396,7 +6396,7 @@ nolink "false"
 
 \end_inset
 
-Da die Äquivalenz gemäß dem Satz 
+Da die Äquivalenz gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Aequivalenz-Aequivalenzrelation"
@@ -6427,7 +6427,7 @@ B>C\Leftrightarrow\neg\left(B\leq C\right)
 
 \end_inset
 
-Gemäß dem Satz 
+Gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Aequivalenz-Negations-Satz"
@@ -6446,7 +6446,7 @@ nolink "false"
 
 \end_inset
 
-Da gemäß dem Satz 
+Da gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:doppelte-Negation"
@@ -6465,7 +6465,7 @@ B\leq C\Leftrightarrow\neg\left(\neg\left(B\leq C\right)\right)
 
 \end_inset
 
-und gemäß dem Satz 
+und gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Kommutativitaet-Aequivalenz"
@@ -6485,7 +6485,7 @@ nolink "false"
 
 \end_inset
 
-Da die Äquivalenz gemäß dem Satz 
+Da die Äquivalenz gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Aequivalenz-Aequivalenzrelation"
@@ -6597,7 +6597,7 @@ Es gelte
 \begin_inset Formula $B<C\wedge C<D.$
 \end_inset
 
- Somit muss gemäß der Definition der 
+ Somit muss gemäss der Definition der 
 \begin_inset Quotes gld
 \end_inset
 
@@ -6639,7 +6639,7 @@ Ersetze ich nun
 \end_inset
 
  in der vorletzten Gleichung,
- dann erhalte ich (auch gemäß dem Lemma 
+ dann erhalte ich (auch gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-von-Teilsymbolen"
@@ -7271,7 +7271,7 @@ Nun existieren vier Fälle,
 \end_inset
 
 ,
- dann muss gemäß dem Lemma 
+ dann muss gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
@@ -7290,7 +7290,7 @@ nolink "false"
 \end_inset
 
  sein.
- Gemäß dem vorhergehenden Lemma 
+ Gemäss dem vorhergehenden Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -7301,7 +7301,7 @@ nolink "false"
 
 \end_inset
 
- kann ich schließen,
+ kann ich schliessen,
  dass gilt
 \begin_inset Formula 
 \[
@@ -7319,7 +7319,7 @@ Damit wäre dieser Teil des Beweises erbracht.
 \begin_inset Formula $C<D$
 \end_inset
 
- dann kann ich gemäß dem Lemma 
+ dann kann ich gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-von-Teilsymbolen"
@@ -7338,7 +7338,7 @@ B\,F=C\,F\wedge C\,F=D
 
 \end_inset
 
-Da die Gleichheit von Symbolen gemäß dem Lemma 
+Da die Gleichheit von Symbolen gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
@@ -7350,7 +7350,7 @@ nolink "false"
 \end_inset
 
  eine Äquivalenzrelation und somit transitiv ist,
- kann ich also schließen,
+ kann ich also schliessen,
  dass gilt:
 \begin_inset Formula 
 \[
@@ -7359,7 +7359,7 @@ B\,F=D
 
 \end_inset
 
-Also muss gemäß der Definition 
+Also muss gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Vergleichbarkeit-von-Metasymbole-fuer-gleiche-Symbolen"
@@ -7378,7 +7378,7 @@ B<D
 
 \end_inset
 
-Somit kann ich gemäß dem Lemma 
+Somit kann ich gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -7439,7 +7439,7 @@ B\,E=C\wedge C=D
 
 \end_inset
 
-Gemäß dem Lemma 
+Gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
@@ -7462,7 +7462,7 @@ B\,E=D
 
 \end_inset
 
-Damit gilt gemäß der Definition 
+Damit gilt gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Vergleichbarkeit-von-Metasymbole-fuer-gleiche-Symbolen"
@@ -7481,7 +7481,7 @@ B<D
 
 \end_inset
 
-Und wiederum kann ich gemäß dem Lemma 
+Und wiederum kann ich gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -7518,7 +7518,7 @@ B<C\wedge C<D
 
 \end_inset
 
-dann muss gemäß dem Lemma 
+dann muss gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-als-Symbolvergleich-ist-transitiv"
@@ -7537,7 +7537,7 @@ B<D
 
 \end_inset
 
-Und erneut kann ich gemäß dem Lemma 
+Und erneut kann ich gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -7584,7 +7584,7 @@ B=C\wedge C=D
 \end_layout
 
 \begin_layout Proof
-Da die Gleichheit von Symbolen gemäß dem Lemma 
+Da die Gleichheit von Symbolen gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
@@ -7607,7 +7607,7 @@ B=D
 
 \end_inset
 
-Gemäß der zweiten Aussage des Lemmas 
+Gemäss der zweiten Aussage des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -7627,7 +7627,7 @@ B\leq D
 \end_inset
 
 So,
- damit ist die Fleißarbeit erledigt.
+ damit ist die Fleissarbeit erledigt.
  Ich habe gezeigt,
  dass in allen vier denkbaren Fällen gilt,
  dass unter den gegebenen Voraussetzungen gilt
@@ -8118,7 +8118,7 @@ In Worten:
 \begin_inset Formula $D$
 \end_inset
 
- größer oder gleich 
+ grösser oder gleich 
 \begin_inset Formula $B$
 \end_inset
 
@@ -8232,7 +8232,7 @@ sowie
 \end_layout
 
 \begin_layout Proof
-Gemäß dem vorhergehenden Satz 
+Gemäss dem vorhergehenden Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:totale-Ordnung-Symbolketten-gleicher-Symbole"
@@ -8296,7 +8296,7 @@ B=B
 
 \end_inset
 
-Daraus folgt gemäß der zweiten Aussage des Lemmas 
+Daraus folgt gemäss der zweiten Aussage des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -8315,7 +8315,7 @@ B\leq B
 
 \end_inset
 
-Da gemäß Voraussetzung gilt
+Da gemäss Voraussetzung gilt
 \begin_inset Formula 
 \[
 B<C
@@ -8323,7 +8323,7 @@ B<C
 
 \end_inset
 
-kann ich gemäß der ersten Aussage des Lemmas 
+kann ich gemäss der ersten Aussage des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -8334,7 +8334,7 @@ nolink "false"
 
 \end_inset
 
- schließen,
+ schliessen,
  dass auch gilt
 \begin_inset Formula 
 \[
@@ -8386,7 +8386,7 @@ C=C
 
 \end_inset
 
-Daraus folgt gemäß der dritten Aussage des Lemmas 
+Daraus folgt gemäss der dritten Aussage des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -8405,7 +8405,7 @@ C\geq C
 
 \end_inset
 
-Da gemäß Voraussetzung gilt
+Da gemäss Voraussetzung gilt
 \begin_inset Formula 
 \[
 C>B
@@ -8413,7 +8413,7 @@ C>B
 
 \end_inset
 
-kann ich gemäß der vierten Aussage des Lemmas 
+kann ich gemäss der vierten Aussage des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -8424,7 +8424,7 @@ nolink "false"
 
 \end_inset
 
- schließen,
+ schliessen,
  dass auch gilt
 \begin_inset Formula 
 \[
@@ -8470,7 +8470,7 @@ Nun kommt der mühsame Teil:
 \end_inset
 
 ,
- dann kann ich schließen,
+ dann kann ich schliessen,
 \begin_inset Formula 
 \[
 B=C=\min\left\{ B,C\right\} =\max\left\{ B,C\right\} 
@@ -8552,7 +8552,7 @@ Also ist auch
 \end_layout
 
 \begin_layout Proof
-Darum ist gemäß der Definition 
+Darum ist gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Mengengleichheit-Definition-Formal"
@@ -8587,7 +8587,7 @@ B\in\left\{ B\right\}
 
 \end_inset
 
-Weiter ist gemäß der zweiten und dritten Aussage des Lemmas 
+Weiter ist gemäss der zweiten und dritten Aussage des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -8677,7 +8677,7 @@ C=C
 
 \end_inset
 
-Daraus folgt gemäß der zweiten Aussage des Lemmas 
+Daraus folgt gemäss der zweiten Aussage des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -8696,7 +8696,7 @@ C\leq C
 
 \end_inset
 
-Da gemäß Voraussetzung gilt
+Da gemäss Voraussetzung gilt
 \begin_inset Formula 
 \[
 B>C
@@ -8704,7 +8704,7 @@ B>C
 
 \end_inset
 
-muss gemäß dem Korollar 
+muss gemäss dem Korollar 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cor:Symbole-Umwandlung-kleiner-groesser"
@@ -8724,7 +8724,7 @@ C<B
 \end_inset
 
 gelten.
- Weiter kann ich gemäß der ersten Aussage des Lemmas 
+ Weiter kann ich gemäss der ersten Aussage des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -8735,7 +8735,7 @@ nolink "false"
 
 \end_inset
 
- schließen,
+ schliessen,
  dass auch gilt
 \begin_inset Formula 
 \[
@@ -8783,7 +8783,7 @@ B=B
 
 \end_inset
 
-Daraus folgt gemäß der dritten Aussage des Lemmas 
+Daraus folgt gemäss der dritten Aussage des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -8802,7 +8802,7 @@ B\geq B
 
 \end_inset
 
-Da gemäß Voraussetzung gilt
+Da gemäss Voraussetzung gilt
 \begin_inset Formula 
 \[
 B>C
@@ -8810,7 +8810,7 @@ B>C
 
 \end_inset
 
-kann ich gemäß der vierten Aussage des Lemmas 
+kann ich gemäss der vierten Aussage des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -8821,7 +8821,7 @@ nolink "false"
 
 \end_inset
 
- schließen,
+ schliessen,
  dass auch gilt
 \begin_inset Formula 
 \[
@@ -9002,7 +9002,7 @@ Auch diese Definition ist nur dann gültig,
 \begin_inset Formula $M$
 \end_inset
 
- geheißen.
+ geheissen.
  Ich möchte diese Definitionen noch einmal formal aufschreiben:
 \end_layout
 
@@ -9154,7 +9154,7 @@ B=A
 
 \end_inset
 
-Somit kann ich gemäß dem Lemma 
+Somit kann ich gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -9174,7 +9174,7 @@ A & \geq B
 
 \end_inset
 
-Das bedeutet jedoch gemäß der Definition 
+Das bedeutet jedoch gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Symbolketten-min-max-erste-Erweiterung"
@@ -9364,10 +9364,10 @@ B>C
 
 ist.
  Dann wird dasjenige weiterverwendet,
- welches größer als das andere Element ist.
+ welches grösser als das andere Element ist.
  Auf diese Art sollte es möglich sein,
  nach endlich vielen Schritten festzustellen,
- welches Element das größte Element der Menge ist.
+ welches Element das grösste Element der Menge ist.
  Ich möchte noch einen zweiten Beweis formulieren und aufschreiben:
 \end_layout
 
@@ -9377,7 +9377,7 @@ Den Fall,
 \begin_inset Formula $M$
 \end_inset
 
- bloß ein ein Element besitzt,
+ bloss ein ein Element besitzt,
  habe ich oben bereits bewiesen.
  Besitzt die Menge 
 \begin_inset Formula $M$
@@ -9409,7 +9409,7 @@ Den Fall,
  dann müsste es eine Kombination von Noten und Münzen derart geben,
  dass diese unendlich viele Wert hätte.
  Das widerspricht derart fundamental der Alltagserfahrung,
- dass ich im weiteren ausschließen kann,
+ dass ich im weiteren ausschliessen kann,
  dass so etwas existiert.
  Dann muss für alle Symbolketten 
 \begin_inset Formula $B\in M$
@@ -9437,7 +9437,7 @@ S=B\,C
 
 \end_inset
 
-dann ist gemäß der Definition 
+dann ist gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Vergleichbarkeit-von-Metasymbole-fuer-gleiche-Symbolen"
@@ -9473,7 +9473,7 @@ S=C\,B\,D
 
 \end_inset
 
-Dann muss eben auch gemäß dem Lemma 
+Dann muss eben auch gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kommutativ-Symboladdition"
@@ -9492,7 +9492,7 @@ C\,B=B\,C
 
 \end_inset
 
-und gemäß dem Lemma 
+und gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-von-Teilsymbolen"
@@ -9511,7 +9511,7 @@ C\,B\,D=B\,C\,D
 
 \end_inset
 
-Da die Symbolgleichheit gemäß der 
+Da die Symbolgleichheit gemäss der 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -9530,7 +9530,7 @@ S=B\,C\,D
 
 \end_inset
 
-und somit gemäß der Definition 
+und somit gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Vergleichbarkeit-von-Metasymbole-fuer-gleiche-Symbolen"
@@ -9577,7 +9577,7 @@ Nun kann ich der Symbolkette so lange nacheinander Symbole
 \end_inset
 
  ein beliebiges Element.
- Gemäß dem Lemma 
+ Gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Vergleichbarkeit-von-Symbolen"
@@ -9612,7 +9612,7 @@ B>m_{1}
 
 \end_inset
 
-An dieser Stelle ist jedoch bloß zu zeigen,
+An dieser Stelle ist jedoch bloss zu zeigen,
  dass nicht 
 \begin_inset Formula 
 \[
@@ -9647,7 +9647,7 @@ B>m_{1}
 \end_inset
 
 gelten.
- Somit muss gemäß dem Korollar 
+ Somit muss gemäss dem Korollar 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cor:Equivalenz-Symbolvergleich-Negation-kleiner-gleich-grosser"
@@ -9770,7 +9770,7 @@ dann wäre wiederum das Konstruktionsverfahren von
 
  sein müssen.
  Da dies jedoch nicht ausgegangen werden.
- Also muss gemäß dem 
+ Also muss gemäss dem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cor:Equivalenz-Symbolvergleich-Negation-kleiner-gleich-grosser"
@@ -9929,7 +9929,7 @@ Da
 \end_inset
 
  nach Voraussetzung existieren müssen,
- gilt gemäß dem Lemma 
+ gilt gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cor:Symbolvergleich-kleiner-groesser-gleich"
@@ -9964,7 +9964,7 @@ Es gilt dann:
 
 \end_inset
 
-Ebenfalls gilt gemäß der Definition 
+Ebenfalls gilt gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Gleichheit-von-Symbolen"
@@ -9983,7 +9983,7 @@ nolink "false"
 
 \end_inset
 
-und somit gemäß der zweiten Zeile des Lemmas 
+und somit gemäss der zweiten Zeile des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -10010,7 +10010,7 @@ Weiter gilt nach Voraussetzung:
 
 \end_inset
 
-Somit ist gemäß der Definition 
+Somit ist gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Symbolketten-min-max-erste-Erweiterung"
@@ -10058,7 +10058,7 @@ Ist
 \end_inset
 
 ,
- dann ist gemäß der Definition von 
+ dann ist gemäss der Definition von 
 \begin_inset Formula $P\cup Q$
 \end_inset
 
@@ -10075,7 +10075,7 @@ Ist
 \end_inset
 
 ,
- dann ist gemäß der Voraussetzung über das Minimum
+ dann ist gemäss der Voraussetzung über das Minimum
 \begin_inset Formula 
 \[
 \min P\leq m
@@ -10088,7 +10088,7 @@ Ist
 \end_inset
 
 ,
- dann ist gemäß der Voraussetzung über das Minimum
+ dann ist gemäss der Voraussetzung über das Minimum
 \begin_inset Formula 
 \[
 \min Q\leq m
@@ -10108,7 +10108,7 @@ Da die
 \begin_inset Formula $\leq$
 \end_inset
 
- (kleiner oder gleich) Relation gemäß dem Lemma 
+ (kleiner oder gleich) Relation gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-oder-gleich-von-Symbolen-ist-transitiv"
@@ -10187,7 +10187,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Proof
-Da die Symbolgleichheit gemäß dem Lemma 
+Da die Symbolgleichheit gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -10259,7 +10259,7 @@ Damit hätte ich den Satz unter der Voraussetzung bewiesen,
 
 \end_inset
 
-dann muss gemäß dem Element 
+dann muss gemäss dem Element 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-gleich-groesser-gleich-Aequivalenz"
@@ -10289,7 +10289,7 @@ nolink "false"
 
 \end_inset
 
-Ebenfalls gilt gemäß der Definition 
+Ebenfalls gilt gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Gleichheit-von-Symbolen"
@@ -10308,7 +10308,7 @@ nolink "false"
 
 \end_inset
 
-und somit gemäß der zweiten Zeile des Lemmas 
+und somit gemäss der zweiten Zeile des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-groesser-gleich-Symbole-Folgerungen"
@@ -10335,7 +10335,7 @@ Weiter gilt nach Voraussetzung:
 
 \end_inset
 
-Somit ist gemäß der Definition 
+Somit ist gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Symbolketten-min-max-erste-Erweiterung"
@@ -10383,7 +10383,7 @@ Ist
 \end_inset
 
 ,
- dann ist gemäß der Definition von 
+ dann ist gemäss der Definition von 
 \begin_inset Formula $P\cup Q$
 \end_inset
 
@@ -10400,7 +10400,7 @@ Ist
 \end_inset
 
 ,
- dann ist gemäß der Voraussetzung über das Minimum
+ dann ist gemäss der Voraussetzung über das Minimum
 \begin_inset Formula 
 \[
 \min Q\leq m
@@ -10413,7 +10413,7 @@ Ist
 \end_inset
 
 ,
- dann ist gemäß der Voraussetzung über das Minimum
+ dann ist gemäss der Voraussetzung über das Minimum
 \begin_inset Formula 
 \[
 \min P\leq m
@@ -10433,7 +10433,7 @@ Da die
 \begin_inset Formula $\leq$
 \end_inset
 
- (kleiner oder gleich) Relation gemäß dem Lemma 
+ (kleiner oder gleich) Relation gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:kleiner-oder-gleich-von-Symbolen-ist-transitiv"
@@ -10516,7 +10516,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Proof
-Da die Symbolgleichheit gemäß dem Lemma 
+Da die Symbolgleichheit gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -10634,7 +10634,7 @@ Im folgendes möchte ich etwas besprechen,
  als ob unendlich viele Elemente behandelt werden könne.
  Nun,
  die Kunst besteht darin,
- dem Konzept der Unendlichkeit möglichst große Widerspruchsfreiheit abzutrotzen.
+ dem Konzept der Unendlichkeit möglichst grosse Widerspruchsfreiheit abzutrotzen.
 \end_layout
 
 \begin_layout Standard
@@ -10787,7 +10787,7 @@ retten
 \end_inset
 
 .
- Denn dann wäre gemäß den vorhergehenden Definitionen im Fall,
+ Denn dann wäre gemäss den vorhergehenden Definitionen im Fall,
  dass 
 \begin_inset Formula $C=\min\left\{ B|B\in M\right\} $
 \end_inset
@@ -10915,7 +10915,7 @@ Es sei
 \end_inset
 
  ein beliebiges Metasymbol.
- Dieses muss gemäß Voraussetzung über die Menge 
+ Dieses muss gemäss Voraussetzung über die Menge 
 \begin_inset Formula $M$
 \end_inset
 
@@ -11051,7 +11051,7 @@ nolink "false"
 
 \end_inset
 
-Dieses Minimum existiert jedoch gemäß dem Korollar 
+Dieses Minimum existiert jedoch gemäss dem Korollar 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cor:Minimum-Maximum-zweier-Symbolketten-existiert"
@@ -11124,7 +11124,7 @@ Das nachfolgende Kapitel ist vage.
  Wie das?
  Nun,
  mein Arbeitskollege Zdenek Sulz hatte mir erzählt,
- dass beispielsweise bei Ausgrabungen von Tempelanlagen auf Kreta an den Außenwänden von Tempeln Schriftzeichen entdeckt worden seien,
+ dass beispielsweise bei Ausgrabungen von Tempelanlagen auf Kreta an den Aussenwänden von Tempeln Schriftzeichen entdeckt worden seien,
  welche lange nicht hätten entziffert werden können.
  Die Schriftart der Beschriftungen war wahrscheinlich Linearschrift 
 \begin_inset Formula $B$
@@ -11145,10 +11145,10 @@ https://de.wikipedia.org/wiki/Linearschrift_B
 \end_inset
 
 .
- Als diese dann unter sehr großem Aufwand entziffert werden konnten,
+ Als diese dann unter sehr grossem Aufwand entziffert werden konnten,
  seien viele Forscher enttäuscht gewesen.
  Denn anstatt über Heldentaten oder Lebensgeheimnisse zu berichten,
- seien auf den Schriften bloß die Schulden aufgeführt worden,
+ seien auf den Schriften bloss die Schulden aufgeführt worden,
  welche Personen anderen Personen geschuldet hätten.
  Das gleiche Bild hatte sich den Ausgräberinnen und Ausgräbern im Zweistromland im heutigen Irak gezeigt.
  Dort waren die Schulden auf Tontäfelchen aufgeschrieben worden.
@@ -11184,7 +11184,7 @@ https://de.wikipedia.org/wiki/Linearschrift_B
  dass ich das Geld auch wirklich erhalten habe,
  dann werde ich das Geld Dir mit relativ hoher Wahrscheinlichkeit wieder zurückgeben (falls ich dazu in der Lage bin).
  Der Grund dafür ist jedoch vor allem,
- weil außer Dir und mir noch andere Personen davon betroffen sind.
+ weil ausser Dir und mir noch andere Personen davon betroffen sind.
  Und im Fall von Tempeln werden sogar noch höhere Mächte (die Götter) als Zeugen hinzugenommen.
  Wichtig ist jedoch,
  dass bei allen beteiligten Personen die Spielregeln klar sind:
@@ -11220,7 +11220,7 @@ Nun gut,
  dass dies wahrscheinlich in dieser Art und Weise abgelaufen ist.
  Denn das Aufschreiben von Schulden war,
  und da bin ich mir ziemlich sicher,
- immer mit einer großen Geheimniskrämerei verbunden.
+ immer mit einer grossen Geheimniskrämerei verbunden.
  Die Schriftstücke im alten Babylon waren in einer Sprache verfasst,
  welche bereits ausgestorben war,
  als die Schriftstücke geschrieben wurden.
@@ -11343,7 +11343,7 @@ Ich persönlich hasse Schulden.
  soweit sie die Grenzen der Freiheit nicht missachten,
  grundsätzlich selbstbestimmt und frei handeln sollen,
  sondern vorwiegend als Lohnsklaven mit unsichtbaren Ketten handeln müssen,
- finde ich abstoßend.
+ finde ich abstossend.
  Dass Geld zusammen mit Sport und Wissenschaft die heutige Religion ist,
  finde ich barbarisch.
  Nicht dass ich zurück in die Zeit des Mittelalters gehen möchte,
@@ -11400,7 +11400,7 @@ nach mehr
 
 \begin_layout Standard
 In der Entwicklungsbiologie oder der Entwicklungspsychologie gibt es das Schlagwort,
- welches da in etwa heißt:
+ welches da in etwa heisst:
  
 \begin_inset Quotes gld
 \end_inset
@@ -11423,7 +11423,7 @@ Um dieses Kapitel mit einem markigen Kernsatz zu beenden:
 \begin_inset Quotes gld
 \end_inset
 
-Religion und Schulden waren maßgebliche Triebfedern für die Entwicklung der Mathematik
+Religion und Schulden waren massgebliche Triebfedern für die Entwicklung der Mathematik
 \begin_inset Quotes grd
 \end_inset
 
@@ -11697,7 +11697,7 @@ sei.
 \end_layout
 
 \begin_layout Definition
-Ist schließlich 
+Ist schliesslich 
 \begin_inset Formula 
 \[
 m\cdot A=n\cdot A
@@ -11818,7 +11818,7 @@ mache einen entsprechenden Verweis
 \begin_inset Quotes gld
 \end_inset
 
- gedacht werden (ich habe diese Ziffern ja spaßeshalber unter der Figur 
+ gedacht werden (ich habe diese Ziffern ja spasseshalber unter der Figur 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Ziffern"
@@ -12155,7 +12155,7 @@ dann benötige ich zusammen mit den Leerzeichen
  Ich vermute,
  dass dies auch der Grund ist,
  wieso die Zahlen überhaupt erfunden wurden.
- Denn wenn die Zahlen noch größer werden,
+ Denn wenn die Zahlen noch grösser werden,
  können noch viel mehr Zeichen eingespart werden.
  Jedoch möchte ich dazu ebenfalls schreiben,
  dass es nicht nur einen Nutzen gibt,
@@ -12164,7 +12164,7 @@ dann benötige ich zusammen mit den Leerzeichen
  Denn 50 Mal das Symbol für Kuh aufzuschreiben,
  das geht auch dann,
  falls die Schrift und das Rechnen sonst nicht mit viel Mühe und Not gelernt werden.
- Auf der anderen Seite ist es halt schon ein großer Aufwand,
+ Auf der anderen Seite ist es halt schon ein grosser Aufwand,
  wenn zuerst jahrelang das Lesen und Schreiben sowie das Rechnen gelernt werden muss,
  damit der Begriff 
 \begin_inset Quotes gld
@@ -12222,7 +12222,7 @@ In der Definition habe ich noch kein Zahlensystem (wie das duale oder das dezima
  also das Zehnersystem) verwendet.
  In den Einführungen zur Mathematik wird dieses übrigens nirgends gemacht.
  Wahrscheinlich wird das in der Ausbildung zu den Mathematiklehrern gelehrt und vielleicht auch ein wenig gelernt.
- Ich weiß es nicht.
+ Ich weiss es nicht.
  
 \end_layout
 
@@ -12301,7 +12301,7 @@ abgebunden
 Das wird gemacht,
  um leichter zählen zu können.
  Der entscheidende Unterschied von Zahlen zu den Zählstrichen ist derjenige,
- dass immer diejenige Größe,
+ dass immer diejenige Grösse,
  welche gezählt wird,
  nämlich die Anzahl der Symbole (
 \begin_inset Quotes gld
@@ -12350,7 +12350,7 @@ aktuelle Stelle
 \begin_layout Standard
 Ein anderes Beispiel ist,
  dass einmal eine Raumsonde auf den Mars abgestürzt ist,
- weil für die gleiche Größe zwei verschiedene Einheiten verwendet wurden (siehe den entsprechenden 
+ weil für die gleiche Grösse zwei verschiedene Einheiten verwendet wurden (siehe den entsprechenden 
 \begin_inset CommandInset href
 LatexCommand href
 name "Wikipedia-Eintrag"
@@ -12587,10 +12587,10 @@ Anstelle des Unendlichen kommt heute immer mehr das Prinzip des Unscharfen.
  dass es kein beliebig Kleines gibt.
  In der Physik kommt das prominent durch die Heisenbergsche Unschärferelation zum Ausdruck,
  welches besagt,
- dass von jeder physikalischen Größe nicht gleichzeitig die Geschwindigkeit (genauer:
+ dass von jeder physikalischen Grösse nicht gleichzeitig die Geschwindigkeit (genauer:
  der Impuls) und der Ort beliebig genau gemessen werden kann.
  Dennoch werden Zahlen verwendet und das ist sicher auch gut so.
- Jetzt kommt die zweite große Zumutung:
+ Jetzt kommt die zweite grosse Zumutung:
  Die natürliche Zahlen sind nur darum sinnvoll,
  weil mit ihnen gut gerechnet werden kann,
  sie also praktisch sind.
@@ -12640,7 +12640,7 @@ nolink "false"
 \end_inset
 
  eine beliebige natürlich Zahl.
- Da die Gleichheit von Symbolen gemäß dem Lemma 
+ Da die Gleichheit von Symbolen gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
@@ -12657,7 +12657,7 @@ n\cdot A=n\cdot A
 
 \end_inset
 
-Und somit gemäß der Definition der Gleichheit von natürlichen Zahlen 
+Und somit gemäss der Definition der Gleichheit von natürlichen Zahlen 
 \begin_inset Formula 
 \[
 n=n
@@ -12686,7 +12686,7 @@ Also muss für
 \begin_inset Formula $A$
 \end_inset
 
- gemäß der Definition der Gleichheit von natürliche Zahlen
+ gemäss der Definition der Gleichheit von natürliche Zahlen
 \begin_inset Formula 
 \[
 m\cdot A=n\cdot A
@@ -12694,7 +12694,7 @@ m\cdot A=n\cdot A
 
 \end_inset
 
-Da die Gleichheit von von Symbolen gemäß dem Lemma 
+Da die Gleichheit von von Symbolen gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
@@ -12703,7 +12703,7 @@ nolink "false"
 \end_inset
 
  eine Äquivalenzrelation ist und somit auch symmetrisch ist,
- kann ich daraus schließen,
+ kann ich daraus schliessen,
  dass ebenfalls gilt
 \begin_inset Formula 
 \[
@@ -12712,7 +12712,7 @@ n\cdot A=m\cdot A
 
 \end_inset
 
-Somit muss gemäß der Definition der Gleichheit von natürlichen gelten,
+Somit muss gemäss der Definition der Gleichheit von natürlichen gelten,
  dass
 \begin_inset Formula 
 \[
@@ -12737,7 +12737,7 @@ m=n\wedge n=p
 
 \end_inset
 
-Somit muss gemäß der Definition der Gleichheit von natürlichen Zahlen gelten
+Somit muss gemäss der Definition der Gleichheit von natürlichen Zahlen gelten
 \begin_inset Formula 
 \[
 m\cdot A=n\cdot A\wedge n\cdot A=p\cdot A
@@ -12745,7 +12745,7 @@ m\cdot A=n\cdot A\wedge n\cdot A=p\cdot A
 
 \end_inset
 
-Da die Gleichheit von Symbolketten gemäß dem Lemma 
+Da die Gleichheit von Symbolketten gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-Symbole-Aequivalenzrelation"
@@ -12754,7 +12754,7 @@ nolink "false"
 \end_inset
 
  eine Äquivalenzrelation und somit ebenfalls transitiv ist,
- kann ich daraus schließen,
+ kann ich daraus schliessen,
  dass gilt:
 \begin_inset Formula 
 \[
@@ -12763,7 +12763,7 @@ m\cdot A=p\cdot A
 
 \end_inset
 
-Gemäß der Definition der Gleichheit von natürlichen Zahlen kann ich also schreiben:
+Gemäss der Definition der Gleichheit von natürlichen Zahlen kann ich also schreiben:
 \begin_inset Formula 
 \[
 m=p
@@ -12838,7 +12838,7 @@ Es seien
 \end_inset
 
  natürliche Zahlen.
- Dann ist gemäß dem Korollar 
+ Dann ist gemäss dem Korollar 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cor:Symbolvergleich-kleiner-groesser-gleich"
@@ -12857,7 +12857,7 @@ n_{1}\cdot A\leq n_{2}\cdot A\vee n_{1}\cdot A\geq n_{2}\cdot A
 
 \end_inset
 
-Das bedeutet jedoch gemäß der Definition 
+Das bedeutet jedoch gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:natuerliche-Zahlen-eigene-Definition"
@@ -12909,8 +12909,8 @@ status open
 
 \begin_layout Standard
 Nun regt sich jedoch ein kleines Teufelchen in mir.
- Aber das soll Dich nicht verdrießen.
- Es ist bloß ein kleines Kopfexperiment,
+ Aber das soll Dich nicht verdriessen.
+ Es ist bloss ein kleines Kopfexperiment,
  welches uns ein wenig unterhalten sollte.
  Angenommen,
  Alice und Bob sitzen im Sandkasten und streiten darüber,
@@ -12921,7 +12921,7 @@ Nun regt sich jedoch ein kleines Teufelchen in mir.
  das wäre wohl ein hoffnungsloses Unterfangen.
  Oder,
  um den Gedankengang auf die Spitze zu treiben:
- Gemäß Wikipedia ist die Avogadro-Konstante,
+ Gemäss Wikipedia ist die Avogadro-Konstante,
  welche eine reine Zahl ist und den Wert 
 \begin_inset Formula 
 \[
@@ -12985,7 +12985,7 @@ Jahr
 
 \lang english
 Year
-\lang ngerman
+\lang german-ch
 
 \begin_inset Quotes grd
 \end_inset
@@ -13486,7 +13486,7 @@ n_{1}\leq n_{2}\vee n_{1}\geq n_{2}
 
 \end_inset
 
-Gemäß der Definition 
+Gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Disjunktion"
@@ -13527,7 +13527,7 @@ Also muss in diesem Fall
 \end_inset
 
  sein.
- Somit ist gemäß der Definition 
+ Somit ist gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:natuerliche-Zahlen-eigene-Definition"
@@ -13782,7 +13782,7 @@ Noch einmal kurz möchte ich innehalten:
 
 \lang english
 overkill
-\lang ngerman
+\lang german-ch
 
 \begin_inset Quotes grd
 \end_inset
@@ -13790,14 +13790,14 @@ overkill
 ,
  also eine total übertriebener Aufwand,
  wenn ich soviel Platz brauche,
- bloß um zu zeigen,
+ bloss um zu zeigen,
  dass das Minimum von zwei natürlichen Zahlen eindeutig definiert ist.
  Aber es geht mir vor allem darum,
  dass Du siehst,
  wie so etwas gemacht werden kann und dass es wichtig ist,
  sich zu überlegen,
  ob aufgrund der getroffenen Annahmen die Schlüsse in sich selbst widerspruchsfrei sind.
- Ansonsten könnte ich etwas schließen,
+ Ansonsten könnte ich etwas schliessen,
  was völliger Unfug wäre.
  Und dann wäre es den ganzen Aufwand in keinster Art und Weise gerechtfertigt.
 \end_layout
@@ -14158,7 +14158,7 @@ Somit bin ich der Meinung,
 \end_layout
 
 \begin_layout Standard
-Somit möchte ich diesen Teil des Kapitels abschließen.
+Somit möchte ich diesen Teil des Kapitels abschliessen.
 \end_layout
 
 \begin_layout Standard
@@ -14171,7 +14171,7 @@ In der Mathematik und auch sonst sind immer zwei Prinzipien vorhanden,
  Oder der Begriff eines Punktes in einem Bild.
  Oder Begriff eines Hauses.
  Bevor Menschen sesshaft wurden,
- gab es wohl ausschließlich den Begriff der Höhle,
+ gab es wohl ausschliesslich den Begriff der Höhle,
  nicht jedoch denjenigen des Hauses.
  Das andere Prinzip,
  welches verwendet wird,
@@ -14331,7 +14331,7 @@ Falls
 \end_inset
 
  wäre,
- könnte ich gemäß dem Korollar 
+ könnte ich gemäss dem Korollar 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cor:natuerliche-Zahlen-kleiner-gleich-groesser-Totalitaet"
@@ -14618,7 +14618,7 @@ Also habe ich das Resultat erhalten.
 \end_inset
 
 ,
- dann muss es gemäß der Definition der Menge ein 
+ dann muss es gemäss der Definition der Menge ein 
 \begin_inset Formula $n\in\mathbb{N}$
 \end_inset
 
@@ -14653,7 +14653,7 @@ E\left(n_{1}\right)=E\left(n_{2}\right)
 
 \end_inset
 
-dann könnte ich daraus schließen,
+dann könnte ich daraus schliessen,
  dass 
 \begin_inset Formula 
 \[
@@ -14681,7 +14681,7 @@ Da nun die Richtigkeit der Behauptungen
 \end_inset
 
 erbracht sind,
- kann ich gemäß dem Satz 
+ kann ich gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Pruefung-auf-bijektive-Abbildung"
@@ -15271,7 +15271,7 @@ name "chap:Herleitung-Peano-Axiome"
 \end_layout
 
 \begin_layout Standard
-Die Kapitelübersicht von mir ist eine pure Anmaßung meinerseits.
+Die Kapitelübersicht von mir ist eine pure Anmassung meinerseits.
  Der italienische Mathematiker Peano hat die folgenden Axiome bezüglich den natürlichen Zahlen aufgestellt (frei zitiert nach Heuser):
 \end_layout
 
@@ -15484,7 +15484,7 @@ nolink "false"
 \end_inset
 
  als Metasymbol definiert habe,
- gilt definitionsgemäß 
+ gilt definitionsgemäss 
 \begin_inset Formula 
 \[
 1\cdot A=A
@@ -15567,7 +15567,7 @@ Es sei
 \end_inset
 
  eine natürliche Zahl ist,
- muss gemäß dem der Definition 
+ muss gemäss dem der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Minimum-Teilmenge-natuerlicher-Zahlen"
@@ -15613,7 +15613,7 @@ Das bedeutet jedoch,
 \end_inset
 
  wiederum ein Metasymbol ist,
- welche sinnvoll als natürliche Zahl gemäß der Definition 
+ welche sinnvoll als natürliche Zahl gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Minimum-Teilmenge-natuerlicher-Zahlen"
@@ -15693,7 +15693,7 @@ n\in\mathbb{N}
 
 \end_inset
 
-Dann ist gemäß der Definition von 
+Dann ist gemäss der Definition von 
 \begin_inset Formula $n+1$
 \end_inset
 
@@ -15725,7 +15725,7 @@ n\cdot A\,A=A\,n\cdot A
 
 \end_inset
 
-Gemäß dem ein dem Lemma 
+Gemäss dem ein dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -15745,7 +15745,7 @@ nolink "false"
 
 \end_inset
 
-Somit kann ich gemäß der Definition 
+Somit kann ich gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Vergleichbarkeit-von-Metasymbole-fuer-gleiche-Symbolen"
@@ -15764,7 +15764,7 @@ A<A\,n\cdot A
 
 \end_inset
 
-und gemäß dem Satz 
+und gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:totale-Ordnung-Symbolketten-gleicher-Symbole"
@@ -15792,7 +15792,7 @@ A\,n\cdot A\neq A
 \end_inset
 
 gelten,
- da gemäß dem Lemma 
+ da gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -15804,7 +15804,7 @@ nolink "false"
 \end_inset
 
  ja die Symbolgleichheit eine Äquivalenzrelation ist.
- Also muss auch gemäß der Definition 
+ Also muss auch gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:natuerliche-Zahlen-eigene-Definition"
@@ -15897,7 +15897,7 @@ Es sei
 
  das Metasymbol eines Symbols,
  welches in sich selbst und in Bezug auf die anderen Symbole des Beweises widerspruchsfrei sei.
- Nun sei gemäß Voraussetzung
+ Nun sei gemäss Voraussetzung
 \begin_inset Formula 
 \[
 \left(m+1\right)\cdot A=\left(n+1\right)\cdot A
@@ -15924,7 +15924,7 @@ nolink "false"
 
 \end_inset
 
-Da die Gleichheit von Symbolen gemäß dem Lemma 
+Da die Gleichheit von Symbolen gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -15936,7 +15936,7 @@ nolink "false"
 \end_inset
 
  eine Äquivalenzrelation ist,
- kann ich schließen:
+ kann ich schliessen:
 \begin_inset Formula 
 \[
 m\cdot A\,A=n\cdot A\,A
@@ -15944,7 +15944,7 @@ m\cdot A\,A=n\cdot A\,A
 
 \end_inset
 
-Gemäß dem Lemma 
+Gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Ununterscheidbarkeit-von-Symbolen"
@@ -16014,7 +16014,7 @@ m\cdot A=n\cdot A
 
 \end_inset
 
-Das bedeutet jedoch gemäß der Definition 
+Das bedeutet jedoch gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:natuerliche-Zahlen-eigene-Definition"
@@ -16136,7 +16136,7 @@ Denn es sei
 
  ein Symbol,
  welches in sich selbst und in Bezug auf die andere Symbole des Beweises widerspruchsfrei sei.
- Dann gilt gemäß der Definition 
+ Dann gilt gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:natuerliche-Zahlen-eigene-Definition"
@@ -16166,7 +16166,7 @@ n\cdot A<\left(n+1\right)\cdot A
 \end_inset
 
  ist.
- Gemäß dem (überaus nützlichen) Lemma 
+ Gemäss dem (überaus nützlichen) Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Ununterscheidbarkeit-von-Symbolen"
@@ -16199,7 +16199,7 @@ Nun kann ich beiden zusammengesetzten Symbolketten ein
 \begin_inset Formula $n\cdot A$
 \end_inset
 
- gemäß Voraussetzung mehr als ein Symbol 
+ gemäss Voraussetzung mehr als ein Symbol 
 \begin_inset Formula $A$
 \end_inset
 
@@ -16217,7 +16217,7 @@ n\cdot A=A\,m\cdot A
 
 \end_inset
 
-Also kann ich gemäß dem Lemma 
+Also kann ich gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Ununterscheidbarkeit-von-Symbolen"
@@ -16236,7 +16236,7 @@ A\,m\cdot A=m\cdot A\,A
 
 \end_inset
 
-Und es ist wiederum gemäß der Definition 
+Und es ist wiederum gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:natuerliche-Zahlen-eigene-Definition"
@@ -16264,7 +16264,7 @@ n\cdot A=\left(m+1\right)\cdot A
 
 \end_inset
 
-Also muss darum gemäß der Definition 
+Also muss darum gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:natuerliche-Zahlen-eigene-Definition"
@@ -16437,7 +16437,7 @@ Nun sei
 
 .
  Wäre diese Menge nicht leer,
- dann müsste gemäß dem Satz 
+ dann müsste gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Minimum-beliebiger-Teilmenge-natuerlicher-Zahlen"
@@ -16484,7 +16484,7 @@ A_{w}\wedge\neg A_{w+1}
 \end_inset
 
 gelten.
- Das wäre jedoch gemäß dem Satz 
+ Das wäre jedoch gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Negation-Implikation"
@@ -16789,7 +16789,7 @@ Rational
 \begin_inset Quotes grd
 \end_inset
 
- heißt meines Wissens 
+ heisst meines Wissens 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16806,7 +16806,7 @@ vernünftig
  Wenn schon Kuchen,
  dann bitte solche,
  welche essbar sind!
- Ich weiß nicht,
+ Ich weiss nicht,
  wie rationale Zahlen heute den Kindern schmackhaft gemacht werden.
  Noch ein Wort zum Wort 
 \begin_inset Quotes gld
@@ -16899,7 +16899,7 @@ irrational
 \begin_inset Quotes grd
 \end_inset
 
- heißen.
+ heissen.
  Das tun sie jedoch nicht.
  Aber gibt es solche komplexen Zahlen,
  welche es 
@@ -16982,6 +16982,30 @@ bis
 \end_inset
 
 Diese Zahlen werden häufig in Computern gebraucht.
+ Ich möchte an dieser Stelle bloss schreiben,
+ dass diese Zahlen auf eine sehr spezielle Art und Weise dargestellt werden.
+\end_layout
+
+\begin_layout Chapter
+Verallgemeinerung des Satzes der vollständigen Induktion
+\end_layout
+
+\begin_layout Standard
+Ich möchte an dieser Stelle eine kleine Verallgemeinerung des Satzes der vollständigen Induktion formulieren und beweisen.
+\end_layout
+
+\begin_layout Proposition
+Es sei 
+\begin_inset Formula 
+\begin{align*}
+\left(A_{n}\right): & \mathbb{N} & \rightarrow & \Omega\\
+ & n & \mapsto & A_{n}
+\end{align*}
+
+\end_inset
+
+eine Folge von Aussagen.
+ 
 \end_layout
 
 \begin_layout Chapter
@@ -17019,7 +17043,32 @@ Es seien
  :
 \begin_inset Formula 
 \[
+\left(n+1\right)\cdot A\equiv n\cdot A\,A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Ist dann für 
+\begin_inset Formula $m\in\mathbb{N}$
+\end_inset
+
+ die Summe
+\begin_inset Formula 
+\[
 \left(n+m\right)\cdot A\equiv n\cdot A\,m\cdot A
+\]
+
+\end_inset
+
+definiert,
+ dann sei definiert
+\begin_inset Formula 
+\[
+\left(n+\left(m+1\right)\right)\cdot A\equiv n\cdot A\,\left(m+1\right)\cdot A
 \]
 
 \end_inset
@@ -17138,7 +17187,16 @@ natürliche Zahl
 \begin_inset Formula $o$
 \end_inset
 
- kein gutes Beispiel für einen Variablennamen.
+ kein gutes Beispiel für einen Variablennamen,
+ da dieses Symbol der Zahl 
+\begin_inset Formula $0$
+\end_inset
+
+ ähnelt.
+ Zwar nicht bei Dokumenten,
+ welche mit einem Computer geschrieben werden.
+ Aber bei Texten,
+ welche von Hand geschrieben werden.
  Darum kommt es meiner Ansicht nach zu dieser speziellen Reihenfolge.
  Jetzt aber zum Beweis des Satzes:
 \end_layout
@@ -17150,7 +17208,7 @@ Es sei
 
  die Bezeichnung eines Symbols oder Metasymbols,
  welches in sich selbst und in Bezug auf die anderen Symbole des Beweises widerspruchsfrei ist.
- Dann gilt gemäß der Definition 
+ Dann gilt gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Addition-natuerlicher-Zahlen"
@@ -17170,7 +17228,7 @@ nolink "false"
 
 \end_inset
 
-Gemäß der Definition 
+Gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:natuerliche-Zahlen-eigene-Definition"
@@ -17189,7 +17247,7 @@ nolink "false"
 
 \end_inset
 
-Also kann ich gemäß dem zweiten Teil des Lemmas 
+Also kann ich gemäss dem zweiten Teil des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-von-Teilsymbolen"
@@ -17210,7 +17268,7 @@ n\cdot A\,\left(m+1\right)\cdot A=n\cdot A\,m\cdot A\,A
 \end_inset
 
 Die Gleichheit ist also im hinteren Teil des Symbols vorhanden.
- Und da die Gleichheit von Symbolen gemäß dem Lemma 
+ Und da die Gleichheit von Symbolen gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -17233,7 +17291,7 @@ nolink "false"
 
 Nun kann ich die Definition der Addition zweier natürlicher Zahlen wieder rückgängig machen.
  Ich beziehe mich dabei auch ausdrücklich darauf,
- dass gemäß dem Satz 
+ dass gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Assoziativitaet-Symbolketten"
@@ -17274,7 +17332,7 @@ n\cdot A\,m\cdot A\,A & = & \left(n+m\right)\cdot A\,A
 \end_inset
 
 Die Gleichheit ist jetzt jedoch auf dem vorderen Teil des Symbols vorhanden.
- Wiederum gemäß dem Lemma 
+ Wiederum gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -17297,7 +17355,7 @@ nolink "false"
 
 \end_inset
 
-Also kann ich gemäß der Definition 
+Also kann ich gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:natuerliche-Zahlen-eigene-Definition"
@@ -17528,7 +17586,7 @@ nolink "false"
 
 \end_inset
 
- der Addition der natürlichen zahlen ist
+ der Addition der natürlichen Zahlen ist
 \begin_inset Formula 
 \[
 n_{2}\cdot A\,n_{3}\cdot A=\left(n_{2}+n_{2}\right)\cdot A
@@ -17719,7 +17777,7 @@ Der Beweis habe ich für
 \end_inset
 
  bereits erbracht.
- Es ist ja gemäß dem vorhergehenden Satz 
+ Es ist ja gemäss dem vorhergehenden Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Addition-mit-Eins"
@@ -17756,7 +17814,7 @@ n_{1}+\left(n_{2}+n_{3}\right)=\left(n_{1}+n_{2}\right)+n_{3}
 
 \end_inset
 
-Dann gilt gemäß dem vorhergehenden Lemma 
+Dann gilt gemäss dem vorhergehenden Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Addition-mit-Eins"
@@ -17776,7 +17834,7 @@ n_{2}+\left(n_{3}+1\right)=\left(n_{2}+n_{3}\right)+1
 
 \end_inset
 
-Gemäß dem Lemma 
+Gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Addition-gleicher-natuerlicher-Zahlen-mit-natuerlicher-Zahl"
@@ -17787,16 +17845,20 @@ nolink "false"
 
 \end_inset
 
- über Gleichheit der Addition mit gleichen Zahlen kann ich daraus schließen,
+ über Gleichheit der Addition mit gleichen Zahlen kann ich daraus schliessen,
  dass gilt:
 \begin_inset Formula 
-\begin{eqnarray*}
- &  & n_{1}+\left(n_{2}+\left(n_{3}+1\right)\right)\\
- & = & n_{1}+\left(\left(n_{2}+n_{3}\right)+1\right)
-\end{eqnarray*}
+\begin{align*}
+ & n_{1}+\left(n_{2}+\left(n_{3}+1\right)\right)\\
+= & n_{1}+\left(\left(n_{2}+n_{3}\right)+1\right)
+\end{align*}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Proof
 Jetzt kann ich die Induktionsvoraussetzung für 
 \begin_inset Formula $n_{1}$
 \end_inset
@@ -17808,10 +17870,10 @@ Jetzt kann ich die Induktionsvoraussetzung für
  verwenden.
  Ich erhalte 
 \begin_inset Formula 
-\begin{eqnarray*}
- &  & n_{1}+\left(\left(n_{2}+n_{3}\right)+1\right)\\
- & = & \left(n_{1}+\left(n_{2}+n_{3}\right)\right)+1
-\end{eqnarray*}
+\begin{align*}
+ & n_{1}+\left(\left(n_{2}+n_{3}\right)+1\right)\\
+= & \left(n_{1}+\left(n_{2}+n_{3}\right)\right)+1
+\end{align*}
 
 \end_inset
 
@@ -17824,7 +17886,7 @@ n_{1}+\left(n_{2}+n_{3}\right)=\left(n_{1}+n_{2}\right)+n_{3}
 
 \end_inset
 
-Darum kann gemäß dem Lemma 
+Darum kann gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Addition-gleicher-natuerlicher-Zahlen-mit-natuerlicher-Zahl"
@@ -17835,7 +17897,7 @@ nolink "false"
 
 \end_inset
 
- über Gleichheit der Addition von natürlichen Zahlen mit einer dritten Zahll folgern,
+ über Gleichheit der Addition von natürlichen Zahlen mit einer dritten Zahl folgern,
  dass gilt:
 \begin_inset Formula 
 \[
@@ -17865,7 +17927,7 @@ nolink "false"
 
 \end_inset
 
-Da die Gleichheit von Symbolen gemäß dem Satz 
+Da die Gleichheit von Symbolen gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -17876,7 +17938,7 @@ nolink "false"
 
 \end_inset
 
- eine Äquivalenzrelation und gemäß der Definition 
+ eine Äquivalenzrelation und gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Aequivalenzrelation"
@@ -17888,7 +17950,7 @@ nolink "false"
 \end_inset
 
  der Äquivalenzrelation auch transitiv ist,
- kann ich darum schließen
+ kann ich darum schliessen
 \begin_inset Formula 
 \[
 n_{1}+\left(n_{2}+\left(n_{3}+1\right)\right)=\left(n_{1}+n_{2}\right)+\left(n_{3}+1\right)
@@ -17952,7 +18014,7 @@ Es seien die natürlichen Zahlen
 
  ein Metasymbol,
  welches in sich selbst und in Bezug auf die anderen Symbole des Beweises widerspruchsfrei seien.
- Dann kann ich gemäß der Definition 
+ Dann kann ich gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Addition-natuerlicher-Zahlen"
@@ -17971,7 +18033,7 @@ nolink "false"
 
 \end_inset
 
-Gemäß der gleichen Definition 
+Gemäss der gleichen Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Addition-natuerlicher-Zahlen"
@@ -17990,7 +18052,7 @@ nolink "false"
 
 \end_inset
 
-Nun muss gemäß ersten Teil des Lemmas 
+Nun muss gemäss ersten Teil des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-von-Teilsymbolen"
@@ -18013,7 +18075,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Proof
-Da die Gleichheit von Symbolketten gemäß dem Lemma 
+Da die Gleichheit von Symbolketten gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -18024,7 +18086,7 @@ nolink "false"
 
 \end_inset
 
- eine Äquivalenzrelation ist und gemäß der Definition 
+ eine Äquivalenzrelation ist und gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Aequivalenzrelation"
@@ -18036,7 +18098,7 @@ nolink "false"
 \end_inset
 
  der Äquivalenz somit auch transitiv ist,
- kann ich schließen,
+ kann ich schliessen,
  das gelten muss:
 \begin_inset Formula 
 \[
@@ -18050,7 +18112,7 @@ nolink "false"
 
 \begin_layout Proof
 Weiter nutze ich aus,
- dass die Verknüpfung von Symbolketten gemäß dem Lemma 
+ dass die Verknüpfung von Symbolketten gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Assoziativitaet-Symbolketten"
@@ -18062,7 +18124,7 @@ nolink "false"
 \end_inset
 
  assoziativ ist.
- Also kann ich wiederum gemäß der Definition 
+ Also kann ich wiederum gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Addition-natuerlicher-Zahlen"
@@ -18073,8 +18135,8 @@ nolink "false"
 
 \end_inset
 
- der Addition von natürlichen Zahlen und gemäß dem Umstand,
- dass die Gleichheit von Symbolketten gemäß dem Lemma 
+ der Addition von natürlichen Zahlen und gemäss dem Umstand,
+ dass die Gleichheit von Symbolketten gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -18085,7 +18147,7 @@ nolink "false"
 
 \end_inset
 
- eine Äquivalenzrelation ist und gemäß der Definition 
+ eine Äquivalenzrelation ist und gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Aequivalenzrelation"
@@ -18104,7 +18166,7 @@ n_{2}\cdot A\,n_{3}\cdot A=\left(n_{2}+n_{3}\right)\cdot A
 
 \end_inset
 
-Und wiederum gemäß dem zweiten Teil des Lemmas 
+Und wiederum gemäss dem zweiten Teil des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-von-Teilsymbolen"
@@ -18123,7 +18185,7 @@ n_{1}\cdot A\,n_{2}\cdot A\,n_{3}\cdot A=n_{1}\cdot A\,\left(n_{2}+n_{3}\right)\
 
 \end_inset
 
-Da die Gleichheit von Symbolketten gemäß dem Lemma 
+Da die Gleichheit von Symbolketten gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -18134,7 +18196,7 @@ nolink "false"
 
 \end_inset
 
- eine Äquivalenzrelation ist und gemäß der Definition 
+ eine Äquivalenzrelation ist und gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Aequivalenzrelation"
@@ -18146,7 +18208,7 @@ nolink "false"
 \end_inset
 
  der Äquivalenz somit auch transitiv ist,
- kann ich schließen,
+ kann ich schliessen,
  das gelten muss:
 \begin_inset Formula 
 \[
@@ -18174,7 +18236,7 @@ nolink "false"
 
 \end_inset
 
-Da die Gleichheit von Symbolketten gemäß dem Lemma 
+Da die Gleichheit von Symbolketten gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -18206,7 +18268,7 @@ n_{1}\cdot A\,\left(n_{2}+n_{3}\right)\cdot A=\left(n_{1}+\left(n_{2}+n_{3}\righ
 \end_inset
 
 Schlussendlich kann ich noch einmal die Transitivität der Gleichheit von Symbolketten,
- welche gemäß dem Lemma 
+ welche gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Symbolgleichheit-ist-Aequivalenzrelation"
@@ -18297,16 +18359,16 @@ Kommutation
  ist eines der zentralen Gedanken in der Mathematik.
  Angenommen,
  Du möchtest am Morgen aus dem Haus und hast es eilig.
- Sollst Du zuerst hastig eine Tasse körperwarme Milch trinken und anschließend die Schuhe anziehen oder zuerst die Schuhe anziehen und anschließend die körperwarme Tasse Milch trinken?
+ Sollst Du zuerst hastig eine Tasse körperwarme Milch trinken und anschliessend die Schuhe anziehen oder zuerst die Schuhe anziehen und anschliessend die körperwarme Tasse Milch trinken?
  Ich denke,
  da spielt die Reihenfolge keine Rolle.
  Es gibt jetzt in der Mathematik viele Vorgänge,
  bei welchen es auf die Reihenfolge nicht darauf ankommt.
- Dann heißen diese Vorgänge kommutativ.
+ Dann heissen diese Vorgänge kommutativ.
  Ein bekannteres Beispiel dafür ist die Addition von zwei Zahlen.
  In diesem Fall spielt es keine Rolle,
  ob 5 mit 3 oder 3 mit 5 addiert wird.
- Also wird die Addition kommutativ geheißen.
+ Also wird die Addition kommutativ geheissen.
  Aber nicht alle Operationen sind so lieb!
  Um das Alltagsbeispiel weiter zu spinnen:
  Wenn Du anstatt Dich gefragt hättest,
@@ -18314,7 +18376,7 @@ Kommutation
  dann sind diese zwei Vorgänge unter Umständen nicht kommutativ.
  Es hängt dann davon ab,
  ob Du mit dem Rad,
- mit dem Auto oder zu Fuß und dann mit der Straßenbahn,
+ mit dem Auto oder zu Fuss und dann mit der Strassenbahn,
  dem Bus oder dem Zug unterwegs bist.
  Hast Du Deine Hände frei,
  dann gewinnst Du Zeit,
@@ -18366,7 +18428,7 @@ Den Beweis möchte ich in zwei Teilen gestalten.
 \end_inset
 
 .
- Gemäß der Definition der Addition kann ich schreiben
+ Gemäss der Definition der Addition kann ich schreiben
 \begin_inset Formula 
 \[
 \left(n_{1}+1\right)\cdot A=n_{1}\cdot A\,A
@@ -18378,7 +18440,7 @@ Den Beweis möchte ich in zwei Teilen gestalten.
 \end_layout
 
 \begin_layout Proof
-Dann kann ich mit Hifle des Lemmas 
+Dann kann ich mit Hilfe des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Ununterscheidbarkeit-von-Symbolen"
@@ -18894,7 +18956,17 @@ Die Folge besitzt jetzt als Elemente:
 \begin_inset Formula $n_{4}=2$
 \end_inset
 
+.
+ Also wechselt sie immer zwischen zwei Werten hin und her.
+ Ist ist sozusagen ein Gemisch aus zwei konstanten Folgen 
+\begin_inset Formula $\left(1\right)_{k\in}$
+\end_inset
 
+ und 
+\begin_inset Formula $\left(2\right)_{k\in\mathbb{N}}.$
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Section
@@ -18960,7 +19032,7 @@ sowie
 \end_layout
 
 \begin_layout Section
-Über die Anzahl der Begrüßungen
+Über die Anzahl der Begrüssungen
 \end_layout
 
 \begin_layout Standard
@@ -18982,8 +19054,8 @@ Es sei
 \end_inset
 
  Leute.
- Alle schütteln sich zur Begrüßung die Hände.
- Wie viele Begrüßungen per Hand gibt es?
+ Alle schütteln sich zur Begrüssung die Hände.
+ Wie viele Begrüssungen per Hand gibt es?
 \end_layout
 
 \begin_layout Standard
@@ -19010,7 +19082,7 @@ Alle der
 \end_inset
 
  Mal die Hände geschüttelt.
- Jedoch wird dabei dabei doppelt so viele Handbegrüßungen gezählt,
+ Jedoch wird dabei dabei doppelt so viele Handbegrüssungen gezählt,
  wie wirklich vorhanden sind.
  Schüttelt Alice Bob die Hand,
  dann ist es das gleiche Ereignis,
@@ -19023,7 +19095,7 @@ Alle der
 
 \end_inset
 
-Handbegrüßungen.
+Handbegrüssungen.
 \end_layout
 
 \begin_layout Standard
@@ -19272,7 +19344,7 @@ Weiter oben habe ich jedoch gezeigt,
 
 \end_inset
 
-Also kann ich gemäß der Transitivität und Symmetrie der Gleichheit von natürlichen Zahlen schreiben,
+Also kann ich gemäss der Transitivität und Symmetrie der Gleichheit von natürlichen Zahlen schreiben,
  dass gilt
 \begin_inset Formula 
 \[

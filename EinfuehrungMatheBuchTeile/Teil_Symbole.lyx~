@@ -3702,7 +3702,55 @@ Es sei
 \begin_inset Quotes grd
 \end_inset
 
+ Das zweite Beispiel wäre:
+ Angenommen,
+ es sei 
+\begin_inset Formula $B$
+\end_inset
 
+ das Symbol einer Zeichenkette,
+ welche aus drei Buchstaben 
+\begin_inset Formula $A$
+\end_inset
+
+ bestehen bestehe.
+ Es gelte also
+\begin_inset Formula 
+\[
+B=A\,A\,A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dann sieht das seltsam aus.
+ Wenn ich hier geschrieben hätte:
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Es sei
+\begin_inset Formula $B=A\,A\,A$
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+,
+ dann wäre das meines Erachtens sehr mühsam zu verstehen.
+ Darum möchte ich versuchen,
+ darauf zu verzichten.
+ Und auch beim Nachdenken über Gleichheit von Symbolketten ist es mir wichtig,
+ immer klar zu schreiben,
+ was ein Symbol und was ein Metasymbl sein soll.
+\end_layout
+
+\begin_layout Standard
+dann wäre das meines Erachtens schwierig zu verstehen..
 \end_layout
 
 \begin_layout Standard
