@@ -23117,6 +23117,224 @@ status open
 \begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
+name "lem:Gleichheit-von-Symbolen"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $A$
+\end_inset
+
+ sowie 
+\begin_inset Formula $B$
+\end_inset
+
+ Metasymbole,
+ welche gleich seien.
+ Dann müssen die von 
+\begin_inset Formula $A$
+\end_inset
+
+ respektive 
+\begin_inset Formula $B$
+\end_inset
+
+ symbolisierten Symbolen aus gleich vielen einzelnen Symbolen zusammengesetzt sein.
+\end_layout
+
+\begin_layout Proof
+Das ist wieder so eine Fingerübung,
+ welche daraus hinausläuft,
+ dass Du zwar weniger über die Gleichheit von Symbolen,
+ jedoch mehr über die vollständige Induktion erfahren kannst.
+ Es seien also 
+\begin_inset Formula $A$
+\end_inset
+
+ und 
+\begin_inset Formula $B$
+\end_inset
+
+ Metasymbole und es sei 
+\begin_inset Formula $A=B$
+\end_inset
+
+.
+ Das von 
+\begin_inset Formula $A$
+\end_inset
+
+ symbolisierte Symbol sei aus einem einzelnen Symbol aufgebaut.
+ Dann muss gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Gleichheit-von-Symbolen"
+nolink "false"
+
+\end_inset
+
+ auch 
+\begin_inset Formula $B$
+\end_inset
+
+ aus einem Symbol aufgebaut sein.
+ Nun gelte die Behauptung für alle Symbole,
+ welche aus 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ Symbolen aufgebaut sei.
+ Weiter sei 
+\begin_inset Formula $A$
+\end_inset
+
+ ein Symbol,
+ welches aus 
+\begin_inset Formula $n+1$
+\end_inset
+
+ Symbolen aufgebaut sei.
+ Also muss ein Metasymbol 
+\begin_inset Formula $A_{n+1}$
+\end_inset
+
+ derart geben,
+ dass das durch 
+\begin_inset Formula $A_{n+1}$
+\end_inset
+
+ symbolisierte Symbol aus einem Symbol aufgebaut ist.
+ Ebenfalls muss es ein Metasymbol 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ derart derart geben,
+ dass das durch 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ symbolisierte Symbol aus 
+\begin_inset Formula $n$
+\end_inset
+
+ Symbolen besteht.
+ Weiter sei 
+\begin_inset Formula $A=A_{n+1}\,A_{n}$
+\end_inset
+
+.
+ Nun sei 
+\begin_inset Formula $A=B$
+\end_inset
+
+.
+ Gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Gleichheit-von-Symbolen"
+nolink "false"
+
+\end_inset
+
+ muss darum das durch 
+\begin_inset Formula $B$
+\end_inset
+
+ symbolisierte Symbol ebenfalls mit dem Symbol 
+\begin_inset Formula $A_{n+1}$
+\end_inset
+
+ beginnen.
+ Wenn 
+\begin_inset Formula $B$
+\end_inset
+
+ keine weitere Symbole mehr enthalten würde,
+ dann könnte 
+\begin_inset Formula $B$
+\end_inset
+
+ nicht mehr gleich 
+\begin_inset Formula $A$
+\end_inset
+
+ sein.
+ Also muss auch das Symbol 
+\begin_inset Formula $B_{n}$
+\end_inset
+
+ welches entsteht,
+ indem beim Symbol 
+\begin_inset Formula $B$
+\end_inset
+
+ das erste Symbol (
+\begin_inset Formula $A_{n+1}$
+\end_inset
+
+) entfernt wird ebenfalls gleich demjenigen von 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ symbolisierten Symbol sein.
+ Also muss gemäß der Induktionsvoraussetzung die Anzahl der Symbole von 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ gleich derjenigen von 
+\begin_inset Formula $B_{n}$
+\end_inset
+
+ sein.
+ Das sind jedoch gemäß der Induktionsvoraussetzung 
+\begin_inset Formula $n$
+\end_inset
+
+ Symbole.
+ Also hat das durch 
+\begin_inset Formula $B$
+\end_inset
+
+ symbolisierte Symbol ebenfalls 
+\begin_inset Formula $n+1$
+\end_inset
+
+ Symbole besitzen.
+ Damit ist jedoch die Induktionsvererbung und somit der ganze Induktionsbeweis erbracht.
+ Da gemäß der Definition von Symbolen alle Symbole aus endlich viele Symbolen zusammengesetzt sind,
+ halte ich den Beweis für erbracht.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Backward References
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Flex Forward References
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
 name "lem:Gleichheit-Symbole-Aequivalenzrelation"
 
 \end_inset
@@ -23379,7 +23597,7 @@ A=A_{n+1}\,A_{n}
  Gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:erstes-Gleichheit-von-Symbolen"
+reference "lem:Gleichheit-von-Symbolen"
 nolink "false"
 
 \end_inset
@@ -23655,7 +23873,7 @@ A=B
 Gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:erstes-Gleichheit-von-Symbolen"
+reference "lem:Gleichheit-von-Symbolen"
 nolink "false"
 
 \end_inset
@@ -23699,7 +23917,7 @@ sein.
  muss gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:erstes-Gleichheit-von-Symbolen"
+reference "lem:Gleichheit-von-Symbolen"
 nolink "false"
 
 \end_inset

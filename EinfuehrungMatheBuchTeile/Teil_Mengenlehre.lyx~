@@ -23117,7 +23117,7 @@ status open
 \begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
-name "lem:Gleichheit-Symbole-Aequivalenzrelation-1"
+name "lem:Gleichheit-Symbole-Aequivalenzrelation"
 
 \end_inset
 
