@@ -1,0 +1,10 @@
+name = "Satz5"
+version = "0.1.0"
+defaultTargets = ["satz5"]
+
+[[lean_lib]]
+name = "Satz5"
+
+[[lean_exe]]
+name = "satz5"
+root = "Main"

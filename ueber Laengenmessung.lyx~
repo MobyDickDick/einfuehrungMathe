@@ -182,7 +182,7 @@ theorems-ams-extended
 \begin_inset Newline newline
 \end_inset
 
-Version 1
+Version 2
 \end_layout
 
 \begin_layout Author
@@ -203,7 +203,7 @@ markus.demarmels@bluewin.ch
 
 \begin_layout Date
 letzte Änderung:
- 10.
+ 16.
  August 2025
 \begin_inset Newline newline
 \end_inset
@@ -218,14 +218,6 @@ letzte Änderung:
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList figure
 
 \end_inset
 
@@ -261,10 +253,6 @@ Ich möchte betonen,
  Meine Ideen würden nie und nimmer funktionieren.
  Ich möchte trotzdem versuchen,
  meine Ideen noch einmal zusammen zu fassen.
-\end_layout
-
-\begin_layout Chapter
-Über Längenmessung
 \end_layout
 
 \begin_layout Standard
@@ -306,13 +294,41 @@ sowie
 
 \begin_layout Standard
 Weiter gilt gemäss der allgemeinen Lehrmeindung,
- dass es nicht möglich sein,
+ dass es nicht möglich sei,
  zu beweisen,
  dass alle Mengen mit mindestens überabzählbar unendlich vielen Elementen gleichmächtig zu 
 \begin_inset Formula $\mathbb{R}$
 \end_inset
 
  sein müssen.
+\end_layout
+
+\begin_layout Standard
+Jedoch möchte ich ins Feld führen:
+ Dass Mengen nicht messbar seien,
+ ist vor allem dem Auswahlaxiom geschuldet.
+ Und ich bin so frech,
+ dieses Auswahaxiom nicht verwende.
+\end_layout
+
+\begin_layout Standard
+Ebenso ist die Lehrmeinung,
+ dass die Cantor-Hypothese mit den Mitteln der Logik weder beweis- noch widerlegbar sei.
+ Aber ich ziehe eben zusätzliche Annahmen hinzu.
+ Und zwar diejenigen aus der Analsysis.
+ Und wenn ich das mache,
+ meine ich annehmen zu können,
+ dass jede Teilmenge der reellen Zahlen mit mehr als abzählbar unendlich vielen Elementen gleichmächtig zur Menge der rellen Zahlen sein muss.
+\end_layout
+
+\begin_layout Standard
+Ich werde mir dementsprechend auch erlauben,
+ nicht gross auf Antworten zu reagieren.
+ Denn diese beziehen sich in aller Regel auf die Annahmen oder lehnen rundherum jede Argumentation in dieser Richtung ab.
+\end_layout
+
+\begin_layout Chapter
+Über Längenmessung
 \end_layout
 
 \begin_layout Standard
@@ -648,7 +664,7 @@ Weiter:
  dann sei 
 \begin_inset Formula 
 \[
-\kappa\left(M\right)\equiv\inf\left\{ \kappa\left(U\right)|U\in\left\{ \mathbb{V}\right\} \right\} 
+\kappa\left(M\right)\equiv\inf\left\{ \kappa\left(U\right)|U\in\mathbb{V}\right\} 
 \]
 
 \end_inset
@@ -870,22 +886,12 @@ Es sei nun
 \end_inset
 
  ist.
- Wieder kann 
-\begin_inset Formula $K=\left\{ x\right\} $
-\end_inset
-
- genommen werden.
- Also ist dann wieder 
+ Somit muss 
 \begin_inset Formula $x\in M$
 \end_inset
 
-,
- da 
-\begin_inset Formula $K\subset M$
-\end_inset
-
- ist.
- Somit ist auch 
+ sein.
+ Also muss auch gelten:
 \begin_inset Formula 
 \[
 \bigcup_{K\in\mathbb{W}\left(M\right)}K\subset M
@@ -926,7 +932,7 @@ Nun kann ich die Regel von de Morgan anwenden und erhalte
 
 \end_inset
 
-Jetzt ist die Frage aller Fragen:
+Jetzt kommt die Frage:
  Muss es Folgen 
 \begin_inset Formula $\left(U_{n}\right)_{n\in\mathbb{N}}$
 \end_inset
