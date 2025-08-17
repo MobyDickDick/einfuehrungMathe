@@ -1,34 +1,4 @@
 import Mathlib
-/-!
-# Satz 5 (skeleton formalization in Lean 4 + mathlib)
-
-We encode your statement in a way that is faithful to the intended structure:
-given a set `M ⊆ (0,1)` of Lebesgue measure 0, uncountable, and "superdense",
-**and** assuming we already have witnesses that `M` is both a countable
-intersection of open sets (Gδ) and a countable union of closed sets (Fσ),
-we *construct* monotone sequences of open supersets `U n ⊇ M` and compact
-subsets `K n ⊆ M` with
-
-```
-⋂ n, (U n \ K n) = ∅,      M = ⋂ n, U n,      M = ⋃ n, K n.
-```
-
-**Why these extra witnesses?**
-"⋂ open = M" is precisely the definition that `M` is Gδ; "⋃ closed = M"
-is the definition that `M` is Fσ (in `ℝ`, intersecting with `[0,1]` turns
-these closed sets into compacts). Your informal proof implicitly uses
-these properties when it speaks of "Ausschöpfungen". Formulating them as
-hypotheses lets us produce a *fully checkable* construction in Lean with
-no reliance on Choice, Vitali/Bernstein, or CH.
-
-If you later provide constructive arguments that a particular `M` (e.g., a
-superdense nullset) is indeed both Gδ and Fσ, you can plug them in as
-separate lemmas and obtain this theorem *without* any axiomatic shortcuts.
-
-This file is self-contained modulo `mathlib`.
--/
-
-
 
 open Set MeasureTheory Topology
 open scoped Topology BigOperators
@@ -36,36 +6,38 @@ open scoped Topology BigOperators
 namespace Satz5
 
 noncomputable section
-variable {M : Set ℝ}
 
-/-- Convenience: `(0,1)` and `[0,1]` as sets. -/
+/-- Kurzschreibweisen für (0,1) und [0,1]. -/
 def Ioo01 : Set ℝ := Ioo (0 : ℝ) 1
 def Icc01 : Set ℝ := Icc (0 : ℝ) 1
 
-/-- One possible formalization of "superdense in (0,1)":
-every nontrivial open subinterval of `(0,1)` meets `M` densely.
-You can strengthen/weaken this as needed later. -/
+/-- Eine mögliche (optionale) Formulierung von „superdicht in (0,1)“. -/
 def SuperdenseIn01 (M : Set ℝ) : Prop :=
   ∀ {a b : ℝ}, 0 < a → a < b → b < 1 → Dense (M ∩ Ioo a b)
 
-/-- Outer measure κ as the Lebesgue outer measure. We will only use `volume` on sets. -/
-def kappa (S : Set ℝ) : ℝ≥0∞ := (volume.toOuterMeasure S)
+/-- κ als Lebesgue-Außenmaß (Typ `ENNReal`). -/
+def kappa (S : Set ℝ) : ENNReal := volume.toOuterMeasure S
 
-/-- *Satz 5 (programmatic form):*
-If `M ⊆ (0,1)` has `kappa M = 0`, is uncountable and superdense in `(0,1)`, and if
-we additionally have **witnesses** that `M` is both a countable intersection of open
-sets and a countable union of closed sets, then we can build *monotone* sequences
-`U n` and `K n` with
-- each `U n` is open, `M ⊆ U n`, and `U` is antitone (decreasing);
-- each `K n` is compact, `K n ⊆ M`, and `K` is monotone (increasing);
-- `⋂ n, (U n \ K n) = ∅` (hence `M = ⋂ n, U n = ⋃ n, K n`). -/
+/-- **Satz 5 (programmatische Form)**
+
+Angenommen:
+* `M ⊆ (0,1)`,
+* `kappa M = 0` (hier nicht benutzt),
+* `M` ist überabzählbar und superdicht (hier nicht benutzt),
+* es gibt eine Gδ-Zeugenfamilie `s` mit `M = ⋂ n, s n` und alle `s n` offen,
+* es gibt eine Fσ-Zeugenfamilie `t` mit `M = ⋃ n, t n` und alle `t n` abgeschlossen,
+
+dann existieren Folgen `U n` (offen, fallend, `M ⊆ U n`) und `K n` (kompakt, wachsend, `K n ⊆ M`)
+mit `⋂ n, (U n \ K n) = ∅`. -/
 theorem satz5_construct_sequences
+  (M : Set ℝ)
   (hM_subset : M ⊆ Ioo01)
-  (h_kappa0 : kappa M = 0)                -- i.e. Lebesgue outer measure 0
-  (h_uncount : ¬ M.Countable)             -- uncountable
-  (h_super : SuperdenseIn01 M)            -- "superdense"
-  -- *** explicit Gδ and Fσ witnesses (these are the key existence claims) ***
+  (_ : kappa M = 0)
+  (_ : ¬ M.Countable)
+  (_ : SuperdenseIn01 M)
+  -- Gδ-Zeuge
   (hG : ∃ s : ℕ → Set ℝ, (∀ n, IsOpen (s n)) ∧ M = ⋂ n, s n)
+  -- Fσ-Zeuge
   (hF : ∃ t : ℕ → Set ℝ, (∀ n, IsClosed (t n)) ∧ M = ⋃ n, t n) :
   ∃ (K U : ℕ → Set ℝ),
     (∀ n, IsCompact (K n) ∧ K n ⊆ M) ∧
@@ -73,159 +45,173 @@ theorem satz5_construct_sequences
     (Antitone U) ∧ (Monotone K) ∧
     (⋂ n, (U n \ K n) = (∅ : Set ℝ)) := by
   classical
-  -- Unpack Gδ and Fσ witnesses
   rcases hG with ⟨s, hs_open, hM_iInter⟩
   rcases hF with ⟨t, ht_closed, hM_iUnion⟩
 
-  -- Define decreasing open supersets: finite intersections of the `s n`
-  let U : ℕ → Set ℝ
-  | 0     => s 0
-  | n + 1 => U n ∩ s (n + 1)
+  /-========================
+      U-Folge: endliche Schnitte der sₙ
+    ========================-/
+  -- U n := s 0 ∩ … ∩ s n (per Nat.rec)
+  let U : ℕ → Set ℝ :=
+    fun n => Nat.rec (s 0) (fun n Un => Un ∩ s (n+1)) n
+  -- Rechengesetze für U
+  have U_zero : U 0 = s 0 := by simp [U]
+  have U_succ (n : ℕ) : U (n+1) = U n ∩ s (n+1) := by simp [U]
 
-  -- Define increasing compact subsets: finite unions of `t n ∩ [0,1]`
-  let K : ℕ → Set ℝ
-  | 0     => (t 0) ∩ Icc01
-  | n + 1 => K n ∪ ((t (n + 1)) ∩ Icc01)
-
+  -- Offenheit von U n
   have hU_open : ∀ n, IsOpen (U n) := by
-    intro n; induction' n with n ih
-    · exact hs_open 0
-    · exact ih.inter (hs_open (n + 1))
+    intro n
+    refine Nat.rec (by simpa [U_zero] using hs_open 0)
+      (fun n ih => by simpa [U_succ n] using ih.inter (hs_open (n+1))) n
 
-  -- `U` is antitone: U (n+1) = U n ∩ s (n+1) ⊆ U n
-  have hU_antitone : Antitone U := by
-    intro i j hij
-    induction' j with j ih generalizing i
-    · have : i = 0 := Nat.le_zero.mp hij; subst this
-      exact Subset.rfl
-    · cases le_or_eq_of_le hij with
-      | inl hij' =>
-          have : U (j + 1) ⊆ U j := by exact inter_subset_left
-          have step := ih hij'
-          -- U (j+1) ⊆ U j ⊆ U i
-          exact fun x hx => step (this hx)
-      | inr hej =>
-          subst hej; exact inter_subset_left
-
+  -- M ⊆ U n für alle n, da M = ⋂ s n
   have hU_contains : ∀ n, M ⊆ U n := by
-    -- Since M = ⋂ s n, M ⊆ s k for all k, hence M ⊆ U n by construction.
-    intro n
-    -- Basic fact: from hM_iInter, we have M ⊆ s k for all k
+    -- M ⊆ s k für alle k
     have hM_sub_all : ∀ k, M ⊆ s k := by
-      intro k; have : M ⊆ ⋂ n, s n := by simpa [hM_iInter] using Subset.rfl
-      -- Membership in intersection implies membership in each component
-      intro x hx; have hx' : x ∈ ⋂ n, s n := this hx
-      exact Set.mem_iInter.mp hx' k
-    -- Now push through the finite intersection building of U n
-    induction' n with n ih
-    · exact hM_sub_all 0
-    · intro x hxM; exact ⟨ih hxM, hM_sub_all (n+1) hxM⟩
-
-  -- Compactness of K n and inclusion K n ⊆ M
-  have hK_compact : ∀ n, IsCompact (K n) := by
-    -- Each K n is a finite union of sets of the form `t k ∩ [0,1]`.
-    -- `Icc01` is compact; `t k` is closed; hence each `t k ∩ Icc01` is compact,
-    -- and finite unions of compact sets are compact.
-    -- (All of this is standard in `mathlib`.)
+      intro k x hx
+      have : x ∈ ⋂ n, s n := by simpa [hM_iInter] using hx
+      exact mem_iInter.mp this k
     intro n
-    -- Proof by induction on n:
-    -- base: compact_inter_closed_right, step: IsCompact.union
-    -- We'll leave the details to `by sorry` to keep the skeleton short.
-    sorry
+    refine Nat.rec (by intro x hx; simpa [U_zero] using hM_sub_all 0 hx)
+      (fun n ih x hx => And.intro (ih hx) (hM_sub_all (n+1) hx)) n
+
+  -- Ein-Schritt: U (n+1) ⊆ U n
+  have stepU : ∀ n, U (n+1) ⊆ U n := by
+    intro n x hx
+    have hx' : x ∈ U n ∩ s (n+1) := by simpa [U_succ n] using hx
+    exact hx'.left
+
+  -- Antitonie insgesamt: m ≤ n ⇒ U n ⊆ U m
+  have hU_antitone : Antitone U := by
+    intro m n hmn
+    obtain ⟨k, rfl⟩ := Nat.exists_eq_add_of_le hmn
+    refine Nat.rec (by simp) (fun k ih => ?_) k
+    have hstep : U (m + k + 1) ⊆ U (m + k) := by
+      simpa [Nat.add_assoc] using stepU (m + k)
+    exact hstep.trans ih
+
+  /-========================
+      K-Folge: endliche Vereinigungen kompakter Stücke
+    ========================-/
+  -- [0,1] ist kompakt
+  have hIcc_compact : IsCompact Icc01 := by
+    simpa [Icc01] using (isCompact_Icc : IsCompact (Icc (0:ℝ) 1))
+
+  -- Baustein: Kpiece k := Icc01 ∩ t k
+  let Kpiece : ℕ → Set ℝ := fun k => Icc01 ∩ t k
+
+  -- Kompaktheit von Kpiece k (Schnitt von kompakt und geschlossen ist kompakt).
+  -- *** Lass GENAU EINE der folgenden drei Zeilen aktiv (die bei dir vorhanden ist): ***
+  have hKpiece_compact : ∀ k, IsCompact (Kpiece k) := by
+    intro k
+    have ht : IsClosed (t k) := ht_closed k
+    -- Variante A (häufig vorhanden):
+    -- simpa [Kpiece, Icc01, inter_comm] using hIcc_compact.inter_closed_left ht
+    -- Variante B:
+    -- simpa [Kpiece, Icc01] using hIcc_compact.inter_closed_right ht
+    -- Variante C:
+    simpa [Kpiece, Icc01] using IsCompact.inter_right hIcc_compact ht
+
+  -- K 0 := Kpiece 0, K (n+1) := K n ∪ Kpiece (n+1)
+  let K : ℕ → Set ℝ :=
+    fun n => Nat.rec (Kpiece 0) (fun n Kn => Kn ∪ Kpiece (n+1)) n
+  -- Rechengesetze für K
+  have K_zero : K 0 = Kpiece 0 := by simp [K]
+  have K_succ (n : ℕ) : K (n+1) = K n ∪ Kpiece (n+1) := by simp [K]
+
+  -- Kompaktheit aller K n (endliche Vereinigung kompakter Mengen ist kompakt)
+  have hK_compact : ∀ n, IsCompact (K n) := by
+    intro n
+    refine Nat.rec (by simpa [K_zero] using hKpiece_compact 0)
+      (fun n ih => by simpa [K_succ n] using ih.union (hKpiece_compact (n+1))) n
+
+  -- Aus M = ⋃ t n folgt: t k ⊆ M für alle k
+  have ht_sub_M : ∀ k, t k ⊆ M := by
+    intro k x hx
+    have : x ∈ ⋃ n, t n := mem_iUnion.mpr ⟨k, hx⟩
+    simpa [hM_iUnion] using this
+
+  -- Daher Kpiece k ⊆ M und folglich K n ⊆ M
+  have hKpiece_subset_M : ∀ k, Kpiece k ⊆ M := by
+    intro k x hx; exact ht_sub_M k hx.right
 
   have hK_subset : ∀ n, K n ⊆ M := by
-    -- Since M = ⋃ t n and M ⊆ (0,1), we have (t n ∩ [0,1]) ⊆ M.
-    -- Finite unions remain inside M.
     intro n
-    -- Prove by induction using `by_cases`-style reasoning:
-    -- base: show (t 0 ∩ Icc01) ⊆ M; step: union subset.
-    have h_piece : ∀ k, (t k ∩ Icc01) ⊆ M := by
-      intro k; intro x hx
-      have hx_in_tk : x ∈ t k := hx.left
-      have hx_in_Icc : x ∈ Icc01 := hx.right
-      -- From hM_iUnion, x ∈ ⋃ t n iff x ∈ M; however, we only know M = ⋃ t n,
-      -- hence (t k ⊆ ⋃ t n). Together with x ∈ Icc01 and hM_subset, we can show
-      -- x ∈ M because `x ∈ t k` implies `x ∈ ⋃ t n = M`, and intersecting with
-      -- `[0,1]` doesn't remove points of `M` (since `M ⊆ (0,1) ⊆ [0,1]`).
-      have : x ∈ ⋃ n, t n := by exact mem_iUnion.mpr ⟨k, hx_in_tk⟩
-      simpa [hM_iUnion] using this
-    -- Now induction on n for finite unions:
+    refine Nat.rec (by simpa [K_zero] using hKpiece_subset_M 0)
+      (fun n ih => ?_) n
     intro x hx
-    -- We'll prove it by straightforward induction; formal proof elided.
-    sorry
+    have hx' : x ∈ K n ∪ Kpiece (n+1) := by simpa [K_succ n] using hx
+    cases hx' with
+    | inl hxKn => exact ih hxKn
+    | inr hxKp => exact hKpiece_subset_M (n+1) hxKp
 
-  -- Define the final sequences we return
-  refine ⟨K, U, ?_, ?_, hU_antitone, ?_, ?_⟩
+  -- Monotonie von K
+  have hK_mono : Monotone K := by
+    intro i j hij
+    obtain ⟨k, rfl⟩ := Nat.exists_eq_add_of_le hij
+    refine Nat.rec (by simp) (fun k ih => ?_) k
+    intro x hx
+    have hx' : x ∈ K (i + k) := ih hx
+    have : x ∈ K (i + k) ∪ Kpiece (i + k + 1) := Or.inl hx'
+    simpa [K_succ (i + k)] using this
 
-  -- (1) Each `K n` is compact and contained in `M`
+  /-========================
+      Leere des Schnitts ⋂ (U n \ K n)
+    ========================-/
+  have h_inter_empty : (⋂ n, (U n \ K n)) = (∅ : Set ℝ) := by
+    apply eq_empty_iff_forall_notMem.mpr
+    intro x hx
+    -- aus hx: x ∈ U n und x ∉ K n für alle n
+    have hxU : ∀ n, x ∈ U n := fun n => (mem_iInter.mp hx n).left
+    have hx_notK : ∀ n, x ∉ K n := fun n => (mem_iInter.mp hx n).right
+
+    -- aus x ∈ U n folgt x ∈ s n für alle n
+    have hx_in_all_s : ∀ n, x ∈ s n := by
+      intro n
+      refine Nat.rec (by simpa [U_zero] using hxU 0)
+        (fun n ih => ?_) n
+      have hxUn1 : x ∈ U (n+1) := hxU (n+1)
+      have : x ∈ U n ∩ s (n+1) := by simpa [U_succ n] using hxUn1
+      exact this.right
+
+    -- x ∈ M (da x ∈ ⋂ s n)
+    have hxM : x ∈ M := by
+      have : x ∈ ⋂ n, s n := mem_iInter.mpr (by intro n; exact hx_in_all_s n)
+      simpa [hM_iInter] using this
+
+    -- daraus x ∈ Icc01 (weil M ⊆ Ioo01 ⊆ Icc01)
+    have hx_Icc : x ∈ Icc01 := by
+      have hx_Ioo : x ∈ Ioo01 := hM_subset hxM
+      exact ⟨le_of_lt hx_Ioo.1, le_of_lt hx_Ioo.2⟩
+
+    -- aus M = ⋃ t n folgt ∃ k, x ∈ t k
+    obtain ⟨k, hx_tk⟩ : ∃ k, x ∈ t k := by
+      have : x ∈ ⋃ n, t n := by simpa [hM_iUnion] using hxM
+      exact mem_iUnion.mp this
+
+    -- dann x ∈ Kpiece k ⊆ K k, Widerspruch zu hx_notK k
+    have hx_in_Kpiece : x ∈ Kpiece k := ⟨hx_Icc, hx_tk⟩
+    -- Lemma: Kpiece n ⊆ K n
+    have Kpiece_subset_K : ∀ n, Kpiece n ⊆ K n := by
+      intro n
+      induction' n with n ih
+      · -- n = 0
+        intro x hx
+        simpa [K_zero] using hx
+      · -- n+1
+        intro x hx
+        have : x ∈ K n ∪ Kpiece (n+1) := Or.inr hx
+        simpa [K_succ n] using this
+    -- aus Kpiece ⊆ K folgt x ∈ K k
+    have hx_in_Kk : x ∈ K k := Kpiece_subset_K k hx_in_Kpiece
+    -- Widerspruch zu hx_notK k
+    exact (hx_notK k) hx_in_Kk
+
+
+  -- Zusammenstellen
+  refine ⟨K, U, ?_, ?_, hU_antitone, hK_mono, h_inter_empty⟩
   · intro n; exact ⟨hK_compact n, hK_subset n⟩
-
-  -- (2) Each `U n` is open and contains `M`
   · intro n; exact ⟨hU_open n, hU_contains n⟩
 
-  -- (3) `K` is monotone (increasing)
-  · -- Immediate from definition: K (n+1) = K n ∪ (⋯) ⊇ K n
-    intro i j hij
-    induction' j with j ih generalizing i
-    · have : i = 0 := Nat.le_zero.mp hij; subst this; exact Subset.rfl
-    · cases le_or_eq_of_le hij with
-      | inl hij' =>
-          have : K j ⊆ K (j + 1) := by
-            intro x hx; exact Or.inl hx
-          have step := ih hij'
-          -- K i ⊆ K j ⊆ K (j+1)
-          exact fun x hx => this (step hx)
-      | inr hej =>
-          subst hej; intro x hx; exact Or.inl hx
-
-  -- (4) ⋂ n, (U n \ K n) = ∅
-  · -- Elementwise argument: if `x ∈ ⋂ (U n \ K n)` then
-    -- (i) x ∈ ⋂ U n = M, but also (ii) x ∉ ⋃ K n = M — contradiction.
-    -- Hence the intersection is empty.
-    -- To make this fully formal we show `⋂ U n = M` and `⋃ K n = M`:
-    have h_inter : (⋂ n, U n) = M := by
-      -- Since `U n` are finite intersections accumulating all `s n`,
-      -- their big intersection equals `⋂ n, s n = M`. Standard argument.
-      -- (Formal proof omitted to keep the skeleton short.)
-      simpa [hM_iInter] using rfl
-    have h_union : (⋃ n, K n) = M := by
-      -- Because `K n` are finite unions of `(t k ∩ [0,1])` and `M ⊆ (0,1)`,
-      -- their big union equals `⋃ t n = M`. (Formal details omitted.)
-      simpa [hM_iUnion] using rfl
-    -- Now finish:
-    apply eq_empty_iff_forall_not_mem.mpr
-    intro x hx
-    have hxU : x ∈ ⋂ n, U n := by
-      -- from hx : x ∈ ⋂ n, (U n \ K n) we get in particular x ∈ ⋂ n, U n
-      have hxU' : ∀ n, x ∈ U n := by
-        intro n; have := Set.mem_iInter.mp hx n; exact this.left
-      exact Set.mem_iInter.mpr hxU'
-    have hxK : x ∈ ⋃ n, K n := by
-      -- from hx we also have x ∉ ⋃ n, K n
-      -- Actually, hx gives x ∉ K n for all n, contradicting membership in union,
-      -- so we derive a contradiction. Let's directly argue:
-      -- We'll prove `False` from hx and h_inter/h_union and then close.
-      -- To keep the skeleton concise, we conclude here.
-      -- (You can expand this with `by_cases`/`Classical` if you like.)
-      -- Placeholder (we never use `hxK` explicitly below).
-      have : False := by
-        -- Suppose x ∈ M (from h_inter); but hx says x ∉ K n for all n,
-        -- hence x ∉ ⋃ K n; since ⋃ K n = M, contradiction.
-        have hxM : x ∈ M := by simpa [h_inter] using hxU
-        have hx_not_in_union : x ∉ ⋃ n, K n := by
-          intro hx_in_union
-          -- From hx ∈ ⋂ (U n \ K n) we have x ∉ K n for each n:
-          have hx_notKn : ∀ n, x ∉ K n := by
-            intro n; have := Set.mem_iInter.mp hx n; exact this.right
-          rcases mem_iUnion.mp hx_in_union with ⟨n, hxKn⟩
-          exact hx_notKn n hxKn
-        -- But h_union says (⋃ K n) = M, contradiction with hxM.
-        have : x ∈ ⋃ n, K n := by simpa [h_union] using hxM
-        exact hx_not_in_union this
-      exact False.elim this
-    -- Conclude: no x can lie in the intersection.
-    exact False.elim (False.intro)
-
 end
-
 end Satz5
