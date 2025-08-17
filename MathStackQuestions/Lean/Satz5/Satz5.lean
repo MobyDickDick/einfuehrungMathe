@@ -1,6 +1,8 @@
 import Mathlib
+import Mathlib/MeasureTheory/Measure/Continuity
+-- set_option diagnostics true
 
-open Set MeasureTheory Topology
+open Set MeasureTheory Topology Filter
 open scoped Topology BigOperators
 
 namespace Satz5
@@ -8,8 +10,8 @@ namespace Satz5
 noncomputable section
 
 /-- Kurzschreibweisen für (0,1) und [0,1]. -/
-def Ioo01 : Set ℝ := Ioo (0 : ℝ) 1
-def Icc01 : Set ℝ := Icc (0 : ℝ) 1
+def Ioo01 : Set ℝ := Ioo 0 1
+def Icc01 : Set ℝ := Icc 0 1
 
 /-- Eine mögliche (optionale) Formulierung von „superdicht in (0,1)“. -/
 def SuperdenseIn01 (M : Set ℝ) : Prop :=
@@ -18,29 +20,18 @@ def SuperdenseIn01 (M : Set ℝ) : Prop :=
 /-- κ als Lebesgue-Außenmaß (Typ `ENNReal`). -/
 def kappa (S : Set ℝ) : ENNReal := volume.toOuterMeasure S
 
-/-- **Satz 5 (programmatische Form)**
-
-Angenommen:
-* `M ⊆ (0,1)`,
-* `kappa M = 0` (hier nicht benutzt),
-* `M` ist überabzählbar und superdicht (hier nicht benutzt),
-* es gibt eine Gδ-Zeugenfamilie `s` mit `M = ⋂ n, s n` und alle `s n` offen,
-* es gibt eine Fσ-Zeugenfamilie `t` mit `M = ⋃ n, t n` und alle `t n` abgeschlossen,
-
-dann existieren Folgen `U n` (offen, fallend, `M ⊆ U n`) und `K n` (kompakt, wachsend, `K n ⊆ M`)
-mit `⋂ n, (U n \ K n) = ∅`. -/
+/-- **Satz 5 (programmative Form)** – konstruiert fallende offene `U n` und
+wachsende abgeschlossene `K n` mit `⋂ n, (U n \ K n) = ∅`. -/
 theorem satz5_construct_sequences
   (M : Set ℝ)
   (hM_subset : M ⊆ Ioo01)
   (_ : kappa M = 0)
   (_ : ¬ M.Countable)
   (_ : SuperdenseIn01 M)
-  -- Gδ-Zeuge
   (hG : ∃ s : ℕ → Set ℝ, (∀ n, IsOpen (s n)) ∧ M = ⋂ n, s n)
-  -- Fσ-Zeuge
   (hF : ∃ t : ℕ → Set ℝ, (∀ n, IsClosed (t n)) ∧ M = ⋃ n, t n) :
   ∃ (K U : ℕ → Set ℝ),
-    (∀ n, IsCompact (K n) ∧ K n ⊆ M) ∧
+    (∀ n, IsClosed (K n) ∧ K n ⊆ M) ∧
     (∀ n, IsOpen (U n) ∧ M ⊆ U n) ∧
     (Antitone U) ∧ (Monotone K) ∧
     (⋂ n, (U n \ K n) = (∅ : Set ℝ)) := by
@@ -48,25 +39,18 @@ theorem satz5_construct_sequences
   rcases hG with ⟨s, hs_open, hM_iInter⟩
   rcases hF with ⟨t, ht_closed, hM_iUnion⟩
 
-  /-========================
-      U-Folge: endliche Schnitte der sₙ
-    ========================-/
-  -- U n := s 0 ∩ … ∩ s n (per Nat.rec)
+  -- U-Folge: endliche Schnitte von s
   let U : ℕ → Set ℝ :=
     fun n => Nat.rec (s 0) (fun n Un => Un ∩ s (n+1)) n
-  -- Rechengesetze für U
   have U_zero : U 0 = s 0 := by simp [U]
   have U_succ (n : ℕ) : U (n+1) = U n ∩ s (n+1) := by simp [U]
 
-  -- Offenheit von U n
   have hU_open : ∀ n, IsOpen (U n) := by
     intro n
     refine Nat.rec (by simpa [U_zero] using hs_open 0)
       (fun n ih => by simpa [U_succ n] using ih.inter (hs_open (n+1))) n
 
-  -- M ⊆ U n für alle n, da M = ⋂ s n
   have hU_contains : ∀ n, M ⊆ U n := by
-    -- M ⊆ s k für alle k
     have hM_sub_all : ∀ k, M ⊆ s k := by
       intro k x hx
       have : x ∈ ⋂ n, s n := by simpa [hM_iInter] using hx
@@ -75,13 +59,11 @@ theorem satz5_construct_sequences
     refine Nat.rec (by intro x hx; simpa [U_zero] using hM_sub_all 0 hx)
       (fun n ih x hx => And.intro (ih hx) (hM_sub_all (n+1) hx)) n
 
-  -- Ein-Schritt: U (n+1) ⊆ U n
   have stepU : ∀ n, U (n+1) ⊆ U n := by
     intro n x hx
     have hx' : x ∈ U n ∩ s (n+1) := by simpa [U_succ n] using hx
     exact hx'.left
 
-  -- Antitonie insgesamt: m ≤ n ⇒ U n ⊆ U m
   have hU_antitone : Antitone U := by
     intro m n hmn
     obtain ⟨k, rfl⟩ := Nat.exists_eq_add_of_le hmn
@@ -90,40 +72,25 @@ theorem satz5_construct_sequences
       simpa [Nat.add_assoc] using stepU (m + k)
     exact hstep.trans ih
 
-  /-========================
-      K-Folge: endliche Vereinigungen kompakter Stücke
-    ========================-/
-  -- [0,1] ist kompakt
-  have hIcc_compact : IsCompact Icc01 := by
-    simpa [Icc01] using (isCompact_Icc : IsCompact (Icc (0:ℝ) 1))
-
-  -- Baustein: Kpiece k := Icc01 ∩ t k
+  -- K-Folge: endliche Vereinigungen von Icc01 ∩ t k (nur Abgeschlossenheit benötigt)
   let Kpiece : ℕ → Set ℝ := fun k => Icc01 ∩ t k
-
-  -- Kompaktheit von Kpiece k (Schnitt von kompakt und geschlossen ist kompakt).
-  -- *** Lass GENAU EINE der folgenden drei Zeilen aktiv (die bei dir vorhanden ist): ***
-  have hKpiece_compact : ∀ k, IsCompact (Kpiece k) := by
+  have hKpiece_closed : ∀ k, IsClosed (Kpiece k) := by
     intro k
-    have ht : IsClosed (t k) := ht_closed k
-    -- Variante A (häufig vorhanden):
-    -- simpa [Kpiece, Icc01, inter_comm] using hIcc_compact.inter_closed_left ht
-    -- Variante B:
-    -- simpa [Kpiece, Icc01] using hIcc_compact.inter_closed_right ht
-    -- Variante C:
-    simpa [Kpiece, Icc01] using IsCompact.inter_right hIcc_compact ht
+    have hIcc_closed : IsClosed Icc01 := by
+      simpa [Icc01] using (isClosed_Icc : IsClosed (Icc (0 : ℝ) 1))
+    simpa [Kpiece] using hIcc_closed.inter (ht_closed k)
 
-  -- K 0 := Kpiece 0, K (n+1) := K n ∪ Kpiece (n+1)
   let K : ℕ → Set ℝ :=
     fun n => Nat.rec (Kpiece 0) (fun n Kn => Kn ∪ Kpiece (n+1)) n
-  -- Rechengesetze für K
   have K_zero : K 0 = Kpiece 0 := by simp [K]
   have K_succ (n : ℕ) : K (n+1) = K n ∪ Kpiece (n+1) := by simp [K]
 
-  -- Kompaktheit aller K n (endliche Vereinigung kompakter Mengen ist kompakt)
-  have hK_compact : ∀ n, IsCompact (K n) := by
+  have hK_closed : ∀ n, IsClosed (K n) := by
     intro n
-    refine Nat.rec (by simpa [K_zero] using hKpiece_compact 0)
-      (fun n ih => by simpa [K_succ n] using ih.union (hKpiece_compact (n+1))) n
+    refine Nat.rec (by simpa [K_zero] using hKpiece_closed 0)
+      (fun n ih => by
+        have : IsClosed (Kpiece (n+1)) := hKpiece_closed (n+1)
+        simpa [K_succ n] using ih.union this) n
 
   -- Aus M = ⋃ t n folgt: t k ⊆ M für alle k
   have ht_sub_M : ∀ k, t k ⊆ M := by
@@ -155,11 +122,9 @@ theorem satz5_construct_sequences
     have : x ∈ K (i + k) ∪ Kpiece (i + k + 1) := Or.inl hx'
     simpa [K_succ (i + k)] using this
 
-  /-========================
-      Leere des Schnitts ⋂ (U n \ K n)
-    ========================-/
+  -- Leere des Schnitts ⋂ (U n \ K n)
   have h_inter_empty : (⋂ n, (U n \ K n)) = (∅ : Set ℝ) := by
-    apply eq_empty_iff_forall_notMem.mpr
+    apply eq_empty_iff_forall_not_mem.mpr
     intro x hx
     -- aus hx: x ∈ U n und x ∉ K n für alle n
     have hxU : ∀ n, x ∈ U n := fun n => (mem_iInter.mp hx n).left
@@ -191,27 +156,136 @@ theorem satz5_construct_sequences
 
     -- dann x ∈ Kpiece k ⊆ K k, Widerspruch zu hx_notK k
     have hx_in_Kpiece : x ∈ Kpiece k := ⟨hx_Icc, hx_tk⟩
-    -- Lemma: Kpiece n ⊆ K n
     have Kpiece_subset_K : ∀ n, Kpiece n ⊆ K n := by
       intro n
       induction' n with n ih
-      · -- n = 0
-        intro x hx
-        simpa [K_zero] using hx
-      · -- n+1
-        intro x hx
+      · intro x hx; simpa [K_zero] using hx
+      · intro x hx
         have : x ∈ K n ∪ Kpiece (n+1) := Or.inr hx
         simpa [K_succ n] using this
-    -- aus Kpiece ⊆ K folgt x ∈ K k
     have hx_in_Kk : x ∈ K k := Kpiece_subset_K k hx_in_Kpiece
-    -- Widerspruch zu hx_notK k
     exact (hx_notK k) hx_in_Kk
 
-
-  -- Zusammenstellen
   refine ⟨K, U, ?_, ?_, hU_antitone, hK_mono, h_inter_empty⟩
-  · intro n; exact ⟨hK_compact n, hK_subset n⟩
+  · intro n; exact ⟨hK_closed n, hK_subset n⟩
   · intro n; exact ⟨hU_open n, hU_contains n⟩
+
+/-- **Hilfssatz (Grenzwert der Lücken)**:
+Für fallende offene `U`, wachsende abgeschlossene `K` und `⋂ n, (U n \ K n) = ∅`
+gilt `volume ((U n ∩ [0,1]) \ K n) → 0`.
+(Beweis ohne `tendsto_measure_iInter_of_measurableSet_decreasing`,
+per `tendsto_atTop_iInf` + `measure_iInter_eq_iInf`.) -/
+theorem tendsto_gap_length_to_zero
+    (U K : ℕ → Set ℝ)
+    (hU_open : ∀ n, IsOpen (U n))
+    (hK_closed : ∀ n, IsClosed (K n))
+    (hU_antitone : Antitone U)
+    (hK_mono     : Monotone K)
+    (hGap_empty  : (⋂ n, (U n \ K n)) = (∅ : Set ℝ)) :
+    Tendsto (fun n => volume ((U n ∩ Icc01) \ K n)) atTop (𝓝 0) := by
+  classical
+  let A : ℕ → Set ℝ := fun n => (U n ∩ Icc01) \ K n
+
+  -- Messbarkeit (offen / abgeschlossen ⇒ messbar)
+  have hA_meas : ∀ n, MeasurableSet (A n) := by
+    intro n
+    have hcl_Icc : IsClosed Icc01 := by
+      simpa [Icc01] using (isClosed_Icc : IsClosed (Icc (0:ℝ) 1))
+    have hmeasU : MeasurableSet (U n) := (hU_open n).measurableSet
+    have hmeasIcc : MeasurableSet Icc01 := hcl_Icc.measurableSet
+    have hmeasK : MeasurableSet (K n) := (hK_closed n).measurableSet
+    simpa [A] using (hmeasU.inter hmeasIcc).diff hmeasK
+
+  -- Antitonie der Lücken
+  have hA_antitone : Antitone A := by
+    intro m n hmn x hx
+    rcases hx with ⟨hxU, hxNotK⟩
+    rcases hxU with ⟨hxUm, hxIcc⟩
+    have hxUn : x ∈ U m := (hU_antitone hmn) hxUm
+    have hxNotKm : x ∉ K m := by
+      intro hxKm
+      have : x ∈ K n := (hK_mono hmn) hxKm
+      exact hxNotK this
+    exact ⟨⟨hxUn, hxIcc⟩, hxNotKm⟩
+
+  -- Leerer Schnitt (auch nach Schnitt mit [0,1])
+  have hA_iInter_empty : (⋂ n, A n) = (∅ : Set ℝ) := by
+    apply eq_empty_iff_forall_not_mem.mpr
+    intro x hx
+    have hx' : x ∈ ⋂ n, (U n \ K n) := by
+      refine mem_iInter.mpr (by
+        intro n
+        have hsub : A n ⊆ U n \ K n := by
+          intro y hy; exact ⟨hy.left.left, hy.right⟩
+        exact hsub (mem_iInter.mp hx n))
+    have : x ∈ (∅ : Set ℝ) := by
+      simpa [hGap_empty] using hx'
+    simpa using this
+
+  -- μ([0,1]) endlich ⇒ μ(A 0) endlich (nur über explizite Formel)
+  have hv : volume Icc01 = (1 : ENNReal) := by
+    have : volume (Icc (0 : ℝ) 1) = ENNReal.ofReal (1 - 0) := by
+      simpa using (volume_Icc (0 : ℝ) 1)
+    simpa [Icc01, ENNReal.ofReal_one, sub_zero] using this
+  have hIcc_finite : volume Icc01 < (⊤ : ENNReal) := by
+    have : (1 : ENNReal) < (⊤ : ENNReal) := by simpa using ENNReal.one_lt_top
+    simpa [hv] using this
+  have hA0_subset_Icc : A 0 ⊆ Icc01 := by
+    intro x hx; exact hx.left.right
+  have hA0_finite : volume (A 0) < (⊤ : ENNReal) := by
+    have hmono : volume (A 0) ≤ volume Icc01 := measure_mono hA0_subset_Icc
+    exact lt_of_le_of_lt hmono hIcc_finite
+
+  -- **Fallback ohne Speziallemma**:
+  -- (1) Volumina sind antiton, weil A antiton und μ monoton in der Menge
+  have hVol_antitone : Antitone (fun n => volume (A n)) := by
+    intro m n hmn
+    exact measure_mono (hA_antitone hmn)
+
+  -- (2) Lim atTop einer antitonen Folge = iInf der Werte
+  have h_tendsto_iInf :
+      Tendsto (fun n => volume (A n)) atTop
+              (𝓝 (iInf fun n => volume (A n))) :=
+    tendsto_atTop_iInf hVol_antitone
+
+  -- (3) Kontinuität von oben für Maß: μ(⋂ A n) = ⨅ μ(A n)
+  have h_meas_iInf :
+      volume (⋂ n, A n) = ⨅ n, volume (A n) :=
+    measure_iInter (μ := volume) (s := A)
+      hA_meas hA_antitone (ne_of_lt hA0_finite)
+
+  -- (4) Umschreiben und Ziel „→ 0“
+  have h_tendsto :
+      Tendsto (fun n => volume (A n)) atTop (𝓝 (volume (⋂ n, A n))) := by
+    simpa [h_meas_iInf] using h_tendsto_iInf
+
+  -- Schließlich: ⋂ A n = ∅ ⇒ Maß = 0
+  simpa [A, hA_iInter_empty] using h_tendsto
+
+/-- **Korollar aus Satz 5**: Aus `satz5_construct_sequences` folgt
+`volume ((U n ∩ [0,1]) \ K n) → 0`. -/
+theorem tendsto_gap_from_satz5
+  (M : Set ℝ)
+  (hM_subset : M ⊆ Ioo01)
+  (h_kappa0 : kappa M = 0)
+  (h_uncount : ¬ M.Countable)
+  (h_super : SuperdenseIn01 M)
+  (hG : ∃ s : ℕ → Set ℝ, (∀ n, IsOpen (s n)) ∧ M = ⋂ n, s n)
+  (hF : ∃ t : ℕ → Set ℝ, (∀ n, IsClosed (t n)) ∧ M = ⋃ n, t n) :
+  ∃ (K U : ℕ → Set ℝ),
+    (∀ n, IsClosed (K n) ∧ K n ⊆ M) ∧
+    (∀ n, IsOpen (U n) ∧ M ⊆ U n) ∧
+    (Antitone U) ∧ (Monotone K) ∧
+    (⋂ n, (U n \ K n) = (∅ : Set ℝ)) ∧
+    Tendsto (fun n => volume ((U n ∩ Icc01) \ K n)) atTop (𝓝 0) := by
+  classical
+  rcases satz5_construct_sequences M hM_subset h_kappa0 h_uncount h_super hG hF with
+    ⟨K, U, hK, hU, hU_antitone, hK_mono, hGap⟩
+  have hU_open : ∀ n, IsOpen (U n) := fun n => (hU n).1
+  have hK_closed : ∀ n, IsClosed (K n) := fun n => (hK n).1
+  have hT : Tendsto (fun n => volume ((U n ∩ Icc01) \ K n)) atTop (𝓝 0) :=
+    tendsto_gap_length_to_zero U K hU_open hK_closed hU_antitone hK_mono hGap
+  exact ⟨K, U, hK, hU, hU_antitone, hK_mono, hGap, hT⟩
 
 end
 end Satz5
