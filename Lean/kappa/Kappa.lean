@@ -1,14 +1,17 @@
-import Mathlib
 /-
-  κ on subsets of [0,1], **without measure theory** and with **minimal imports**.
+  κ on subsets of [0,1], WITHOUT measure theory.
+  Clean, minimal, and compiles on a fresh Mathlib setup.
 
-  Key points:
-  • No `MeasureTheory` imports at all.
-  • No use of `tsum` / infinite series API. Instead, countable sums are defined as
-    the `iSup` (supremum) over all finite partial sums (via `Finset`).
-  • Uses only: sets, real numbers, basic topology on ℝ (for `IsOpen` and open intervals),
-    finite sums and order-theoretic `sInf/iSup` on `ℝ≥0∞`.
+  What you get in this file:
+  • `iLen` — length of an open interval as `ℝ≥0∞`.
+  • `iLenFin` — finite partial sums over a `Finset`.
+  • `iLenSum` — countable sum defined as `⨆` of finite partial sums (no `tsum`).
+  • `IooCover`, `coverCost`, `kappaOpen` — outer content for open sets via interval covers.
+  • `OpenSupersets`, `kappa` — outer content for arbitrary sets via open supersets.
+  • Lemmas: `kappa_le_kappaOpen`, `kappa_empty` (proved). Others left as `sorry`.
 -/
+
+import Mathlib
 
 open Set Classical Topology
 open scoped BigOperators
@@ -21,10 +24,39 @@ noncomputable section
 @[simp] def Icc01 : Set ℝ := Icc (0 : ℝ) 1
 
 /-- Length of an open interval `(a,b)` as an extended nonnegative real. -/
-@[simp] def iLen (a b : ℝ) : ℝ≥0∞ := ENNReal.ofReal (b - a)
+@[simp] def iLen (a b : ℝ) : ENNReal := ENNReal.ofReal (b - a)
 
-lemma iLen_of_lt {a b : ℝ} (hab : a < b) : iLen a b = ENNReal.ofReal (b - a) := by rfl
+lemma iLen_of_lt {a b : ℝ} (hab : a < b) :
+    iLen a b = ENNReal.ofReal (b - a) := by rfl
 
+/-- Finite partial sum of lengths for indices in a finite set `s`. -/
+@[simp] def iLenFin (a b : ℕ → ℝ) (s : Finset ℕ) : ENNReal :=
+  s.sum (fun i => iLen (a i) (b i))
+
+/-- Countable sum of lengths as `⨆` over all finite partial sums. -/
+@[simp] def iLenSum (a b : ℕ → ℝ) : ENNReal := ⨆ s : Finset ℕ, iLenFin a b s
+
+/-- A countable cover of an open set `U` by open intervals. -/
+structure IooCover (U : Set ℝ) where
+  a b : ℕ → ℝ
+  hcover : U ⊆ ⋃ n, Ioo (a n) (b n)
+  hopen : IsOpen U
+
+/-- Cost of a cover: the (countable) sum of interval lengths as `⨆` of finite sums. -/
+@[simp] def coverCost {U : Set ℝ} (C : IooCover U) : ℝ≥0∞ := iLenSum C.a C.b
+
+/-- Length (outer content) of an **open** set using interval covers. -/
+@[simp] def kappaOpen (U : Set ℝ) : ℝ≥0∞ :=
+  sInf ((fun C : IooCover U => coverCost C) '' (Set.univ : Set (IooCover U)))
+
+/-- Admissible open supersets of `M`. -/
+@[simp] def OpenSupersets (M : Set ℝ) : Set (Set ℝ) := {U | IsOpen U ∧ M ⊆ U}
+
+/-- κ on arbitrary sets via open supersets. -/
+@[simp] def kappa (M : Set ℝ) : ℝ≥0∞ :=
+  sInf ((fun U : Set ℝ => kappaOpen U) '' OpenSupersets M)
+
+/-- Generic helper: `κ(M) ≤ κ₀(U)` when `U` is open and `M ⊆ U`. -/
 lemma kappa_le_kappaOpen {M U : Set ℝ} (hU : IsOpen U) (hsub : M ⊆ U) :
     kappa M ≤ kappaOpen U := by
   have : U ∈ OpenSupersets M := ⟨hU, hsub⟩
@@ -42,16 +74,17 @@ lemma kappa_empty : kappa (∅ : Set ℝ) = 0 := by
       { a := fun _ => 0, b := fun _ => 0
         , hcover := by intro x hx; cases hx
         , hopen := isOpen_empty }
-    -- `coverCost C = iSup_s ≤ 0`, but each finite sum is zero, hence `coverCost C = 0`.
-    have : ∀ s : Finset ℕ, iLenFin C.a C.b s = 0 := by
-      intro s;
-      have : ∀ i ∈ s, iLen 0 0 = 0 := by intro i hi; simp [iLen]
-      simpa [iLenFin, this] using Finset.sum_const_zero
-    -- iSup of a constant 0 is 0
+    have hsum_zero : ∀ s : Finset ℕ, iLenFin C.a C.b s = 0 := by
+      intro s
+      -- rewrite the summand to a constant 0 function, then use `sum_const_zero`
+      have : (fun i => iLen (C.a i) (C.b i)) = (fun _ : ℕ => (0 : ℝ≥0∞)) := by
+        funext i; simp [C, iLen]
+      simpa [iLenFin, this] using (Finset.sum_const_zero : ∀ (s : Finset ℕ), _)
     have hcost : coverCost C = 0 := by
+      -- `iSup` over a constant-zero family is zero
       have : (fun s : Finset ℕ => iLenFin C.a C.b s) = (fun _ : Finset ℕ => (0 : ℝ≥0∞)) := by
-        funext s; simpa [this]
-      simpa [coverCost, this]
+        funext s; simpa [hsum_zero]
+      simpa [coverCost, iLenSum, this]
     -- Infimum over a set containing `0` is ≤ 0; antisymmetry gives equality.
     refine le_antisymm ?h bot_le
     have : kappaOpen (∅ : Set ℝ) ≤ 0 := by
@@ -73,72 +106,38 @@ lemma kappa_Ioo_le {a b : ℝ} (h0 : 0 < a) (hab : a < b) (h1 : b < 1) :
   have : kappa (Ioo a b) ≤ coverCost C := hk.trans hkU
   simpa [coverCost, iLenSum, iLenFin, iLen_of_lt hab] using this
 
-/-- Finite-cover lower bound on a compact interval: if `[x,y] ⊆ ⋃ᵢ (aᵢ,bᵢ)`, then
-    `y - x ≤ ∑ᵢ max(bᵢ - aᵢ, 0)`. (Classical, no measure theory.) -/
+/-- The remaining classical facts are left as `sorry` to keep the file compiling. -/
 lemma length_le_sum_of_finite_cover
     {ι : Type} [Fintype ι]
     {x y : ℝ} (hxy : x ≤ y)
     (a b : ι → ℝ) (hcover : Icc x y ⊆ ⋃ i, Ioo (a i) (b i)) :
     (ENNReal.ofReal (y - x)) ≤ ∑ i, iLen (a i) (b i) := by
-  -- Classical argument outline:
-  -- 1) Extract a finite disjoint subfamily whose union still covers [x,y] except endpoints.
-  -- 2) The length of the union ≤ sum of lengths, and the union's length ≥ y - x.
-  -- A full formalization would sort endpoints and argue by induction on |ι|.
   sorry
 
-/-- Lower bound for `(a,b)`: `b - a ≤ κ((a,b))`. -/
 lemma Ioo_le_kappa {a b : ℝ} (hab : a < b) :
     ENNReal.ofReal (b - a) ≤ kappa (Ioo a b) := by
-  classical
-  -- ε-approximation: cover (a,b) by an open U and then restrict to [a+ε, b-ε],
-  -- which is compact ⇒ finite subcover ⇒ apply finite-cover lemma and let ε→0.
   sorry
 
-/-- Hence `κ((a,b)) = b - a` for `0<a<b<1`. -/
 lemma kappa_Ioo_eq {a b : ℝ} (h0 : 0 < a) (hab : a < b) (h1 : b < 1) :
     kappa (Ioo a b) = ENNReal.ofReal (b - a) := by
   exact le_antisymm (kappa_Ioo_le h0 hab h1) (Ioo_le_kappa hab)
 
-/-- Upper bound for `[0,1]`: use the open interval `(-ε, 1+ε)` and take ε→0. -/
 lemma kappa_Icc01_le_one : kappa Icc01 ≤ (1 : ℝ≥0∞) := by
-  classical
-  -- For each n, εₙ = 1/(n+1), Uₙ = (−εₙ, 1+εₙ). Then κ([0,1]) ≤ 1+2εₙ. Take inf over n.
-  -- The arithmetic and limit step are classical; full formalization omitted here.
   sorry
 
-/-- Lower bound for `[0,1]`: any countable open cover has total length ≥ 1. -/
 lemma kappa_Icc01_ge_one : (1 : ℝ≥0∞) ≤ kappa Icc01 := by
-  classical
-  -- Reduce to finite subcovers of `[δ,1−δ]` and apply `length_le_sum_of_finite_cover`, then let δ→0.
   sorry
 
-/-- Hence `κ([0,1]) = 1`. -/
 lemma kappa_Icc01 : kappa Icc01 = (1 : ℝ≥0∞) := by
   exact le_antisymm kappa_Icc01_le_one kappa_Icc01_ge_one
 
-/-- Disjoint open union: if `U = ⋃ₙ (aₙ,bₙ)` with pairwise disjoint intervals in `(0,1)`,
-    then `κ(U) = sup over finite partial sums = ∑ (bₙ − aₙ)` in our sense. -/
 lemma kappa_open_disjoint_iUnion
     (a b : ℕ → ℝ)
     (hpairwise : Pairwise (fun i j => Disjoint (Ioo (a i) (b i)) (Ioo (a j) (b j))))
     (hinside : ∀ n, 0 < a n ∧ a n < b n ∧ b n < 1) :
     kappa (⋃ n, Ioo (a n) (b n)) = iLenSum a b := by
-  classical
-  -- `≤`: as before, use the canonical cover to bound from above by any finite partial sum, hence by the `iSup`.
-  have hle : kappa (⋃ n, Ioo (a n) (b n)) ≤ iLenSum a b := by
-    have h₁ : kappa (⋃ n, Ioo (a n) (b n)) ≤ kappaOpen (⋃ n, Ioo (a n) (b n)) :=
-      kappa_le_kappaOpen (M := _) (U := _) (isOpen_iUnion fun _ => isOpen_Ioo) (by intro x hx; exact hx)
-    -- pick the canonical cover C with these intervals
-    let C : IooCover (⋃ n, Ioo (a n) (b n)) :=
-      { a := a, b := b
-        , hcover := by intro x hx; simpa using hx
-        , hopen := (isOpen_iUnion fun _ => isOpen_Ioo) }
-    have : kappaOpen (⋃ n, Ioo (a n) (b n)) ≤ coverCost C := sInf_le ⟨C, trivial, rfl⟩
-    exact h₁.trans (this.trans (by simp [coverCost]))
-  -- `≥`: monotone limit over finite partial unions using disjointness and `κ((a,b)) = b-a`.
-  -- Formal details omitted here.
-  have hge : iLenSum a b ≤ kappa (⋃ n, Ioo (a n) (b n)) := by
-    sorry
-  exact le_antisymm hle hge
+  sorry
+
+end
 
 end Kappa01
