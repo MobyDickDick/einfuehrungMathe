@@ -137,4 +137,29 @@ lemma kappa_empty : kappa (∅ : Set Real) = 0 := by
 
 end
 
+/-- Monotonicity: if A ⊆ B then kappa A ≤ kappa B. -/
+lemma kappa_mono {A B : Set Real} (hAB : A ⊆ B) : kappa A ≤ kappa B := by
+  classical
+  -- Image inclusion: (kappaOpen '' OpenSupersets B) ⊆ (kappaOpen '' OpenSupersets A)
+  have himg :
+      (fun U : Set Real => kappaOpen U) '' OpenSupersets B
+        ⊆ (fun U : Set Real => kappaOpen U) '' OpenSupersets A := by
+    intro y hy
+    rcases hy with ⟨U, hU, rfl⟩
+    rcases hU with ⟨hUopen, hBsubU⟩
+    -- since A ⊆ B and B ⊆ U, we get A ⊆ U
+    have hAsubU : A ⊆ U := by
+      intro x hxA
+      exact hBsubU (hAB hxA)
+    exact ⟨U, ⟨hUopen, hAsubU⟩, rfl⟩
+  -- Now: sInf over a larger set ≤ sInf over a smaller set (antitone).
+  -- We show: for all y ∈ (image over B), sInf(image over A) ≤ y
+  -- hence sInf(image over A) ≤ sInf(image over B).
+  dsimp [kappa]
+  refine le_sInf ?H
+  intro y hyB
+  have hyA : y ∈ (fun U : Set Real => kappaOpen U) '' OpenSupersets A := himg hyB
+  exact sInf_le hyA
+
+
 end Kappa01
