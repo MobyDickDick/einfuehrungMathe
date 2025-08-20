@@ -161,5 +161,33 @@ lemma kappa_mono {A B : Set Real} (hAB : A ⊆ B) : kappa A ≤ kappa B := by
   have hyA : y ∈ (fun U : Set Real => kappaOpen U) '' OpenSupersets A := himg hyB
   exact sInf_le hyA
 
+/-- Subadditivity on open sets: `kappaOpen (U ∪ V) ≤ kappaOpen U + kappaOpen V`.
+    (Der technische Beweis – Mischen zweier Intervallcovers und Kostenschranke –
+    kommt als separater Inkrement-Schritt.) -/
+lemma kappaOpen_union_le {U V : Set Real} (hU : IsOpen U) (hV : IsOpen V) :
+  kappaOpen (U ∪ V) ≤ kappaOpen U + kappaOpen V := by
+sorry
+
+/-- Subadditivity with chosen open supersets:
+    Für beliebige `A ⊆ U` und `B ⊆ V` mit offenen `U,V` gilt:
+    `kappa (A ∪ B) ≤ kappaOpen U + kappaOpen V`. -/
+lemma kappa_union_le_of_open
+    {A B U V : Set Real} (hU : IsOpen U) (hV : IsOpen V)
+    (hAU : A ⊆ U) (hBV : B ⊆ V) :
+    kappa (A ∪ B) ≤ kappaOpen U + kappaOpen V := by
+  -- A ∪ B ⊆ U ∪ V
+  have hIncl : A ∪ B ⊆ U ∪ V := by
+    intro x hx
+    cases hx with
+    | inl hxA => exact Or.inl (hAU hxA)
+    | inr hxB => exact Or.inr (hBV hxB)
+  -- Außenapproximation auf U ∪ V
+  have h1 : kappa (A ∪ B) ≤ kappaOpen (U ∪ V) :=
+    kappa_le_kappaOpen (M := A ∪ B) (U := U ∪ V) (hU.union hV) hIncl
+  -- Offene Subadditivität als Blackbox (Lemma oben)
+  have h2 : kappaOpen (U ∪ V) ≤ kappaOpen U + kappaOpen V :=
+    kappaOpen_union_le hU hV
+  exact le_trans h1 h2
+
 
 end Kappa01
