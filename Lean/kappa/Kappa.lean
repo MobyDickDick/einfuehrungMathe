@@ -1,12 +1,4 @@
 import Mathlib
-
-open Set Classical Topology
-open scoped BigOperators
-
-namespace Kappa01
-
-noncomputable section
-
 /-
   κ on subsets of [0,1], **without measure theory** and with **minimal imports**.
 
@@ -18,43 +10,21 @@ noncomputable section
     finite sums and order-theoretic `sInf/iSup` on `ℝ≥0∞`.
 -/
 
+open Set Classical Topology
+open scoped BigOperators
+
+namespace Kappa01
+
+noncomputable section
+
 /-- Closed unit interval `[0,1]` as a set. -/
 @[simp] def Icc01 : Set ℝ := Icc (0 : ℝ) 1
 
 /-- Length of an open interval `(a,b)` as an extended nonnegative real. -/
-@[simp] def iLen (a b : ℝ) : ℝ≥0∞ := ENNReal.ofReal (max (b - a) 0)
+@[simp] def iLen (a b : ℝ) : ℝ≥0∞ := ENNReal.ofReal (b - a)
 
-lemma iLen_of_lt {a b : ℝ} (hab : a < b) : iLen a b = ENNReal.ofReal (b - a) := by
-  have : 0 ≤ b - a := sub_nonneg.mpr (le_of_lt hab)
-  simpa [iLen, max_eq_left this]
+lemma iLen_of_lt {a b : ℝ} (hab : a < b) : iLen a b = ENNReal.ofReal (b - a) := by rfl
 
-/-- Finite partial sum of lengths for indices in a finite set `s`. -/
-@[simp] def iLenFin (a b : ℕ → ℝ) (s : Finset ℕ) : ℝ≥0∞ := ∑ i in s, iLen (a i) (b i)
-
-/-- Countable sum of lengths as `iSup` over all finite partial sums. -/
-@[simp] def iLenSum (a b : ℕ → ℝ) : ℝ≥0∞ := iSup (fun s : Finset ℕ => iLenFin a b s)
-
-/-- A countable cover of an open set `U` by open intervals. -/
-structure IooCover (U : Set ℝ) where
-  a b : ℕ → ℝ
-  hcover : U ⊆ ⋃ n, Ioo (a n) (b n)
-  hopen : IsOpen U
-
-/-- Cost of a cover: the (countable) sum of interval lengths as `iSup` of finite sums. -/
-@[simp] def coverCost {U : Set ℝ} (C : IooCover U) : ℝ≥0∞ := iLenSum C.a C.b
-
-/-- Length (outer content) of an **open** set using interval covers. -/
-@[simp] def kappaOpen (U : Set ℝ) : ℝ≥0∞ :=
-  sInf ((fun C : IooCover U => coverCost C) '' (Set.univ : Set (IooCover U)))
-
-/-- Admissible open supersets of `M`. -/
-@[simp] def OpenSupersets (M : Set ℝ) : Set (Set ℝ) := {U | IsOpen U ∧ M ⊆ U}
-
-/-- κ on arbitrary sets via open supersets. -/
-@[simp] def kappa (M : Set ℝ) : ℝ≥0∞ :=
-  sInf ((fun U : Set ℝ => kappaOpen U) '' OpenSupersets M)
-
-/-- Generic helper: `κ(M) ≤ κ₀(U)` when `U` is open and `M ⊆ U`. -/
 lemma kappa_le_kappaOpen {M U : Set ℝ} (hU : IsOpen U) (hsub : M ⊆ U) :
     kappa M ≤ kappaOpen U := by
   have : U ∈ OpenSupersets M := ⟨hU, hsub⟩
