@@ -1909,6 +1909,18 @@ muss kompakt sein.
 \end_layout
 
 \begin_layout Standard
+Es ist doch
+\begin_inset Formula 
+\[
+M=\left(0,1\right)\setminus\left(\left(0,1\right)\setminus M\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"

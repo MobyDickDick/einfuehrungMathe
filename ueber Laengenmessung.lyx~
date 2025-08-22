@@ -809,6 +809,95 @@ x\notin\bigcap_{U\in\mathbb{V}\left(M\right)}U
 \end_layout
 
 \begin_layout Standard
+Ich möchte nun zeigen:
+\end_layout
+
+\begin_layout Lemma
+Es sei 
+\begin_inset Formula $M\subset\mathbb{R}\cap\left(0,1\right)$
+\end_inset
+
+ mit 
+\begin_inset Formula $\kappa\left(M\right)=1$
+\end_inset
+
+.
+ Dann ist 
+\begin_inset Formula 
+\[
+\kappa\left(\left(0,1\right)\setminus M\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Es ist 
+\begin_inset Formula 
+\begin{align*}
+ & \left(0,1\right)\setminus M\\
+= & \left(0,1\right)\setminus\bigcap_{U\in\mathbb{V}\left(M\right)}U\\
+= & \bigcup_{U\in\mathbb{V}\left(M\right)}\left(0,1\right)\setminus U
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Dann ist für alle 
+\begin_inset Formula $U\in\mathbb{V}\left(M\right)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(0,1\right)\setminus U\in\mathbb{W}\left(\left(0,1\right)\setminus M\right)
+\]
+
+\end_inset
+
+kompakte Mengen,
+ welche jedoch eine das Mass Null haben muss.
+\end_layout
+
+\begin_layout Proof
+Also kann ich schliessen:
+\begin_inset Formula 
+\[
+\kappa\left(\left(0,1\right)\setminus M\right)\leq\sum_{K\in\mathbb{W}\left(\left(0,1\right)\setminus M\right)}K=0
+\]
+
+\end_inset
+
+Somit kann ich mit 
+\begin_inset Formula 
+\[
+0\leq\kappa\left(\left(0,1\right)\setminus M\right)
+\]
+
+\end_inset
+
+schliessen,
+ dass gelten muss
+\begin_inset Formula 
+\[
+\kappa\left(\left(0,1\right)\setminus M\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nun möchte ich zeigen:
+\end_layout
+
+\begin_layout Proposition
 Weiter möchte ich zeigen,
  dass gilt:
 \end_layout
@@ -1245,87 +1334,6 @@ Also behaupte ich,
 \begin_layout Standard
 Aber ich fürchte,
  mehr bringe ich im Moment nicht zustande.
-\end_layout
-
-\begin_layout Standard
-Ich möchte nun zeigen:
-\end_layout
-
-\begin_layout Lemma
-Es sei 
-\begin_inset Formula $M\subset\mathbb{R}\cap\left(0,1\right)$
-\end_inset
-
- mit 
-\begin_inset Formula $\kappa\left(M\right)=1$
-\end_inset
-
-.
- Dann ist 
-\begin_inset Formula 
-\[
-\kappa\left(\left(0,1\right)\setminus M\right)=0
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Es ist 
-\begin_inset Formula 
-\begin{align*}
- & \left(0,1\right)\setminus M\\
-= & \left(0,1\right)\setminus\bigcap_{U\in\mathbb{V}\left(M\right)}U\\
-= & \bigcup_{U\in\mathbb{V}\left(M\right)}\left(0,1\right)\setminus U
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Dann ist für alle 
-\begin_inset Formula $U\in\mathbb{V}\left(M\right)$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\left(0,1\right)\setminus U\in\mathbb{W}\left(\left(0,1\right)\setminus M\right)
-\]
-
-\end_inset
-
-kompakte Mengen.
- Also kann ich schliessen:
-\begin_inset Formula 
-\[
-\kappa\left(\left(0,1\right)\setminus M\right)\leq\sum_{K\in\mathbb{W}\left(\left(0,1\right)\setminus M\right)}K=0
-\]
-
-\end_inset
-
-Somit kann ich mit 
-\begin_inset Formula 
-\[
-0\leq\kappa\left(\left(0,1\right)\setminus M\right)
-\]
-
-\end_inset
-
-schliessen,
- dass gelten muss
-\begin_inset Formula 
-\[
-\kappa\left(\left(0,1\right)\setminus M\right)=0
-\]
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
