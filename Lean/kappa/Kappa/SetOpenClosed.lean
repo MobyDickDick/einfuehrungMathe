@@ -239,3 +239,131 @@ sie als eigenes Lemma `exists_open_closed_gap_lt (M) (hM : MeasurableSet M)`.
 -/
 
 end SetOpenClosed
+
+/-!  κ als Infimum über offene Obermengen – rein abstrakt über eine Basisgröße ℓ : Set ℝ → ℝ. -/
+section Kappa
+
+open Set
+
+/-- Äußere Größe `κ(M) := inf { ℓ(U) | U offen, M ⊆ U }`. -/
+noncomputable def kappa (ℓ : Set ℝ → ℝ) (M : Set ℝ) : ℝ :=
+  sInf ((fun U : Set ℝ => ℓ U) '' {U : Set ℝ | IsOpen U ∧ M ⊆ U})
+
+/-- `κ(∅) = 0`, sofern `ℓ ∅ = 0` und `ℓ` nichtnegativ ist. -/
+lemma kappa_empty
+    (ℓ : Set ℝ → ℝ)
+    (hℓ_empty : ℓ (∅ : Set ℝ) = 0)
+    (hℓ_nonneg : ∀ U : Set ℝ, 0 ≤ ℓ U) :
+    kappa ℓ (∅ : Set ℝ) = 0 := by
+  classical
+  set S := ((fun U : Set ℝ => ℓ U) '' {U : Set ℝ | IsOpen U ∧ (∅ : Set ℝ) ⊆ U}) with hS
+  -- S ist nichtleer, da U = ∅ ∈ Kandidaten
+  have hS_ne : S.Nonempty := by
+    refine ⟨ℓ (∅ : Set ℝ), ?_⟩
+    exact ⟨(∅ : Set ℝ), ⟨isOpen_empty, by intro _ h; cases h⟩, rfl⟩
+  -- Jedes z∈S erfüllt z≥0 → Untere Schranke 0
+  have hLower : ∀ z ∈ S, 0 ≤ z := by
+    intro z hz; rcases hz with ⟨U, -, rfl⟩; exact hℓ_nonneg U
+  have hBdd : BddBelow S := ⟨0, hLower⟩
+  -- ℓ(∅) ∈ S
+  have hz : ℓ (∅ : Set ℝ) ∈ S := by
+    exact ⟨(∅ : Set ℝ), ⟨isOpen_empty, by intro _ h; cases h⟩, rfl⟩
+  -- sInf S ≤ ℓ(∅)
+  have h_le : sInf S ≤ ℓ (∅ : Set ℝ) := csInf_le hBdd hz
+  -- 0 ≤ sInf S
+  have h_ge : 0 ≤ sInf S := le_csInf hS_ne hLower
+  -- zusammen
+  apply le_antisymm
+  · simpa [kappa, hS, hℓ_empty] using h_le
+  · simpa [kappa, hS] using h_ge
+
+/-- Allgemein: ist ein Schnitt leer, so ist sein κ-Wert 0. -/
+lemma kappa_of_sInter_empty
+    (ℓ : Set ℝ → ℝ)
+    (hℓ_empty : ℓ (∅ : Set ℝ) = 0)
+    (hℓ_nonneg : ∀ U : Set ℝ, 0 ≤ ℓ U)
+    {G : Set (Set ℝ)} (h : ⋂₀ G = (∅ : Set ℝ)) :
+    kappa ℓ (⋂₀ G) = 0 := by
+  simpa [h] using kappa_empty ℓ hℓ_empty hℓ_nonneg
+
+/-- Speziell für die Lückenfamilie:
+Aus `⋂₀ gapFamily' M = ∅` folgt `κ(⋂₀ gapFamily' M) = 0`. -/
+theorem kappa_gapFamily'_sInter_zero
+    (ℓ : Set ℝ → ℝ)
+    (hℓ_empty : ℓ (∅ : Set ℝ) = 0)
+    (hℓ_nonneg : ∀ U : Set ℝ, 0 ≤ ℓ U)
+    (M : Set ℝ) :
+    kappa ℓ (⋂₀ (SetOpenClosed.gapFamily' M)) = 0 := by
+  have hempty : (⋂₀ (SetOpenClosed.gapFamily' M)) = (∅ : Set ℝ) := by
+    simpa using (SetOpenClosed.inter_all_gaps'_empty M)
+  simpa using kappa_of_sInter_empty ℓ hℓ_empty hℓ_nonneg hempty
+
+
+/-- Für offenes `U` gilt `κ(U) ≤ ℓ(U)`, **unter der Annahme** `ℓ ≥ 0`. -/
+lemma kappa_le_of_open
+    (ℓ : Set ℝ → ℝ) (hℓ_nonneg : ∀ V : Set ℝ, 0 ≤ ℓ V)
+    {U : Set ℝ} (hU : IsOpen U) :
+    kappa ℓ U ≤ ℓ U := by
+  classical
+  -- Kandidatenmenge für κ(U)
+  set S := ((fun V : Set ℝ => ℓ V) '' {V : Set ℝ | IsOpen V ∧ U ⊆ V}) with hS
+  -- `U` ist Kandidat
+  have hUmem : ℓ U ∈ S := ⟨U, ⟨hU, subset_rfl⟩, rfl⟩
+  -- nach unten beschränkt durch 0 dank `ℓ ≥ 0`
+  have hLower : ∀ z ∈ S, 0 ≤ z := by
+    intro z hz; rcases hz with ⟨V, -, rfl⟩; exact hℓ_nonneg V
+  have hBdd : BddBelow S := ⟨0, hLower⟩
+  -- Infimum ≤ jedem Element der Menge
+  simpa [kappa, hS] using csInf_le hBdd hUmem
+
+/-- Aus `κ(M)=0`: Für jedes `ε>0` gibt es ein offenes `U ⊇ M` mit `ℓ(U) < ε`. -/
+lemma exists_open_superset_with_small_ell
+    (ℓ : Set ℝ → ℝ) {M : Set ℝ}
+    (hκ0 : kappa ℓ M = 0) :
+    ∀ ε > 0, ∃ U : Set ℝ, IsOpen U ∧ M ⊆ U ∧ ℓ U < ε := by
+  classical
+  intro ε hε
+  -- Kandidaten und deren ℓ-Werte
+  set Cand := {U : Set ℝ | IsOpen U ∧ M ⊆ U}
+  set S := (fun U : Set ℝ => ℓ U) '' Cand
+  have hS_ne : S.Nonempty :=
+    ⟨ℓ (Set.univ : Set ℝ), ⟨Set.univ, ⟨isOpen_univ, by intro _ _; trivial⟩, rfl⟩⟩
+  -- Widerspruchsannahme: es gibt kein solches U
+  by_contra h
+  have hLower : ∀ z ∈ S, ε ≤ z := by
+    intro z hz
+    rcases hz with ⟨U, hU, rfl⟩
+    -- aus `¬ ∃ U, IsOpen U ∧ M ⊆ U ∧ ℓ U < ε` folgt: ¬(ℓ U < ε)
+    have hnot : ¬ ℓ U < ε := by
+      intro hlt; exact h ⟨U, hU.1, hU.2, hlt⟩
+    -- also ε ≤ ℓ U
+    exact le_of_not_gt hnot
+  -- dann ε ≤ sInf S
+  have h_le : ε ≤ sInf S := le_csInf hS_ne hLower
+  -- aber sInf S = κ(M)
+  have h_le_kappa : ε ≤ kappa ℓ M := by
+    simpa [kappa, S, Cand] using h_le
+  -- und κ(M) = 0
+  have : ε ≤ 0 := by simpa [hκ0] using h_le_kappa
+  exact (lt_of_le_of_lt this hε).false
+
+
+/-- Aus `κ(M)=0`: Für jedes `n` gibt es ein offenes `U_n ⊇ M` mit
+`κ(U_n) < (1/2)^n`. -/
+lemma exists_open_superset_with_small_kappa_dyadic
+    (ℓ : Set ℝ → ℝ) (hℓ_nonneg : ∀ V : Set ℝ, 0 ≤ ℓ V)
+    {M : Set ℝ} (hκ0 : kappa ℓ M = 0) :
+    ∀ n : ℕ, ∃ U : Set ℝ, IsOpen U ∧ M ⊆ U ∧ kappa ℓ U < ((1:ℝ)/2) ^ n := by
+  classical
+  intro n
+  -- wähle U mit ℓ(U) < 2^{-n}
+  obtain ⟨U, hUopen, hMsubU, hℓU⟩ :=
+    exists_open_superset_with_small_ell ℓ (M:=M) hκ0 (((1:ℝ)/2)^n) (by
+      have : 0 < (1:ℝ)/2 := by norm_num
+      exact pow_pos this n)
+  -- dann κ(U) ≤ ℓ(U) < 2^{-n}
+  refine ⟨U, hUopen, hMsubU, ?_⟩
+  exact (lt_of_le_of_lt (kappa_le_of_open ℓ hℓ_nonneg hUopen) hℓU)
+
+
+end Kappa
