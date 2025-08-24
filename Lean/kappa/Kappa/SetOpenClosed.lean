@@ -486,3 +486,83 @@ lemma kappa_closed_plus_compl_in_cell
   simpa [sub_eq_add_neg, add_comm] using this
 
 end KappaOpenClosed
+
+/-
+## Axiome für eine abstrakte κ-Funktion auf allen Teilmengen (axiomatisch)
+
+Wir vermeiden benutzerdefinierte Notation und referenzieren die Funktion
+explizit als `K.k`. So entstehen keine Precheck/Elaborator-Probleme.
+-/
+
+namespace KappaAxiomatic
+
+open Set
+
+/-- Abstrakte Struktur für eine äußere Größe `κ` auf Teilmengen von ℝ
+    mit den benötigten Eigenschaften. -/
+structure KappaOuter where
+  k         : Set ℝ → ℝ
+  nonneg    : ∀ A, 0 ≤ k A
+  monotone' : ∀ {A B}, A ⊆ B → k A ≤ k B
+  subadd    : ∀ A B, k (A ∪ B) ≤ k A + k B
+  norm_Ioo  : k (Ioo (0 : ℝ) 1) = 1
+
+namespace KappaOuter
+
+variable (K : KappaOuter)
+
+/-- Grundungleichung: `1 ≤ κ M + κ ((0,1) \ M)` für beliebiges `M`. -/
+lemma one_le_sum_comp (M : Set ℝ) :
+    1 ≤ K.k M + K.k ((Ioo (0 : ℝ) 1) \ M) := by
+  have cover_subset : (Ioo (0 : ℝ) 1) ⊆ M ∪ ((Ioo (0 : ℝ) 1) \ M) := by
+    intro x hx
+    by_cases hxM : x ∈ M
+    · exact Or.inl hxM
+    · exact Or.inr ⟨hx, hxM⟩
+  calc
+    1 = K.k (Ioo (0 : ℝ) 1) := (K.norm_Ioo).symm
+    _ ≤ K.k (M ∪ ((Ioo (0 : ℝ) 1) \ M)) := K.monotone' cover_subset
+    _ ≤ K.k M + K.k ((Ioo (0 : ℝ) 1) \ M) := K.subadd _ _
+
+/-- Konsequenz 1: Aus `κ M = 0` folgt `κ ((0,1) \ M) = 1`. -/
+lemma comp_eq_one_of_kappa_zero {M : Set ℝ} (h0 : K.k M = 0) :
+    K.k ((Ioo (0 : ℝ) 1) \ M) = 1 := by
+  -- Untere Schranke via `one_le_sum_comp`
+  have hlow : (1 : ℝ) ≤ K.k ((Ioo (0 : ℝ) 1) \ M) := by
+    have h := K.one_le_sum_comp M
+    -- aus 1 ≤ k M + k comp und k M = 0 folgt 1 ≤ k comp
+    simpa [h0, zero_add] using h
+  -- Obere Schranke via Monotonie: (0,1)\M ⊆ (0,1)
+  have hhigh : K.k ((Ioo (0 : ℝ) 1) \ M) ≤ K.k (Ioo (0 : ℝ) 1) :=
+    K.monotone' (by intro x hx; exact hx.1)
+  -- Gleichheit mit Normierung
+  have := le_antisymm hhigh (by simpa [K.norm_Ioo] using hlow)
+  simpa [K.norm_Ioo] using this
+
+/-- Konsequenz 2: Aus `κ M < 1` folgt `0 < κ ((0,1) \ M)`. -/
+lemma comp_pos_of_kappa_lt_one {M : Set ℝ} (hlt : K.k M < 1) :
+    0 < K.k ((Ioo (0 : ℝ) 1) \ M) := by
+  -- 1 ≤ k M + k comp
+  have hsum : (1 : ℝ) ≤ K.k M + K.k ((Ioo (0 : ℝ) 1) \ M) :=
+    K.one_le_sum_comp M
+  -- daraus: 1 - k M ≤ k comp (reines Umstellen)
+  have hge : 1 - K.k M ≤ K.k ((Ioo (0 : ℝ) 1) \ M) := by
+    -- 1 ≤ a + b  ⇒  1 - a ≤ b
+    have := hsum
+    exact sub_le_iff_le_add'.mpr this
+  -- aus k M < 1 folgt 0 < 1 - k M
+  have hpos : 0 < 1 - K.k M := by
+    -- 0 < 1 - a  ↔  a < 1
+    simpa [sub_pos] using hlt
+  -- Kette: 0 < 1 - k M ≤ k comp
+  exact lt_of_lt_of_le hpos hge
+
+end KappaOuter
+end KappaAxiomatic
+
+/-
+## Axiome für eine abstrakte κ-Funktion auf allen Teilmengen (axiomatisch)
+
+Wir vermeiden benutzerdefinierte Notation und referenzieren die Funktion
+explizit als `K.k`. So entstehen keine Precheck/Elaborator-Probleme.
+-/
