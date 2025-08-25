@@ -356,31 +356,31 @@ lemma exists_open_superset_with_small_kappa_dyadic
 
 end Kappa
 
-
-/-
-Ziel: Aussagen über κ ausschließlich mit elementaren Axiomen an eine
-Längenfunktion ℓ auf offenen Mengen beweisen – ohne MeasureTheory.
--/
 open Set
 
 namespace KappaOpenClosed
 
-/-- Elementare Axiome für die Längenfunktion ℓ auf offenen Mengen. -/
+variable {ℓ : Set ℝ → ℝ}
+
+/-- Axiome für die Längenfunktion ℓ auf offenen Mengen innerhalb `(0,1)`. -/
 structure OpenLengthAxioms (ℓ : Set ℝ → ℝ) : Prop where
   nonneg      : ∀ U, 0 ≤ ℓ U
   mono_open   : ∀ {U V}, IsOpen U → IsOpen V → U ⊆ V → ℓ U ≤ ℓ V
   subadd_open : ∀ {U V}, IsOpen U → IsOpen V → ℓ (U ∪ V) ≤ ℓ U + ℓ V
   norm_cell   : ℓ (Ioo (0:ℝ) 1) = 1
-  /-- ε-Approximation des Komplements in der Zelle `(0,1)`:
-      Für `U ⊆ (0,1)` offen und `ε>0` gibt es offenes `W ⊇ (0,1)\U` mit
+  /-- ε-Approximation des Komplements innerhalb `(0,1)`:
+      Für `U ⊆ (0,1)` offen und `ε>0` existiert offenes `W ⊇ (0,1)\U` mit
       `ℓ W ≤ 1 - ℓ U + ε`. -/
   compl_approx :
     ∀ {U} (_hUo : IsOpen U) (_hUsub : U ⊆ Ioo (0:ℝ) 1) {ε : ℝ}, ε > 0 →
       ∃ W, IsOpen W ∧ (Ioo (0:ℝ) 1 \ U) ⊆ W ∧ ℓ W ≤ 1 - ℓ U + ε
 
-variable {ℓ : Set ℝ → ℝ}
+/-- Innere Regularität in der Zelle `(0,1)` (axiomatisch für κ). -/
+def InnerRegInCell (ℓ : Set ℝ → ℝ) : Prop :=
+  ∀ {A : Set ℝ}, A ⊆ Ioo (0:ℝ) 1 → ∀ {ε : ℝ}, ε > 0 →
+    ∃ K, IsClosed K ∧ K ⊆ A ∧ kappa ℓ K ≥ kappa ℓ A - ε
 
-/-- Hilfslemma: In der Zelle kürzt sich ein doppeltes Diff, wenn `F ⊆ (0,1)`. -/
+/-- In der Zelle: doppeltes Differenzieren kürzt sich, wenn `F ⊆ (0,1)`. -/
 lemma cellDiffCellDiff_eq_of_subset
     {F : Set ℝ} (hFsub : F ⊆ Ioo (0:ℝ) 1) :
     Ioo (0:ℝ) 1 \ (Ioo (0:ℝ) 1 \ F) = F := by
@@ -390,9 +390,9 @@ lemma cellDiffCellDiff_eq_of_subset
     by_contra hnot
     exact hxNot ⟨hxI, hnot⟩
   · intro hxF
-    refine ⟨hFsub hxF, fun hxIn => hxIn.2 hxF⟩
+    exact ⟨hFsub hxF, fun hxIn => hxIn.2 hxF⟩
 
-/-- Für offene `U`: `κ ℓ U = ℓ U`. -/
+/-- Für offene `U`: `κ(U) = ℓ(U)`. -/
 lemma kappa_eq_len_of_open
     (A : OpenLengthAxioms ℓ) {U : Set ℝ} (hUo : IsOpen U) :
     kappa ℓ U = ℓ U := by
@@ -401,168 +401,122 @@ lemma kappa_eq_len_of_open
   have hCand_ne : Cand.Nonempty := ⟨U, ⟨hUo, subset_rfl⟩⟩
   have hBdd : BddBelow ((fun V => ℓ V) '' Cand) :=
     ⟨0, by intro z hz; rcases hz with ⟨V, -, rfl⟩; exact A.nonneg V⟩
-  -- κ(U) ≤ ℓ(U) (Kandidat V=U)
+  -- κ(U) ≤ ℓ(U)
   have h_le : kappa ℓ U ≤ ℓ U := by
     have hmem : ℓ U ∈ ((fun V => ℓ V) '' Cand) := ⟨U, ⟨hUo, subset_rfl⟩, rfl⟩
-    have := csInf_le hBdd hmem
-    simpa [kappa, hCand] using this
-  -- ℓ(U) ≤ κ(U) (untere Schranke via Monotonie)
+    simpa [kappa, hCand] using csInf_le hBdd hmem
+  -- ℓ(U) ≤ κ(U)
   have h_ge : ℓ U ≤ kappa ℓ U := by
     have hLower : ∀ z ∈ ((fun V => ℓ V) '' Cand), ℓ U ≤ z := by
       intro z hz; rcases hz with ⟨V, ⟨hVo, hUV⟩, rfl⟩
       exact A.mono_open hUo hVo hUV
     have hne : ((fun V => ℓ V) '' Cand).Nonempty :=
       ⟨ℓ U, ⟨U, ⟨hUo, subset_rfl⟩, rfl⟩⟩
-    have := le_csInf hne hLower
-    simpa [kappa, hCand] using this
+    simpa [kappa, hCand] using le_csInf hne hLower
   exact le_antisymm h_le h_ge
 
-/-- Komplementformel in der Zelle `(0,1)` für offene `U ⊆ (0,1)`. -/
+/-- κ der Zelle `(0,1)` ist `1`. -/
+lemma kappa_cell_eq_one (A : OpenLengthAxioms ℓ) :
+    kappa ℓ (Ioo (0:ℝ) 1) = 1 := by
+  have h := kappa_eq_len_of_open (A := A) (U := Ioo (0:ℝ) 1) isOpen_Ioo
+  simpa [A.norm_cell] using h
+
+/-- Für offene `U ⊇ M`: `κ(M) ≤ κ(U)`. -/
+lemma kappa_le_of_subset_open
+    (A : OpenLengthAxioms ℓ) {M U : Set ℝ}
+    (hUo : IsOpen U) (hMU : M ⊆ U) :
+    kappa ℓ M ≤ kappa ℓ U := by
+  classical
+  set S := ((fun V : Set ℝ => ℓ V) '' {V : Set ℝ | IsOpen V ∧ M ⊆ V}) with hS
+  have hBdd : BddBelow S := ⟨0, by intro z hz; rcases hz with ⟨V, -, rfl⟩; exact A.nonneg V⟩
+  have hmem : ℓ U ∈ S := ⟨U, ⟨hUo, hMU⟩, rfl⟩
+  have : kappa ℓ M ≤ ℓ U := by simpa [kappa, hS] using csInf_le hBdd hmem
+  simpa [kappa_eq_len_of_open (A := A) hUo] using this
+
+/-- Monotonie von `κ`. -/
+lemma kappa_mono
+    (A : OpenLengthAxioms ℓ) {M N : Set ℝ} (hMN : M ⊆ N) :
+    kappa ℓ M ≤ kappa ℓ N := by
+  classical
+  set SB := ((fun V : Set ℝ => ℓ V) '' {V : Set ℝ | IsOpen V ∧ N ⊆ V}) with hSB
+  have hne : SB.Nonempty := ⟨ℓ (Set.univ),
+    ⟨Set.univ, ⟨isOpen_univ, by intro _ _; trivial⟩, rfl⟩⟩
+  have hLower : ∀ z ∈ SB, kappa ℓ M ≤ z := by
+    intro z hz; rcases hz with ⟨V, ⟨hVo, hN⟩, rfl⟩
+    have h₁ := kappa_le_of_subset_open (A := A) hVo (hMN.trans hN)
+    have h₂ := kappa_eq_len_of_open (A := A) hVo
+    simpa [h₂] using h₁
+  simpa [kappa, hSB] using le_csInf hne hLower
+
+/-- **Komplementformel** in `(0,1)` für offene `U ⊆ (0,1)`. -/
 lemma kappa_compl_open_in_cell
     (A : OpenLengthAxioms ℓ) {U : Set ℝ}
     (hUo : IsOpen U) (hUsub : U ⊆ Ioo (0:ℝ) 1) :
     kappa ℓ (Ioo (0:ℝ) 1 \ U) = 1 - kappa ℓ U := by
   classical
-  -- (≥)  : 1 - ℓ(U) ≤ κ((0,1)\U)
-  have h_ge : 1 - ℓ U ≤ kappa ℓ (Ioo (0:ℝ) 1 \ U) := by
-    set Cand := {W | IsOpen W ∧ (Ioo (0:ℝ) 1 \ U) ⊆ W} with hCand
-    have hBdd : BddBelow ((fun W => ℓ W) '' Cand) :=
-      ⟨0, by intro z hz; rcases hz with ⟨W, -, rfl⟩; exact A.nonneg W⟩
-    have hLower : ∀ z ∈ ((fun W => ℓ W) '' Cand), 1 - ℓ U ≤ z := by
+  refine le_antisymm ?lePart ?gePart
+  · -- (≤): benutze die Komplement-Approximation
+    refine le_of_forall_pos_le_add ?_
+    intro ε hε
+    rcases A.compl_approx hUo hUsub hε with ⟨W, hWo, hIncl, hWle⟩
+    have hκW : kappa ℓ (Ioo (0:ℝ) 1 \ U) ≤ ℓ W := by
+      set Cand := ((fun W => ℓ W) '' {W | IsOpen W ∧ (Ioo (0:ℝ) 1 \ U) ⊆ W})
+      have hBdd : BddBelow Cand :=
+        ⟨0, by intro z hz; rcases hz with ⟨W', -, rfl⟩; exact A.nonneg W'⟩
+      have hmem : ℓ W ∈ Cand := ⟨W, ⟨hWo, hIncl⟩, rfl⟩
+      simpa [kappa] using csInf_le hBdd hmem
+    calc
+      kappa ℓ (Ioo (0:ℝ) 1 \ U) ≤ ℓ W := hκW
+      _ ≤ 1 - ℓ U + ε := hWle
+      _ = 1 - kappa ℓ U + ε := by rw [← kappa_eq_len_of_open (A := A) hUo]
+  · -- (≥): zeige `1 - ℓ U ≤ sInf S = κ((0,1)\U)` und wandle um
+    set CW : Set (Set ℝ) := {W | IsOpen W ∧ (Ioo (0:ℝ) 1 \ U) ⊆ W} with hCW
+    set S  : Set ℝ       := ((fun W : Set ℝ => ℓ W) '' CW) with hS
+    have hneS : S.Nonempty :=
+      ⟨ℓ (Ioo (0:ℝ) 1),
+        ⟨Ioo (0:ℝ) 1, ⟨isOpen_Ioo, by intro x hx; exact hx.1⟩, rfl⟩⟩
+    have hLowerS : ∀ z ∈ S, 1 - ℓ U ≤ z := by
       intro z hz; rcases hz with ⟨W, ⟨hWo, hIncl⟩, rfl⟩
-      have hCover : Ioo (0:ℝ) 1 ⊆ U ∪ W := by
-        intro x hxI
-        by_cases hxU : x ∈ U
+      -- (0,1) ⊆ U ∪ W
+      have hcover : Ioo (0:ℝ) 1 ⊆ U ∪ W := by
+        intro x hx; by_cases hxU : x ∈ U
         · exact Or.inl hxU
-        · exact Or.inr (hIncl ⟨hxI, hxU⟩)
+        · exact Or.inr (hIncl ⟨hx, hxU⟩)
+      -- 1 ≤ ℓ(U ∪ W) ≤ ℓ U + ℓ W
       have h1 : 1 ≤ ℓ (U ∪ W) := by
-        have hmono := A.mono_open isOpen_Ioo (hUo.union hWo) hCover
-        simp [A.norm_cell] at hmono
-        exact hmono
+        have := A.mono_open isOpen_Ioo (hUo.union hWo) hcover
+        rwa [A.norm_cell] at this
       have h2 : ℓ (U ∪ W) ≤ ℓ U + ℓ W := A.subadd_open hUo hWo
       exact sub_le_iff_le_add'.mpr (le_trans h1 h2)
-    have hne : ((fun W => ℓ W) '' Cand).Nonempty :=
-      ⟨ℓ (Ioo (0:ℝ) 1), ⟨Ioo (0:ℝ) 1, ⟨isOpen_Ioo, fun x hx => hx.left⟩, rfl⟩⟩
-    have hcs : 1 - ℓ U ≤ sInf ((fun W => ℓ W) '' Cand) :=
-      le_csInf hne hLower
-    simpa [kappa, hCand] using hcs
-  -- (≤)  : κ((0,1)\U) ≤ 1 - ℓ(U)
-  have h_le : kappa ℓ (Ioo (0:ℝ) 1 \ U) ≤ 1 - ℓ U := by
-    refine le_of_forall_pos_le_add ?_
-    intro ε hεpos
-    -- positionsbasierter Aufruf der Axiom-Instanz (keine Namen mehr)
-    rcases A.compl_approx hUo hUsub hεpos with ⟨W, hWo, hIncl, hWle⟩
-    have hκ_le_ℓW : kappa ℓ (Ioo (0:ℝ) 1 \ U) ≤ ℓ W := by
-      set Cand := {W | IsOpen W ∧ (Ioo (0:ℝ) 1 \ U) ⊆ W} with hCand
-      have hBdd : BddBelow ((fun W => ℓ W) '' Cand) :=
-        ⟨0, by intro z hz; rcases hz with ⟨W', -, rfl⟩; exact A.nonneg W'⟩
-      have hmem : ℓ W ∈ ((fun W => ℓ W) '' Cand) := ⟨W, ⟨hWo, hIncl⟩, rfl⟩
-      simpa [kappa, hCand] using csInf_le hBdd hmem
-    have hstep : kappa ℓ (Ioo (0:ℝ) 1 \ U) ≤ 1 - ℓ U + ε :=
-      le_trans hκ_le_ℓW hWle
-    -- in die Form `(1 - ℓ U) + ε` bringen
-    simpa [sub_eq_add_neg, add_assoc] using hstep
-  -- κ(U) = ℓ(U), daher Ziel erreichen
-  have hκU : kappa ℓ U = ℓ U := kappa_eq_len_of_open (A := A) hUo
-  have eq1 : kappa ℓ (Ioo (0:ℝ) 1 \ U) = 1 - ℓ U :=
-    le_antisymm h_le h_ge
-  simpa [hκU] using eq1
+    -- direkter Schritt ohne Summe
+    have hInfLower : 1 - ℓ U ≤ sInf S := le_csInf hneS hLowerS
+    -- identifiziere sInf S mit κ((0,1)\U) und ℓ U mit κ U
+    have : 1 - kappa ℓ U ≤ kappa ℓ (Ioo (0:ℝ) 1 \ U) := by
+      simpa [kappa, hS, hCW, (kappa_eq_len_of_open (A := A) hUo)] using hInfLower
+    exact this
 
-/-- Für `F ⊆ (0,1)` abgeschlossen: `κ(F) + κ((0,1)\F) = 1`. -/
-lemma kappa_closed_plus_compl_in_cell
-    (A : OpenLengthAxioms ℓ) {F : Set ℝ}
-    (hFcl : IsClosed F) (hFsub : F ⊆ Ioo (0:ℝ) 1) :
-    kappa ℓ F + kappa ℓ (Ioo (0:ℝ) 1 \ F) = 1 := by
-  have hUo : IsOpen (Ioo (0:ℝ) 1 \ F) := by
-    simp [diff_eq]
-    exact isOpen_Ioo.inter hFcl.isOpen_compl
-  have hUsub : (Ioo (0:ℝ) 1 \ F) ⊆ Ioo (0:ℝ) 1 := fun x hx => hx.left
-  have hκcompl := kappa_compl_open_in_cell (A := A) (U := Ioo (0:ℝ) 1 \ F) hUo hUsub
-  have htrim : Ioo (0:ℝ) 1 \ (Ioo (0:ℝ) 1 \ F) = F :=
-    cellDiffCellDiff_eq_of_subset (hFsub := hFsub)
-  have h' : kappa ℓ F = 1 - kappa ℓ (Ioo (0:ℝ) 1 \ F) :=
-    by simpa [htrim] using hκcompl
-  have := congrArg (fun t => t + kappa ℓ (Ioo (0:ℝ) 1 \ F)) h'
-  simpa [sub_eq_add_neg, add_comm] using this
+/-- Existenz fast-minimaler offener Obermengen von `M`. -/
+lemma exists_open_superset_kappa_le_add
+    (A : OpenLengthAxioms ℓ) {M : Set ℝ} {ε : ℝ} (hε : 0 < ε) :
+    ∃ U, IsOpen U ∧ M ⊆ U ∧ kappa ℓ U ≤ kappa ℓ M + ε := by
+  classical
+  set Cand := {U : Set ℝ | IsOpen U ∧ M ⊆ U} with hCand
+  set S : Set ℝ := ((fun U : Set ℝ => ℓ U) '' Cand) with hS
+  have hne : S.Nonempty :=
+    ⟨ℓ (Set.univ), ⟨Set.univ, ⟨isOpen_univ, subset_univ M⟩, rfl⟩⟩
+  have hBdd : BddBelow S :=
+    ⟨0, by intro z hz; rcases hz with ⟨U, -, rfl⟩; exact A.nonneg U⟩
+  have hκM : kappa ℓ M = sInf S := by simp [kappa, hS, hCand]
+  -- sInf S < κ M + ε
+  have hlt : sInf S < kappa ℓ M + ε := by
+    have base : kappa ℓ M < kappa ℓ M + ε := lt_add_of_pos_right _ hε
+    simpa [hκM] using base
+  -- wähle z = ℓ U im Bild mit z < κ M + ε
+  obtain ⟨z, hzS, hzlt⟩ := exists_lt_of_csInf_lt hne hlt
+  rcases hzS with ⟨U, hUin, rfl⟩
+  rcases hUin with ⟨hUo, hMU⟩
+  have hκU : kappa ℓ U = ℓ U := kappa_eq_len_of_open (A := A) hUo
+  have hzlt' : kappa ℓ U < kappa ℓ M + ε := by simpa [hκU] using hzlt
+  exact ⟨U, hUo, hMU, le_of_lt hzlt'⟩
 
 end KappaOpenClosed
-
-/-
-## Axiome für eine abstrakte κ-Funktion auf allen Teilmengen (axiomatisch)
-
-Wir vermeiden benutzerdefinierte Notation und referenzieren die Funktion
-explizit als `K.k`. So entstehen keine Precheck/Elaborator-Probleme.
--/
-
-namespace KappaAxiomatic
-
-open Set
-
-/-- Abstrakte Struktur für eine äußere Größe `κ` auf Teilmengen von ℝ
-    mit den benötigten Eigenschaften. -/
-structure KappaOuter where
-  k         : Set ℝ → ℝ
-  nonneg    : ∀ A, 0 ≤ k A
-  monotone' : ∀ {A B}, A ⊆ B → k A ≤ k B
-  subadd    : ∀ A B, k (A ∪ B) ≤ k A + k B
-  norm_Ioo  : k (Ioo (0 : ℝ) 1) = 1
-
-namespace KappaOuter
-
-variable (K : KappaOuter)
-
-/-- Grundungleichung: `1 ≤ κ M + κ ((0,1) \ M)` für beliebiges `M`. -/
-lemma one_le_sum_comp (M : Set ℝ) :
-    1 ≤ K.k M + K.k ((Ioo (0 : ℝ) 1) \ M) := by
-  have cover_subset : (Ioo (0 : ℝ) 1) ⊆ M ∪ ((Ioo (0 : ℝ) 1) \ M) := by
-    intro x hx
-    by_cases hxM : x ∈ M
-    · exact Or.inl hxM
-    · exact Or.inr ⟨hx, hxM⟩
-  calc
-    1 = K.k (Ioo (0 : ℝ) 1) := (K.norm_Ioo).symm
-    _ ≤ K.k (M ∪ ((Ioo (0 : ℝ) 1) \ M)) := K.monotone' cover_subset
-    _ ≤ K.k M + K.k ((Ioo (0 : ℝ) 1) \ M) := K.subadd _ _
-
-/-- Konsequenz 1: Aus `κ M = 0` folgt `κ ((0,1) \ M) = 1`. -/
-lemma comp_eq_one_of_kappa_zero {M : Set ℝ} (h0 : K.k M = 0) :
-    K.k ((Ioo (0 : ℝ) 1) \ M) = 1 := by
-  -- Untere Schranke via `one_le_sum_comp`
-  have hlow : (1 : ℝ) ≤ K.k ((Ioo (0 : ℝ) 1) \ M) := by
-    have h := K.one_le_sum_comp M
-    -- aus 1 ≤ k M + k comp und k M = 0 folgt 1 ≤ k comp
-    simpa [h0, zero_add] using h
-  -- Obere Schranke via Monotonie: (0,1)\M ⊆ (0,1)
-  have hhigh : K.k ((Ioo (0 : ℝ) 1) \ M) ≤ K.k (Ioo (0 : ℝ) 1) :=
-    K.monotone' (by intro x hx; exact hx.1)
-  -- Gleichheit mit Normierung
-  have := le_antisymm hhigh (by simpa [K.norm_Ioo] using hlow)
-  simpa [K.norm_Ioo] using this
-
-/-- Konsequenz 2: Aus `κ M < 1` folgt `0 < κ ((0,1) \ M)`. -/
-lemma comp_pos_of_kappa_lt_one {M : Set ℝ} (hlt : K.k M < 1) :
-    0 < K.k ((Ioo (0 : ℝ) 1) \ M) := by
-  -- 1 ≤ k M + k comp
-  have hsum : (1 : ℝ) ≤ K.k M + K.k ((Ioo (0 : ℝ) 1) \ M) :=
-    K.one_le_sum_comp M
-  -- daraus: 1 - k M ≤ k comp (reines Umstellen)
-  have hge : 1 - K.k M ≤ K.k ((Ioo (0 : ℝ) 1) \ M) := by
-    -- 1 ≤ a + b  ⇒  1 - a ≤ b
-    have := hsum
-    exact sub_le_iff_le_add'.mpr this
-  -- aus k M < 1 folgt 0 < 1 - k M
-  have hpos : 0 < 1 - K.k M := by
-    -- 0 < 1 - a  ↔  a < 1
-    simpa [sub_pos] using hlt
-  -- Kette: 0 < 1 - k M ≤ k comp
-  exact lt_of_lt_of_le hpos hge
-
-end KappaOuter
-end KappaAxiomatic
-
-/-
-## Axiome für eine abstrakte κ-Funktion auf allen Teilmengen (axiomatisch)
-
-Wir vermeiden benutzerdefinierte Notation und referenzieren die Funktion
-explizit als `K.k`. So entstehen keine Precheck/Elaborator-Probleme.
--/
