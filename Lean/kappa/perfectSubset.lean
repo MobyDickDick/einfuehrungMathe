@@ -1,8 +1,8 @@
+
 /-
-Minimal Lean 4 skeleton (stable core, with dyadic reduction):
-- zwei `sorry` bei
+Minimal Lean 4 skeleton (stable core, with dyadic reduction and symmetry):
+- einziges `sorry` in:
     * `countable_BadLeft_fixed` (Kernfall links)
-    * `countable_BadRight`       (Spiegelung)
 - keine Cantor- /Node- /limitSet-Teile
 - konsistente Nutzung von `Set.diff`
 - Slices als Set-Comprehensions (kein `∩` im Kernteil)
@@ -105,17 +105,7 @@ lemma BadLeft_subunion (M : Set ℝ) :
 lemma countable_BadLeft_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
   ({x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
                  (LeftSlice M x (dyadic k)).Countable}).Countable := by
-  /- Idee (Skizze der späteren Ausführung):
-     Für jedes solche x ist auch (M ∩ (q, x)) abzählbar
-     (denn (q,x) ⊆ (x - dyadic k, x)). Wir wählen für x eine kanonische
-     rationale Approximation r ∈ ℚ mit q < r < x und definieren
-       s_x := sup (M ∩ (r, x))  (existiert in ℝ).
-     Zeige, dass x ↦ (k, q, r) injektiv in eine abzählbare Zielmenge
-     (ℕ × ℚ × ℚ) kodiert werden kann, indem man r so wählt, dass
-     s_x = x (kein M-Punkt > r fehlt „kurz vor x“), z.B. über eine dyadische
-     Diagonalisierung. Dann folgt die Abzählbarkeit.
-     Die technischen Details (Wahl von r, Supremum-Eigenschaften,
-     Injektivität) werden hier ausgelassen. -/
+  /- hier kommt der konkrete Kodierungs- /Supremum-Beweis hinein (etwas länger) -/
   sorry
 
 /-- **Links**: `BadLeft M` ist abzählbar. -/
@@ -125,22 +115,126 @@ lemma countable_BadLeft (M : Set ℝ) : (BadLeft M).Countable := by
   have big :
       (⋃ (k : ℕ), ⋃ (q : ℚ),
         {x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
-                       (LeftSlice M x (dyadic k)).Countable }).Countable := by
-    refine countable_iUnion ?h1
-    intro k
-    refine countable_iUnion ?h2
-    intro q
-    simpa using countable_BadLeft_fixed (M:=M) k q
+                       (LeftSlice M x (dyadic k)).Countable }).Countable :=
+    countable_iUnion (fun k =>
+      countable_iUnion (fun q =>
+        (countable_BadLeft_fixed (M:=M) k q)))
   -- und `BadLeft` liegt darin (BadLeft_subunion)
   exact big.mono (BadLeft_subunion (M:=M))
 
 
-/-! ## Rechte Seite symmetrisch -/
+/-! ## Symmetrie per Negation: `BadRight` aus `BadLeft` -/
 
+/-- Vorabbildung von `M` unter der Negation. -/
+def negPre (M : Set ℝ) : Set ℝ := {z : ℝ | -z ∈ M}
+
+lemma negPre_negPre (M : Set ℝ) : negPre (negPre M) = M := by
+  ext x; simp [negPre]
+
+/-- Bild des linken Slices unter `x ↦ -x` ist ein rechter Slice des negierten Sets. -/
+lemma image_neg_leftSlice (M : Set ℝ) (x ε : ℝ) :
+  (fun y : ℝ => -y) '' (LeftSlice M x ε) = RightSlice (negPre M) (-x) ε := by
+  ext z; constructor
+  · intro hz
+    rcases hz with ⟨y, hy, rfl⟩
+    rcases hy with ⟨hyM, h1, h2⟩
+    -- Mitgliedschaft in negPre M
+    have hzNegPre : (-y) ∈ negPre M := by
+      simpa [negPre] using (by simpa using hyM : (-(-y)) ∈ M)
+    -- Ungleichungen
+    have hgt : -x < -y := by simpa using (neg_lt_neg h2)
+    have hlt : -y < -x + ε := by
+      have := neg_lt_neg h1
+      -- -(x - ε) = -x + ε
+      simpa [neg_sub] using this
+    exact ⟨hzNegPre, hgt, hlt⟩
+  · intro hz
+    rcases hz with ⟨hzNegPre, hgt, hlt⟩
+    -- setze y := -z
+    refine ⟨-z, ?_, by simp⟩
+    have hyM : -z ∈ M := by simpa [negPre] using hzNegPre
+    -- aus -x < z folgt -z < x
+    have h2 : -z < x := by simpa using (neg_lt_neg hgt)
+    -- aus z < -x + ε folgt x - ε < -z
+    have : z < -(x - ε) := by simpa [neg_sub] using hlt
+    have h1 : x - ε < -z := by simpa using (neg_lt_neg this)
+    exact ⟨hyM, h1, h2⟩
+
+/-- Bild des rechten Slices unter `x ↦ -x` ist ein linker Slice des negierten Sets. -/
+lemma image_neg_rightSlice (M : Set ℝ) (x ε : ℝ) :
+  (fun y : ℝ => -y) '' (RightSlice M x ε) = LeftSlice (negPre M) (-x) ε := by
+  ext z; constructor
+  · intro hz
+    rcases hz with ⟨y, hy, rfl⟩
+    rcases hy with ⟨hyM, hgt, hlt⟩
+    -- Mitgliedschaft
+    have hzNegPre : (-y) ∈ negPre M := by
+      simpa [negPre] using (by simpa using hyM : (-(-y)) ∈ M)
+    -- aus y < x + ε ⇒ (-x) - ε < -y
+    have h1 : (-x) - ε < -y := by
+      have := neg_lt_neg hlt    -- -(x+ε) < -y
+      -- -(x+ε) = -x - ε
+      simpa [neg_add, sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using this
+    -- aus x < y ⇒ -y < -x
+    have h2 : -y < -x := by simpa using (neg_lt_neg hgt)
+    exact ⟨hzNegPre, h1, h2⟩
+  · intro hz
+    rcases hz with ⟨hzNegPre, h1, h2⟩
+    -- setze y := -z
+    refine ⟨-z, ?_, by simp⟩
+    have hyM : -z ∈ M := by simpa [negPre] using hzNegPre
+    -- aus (-x)-ε < z folgt -z < x + ε
+    have hlt' : -z < x + ε := by
+      have := neg_lt_neg h1
+      -- -(( -x) - ε) = x + ε
+      simpa [sub_eq_add_neg, neg_add, add_comm, add_left_comm, add_assoc] using this
+    -- aus z < -x folgt x < -z
+    have hgt : x < -z := by
+      have := neg_lt_neg h2
+      simpa using this
+    exact ⟨hyM, hgt, hlt'⟩
+
+/-- Bild von `BadLeft` unter `x ↦ -x` ist `BadRight` des negierten Sets. -/
+lemma image_neg_BadLeft (M : Set ℝ) :
+  (fun x : ℝ => -x) '' (BadLeft M) = BadRight (negPre M) := by
+  ext z; constructor
+  -- → Richtung: aus x∈BadLeft M folgt -x ∈ BadRight (negPre M)
+  · intro hz
+    rcases hz with ⟨x, hx, rfl⟩
+    rcases hx with ⟨hxM, ⟨ε, hε, hcnt⟩⟩
+    -- erst Bild abzählbar, dann via Lemma in Slice-Form
+    have himg :
+        ((fun y : ℝ => -y) '' (LeftSlice M x ε)).Countable :=
+      hcnt.image (fun y : ℝ => -y)
+    have hRS : (RightSlice (negPre M) (-x) ε).Countable := by
+      simpa [image_neg_leftSlice, add_comm, add_left_comm, add_assoc] using himg
+    have hzM : (-x) ∈ negPre M := by simpa [negPre] using hxM
+    exact ⟨hzM, ⟨ε, hε, hRS⟩⟩
+  -- ← Richtung: aus z∈BadRight (negPre M) folgt -z ∈ BadLeft M und Bild ist z
+  · intro hz
+    rcases hz with ⟨hzM, ⟨ε, hε, hcnt⟩⟩
+    -- Bild-Abzählbarkeit und dann via Lemma umschreiben
+    have himgR :
+        ((fun y : ℝ => -y) '' (RightSlice (negPre M) z ε)).Countable :=
+      hcnt.image (fun y : ℝ => -y)
+    have hL :
+        (LeftSlice (negPre (negPre M)) (-z) ε).Countable := by
+      simpa [image_neg_rightSlice, add_comm, add_left_comm, add_assoc] using himgR
+    have hzM' : -z ∈ M := by simpa [negPre] using hzM
+    have : (LeftSlice M (-z) ε).Countable := by
+      simpa [negPre_negPre] using hL
+    refine ⟨-z, ?_, by simp⟩
+    exact And.intro hzM' ⟨ε, hε, this⟩
+
+/-- **Rechts**: `BadRight M` ist abzählbar (via Negationssymmetrie). -/
 lemma countable_BadRight (M : Set ℝ) : (BadRight M).Countable := by
-  /- exakte Spiegelung von links (ersetze `LeftSlice` durch `RightSlice`),
-     kann nach Schließen von `countable_BadLeft_fixed` analog ausgeführt werden. -/
-  sorry
+  classical
+  -- Linke Seite fürs negierte Set
+  have hL : (BadLeft (negPre M)).Countable := countable_BadLeft (negPre M)
+  -- Negation ist injektiv ⇒ Bild bleibt abzählbar
+  have himg : (fun x : ℝ => -x) '' (BadLeft (negPre M)) = BadRight M := by
+    simpa [negPre_negPre] using image_neg_BadLeft (negPre M)
+  simpa [himg] using hL.image (fun x : ℝ => -x)
 
 lemma countable_Bad (M : Set ℝ) : (Bad M).Countable := by
   simpa [Bad] using (countable_BadLeft M).union (countable_BadRight M)
@@ -154,14 +248,14 @@ def core (M : Set ℝ) : Set ℝ := Set.diff M (Bad M)
 lemma core_subset (M : Set ℝ) : core M ⊆ M := by
   intro x hx; exact hx.1
 
+/-- Linker Slice von `Set.diff M (Bad M)` ist `diff` des linken Slices. -/
 lemma leftSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
   LeftSlice (Set.diff M (Bad M)) x ε = Set.diff (LeftSlice M x ε) (Bad M) := by
   ext y; constructor <;> intro hy
   · rcases hy with ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
     exact ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
-  · rcases hy with ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
+  · rcases hy mit ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
     exact ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
-
 
 /-- Rechter Slice analog. -/
 lemma rightSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
