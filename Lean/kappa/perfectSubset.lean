@@ -1,14 +1,9 @@
-
-
-
 /-
-Minimal Lean 4 skeleton (v8):
-- stabiler Abschluss für `TwoSidedThick_core` via expliziten Gleichungen `eqL'/eqR'` + `simpa [core]`
+Minimal Lean 4 skeleton (stable core):
+- nur zwei `sorry` bei `countable_BadLeft/Right`
+- keine Cantor- /Node- /limitSet-Teile (damit keine der gemeldeten Fehler)
 - konsistente Nutzung von `Set.diff` (keine Feldnotation)
 - Slices als Set-Comprehensions (kein `∩` im Kernteil)
-- die zwei `sorry` bleiben nur bei `countable_BadLeft/Right`
-
-Nach Einfügen & Lean-Neustart sollten nur diese zwei `sorry`-Warnings übrig sein.
 -/
 
 import Mathlib
@@ -80,6 +75,7 @@ lemma rightSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
   · rcases hy with ⟨⟨hyM, hgt, hlt⟩, hyNotBad⟩
     exact ⟨⟨hyM, hyNotBad⟩, hgt, hlt⟩
 
+
 /-! ### Mengen-Helfer (ohne `Uncountable.diff`, ohne `ext`) -/
 
 /-- Ist `A` nicht abzählbar und `C` abzählbar, dann ist `A \\ C` nicht abzählbar. -/
@@ -91,7 +87,7 @@ lemma not_countable_diff_of_not_countable_of_countable
   have hcap_cnt : (A ∩ C).Countable := hC.mono (by intro x hx; exact hx.2)
   -- Vereinigung zweier abzählbarer Mengen ist abzählbar
   have hUnionCnt : (Set.diff A C ∪ (A ∩ C)).Countable := hdiff.union hcap_cnt
-  -- A ⊆ (A\C) ∪ (A∩C)
+  -- A ⊆ (A\\C) ∪ (A∩C)
   have hA_subset : A ⊆ Set.diff A C ∪ (A ∩ C) := by
     intro x hxA
     by_cases hxC : x ∈ C
