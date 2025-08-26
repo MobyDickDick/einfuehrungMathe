@@ -114,16 +114,14 @@ lemma countable_BadLeft (M : Set ℝ) : (BadLeft M).Countable := by
   have big :
       (⋃ (k : ℕ), ⋃ (q : ℚ),
         {x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
-                       (LeftSlice M x (dyadic k)).Countable }).Countable := by
-    refine countable_iUnion ?h1
-    intro k
-    refine countable_iUnion ?h2
-    intro q
-    simpa using countable_BadLeft_fixed (M:=M) k q
+                       (LeftSlice M x (dyadic k)).Countable }).Countable :=
+    countable_iUnion (fun k =>
+      countable_iUnion (fun q =>
+        (by simpa using countable_BadLeft_fixed (M:=M) k q)))
   exact big.mono (BadLeft_subunion (M:=M))
 
 
-/-! ### Rechts: Subunion + Kernfall (ohne Symmetrie, „from scratch“) -/
+/-! ### Rechts: Subunion + Kernfall (from scratch, ohne Symmetrie) -/
 
 /-- Für jedes `x ∈ BadRight M` gibt es
     * ein `k : ℕ` (dyadischer Radius) und
@@ -140,7 +138,7 @@ lemma BadRight_subunion (M : Set ℝ) :
   -- dichte Q: wähle q mit x < q < x + dyadic k
   have : x < x + dyadic k := by
     have hkpos := dyadic_pos k
-    have := add_lt_add_left hkpos x
+    have := add_lt_add_left hkpos x   -- x + 0 < x + dyadic k
     simpa using this
   rcases exists_rat_btwn this with ⟨q, hq1, hq2⟩
   -- Monotonie: (x, x + dyadic k) ⊆ (x, x + ε) wenn dyadic k ≤ ε
@@ -178,12 +176,10 @@ lemma countable_BadRight (M : Set ℝ) : (BadRight M).Countable := by
   have big :
       (⋃ (k : ℕ), ⋃ (q : ℚ),
         {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
-                       (RightSlice M x (dyadic k)).Countable }).Countable := by
-    refine countable_iUnion ?h1
-    intro k
-    refine countable_iUnion ?h2
-    intro q
-    simpa using countable_BadRight_fixed (M:=M) k q
+                       (RightSlice M x (dyadic k)).Countable }).Countable :=
+    countable_iUnion (fun k =>
+      countable_iUnion (fun q =>
+        (by simpa using countable_BadRight_fixed (M:=M) k q)))
   exact big.mono (BadRight_subunion (M:=M))
 
 
@@ -207,7 +203,7 @@ lemma leftSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
   ext y; constructor <;> intro hy
   · rcases hy with ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
     exact ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
-  · rcases hy with ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
+  · rcases hy mit ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
     exact ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
 
 /-- Rechter Slice analog. -/
