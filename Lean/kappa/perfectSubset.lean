@@ -64,21 +64,27 @@ lemma exists_dyadic_le {ε : ℝ} (hε : ε > 0) :
 
 /-! ### Nützliche kleine Rechen-Lemmas -/
 
+/-- Linkes Fenster (verwende **offen** links: `Ioo`) -/
 lemma x_in_window_left {k : ℕ} {q x : ℝ}
     (hL : x - dyadic k < q) (hR : q < x) :
-    x ∈ Ioc q (q + dyadic k) := by
+    x ∈ Ioo q (q + dyadic k) := by
   -- aus x - dyadic k < q folgt x < q + dyadic k
   have hxlt : x < q + dyadic k := by
     have := add_lt_add_right hL (dyadic k)
     -- x - dyadic k + dyadic k = x
     simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using this
-  exact ⟨le_of_lt hR, hxlt⟩
+  exact ⟨hR, hxlt⟩
 
+/-- Rechtes Fenster (robust gegen `add_comm`) -/
 lemma x_in_window_right {k : ℕ} {x q : ℝ}
     (hL : x < q) (hR : q < x + dyadic k) :
     x ∈ Icc (q - dyadic k) q := by
   -- aus q < x + dyadic k folgt q - dyadic k < x
-  have hxgt : q - dyadic k < x := (sub_lt_iff_lt_add').2 hR
+  have hxgt : q - dyadic k < x := by
+    -- benutze eine Version, die `add_comm`-Robustheit erzwingt
+    have hR' : q < x + dyadic k := hR
+    have : q < dyadic k + x := by simpa [add_comm] using hR'
+    exact (sub_lt_iff_lt_add').mpr (by simpa [add_comm] using this)
   exact ⟨le_of_lt hxgt, le_of_lt hL⟩
 
 
@@ -228,7 +234,7 @@ lemma leftSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
   ext y; constructor <;> intro hy
   · rcases hy with ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
     exact ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
-  · rcases hy mit ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
+  · rcases hy with ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
     exact ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
 
 /-- Rechter Slice analog. -/
