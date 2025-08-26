@@ -67,12 +67,17 @@ lemma exists_dyadic_le {ε : ℝ} (hε : ε > 0) :
 lemma x_in_window_left {k : ℕ} {q x : ℝ}
     (hL : x - dyadic k < q) (hR : q < x) :
     x ∈ Ioc q (q + dyadic k) := by
-  have hxlt : x < q + dyadic k := (sub_lt_iff_lt_add').1 hL
+  -- aus x - dyadic k < q folgt x < q + dyadic k
+  have hxlt : x < q + dyadic k := by
+    have := add_lt_add_right hL (dyadic k)
+    -- x - dyadic k + dyadic k = x
+    simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using this
   exact ⟨le_of_lt hR, hxlt⟩
 
 lemma x_in_window_right {k : ℕ} {x q : ℝ}
     (hL : x < q) (hR : q < x + dyadic k) :
     x ∈ Icc (q - dyadic k) q := by
+  -- aus q < x + dyadic k folgt q - dyadic k < x
   have hxgt : q - dyadic k < x := (sub_lt_iff_lt_add').2 hR
   exact ⟨le_of_lt hxgt, le_of_lt hL⟩
 
@@ -149,7 +154,7 @@ lemma BadRight_subunion (M : Set ℝ) :
     {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
                    (RightSlice M x (dyadic k)).Countable } := by
   intro x hx
-  rcases hx mit ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
+  rcases hx with ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
   -- wähle dyadisch kleinen Radius ≤ ε
   rcases exists_dyadic_le (ε:=ε) hεpos with ⟨k, hk⟩
   -- dichte Q: wähle q mit x < q < x + dyadic k
@@ -223,7 +228,7 @@ lemma leftSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
   ext y; constructor <;> intro hy
   · rcases hy with ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
     exact ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
-  · rcases hy with ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
+  · rcases hy mit ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
     exact ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
 
 /-- Rechter Slice analog. -/
