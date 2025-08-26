@@ -1,8 +1,8 @@
 /-
 Minimal Lean 4 skeleton (stable core, with dyadic reduction):
-- zwei `sorry` bei
-    * `countable_BadLeft_fixed` (Kernfall links)
-    * `countable_BadRight`       (Spiegelung)
+- genau zwei `sorry` bei
+    * `countable_BadLeft_fixed`  (Kernfall links)
+    * `countable_BadRight_fixed` (Kernfall rechts)
 - keine Cantor- /Node- /limitSet-Teile
 - konsistente Nutzung von `Set.diff`
 - Slices als Set-Comprehensions (kein `∩` im Kernteil)
@@ -41,7 +41,7 @@ def BadRight (M : Set ℝ) : Set ℝ :=
 @[simp] def Bad (M : Set ℝ) : Set ℝ := BadLeft M ∪ BadRight M
 
 
-/-! ## Dyadische Reduktion für `BadLeft` -/
+/-! ## Dyadische Reduktion (links und rechts) -/
 
 open Filter Topology
 
@@ -60,6 +60,9 @@ lemma exists_dyadic_le {ε : ℝ} (hε : ε > 0) :
   have : (1 : ℝ) / (Nat.succ N) < ε := by
     simpa [Nat.succ_eq_add_one, Nat.cast_add, Nat.cast_one] using hN
   exact le_of_lt this
+
+
+/-! ### Links: Subunion + Kernfall -/
 
 /-- Für jedes `x ∈ BadLeft M` gibt es
     * ein `k : ℕ` (dyadischer Radius) und
@@ -98,30 +101,16 @@ lemma BadLeft_subunion (M : Set ℝ) :
                         (LeftSlice M x (dyadic k)).Countable}
   exact And.intro hxM (And.intro hq1 (And.intro hq2 hcnt_dy))
 
-/-- Fixiere `k` und einen rationalen Marker `q`.
-    Zeige: Die Menge der `x` mit
-      `x ∈ M`, `x - dyadic k < q < x` und `(LeftSlice M x (dyadic k))` abzählbar
-    ist abzählbar.  (Kernfall links.) -/
+/-- Fixiere `k` und einen rationalen Marker `q` (linker Kernfall). -/
 lemma countable_BadLeft_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
   ({x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
                  (LeftSlice M x (dyadic k)).Countable}).Countable := by
-  /- Idee (Skizze der späteren Ausführung):
-     Für jedes solche x ist auch (M ∩ (q, x)) abzählbar
-     (denn (q,x) ⊆ (x - dyadic k, x)). Wir wählen für x eine kanonische
-     rationale Approximation r ∈ ℚ mit q < r < x und definieren
-       s_x := sup (M ∩ (r, x))  (existiert in ℝ).
-     Zeige, dass x ↦ (k, q, r) injektiv in eine abzählbare Zielmenge
-     (ℕ × ℚ × ℚ) kodiert werden kann, indem man r so wählt, dass
-     s_x = x (kein M-Punkt > r fehlt „kurz vor x“), z.B. über eine dyadische
-     Diagonalisierung. Dann folgt die Abzählbarkeit.
-     Die technischen Details (Wahl von r, Supremum-Eigenschaften,
-     Injektivität) werden hier ausgelassen. -/
+  /- hier kommt der konkrete Kodierungs- /Supremum-Beweis hinein (etwas länger) -/
   sorry
 
 /-- **Links**: `BadLeft M` ist abzählbar. -/
 lemma countable_BadLeft (M : Set ℝ) : (BadLeft M).Countable := by
   classical
-  -- große Doppelsumme ist abzählbar
   have big :
       (⋃ (k : ℕ), ⋃ (q : ℚ),
         {x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
@@ -131,16 +120,74 @@ lemma countable_BadLeft (M : Set ℝ) : (BadLeft M).Countable := by
     refine countable_iUnion ?h2
     intro q
     simpa using countable_BadLeft_fixed (M:=M) k q
-  -- und `BadLeft` liegt darin (BadLeft_subunion)
   exact big.mono (BadLeft_subunion (M:=M))
 
 
-/-! ## Rechte Seite symmetrisch -/
+/-! ### Rechts: Subunion + Kernfall (ohne Symmetrie, „from scratch“) -/
 
-lemma countable_BadRight (M : Set ℝ) : (BadRight M).Countable := by
-  /- exakte Spiegelung von links (ersetze `LeftSlice` durch `RightSlice`),
-     kann nach Schließen von `countable_BadLeft_fixed` analog ausgeführt werden. -/
+/-- Für jedes `x ∈ BadRight M` gibt es
+    * ein `k : ℕ` (dyadischer Radius) und
+    * ein rationales `q` mit `x < q ∧ q < x + dyadic k`,
+  so dass auch `(RightSlice M x (dyadic k))` abzählbar ist. -/
+lemma BadRight_subunion (M : Set ℝ) :
+  BadRight M ⊆ ⋃ (k : ℕ), ⋃ (q : ℚ),
+    {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
+                   (RightSlice M x (dyadic k)).Countable } := by
+  intro x hx
+  rcases hx with ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
+  -- wähle dyadisch kleinen Radius ≤ ε
+  rcases exists_dyadic_le (ε:=ε) hεpos with ⟨k, hk⟩
+  -- dichte Q: wähle q mit x < q < x + dyadic k
+  have : x < x + dyadic k := by
+    have hkpos := dyadic_pos k
+    have := add_lt_add_left hkpos x
+    simpa using this
+  rcases exists_rat_btwn this with ⟨q, hq1, hq2⟩
+  -- Monotonie: (x, x + dyadic k) ⊆ (x, x + ε) wenn dyadic k ≤ ε
+  have hmono : (RightSlice M x (dyadic k)) ⊆ (RightSlice M x ε) := by
+    intro y hy
+    rcases hy with ⟨hyM, hxlt, hyub⟩
+    refine ⟨hyM, hxlt, ?_⟩
+    -- y < x + ε, denn y < x + dyadic k ≤ x + ε
+    have : x + dyadic k ≤ x + ε := add_le_add_left hk x
+    exact lt_of_lt_of_le hyub this
+  have hcnt_dy : (RightSlice M x (dyadic k)).Countable := hcnt.mono hmono
+  -- packe in die Doppelsumme über k und q
+  refine mem_iUnion.mpr ?_
+  refine ⟨k, ?_⟩
+  refine mem_iUnion.mpr ?_
+  refine ⟨q, ?_⟩
+  -- zeigt: x erfüllt die Bedingung im Summanden (k,q)
+  change x ∈ {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
+                        (RightSlice M x (dyadic k)).Countable}
+  exact And.intro hxM (And.intro hq1 (And.intro hq2 hcnt_dy))
+
+/-- Fixiere `k` und einen rationalen Marker `q` (rechter Kernfall). -/
+lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
+  ({x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
+                 (RightSlice M x (dyadic k)).Countable}).Countable := by
+  /- analog zum linken Kernfall: baue eine kanonische Kodierung
+     über eine rationale Marke q mit x < q < x + dyadic k und
+     benutze eine Supremum-/Injektivitäts-Konstruktion rechts von x.
+     Details wie beim linken Kernfall, gespiegelt. -/
   sorry
+
+/-- **Rechts**: `BadRight M` ist abzählbar. -/
+lemma countable_BadRight (M : Set ℝ) : (BadRight M).Countable := by
+  classical
+  have big :
+      (⋃ (k : ℕ), ⋃ (q : ℚ),
+        {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
+                       (RightSlice M x (dyadic k)).Countable }).Countable := by
+    refine countable_iUnion ?h1
+    intro k
+    refine countable_iUnion ?h2
+    intro q
+    simpa using countable_BadRight_fixed (M:=M) k q
+  exact big.mono (BadRight_subunion (M:=M))
+
+
+/-! ### Beide Seiten zusammen -/
 
 lemma countable_Bad (M : Set ℝ) : (Bad M).Countable := by
   simpa [Bad] using (countable_BadLeft M).union (countable_BadRight M)
