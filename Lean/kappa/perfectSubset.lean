@@ -117,7 +117,7 @@ lemma countable_BadLeft (M : Set ℝ) : (BadLeft M).Countable := by
                        (LeftSlice M x (dyadic k)).Countable }).Countable :=
     countable_iUnion (fun k =>
       countable_iUnion (fun q =>
-        (by simpa using countable_BadLeft_fixed (M:=M) k q)))
+        (countable_BadLeft_fixed (M:=M) k q)))
   exact big.mono (BadLeft_subunion (M:=M))
 
 
@@ -179,7 +179,7 @@ lemma countable_BadRight (M : Set ℝ) : (BadRight M).Countable := by
                        (RightSlice M x (dyadic k)).Countable }).Countable :=
     countable_iUnion (fun k =>
       countable_iUnion (fun q =>
-        (by simpa using countable_BadRight_fixed (M:=M) k q)))
+        (countable_BadRight_fixed (M:=M) k q)))
   exact big.mono (BadRight_subunion (M:=M))
 
 
@@ -203,7 +203,7 @@ lemma leftSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
   ext y; constructor <;> intro hy
   · rcases hy with ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
     exact ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
-  · rcases hy mit ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
+  · rcases hy with ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
     exact ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
 
 /-- Rechter Slice analog. -/
