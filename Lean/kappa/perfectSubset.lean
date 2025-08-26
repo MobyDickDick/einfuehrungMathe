@@ -62,6 +62,21 @@ lemma exists_dyadic_le {ε : ℝ} (hε : ε > 0) :
   exact le_of_lt this
 
 
+/-! ### Nützliche kleine Rechen-Lemmas -/
+
+lemma x_in_window_left {k : ℕ} {q x : ℝ}
+    (hL : x - dyadic k < q) (hR : q < x) :
+    x ∈ Ioc q (q + dyadic k) := by
+  have hxlt : x < q + dyadic k := (sub_lt_iff_lt_add').1 hL
+  exact ⟨le_of_lt hR, hxlt⟩
+
+lemma x_in_window_right {k : ℕ} {x q : ℝ}
+    (hL : x < q) (hR : q < x + dyadic k) :
+    x ∈ Icc (q - dyadic k) q := by
+  have hxgt : q - dyadic k < x := (sub_lt_iff_lt_add').2 hR
+  exact ⟨le_of_lt hxgt, le_of_lt hL⟩
+
+
 /-! ### Links: Subunion + Kernfall -/
 
 /-- Für jedes `x ∈ BadLeft M` gibt es
@@ -134,7 +149,7 @@ lemma BadRight_subunion (M : Set ℝ) :
     {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
                    (RightSlice M x (dyadic k)).Countable } := by
   intro x hx
-  rcases hx with ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
+  rcases hx mit ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
   -- wähle dyadisch kleinen Radius ≤ ε
   rcases exists_dyadic_le (ε:=ε) hεpos with ⟨k, hk⟩
   -- dichte Q: wähle q mit x < q < x + dyadic k
@@ -167,12 +182,12 @@ lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
   ({x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
                  (RightSlice M x (dyadic k)).Countable}).Countable := by
   /- analog zum linken Kernfall, aber rechts von x:
-     * Aus x < q < x + dyadic k folgt, dass auch (x, q) nicht leer ist.
-     * Kodierungsidee: wähle für jedes solche x eine kanonische rationale
-       Marke r mit x < r < min q (x + dyadic k), und „kodiere“ die abzählbare
-       Menge M ∩ (x, r) (bzw. die Countability des Slices) durch ein
-       injektives Abbild nach ℕ × ℚ × ℚ. Die technischen Details (Supremum,
-       Diagonalisierung) werden hier ausgelassen. -/
+     * Aus x < q < x + dyadic k folgt ein „Fenster“ für x in Icc(q - dyadic k, q).
+     * Wähle kanonisch eine rationale Marke r mit x < r < min q (x + dyadic k),
+       und einen minimalen Index n aus einer Aufzählung des rechten Slices.
+     * Konstruiere eine Injektion in ℚ × ℕ (bzw. ℚ × ℚ × ℕ), um Abzählbarkeit zu zeigen.
+     (Technische Details wie beim linken Kernfall; hier ausgelassen.)
+  -/
   sorry
 
 /-- **Rechts**: `BadRight M` ist abzählbar. -/
