@@ -17043,6 +17043,144 @@ eine Folge von Aussagen.
 .
 \end_layout
 
+\begin_layout Proof
+Der Beweis ist analog vom Beweis vom Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:vollstaendige-Induktion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ über die Vollständige Induktion.
+ Angenommen,
+ für ein 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ sei die Aussage 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ nicht wahr.
+ Dann kann ich die Menge 
+\begin_inset Formula $W$
+\end_inset
+
+ derart definieren:
+\begin_inset Formula 
+\[
+W\equiv\left\{ n\biggm|n\in\mathbb{N}\wedge\neg A_{n}\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Formula $W$
+\end_inset
+
+ sei also die Menge aller natürlichen Zahlen,
+ für welche gilt,
+ dass die Aussage 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ nicht gilt.
+ Dann muss 
+\begin_inset Formula $W$
+\end_inset
+
+ ein kleinstes Element 
+\begin_inset Formula $m$
+\end_inset
+
+ besitzen.
+ Wäre nun 
+\begin_inset Formula $m=1$
+\end_inset
+
+,
+ dann wäre das ein Widerspruch zur Voraussetzung,
+ dass 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ wahr sein müsste.
+ Wäre jedoch 
+\begin_inset Formula $m>1$
+\end_inset
+
+,
+ dann müsste für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ mit 
+\begin_inset Formula $n<m$
+\end_inset
+
+ gelten,
+ dass 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ wahr sein müsste und 
+\begin_inset Formula $A_{m}$
+\end_inset
+
+ nicht wahr sein könnte.
+ Das wäre jedoch ein Wiederspruch zur Voraussetzung,
+ dass mit 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ mit 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ folgen müsste,
+ dass auch 
+\begin_inset Formula $A_{m}$
+\end_inset
+
+ sein müsste.
+ Also 
+\begin_inset Formula 
+\[
+\neg\left(\bigwedge_{n=1}^{n<m}A_{n}\Rightarrow A_{m}\right)
+\]
+
+\end_inset
+
+Was jedoch wiederum ein Widerspruch zur Annahme wäre.
+ Somit bin ich der Meinung,
+ dass es kein 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ derart geben könnte,
+ so dass 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ nicht wahr wäre.
+ Also schliesse ich daraus,
+ dass für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ die Aussage 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ wahr sein muss.
+ Darum bin ich der Meinung,
+ dass ich den Nachweis der Richtigkeit der Behauptung erbracht habe und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+\end_layout
+
 \begin_layout Chapter
 Schlussfolgerungen aus den Axiomen von Peano
 \end_layout

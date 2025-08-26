@@ -17005,6 +17005,105 @@ Es sei
 \end_inset
 
 eine Folge von Aussagen.
+ Dann gelte einerseits die Aussage 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+.
+ Gelten andererseits für ein gegebenes 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ und für alle 
+\begin_inset Formula $m\in\mathbb{N}$
+\end_inset
+
+ mit 
+\begin_inset Formula $m\leq n$
+\end_inset
+
+ die Aussagen 
+\begin_inset Formula $A_{m}$
+\end_inset
+
+ und folgt daraus,
+ dass die Aussage 
+\begin_inset Formula $A_{n+1}$
+\end_inset
+
+ gelten muss,
+ dann gilt die Aussage 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ für alle natürlichen Zahlen 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Der Beweis ist analog vom Beweis vom Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:vollstaendige-Induktion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ über die Vollständige Induktion.
+ Angenommen,
+ für ein 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ sei die Aussage 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ nicht wahr.
+ Dann kann ich die Menge 
+\begin_inset Formula $W$
+\end_inset
+
+ derart definieren:
+\begin_inset Formula 
+\[
+W\equiv\left\{ n\biggm|n\in\mathbb{N}\wedge\neg A_{n}\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Formula $W$
+\end_inset
+
+ sei also die Menge aller natürlichen Zahlen,
+ für welche gilt,
+ dass die Aussage 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ nicht gilt.
+ Dann muss 
+\begin_inset Formula $W$
+\end_inset
+
+ ein kleinstes Element 
+\begin_inset Formula $m$
+\end_inset
+
+ besitzen.
+ Wäre nun 
+\begin_inset Formula $m=1$
+\end_inset
+
+,
+ dann wäre das ein Widerspruch zur Voraussetzung,
  
 \end_layout
 

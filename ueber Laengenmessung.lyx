@@ -861,23 +861,31 @@ Dann ist für alle
 \end_inset
 
 kompakte Mengen,
- welche jedoch eine das Mass Null haben muss.
+ welche jedoch das Mass Null haben muss,
+ da 
+\begin_inset Formula $\kappa\left(U\right)\geq1$
+\end_inset
+
+ und 
+\begin_inset Formula 
+\[
+\kappa\left(\left(0,1\right)\setminus U\right)\leq\kappa\left(\left(0,1\right)\right)-\kappa\left(U\right)\leq0
+\]
+
+\end_inset
+
+ sein 
 \end_layout
 
 \begin_layout Proof
 Also kann ich schliessen:
 \begin_inset Formula 
-\[
-\kappa\left(\left(0,1\right)\setminus M\right)\leq\sum_{K\in\mathbb{W}\left(\left(0,1\right)\setminus M\right)}K=0
-\]
-
-\end_inset
-
-Somit kann ich mit 
-\begin_inset Formula 
-\[
-0\leq\kappa\left(\left(0,1\right)\setminus M\right)
-\]
+\begin{eqnarray*}
+ &  & \kappa\left(\left(0,1\right)\setminus M\right)\\
+ & = & \inf\left\{ \kappa\left(\left(0,1\right)\setminus U\right)\biggm|U\in\mathbb{V}\left(M\right)\right\} \\
+ & = & \inf\left\{ 0\biggm|U\in\mathbb{V}\left(M\right)\right\} \\
+ & = & 0
+\end{eqnarray*}
 
 \end_inset
 
