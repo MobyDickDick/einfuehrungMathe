@@ -97,37 +97,60 @@ lemma BadLeft_subunion (M : Set ℝ) :
 lemma countable_BadLeft_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
   ({x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
                  (LeftSlice M x (dyadic k)).Countable}).Countable := by
+  /- hier kommt der konkrete Kodierungs- /Supremum-Beweis hinein (etwas länger) -/
   sorry
+
+/-- **Links**: `BadLeft M` ist abzählbar. -/
+lemma countable_BadLeft (M : Set ℝ) : (BadLeft M).Countable := by
+  classical
+  have big :
+      (⋃ (k : ℕ), ⋃ (q : ℚ),
+        {x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
+                       (LeftSlice M x (dyadic k)).Countable }).Countable :=
+    countable_iUnion (fun k =>
+      countable_iUnion (fun q =>
+        (countable_BadLeft_fixed (M:=M) k q)))
+  exact big.mono (BadLeft_subunion (M:=M))
+
 
 /-! ## Symmetrie per Negation: `BadRight` aus `BadLeft` -/
 
+/-- Vorabbildung von `M` unter der Negation. -/
 def negPre (M : Set ℝ) : Set ℝ := {z : ℝ | -z ∈ M}
 
 lemma negPre_negPre (M : Set ℝ) : negPre (negPre M) = M := by
   ext x; simp [negPre]
 
+/-- Bild des linken Slices unter `x ↦ -x` ist ein rechter Slice des negierten Sets. -/
 lemma image_neg_leftSlice (M : Set ℝ) (x ε : ℝ) :
   (fun y : ℝ => -y) '' (LeftSlice M x ε) = RightSlice (negPre M) (-x) ε := by
   ext z; constructor
   · intro hz
     rcases hz with ⟨y, hy, rfl⟩
     rcases hy with ⟨hyM, h1, h2⟩
+    -- Mitgliedschaft
     have hzNegPre : (-y) ∈ negPre M := by simpa [negPre] using hyM
+    -- -x < -y aus y < x
     have hgt : -x < -y := by simpa using (neg_lt_neg h2)
+    -- aus x - ε < y ⇒ -y < -x + ε  (direkt via Negation der Differenz)
     have hlt : -y < -x + ε := by
       have : -y < -(x - ε) := by simpa using (neg_lt_neg h1)
       simpa [neg_sub] using this
     exact ⟨hzNegPre, hgt, hlt⟩
   · intro hz
     rcases hz with ⟨hzNegPre, hgt, hlt⟩
+    -- setze y := -z
     refine ⟨-z, ?_, by simp⟩
     have hyM : -z ∈ M := by simpa [negPre] using hzNegPre
+    -- -z < x aus -x < z
     have h2 : -z < x := by simpa using (neg_lt_neg hgt)
+    -- x - ε < -z aus z < -x + ε  (negieren + umschreiben)
     have h1 : x - ε < -z := by
-      have := neg_lt_neg hlt
+      have := neg_lt_neg hlt  -- -(-x + ε) < -z
       simpa [neg_add, sub_eq_add_neg] using this
     exact ⟨hyM, h1, h2⟩
 
+/-- Bild des rechten Slices unter `x ↦ -x` ist ein linker Slice des negierten Sets. -/
 lemma image_neg_rightSlice (M : Set ℝ) (x ε : ℝ) :
   (fun y : ℝ => -y) '' (RightSlice M x ε) = LeftSlice (negPre M) (-x) ε := by
   ext z; constructor
@@ -135,26 +158,33 @@ lemma image_neg_rightSlice (M : Set ℝ) (x ε : ℝ) :
     rcases hz with ⟨y, hy, rfl⟩
     rcases hy with ⟨hyM, hgt, hlt⟩
     have hzNegPre : (-y) ∈ negPre M := by simpa [negPre] using hyM
+    -- aus y < x + ε ⇒ (-x) - ε < -y
     have h1 : (-x) - ε < -y := by
-      have := neg_lt_neg hlt
+      have := neg_lt_neg hlt   -- -(x+ε) < -y
       simpa [neg_add, sub_eq_add_neg] using this
+    -- aus x < y ⇒ -y < -x
     have h2 : -y < -x := by simpa using (neg_lt_neg hgt)
     exact ⟨hzNegPre, h1, h2⟩
   · intro hz
     rcases hz with ⟨hzNegPre, h1, h2⟩
+    -- setze y := -z
     refine ⟨-z, ?_, by simp⟩
     have hyM : -z ∈ M := by simpa [negPre] using hzNegPre
+    -- aus (-x) - ε < z ⇒ -z < x + ε  (negieren + umschreiben)
     have hlt' : -z < x + ε := by
       have := neg_lt_neg h1
       simpa [sub_eq_add_neg] using this
+    -- aus z < -x ⇒ x < -z
     have hgt : x < -z := by
       have := neg_lt_neg h2
       simpa using this
     exact ⟨hyM, hgt, hlt'⟩
 
+/-- Bild von `BadLeft` unter `x ↦ -x` ist `BadRight` des negierten Sets. -/
 lemma image_neg_BadLeft (M : Set ℝ) :
   (fun x : ℝ => -x) '' (BadLeft M) = BadRight (negPre M) := by
   ext z; constructor
+  -- → Richtung: aus x∈BadLeft M folgt -x ∈ BadRight (negPre M)
   · intro hz
     rcases hz with ⟨x, hx, rfl⟩
     rcases hx with ⟨hxM, ⟨ε, hε, hcnt⟩⟩
@@ -163,6 +193,7 @@ lemma image_neg_BadLeft (M : Set ℝ) :
         (hcnt.image (fun y : ℝ => -y))
     have hzM : (-x) ∈ negPre M := by simpa [negPre] using hxM
     exact ⟨hzM, ⟨ε, hε, hRS⟩⟩
+  -- ← Richtung: aus z∈BadRight (negPre M) folgt -z ∈ BadLeft M
   · intro hz
     rcases hz with ⟨hzM, ⟨ε, hε, hcnt⟩⟩
     have hL :
@@ -175,23 +206,33 @@ lemma image_neg_BadLeft (M : Set ℝ) :
     refine ⟨-z, ?_, by simp⟩
     exact And.intro hzM' ⟨ε, hε, this⟩
 
+/-- **Rechts**: `BadRight M` ist abzählbar (via Negationssymmetrie). -/
 lemma countable_BadRight (M : Set ℝ) : (BadRight M).Countable := by
   classical
-  have hL : (BadLeft (negPre M)).Countable := countable_BadLeft (negPre M)
+  -- Linke Seite fürs negierte Set (qualifiziert, um Namenskonflikte auszuschließen)
+  have hL : (BadLeft (negPre M)).Countable :=
+    PerfectFromThick.countable_BadLeft (negPre M)
+  -- Negation ist injektiv ⇒ Bild bleibt abzählbar
   have himg : (fun x : ℝ => -x) '' (BadLeft (negPre M)) = BadRight M := by
     simpa [negPre_negPre] using image_neg_BadLeft (negPre M)
   simpa [himg] using hL.image (fun x : ℝ => -x)
 
 lemma countable_Bad (M : Set ℝ) : (Bad M).Countable := by
-  simpa [Bad] using (countable_BadLeft M).union (countable_BadRight M)
+  -- beide Seiten qualifiziert referenzieren
+  have hL : (BadLeft M).Countable := PerfectFromThick.countable_BadLeft M
+  have hR : (BadRight M).Countable := PerfectFromThick.countable_BadRight M
+  simpa [Bad] using hL.union hR
+
 
 /-! ### Core und Slice-Algebra -/
 
+/-- Core = entferne Bad-Punkte. (Kein `@[simp]`, um aggressives Unfolding zu vermeiden.) -/
 def core (M : Set ℝ) : Set ℝ := Set.diff M (Bad M)
 
 lemma core_subset (M : Set ℝ) : core M ⊆ M := by
   intro x hx; exact hx.1
 
+/-- Linker Slice von `Set.diff M (Bad M)` ist `diff` des linken Slices. -/
 lemma leftSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
   LeftSlice (Set.diff M (Bad M)) x ε = Set.diff (LeftSlice M x ε) (Bad M) := by
   ext y; constructor <;> intro hy
@@ -200,6 +241,7 @@ lemma leftSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
   · rcases hy with ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
     exact ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
 
+/-- Rechter Slice analog. -/
 lemma rightSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
   RightSlice (Set.diff M (Bad M)) x ε = Set.diff (RightSlice M x ε) (Bad M) := by
   ext y; constructor <;> intro hy
@@ -208,40 +250,53 @@ lemma rightSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
   · rcases hy with ⟨⟨hyM, hgt, hlt⟩, hyNotBad⟩
     exact ⟨⟨hyM, hyNotBad⟩, hgt, hlt⟩
 
+
 /-! ### Mengen-Helfer -/
 
+/-- Ist `A` nicht abzählbar und `C` abzählbar, dann ist `A \\ C` nicht abzählbar. -/
 lemma not_countable_diff_of_not_countable_of_countable
   {α} {A C : Set α}
   (hA : ¬ A.Countable) (hC : C.Countable) : ¬ (Set.diff A C).Countable := by
   intro hdiff
+  -- (A ∩ C) ist abzählbar
   have hcap_cnt : (A ∩ C).Countable := hC.mono (by intro x hx; exact hx.2)
+  -- Vereinigung zweier abzählbarer Mengen ist abzählbar
   have hUnionCnt : (Set.diff A C ∪ (A ∩ C)).Countable := hdiff.union hcap_cnt
+  -- A ⊆ (A\\C) ∪ (A∩C)
   have hA_subset : A ⊆ Set.diff A C ∪ (A ∩ C) := by
     intro x hxA
     by_cases hxC : x ∈ C
     · exact Or.inr ⟨hxA, hxC⟩
     · exact Or.inl ⟨hxA, hxC⟩
+  -- dann wäre A abzählbar — Widerspruch
   have : A.Countable := hUnionCnt.mono hA_subset
   exact hA this
+
+
+/-! ### Hauptlemma: `core M` ist zweiseitig dick -/
 
 lemma TwoSidedThick_core (M : Set ℝ) : TwoSidedThick (core M) := by
   intro x hx ε hε
   rcases hx with ⟨hxM, hxNotBad⟩
   have hBadCnt : (Bad M).Countable := countable_Bad M
+  -- große Slices in `M` sind nicht abzählbar, weil `x ∉ Bad M`
   have hLeftM  : ¬ (LeftSlice  M x ε).Countable := by
     intro hcnt; exact hxNotBad (Or.inl ⟨hxM, ⟨ε, hε, hcnt⟩⟩)
   have hRightM : ¬ (RightSlice M x ε).Countable := by
     intro hcnt; exact hxNotBad (Or.inr ⟨hxM, ⟨ε, hε, hcnt⟩⟩)
+  -- ziehe die abzählbare Bad-Menge ab
   have hLeftCore  : ¬ (Set.diff (LeftSlice  M x ε) (Bad M)).Countable :=
     not_countable_diff_of_not_countable_of_countable hLeftM hBadCnt
   have hRightCore : ¬ (Set.diff (RightSlice M x ε) (Bad M)).Countable :=
     not_countable_diff_of_not_countable_of_countable hRightM hBadCnt
+  -- explizite Umschreibungen für `core`
   have eqL' : LeftSlice (Set.diff M (Bad M)) x ε
       = Set.diff (LeftSlice M x ε) (Bad M) :=
     leftSlice_diff_eq (M:=M) (x:=x) (ε:=ε)
   have eqR' : RightSlice (Set.diff M (Bad M)) x ε
       = Set.diff (RightSlice M x ε) (Bad M) :=
     rightSlice_diff_eq (M:=M) (x:=x) (ε:=ε)
+  -- bring die Ziele auf exakt dieselbe Form
   have eqL : LeftSlice (core M) x ε
       = Set.diff (LeftSlice M x ε) (Bad M) := by
     simpa [core] using eqL'
@@ -249,7 +304,9 @@ lemma TwoSidedThick_core (M : Set ℝ) : TwoSidedThick (core M) := by
       = Set.diff (RightSlice M x ε) (Bad M) := by
     simpa [core] using eqR'
   constructor
-  · simpa [eqL] using hLeftCore
-  · simpa [eqR] using hRightCore
+  · -- Ziel: ¬ (LeftSlice (core M) x ε).Countable
+    simpa [eqL] using hLeftCore
+  · -- Ziel: ¬ (RightSlice (core M) x ε).Countable
+    simpa [eqR] using hRightCore
 
 end PerfectFromThick
