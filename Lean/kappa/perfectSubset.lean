@@ -123,7 +123,7 @@ lemma countable_BadLeft (M : Set ℝ) : (BadLeft M).Countable := by
   exact big.mono (BadLeft_subunion (M:=M))
 
 
-/-! ### Rechts: Subunion + Kernfall (from scratch, ohne Symmetrien) -/
+/-! ### Rechts: Subunion + Kernfall (komplett unabhängig, ohne Symmetrie) -/
 
 /-- Für jedes `x ∈ BadRight M` gibt es
     * ein `k : ℕ` (dyadischer Radius) und
@@ -166,10 +166,13 @@ lemma BadRight_subunion (M : Set ℝ) :
 lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
   ({x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
                  (RightSlice M x (dyadic k)).Countable}).Countable := by
-  /- analog zum linken Kernfall: baue eine kanonische Kodierung
-     über eine rationale Marke q mit x < q < x + dyadic k und
-     benutze eine Supremum- / Injektivitäts-Konstruktion rechts von x.
-     Details wie beim linken Kernfall, gespiegelt. -/
+  /- analog zum linken Kernfall, aber rechts von x:
+     * Aus x < q < x + dyadic k folgt, dass auch (x, q) nicht leer ist.
+     * Kodierungsidee: wähle für jedes solche x eine kanonische rationale
+       Marke r mit x < r < min q (x + dyadic k), und „kodiere“ die abzählbare
+       Menge M ∩ (x, r) (bzw. die Countability des Slices) durch ein
+       injektives Abbild nach ℕ × ℚ × ℚ. Die technischen Details (Supremum,
+       Diagonalisierung) werden hier ausgelassen. -/
   sorry
 
 /-- **Rechts**: `BadRight M` ist abzählbar. -/
