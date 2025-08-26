@@ -130,9 +130,9 @@ lemma image_neg_leftSlice (M : Set ℝ) (x ε : ℝ) :
     rcases hy with ⟨hyM, h1, h2⟩
     -- Mitgliedschaft
     have hzNegPre : (-y) ∈ negPre M := by simpa [negPre] using hyM
-    -- -x < -y aus y < x
+    -- aus y < x ⇒ -x < -y
     have hgt : -x < -y := by simpa using (neg_lt_neg h2)
-    -- aus x - ε < y ⇒ -y < -x + ε  (direkt via Negation der Differenz)
+    -- aus x - ε < y ⇒ -y < -x + ε  (negieren + umschreiben)
     have hlt : -y < -x + ε := by
       have : -y < -(x - ε) := by simpa using (neg_lt_neg h1)
       simpa [neg_sub] using this
@@ -142,9 +142,9 @@ lemma image_neg_leftSlice (M : Set ℝ) (x ε : ℝ) :
     -- setze y := -z
     refine ⟨-z, ?_, by simp⟩
     have hyM : -z ∈ M := by simpa [negPre] using hzNegPre
-    -- -z < x aus -x < z
+    -- aus -x < z folgt -z < x
     have h2 : -z < x := by simpa using (neg_lt_neg hgt)
-    -- x - ε < -z aus z < -x + ε  (negieren + umschreiben)
+    -- aus z < -x + ε folgt x - ε < -z   (negieren + umschreiben)
     have h1 : x - ε < -z := by
       have := neg_lt_neg hlt  -- -(-x + ε) < -z
       simpa [neg_add, sub_eq_add_neg] using this
@@ -158,9 +158,9 @@ lemma image_neg_rightSlice (M : Set ℝ) (x ε : ℝ) :
     rcases hz with ⟨y, hy, rfl⟩
     rcases hy with ⟨hyM, hgt, hlt⟩
     have hzNegPre : (-y) ∈ negPre M := by simpa [negPre] using hyM
-    -- aus y < x + ε ⇒ (-x) - ε < -y
+    -- aus y < x + ε ⇒ (-x) - ε < -y  (negieren + umschreiben)
     have h1 : (-x) - ε < -y := by
-      have := neg_lt_neg hlt   -- -(x+ε) < -y
+      have := neg_lt_neg hlt    -- -(x + ε) < -y
       simpa [neg_add, sub_eq_add_neg] using this
     -- aus x < y ⇒ -y < -x
     have h2 : -y < -x := by simpa using (neg_lt_neg hgt)
@@ -184,7 +184,7 @@ lemma image_neg_rightSlice (M : Set ℝ) (x ε : ℝ) :
 lemma image_neg_BadLeft (M : Set ℝ) :
   (fun x : ℝ => -x) '' (BadLeft M) = BadRight (negPre M) := by
   ext z; constructor
-  -- → Richtung: aus x∈BadLeft M folgt -x ∈ BadRight (negPre M)
+  -- → Richtung
   · intro hz
     rcases hz with ⟨x, hx, rfl⟩
     rcases hx with ⟨hxM, ⟨ε, hε, hcnt⟩⟩
@@ -193,7 +193,7 @@ lemma image_neg_BadLeft (M : Set ℝ) :
         (hcnt.image (fun y : ℝ => -y))
     have hzM : (-x) ∈ negPre M := by simpa [negPre] using hxM
     exact ⟨hzM, ⟨ε, hε, hRS⟩⟩
-  -- ← Richtung: aus z∈BadRight (negPre M) folgt -z ∈ BadLeft M
+  -- ← Richtung
   · intro hz
     rcases hz with ⟨hzM, ⟨ε, hε, hcnt⟩⟩
     have hL :
@@ -209,7 +209,7 @@ lemma image_neg_BadLeft (M : Set ℝ) :
 /-- **Rechts**: `BadRight M` ist abzählbar (via Negationssymmetrie). -/
 lemma countable_BadRight (M : Set ℝ) : (BadRight M).Countable := by
   classical
-  -- Linke Seite fürs negierte Set (qualifiziert, um Namenskonflikte auszuschließen)
+  -- Linke Seite fürs negierte Set (qualifiziert referenziert)
   have hL : (BadLeft (negPre M)).Countable :=
     PerfectFromThick.countable_BadLeft (negPre M)
   -- Negation ist injektiv ⇒ Bild bleibt abzählbar
@@ -218,7 +218,6 @@ lemma countable_BadRight (M : Set ℝ) : (BadRight M).Countable := by
   simpa [himg] using hL.image (fun x : ℝ => -x)
 
 lemma countable_Bad (M : Set ℝ) : (Bad M).Countable := by
-  -- beide Seiten qualifiziert referenzieren
   have hL : (BadLeft M).Countable := PerfectFromThick.countable_BadLeft M
   have hR : (BadRight M).Countable := PerfectFromThick.countable_BadRight M
   simpa [Bad] using hL.union hR
@@ -238,7 +237,7 @@ lemma leftSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
   ext y; constructor <;> intro hy
   · rcases hy with ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
     exact ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
-  · rcases hy with ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
+  · rcases hy mit ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
     exact ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
 
 /-- Rechter Slice analog. -/
