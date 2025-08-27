@@ -62,10 +62,14 @@ lemma exists_dyadic_le {ε : ℝ} (hε : ε > 0) :
   exact le_of_lt this
 
 
-/-! ### Nützliche kleine Rechen-Lemmas -/
+/-! ### Kleine, robuste Rechen- und Ordnungs-Lemmas (links & rechts symmetrisch) -/
 
-/-- Linkes Fenster (verwende **offen** links: `Ioo`) -/
-lemma x_in_window_left {k : ℕ} {q x : ℝ}
+section SliceHelpers
+variable {M : Set ℝ} {x y q ε : ℝ} {k : ℕ}
+
+-- Fenster-Lemmas (bewusst mit offenen/abgeschlossenen Intervallen formuliert)
+
+lemma x_in_window_left
     (hL : x - dyadic k < q) (hR : q < x) :
     x ∈ Ioo q (q + dyadic k) := by
   -- aus x - dyadic k < q folgt x < q + dyadic k
@@ -75,17 +79,44 @@ lemma x_in_window_left {k : ℕ} {q x : ℝ}
     simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using this
   exact ⟨hR, hxlt⟩
 
-/-- Rechtes Fenster (robust gegen `add_comm`) -/
-lemma x_in_window_right {k : ℕ} {x q : ℝ}
+lemma x_in_window_right
     (hL : x < q) (hR : q < x + dyadic k) :
     x ∈ Icc (q - dyadic k) q := by
   -- aus q < x + dyadic k folgt q - dyadic k < x
   have hxgt : q - dyadic k < x := by
-    -- benutze eine Version, die `add_comm`-Robustheit erzwingt
-    have hR' : q < x + dyadic k := hR
-    have : q < dyadic k + x := by simpa [add_comm] using hR'
+    -- erst auf `dyadic k + x`, dann Subtraktionslemma
+    have : q < dyadic k + x := by simpa [add_comm] using hR
     exact (sub_lt_iff_lt_add').mpr (by simpa [add_comm] using this)
   exact ⟨le_of_lt hxgt, le_of_lt hL⟩
+
+-- Monotonie in ε für LeftSlice/RightSlice
+
+lemma LeftSlice_mono_radius {ε₁ ε₂ : ℝ} (h : ε₁ ≤ ε₂) :
+    LeftSlice M x ε₁ ⊆ LeftSlice M x ε₂ := by
+  intro y hy; rcases hy with ⟨hyM, hlow, hupp⟩
+  refine ⟨hyM, ?_, hupp⟩
+  -- x - ε₂ ≤ x - ε₁ < y
+  have : x - ε₂ ≤ x - ε₁ := sub_le_sub_left h x
+  exact lt_of_le_of_lt this hlow
+
+lemma RightSlice_mono_radius {ε₁ ε₂ : ℝ} (h : ε₁ ≤ ε₂) :
+    RightSlice M x ε₁ ⊆ RightSlice M x ε₂ := by
+  intro y hy; rcases hy with ⟨hyM, hlow, hupp⟩
+  refine ⟨hyM, hlow, ?_⟩
+  -- y < x + ε₁ ≤ x + ε₂
+  exact lt_of_lt_of_le hupp (add_le_add_left h x)
+
+-- „Slice liegt im Intervall“
+
+lemma LeftSlice_subset_Ioo :
+    LeftSlice M x ε ⊆ {y : ℝ | x - ε < y ∧ y < x} := by
+  intro y hy; exact ⟨hy.2.1, hy.2.2⟩
+
+lemma RightSlice_subset_Ioo :
+    RightSlice M x ε ⊆ {y : ℝ | x < y ∧ y < x + ε} := by
+  intro y hy; exact ⟨hy.2.1, hy.2.2⟩
+
+end SliceHelpers
 
 
 /-! ### Links: Subunion + Kernfall -/
@@ -108,14 +139,9 @@ lemma BadLeft_subunion (M : Set ℝ) :
     have : x - dyadic k < x - 0 := by simpa using sub_lt_sub_left hkpos x
     simpa using this
   rcases exists_rat_btwn this with ⟨q, hq1, hq2⟩
-  -- Monotonie: (x - dyadic k, x) ⊆ (x-ε, x) wenn dyadic k ≤ ε
-  have hmono : (LeftSlice M x (dyadic k)) ⊆ (LeftSlice M x ε) := by
-    intro y hy
-    rcases hy with ⟨hyM, hylt1, hylt2⟩
-    refine ⟨hyM, ?_, hylt2⟩
-    -- x - ε < y, denn x - ε ≤ x - dyadic k < y
-    have : x - ε ≤ x - dyadic k := sub_le_sub_left hk x
-    exact lt_of_le_of_lt this hylt1
+  -- Monotonie in ε: (dyadic k) ≤ ε ⇒ LeftSlice … (dyadic k) ⊆ LeftSlice … ε
+  have hmono : (LeftSlice M x (dyadic k)) ⊆ (LeftSlice M x ε) :=
+    LeftSlice_mono_radius (M:=M) (x:=x) (ε₁:=dyadic k) (ε₂:=ε) hk
   have hcnt_dy : (LeftSlice M x (dyadic k)).Countable := hcnt.mono hmono
   -- packe in die Doppelsumme über k und q
   refine mem_iUnion.mpr ?_
@@ -169,14 +195,9 @@ lemma BadRight_subunion (M : Set ℝ) :
     have := add_lt_add_left hkpos x   -- x + 0 < x + dyadic k
     simpa using this
   rcases exists_rat_btwn this with ⟨q, hq1, hq2⟩
-  -- Monotonie: (x, x + dyadic k) ⊆ (x, x + ε) wenn dyadic k ≤ ε
-  have hmono : (RightSlice M x (dyadic k)) ⊆ (RightSlice M x ε) := by
-    intro y hy
-    rcases hy with ⟨hyM, hxlt, hyub⟩
-    refine ⟨hyM, hxlt, ?_⟩
-    -- y < x + ε, denn y < x + dyadic k ≤ x + ε
-    have : x + dyadic k ≤ x + ε := add_le_add_left hk x
-    exact lt_of_lt_of_le hyub this
+  -- Monotonie in ε: (dyadic k) ≤ ε ⇒ RightSlice … (dyadic k) ⊆ RightSlice … ε
+  have hmono : (RightSlice M x (dyadic k)) ⊆ (RightSlice M x ε) :=
+    RightSlice_mono_radius (M:=M) (x:=x) (ε₁:=dyadic k) (ε₂:=ε) hk
   have hcnt_dy : (RightSlice M x (dyadic k)).Countable := hcnt.mono hmono
   -- packe in die Doppelsumme über k und q
   refine mem_iUnion.mpr ?_
