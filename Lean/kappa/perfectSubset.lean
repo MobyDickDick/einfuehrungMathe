@@ -61,6 +61,7 @@ lemma exists_dyadic_le {ε : ℝ} (hε : ε > 0) :
 
 
 /-! ### Kleine Rechen- /Monotonie-Lemmas -/
+
 section SliceHelpers
 variable {M : Set ℝ} {x y z ε : ℝ} {k : ℕ}
 
@@ -78,7 +79,6 @@ lemma LeftSlice_mono_radius {ε₁ ε₂ : ℝ} (h : ε₁ ≤ ε₂) :
   rcases hy with ⟨hyM, hlow, hupp⟩
   have : x - ε₂ ≤ x - ε₁ := sub_le_sub_left h x
   exact ⟨hyM, lt_of_le_of_lt this hlow, hupp⟩
-
 
 /-- Für feste `x,ε`: der rechte Slice liegt im Intervall `(x, x+ε)`. -/
 lemma RightSlice_subset_window :
@@ -133,6 +133,18 @@ lemma countable_BadLeft_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
   /- hier kommt der konkrete Kodierungs- /Supremum-Beweis hinein (etwas länger) -/
   sorry
 
+/-- **Links**: `BadLeft M` ist abzählbar. -/
+lemma countable_BadLeft (M : Set ℝ) : (BadLeft M).Countable := by
+  classical
+  have big :
+      (⋃ (k : ℕ), ⋃ (q : ℚ),
+        {x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
+                       (LeftSlice M x (dyadic k)).Countable }).Countable :=
+    countable_iUnion (fun k =>
+      countable_iUnion (fun q =>
+        (countable_BadLeft_fixed (M:=M) k q)))
+  exact big.mono (BadLeft_subunion (M:=M))
+
 
 /-! ### Negations-Geometrie via Images unter `y ↦ -y` -/
 
@@ -150,22 +162,22 @@ lemma image_neg_rightSlice (M : Set ℝ) (x ε : ℝ) :
     rcases hz with ⟨y, hy, rfl⟩
     rcases hy with ⟨hyM, hgt, hlt⟩
     have hzNegPre : (-y) ∈ negPre M := by simpa [negPre] using hyM
-    -- aus y < x + ε ⇒ (-x) - ε < -y
+    -- y < x + ε ⇒ (-x) - ε < -y
     have h1 : (-x) - ε < -y := by
       have := neg_lt_neg hlt
       simpa [sub_eq_add_neg, neg_add, add_comm, add_left_comm, add_assoc] using this
-    -- aus x < y ⇒ -y < -x
+    -- x < y ⇒ -y < -x
     have h2 : -y < -x := by simpa using (neg_lt_neg hgt)
     exact ⟨hzNegPre, h1, h2⟩
   · intro hz
     rcases hz with ⟨hzNegPre, h1, h2⟩
     refine ⟨-z, ?_, by simp⟩
     have hyM : -z ∈ M := by simpa [negPre] using hzNegPre
-    -- aus (-x)-ε < z ⇒ -z < x + ε
+    -- (-x)-ε < z ⇒ -z < x + ε
     have hlt' : -z < x + ε := by
       have := neg_lt_neg h1
       simpa [sub_eq_add_neg, neg_add, add_comm, add_left_comm, add_assoc] using this
-    -- aus z < -x ⇒ x < -z
+    -- z < -x ⇒ x < -z
     have hgt : x < -z := by
       have := neg_lt_neg h2
       simpa using this
@@ -182,7 +194,6 @@ lemma image_neg_leftSlice (M : Set ℝ) (x ε : ℝ) :
     have hgt : -x < -y := by simpa using (neg_lt_neg h2)
     have hlt : -y < -x + ε := by
       have := neg_lt_neg h1
-      -- hier benötigt Lean `x < ε + y`-Form → normalisiere mit `add_comm`
       simpa [neg_sub, add_comm] using this
     exact ⟨hzNegPre, hgt, hlt⟩
   · intro hz
@@ -192,7 +203,13 @@ lemma image_neg_leftSlice (M : Set ℝ) (x ε : ℝ) :
     -- -x < z ⇒ -z < x
     have h2 : -z < x := by simpa using (neg_lt_neg hgt)
     -- z < -x + ε ⇒ x - ε < -z
-    have : z < -(x - ε) := by simpa [neg_sub, add_com] using hlt
+   -- Aus hlt : x + z < ε folgt zuerst z + x < ε
+    have hz_add : z + x < ε := by simpa [add_comm] using hlt
+    -- damit bekommt man z < ε - x
+    have hz_sub : z < ε - x := (lt_sub_iff_add_lt).mpr hz_add
+    -- und weil ε - x = -(x - ε), ist das genau das Ziel
+    have : z < -(x - ε) := by simpa [neg_sub] using hz_sub
+
     have h1 : x - ε < -z := by simpa using (neg_lt_neg this)
     exact ⟨hyM, h1, h2⟩
 
@@ -231,7 +248,7 @@ lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
   let SLeftNeg : Set ℝ :=
     {z : ℝ | z ∈ negPre M ∧ (z - dyadic k : ℝ) < -q ∧ (-q : ℝ) < z ∧
                    (LeftSlice (negPre M) z (dyadic k)).Countable}
-  -- Gleichheit des negierten Bildes (aber wir gehen über Images):
+  -- Gleichheit des negierten Bildes (über Images):
   have himg : (fun x : ℝ => -x) '' SRight = SLeftNeg := by
     ext z; constructor
     · intro hz
@@ -242,13 +259,21 @@ lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
         have := neg_lt_neg hqlt
         simpa [sub_eq_add_neg, neg_add, add_comm, add_left_comm, add_assoc] using this
       have h2 : (-q : ℝ) < -x := by simpa using (neg_lt_neg hxltq)
-      -- Slice-Countability als Image
+      -- Image des rechten Slices → linker Slice
       have himgSlice :
           ((fun y : ℝ => -y) '' (RightSlice M x (dyadic k))).Countable :=
         hcnt.image _
+      -- aus hcnt : (RightSlice M x (dyadic k)).Countable
+      -- gewinne Countability des Negations-Bildes
+      have himgSlice :
+          ((fun y : ℝ => -y) '' (RightSlice M x (dyadic k))).Countable :=
+        hcnt.image _
+
+      -- per Geometrie-Lemma wird das genau der linke Slice
       have hLeft :
           (LeftSlice (negPre M) (-x) (dyadic k)).Countable := by
-        simpa [image_neg_rightSlice] using himgSlice
+          simpa [image_neg_rightSlice] using himgSlice
+
       exact ⟨hzNegPre, h1, h2, hLeft⟩
     · intro hz
       rcases hz with ⟨hzNegPre, h1, h2, hcnt⟩
@@ -260,7 +285,7 @@ lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
       have hxltq : (-z : ℝ) < q := by
         have := neg_lt_neg h2
         simpa using this
-      -- Image des linken Slices liefert den rechten Slice
+      -- Image des linken Slices → rechter Slice
       have himgL :
           ((fun y : ℝ => -y) '' (LeftSlice (negPre M) z (dyadic k))).Countable :=
         hcnt.image _
@@ -280,6 +305,7 @@ lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
     simpa [Set.image_image, Function.comp, neg_neg, Set.image_id] using this
   simpa [SRight]
 
+/-- **Rechts**: `BadRight M` ist abzählbar. -/
 lemma countable_BadRight (M : Set ℝ) : (BadRight M).Countable := by
   classical
   have big :
