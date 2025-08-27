@@ -236,74 +236,30 @@ lemma BadRight_subunion (M : Set ℝ) :
                         (RightSlice M x (dyadic k)).Countable}
   exact And.intro hxM (And.intro hq1 (And.intro hq2 hcnt_dy))
 
+/-- Fixiere `k` und einen rationalen Marker `q` (rechter Kernfall, ohne Spiegelung).
+    Idee (skizziert; Implementierung im nächsten Schritt):
+    Für x mit x<q< x+δ und abzählbarem rechten Slice wählen wir kanonisch
+    eine rationale Marke r mit x < r < min(q, x+δ). Dann ist das
+    Teilintervall (x,r)∩M eine abzählbare Teilmenge des Slices.
+    Über eine feste, kanonische Injektion `ι_(x,r) : (M∩(x,r)) → ℕ` kodieren wir x
+    in (k,q,r, n) ∈ ℕ × ℚ × ℕ. Daraus folgt Abzählbarkeit. -/
 lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
   ({x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
                  (RightSlice M x (dyadic k)).Countable}).Countable := by
   classical
-  -- rechte Zielmenge
-  let SRight : Set ℝ :=
-    {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
-                   (RightSlice M x (dyadic k)).Countable}
-  -- linker Korrespondent (unter Negation, Marke -q)
-  let SLeftNeg : Set ℝ :=
-    {z : ℝ | z ∈ negPre M ∧ (z - dyadic k : ℝ) < -q ∧ (-q : ℝ) < z ∧
-                   (LeftSlice (negPre M) z (dyadic k)).Countable}
-  -- Gleichheit des negierten Bildes (über Images):
-  have himg : (fun x : ℝ => -x) '' SRight = SLeftNeg := by
-    ext z; constructor
-    · intro hz
-      rcases hz with ⟨x, hx, rfl⟩
-      rcases hx with ⟨hxM, hxltq, hqlt, hcnt⟩
-      have hzNegPre : (-x) ∈ negPre M := by simpa [negPre] using hxM
-      have h1 : (-x) - dyadic k < -q := by
-        have := neg_lt_neg hqlt
-        simpa [sub_eq_add_neg, neg_add, add_comm, add_left_comm, add_assoc] using this
-      have h2 : (-q : ℝ) < -x := by simpa using (neg_lt_neg hxltq)
-      -- Image des rechten Slices → linker Slice
-      have himgSlice :
-          ((fun y : ℝ => -y) '' (RightSlice M x (dyadic k))).Countable :=
-        hcnt.image _
-      -- aus hcnt : (RightSlice M x (dyadic k)).Countable
-      -- gewinne Countability des Negations-Bildes
-      have himgSlice :
-          ((fun y : ℝ => -y) '' (RightSlice M x (dyadic k))).Countable :=
-        hcnt.image _
-
-      -- per Geometrie-Lemma wird das genau der linke Slice
-      have hLeft :
-          (LeftSlice (negPre M) (-x) (dyadic k)).Countable := by
-          simpa [image_neg_rightSlice] using himgSlice
-
-      exact ⟨hzNegPre, h1, h2, hLeft⟩
-    · intro hz
-      rcases hz with ⟨hzNegPre, h1, h2, hcnt⟩
-      refine ⟨-z, ?_, by simp⟩
-      have hxM : -z ∈ M := by simpa [negPre] using hzNegPre
-      have hqlt : (q : ℝ) < -z + dyadic k := by
-        have := neg_lt_neg h1
-        simpa [sub_eq_add_neg, neg_add, add_comm, add_left_comm, add_assoc] using this
-      have hxltq : (-z : ℝ) < q := by
-        have := neg_lt_neg h2
-        simpa using this
-      -- Image des linken Slices → rechter Slice
-      have himgL :
-          ((fun y : ℝ => -y) '' (LeftSlice (negPre M) z (dyadic k))).Countable :=
-        hcnt.image _
-      have hRight :
-          (RightSlice M (-z) (dyadic k)).Countable := by
-        simpa [image_neg_leftSlice, negPre_negPre] using himgL
-      exact ⟨hxM, hxltq, by simpa [add_comm] using hqlt, hRight⟩
-  -- `SLeftNeg` ist abzählbar durch den linken Kernfall (mit `negPre M` und Marke `-q`)
-  have hLeftCnt : SLeftNeg.Countable := by
-    simpa [SLeftNeg] using
-      (countable_BadLeft_fixed (M:=negPre M) (k:=k) (q:=-q))
-  -- daraus folgt Abzählbarkeit von `SRight`
-  have himgCnt : ((fun x : ℝ => -x) '' SRight).Countable := by
-    simpa [himg] using hLeftCnt
-  have : SRight.Countable := by
-    have := himgCnt.image (fun x : ℝ => -x)
-    simpa [Set.image_image, Function.comp, neg_neg, Set.image_id] using this
-  simpa [SRight]
+  /- Skizze (ohne Spiegelung):
+     1) Für jedes x in der Menge wähle per Dichte ein rationales r mit
+           x < r ∧ r < min (q) (x + dyadic k).
+     2) Setze A_{x,r} := M ∩ (x,r). Dann A_{x,r} ⊆ RightSlice M x (dyadic k),
+        also A_{x,r} ist abzählbar.
+     3) Fixiere eine kanonische Injektion ι_{x,r} : A_{x,r} → ℕ
+        (via `countable_iff_exists_injective`).
+     4) Weise x einen endlich vielen Datenpunkt zu, z.B. (r, n) mit einem
+        kanonisch bestimmten n (z.B. dem kleinsten Index, auf dem ι_{x,r}
+        einen Punkt > (x+r)/2 trifft). Daraus entsteht eine Injektion
+        in ℚ × ℕ; also ist die x-Menge abzählbar.
+     Die technischen Details sind routiniert, aber länger; wir bauen sie im nächsten Schritt aus. -/
+  sorry
 
 /-- **Rechts**: `BadRight M` ist abzählbar. -/
 lemma countable_BadRight (M : Set ℝ) : (BadRight M).Countable := by
