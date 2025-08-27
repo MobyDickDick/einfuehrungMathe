@@ -91,10 +91,10 @@ lemma LeftSlice_subset_window :
   LeftSlice M x ε ⊆ {y : ℝ | x - ε < y ∧ y < x} := by
   intro y hy; exact ⟨hy.2.1, hy.2.2⟩
 
-/-- Aus `x + z < ε` folgt `z < ε - x`. -/
-lemma add_lt_to_lt_sub_right {x z ε : ℝ} (h : x + z < ε) : z < ε - x := by
-  have h' : (-x) + (x + z) < (-x) + ε := add_lt_add_left h (-x)
-  simpa [add_left_comm, add_assoc, add_comm, sub_eq_add_neg] using h'
+/-- Aus `x + z < ε` folgt `z < ε - x` (inkl. Kommutativitätsanpassung). -/
+lemma add_lt_to_lt_sub_right' {x z ε : ℝ} (h : x + z < ε) : z < ε - x := by
+  have h' : z + x < ε := by simpa [add_comm] using h
+  exact (lt_sub_iff_add_lt).mp h'
 
 end SliceHelpers
 
@@ -226,15 +226,22 @@ lemma BadRight_subunion (M : Set ℝ) :
                    (RightSlice M x (dyadic k)).Countable } := by
   intro x hx
   rcases hx with ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
+  -- wähle k so, dass dyadic k ≤ ε
   rcases exists_dyadic_le (ε:=ε) hεpos with ⟨k, hk⟩
-  have : x < x + dyadic k := by
+  -- Erzeuge ein Fenster in der Form x < dyadic k + x (passend zum Zielformat)
+  have : x < dyadic k + x := by
     have hkpos := dyadic_pos k
-    have := add_lt_add_left hkpos x
-    simpa using this       -- x + 0 < x + dyadic k  ⇒  x < x + dyadic k
-  rcases exists_rat_btwn this with ⟨q, hq1, hq2⟩
+    have : (0 : ℝ) + x < dyadic k + x := by
+      simpa [zero_add] using add_lt_add_right hkpos x
+    simpa [add_comm] using this
+  rcases exists_rat_btwn this with ⟨q, hq1, hq2'⟩
+  have hq2 : (q : ℝ) < x + dyadic k := by
+    simpa [add_comm] using hq2'
+  -- Monotonie in ε
   have hmono : (RightSlice M x (dyadic k)) ⊆ (RightSlice M x ε) :=
     RightSlice_mono_radius (M:=M) (x:=x) (ε₁:=dyadic k) (ε₂:=ε) hk
   have hcnt_dy : (RightSlice M x (dyadic k)).Countable := hcnt.mono hmono
+  -- ab in die Doppelsumme
   refine mem_iUnion.mpr ?_
   refine ⟨k, ?_⟩
   refine mem_iUnion.mpr ?_
@@ -273,8 +280,6 @@ lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
         hcnt.image _
       have hLeft :
           (LeftSlice (negPre M) (-x) (dyadic k)).Countable := by
-        -- Das Umfeld vereinfacht `((fun y => -y) '' S)` oft zu `-S`. Nutzen wir
-        -- direkt unser simp-Lemma:
         simpa [neg_rightSlice] using himgSlice
       exact ⟨hzNegPre, h1, h2, hLeft⟩
     · intro hz
@@ -296,21 +301,18 @@ lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
       have hRight :
           (RightSlice M (-z) (dyadic k)).Countable := by
         simpa [neg_leftSlice, negPre_negPre] using himgL
-      -- im Ziel steht `q < (-z) + dyadic k`; unser `hqlt` liefert `q < -z + dyadic k`
       exact ⟨hxM, hxltq, by simpa [add_comm] using hqlt, hRight⟩
   -- `SLeftNeg` ist abzählbar durch den linken Kernfall (mit `negPre M` und Marke `-q`)
   have hLeftCnt : SLeftNeg.Countable := by
     simpa [SLeftNeg] using
       (countable_BadLeft_fixed (M:=negPre M) (k:=k) (q:=-q))
   -- daraus folgt Abzählbarkeit von `SRight`:
-  -- Erst: Bild von `SRight` ist abzählbar
   have himgCnt : ((fun x : ℝ => -x) '' SRight).Countable := by
     simpa [himg] using hLeftCnt
-  -- Zweit: Image noch einmal unter Negation ist wieder `SRight`
+  -- nochmal negieren ⇒ wieder SRight
   have : SRight.Countable := by
     have := himgCnt.image (fun x : ℝ => -x)
     simpa [Set.image_image, Function.comp, neg_neg, Set.image_id] using this
-  -- Ziel identifizieren
   simpa [SRight]
 
 /-- **Rechts**: `BadRight M` ist abzählbar. -/
