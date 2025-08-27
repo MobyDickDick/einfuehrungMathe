@@ -84,7 +84,6 @@ lemma x_in_window_right
     x ∈ Icc (q - dyadic k) q := by
   -- aus q < x + dyadic k folgt q - dyadic k < x
   have hxgt : q - dyadic k < x := by
-    -- erst auf `dyadic k + x`, dann Subtraktionslemma
     have : q < dyadic k + x := by simpa [add_comm] using hR
     exact (sub_lt_iff_lt_add').mpr (by simpa [add_comm] using this)
   exact ⟨le_of_lt hxgt, le_of_lt hL⟩
@@ -152,6 +151,22 @@ lemma BadLeft_subunion (M : Set ℝ) :
   change x ∈ {x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
                         (LeftSlice M x (dyadic k)).Countable}
   exact And.intro hxM (And.intro hq1 (And.intro hq2 hcnt_dy))
+
+/-! ### Schlanker Hilfsblock: Injektion für abzählbare Teilmengen -/
+section CountableInjections
+open Function
+
+/-- Aus `S.Countable` gewinnt man (klassisch) eine Injektion `ι : S → ℕ`. -/
+noncomputable def injOfCountable {α} {S : Set α} (hS : S.Countable) : S → ℕ :=
+  Classical.choose
+    ((countable_iff_exists_injective (α := S)).1 hS)
+
+lemma injOfCountable_injective {α} {S : Set α} (hS : S.Countable) :
+  Injective (injOfCountable (S:=S) hS) :=
+  (Classical.choose_spec
+    ((countable_iff_exists_injective (α := S)).1 hS))
+
+end CountableInjections
 
 /-- Fixiere `k` und einen rationalen Marker `q` (linker Kernfall). -/
 lemma countable_BadLeft_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
