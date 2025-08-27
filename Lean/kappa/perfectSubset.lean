@@ -62,37 +62,25 @@ lemma exists_dyadic_le {ε : ℝ} (hε : ε > 0) :
   exact le_of_lt this
 
 
-/-! ### Kleine, robuste Rechen- und Ordnungs-Lemmas (links & rechts symmetrisch) -/
+/-! ### Kleine, robuste Rechen- und Ordnungs-Lemmas (links & rechts) -/
 
 section SliceHelpers
-variable {M : Set ℝ} {x y q ε : ℝ} {k : ℕ}
+variable {M : Set ℝ} {x y ε : ℝ}
 
-/-- Monotonie in ε für den linken Slice. -/
+/-- Monotonie in `ε` für den linken Slice. -/
 lemma LeftSlice_mono_radius {ε₁ ε₂ : ℝ} (h : ε₁ ≤ ε₂) :
     LeftSlice M x ε₁ ⊆ LeftSlice M x ε₂ := by
   intro y hy; rcases hy with ⟨hyM, hlow, hupp⟩
   refine ⟨hyM, ?_, hupp⟩
-  -- x - ε₂ ≤ x - ε₁ < y
   have : x - ε₂ ≤ x - ε₁ := sub_le_sub_left h x
   exact lt_of_le_of_lt this hlow
 
-/-- Monotonie in ε für den rechten Slice. -/
+/-- Monotonie in `ε` für den rechten Slice. -/
 lemma RightSlice_mono_radius {ε₁ ε₂ : ℝ} (h : ε₁ ≤ ε₂) :
     RightSlice M x ε₁ ⊆ RightSlice M x ε₂ := by
   intro y hy; rcases hy with ⟨hyM, hlow, hupp⟩
   refine ⟨hyM, hlow, ?_⟩
-  -- y < x + ε₁ ≤ x + ε₂
   exact lt_of_lt_of_le hupp (add_le_add_left h x)
-
-/-- „Slice liegt im Intervall“ (links). -/
-lemma LeftSlice_subset_Ioo :
-    LeftSlice M x ε ⊆ {y : ℝ | x - ε < y ∧ y < x} := by
-  intro y hy; exact ⟨hy.2.1, hy.2.2⟩
-
-/-- „Slice liegt im Intervall“ (rechts). -/
-lemma RightSlice_subset_Ioo :
-    RightSlice M x ε ⊆ {y : ℝ | x < y ∧ y < x + ε} := by
-  intro y hy; exact ⟨hy.2.1, hy.2.2⟩
 
 end SliceHelpers
 
@@ -111,13 +99,13 @@ lemma BadLeft_subunion (M : Set ℝ) :
   rcases hx with ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
   -- wähle dyadisch kleinen Radius ≤ ε
   rcases exists_dyadic_le (ε:=ε) hεpos with ⟨k, hk⟩
-  -- dichte Q: wähle q mit x - dyadic k < q < x
+  -- dichte ℚ: wähle q mit x - dyadic k < q < x
   have : x - dyadic k < x := by
     have hkpos := dyadic_pos k
     have : x - dyadic k < x - 0 := by simpa using sub_lt_sub_left hkpos x
     simpa using this
   rcases exists_rat_btwn this with ⟨q, hq1, hq2⟩
-  -- Monotonie in ε: (dyadic k) ≤ ε ⇒ LeftSlice … (dyadic k) ⊆ LeftSlice … ε
+  -- Monotonie in ε
   have hmono : (LeftSlice M x (dyadic k)) ⊆ (LeftSlice M x ε) :=
     LeftSlice_mono_radius (M:=M) (x:=x) (ε₁:=dyadic k) (ε₂:=ε) hk
   have hcnt_dy : (LeftSlice M x (dyadic k)).Countable := hcnt.mono hmono
@@ -130,27 +118,6 @@ lemma BadLeft_subunion (M : Set ℝ) :
   change x ∈ {x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
                         (LeftSlice M x (dyadic k)).Countable}
   exact And.intro hxM (And.intro hq1 (And.intro hq2 hcnt_dy))
-
-/-! #### (nur Helper – im Kernfall später nützlich)
-
-*In dieser Datei wird `injOfCountable` nicht aktiv benutzt, aber es ist
-stabil nützlich als Baustein, falls man in den Kernfällen eine explizite
-Kodierung via Injektion `Slice → ℕ` konstruieren möchte.*
--/
-section CountableInjections
-open Function
-
-/-- Aus `S.Countable` erhält man (klassisch) eine Injektion `S → ℕ`. -/
-noncomputable def injOfCountable {α} {S : Set α} (hS : S.Countable) : S → ℕ :=
-  Classical.choose
-    ((countable_iff_exists_injective (α := S)).1 hS)
-
-lemma injOfCountable_injective {α} {S : Set α} (hS : S.Countable) :
-  Injective (injOfCountable (S:=S) hS) :=
-  (Classical.choose_spec
-    ((countable_iff_exists_injective (α := S)).1 hS))
-
-end CountableInjections
 
 /-- Fixiere `k` und einen rationalen Marker `q` (linker Kernfall). -/
 lemma countable_BadLeft_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
@@ -174,7 +141,7 @@ lemma countable_BadLeft (M : Set ℝ) : (BadLeft M).Countable := by
   exact big.mono (BadLeft_subunion (M:=M))
 
 
-/-! ### Rechts: Subunion + Kernfall (komplett unabhängig, ohne Symmetrie) -/
+/-! ### Rechts: Subunion + Kernfall (ohne Symmetrie) -/
 
 /-- Für jedes `x ∈ BadRight M` gibt es
     * ein `k : ℕ` (dyadischer Radius) und
@@ -188,13 +155,13 @@ lemma BadRight_subunion (M : Set ℝ) :
   rcases hx with ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
   -- wähle dyadisch kleinen Radius ≤ ε
   rcases exists_dyadic_le (ε:=ε) hεpos with ⟨k, hk⟩
-  -- dichte Q: wähle q mit x < q < x + dyadic k
+  -- dichte ℚ: wähle q mit x < q < x + dyadic k
   have : x < x + dyadic k := by
     have hkpos := dyadic_pos k
     have := add_lt_add_left hkpos x   -- x + 0 < x + dyadic k
     simpa using this
   rcases exists_rat_btwn this with ⟨q, hq1, hq2⟩
-  -- Monotonie in ε: (dyadic k) ≤ ε ⇒ RightSlice … (dyadic k) ⊆ RightSlice … ε
+  -- Monotonie in ε
   have hmono : (RightSlice M x (dyadic k)) ⊆ (RightSlice M x ε) :=
     RightSlice_mono_radius (M:=M) (x:=x) (ε₁:=dyadic k) (ε₂:=ε) hk
   have hcnt_dy : (RightSlice M x (dyadic k)).Countable := hcnt.mono hmono
@@ -212,14 +179,12 @@ lemma BadRight_subunion (M : Set ℝ) :
 lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
   ({x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
                  (RightSlice M x (dyadic k)).Countable}).Countable := by
-  /- analog zum linken Kernfall (von Grund auf, ohne Symmetrie):
-     * Aus x < q < x + dyadic k folgt ein Fenster [q - dyadic k, q], in dem x liegt.
-     * Wähle kanonisch eine rationale Marke r_x mit x < r_x < q (z.B. per fester ℚ-Enumerierung und minimalem Index).
-     * Wähle kanonisch eine Zahl m_x aus der abzählbaren Faser (Injektion in ℕ)
-       für ein Punkt y im Slice, der zwischen x und r_x liegt — oder einen default-Wert,
-       falls es dort keinen Punkt gibt.
-     * Zeige, dass die Kodierung (r_x, m_x) injektiv ist. Damit ist die Menge abzählbar.
-     (Die technische Ausarbeitung ist Standard, aber etwas länger; hier ausgelassen.)
+  /- analog zum linken Kernfall, aber rechts von x:
+     * Aus x < q < x + dyadic k folgt ein „Fenster“ rechts von x.
+     * Man wählt kanonisch eine rationale Marke im Fenster und einen Index aus
+       einer Injektion des rechten Slices in ℕ.
+     * Kodierung in ℚ × ℕ zeigt Abzählbarkeit des fixierten Summanden.
+     (Technische Details wie beim linken Kernfall; hier ausgelassen.)
   -/
   sorry
 
