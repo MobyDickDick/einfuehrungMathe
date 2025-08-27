@@ -67,20 +67,20 @@ lemma exists_dyadic_le {ε : ℝ} (hε : ε > 0) :
 section SliceHelpers
 variable {M : Set ℝ} {x y ε : ℝ}
 
-/-- Monotonie in `ε` für den linken Slice. -/
-lemma LeftSlice_mono_radius {ε₁ ε₂ : ℝ} (h : ε₁ ≤ ε₂) :
-    LeftSlice M x ε₁ ⊆ LeftSlice M x ε₂ := by
-  intro y hy; rcases hy with ⟨hyM, hlow, hupp⟩
-  refine ⟨hyM, ?_, hupp⟩
+/-- Monotonie des linken Slices in `ε`. -/
+lemma LeftSlice_mono_radius {M : Set ℝ} {x ε₁ ε₂ : ℝ} (h : ε₁ ≤ ε₂) :
+  LeftSlice M x ε₁ ⊆ LeftSlice M x ε₂ := by
+  intro y hy
+  rcases hy with ⟨hyM, hlow, hupp⟩
   have : x - ε₂ ≤ x - ε₁ := sub_le_sub_left h x
-  exact lt_of_le_of_lt this hlow
+  exact ⟨hyM, lt_of_le_of_lt this hlow, hupp⟩
 
-/-- Monotonie in `ε` für den rechten Slice. -/
-lemma RightSlice_mono_radius {ε₁ ε₂ : ℝ} (h : ε₁ ≤ ε₂) :
-    RightSlice M x ε₁ ⊆ RightSlice M x ε₂ := by
-  intro y hy; rcases hy with ⟨hyM, hlow, hupp⟩
-  refine ⟨hyM, hlow, ?_⟩
-  exact lt_of_lt_of_le hupp (add_le_add_left h x)
+/-- Monotonie des rechten Slices in `ε`. -/
+lemma RightSlice_mono_radius {M : Set ℝ} {x ε₁ ε₂ : ℝ} (h : ε₁ ≤ ε₂) :
+  RightSlice M x ε₁ ⊆ RightSlice M x ε₂ := by
+  intro y hy
+  rcases hy with ⟨hyM, hlow, hupp⟩
+  exact ⟨hyM, hlow, lt_of_lt_of_le hupp (add_le_add_left h x)⟩
 
 end SliceHelpers
 
@@ -254,6 +254,27 @@ lemma not_countable_diff_of_not_countable_of_countable
   -- dann wäre A abzählbar — Widerspruch
   have : A.Countable := hUnionCnt.mono hA_subset
   exact hA this
+/-- Eine kanonische Injektion aus einer *abzählbaren* Menge `S` in `ℕ`.
+    (Für `S : Set α` bedeutet `S.Countable` per Definition
+    `Countable (Subtype fun x => x ∈ S)`.) -/
+noncomputable def injOfCountable {α} {S : Set α} (hS : S.Countable) : S → ℕ :=
+  (Classical.choose
+    ((countable_iff_exists_injective (α := S)).1 hS))
+
+lemma injOfCountable_injective {α} {S : Set α} (hS : S.Countable) :
+    Function.Injective (injOfCountable (S:=S) hS) :=
+  (Classical.choose_spec
+    ((countable_iff_exists_injective (α := S)).1 hS))
+
+/-- Für feste `x,ε`: der rechte Slice liegt im Intervall `(x, x+ε)`. -/
+lemma RightSlice_subset_window {M : Set ℝ} {x ε : ℝ} :
+  RightSlice M x ε ⊆ {y : ℝ | x < y ∧ y < x + ε} := by
+  intro y hy; exact ⟨hy.2.1, hy.2.2⟩
+
+/-- Für feste `x,ε`: der linke Slice liegt im Intervall `(x-ε, x)`. -/
+lemma LeftSlice_subset_window {M : Set ℝ} {x ε : ℝ} :
+  LeftSlice M x ε ⊆ {y : ℝ | x - ε < y ∧ y < x} := by
+  intro y hy; exact ⟨hy.2.1, hy.2.2⟩
 
 
 /-! ### Hauptlemma: `core M` ist zweiseitig dick -/
