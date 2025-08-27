@@ -67,29 +67,7 @@ lemma exists_dyadic_le {ε : ℝ} (hε : ε > 0) :
 section SliceHelpers
 variable {M : Set ℝ} {x y q ε : ℝ} {k : ℕ}
 
--- Fenster-Lemmas (bewusst mit offenen/abgeschlossenen Intervallen formuliert)
-
-lemma x_in_window_left
-    (hL : x - dyadic k < q) (hR : q < x) :
-    x ∈ Ioo q (q + dyadic k) := by
-  -- aus x - dyadic k < q folgt x < q + dyadic k
-  have hxlt : x < q + dyadic k := by
-    have := add_lt_add_right hL (dyadic k)
-    -- x - dyadic k + dyadic k = x
-    simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using this
-  exact ⟨hR, hxlt⟩
-
-lemma x_in_window_right
-    (hL : x < q) (hR : q < x + dyadic k) :
-    x ∈ Icc (q - dyadic k) q := by
-  -- aus q < x + dyadic k folgt q - dyadic k < x
-  have hxgt : q - dyadic k < x := by
-    have : q < dyadic k + x := by simpa [add_comm] using hR
-    exact (sub_lt_iff_lt_add').mpr (by simpa [add_comm] using this)
-  exact ⟨le_of_lt hxgt, le_of_lt hL⟩
-
--- Monotonie in ε für LeftSlice/RightSlice
-
+/-- Monotonie in ε für den linken Slice. -/
 lemma LeftSlice_mono_radius {ε₁ ε₂ : ℝ} (h : ε₁ ≤ ε₂) :
     LeftSlice M x ε₁ ⊆ LeftSlice M x ε₂ := by
   intro y hy; rcases hy with ⟨hyM, hlow, hupp⟩
@@ -98,6 +76,7 @@ lemma LeftSlice_mono_radius {ε₁ ε₂ : ℝ} (h : ε₁ ≤ ε₂) :
   have : x - ε₂ ≤ x - ε₁ := sub_le_sub_left h x
   exact lt_of_le_of_lt this hlow
 
+/-- Monotonie in ε für den rechten Slice. -/
 lemma RightSlice_mono_radius {ε₁ ε₂ : ℝ} (h : ε₁ ≤ ε₂) :
     RightSlice M x ε₁ ⊆ RightSlice M x ε₂ := by
   intro y hy; rcases hy with ⟨hyM, hlow, hupp⟩
@@ -105,12 +84,12 @@ lemma RightSlice_mono_radius {ε₁ ε₂ : ℝ} (h : ε₁ ≤ ε₂) :
   -- y < x + ε₁ ≤ x + ε₂
   exact lt_of_lt_of_le hupp (add_le_add_left h x)
 
--- „Slice liegt im Intervall“
-
+/-- „Slice liegt im Intervall“ (links). -/
 lemma LeftSlice_subset_Ioo :
     LeftSlice M x ε ⊆ {y : ℝ | x - ε < y ∧ y < x} := by
   intro y hy; exact ⟨hy.2.1, hy.2.2⟩
 
+/-- „Slice liegt im Intervall“ (rechts). -/
 lemma RightSlice_subset_Ioo :
     RightSlice M x ε ⊆ {y : ℝ | x < y ∧ y < x + ε} := by
   intro y hy; exact ⟨hy.2.1, hy.2.2⟩
@@ -152,11 +131,16 @@ lemma BadLeft_subunion (M : Set ℝ) :
                         (LeftSlice M x (dyadic k)).Countable}
   exact And.intro hxM (And.intro hq1 (And.intro hq2 hcnt_dy))
 
-/-! ### Schlanker Hilfsblock: Injektion für abzählbare Teilmengen -/
+/-! #### (nur Helper – im Kernfall später nützlich)
+
+*In dieser Datei wird `injOfCountable` nicht aktiv benutzt, aber es ist
+stabil nützlich als Baustein, falls man in den Kernfällen eine explizite
+Kodierung via Injektion `Slice → ℕ` konstruieren möchte.*
+-/
 section CountableInjections
 open Function
 
-/-- Aus `S.Countable` gewinnt man (klassisch) eine Injektion `ι : S → ℕ`. -/
+/-- Aus `S.Countable` erhält man (klassisch) eine Injektion `S → ℕ`. -/
 noncomputable def injOfCountable {α} {S : Set α} (hS : S.Countable) : S → ℕ :=
   Classical.choose
     ((countable_iff_exists_injective (α := S)).1 hS)
@@ -228,12 +212,14 @@ lemma BadRight_subunion (M : Set ℝ) :
 lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
   ({x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
                  (RightSlice M x (dyadic k)).Countable}).Countable := by
-  /- analog zum linken Kernfall, aber rechts von x:
-     * Aus x < q < x + dyadic k folgt ein „Fenster“ für x in Icc(q - dyadic k, q).
-     * Wähle kanonisch eine rationale Marke r mit x < r < min q (x + dyadic k),
-       und einen minimalen Index n aus einer Aufzählung des rechten Slices.
-     * Konstruiere eine Injektion in ℚ × ℕ (bzw. ℚ × ℚ × ℕ), um Abzählbarkeit zu zeigen.
-     (Technische Details wie beim linken Kernfall; hier ausgelassen.)
+  /- analog zum linken Kernfall (von Grund auf, ohne Symmetrie):
+     * Aus x < q < x + dyadic k folgt ein Fenster [q - dyadic k, q], in dem x liegt.
+     * Wähle kanonisch eine rationale Marke r_x mit x < r_x < q (z.B. per fester ℚ-Enumerierung und minimalem Index).
+     * Wähle kanonisch eine Zahl m_x aus der abzählbaren Faser (Injektion in ℕ)
+       für ein Punkt y im Slice, der zwischen x und r_x liegt — oder einen default-Wert,
+       falls es dort keinen Punkt gibt.
+     * Zeige, dass die Kodierung (r_x, m_x) injektiv ist. Damit ist die Menge abzählbar.
+     (Die technische Ausarbeitung ist Standard, aber etwas länger; hier ausgelassen.)
   -/
   sorry
 
