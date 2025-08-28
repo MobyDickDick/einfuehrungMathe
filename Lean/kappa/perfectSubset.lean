@@ -287,7 +287,6 @@ lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
       -- per Geometrie-Lemma ist das genau der linke Slice
       have hLeft :
           (LeftSlice (negPre M) (-x) (dyadic k)).Countable := by
-        -- IMPORTANT: keep the image-shape and rewrite using the geometry lemma
         simpa only [image_neg_rightSlice] using himgSlice
       exact ⟨hzNegPre, h1, h2, hLeft⟩
     · intro hz
