@@ -186,9 +186,21 @@ lemma image_neg_leftSlice (M : Set ℝ) (x ε : ℝ) :
     rcases hy with ⟨hyM, h1, h2⟩
     have hzNegPre : (-y) ∈ negPre M := by simpa [negPre] using hyM
     have hgt : -x < -y := by simpa using (neg_lt_neg h2)
+    -- aus h1 : x - ε < y folgern wir -y < -x + ε, aber in zwei Schritte
+      -- aus h1 : x - ε < y folgern wir -y < -x + ε, in zwei Schritten
     have hlt : -y < -x + ε := by
-      have := neg_lt_neg h1
-      simpa [neg_sub] using this
+      -- (1) ε addieren
+      have hxlt : x < y + ε := by
+        have := add_lt_add_right h1 ε
+        -- (x - ε) + ε = x
+        simpa [sub_eq_add_neg, add_assoc, add_comm, add_left_comm,
+              add_neg_cancel_right] using this
+      -- (2) negieren und wieder ε addieren
+      have hneg := neg_lt_neg hxlt                -- -(y+ε) < -x
+      have := add_lt_add_right hneg ε             -- -(y+ε)+ε < -x+ε
+      -- -(y+ε)+ε = -y
+      simpa [neg_add, add_assoc, add_comm, add_left_comm,
+            add_neg_cancel_right] using this
     exact ⟨hzNegPre, hgt, hlt⟩
   · intro hz
     rcases hz with ⟨hzNegPre, hgt, hlt⟩
@@ -197,7 +209,13 @@ lemma image_neg_leftSlice (M : Set ℝ) (x ε : ℝ) :
     -- aus -x < z ⇒ -z < x
     have h2 : -z < x := by simpa using (neg_lt_neg hgt)
     -- aus z < -x + ε ⇒ x - ε < -z
-    have : z < -(x - ε) := by simpa [neg_sub] using hlt
+    have : z < -(x - ε) := by
+      -- aus x + z < ε folgt z + x < ε
+      have hxz : z + x < ε := by simpa [add_comm] using hlt
+      -- und damit z < ε - x
+      have hz : z < ε - x := (lt_sub_iff_add_lt).mpr hxz
+      -- -(x - ε) = ε - x
+      simpa [sub_eq_add_neg, add_comm] using hz
     have h1 : x - ε < -z := by simpa using (neg_lt_neg this)
     exact ⟨hyM, h1, h2⟩
 
