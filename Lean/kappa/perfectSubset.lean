@@ -62,30 +62,47 @@ lemma not_countable_diff_of_not_countable_of_countable
 /-- Use the countable rational basis to cover witnesses. -/
 lemma countable_M0_inter_M (M : Set ℝ) : (M0 M ∩ M).Countable := by
   classical
-  -- index by rational pairs
+  -- rationale Intervalle als Index
   let J : ℚ × ℚ → Set ℝ := fun p => Set.Ioo (p.1 : ℝ) (p.2 : ℝ)
-  have hSub : Countable {p : (ℚ × ℚ) // (J p ∩ M).Countable} :=
-    (Subtype.countable _)
-  -- Every x ∈ M0∩M lies in some rational interval whose intersection with M is countable
-  have hcov : M0 M ∩ M ⊆ ⋃ (p : {p : (ℚ × ℚ) // (J p ∩ M).Countable}), (J p ∩ M) := by
+
+  -- Abdeckung: jedes x ∈ M0∩M liegt in einem rationalen Intervall (a,b)⊆nbhd x ε,
+  -- für das (J(a,b) ∩ M) abzählbar ist.
+  have hcov :
+      M0 M ∩ M ⊆ ⋃ p : ℚ × ℚ,
+        (if (J p ∩ M).Countable then (J p ∩ M) else (∅ : Set ℝ)) := by
     intro x hx
     rcases hx with ⟨hxM0, hxM⟩
     rcases hxM0 with ⟨ε, hε, hcnt⟩
-    have hxlt : x - ε < x := by simpa using sub_lt_self (a:=x) hε
+    have hxlt : x - ε < x := by simpa using sub_lt_self (a := x) hε
     have hxgt : x < x + ε := by simpa using lt_add_of_pos_right x hε
     rcases exists_rat_btwn hxlt with ⟨a, ha1, ha2⟩
     rcases exists_rat_btwn hxgt with ⟨b, hb1, hb2⟩
-    have hsub : Set.Ioo (a:ℝ) b ⊆ nbhd x ε := by
-      intro y hy; exact ⟨lt_of_lt_of_le ha1.le hy.1, lt_of_le_of_lt hy.2 hb2.le⟩
+    -- J(a,b) ⊆ nbhd x ε
+    have hsub : J (a,b) ⊆ nbhd x ε := by
+      intro y hy
+       -- hy : y ∈ Ioo (a:ℝ) b, also hy.1 : (a:ℝ) < y und hy.2 : y < (b:ℝ)
+      exact ⟨lt_trans ha1 hy.1, lt_trans hy.2 hb2⟩
+    -- also ist (J(a,b) ∩ M) abzählbar
     have hcnt' : (J (a,b) ∩ M).Countable :=
-      hcnt.mono (by intro y hy; exact ⟨hsub hy.1, hy.2⟩)
+      hcnt.mono (by
+        intro y hy
+        exact ⟨hsub hy.1, hy.2⟩)
+    -- x liegt in J(a,b) ∩ M
+    have hxmem : x ∈ J (a,b) ∩ M := ⟨⟨by simpa using ha2, by simpa using hb1⟩, hxM⟩
+    -- packe in die Union; der if-Zweig wählt hier J(a,b)∩M
     refine mem_iUnion.mpr ?_
-    exact ⟨⟨(a,b), hcnt'⟩, ⟨by exact And.intro (by simpa using ha2) (by simpa using hb1), hxM⟩⟩
-  -- union over a countable index of countable sets is countable
-  have : (⋃ (p : {p : (ℚ × ℚ) // (J p ∩ M).Countable}), (J p ∩ M)).Countable := by
-    refine countable_iUnion ?h
-    intro p; exact p.property
-  exact this.mono hcov
+    refine ⟨(a,b), ?_⟩
+    simpa [J, hcnt'] using hxmem
+
+  -- Vereinigung abzählbar vieler abzählbarer Mengen ist abzählbar
+  have hUnionCnt :
+      (⋃ p : ℚ × ℚ, (if (J p ∩ M).Countable then (J p ∩ M) else (∅ : Set ℝ))).Countable := by
+    refine countable_iUnion (fun p => ?_)
+    by_cases hp : (J p ∩ M).Countable
+    · simpa [hp] using hp
+    · simpa [hp] using (countable_empty : (∅ : Set ℝ).Countable)
+
+  exact hUnionCnt.mono hcov
 
 /-! ### Uncountability of small neighbourhoods in Mr -/
 
