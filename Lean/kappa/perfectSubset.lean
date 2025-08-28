@@ -305,7 +305,7 @@ lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
       -- linke Slice-Abzählbarkeit → rechte via Bild
       have hRight :
           (RightSlice M (-z) (dyadic k)).Countable := by
-        simpa [image_neg_leftSlice, negPre_negPre] using (hcnt.image (fun y : ℝ => -y))
+        simpa only [image_neg_leftSlice, negPre_negPre] using (hcnt.image (fun y : ℝ => -y))
       exact ⟨hxM, hxltq, by simpa [add_comm] using hqlt, hRight⟩
   -- `SLeftNeg` ist abzählbar durch den linken Kernfall (mit `negPre M` und Marke `-q`)
   have hLeftCnt : SLeftNeg.Countable := by
