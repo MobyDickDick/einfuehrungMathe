@@ -288,7 +288,7 @@ lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
       have hLeft :
           (LeftSlice (negPre M) (-x) (dyadic k)).Countable := by
         -- IMPORTANT: keep the image-shape and rewrite using the geometry lemma
-        simpa [image_neg_rightSlice, image_neg_set] using himgSlice
+        simpa only [image_neg_rightSlice] using himgSlice
       exact ⟨hzNegPre, h1, h2, hLeft⟩
     · intro hz
       rcases hz with ⟨hzNegPre, h1, h2, hcnt⟩
@@ -305,7 +305,7 @@ lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
       -- linke Slice-Abzählbarkeit → rechte via Bild
       have hRight :
           (RightSlice M (-z) (dyadic k)).Countable := by
-        simpa [image_neg_leftSlice, image_neg_set] using (hcnt.image (fun y : ℝ => -y))
+        simpa only [image_neg_leftSlice] using (hcnt.image (fun y : ℝ => -y))
       exact ⟨hxM, hxltq, by simpa [add_comm] using hqlt, hRight⟩
   -- `SLeftNeg` ist abzählbar durch den linken Kernfall (mit `negPre M` und Marke `-q`)
   have hLeftCnt : SLeftNeg.Countable := by
@@ -425,9 +425,5 @@ lemma TwoSidedThick_core (M : Set ℝ) : TwoSidedThick (core M) := by
     simpa [eqL] using hLeftCore
   · -- Ziel: ¬ (RightSlice (core M) x ε).Countable
     simpa [eqR] using hRightCore
-
-/-! ### Hilfslemma: Schreibweise für das Negationsbild von Mengen -/
-@[simp] lemma image_neg_set (s : Set ℝ) :
-  (fun y : ℝ => -y) '' s = -s := rfl
 
 end PerfectFromThick
