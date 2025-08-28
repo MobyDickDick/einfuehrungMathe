@@ -287,10 +287,11 @@ lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
       -- per Geometrie-Lemma ist das genau der linke Slice
       have hLeft :
           (LeftSlice (negPre M) (-x) (dyadic k)).Countable := by
-        simpa [image_neg_rightSlice] using himgSlice
+        -- IMPORTANT: keep the image-shape and rewrite using the geometry lemma
+        simpa [image_neg_rightSlice, image_neg_set] using himgSlice
       exact ⟨hzNegPre, h1, h2, hLeft⟩
     · intro hz
-      rcases hz mit ⟨hzNegPre, h1, h2, hcnt⟩
+      rcases hz with ⟨hzNegPre, h1, h2, hcnt⟩
       refine ⟨-z, ?_, by simp⟩
       have hxM : -z ∈ M := by simpa [negPre] using hzNegPre
       -- aus (-x)-δ < -q mit x := -z folgt  q < -z + δ
@@ -304,7 +305,7 @@ lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
       -- linke Slice-Abzählbarkeit → rechte via Bild
       have hRight :
           (RightSlice M (-z) (dyadic k)).Countable := by
-        simpa [image_neg_leftSlice] using (hcnt.image (fun y : ℝ => -y))
+        simpa [image_neg_leftSlice, image_neg_set] using (hcnt.image (fun y : ℝ => -y))
       exact ⟨hxM, hxltq, by simpa [add_comm] using hqlt, hRight⟩
   -- `SLeftNeg` ist abzählbar durch den linken Kernfall (mit `negPre M` und Marke `-q`)
   have hLeftCnt : SLeftNeg.Countable := by
@@ -355,16 +356,16 @@ lemma leftSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
   ext y; constructor <;> intro hy
   · rcases hy with ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
     exact ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
-  · rcases hy mit ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
+  · rcases hy with ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
     exact ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
 
 /-- Rechter Slice analog. -/
 lemma rightSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
   RightSlice (Set.diff M (Bad M)) x ε = Set.diff (RightSlice M x ε) (Bad M) := by
   ext y; constructor <;> intro hy
-  · rcases hy mit ⟨⟨hyM, hyNotBad⟩, hgt, hlt⟩
+  · rcases hy with ⟨⟨hyM, hyNotBad⟩, hgt, hlt⟩
     exact ⟨⟨hyM, hgt, hlt⟩, hyNotBad⟩
-  · rcases hy mit ⟨⟨hyM, hgt, hlt⟩, hyNotBad⟩
+  · rcases hy with ⟨⟨hyM, hgt, hlt⟩, hyNotBad⟩
     exact ⟨⟨hyM, hyNotBad⟩, hgt, hlt⟩
 
 
@@ -424,5 +425,9 @@ lemma TwoSidedThick_core (M : Set ℝ) : TwoSidedThick (core M) := by
     simpa [eqL] using hLeftCore
   · -- Ziel: ¬ (RightSlice (core M) x ε).Countable
     simpa [eqR] using hRightCore
+
+/-! ### Hilfslemma: Schreibweise für das Negationsbild von Mengen -/
+@[simp] lemma image_neg_set (s : Set ℝ) :
+  (fun y : ℝ => -y) '' s = -s := rfl
 
 end PerfectFromThick
