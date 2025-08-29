@@ -569,6 +569,36 @@ lemma first_third_selection
   -- Zusammenstellen
   exact ⟨x10, x11, hx10M, hx11M, hx0lt, hx10lt, hx1low, hx11ltx1⟩
 
+/-! ### Mini-Schritt: aus einem Paar `x0<x1` zwei neue Teilintervalle -/
+
+lemma first_third_intervals_nonempty
+  {M : Set ℝ} {x0 x1 : ℝ}
+  (hThick : TwoSidedThick M)
+  (hx0 : x0 ∈ M) (hx1 : x1 ∈ M) (hlt : x0 < x1) :
+  ∃ x10 x11,
+      x0 < x10 ∧ x10 < x0 + (x1 - x0)/3 ∧
+      x1 - (x1 - x0)/3 < x11 ∧ x11 < x1 ∧
+      x10 ∈ M ∧ x11 ∈ M := by
+  obtain ⟨x10, x11, hx10M, hx11M, hx0lt, hx10lt, hx1low, hx11ltx1⟩ :=
+    first_third_selection (M:=M) hThick hx0 hx1 hlt
+  exact ⟨x10, x11, hx0lt, hx10lt, hx1low, hx11ltx1, hx10M, hx11M⟩
+
+/-- **Stage→Stage+1 (Ein Schritt)**:
+Aus `x0<x1` in `M` erhält man zwei **nichtleere** neue Intervalle
+`(x0,x10)` und `(x11,x1)` mit Endpunkten `x10,x11 ∈ M`, die strikt im
+ersten bzw. letzten Drittel liegen. -/
+lemma stage_succ_one_step
+  {M : Set ℝ} {x0 x1 : ℝ}
+  (hThick : TwoSidedThick M)
+  (hx0 : x0 ∈ M) (hx1 : x1 ∈ M) (hlt : x0 < x1) :
+  ∃ x10 x11,
+      x0 < x10 ∧ x10 ∈ M ∧
+      x11 < x1 ∧ x11 ∈ M ∧
+      x10 < x0 + (x1 - x0)/3 ∧
+      x1 - (x1 - x0)/3 < x11 := by
+  obtain ⟨x10, x11, hx0lt, hx10lt, hx1low, hx11ltx1, hx10M, hx11M⟩ :=
+    first_third_intervals_nonempty (M:=M) hThick hx0 hx1 hlt
+  exact ⟨x10, x11, hx0lt, hx10M, hx11ltx1, hx11M, hx10lt, hx1low⟩
 
 end ApplicationToGoal
 
