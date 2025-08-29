@@ -600,6 +600,80 @@ lemma stage_succ_one_step
     first_third_intervals_nonempty (M:=M) hThick hx0 hx1 hlt
   exact ⟨x10, x11, hx0lt, hx10M, hx11ltx1, hx11M, hx10lt, hx1low⟩
 
+/-! ### Ein Schritt für eine endliche Familie von Intervallen -/
+open Classical
+
+/-- Hilfsprädikat: Ein Paar liegt in `M` und ist strikt geordnet. -/
+def PairOk (M : Set ℝ) (p : ℝ × ℝ) : Prop :=
+  p.1 ∈ M ∧ p.2 ∈ M ∧ p.1 < p.2
+
+lemma stage_succ_one_step_pairs
+  {M : Set ℝ} (hThick : TwoSidedThick M) :
+  ∀ {x0 x1 : ℝ}, x0 ∈ M → x1 ∈ M → x0 < x1 →
+    ∃ x10 x11, PairOk M (x0, x10) ∧ PairOk M (x11, x1) ∧
+      x10 < x0 + (x1 - x0)/3 ∧
+      x1 - (x1 - x0)/3 < x11 := by
+  intro x0 x1 hx0 hx1 hlt
+  obtain ⟨x10, x11, hx0lt, hx10lt, hx1low, hx11ltx1, hx10M, hx11M⟩ :=
+    first_third_intervals_nonempty (M:=M) hThick hx0 hx1 hlt
+  refine ⟨x10, x11, ?_, ?_, hx10lt, hx1low⟩
+  · -- PairOk M (x0, x10)
+    exact ⟨hx0, hx10M, hx0lt⟩
+  · -- PairOk M (x11, x1)
+    exact ⟨hx11M, hx1, hx11ltx1⟩
+
+/-- **Listen-Schritt (Stage → Stage+1):**
+Aus einer endlichen Liste `L` von Intervall-Paaren in `M` (alle `PairOk`)
+erzeugt eine neue Liste `L'`, in der jedes Paar `(x0,x1)` durch
+`(x0,x10)` und `(x11,x1)` ersetzt ist, wobei `x10,x11 ∈ M` in den
+ersten/letzten Dritteln liegen. -/
+lemma stage_succ_list
+  {M : Set ℝ} (hThick : TwoSidedThick M) :
+  ∀ (L : List (ℝ × ℝ)),
+    (∀ p ∈ L, PairOk M p) →
+    ∃ L' : List (ℝ × ℝ),
+      (∀ p' ∈ L', PairOk M p') ∧
+      List.length L' = 2 * List.length L := by
+  classical
+  refine
+    List.rec
+      (motive := fun L =>
+        (∀ p ∈ L, PairOk M p) →
+        ∃ L' : List (ℝ × ℝ),
+          (∀ p' ∈ L', PairOk M p') ∧
+          List.length L' = 2 * List.length L)
+      ?base ?step
+  · -- Basis: L = []
+    intro _h
+    refine ⟨[], ?_, ?_⟩
+    · intro p hp; cases hp
+    · simp
+  · -- Schritt: L = p :: L
+    intro p L ih hAll
+    have hpok : PairOk M p := hAll p (by simp)
+    have hLok : ∀ q ∈ L, PairOk M q := by
+      intro q hq; exact hAll q (by simp [hq])
+    rcases p with ⟨x0, x1⟩
+    rcases hpok with ⟨hx0M, hx1M, hlt⟩
+    rcases stage_succ_one_step_pairs (M:=M) hThick hx0M hx1M hlt with
+      ⟨x10, x11, hPairLeft, hPairRight, _h10FirstThird, _h11LastThird⟩
+    rcases ih hLok with ⟨L', hL'OK, hlen⟩
+    let Lnew : List (ℝ × ℝ) := (x0, x10) :: (x11, x1) :: L'
+    refine ⟨Lnew, ?hOK, ?hLen⟩
+    · -- alle Paare in Lnew sind ok
+      intro q hq
+      -- q ∈ (x0,x10) :: (x11,x1) :: L'  ⇔  q=(x0,x10) ∨ q=(x11,x1) ∨ q∈L'
+      have hq' : q = (x0, x10) ∨ q = (x11, x1) ∨ q ∈ L' := by
+        simpa [Lnew] using hq
+      rcases hq' with hq0 | hq'
+      · cases hq0; exact hPairLeft
+      · rcases hq' with hq1 | hqL
+        · cases hq1; exact hPairRight
+        · exact hL'OK q hqL
+    · -- Länge: 2 + length L' = 2 + 2 * length L = 2 * length (p :: L)
+      simp [Lnew, hlen, List.length, two_mul,
+            add_comm, add_left_comm, add_assoc]
+
 end ApplicationToGoal
 
 end PerfectFromThick
