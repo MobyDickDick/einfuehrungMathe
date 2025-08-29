@@ -105,31 +105,53 @@ lemma countable_M0_inter_M (M : Set ℝ) : (M0 M ∩ M).Countable := by
 lemma nbhd_uncountable_in_Mr (M : Set ℝ) {x ε : ℝ}
   (hx : x ∈ Mr M) (hε : ε > 0) : ¬ ((nbhd x ε ∩ Mr M).Countable) := by
   classical
-  have hxM : x ∈ M := hx.1
+  have hxM   : x ∈ M    := hx.1
   have hxnot : x ∉ M0 M := hx.2
-  -- if (nbhd x ε ∩ M) were countable, x ∈ M0 M
+  -- If (nbhd x ε ∩ M) were countable, then x ∈ M0 M — contradiction.
   have hx' : ¬ (nbhd x ε ∩ M).Countable := by
     intro hcnt
     exact hxnot ⟨ε, hε, hcnt⟩
-  -- subtract the countable (M0∩M)
+
+  -- (M0 M ∩ M) is countable
   have hC : (M0 M ∩ M).Countable := countable_M0_inter_M M
-  -- identify (nbhd ∩ Mr) as a set difference
-  have hEq : nbhd x ε ∩ Mr M = Set.diff (nbhd x ε ∩ M) (M0 M ∩ M) := by
-    ext y; constructor <;> intro hy
-    · -- → direction
-      rcases hy with ⟨hyI, hyMr⟩
-      exact ⟨⟨hyI, hyMr.1⟩, by
-        intro hmem
-        exact hyMr.2 hmem.1⟩
-    · -- ← direction
-      rcases hy with ⟨⟨hyI, hyM⟩, hyNot⟩
-      exact ⟨hyI, ⟨hyM, by
-        intro h0
-        exact hyNot ⟨h0, hyM⟩⟩⟩
-  -- conclude
-  have : ¬ (Set.diff (nbhd x ε ∩ M) (M0 M ∩ M)).Countable :=
+
+  -- Step A: (nbhd∩M) \ (M0∩M) is uncountable
+  have hdiff1 :
+      ¬ ((nbhd x ε ∩ M) \ (M0 M ∩ M)).Countable :=
     not_countable_diff_of_not_countable_of_countable hx' hC
-  simpa [hEq] using this
+
+  -- Step B: inclusion ((nbhd∩M)\(M0∩M)) ⊆ ((nbhd∩M)\M0)
+  have hsubset_nbhd :
+      ((nbhd x ε ∩ M) \ (M0 M ∩ M))
+        ⊆ ((nbhd x ε ∩ M) \ (M0 M)) := by
+    intro y hy
+    rcases hy with ⟨hyIn, hyNot⟩
+    exact ⟨hyIn, fun hM0 => hyNot ⟨hM0, hyIn.2⟩⟩
+
+  -- hence also ((nbhd∩M)\M0) is uncountable
+  have hdiff2_nbhd :
+      ¬ ((nbhd x ε ∩ M) \ (M0 M)).Countable := by
+    intro hcnt
+    exact hdiff1 (hcnt.mono hsubset_nbhd)
+
+  -- switch to Ioo-notation (nbhd = Ioo)
+  have hdiff2_iioo :
+      ¬ ((Set.Ioo (x - ε) (x + ε) ∩ M) \ (M0 M)).Countable := by
+    simpa [nbhd] using hdiff2_nbhd
+
+  -- final identification: Ioo ∩ (M \ M0) = (Ioo ∩ M) \ M0
+  have hEqIoo :
+      Set.Ioo (x - ε) (x + ε) ∩ (M \ M0 M)
+        = (Set.Ioo (x - ε) (x + ε) ∩ M) \ (M0 M) := by
+    ext y; constructor <;> intro hy
+    · rcases hy with ⟨hyI, hyMem⟩
+      rcases hyMem with ⟨hyM, hyNotM0⟩
+      exact ⟨⟨hyI, hyM⟩, hyNotM0⟩
+    · rcases hy with ⟨⟨hyI, hyM⟩, hyNotM0⟩
+      exact ⟨hyI, ⟨hyM, hyNotM0⟩⟩
+
+  -- conclude
+  simpa [hEqIoo] using hdiff2_iioo
 
 /-! ### One-sided empty boundary sets in `A` and their countability -/
 
@@ -168,10 +190,7 @@ lemma countable_RightEmpty (A : Set ℝ) : (RightEmpty A).Countable := by
     by_contra hne
     -- compare x and y on ℝ
     have hxy_ne : (x : ℝ) ≠ (y : ℝ) := by
-      intro h
-      apply hne
-      apply Subtype.ext
-      simpa using h
+      intro h; apply hne; apply Subtype.ext; simpa using h
     cases lt_or_gt_of_ne hxy_ne with
     | inl hxylt =>
       -- From emptiness at x: since y ∈ A and x < y, we must have x+δx ≤ y.
@@ -217,7 +236,7 @@ lemma countable_LeftEmpty (A : Set ℝ) : (LeftEmpty A).Countable := by
     intro x; rcases Classical.choose_spec (hxq x) with ⟨δ, hpos, h1, h2, hemp⟩
     exact ⟨δ, hpos, h1, h2, hemp⟩
 
-  -- Injectivity (left version), again without wlog
+  -- Injectivity (left version), without wlog; use left-emptiness separation
   have finj : Function.Injective f := by
     intro x y hxy
     have hxA : (x : ℝ) ∈ A := (x.property).1
@@ -227,45 +246,39 @@ lemma countable_LeftEmpty (A : Set ℝ) : (LeftEmpty A).Countable := by
     have hxyℝ : (f x : ℝ) = (f y : ℝ) := by
       simpa using congrArg (fun t : ℚ => (t : ℝ)) hxy
     by_contra hne
+    -- as reals different
     have hxy_ne : (x : ℝ) ≠ (y : ℝ) := by
-      intro h
-      apply hne
-      apply Subtype.ext
-      simpa using h
+      intro h; apply hne; apply Subtype.ext; simpa using h
     cases lt_or_gt_of_ne hxy_ne with
     | inl hxylt =>
-      -- y < x? nein: this case is x < y (since hxylt : (x:ℝ) < (y:ℝ)).
-      -- Use emptiness at y on the left of y: since x ∈ A and x < y, we get x ≤ y - δy.
+      -- x < y; by left-emptiness at y and x∈A we have x ≤ y - δy
       have sep_xy : (x : ℝ) ≤ (y : ℝ) - δy := by
         by_contra hxgt
-        have : (x : ℝ) ∈ Set.Ioo ((y : ℝ) - δy) (y : ℝ) := ⟨lt_of_not_ge hxgt, lt_of_le_of_lt le_rfl hxylt⟩
+        have : (x : ℝ) ∈ Set.Ioo ((y : ℝ) - δy) (y : ℝ) :=
+          ⟨lt_of_not_ge hxgt, hxylt⟩
         have : (x : ℝ) ∈ Set.Ioo ((y : ℝ) - δy) (y : ℝ) ∩ A := ⟨this, hxA⟩
         simpa [hyemp] using this
-      -- then (f x) < x ≤ y - δy < y, and (f y) < y; we will separate via the other side:
-      -- Actually, stronger: from hqxlt: (x - δx) < f x, so f x ≤ y - δy does NOT hold a priori.
-      -- Instead, use emptiness at x to place (f y) relative to x by symmetry.
-      -- Better: we separate using the endpoint orders:
+      -- then f x < x < f y
       have fx_lt_y : (f x : ℝ) < (y : ℝ) := lt_trans hltx (le_of_lt hxylt)
       have x_lt_fy : (x : ℝ) < (f y : ℝ) := lt_of_le_of_lt sep_xy hlty
-      -- Now (f x) < y and x < (f y). This already rules out equality (two numbers on opposite sides unless x=y).
-      -- Combine via trichotomy: from fx<y and x<fy and x<y, we still need a direct contradiction:
-      -- Use: if fx = fy, then fx < y and y ≤ fx is impossible since hlty says y > fy = fx.
-      have y_lt_fy : (y : ℝ) < (f y : ℝ) := hlty
-      exact (ne_of_lt (lt_trans fx_lt_y y_lt_fy)) hxyℝ
+      have : (f x : ℝ) < (f y : ℝ) := lt_trans fx_lt_y (lt_trans (lt_of_le_of_lt (le_of_lt hxylt) hlty) hlty)
+      -- einfacher: aus fx < x < fy folgt fx < fy
+      exact (ne_of_lt (lt_trans hltx (lt_trans (le_of_lt hxylt) hlty))) hxyℝ
     | inr hyltx =>
-      -- case (y : ℝ) < (x : ℝ)
-      -- Use emptiness at x (left): since y ∈ A and y < x, we must have y ≤ x - δx.
+      -- y < x; by left-emptiness at x and y∈A we have y ≤ x - δx
       have sep_yx : (y : ℝ) ≤ (x : ℝ) - δx := by
         by_contra hygt
-        have : (y : ℝ) ∈ Set.Ioo ((x : ℝ) - δx) (x : ℝ) := ⟨lt_of_not_ge hygt, lt_of_le_of_lt le_rfl hyltx⟩
+        have : (y : ℝ) ∈ Set.Ioo ((x : ℝ) - δx) (x : ℝ) :=
+          ⟨lt_of_not_ge hygt, hyltx⟩
         have : (y : ℝ) ∈ Set.Ioo ((x : ℝ) - δx) (x : ℝ) ∩ A := ⟨this, hyA⟩
         simpa [hxemp] using this
-      have fy_lt_x : (f y : ℝ) < (x : ℝ) := lt_of_lt_of_le hqylt (le_of_lt hyltx)
+      -- then f y < y < f x
+      have fy_lt_x : (f y : ℝ) < (x : ℝ) := lt_trans hqylt (le_of_lt hyltx)
       have y_lt_fx : (y : ℝ) < (f x : ℝ) := by
         have : (x : ℝ) - δx < (f x : ℝ) := hqxlt
         exact lt_of_le_of_lt sep_yx this
-      -- So (f y) < x and y < (f x). With (y<x), we get (f y) < (f x), contradicting equality.
-      exact (ne_of_lt (lt_of_lt_of_le fy_lt_x (le_of_lt y_lt_fx))) (hxyℝ.symm)
+      -- thus f y < f x
+      exact (ne_of_lt (lt_trans hqylt (lt_trans (le_of_lt hyltx) hqxlt))) (hxyℝ.symm)
 
   -- Countability from injectivity into ℚ
   refine Set.countable_iff.mpr ?_
