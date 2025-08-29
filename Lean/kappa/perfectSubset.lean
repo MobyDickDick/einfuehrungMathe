@@ -426,3 +426,80 @@ lemma TwoSidedThick_core (M : Set ℝ) : TwoSidedThick (core M) := by
     simpa [eqR] using hRightCore
 
 end PerfectFromThick
+
+/-! ## Anwendung auf das Ziel (winzige Ergänzungen) -/
+-- direkt vor "section ApplicationToGoal"
+namespace PerfectFromThick
+
+
+section ApplicationToGoal
+
+/-- Ist `M` überabzählbar, dann ist auch `core M = M \\ Bad M` überabzählbar. -/
+lemma uncountable_core_of_uncountable (M : Set ℝ) (hM : ¬ M.Countable) :
+  ¬ (core M).Countable := by
+  -- `Bad M` ist abzählbar; überabzählbar minus abzählbar bleibt überabzählbar
+  simpa [core] using
+    not_countable_diff_of_not_countable_of_countable
+      (A := M) (C := Bad M) hM (countable_Bad M)
+
+/-- Aus einer überabzählbaren Menge `M0` erhält man ein `M1 ⊆ M0`,
+    das überabzählbar und zweiseitig dick ist.  Eine kanonische Wahl ist `M1 = core M0`. -/
+lemma exists_twoSidedThick_subset (M0 : Set ℝ) (hM0 : ¬ M0.Countable) :
+  ∃ M1 : Set ℝ, M1 ⊆ M0 ∧ ¬ M1.Countable ∧ TwoSidedThick M1 := by
+  refine ⟨core M0, ?_, ?_, ?_⟩
+  · exact core_subset M0
+  · exact uncountable_core_of_uncountable (M := M0) hM0
+  · exact TwoSidedThick_core M0
+
+/-- In einer überabzählbaren Teilmenge von `ℝ` gibt es zwei streng geordnete Punkte. -/
+lemma exists_two_points_of_uncountable (S : Set ℝ) (hS : ¬ S.Countable) :
+  ∃ x0 x1 : ℝ, x0 ∈ S ∧ x1 ∈ S ∧ x0 < x1 := by
+  classical
+  -- `S` ist nicht leer
+  have hne : S ≠ (∅ : Set ℝ) := by
+    intro h
+    set_option linter.unnecessarySimpa false in
+    have : S.Countable := by
+      simpa [h] using (countable_empty : (∅ : Set ℝ).Countable)
+    exact hS this
+  obtain ⟨x0, hx0⟩ := Set.nonempty_iff_ne_empty.mpr hne
+  -- Ziehe einen Punkt `x1 ≠ x0` aus `S \\ {x0}` (immer noch überabzählbar)
+  have hSdiff_unc :
+      ¬ (S \ ({x0} : Set ℝ)).Countable :=
+    not_countable_diff_of_not_countable_of_countable
+      (A := S) (C := ({x0} : Set ℝ)) hS (countable_singleton x0)
+  have hSdiff_ne : S \ ({x0} : Set ℝ) ≠ (∅ : Set ℝ) := by
+    intro h
+    set_option linter.unnecessarySimpa false in
+    have : (S \ ({x0} : Set ℝ)).Countable := by
+      simpa [h] using (countable_empty : (∅ : Set ℝ).Countable)
+    exact hSdiff_unc this
+  obtain ⟨x1, hx1⟩ := Set.nonempty_iff_ne_empty.mpr hSdiff_ne
+  have hx1S : x1 ∈ S := hx1.1
+  have hx1_ne_x0 : x1 ≠ x0 := by
+    have : x1 ∉ ({x0} : Set ℝ) := hx1.2
+    simpa [Set.mem_singleton_iff] using this
+  -- total-ordnung in ℝ ⇒ entweder x0 < x1 oder x1 < x0; wähle passende Reihenfolge
+  have hcmp : x0 < x1 ∨ x1 < x0 := lt_or_gt_of_ne (ne_comm.mp hx1_ne_x0)
+  cases hcmp with
+  | inl hlt =>
+      exact ⟨x0, x1, hx0, hx1S, hlt⟩
+  | inr hlt' =>
+      exact ⟨x1, x0, hx1S, hx0, hlt'⟩
+
+/-- Bequeme Auslese: Aus `M0` überabzählbar erhält man zwei Punkte `x0 < x1` in `core M0`. -/
+lemma exists_two_points_in_core (M0 : Set ℝ) (hM0 : ¬ M0.Countable) :
+  ∃ x0 x1 : ℝ, x0 ∈ core M0 ∧ x1 ∈ core M0 ∧ x0 < x1 := by
+  have hcore_unc : ¬ (core M0).Countable := uncountable_core_of_uncountable (M := M0) hM0
+  simpa using exists_two_points_of_uncountable (S := core M0) hcore_unc
+
+/-- Aus Zweiseit-Dicke liest man die geforderten "beidseitig überabzählbar vielen Punkte in jedem
+    ε-Intervall" direkt ab. (Nur eine bequeme Umformulierung.) -/
+lemma twoSidedThick_gives_left_right (M : Set ℝ)
+  (h : TwoSidedThick M) {x ε : ℝ} (hx : x ∈ M) (hε : ε > 0) :
+  ¬ (LeftSlice M x ε).Countable ∧ ¬ (RightSlice M x ε).Countable :=
+  h x hx ε hε
+
+end ApplicationToGoal
+
+end PerfectFromThick
