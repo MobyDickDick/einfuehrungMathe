@@ -748,6 +748,75 @@ lemma exists_perfect_subset
       have hy0abs_lt_eps : |y0 - x| < ε := by linarith
       exact ⟨y0, hneq, subset_closure hy0M1, hy0abs_lt_eps⟩
 
+
+/-- Wenn `A` überabzählbar ist und `A ⊆ B`, dann ist auch `B` überabzählbar. -/
+lemma not_countable_of_subset_of_not_countable {α} {A B : Set α}
+    (hA : ¬ A.Countable) (hAB : A ⊆ B) : ¬ B.Countable := by
+  intro hB
+  -- Aus `B` abzählbar und `A ⊆ B` folgt `A` abzählbar – Widerspruch.
+  exact hA (hB.mono hAB)
+
+
+/-- Aus einer überabzählbaren Menge `M0` erhält man eine perfekte **und überabzählbare**
+    Teilmenge `K` (genauer: `K ⊆ closure M0`). -/
+lemma exists_perfect_uncountable_subset
+  {M0 : Set ℝ} (hM0 : ¬ M0.Countable) :
+  ∃ K : Set ℝ, K ⊆ closure M0 ∧ Perfect K ∧ ¬ K.Countable := by
+  -- Kern und Dicke
+  let M1 := core M0
+  have hThick : TwoSidedThick M1 := TwoSidedThick_core M0
+  have hM1 : ¬ M1.Countable := uncountable_core_of_uncountable (M := M0) hM0
+  -- nimm K := Abschluss des Kerns
+  let K := closure M1
+  refine ⟨K, ?subset, ?perfect, ?uncountableK⟩
+  · -- K ⊆ closure M0
+    exact closure_mono (core_subset M0)
+  · -- K ist perfekt (abgeschlossen, keine isolierten Punkte)
+    constructor
+    · exact isClosed_closure
+    · -- keine isolierten Punkte
+      intro x hx ε hε
+      -- x ∈ closure M1  ⇒ Punkte in M1 beliebig nah an x (in Form `dist x y < δ`)
+      have hx_cl0 : ∀ δ > 0, ∃ y ∈ M1, dist x y < δ :=
+        Metric.mem_closure_iff.mp hx
+      -- umformen zu `dist y x < δ` (Symmetrie der Distanz)
+      have hx_cl : ∀ δ > 0, ∃ y ∈ M1, dist y x < δ := by
+        intro δ hδ
+        rcases hx_cl0 δ hδ with ⟨y, hyM1, hy⟩
+        exact ⟨y, hyM1, by simpa [dist_comm] using hy⟩
+      -- Reserve ε/2
+      have hε2 : 0 < ε / 2 := by
+        have : (0 : ℝ) < 2 := by norm_num
+        exact half_pos hε
+      -- approxiere x aus M1
+      rcases hx_cl (ε/2) hε2 with ⟨y0, hy0M1, hy0dist⟩
+      have hy0abs : |y0 - x| < ε / 2 := by
+        simpa [Real.dist_eq] using hy0dist
+      -- Fallunterscheidung, ob x schon in M1 liegt
+      by_cases hxM1 : x ∈ M1
+      · -- benutze Zweiseit-Dicke, um einen anderen Punkt rechts von x in M1 zu finden
+        obtain ⟨yR, hyRM1, hx_lt_yR, hyR_lt⟩ :=
+          exists_point_in_rightSlice_of_thick
+            (M:=M1) (x:=x) (ε:=ε/2) hThick hxM1 hε2
+        -- |yR - x| < ε/2 ⇒ < ε
+        have hyRabs_half : |yR - x| < ε/2 := by
+          have hsub : yR - x < ε/2 := (sub_lt_iff_lt_add').mpr hyR_lt
+          have hpos : 0 < yR - x := sub_pos.mpr hx_lt_yR
+          simpa [abs_of_pos hpos] using hsub
+        have hyRabs : |yR - x| < ε := by linarith
+        have hneq : yR ≠ x := ne_of_gt hx_lt_yR
+        exact ⟨yR, hneq, subset_closure hyRM1, hyRabs⟩
+      · -- x ∉ M1 ⇒ der approximierende y0 ist ≠ x
+        have hneq : y0 ≠ x := by
+          intro h; apply hxM1; simpa [h] using hy0M1
+        have hy0abs_lt_eps : |y0 - x| < ε := by linarith
+        exact ⟨y0, hneq, subset_closure hy0M1, hy0abs_lt_eps⟩
+  · -- K ist überabzählbar, da M1 ⊆ K und M1 überabzählbar
+    have hsubset : M1 ⊆ K := subset_closure
+    exact not_countable_of_subset_of_not_countable hM1 hsubset
+
+
+
 end ApplicationToGoal
 
 end PerfectFromThick
