@@ -178,11 +178,13 @@ lemma countable_RightEmpty (A : Set ℝ) : (RightEmpty A).Countable := by
   -- Injectivity: if f x = f y = q and x ≠ y, that q lies in both empty intervals, contradiction.
   have finj : Function.Injective f := by
     intro x y hxy
+    -- data for x and y
     have hxA : (x : ℝ) ∈ A := (x.property).1
     have hyA : (y : ℝ) ∈ A := (y.property).1
     rcases f_spec x with ⟨δx, hxpos, hxltq, hqltx, hxemp⟩
     rcases f_spec y with ⟨δy, hypos, hyltq, hqlty, hyemp⟩
-    have : (f x : ℝ) = f y := by simpa using congrArg (fun t => (t : ℝ)) hxy
+    have hxyℝ : (f x : ℝ) = (f y : ℝ) := by
+      simpa using congrArg (fun t : ℚ => (t : ℝ)) hxy
     by_contra hne
     wlog hxy' : (x : ℝ) ≤ (y : ℝ) generalizing x y
     · have := le_total (x : ℝ) (y : ℝ); cases this with
@@ -191,7 +193,7 @@ lemma countable_RightEmpty (A : Set ℝ) : (RightEmpty A).Countable := by
     have : (y : ℝ) < (x : ℝ) + δx := lt_of_le_of_lt hxy' hqltx
     have y_in : (y : ℝ) ∈ Set.Ioo (x : ℝ) ((x : ℝ) + δx) := ⟨lt_of_le_of_lt hxy' hxltq, this⟩
     have : (y : ℝ) ∈ (Set.Ioo (x : ℝ) ((x : ℝ) + δx) ∩ A) := ⟨y_in, hyA⟩
-    simpa [hxemp] using this
+          simpa [hxemp] using this
   -- Build an injection into ℕ via Encodable ℚ
   refine Set.countable_iff.mpr ?_
   refine ⟨fun x : {x : ℝ // x ∈ RightEmpty A} => Encodable.encode (f x), ?_⟩
