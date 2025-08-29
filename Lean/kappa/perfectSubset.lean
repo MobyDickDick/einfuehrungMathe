@@ -500,6 +500,76 @@ lemma twoSidedThick_gives_left_right (M : Set ℝ)
   ¬ (LeftSlice M x ε).Countable ∧ ¬ (RightSlice M x ε).Countable :=
   h x hx ε hε
 
+  /-! ### Mini-Auswahl aus Zweiseit-Dicke (für die 1./3.-Teilintervalle) -/
+
+lemma exists_point_in_rightSlice_of_thick
+  {M : Set ℝ} {x ε : ℝ}
+  (hThick : TwoSidedThick M) (hx : x ∈ M) (hε : ε > 0) :
+  ∃ y, y ∈ M ∧ x < y ∧ y < x + ε := by
+  classical
+  -- rechte Seite ist nicht abzählbar ⇒ insbesondere nicht leer
+  have hnotCnt : ¬ (RightSlice M x ε).Countable := (hThick x hx ε hε).2
+  have hne : (RightSlice M x ε).Nonempty := by
+    by_contra hempty
+    -- aus Nicht-Existenz folgt Gleichheit mit ∅
+    have heq : RightSlice M x ε = (∅ : Set ℝ) := by
+      -- hier ist `simpa` korrekt; `simp` kann kein `using`
+      simpa [Set.not_nonempty_iff_eq_empty] using hempty
+    -- leere Menge ist abzählbar ⇒ Widerspruch zur Nicht-Abzählbarkeit
+    set_option linter.unnecessarySimpa false in
+    have : (RightSlice M x ε).Countable := by
+      simpa [heq] using (countable_empty : (∅ : Set ℝ).Countable)
+    exact hnotCnt this
+  rcases hne with ⟨y, hy⟩
+  rcases hy with ⟨hyM, hxlt, hylt⟩
+  exact ⟨y, hyM, hxlt, hylt⟩
+
+lemma exists_point_in_leftSlice_of_thick
+  {M : Set ℝ} {x ε : ℝ}
+  (hThick : TwoSidedThick M) (hx : x ∈ M) (hε : ε > 0) :
+  ∃ y, y ∈ M ∧ x - ε < y ∧ y < x := by
+  classical
+  -- linke Seite ist nicht abzählbar ⇒ insbesondere nicht leer
+  have hnotCnt : ¬ (LeftSlice M x ε).Countable := (hThick x hx ε hε).1
+  have hne : (LeftSlice M x ε).Nonempty := by
+    by_contra hempty
+    have heq : LeftSlice M x ε = (∅ : Set ℝ) := by
+      simpa [Set.not_nonempty_iff_eq_empty] using hempty
+    set_option linter.unnecessarySimpa false in
+    have : (LeftSlice M x ε).Countable := by
+      simpa [heq] using (countable_empty : (∅ : Set ℝ).Countable)
+    exact hnotCnt this
+  rcases hne with ⟨y, hy⟩
+  rcases hy with ⟨hyM, hlow, hupp⟩
+  exact ⟨y, hyM, hlow, hupp⟩
+
+/-- **Erste Auswahlstufe (1./3.-Regel)**:
+Aus `TwoSidedThick M` und zwei Punkten `x0 < x1` in `M` erhält man
+`x10 ∈ (x0, x0 + (x1 - x0)/3)` und `x11 ∈ (x1 - (x1 - x0)/3, x1)` in `M`. -/
+lemma first_third_selection
+  {M : Set ℝ} {x0 x1 : ℝ}
+  (hThick : TwoSidedThick M)
+  (hx0 : x0 ∈ M) (hx1 : x1 ∈ M) (hlt : x0 < x1) :
+  ∃ x10 x11,
+      x10 ∈ M ∧ x11 ∈ M ∧
+      x0 < x10 ∧ x10 < x0 + (x1 - x0) / 3 ∧
+      x1 - (x1 - x0) / 3 < x11 ∧ x11 < x1 := by
+  have hpos : 0 < x1 - x0 := sub_pos.mpr hlt
+  have hε : 0 < (x1 - x0) / 3 := by
+    have three_pos : (0 : ℝ) < 3 := by norm_num
+    exact div_pos hpos three_pos
+  -- rechter Slice an x0 mit ε
+  obtain ⟨x10, hx10M, hx0lt, hx10lt⟩ :=
+    exists_point_in_rightSlice_of_thick (M:=M) (x:=x0) (ε:=(x1 - x0)/3)
+      hThick hx0 hε
+  -- linker Slice an x1 mit demselben ε
+  obtain ⟨x11, hx11M, hx1low, hx11ltx1⟩ :=
+    exists_point_in_leftSlice_of_thick (M:=M) (x:=x1) (ε:=(x1 - x0)/3)
+      hThick hx1 hε
+  -- Zusammenstellen
+  exact ⟨x10, x11, hx10M, hx11M, hx0lt, hx10lt, hx1low, hx11ltx1⟩
+
+
 end ApplicationToGoal
 
 end PerfectFromThick
