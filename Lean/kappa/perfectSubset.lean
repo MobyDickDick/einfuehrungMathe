@@ -122,7 +122,25 @@ lemma nbhd_uncountable_in_Mr (M : Set ℝ) {x ε : ℝ}
   -- conclude
   have : ¬ (Set.diff (nbhd x ε ∩ M) (M0 M ∩ M)).Countable :=
     not_countable_diff_of_not_countable_of_countable hx' hC
-  simpa [hEq] using this
+    -- (nbhd ∩ Mr) enthält ( (nbhd ∩ M) \ (M0∩M) )
+  have hSub :
+      Set.diff (nbhd x ε ∩ M) (M0 M ∩ M) ⊆ nbhd x ε ∩ Mr M := by
+    intro y hy
+    rcases hy with ⟨⟨hyI, hyM⟩, hyNot⟩
+    -- aus ¬(y ∈ M0∩M) folgt y ∉ M0
+    have hyNotM0 : y ∉ M0 M := by
+      intro hyM0
+      exact hyNot ⟨hyM0, hyM⟩
+    exact ⟨hyI, ⟨hyM, hyNotM0⟩⟩
+
+  -- die Teilmenge ist unzählbar
+  have hUncDiff :
+      ¬ (Set.diff (nbhd x ε ∩ M) (M0 M ∩ M)).Countable :=
+    not_countable_diff_of_not_countable_of_countable hx' hC
+
+  -- Schluss per Monotonie: wäre (nbhd ∩ Mr) abzählbar, dann auch die Teilmenge
+  intro hcnt
+  exact hUncDiff (hcnt.mono hSub)
 
 /-! ### One-sided empty boundary sets in `A` and their countability -/
 
