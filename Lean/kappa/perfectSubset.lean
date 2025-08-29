@@ -693,7 +693,7 @@ def Perfect (S : Set ℝ) : Prop :=
 
 /-- Aus einer überabzählbaren Menge `M0` erhält man eine perfekte Teilmenge `K`. -/
 lemma exists_perfect_subset
-  {M0 : Set ℝ} (hM0 : ¬ M0.Countable) :
+  {M0 : Set ℝ} (_hM_0 : ¬ M0.Countable) :
   ∃ K : Set ℝ, K ⊆ closure M0 ∧ Perfect K := by
   -- Reduziere auf den Kern, der zwei-seitig dick ist
   let M1 := core M0
