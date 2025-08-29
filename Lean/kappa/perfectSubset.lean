@@ -674,6 +674,19 @@ lemma stage_succ_list
       simp [Lnew, hlen, List.length, two_mul,
             add_comm, add_left_comm, add_assoc]
 
+/-- In einer zweiseitig dicken Menge hat kein Punkt eine isolierte Umgebung. -/
+lemma no_isolated_points_of_thick
+  {M : Set ℝ} (hThick : TwoSidedThick M) :
+  ∀ x, x ∈ M → ∀ ε > 0,
+    ∃ y ∈ M, ∃ z ∈ M,
+      y < x ∧ x < z ∧ x - ε < y ∧ z < x + ε := by
+  intro x hx ε hε
+  obtain ⟨y, hyM, hy1, hy2⟩ :=
+    exists_point_in_leftSlice_of_thick (M:=M) (x:=x) (ε:=ε) hThick hx hε
+  obtain ⟨z, hzM, hz1, hz2⟩ :=
+    exists_point_in_rightSlice_of_thick (M:=M) (x:=x) (ε:=ε) hThick hx hε
+  exact ⟨y, hyM, z, hzM, hy2, hz1, hy1, hz2⟩
+
 end ApplicationToGoal
 
 end PerfectFromThick
