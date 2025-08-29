@@ -753,19 +753,18 @@ lemma exists_perfect_subset
 lemma not_countable_of_subset_of_not_countable {α} {A B : Set α}
     (hA : ¬ A.Countable) (hAB : A ⊆ B) : ¬ B.Countable := by
   intro hB
-  -- Aus `B` abzählbar und `A ⊆ B` folgt `A` abzählbar – Widerspruch.
   exact hA (hB.mono hAB)
-
 
 /-- Aus einer überabzählbaren Menge `M0` erhält man eine perfekte **und überabzählbare**
     Teilmenge `K` (genauer: `K ⊆ closure M0`). -/
 lemma exists_perfect_uncountable_subset
-  {M0 : Set ℝ} (hM0 : ¬ M0.Countable) :
+  {M0 : Set ℝ} (_hM0 : ¬ M0.Countable) :
   ∃ K : Set ℝ, K ⊆ closure M0 ∧ Perfect K ∧ ¬ K.Countable := by
+  classical
   -- Kern und Dicke
   let M1 := core M0
   have hThick : TwoSidedThick M1 := TwoSidedThick_core M0
-  have hM1 : ¬ M1.Countable := uncountable_core_of_uncountable (M := M0) hM0
+  have hM1 : ¬ M1.Countable := uncountable_core_of_uncountable (M := M0) _hM0
   -- nimm K := Abschluss des Kerns
   let K := closure M1
   refine ⟨K, ?subset, ?perfect, ?uncountableK⟩
@@ -788,7 +787,7 @@ lemma exists_perfect_uncountable_subset
       have hε2 : 0 < ε / 2 := by
         have : (0 : ℝ) < 2 := by norm_num
         exact half_pos hε
-      -- approxiere x aus M1
+      -- approximiere x aus M1
       rcases hx_cl (ε/2) hε2 with ⟨y0, hy0M1, hy0dist⟩
       have hy0abs : |y0 - x| < ε / 2 := by
         simpa [Real.dist_eq] using hy0dist
@@ -815,6 +814,11 @@ lemma exists_perfect_uncountable_subset
     have hsubset : M1 ⊆ K := subset_closure
     exact not_countable_of_subset_of_not_countable hM1 hsubset
 
+/-- Kurzer Alias. -/
+lemma exists_perfect_and_uncountable_in_closure
+  {M0 : Set ℝ} (hM0 : ¬ M0.Countable) :
+  ∃ K : Set ℝ, K ⊆ closure M0 ∧ Perfect K ∧ ¬ K.Countable :=
+  exists_perfect_uncountable_subset (M0 := M0) hM0
 
 
 end ApplicationToGoal
