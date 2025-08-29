@@ -64,6 +64,7 @@ lemma countable_M0_inter_M (M : Set ℝ) : (M0 M ∩ M).Countable := by
   classical
   -- rational intervals as indices
   let J : ℚ × ℚ → Set ℝ := fun p => Set.Ioo (p.1 : ℝ) (p.2 : ℝ)
+
   -- cover: each x ∈ M0∩M lies in some rational (a,b)⊆nbhd x ε with (J(a,b) ∩ M) countable
   have hcov :
       M0 M ∩ M ⊆ ⋃ p : ℚ × ℚ,
@@ -88,6 +89,7 @@ lemma countable_M0_inter_M (M : Set ℝ) : (M0 M ∩ M).Countable := by
     refine mem_iUnion.mpr ?_
     refine ⟨(a,b), ?_⟩
     simpa [J, hcnt'] using hxmem
+
   -- union of countably many countable sets is countable
   have hUnionCnt :
       (⋃ p : ℚ × ℚ, (if (J p ∩ M).Countable then (J p ∩ M) else (∅ : Set ℝ))).Countable := by
@@ -95,6 +97,7 @@ lemma countable_M0_inter_M (M : Set ℝ) : (M0 M ∩ M).Countable := by
     by_cases hp : (J p ∩ M).Countable
     · simpa [hp] using hp
     · simpa [hp] using (countable_empty : (∅ : Set ℝ).Countable)
+
   exact hUnionCnt.mono hcov
 
 /-! ### Uncountability of small neighbourhoods in Mr -/
@@ -115,32 +118,18 @@ lemma nbhd_uncountable_in_Mr (M : Set ℝ) {x ε : ℝ}
     ext y; constructor <;> intro hy
     · -- → direction
       rcases hy with ⟨hyI, hyMr⟩
-      exact ⟨⟨hyI, hyMr.1⟩, by intro h; exact hyMr.2 h.1⟩
+      exact ⟨⟨hyI, hyMr.1⟩, by
+        intro hmem
+        exact hyMr.2 hmem.1⟩
     · -- ← direction
       rcases hy with ⟨⟨hyI, hyM⟩, hyNot⟩
-      exact ⟨hyI, ⟨hyM, by intro h0; exact hyNot ⟨h0, hyM⟩⟩⟩
+      exact ⟨hyI, ⟨hyM, by
+        intro h0
+        exact hyNot ⟨h0, hyM⟩⟩⟩
   -- conclude
   have : ¬ (Set.diff (nbhd x ε ∩ M) (M0 M ∩ M)).Countable :=
     not_countable_diff_of_not_countable_of_countable hx' hC
-    -- (nbhd ∩ Mr) enthält ( (nbhd ∩ M) \ (M0∩M) )
-  have hSub :
-      Set.diff (nbhd x ε ∩ M) (M0 M ∩ M) ⊆ nbhd x ε ∩ Mr M := by
-    intro y hy
-    rcases hy with ⟨⟨hyI, hyM⟩, hyNot⟩
-    -- aus ¬(y ∈ M0∩M) folgt y ∉ M0
-    have hyNotM0 : y ∉ M0 M := by
-      intro hyM0
-      exact hyNot ⟨hyM0, hyM⟩
-    exact ⟨hyI, ⟨hyM, hyNotM0⟩⟩
-
-  -- die Teilmenge ist unzählbar
-  have hUncDiff :
-      ¬ (Set.diff (nbhd x ε ∩ M) (M0 M ∩ M)).Countable :=
-    not_countable_diff_of_not_countable_of_countable hx' hC
-
-  -- Schluss per Monotonie: wäre (nbhd ∩ Mr) abzählbar, dann auch die Teilmenge
-  intro hcnt
-  exact hUncDiff (hcnt.mono hSub)
+  simpa [hEq] using this
 
 /-! ### One-sided empty boundary sets in `A` and their countability -/
 
@@ -161,40 +150,52 @@ lemma countable_RightEmpty (A : Set ℝ) : (RightEmpty A).Countable := by
     exact ⟨q, δ, hpos, h1, h2, hemp⟩
   -- local choice map to ℚ
   let f : {x : ℝ // x ∈ RightEmpty A} → ℚ := fun x => Classical.choose (hxq x)
-    -- lokale Wahlabbildung auf ℚ
-  let f : {x : ℝ // x ∈ RightEmpty A} → ℚ := fun x => Classical.choose (hxq x)
-
-  -- wichtige Spezifikation für f: Binder ist der Subtyp!
-  have f_spec :
-      ∀ x : {x : ℝ // x ∈ RightEmpty A}, ∃ δ > 0,
-        (x : ℝ) < f x ∧ (f x : ℝ) < (x : ℝ) + δ ∧
-        (Set.Ioo (x : ℝ) ((x : ℝ) + δ) ∩ A) = ∅ := by
-    intro x
-    rcases Classical.choose_spec (hxq x) with ⟨δ, hpos, h1, h2, hemp⟩
+  have f_spec : ∀ x, ∃ δ > 0,
+      (x : ℝ) < f x ∧ (f x : ℝ) < (x : ℝ) + δ ∧ (Set.Ioo (x : ℝ) ((x : ℝ) + δ) ∩ A) = ∅ := by
+    intro x; rcases Classical.choose_spec (hxq x) with ⟨δ, hpos, h1, h2, hemp⟩
     exact ⟨δ, hpos, h1, h2, hemp⟩
-    -- alternativ auch möglich:
-    -- simpa using Classical.choose_spec (hxq x)
 
-  -- Injectivity: if f x = f y = q and x ≠ y, that q lies in both empty intervals, contradiction.
+  -- Injectivity without wlog: order-separate using emptiness.
   have finj : Function.Injective f := by
     intro x y hxy
-    -- data for x and y
     have hxA : (x : ℝ) ∈ A := (x.property).1
     have hyA : (y : ℝ) ∈ A := (y.property).1
     rcases f_spec x with ⟨δx, hxpos, hxltq, hqltx, hxemp⟩
     rcases f_spec y with ⟨δy, hypos, hyltq, hqlty, hyemp⟩
+    -- equality in ℝ
     have hxyℝ : (f x : ℝ) = (f y : ℝ) := by
       simpa using congrArg (fun t : ℚ => (t : ℝ)) hxy
     by_contra hne
-    wlog hxy' : (x : ℝ) ≤ (y : ℝ) generalizing x y
-    · have := le_total (x : ℝ) (y : ℝ); cases this with
-      | inl h => exact this h
-      | inr h => exact (this (x:=y) (y:=x) (hne := ne_comm.mp hne) (hxy' := h)).symm
-    have : (y : ℝ) < (x : ℝ) + δx := lt_of_le_of_lt hxy' hqltx
-    have y_in : (y : ℝ) ∈ Set.Ioo (x : ℝ) ((x : ℝ) + δx) := ⟨lt_of_le_of_lt hxy' hxltq, this⟩
-    have : (y : ℝ) ∈ (Set.Ioo (x : ℝ) ((x : ℝ) + δx) ∩ A) := ⟨y_in, hyA⟩
-          simpa [hxemp] using this
-  -- Build an injection into ℕ via Encodable ℚ
+    -- compare x and y on ℝ
+    have hxy_ne : (x : ℝ) ≠ (y : ℝ) := by
+      intro h
+      apply hne
+      apply Subtype.ext
+      simpa using h
+    cases lt_or_gt_of_ne hxy_ne with
+    | inl hxylt =>
+      -- From emptiness at x: since y ∈ A and x < y, we must have x+δx ≤ y.
+      have sep_xy : (x : ℝ) + δx ≤ (y : ℝ) := by
+        by_contra hylt
+        -- then x < y < x+δx, contradiction
+        have : (y : ℝ) ∈ Set.Ioo (x : ℝ) ((x : ℝ) + δx) := ⟨hxylt, lt_of_not_ge hylt⟩
+        have : (y : ℝ) ∈ Set.Ioo (x : ℝ) ((x : ℝ) + δx) ∩ A := ⟨this, hyA⟩
+        simpa [hxemp] using this
+      have fx_lt_y : (f x : ℝ) < (y : ℝ) := lt_of_lt_of_le hqltx sep_xy
+      have y_lt_fy : (y : ℝ) < (f y : ℝ) := hyltq
+      exact (ne_of_lt (lt_trans fx_lt_y y_lt_fy)) hxyℝ
+    | inr hyltx =>
+      -- symmetric: use emptiness at y
+      have sep_yx : (y : ℝ) + δy ≤ (x : ℝ) := by
+        by_contra hxlt
+        have : (x : ℝ) ∈ Set.Ioo (y : ℝ) ((y : ℝ) + δy) := ⟨hyltx, lt_of_not_ge hxlt⟩
+        have : (x : ℝ) ∈ Set.Ioo (y : ℝ) ((y : ℝ) + δy) ∩ A := ⟨this, hxA⟩
+        simpa [hyemp] using this
+      have fy_lt_x : (f y : ℝ) < (x : ℝ) := lt_of_lt_of_le hqlty sep_yx
+      have x_lt_fx : (x : ℝ) < (f x : ℝ) := hxltq
+      exact (ne_of_lt (lt_trans fy_lt_x x_lt_fx)) (hxyℝ.symm)
+
+  -- Countability from injectivity into ℚ (countable)
   refine Set.countable_iff.mpr ?_
   refine ⟨fun x : {x : ℝ // x ∈ RightEmpty A} => Encodable.encode (f x), ?_⟩
   intro x y h
@@ -211,29 +212,62 @@ lemma countable_LeftEmpty (A : Set ℝ) : (LeftEmpty A).Countable := by
     rcases exists_rat_btwn hxlt with ⟨q, h1, h2⟩
     exact ⟨q, δ, hpos, h1, h2, hemp⟩
   let f : {x : ℝ // x ∈ LeftEmpty A} → ℚ := fun x => Classical.choose (hxq x)
-  let f : {x : ℝ // x ∈ LeftEmpty A} → ℚ := fun x => Classical.choose (hxq x)
-
-  have f_spec :
-      ∀ x : {x : ℝ // x ∈ LeftEmpty A}, ∃ δ > 0,
-        (x : ℝ) - δ < f x ∧ (f x : ℝ) < (x : ℝ) ∧
-        (Set.Ioo ((x : ℝ) - δ) (x : ℝ) ∩ A) = ∅ := by
-    intro x
-    rcases Classical.choose_spec (hxq x) with ⟨δ, hpos, h1, h2, hemp⟩
+  have f_spec : ∀ x, ∃ δ > 0,
+      (x : ℝ) - δ < f x ∧ (f x : ℝ) < (x : ℝ) ∧ (Set.Ioo ((x : ℝ) - δ) (x : ℝ) ∩ A) = ∅ := by
+    intro x; rcases Classical.choose_spec (hxq x) with ⟨δ, hpos, h1, h2, hemp⟩
     exact ⟨δ, hpos, h1, h2, hemp⟩
-    -- oder: simpa using Classical.choose_spec (hxq x)
+
+  -- Injectivity (left version), again without wlog
   have finj : Function.Injective f := by
     intro x y hxy
     have hxA : (x : ℝ) ∈ A := (x.property).1
     have hyA : (y : ℝ) ∈ A := (y.property).1
     rcases f_spec x with ⟨δx, hxpos, hqxlt, hltx, hxemp⟩
     rcases f_spec y with ⟨δy, hypos, hqylt, hlty, hyemp⟩
-    have : (f x : ℝ) = f y := by simpa using congrArg (fun t => (t : ℝ)) hxy
+    have hxyℝ : (f x : ℝ) = (f y : ℝ) := by
+      simpa using congrArg (fun t : ℚ => (t : ℝ)) hxy
     by_contra hne
-    wlog hxy' : (y : ℝ) ≤ (x : ℝ) generalizing x y
-    have x_in : (x : ℝ) ∈ Set.Ioo ((y : ℝ) - δy) (y : ℝ) :=
-      ⟨lt_of_lt_of_le hqylt hxy', lt_of_le_of_lt hxy' hlty⟩
-    have : (x : ℝ) ∈ (Set.Ioo ((y : ℝ) - δy) (y : ℝ) ∩ A) := ⟨x_in, hxA⟩
-    simpa [hyemp] using this
+    have hxy_ne : (x : ℝ) ≠ (y : ℝ) := by
+      intro h
+      apply hne
+      apply Subtype.ext
+      simpa using h
+    cases lt_or_gt_of_ne hxy_ne with
+    | inl hxylt =>
+      -- y < x? nein: this case is x < y (since hxylt : (x:ℝ) < (y:ℝ)).
+      -- Use emptiness at y on the left of y: since x ∈ A and x < y, we get x ≤ y - δy.
+      have sep_xy : (x : ℝ) ≤ (y : ℝ) - δy := by
+        by_contra hxgt
+        have : (x : ℝ) ∈ Set.Ioo ((y : ℝ) - δy) (y : ℝ) := ⟨lt_of_not_ge hxgt, lt_of_le_of_lt le_rfl hxylt⟩
+        have : (x : ℝ) ∈ Set.Ioo ((y : ℝ) - δy) (y : ℝ) ∩ A := ⟨this, hxA⟩
+        simpa [hyemp] using this
+      -- then (f x) < x ≤ y - δy < y, and (f y) < y; we will separate via the other side:
+      -- Actually, stronger: from hqxlt: (x - δx) < f x, so f x ≤ y - δy does NOT hold a priori.
+      -- Instead, use emptiness at x to place (f y) relative to x by symmetry.
+      -- Better: we separate using the endpoint orders:
+      have fx_lt_y : (f x : ℝ) < (y : ℝ) := lt_trans hltx (le_of_lt hxylt)
+      have x_lt_fy : (x : ℝ) < (f y : ℝ) := lt_of_le_of_lt sep_xy hlty
+      -- Now (f x) < y and x < (f y). This already rules out equality (two numbers on opposite sides unless x=y).
+      -- Combine via trichotomy: from fx<y and x<fy and x<y, we still need a direct contradiction:
+      -- Use: if fx = fy, then fx < y and y ≤ fx is impossible since hlty says y > fy = fx.
+      have y_lt_fy : (y : ℝ) < (f y : ℝ) := hlty
+      exact (ne_of_lt (lt_trans fx_lt_y y_lt_fy)) hxyℝ
+    | inr hyltx =>
+      -- case (y : ℝ) < (x : ℝ)
+      -- Use emptiness at x (left): since y ∈ A and y < x, we must have y ≤ x - δx.
+      have sep_yx : (y : ℝ) ≤ (x : ℝ) - δx := by
+        by_contra hygt
+        have : (y : ℝ) ∈ Set.Ioo ((x : ℝ) - δx) (x : ℝ) := ⟨lt_of_not_ge hygt, lt_of_le_of_lt le_rfl hyltx⟩
+        have : (y : ℝ) ∈ Set.Ioo ((x : ℝ) - δx) (x : ℝ) ∩ A := ⟨this, hyA⟩
+        simpa [hxemp] using this
+      have fy_lt_x : (f y : ℝ) < (x : ℝ) := lt_of_lt_of_le hqylt (le_of_lt hyltx)
+      have y_lt_fx : (y : ℝ) < (f x : ℝ) := by
+        have : (x : ℝ) - δx < (f x : ℝ) := hqxlt
+        exact lt_of_le_of_lt sep_yx this
+      -- So (f y) < x and y < (f x). With (y<x), we get (f y) < (f x), contradicting equality.
+      exact (ne_of_lt (lt_of_lt_of_le fy_lt_x (le_of_lt y_lt_fx))) (hxyℝ.symm)
+
+  -- Countability from injectivity into ℚ
   refine Set.countable_iff.mpr ?_
   refine ⟨fun x : {x : ℝ // x ∈ LeftEmpty A} => Encodable.encode (f x), ?_⟩
   intro x y h
@@ -277,7 +311,7 @@ lemma twoSided_thick_on_Mb (M : Set ℝ) :
   rcases exL with ⟨yL, hyL_Mr, hL1, hL2⟩
   rcases exR with ⟨yR, hyR_Mr, hR1, hR2⟩
 
-  -- choose radii that fit wholly inside the halves, without dividing (simpler inequalities)
+  -- radii that sit inside the halves (no division tricks)
   have dL1 : 0 < yL - (x - ε) := sub_pos.mpr (by linarith)
   have dL2 : 0 < x - yL := sub_pos.mpr hL2
   let ρL : ℝ := min (yL - (x - ε)) (x - yL)
@@ -320,8 +354,7 @@ lemma twoSided_thick_on_Mb (M : Set ℝ) :
       rcases hz with ⟨hzI, hzMr⟩
       have hI := subL hzI
       exact ⟨hzMr, hI.1, hI.2⟩
-    have : (nbhd yL ρL ∩ Mr M).Countable := hcnt.mono sub_to_LeftSlice
-    exact uncL this
+    exact uncL (hcnt.mono sub_to_LeftSlice)
   have hRight_unc_Mr : ¬ (RightSlice (Mr M) x ε).Countable := by
     intro hcnt
     have sub_to_RightSlice : (nbhd yR ρR ∩ Mr M) ⊆ RightSlice (Mr M) x ε := by
@@ -329,8 +362,7 @@ lemma twoSided_thick_on_Mb (M : Set ℝ) :
       rcases hz with ⟨hzI, hzMr⟩
       have hI := subR hzI
       exact ⟨hzMr, hI.1, hI.2⟩
-    have : (nbhd yR ρR ∩ Mr M).Countable := hcnt.mono sub_to_RightSlice
-    exact uncR this
+    exact uncR (hcnt.mono sub_to_RightSlice)
 
   -- remove the countable boundary set L∪R to pass from Mr to Mb
   have hBcnt : (LeftEmpty (Mr M) ∪ RightEmpty (Mr M)).Countable :=
