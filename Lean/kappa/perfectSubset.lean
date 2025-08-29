@@ -1,5 +1,5 @@
 /-
-Two‑sided thick core via removing the open "thin" part M₀ and the one‑sided empty boundary points.
+Two-sided thick core via removing the open "thin" part M₀ and the one-sided empty boundary points.
 Purely elementary (no measure, no CH), only real analysis & countability.
 
 Main result:
@@ -24,10 +24,10 @@ namespace TwoSidedCore
 
 /-! ### Basic intervals and slices -/
 
-/-- Open symmetric ε‑neighbourhood as an open interval. -/
+/-- Open symmetric ε-neighbourhood as an open interval. -/
 @[simp] def nbhd (x ε : ℝ) : Set ℝ := Set.Ioo (x - ε) (x + ε)
 
-/-- Left and right half‑intervals, restricted to a set `A`. -/
+/-- Left and right half-intervals, restricted to a set `A`. -/
 @[simp] def LeftSlice  (A : Set ℝ) (x ε : ℝ) : Set ℝ :=
   { y : ℝ | y ∈ A ∧ x - ε < y ∧ y < x }
 @[simp] def RightSlice (A : Set ℝ) (x ε : ℝ) : Set ℝ :=
@@ -62,11 +62,9 @@ lemma not_countable_diff_of_not_countable_of_countable
 /-- Use the countable rational basis to cover witnesses. -/
 lemma countable_M0_inter_M (M : Set ℝ) : (M0 M ∩ M).Countable := by
   classical
-  -- rationale Intervalle als Index
+  -- rational intervals as indices
   let J : ℚ × ℚ → Set ℝ := fun p => Set.Ioo (p.1 : ℝ) (p.2 : ℝ)
-
-  -- Abdeckung: jedes x ∈ M0∩M liegt in einem rationalen Intervall (a,b)⊆nbhd x ε,
-  -- für das (J(a,b) ∩ M) abzählbar ist.
+  -- cover: each x ∈ M0∩M lies in some rational (a,b)⊆nbhd x ε with (J(a,b) ∩ M) countable
   have hcov :
       M0 M ∩ M ⊆ ⋃ p : ℚ × ℚ,
         (if (J p ∩ M).Countable then (J p ∩ M) else (∅ : Set ℝ)) := by
@@ -80,28 +78,23 @@ lemma countable_M0_inter_M (M : Set ℝ) : (M0 M ∩ M).Countable := by
     -- J(a,b) ⊆ nbhd x ε
     have hsub : J (a,b) ⊆ nbhd x ε := by
       intro y hy
-       -- hy : y ∈ Ioo (a:ℝ) b, also hy.1 : (a:ℝ) < y und hy.2 : y < (b:ℝ)
       exact ⟨lt_trans ha1 hy.1, lt_trans hy.2 hb2⟩
-    -- also ist (J(a,b) ∩ M) abzählbar
+    -- then (J(a,b) ∩ M) is countable
     have hcnt' : (J (a,b) ∩ M).Countable :=
-      hcnt.mono (by
-        intro y hy
-        exact ⟨hsub hy.1, hy.2⟩)
-    -- x liegt in J(a,b) ∩ M
+      hcnt.mono (by intro y hy; exact ⟨hsub hy.1, hy.2⟩)
+    -- x ∈ J(a,b) ∩ M
     have hxmem : x ∈ J (a,b) ∩ M := ⟨⟨by simpa using ha2, by simpa using hb1⟩, hxM⟩
-    -- packe in die Union; der if-Zweig wählt hier J(a,b)∩M
+    -- put into the union; the if-branch chooses J(a,b)∩M here
     refine mem_iUnion.mpr ?_
     refine ⟨(a,b), ?_⟩
     simpa [J, hcnt'] using hxmem
-
-  -- Vereinigung abzählbar vieler abzählbarer Mengen ist abzählbar
+  -- union of countably many countable sets is countable
   have hUnionCnt :
       (⋃ p : ℚ × ℚ, (if (J p ∩ M).Countable then (J p ∩ M) else (∅ : Set ℝ))).Countable := by
     refine countable_iUnion (fun p => ?_)
     by_cases hp : (J p ∩ M).Countable
     · simpa [hp] using hp
     · simpa [hp] using (countable_empty : (∅ : Set ℝ).Countable)
-
   exact hUnionCnt.mono hcov
 
 /-! ### Uncountability of small neighbourhoods in Mr -/
@@ -109,31 +102,36 @@ lemma countable_M0_inter_M (M : Set ℝ) : (M0 M ∩ M).Countable := by
 lemma nbhd_uncountable_in_Mr (M : Set ℝ) {x ε : ℝ}
   (hx : x ∈ Mr M) (hε : ε > 0) : ¬ ((nbhd x ε ∩ Mr M).Countable) := by
   classical
-  -- from x∈Mr: (nbhd x ε ∩ M) is uncountable for all ε>0
   have hxM : x ∈ M := hx.1
   have hxnot : x ∉ M0 M := hx.2
+  -- if (nbhd x ε ∩ M) were countable, x ∈ M0 M
   have hx' : ¬ (nbhd x ε ∩ M).Countable := by
-    intro hcnt; exact hxnot ⟨ε, hε, hcnt.mono (by intro y hy; exact ⟨hy.1, hy.2.2⟩)⟩
+    intro hcnt
+    exact hxnot ⟨ε, hε, hcnt⟩
   -- subtract the countable (M0∩M)
   have hC : (M0 M ∩ M).Countable := countable_M0_inter_M M
   -- identify (nbhd ∩ Mr) as a set difference
   have hEq : nbhd x ε ∩ Mr M = Set.diff (nbhd x ε ∩ M) (M0 M ∩ M) := by
     ext y; constructor <;> intro hy
-    · rcases hy with ⟨hyI, hyMr⟩; exact ⟨⟨hyI, hyMr.1⟩, ⟨hyMr.1, hyMr.2⟩⟩
-    · rcases hy with ⟨⟨hyI, hyM⟩, hyMem⟩; exact ⟨hyI, ⟨hyM, hyMem.2⟩⟩
+    · -- → direction
+      rcases hy with ⟨hyI, hyMr⟩
+      exact ⟨⟨hyI, hyMr.1⟩, by intro h; exact hyMr.2 h.1⟩
+    · -- ← direction
+      rcases hy with ⟨⟨hyI, hyM⟩, hyNot⟩
+      exact ⟨hyI, ⟨hyM, by intro h0; exact hyNot ⟨h0, hyM⟩⟩⟩
   -- conclude
   have : ¬ (Set.diff (nbhd x ε ∩ M) (M0 M ∩ M)).Countable :=
     not_countable_diff_of_not_countable_of_countable hx' hC
   simpa [hEq] using this
 
-/-! ### One‑sided empty boundary sets in `A` and their countability -/
+/-! ### One-sided empty boundary sets in `A` and their countability -/
 
 @[simp] def RightEmpty (A : Set ℝ) : Set ℝ :=
   { x : ℝ | x ∈ A ∧ ∃ δ > 0, (Set.Ioo x (x + δ) ∩ A) = ∅ }
 @[simp] def LeftEmpty (A : Set ℝ) : Set ℝ :=
-  { x : ℝ | x ∈ A ∧ ∃ δ > 0, (Set.Ioo (x - δ) x ∩ A) = ∅ }
+  { x : ℝ | x ∈ A ∧ ∃ δ > 0, (Set.Ioo ((x) - δ) x ∩ A) = ∅ }
 
-/-- Countability of right‑empty boundary points of `A` via an injection into ℚ. -/
+/-- Countability of right-empty boundary points of `A` via an injection into ℚ. -/
 lemma countable_RightEmpty (A : Set ℝ) : (RightEmpty A).Countable := by
   classical
   -- For each x, pick a rational q with x < q < x+δ where (x,x+δ)∩A = ∅.
@@ -143,14 +141,13 @@ lemma countable_RightEmpty (A : Set ℝ) : (RightEmpty A).Countable := by
     have hxlt : (x : ℝ) < (x : ℝ) + δ := by simpa using lt_add_of_pos_right (x : ℝ) hpos
     rcases exists_rat_btwn hxlt with ⟨q, h1, h2⟩
     exact ⟨q, δ, hpos, h1, h2, hemp⟩
-  noncomputable
-  def f : {x : ℝ // x ∈ RightEmpty A} → ℚ := fun x => Classical.choose (hxq x)
+  -- local choice map to ℚ
+  let f : {x : ℝ // x ∈ RightEmpty A} → ℚ := fun x => Classical.choose (hxq x)
   have f_spec : ∀ x, ∃ δ > 0,
       (x : ℝ) < f x ∧ (f x : ℝ) < (x : ℝ) + δ ∧ (Set.Ioo (x : ℝ) ((x : ℝ) + δ) ∩ A) = ∅ := by
-    intro x
-    rcases Classical.choose_spec (hxq x) with ⟨δ, hpos, h1, h2, hemp⟩
+    intro x; rcases Classical.choose_spec (hxq x) with ⟨δ, hpos, h1, h2, hemp⟩
     exact ⟨δ, hpos, h1, h2, hemp⟩
-  -- Injectivity: if f x = f y = q, then x=y (otherwise q lies in both empty intervals)
+  -- Injectivity: if f x = f y = q and x ≠ y, that q lies in both empty intervals, contradiction.
   have finj : Function.Injective f := by
     intro x y hxy
     have hxA : (x : ℝ) ∈ A := (x.property).1
@@ -158,25 +155,23 @@ lemma countable_RightEmpty (A : Set ℝ) : (RightEmpty A).Countable := by
     rcases f_spec x with ⟨δx, hxpos, hxltq, hqltx, hxemp⟩
     rcases f_spec y with ⟨δy, hypos, hyltq, hqlty, hyemp⟩
     have : (f x : ℝ) = f y := by simpa using congrArg (fun t => (t : ℝ)) hxy
-    have hxqmem : (f x : ℝ) ∈ Set.Ioo (x : ℝ) ((x : ℝ) + δx) := ⟨hxltq, hqltx⟩
-    have hyqmem : (f y : ℝ) ∈ Set.Ioo (y : ℝ) ((y : ℝ) + δy) := ⟨hyltq, hqlty⟩
     by_contra hne
-    wlog hxy' : (x : ℝ) ≤ (y : ℝ)
-    · exact (this $ (le_total _ _).resolve_left hxy').elim
+    wlog hxy' : (x : ℝ) ≤ (y : ℝ) generalizing x y
+    · have := le_total (x : ℝ) (y : ℝ); cases this with
+      | inl h => exact this h
+      | inr h => exact (this (x:=y) (y:=x) (hne := ne_comm.mp hne) (hxy' := h)).symm
     have : (y : ℝ) < (x : ℝ) + δx := lt_of_le_of_lt hxy' hqltx
-    have : (y : ℝ) ∈ Set.Ioo (x : ℝ) ((x : ℝ) + δx) := ⟨lt_of_le_of_lt hxy' hxltq, this⟩
-    have : (y : ℝ) ∈ (Set.Ioo (x : ℝ) ((x : ℝ) + δx) ∩ A) := ⟨this, hyA⟩
+    have y_in : (y : ℝ) ∈ Set.Ioo (x : ℝ) ((x : ℝ) + δx) := ⟨lt_of_le_of_lt hxy' hxltq, this⟩
+    have : (y : ℝ) ∈ (Set.Ioo (x : ℝ) ((x : ℝ) + δx) ∩ A) := ⟨y_in, hyA⟩
     simpa [hxemp] using this
-  -- Build an injection into ℕ via an injection ℚ → ℕ (since ℚ is countable)
-  have : (RightEmpty A).Countable := by
-    refine Set.countable_iff.mpr ?_
-    refine ⟨fun x : {x : ℝ // x ∈ RightEmpty A} => Encodable.encode (f x), ?_⟩
-    intro x y h
-    have : f x = f y := by exact Encodable.encode_injective h
-    exact finj this
-  simpa using this
+  -- Build an injection into ℕ via Encodable ℚ
+  refine Set.countable_iff.mpr ?_
+  refine ⟨fun x : {x : ℝ // x ∈ RightEmpty A} => Encodable.encode (f x), ?_⟩
+  intro x y h
+  have : f x = f y := Encodable.encode_injective h
+  exact finj this
 
-/-- Countability of left‑empty boundary points (mirror of the right version). -/
+/-- Countability of left-empty boundary points (mirror of the right version). -/
 lemma countable_LeftEmpty (A : Set ℝ) : (LeftEmpty A).Countable := by
   classical
   have hxq : ∀ x : {x : ℝ // x ∈ LeftEmpty A},
@@ -185,12 +180,10 @@ lemma countable_LeftEmpty (A : Set ℝ) : (LeftEmpty A).Countable := by
     have hxlt : (x : ℝ) - δ < (x : ℝ) := by simpa using sub_lt_self (a:=(x:ℝ)) hpos
     rcases exists_rat_btwn hxlt with ⟨q, h1, h2⟩
     exact ⟨q, δ, hpos, h1, h2, hemp⟩
-  noncomputable
-  def f : {x : ℝ // x ∈ LeftEmpty A} → ℚ := fun x => Classical.choose (hxq x)
+  let f : {x : ℝ // x ∈ LeftEmpty A} → ℚ := fun x => Classical.choose (hxq x)
   have f_spec : ∀ x, ∃ δ > 0,
       (x : ℝ) - δ < f x ∧ (f x : ℝ) < (x : ℝ) ∧ (Set.Ioo ((x : ℝ) - δ) (x : ℝ) ∩ A) = ∅ := by
-    intro x
-    rcases Classical.choose_spec (hxq x) with ⟨δ, hpos, h1, h2, hemp⟩
+    intro x; rcases Classical.choose_spec (hxq x) with ⟨δ, hpos, h1, h2, hemp⟩
     exact ⟨δ, hpos, h1, h2, hemp⟩
   have finj : Function.Injective f := by
     intro x y hxy
@@ -200,19 +193,18 @@ lemma countable_LeftEmpty (A : Set ℝ) : (LeftEmpty A).Countable := by
     rcases f_spec y with ⟨δy, hypos, hqylt, hlty, hyemp⟩
     have : (f x : ℝ) = f y := by simpa using congrArg (fun t => (t : ℝ)) hxy
     by_contra hne
-    wlog hxy' : (y : ℝ) ≤ (x : ℝ)
-    have : (x : ℝ) ∈ Set.Ioo ((y : ℝ) - δy) (y : ℝ) := ⟨lt_of_lt_of_le hqylt hxy', lt_of_le_of_lt hxy' hlty⟩
-    have : (x : ℝ) ∈ (Set.Ioo ((y : ℝ) - δy) (y : ℝ) ∩ A) := ⟨this, hxA⟩
+    wlog hxy' : (y : ℝ) ≤ (x : ℝ) generalizing x y
+    have x_in : (x : ℝ) ∈ Set.Ioo ((y : ℝ) - δy) (y : ℝ) :=
+      ⟨lt_of_lt_of_le hqylt hxy', lt_of_le_of_lt hxy' hlty⟩
+    have : (x : ℝ) ∈ (Set.Ioo ((y : ℝ) - δy) (y : ℝ) ∩ A) := ⟨x_in, hxA⟩
     simpa [hyemp] using this
-  have : (LeftEmpty A).Countable := by
-    refine Set.countable_iff.mpr ?_
-    refine ⟨fun x : {x : ℝ // x ∈ LeftEmpty A} => Encodable.encode (f x), ?_⟩
-    intro x y h
-    have : f x = f y := by exact Encodable.encode_injective h
-    exact finj this
-  simpa using this
+  refine Set.countable_iff.mpr ?_
+  refine ⟨fun x : {x : ℝ // x ∈ LeftEmpty A} => Encodable.encode (f x), ?_⟩
+  intro x y h
+  have : f x = f y := Encodable.encode_injective h
+  exact finj this
 
-/-! ### Build the two‑sided thick core -/
+/-! ### Build the two-sided thick core -/
 
 @[simp] def Mb (M : Set ℝ) : Set ℝ :=
   Mr M \ (LeftEmpty (Mr M) ∪ RightEmpty (Mr M))
@@ -225,15 +217,14 @@ lemma twoSided_thick_on_Mb (M : Set ℝ) :
   classical
   intro x hx ε hε
   rcases hx with ⟨hxMr, hxNotB⟩
-  have hxnotL : x ∉ LeftEmpty (Mr M) := by exact fun h => hxNotB (Or.inl h)
-  have hxnotR : x ∉ RightEmpty (Mr M) := by exact fun h => hxNotB (Or.inr h)
-  -- For all ε>0 the halves in Mr are nonempty (by definition of not in Left/RightEmpty)
+  have hxnotL : x ∉ LeftEmpty (Mr M) := fun h => hxNotB (Or.inl h)
+  have hxnotR : x ∉ RightEmpty (Mr M) := fun h => hxNotB (Or.inr h)
+  -- For all ε>0 the halves in Mr are nonempty (otherwise x ∈ Left/RightEmpty)
   have exL : ∃ y, y ∈ Mr M ∧ x - ε < y ∧ y < x := by
-    -- (Ioo (x-ε) x ∩ Mr M) ≠ ∅
     have : (Set.Ioo (x-ε) x ∩ Mr M) ≠ ∅ := by
-      -- otherwise x∈LeftEmpty
       by_contra hempty
-      have : x ∈ LeftEmpty (Mr M) := ⟨hxMr, ⟨ε, hε, by simpa [LeftEmpty, Set.eq_empty_iff_forall_notMem] using hempty⟩⟩
+      have : x ∈ LeftEmpty (Mr M) :=
+        ⟨hxMr, ⟨ε, hε, by simpa [LeftEmpty, Set.eq_empty_iff_forall_notMem] using hempty⟩⟩
       exact hxnotL this
     rcases Set.nonempty_iff_ne_empty.mpr this with ⟨y, hy⟩
     rcases hy with ⟨hyI, hyMr⟩
@@ -241,84 +232,99 @@ lemma twoSided_thick_on_Mb (M : Set ℝ) :
   have exR : ∃ y, y ∈ Mr M ∧ x < y ∧ y < x + ε := by
     have : (Set.Ioo x (x+ε) ∩ Mr M) ≠ ∅ := by
       by_contra hempty
-      have : x ∈ RightEmpty (Mr M) := ⟨hxMr, ⟨ε, hε, by simpa [RightEmpty, Set.eq_empty_iff_forall_notMem] using hempty⟩⟩
+      have : x ∈ RightEmpty (Mr M) :=
+        ⟨hxMr, ⟨ε, hε, by simpa [RightEmpty, Set.eq_empty_iff_forall_notMem] using hempty⟩⟩
       exact hxnotR this
     rcases Set.nonempty_iff_ne_empty.mpr this with ⟨y, hy⟩
     rcases hy with ⟨hyI, hyMr⟩
     exact ⟨y, hyMr, hyI.1, hyI.2⟩
   rcases exL with ⟨yL, hyL_Mr, hL1, hL2⟩
   rcases exR with ⟨yR, hyR_Mr, hR1, hR2⟩
-  -- radii that sit inside the halves
+
+  -- choose radii that fit wholly inside the halves, without dividing (simpler inequalities)
   have dL1 : 0 < yL - (x - ε) := sub_pos.mpr (by linarith)
   have dL2 : 0 < x - yL := sub_pos.mpr hL2
-  let ρL : ℝ := (min (yL - (x - ε)) (x - yL)) / 2
-  have ρLpos : ρL > 0 := by
-    have : 0 < min (yL - (x - ε)) (x - yL) := lt_min_iff.mpr ⟨dL1, dL2⟩
-    exact (half_pos this)
+  let ρL : ℝ := min (yL - (x - ε)) (x - yL)
+  have ρLpos : ρL > 0 := lt_min_iff.mpr ⟨dL1, dL2⟩
   have subL : nbhd yL ρL ⊆ Set.Ioo (x-ε) x := by
     intro z hz; rcases hz with ⟨hz1, hz2⟩
-    have hle1 : ρL ≤ yL - (x - ε) := by
-      dsimp [ρL]; exact div_le_iff.mpr (by have := min_le_left _ _; nlinarith)
-    have hle2 : ρL ≤ x - yL := by
-      dsimp [ρL]; exact div_le_iff.mpr (by have := min_le_right _ _; nlinarith)
-    constructor
-    · have : z > yL - ρL := hz1
-      have : z > yL - (yL - (x - ε)) := lt_of_lt_of_le this (by nlinarith [hle1])
-      simpa using this
-    · have : z < yL + ρL := hz2
-      have : z < yL + (x - yL) := lt_of_le_of_lt (by nlinarith [hle2]) this
-      simpa using this
+    have h1 : x - ε ≤ yL - ρL := by
+      have : ρL ≤ yL - (x - ε) := min_le_left _ _
+      linarith
+    have h2 : yL + ρL ≤ x := by
+      have : ρL ≤ x - yL := min_le_right _ _
+      linarith
+    exact ⟨lt_of_le_of_lt h1 hz1, lt_of_lt_of_le hz2 h2⟩
+
   have dR1 : 0 < yR - x := sub_pos.mpr hR1
   have dR2 : 0 < x + ε - yR := sub_pos.mpr (by linarith)
-  let ρR : ℝ := (min (yR - x) (x + ε - yR)) / 2
-  have ρRpos : ρR > 0 := by
-    have : 0 < min (yR - x) (x + ε - yR) := lt_min_iff.mpr ⟨dR1, dR2⟩
-    exact (half_pos this)
+  let ρR : ℝ := min (yR - x) (x + ε - yR)
+  have ρRpos : ρR > 0 := lt_min_iff.mpr ⟨dR1, dR2⟩
   have subR : nbhd yR ρR ⊆ Set.Ioo x (x+ε) := by
     intro z hz; rcases hz with ⟨hz1, hz2⟩
-    have hle1 : ρR ≤ yR - x := by dsimp [ρR]; exact div_le_iff.mpr (by have := min_le_left _ _; nlinarith)
-    have hle2 : ρR ≤ x + ε - yR := by dsimp [ρR]; exact div_le_iff.mpr (by have := min_le_right _ _; nlinarith)
-    constructor
-    · have : z > yR - ρR := hz1
-      have : z > yR - (yR - x) := lt_of_lt_of_le this (by nlinarith [hle1])
-      simpa using this
-    · have : z < yR + ρR := hz2
-      have : z < yR + (x + ε - yR) := lt_of_le_of_lt (by nlinarith [hle2]) this
-      simpa using this
+    have h1 : x ≤ yR - ρR := by
+      have : ρR ≤ yR - x := min_le_left _ _
+      linarith
+    have h2 : yR + ρR ≤ x + ε := by
+      have : ρR ≤ x + ε - yR := min_le_right _ _
+      linarith
+    exact ⟨lt_of_le_of_lt h1 hz1, lt_of_lt_of_le hz2 h2⟩
+
   -- uncountability in Mr at those inner neighbourhoods
   have uncL : ¬ (nbhd yL ρL ∩ Mr M).Countable :=
     nbhd_uncountable_in_Mr (M:=M) (x:=yL) (ε:=ρL) ⟨hyL_Mr.1, hyL_Mr.2⟩ ρLpos
   have uncR : ¬ (nbhd yR ρR ∩ Mr M).Countable :=
     nbhd_uncountable_in_Mr (M:=M) (x:=yR) (ε:=ρR) ⟨hyR_Mr.1, hyR_Mr.2⟩ ρRpos
-  -- deduce halves in Mr are uncountable via monotonicity
+
+  -- deduce halves in Mr are uncountable via monotonicity (subset-of-left/right slices)
   have hLeft_unc_Mr  : ¬ (LeftSlice (Mr M) x ε).Countable := by
     intro hcnt
-    have : (nbhd yL ρL ∩ Mr M).Countable :=
-      hcnt.mono (by intro z hz; rcases hz with ⟨hzI, hzMr⟩; exact ⟨subL hzI, hzMr⟩)
+    have sub_to_LeftSlice : (nbhd yL ρL ∩ Mr M) ⊆ LeftSlice (Mr M) x ε := by
+      intro z hz
+      rcases hz with ⟨hzI, hzMr⟩
+      have hI := subL hzI
+      exact ⟨hzMr, hI.1, hI.2⟩
+    have : (nbhd yL ρL ∩ Mr M).Countable := hcnt.mono sub_to_LeftSlice
     exact uncL this
   have hRight_unc_Mr : ¬ (RightSlice (Mr M) x ε).Countable := by
     intro hcnt
-    have : (nbhd yR ρR ∩ Mr M).Countable :=
-      hcnt.mono (by intro z hz; rcases hz with ⟨hzI, hzMr⟩; exact ⟨subR hzI, hzMr⟩)
+    have sub_to_RightSlice : (nbhd yR ρR ∩ Mr M) ⊆ RightSlice (Mr M) x ε := by
+      intro z hz
+      rcases hz with ⟨hzI, hzMr⟩
+      have hI := subR hzI
+      exact ⟨hzMr, hI.1, hI.2⟩
+    have : (nbhd yR ρR ∩ Mr M).Countable := hcnt.mono sub_to_RightSlice
     exact uncR this
+
   -- remove the countable boundary set L∪R to pass from Mr to Mb
   have hBcnt : (LeftEmpty (Mr M) ∪ RightEmpty (Mr M)).Countable :=
     (countable_LeftEmpty (Mr M)).union (countable_RightEmpty (Mr M))
   constructor
-  · have : ¬ (Set.diff (LeftSlice (Mr M) x ε) (LeftEmpty (Mr M) ∪ RightEmpty (Mr M))).Countable :=
+  · -- left side on Mb
+    have : ¬ (Set.diff (LeftSlice (Mr M) x ε) (LeftEmpty (Mr M) ∪ RightEmpty (Mr M))).Countable :=
       not_countable_diff_of_not_countable_of_countable hLeft_unc_Mr hBcnt
-    -- identify LeftSlice on Mb as that diff
-    have : LeftSlice (Mb M) x ε = Set.diff (LeftSlice (Mr M) x ε) (LeftEmpty (Mr M) ∪ RightEmpty (Mr M)) := by
+    have hEq :
+        LeftSlice (Mb M) x ε
+        = Set.diff (LeftSlice (Mr M) x ε) (LeftEmpty (Mr M) ∪ RightEmpty (Mr M)) := by
       ext y; constructor <;> intro hy
-      · rcases hy with ⟨⟨hyMr, h1, h2⟩, hyNB⟩; exact ⟨⟨hyMr, h1, h2⟩, hyNB⟩
-      · rcases hy with ⟨⟨hyMr, h1, h2⟩, hyNB⟩; exact ⟨⟨hyMr, hyNB⟩, h1, h2⟩
-    simpa [this, Mb]
-  · have : ¬ (Set.diff (RightSlice (Mr M) x ε) (LeftEmpty (Mr M) ∪ RightEmpty (Mr M))).Countable :=
+      · rcases hy with ⟨hyMb, h1, h2⟩
+        rcases hyMb with ⟨hyMr, hyNB⟩
+        exact ⟨⟨hyMr, h1, h2⟩, hyNB⟩
+      · rcases hy with ⟨⟨hyMr, h1, h2⟩, hyNB⟩
+        exact ⟨⟨hyMr, hyNB⟩, h1, h2⟩
+    simpa [hEq, Mb]
+  · -- right side on Mb
+    have : ¬ (Set.diff (RightSlice (Mr M) x ε) (LeftEmpty (Mr M) ∪ RightEmpty (Mr M))).Countable :=
       not_countable_diff_of_not_countable_of_countable hRight_unc_Mr hBcnt
-    have : RightSlice (Mb M) x ε = Set.diff (RightSlice (Mr M) x ε) (LeftEmpty (Mr M) ∪ RightEmpty (Mr M)) := by
+    have hEq :
+        RightSlice (Mb M) x ε
+        = Set.diff (RightSlice (Mr M) x ε) (LeftEmpty (Mr M) ∪ RightEmpty (Mr M)) := by
       ext y; constructor <;> intro hy
-      · rcases hy with ⟨⟨hyMr, h1, h2⟩, hyNB⟩; exact ⟨⟨hyMr, h1, h2⟩, hyNB⟩
-      · rcases hy with ⟨⟨hyMr, h1, h2⟩, hyNB⟩; exact ⟨⟨hyMr, hyNB⟩, h1, h2⟩
-    simpa [this, Mb]
+      · rcases hy with ⟨hyMb, h1, h2⟩
+        rcases hyMb with ⟨hyMr, hyNB⟩
+        exact ⟨⟨hyMr, h1, h2⟩, hyNB⟩
+      · rcases hy with ⟨⟨hyMr, h1, h2⟩, hyNB⟩
+        exact ⟨⟨hyMr, hyNB⟩, h1, h2⟩
+    simpa [hEq, Mb]
 
 end TwoSidedCore
