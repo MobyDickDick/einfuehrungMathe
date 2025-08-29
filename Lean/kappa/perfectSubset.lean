@@ -161,10 +161,20 @@ lemma countable_RightEmpty (A : Set ℝ) : (RightEmpty A).Countable := by
     exact ⟨q, δ, hpos, h1, h2, hemp⟩
   -- local choice map to ℚ
   let f : {x : ℝ // x ∈ RightEmpty A} → ℚ := fun x => Classical.choose (hxq x)
-  have f_spec : ∀ x, ∃ δ > 0,
-      (x : ℝ) < f x ∧ (f x : ℝ) < (x : ℝ) + δ ∧ (Set.Ioo (x : ℝ) ((x : ℝ) + δ) ∩ A) = ∅ := by
-    intro x; rcases Classical.choose_spec (hxq x) with ⟨δ, hpos, h1, h2, hemp⟩
+    -- lokale Wahlabbildung auf ℚ
+  let f : {x : ℝ // x ∈ RightEmpty A} → ℚ := fun x => Classical.choose (hxq x)
+
+  -- wichtige Spezifikation für f: Binder ist der Subtyp!
+  have f_spec :
+      ∀ x : {x : ℝ // x ∈ RightEmpty A}, ∃ δ > 0,
+        (x : ℝ) < f x ∧ (f x : ℝ) < (x : ℝ) + δ ∧
+        (Set.Ioo (x : ℝ) ((x : ℝ) + δ) ∩ A) = ∅ := by
+    intro x
+    rcases Classical.choose_spec (hxq x) with ⟨δ, hpos, h1, h2, hemp⟩
     exact ⟨δ, hpos, h1, h2, hemp⟩
+    -- alternativ auch möglich:
+    -- simpa using Classical.choose_spec (hxq x)
+
   -- Injectivity: if f x = f y = q and x ≠ y, that q lies in both empty intervals, contradiction.
   have finj : Function.Injective f := by
     intro x y hxy
@@ -199,10 +209,16 @@ lemma countable_LeftEmpty (A : Set ℝ) : (LeftEmpty A).Countable := by
     rcases exists_rat_btwn hxlt with ⟨q, h1, h2⟩
     exact ⟨q, δ, hpos, h1, h2, hemp⟩
   let f : {x : ℝ // x ∈ LeftEmpty A} → ℚ := fun x => Classical.choose (hxq x)
-  have f_spec : ∀ x, ∃ δ > 0,
-      (x : ℝ) - δ < f x ∧ (f x : ℝ) < (x : ℝ) ∧ (Set.Ioo ((x : ℝ) - δ) (x : ℝ) ∩ A) = ∅ := by
-    intro x; rcases Classical.choose_spec (hxq x) with ⟨δ, hpos, h1, h2, hemp⟩
+  let f : {x : ℝ // x ∈ LeftEmpty A} → ℚ := fun x => Classical.choose (hxq x)
+
+  have f_spec :
+      ∀ x : {x : ℝ // x ∈ LeftEmpty A}, ∃ δ > 0,
+        (x : ℝ) - δ < f x ∧ (f x : ℝ) < (x : ℝ) ∧
+        (Set.Ioo ((x : ℝ) - δ) (x : ℝ) ∩ A) = ∅ := by
+    intro x
+    rcases Classical.choose_spec (hxq x) with ⟨δ, hpos, h1, h2, hemp⟩
     exact ⟨δ, hpos, h1, h2, hemp⟩
+    -- oder: simpa using Classical.choose_spec (hxq x)
   have finj : Function.Injective f := by
     intro x y hxy
     have hxA : (x : ℝ) ∈ A := (x.property).1
