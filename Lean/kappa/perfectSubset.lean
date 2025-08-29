@@ -687,6 +687,67 @@ lemma no_isolated_points_of_thick
     exists_point_in_rightSlice_of_thick (M:=M) (x:=x) (ε:=ε) hThick hx hε
   exact ⟨y, hyM, z, hzM, hy2, hz1, hy1, hz2⟩
 
+/-- Eine Menge ist perfekt, wenn sie abgeschlossen ist und keine isolierten Punkte hat. -/
+def Perfect (S : Set ℝ) : Prop :=
+  IsClosed S ∧ ∀ x ∈ S, ∀ ε > 0, ∃ y ≠ x, y ∈ S ∧ |y - x| < ε
+
+/-- Aus einer überabzählbaren Menge `M0` erhält man eine perfekte Teilmenge `K`. -/
+lemma exists_perfect_subset
+  {M0 : Set ℝ} (hM0 : ¬ M0.Countable) :
+  ∃ K : Set ℝ, K ⊆ closure M0 ∧ Perfect K := by
+  -- Reduziere auf den Kern, der zwei-seitig dick ist
+  let M1 := core M0
+  have hThick : TwoSidedThick M1 := TwoSidedThick_core M0
+  -- Wähle K := Abschluss des Kerns
+  let K := closure M1
+  use K
+  constructor
+  · -- K ⊆ closure M0, weil core M0 ⊆ M0 und closure monotone ist
+    exact closure_mono (core_subset M0)
+  constructor
+  · -- K ist abgeschlossen
+    exact isClosed_closure
+  · -- K hat keine isolierten Punkte
+    intro x hx ε hε
+    -- Aus x ∈ closure M1: Punkte in M1 beliebig nah an x
+    -- aus x ∈ closure M1: Distanz in der Form dist x y < δ
+    have hx_cl0 : ∀ δ > 0, ∃ y ∈ M1, dist x y < δ :=
+      Metric.mem_closure_iff.mp hx
+    -- umschreiben zu dist y x < δ via Symmetrie
+    have hx_cl : ∀ δ > 0, ∃ y ∈ M1, dist y x < δ := by
+      intro δ hδ
+      rcases hx_cl0 δ hδ with ⟨y, hyM1, hy⟩
+      exact ⟨y, hyM1, by simpa [dist_comm] using hy⟩
+    -- Arbeite mit ε/2 für etwas Reserve
+    have hε2 : 0 < ε / 2 := by
+      have : (0 : ℝ) < 2 := by norm_num
+      exact half_pos hε
+
+    obtain ⟨y0, hy0M1, hy0dist⟩ := hx_cl (ε/2) hε2
+    have hy0abs : |y0 - x| < ε / 2 := by
+      simpa [Real.dist_eq] using hy0dist
+
+    -- Fallunterscheidung: liegt x selbst schon in M1?
+    by_cases hxM1 : x ∈ M1
+    · -- Fall 1: x ∈ M1 ⇒ nutze Zweiseit-Dicke für einen anderen Punkt yR
+      obtain ⟨yR, hyRM1, hx_lt_yR, hyR_lt⟩ :=
+        exists_point_in_rightSlice_of_thick
+          (M:=M1) (x:=x) (ε:=ε/2) hThick hxM1 hε2
+      -- |yR - x| < ε/2, also erst recht < ε
+      have hyRabs_half : |yR - x| < ε/2 := by
+        have hsub : yR - x < ε/2 := (sub_lt_iff_lt_add').mpr hyR_lt
+        have hpos : 0 < yR - x := sub_pos.mpr hx_lt_yR
+        simpa [abs_of_pos hpos] using hsub
+      have hyRabs : |yR - x| < ε := by linarith
+      have hneq : yR ≠ x := ne_of_gt hx_lt_yR
+      exact ⟨yR, hneq, subset_closure hyRM1, hyRabs⟩
+
+    · -- Fall 2: x ∉ M1 ⇒ der approximierende Punkt y0 ist automatisch verschieden von x
+      have hneq : y0 ≠ x := by
+        intro h; apply hxM1; simpa [h] using hy0M1
+      have hy0abs_lt_eps : |y0 - x| < ε := by linarith
+      exact ⟨y0, hneq, subset_closure hy0M1, hy0abs_lt_eps⟩
+
 end ApplicationToGoal
 
 end PerfectFromThick
