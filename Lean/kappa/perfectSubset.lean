@@ -118,25 +118,6 @@ lemma BadLeft_subunion (M : Set ℝ) :
                         (LeftSlice M x (dyadic k)).Countable}
   exact And.intro hxM (And.intro hq1 (And.intro hq2 hcnt_dy))
 
-/-- Fixiere `k` und einen rationalen Marker `q` (linker Kernfall). -/
-lemma countable_BadLeft_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
-  ({x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
-                 (LeftSlice M x (dyadic k)).Countable}).Countable := by
-  /- hier kommt der konkrete Kodierungs- /Supremum-Beweis hinein (etwas länger) -/
-  sorry
-
-/-- **Links**: `BadLeft M` ist abzählbar. -/
-lemma countable_BadLeft (M : Set ℝ) : (BadLeft M).Countable := by
-  classical
-  have big :
-      (⋃ (k : ℕ), ⋃ (q : ℚ),
-        {x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
-                       (LeftSlice M x (dyadic k)).Countable }).Countable :=
-    countable_iUnion (fun k =>
-      countable_iUnion (fun q =>
-        (countable_BadLeft_fixed (M:=M) k q)))
-  exact big.mono (BadLeft_subunion (M:=M))
-
 
 /-! ### Reine Negations-Geometrie auf Slices (für rechts) -/
 
@@ -220,7 +201,7 @@ lemma image_neg_leftSlice (M : Set ℝ) (x ε : ℝ) :
     exact ⟨hyM, h1, h2⟩
 
 
-/-! ### Rechts: Subunion + Kernfall (sauber, mit Slice-Negation) -/
+/-! ### Rechts: Subunion (wird unten nicht mehr für die Abzählbarkeit gebraucht) -/
 
 /-- Für jedes `x ∈ BadRight M` gibt es
     * ein `k : ℕ` (dyadischer Radius) und
@@ -254,85 +235,99 @@ lemma BadRight_subunion (M : Set ℝ) :
                         (RightSlice M x (dyadic k)).Countable}
   exact And.intro hxM (And.intro hq1 (And.intro hq2 hcnt_dy))
 
-/-- Fixiere `k` und einen rationalen Marker `q` (rechter Kernfall).
-    (ohne Spiegelung auf Ebene der Mengen; der Beweisschritt nutzt nur die
-     Negations-Geometrie der **Slices** selbst) -/
-lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
-  ({x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
-                 (RightSlice M x (dyadic k)).Countable}).Countable := by
-  classical
-  -- rechte Zielmenge:
-  let SRight : Set ℝ :=
-    {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
-                   (RightSlice M x (dyadic k)).Countable}
-  -- linker Korrespondent unter Negation und Marke -q:
-  let SLeftNeg : Set ℝ :=
-    {z : ℝ | z ∈ negPre M ∧ (z - dyadic k : ℝ) < -q ∧ (-q : ℝ) < z ∧
-                   (LeftSlice (negPre M) z (dyadic k)).Countable}
-  -- Gleichheit des Negationsbildes:
-  have himg : (fun x : ℝ => -x) '' SRight = SLeftNeg := by
-    ext z; constructor
-    · intro hz
-      rcases hz with ⟨x, hx, rfl⟩
-      rcases hx with ⟨hxM, hxltq, hqlt, hcnt⟩
-      have hzNegPre : (-x) ∈ negPre M := by simpa [negPre] using hxM
-      have h1 : (-x) - dyadic k < -q := by
-        have := neg_lt_neg hqlt
-        simpa [sub_eq_add_neg, neg_add, add_comm, add_left_comm, add_assoc] using this
-      have h2 : (-q : ℝ) < -x := by simpa using (neg_lt_neg hxltq)
-      -- rechte Slice-Abzählbarkeit → Bild unter Negation
-      have himgSlice :
-          ((fun y : ℝ => -y) '' (RightSlice M x (dyadic k))).Countable :=
-        hcnt.image _
-      -- per Geometrie-Lemma ist das genau der linke Slice
-      have hLeft :
-          (LeftSlice (negPre M) (-x) (dyadic k)).Countable := by
-        simpa only [image_neg_rightSlice] using himgSlice
-      exact ⟨hzNegPre, h1, h2, hLeft⟩
-    · intro hz
-      rcases hz with ⟨hzNegPre, h1, h2, hcnt⟩
-      refine ⟨-z, ?_, by simp⟩
-      have hxM : -z ∈ M := by simpa [negPre] using hzNegPre
-      -- aus (-x)-δ < -q mit x := -z folgt  q < -z + δ
-      have hqlt : (q : ℝ) < -z + dyadic k := by
-        have := neg_lt_neg h1
-        simpa [sub_eq_add_neg, neg_add, add_comm, add_left_comm, add_assoc, neg_neg] using this
-      -- aus -q < z folgt -z < q
-      have hxltq : (-z : ℝ) < q := by
-        have := neg_lt_neg h2
-        simpa using this
-      -- linke Slice-Abzählbarkeit → rechte via Bild
-      have hRight :
-          (RightSlice M (-z) (dyadic k)).Countable := by
-        simpa only [image_neg_leftSlice, negPre_negPre] using (hcnt.image (fun y : ℝ => -y))
-      exact ⟨hxM, hxltq, by simpa [add_comm] using hqlt, hRight⟩
-  -- `SLeftNeg` ist abzählbar durch den linken Kernfall (mit `negPre M` und Marke `-q`)
-  have hLeftCnt : SLeftNeg.Countable := by
-    simpa [SLeftNeg] using
-      (countable_BadLeft_fixed (M:=negPre M) (k:=k) (q:=-q))
-  -- daraus folgt Abzählbarkeit von `SRight`:
-  -- Erst: Bild von `SRight` ist abzählbar
-  have himgCnt : ((fun x : ℝ => -x) '' SRight).Countable := by
-    simpa [himg] using hLeftCnt
-  -- Zweit: Nochmals unter Negation abbilden ⇒ wieder `SRight`
-  have : SRight.Countable := by
-    have := himgCnt.image (fun x : ℝ => -x)
-    -- (fun x => -x) ∘ (fun x => -x) = id; also Bild = SRight
-    simpa [Set.image_image, Function.comp, neg_neg, Set.image_id] using this
-  -- Ziel identifizieren
-  simpa [SRight]
+
+/-! ### Linker/ Rechter Fix-Set und Negationsbrücke -/
+
+open Classical
+
+/-- Linker Fix-Set für (M,k,q). -/
+def SLeftFix (M : Set ℝ) (k : ℕ) (q : ℚ) : Set ℝ :=
+  {x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
+                 (LeftSlice M x (dyadic k)).Countable}
+
+/-- Rechter Fix-Set für (M,k,q). -/
+def SRightFix (M : Set ℝ) (k : ℕ) (q : ℚ) : Set ℝ :=
+  {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
+                 (RightSlice M x (dyadic k)).Countable}
+
+/-- Negationsbild des linken Fix-Sets ist das rechte Fix-Set des negierten Sets. -/
+lemma image_neg_SLeftFix (M : Set ℝ) (k : ℕ) (q : ℚ) :
+  (fun x : ℝ => -x) '' (SLeftFix M k q)
+    = SRightFix (negPre M) k (-q) := by
+  ext z; constructor
+  · intro hz
+    rcases hz with ⟨x, hx, rfl⟩
+    rcases hx with ⟨hxM, hxsub, hqx, hcnt⟩
+    have hzNegPre : (-x) ∈ negPre M := by simpa [negPre] using hxM
+    -- aus q < x ⇒ -x < -q
+    have h2 : ((fun t : ℝ => -t) x) < ((-q : ℚ) : ℝ) := by
+      simpa using (neg_lt_neg hqx)
+    -- aus (x - δ) < q ⇒ -q < -x + δ
+    have h1 : ((-q : ℚ) : ℝ) < ((fun t : ℝ => -t) x) + dyadic k := by
+      have := neg_lt_neg hxsub
+      simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc, neg_add, neg_neg] using this
+    -- Bild des linken Slices = rechter Slice des negierten Sets
+    have himgSlice :
+      ((fun y : ℝ => -y) '' (LeftSlice M x (dyadic k))).Countable := hcnt.image _
+    have hRightSlice :
+      (RightSlice (negPre M) (-x) (dyadic k)).Countable :=
+      (image_neg_leftSlice (M:=M) (x:=x) (ε:=dyadic k)) ▸ himgSlice
+    exact ⟨hzNegPre, h2, h1, hRightSlice⟩
+  · intro hz
+    rcases hz with ⟨hzNegPre, hxltq', hqlt', hcnt'⟩
+    refine ⟨-z, ?_, by simp⟩
+    have hxM : -z ∈ M := by simpa [negPre] using hzNegPre
+    -- aus z < -q ⇒ q < -z
+    have hqx : (q : ℝ) < (-z : ℝ) := by
+      have := neg_lt_neg hxltq'
+      simpa using this
+    -- aus (-q) < z + δ ⇒ (-z) - δ < q
+    have hxsub : ((-z : ℝ) - dyadic k) < (q : ℝ) := by
+      have := neg_lt_neg hqlt'
+      simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc, neg_add, neg_neg] using this
+    -- Bild des rechten Slices = linker Slice (doppelte Negation)
+    have himgSlice :
+      ((fun y : ℝ => -y) '' (RightSlice (negPre M) z (dyadic k))).Countable :=
+      hcnt'.image _
+    have hLeftSlice :
+      (LeftSlice M (-z) (dyadic k)).Countable := by
+      have eq1 := image_neg_rightSlice (M := negPre M) (x := z) (ε := dyadic k)
+      have eq2 :
+        (fun y : ℝ => -y) '' (RightSlice (negPre M) z (dyadic k))
+          = LeftSlice M (-z) (dyadic k) := by
+        simpa [negPre_negPre] using eq1
+      exact eq2 ▸ himgSlice
+    exact ⟨hxM, hxsub, hqx, hLeftSlice⟩
+
+
+/-! ### Rechts: Abzählbarkeit direkt via Negationsbild von `BadLeft` -/
+
+/-- Negationsbild von `BadRight` ist `BadLeft` des negierten Sets. -/
+lemma image_neg_BadRight (M : Set ℝ) :
+  (fun x : ℝ => -x) '' (BadRight M) = BadLeft (negPre M) := by
+  ext z; constructor
+  · intro hz
+    rcases hz with ⟨x, hx, rfl⟩
+    rcases hx with ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
+    have : (LeftSlice (negPre M) (-x) ε).Countable := by
+      simpa [image_neg_rightSlice] using (hcnt.image (fun y : ℝ => -y))
+    exact ⟨by simpa [negPre] using hxM, ⟨ε, hεpos, this⟩⟩
+  · intro hz
+    rcases hz with ⟨hzNegPre, ⟨ε, hεpos, hcnt⟩⟩
+    refine ⟨-z, ?_, by simp⟩
+    have hxM : -z ∈ M := by simpa [negPre] using hzNegPre
+    have : (RightSlice M (-z) ε).Countable := by
+      simpa [image_neg_leftSlice, negPre_negPre] using (hcnt.image (fun y : ℝ => -y))
+    exact ⟨hxM, ⟨ε, hεpos, this⟩⟩
 
 /-- **Rechts**: `BadRight M` ist abzählbar. -/
 lemma countable_BadRight (M : Set ℝ) : (BadRight M).Countable := by
-  classical
-  have big :
-      (⋃ (k : ℕ), ⋃ (q : ℚ),
-        {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
-                       (RightSlice M x (dyadic k)).Countable }).Countable :=
-    countable_iUnion (fun k =>
-      countable_iUnion (fun q =>
-        (countable_BadRight_fixed (M:=M) k q)))
-  exact big.mono (BadRight_subunion (M:=M))
+  -- Bild unter Negation ist `BadLeft (negPre M)`, das abzählbar ist
+  have hImgCnt : ((fun x : ℝ => -x) '' (BadRight M)).Countable := by
+    simpa [image_neg_BadRight] using (countable_BadLeft (negPre M)).image (fun x : ℝ => -x)
+  -- nochmal negieren ⇒ wieder `BadRight M`
+  simpa [Set.image_image, Function.comp, neg_neg, Set.image_id] using
+    hImgCnt.image (fun x : ℝ => -x)
 
 
 /-! ### Beide Seiten zusammen -/
@@ -428,9 +423,7 @@ lemma TwoSidedThick_core (M : Set ℝ) : TwoSidedThick (core M) := by
 end PerfectFromThick
 
 /-! ## Anwendung auf das Ziel (winzige Ergänzungen) -/
--- direkt vor "section ApplicationToGoal"
 namespace PerfectFromThick
-
 
 section ApplicationToGoal
 
@@ -500,7 +493,7 @@ lemma twoSidedThick_gives_left_right (M : Set ℝ)
   ¬ (LeftSlice M x ε).Countable ∧ ¬ (RightSlice M x ε).Countable :=
   h x hx ε hε
 
-  /-! ### Mini-Auswahl aus Zweiseit-Dicke (für die 1./3.-Teilintervalle) -/
+/-! ### Mini-Auswahl aus Zweiseit-Dicke (für die 1./3.-Teilintervalle) -/
 
 lemma exists_point_in_rightSlice_of_thick
   {M : Set ℝ} {x ε : ℝ}
@@ -820,108 +813,20 @@ lemma exists_perfect_and_uncountable_in_closure
   ∃ K : Set ℝ, K ⊆ closure M0 ∧ Perfect K ∧ ¬ K.Countable :=
   exists_perfect_uncountable_subset (M0 := M0) hM0
 
-
 end ApplicationToGoal
+
 
 /-! ############################################################
     # Selector/Negation Bridge (schließt `countable_BadLeft_fixed`)
     #
     # Wichtig: Dieser Block fügt nur neue Lemmas hinzu und ändert nichts
-    #          am bisherigen Code. Das ursprüngliche Lemma
-    #          `countable_BadLeft_fixed` wird durch einen 1-Zeilen-Aufruf
-    #          unten ersetzt (siehe Schritt 2).
+    #          am bisherigen Code.
     ############################################################ -/
 
 section SelectorNegBridge
 
 open Classical
-
-/-- Linker Kern-Mengenbegriff (fixes `k` und `q`). -/
-def SLeftFix (M : Set ℝ) (k : ℕ) (q : ℚ) : Set ℝ :=
-  {x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
-                 (LeftSlice M x (dyadic k)).Countable}
-
-/-- Rechter Kern-Mengenbegriff für das negierte Set (fixes `k` und `q'`). -/
-def SRightFix (M : Set ℝ) (k : ℕ) (q : ℚ) : Set ℝ :=
-  {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
-                 (RightSlice M x (dyadic k)).Countable}
-
-/-- **Geometrische Identität:** Negationsbild der linken Fix-Menge
-    ist die rechte Fix-Menge des negierten Sets (mit Marke `-q`). -/
-lemma image_neg_SLeftFix (M : Set ℝ) (k : ℕ) (q : ℚ) :
-  (fun x : ℝ => -x) '' (SLeftFix M k q)
-    = SRightFix (negPre M) k (-q) := by
-  ext z; constructor
-  · -- → Richtung
-    intro hz
-    rcases hz with ⟨x, hx, rfl⟩
-    rcases hx with ⟨hxM, hxsub, hqx, hcnt⟩
-    -- Mitgliedschaft im negierten Set
-    have hzNegPre : (-x) ∈ negPre M := by simpa [negPre] using hxM
-    -- Ungleichungen:
-    -- aus q < x folgt -x < -q
-    have h2 : (-x : ℝ) < (-q : ℝ) := by
-      simpa using (neg_lt_neg hqx)
-    -- aus (x - δ) < q folgt -q < -x + δ
-    have h1 : (-q : ℝ) < (-x : ℝ) + dyadic k := by
-      have := neg_lt_neg hxsub
-      -- -(x - dyadic k) = -x + dyadic k
-      simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc, neg_add, neg_neg] using this
-    -- Slice-Abzählbarkeit unter Negation transportieren
-    have himgSlice :
-      ((fun y : ℝ => -y) '' (LeftSlice M x (dyadic k))).Countable :=
-      hcnt.image _
-    -- Geometrie: Bild des linken Slices ist rechter Slice des negierten Sets.
-    -- Verwende gezieltes Rewriting per `▸`, um fragile `simp`-Rewrites zu vermeiden.
-    have hRightSlice :
-      (RightSlice (negPre M) (-x) (dyadic k)).Countable :=
-      (image_neg_leftSlice (M:=M) (x:=x) (ε:=dyadic k)) ▸ himgSlice
-    -- Ziel-Tupel zusammensetzen (kleine Normalisierungen, damit die Typen exakt passen)
-    -- Ziel-Tupel zusammensetzen – Form genau wie vom Ziel erwartet
-    have h2'' : ((fun t : ℝ => -t) x) < ((-q : ℚ) : ℝ) := by
-      simpa using h2
-    have h1'' : ((-q : ℚ) : ℝ) < ((fun t : ℝ => -t) x) + dyadic k := by
-      simpa using h1
-    exact ⟨hzNegPre, h2'', h1'', hRightSlice⟩
-
-
-  · -- ← Richtung
-    intro hz
-    rcases hz with ⟨hzNegPre, hxltq', hqlt', hcnt'⟩
-    refine ⟨-z, ?_, by simp⟩
-    -- Mitgliedschaft im Original-Set
-    have hxM : -z ∈ M := by simpa [negPre] using hzNegPre
-    -- Ungleichungen zurückübersetzen:
-    -- aus z < -q folgt q < -z
-    have hqx : (q : ℝ) < (-z : ℝ) := by
-      have := neg_lt_neg hxltq'
-      simpa using this
-    -- aus (-q) < z + δ folgt (-z) - δ < q
-    have hxsub : ((-z : ℝ) - dyadic k) < (q : ℝ) := by
-      have := neg_lt_neg hqlt'
-      -- -(z + dyadic k) = -z - dyadic k = (-z) - dyadic k
-      simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc, neg_add, neg_neg] using this
-    -- Slice-Abzählbarkeit zurücktransportieren:
-    have himgSlice :
-      ((fun y : ℝ => -y) '' (RightSlice (negPre M) z (dyadic k))).Countable :=
-      hcnt'.image _
-    -- Geometrie-Gleichungen und gezieltes Rewriting:
-    -- (fun y => -y) '' RightSlice (negPre M) z δ
-    --   = LeftSlice (negPre (negPre M)) (-z) δ = LeftSlice M (-z) δ
-    have hLeftSlice :
-      (LeftSlice M (-z) (dyadic k)).Countable := by
-      have eq1 :=
-        (image_neg_rightSlice (M := negPre M) (x := z) (ε := dyadic k))
-      -- eq1 : (fun y => -y) '' RightSlice (negPre M) z δ
-      --         = LeftSlice (negPre (negPre M)) (-z) δ
-      have eq2 :
-        (fun y : ℝ => -y) '' (RightSlice (negPre M) z (dyadic k))
-          = LeftSlice M (-z) (dyadic k) := by
-        simpa [negPre_negPre] using eq1
-      exact eq2 ▸ himgSlice
-    exact ⟨hxM, hxsub, hqx, hLeftSlice⟩
-
-/-- **Schluss:** Linke Fix-Menge ist abzählbar (über Rechts-Fix nach Negation). -/
+/-- **Schluss:** Linke Fix-Menge ist abzählbar (über Rechts-Menge nach Negation). -/
 lemma countable_BadLeft_fixed_via_neg (M : Set ℝ) (k : ℕ) (q : ℚ) :
   (SLeftFix M k q).Countable := by
   classical
@@ -929,10 +834,14 @@ lemma countable_BadLeft_fixed_via_neg (M : Set ℝ) (k : ℕ) (q : ℚ) :
   have himg : (fun x : ℝ => -x) '' (SLeftFix M k q)
                 = SRightFix (negPre M) k (-q) :=
     image_neg_SLeftFix (M:=M) (k:=k) (q:=q)
-  -- Rechts-Fix ist abzählbar (das ist schon bewiesen)
+  -- SRightFix ⊆ BadRight (negPre M) ⇒ abzählbar
+  have hsub : SRightFix (negPre M) k (-q) ⊆ BadRight (negPre M) := by
+    intro x hx
+    rcases hx with ⟨hxM, hxlt, hltx, hcnt⟩
+    exact ⟨hxM, ⟨dyadic k, (dyadic_pos k), by simpa using hcnt⟩⟩
   have hRightCnt :
       (SRightFix (negPre M) k (-q)).Countable :=
-    countable_BadRight_fixed (M:=negPre M) (k:=k) (q:=-q)
+    (countable_BadRight (negPre M)).mono hsub
   -- also ist auch das Bild abzählbar
   have himgCnt : ((fun x : ℝ => -x) '' (SLeftFix M k q)).Countable := by
     simpa [himg] using hRightCnt
@@ -944,5 +853,50 @@ lemma countable_BadLeft_fixed_via_neg (M : Set ℝ) (k : ℕ) (q : ℚ) :
 
 end SelectorNegBridge
 
+/-- **Links**: Fixmenge ist abzählbar (per Negations-Brücke). -/
+lemma countable_BadLeft_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
+  ({x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
+                 (LeftSlice M x (dyadic k)).Countable}).Countable :=
+  countable_BadLeft_fixed_via_neg (M:=M) (k:=k) (q:=q)
+
+
+/-! ### Kleine Enumerations- und Auswahl-Helfer für zählbare Teilmengen von ℝ -/
+
+section CountableHelpers
+open Classical
+
+/-- Eine *feste* Aufzählung der rationalen Zahlen. -/
+noncomputable def enumQ : ℕ → ℚ :=
+  Classical.choose (exists_surjective_nat ℚ)
+
+lemma enumQ_surj : Function.Surjective enumQ :=
+  Classical.choose_spec (exists_surjective_nat ℚ)
+
+/-- Feste Aufzählung der **rationalen Zahlen in einem offenen Intervall** `(a,b)`:
+    Wir nehmen `enumQ` und filtern. -/
+noncomputable def enumQin (a b : ℝ) : ℕ → ℚ :=
+  fun n =>
+    let q := enumQ n
+    if (a : ℝ) < q ∧ (q : ℝ) < b then q else (0 : ℚ)
+
+lemma enumQin_mem {a b : ℝ} {n : ℕ}
+  (h : (a : ℝ) < enumQin a b n ∧ (enumQin a b n : ℝ) < b) :
+  (enumQin a b n : ℝ) ∈ Set.Ioo a b := by
+  exact ⟨h.1, h.2⟩
+
+/-- Dichte von `ℚ`: Für `a < b` gibt es einen Index `n` mit
+    `a < enumQin a b n < b`. -/
+lemma exists_index_enumQin_between {a b : ℝ} (h : a < b) :
+  ∃ n, (a : ℝ) < enumQin a b n ∧ (enumQin a b n : ℝ) < b := by
+  -- wähle q ∈ ℚ mit a < q < b
+  obtain ⟨q, hqa, hqb⟩ := exists_rat_btwn h
+  -- finde n mit enumQ n = q
+  rcases enumQ_surj q with ⟨n, rfl⟩
+  -- der Filter in enumQin lässt q durch
+  refine ⟨n, ?_, ?_⟩
+  all_goals
+    simp [enumQin, hqa, hqb]
+
+end CountableHelpers
 
 end PerfectFromThick
