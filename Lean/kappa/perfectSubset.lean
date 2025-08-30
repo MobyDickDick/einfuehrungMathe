@@ -916,23 +916,38 @@ section CountableHelpers
     · exact some (Nat.find hex)
     · exact none
 
-  /-- Spezifikation zu `firstIdxAbove`: Falls `some n`, dann ist es wirklich die erste Stelle > t. -/
   lemma firstIdxAbove_spec
     {S : Set ℝ} (hS : S.Countable) (hne : S.Nonempty) {t : ℝ} {n : ℕ}
     (h : firstIdxAbove hS hne t = some n) :
     let e := (someEnum hS hne).1
     t < e n ∧ ∀ m, m < n → ¬ t < e m := by
     classical
-    dsimp [firstIdxAbove] at h
-    let e := (someEnum hS hne).1
-    by_cases hex : ∃ n, t < e n
-    · -- `some (Nat.find hex)`
-      cases h
-      refine ⟨?pos, ?min⟩
-      · exact Nat.find_spec hex
-      · intro m hm
-        exact fun hmI => (not_lt_of_ge (Nat.find_min' hex hmI)) hm
-    · cases h
+    set e := (someEnum hS hne).1 with he
+    by_cases hex : ∃ k, t < e k
+    · -- Definitorische Gleichheit der linken Seite
+      have hdef : firstIdxAbove hS hne t = some (Nat.find hex) := by
+        simpa [firstIdxAbove, he, hex]
+      -- Aus hdef und h folgt Gleichheit der Indizes
+      have hsome : some n = some (Nat.find hex) := by
+        simpa [h] using hdef
+      have hn : n = Nat.find hex := Option.some.inj hsome
+      subst hn
+      refine ⟨Nat.find_spec hex, ?_⟩
+      intro m hm htm
+      have : Nat.find hex ≤ m := Nat.find_min' hex htm
+      exact (not_lt_of_ge this) hm
+    · -- ¬ ∃ k, t < e k  ⇒  ∀ x, e x ≤ t
+      have e_le_t : ∀ x, (e x : ℝ) ≤ t := by
+        intro x
+        have : ¬ t < e x := (not_exists.mp hex) x
+        exact le_of_not_gt this
+      -- damit entfaltet sich firstIdxAbove zum none-Zweig
+      have hnone : firstIdxAbove hS hne t = none := by
+        simpa [firstIdxAbove, he, e_le_t]
+      -- Widerspruch zu `h : = some n`
+      -- Widerspruch zu `h : = some n`
+      have : some n = none := h.symm.trans hnone
+      cases this
 
   end CountableHelpers
 end PerfectFromThick
