@@ -821,48 +821,118 @@ end ApplicationToGoal
 
 
 /-! ### Kleine Enumerations- und Auswahl-Helfer für zählbare Teilmengen von ℝ -/
-
 section CountableHelpers
-open Classical
+  open Classical
 
-/-- Eine *feste* Aufzählung der rationalen Zahlen. -/
-noncomputable def enumQ : ℕ → ℚ :=
-  Classical.choose (exists_surjective_nat ℚ)
+  /-- Eine *feste* Aufzählung der rationalen Zahlen. -/
+  noncomputable def enumQ : ℕ → ℚ :=
+    Classical.choose (exists_surjective_nat ℚ)
 
-lemma enumQ_surj : Function.Surjective enumQ :=
-  Classical.choose_spec (exists_surjective_nat ℚ)
+  lemma enumQ_surj : Function.Surjective enumQ :=
+    Classical.choose_spec (exists_surjective_nat ℚ)
 
-/-- Feste Aufzählung der **rationalen Zahlen in einem offenen Intervall** `(a,b)`:
-    Wir nehmen `enumQ` und filtern. -/
-noncomputable def enumQin (a b : ℝ) : ℕ → ℚ :=
-  fun n =>
-    let q := enumQ n
-    if (a : ℝ) < q ∧ (q : ℝ) < b then q else (0 : ℚ)
+  /-- Feste Aufzählung der **rationalen Zahlen in einem offenen Intervall** `(a,b)`:
+      Wir nehmen `enumQ` und filtern. -/
+  noncomputable def enumQin (a b : ℝ) : ℕ → ℚ :=
+    fun n =>
+      let q := enumQ n
+      if (a : ℝ) < q ∧ (q : ℝ) < b then q else (0 : ℚ)
 
-lemma enumQin_mem {a b : ℝ} {n : ℕ}
-  (h : (a : ℝ) < enumQin a b n ∧ (enumQin a b n : ℝ) < b) :
-  (enumQin a b n : ℝ) ∈ Set.Ioo a b := by
-  exact ⟨h.1, h.2⟩
+  lemma enumQin_mem {a b : ℝ} {n : ℕ}
+    (h : (a : ℝ) < enumQin a b n ∧ (enumQin a b n : ℝ) < b) :
+    (enumQin a b n : ℝ) ∈ Set.Ioo a b := by
+    exact ⟨h.1, h.2⟩
 
-/-- Dichte von `ℚ`: Für `a < b` gibt es einen Index `n` mit
-    `a < enumQin a b n < b`. -/
-lemma exists_index_enumQin_between {a b : ℝ} (h : a < b) :
-  ∃ n, (a : ℝ) < enumQin a b n ∧ (enumQin a b n : ℝ) < b := by
-  obtain ⟨q, hqa, hqb⟩ := exists_rat_btwn h
-  rcases enumQ_surj q with ⟨n, rfl⟩
-  refine ⟨n, ?_, ?_⟩
-  all_goals
-    simp [enumQin, hqa, hqb]
+  /-- Dichte von `ℚ`: Für `a < b` gibt es einen Index `n` mit
+      `a < enumQin a b n < b`. -/
+  lemma exists_index_enumQin_between {a b : ℝ} (h : a < b) :
+    ∃ n, (a : ℝ) < enumQin a b n ∧ (enumQin a b n : ℝ) < b := by
+    obtain ⟨q, hqa, hqb⟩ := exists_rat_btwn h
+    rcases enumQ_surj q with ⟨n, rfl⟩
+    refine ⟨n, ?_, ?_⟩
+    all_goals
+      simp [enumQin, hqa, hqb]
 
-/-- Aus einer zählbaren Menge `S` extrahieren wir eine surjektive Aufzählung `e : ℕ → S`. -/
-noncomputable def someEnum {α} {S : Set α} (hS : S.Countable) :
-  { e : ℕ → S // Function.Surjective e } :=
-by
-  classical
-  haveI : Countable S := hS.to_subtype
-  rcases exists_surjective_nat S with ⟨e, he⟩
-  exact ⟨e, he⟩
+  /-- Aus einer zählbaren *und nichtleeren* Menge `S` extrahieren wir eine surjektive
+      Aufzählung `e : ℕ → S`. -/
+  noncomputable def someEnum {α} {S : Set α} (hS : S.Countable) (hne : S.Nonempty) :
+    { e : ℕ → S // Function.Surjective e } := by
+    classical
+    haveI : Countable S := hS.to_subtype
+    haveI : Nonempty S := by
+      rcases hne with ⟨x, hx⟩
+      exact ⟨⟨x, hx⟩⟩
+    -- statt `rcases exists_surjective_nat S with ⟨e, he⟩`
+    let e : ℕ → S := Classical.choose (exists_surjective_nat S)
+    have he : Function.Surjective e :=
+      Classical.choose_spec (exists_surjective_nat S)
+    exact ⟨e, he⟩
 
-end CountableHelpers
 
+  /-- Wenn `S` zählbar ist und es irgendein Element `> t` gibt, dann gibt es
+      den *kleinsten Index* in einer festen Aufzählung von `S`, dessen Bild `> t` liegt. -/
+  lemma exists_min_index_above
+    {S : Set ℝ} (hS : S.Countable) {t : ℝ}
+    (hex : ∃ y ∈ S, t < y) :
+    ∃ n, (t < (someEnum hS (by rcases hex with ⟨y, hyS, _⟩; exact ⟨y, hyS⟩)).1 n) ∧
+          ∀ m, m < n → ¬ (t < (someEnum hS (by rcases hex with ⟨y, hyS, _⟩; exact ⟨y, hyS⟩)).1 m) := by
+    classical
+    -- Nicht-Leere von `S` aus `hex`
+    have hne : S.Nonempty := by
+      rcases hex with ⟨y, hyS, _⟩
+      exact ⟨y, hyS⟩
+    let e := (someEnum hS hne).1
+    have esurj : Function.Surjective e := (someEnum hS hne).2
+    -- Es gibt einen Treffer
+    have hex' : ∃ n, t < e n := by
+      rcases hex with ⟨y, hyS, hty⟩
+      rcases esurj ⟨y, hyS⟩ with ⟨n, hn⟩
+      refine ⟨n, ?_⟩
+      -- bringe hn auf Ebene der Werte (ℝ):
+      have hnval : ((e n : S) : ℝ) = y := by
+        simpa using congrArg (fun s : S => (s : ℝ)) hn
+      -- jetzt einfach umschreiben
+      simpa [hnval] using hty
+    -- Menge der Indizes mit Treffer
+    let I : Set ℕ := {n | t < e n}
+    have hI : ∃ n, n ∈ I := hex'
+    -- kleinstes Element per `Nat.find`
+    let n := Nat.find hI
+    have hnI : n ∈ I := Nat.find_spec hI
+    refine ⟨n, hnI, ?_⟩
+    intro m hm
+    -- Minimalität von `n`: aus `m ∈ I` folgt `n ≤ m`
+    have hmin : ∀ k, k ∈ I → n ≤ k := by
+      intro k hk; exact Nat.find_min' hI hk
+    exact fun hmI => (not_lt_of_ge (hmin m hmI)) hm
+
+  /-- Eine *erste* Position in einer festen Aufzählung von `S`, deren Bild *oberhalb* `t` liegt. -/
+  noncomputable def firstIdxAbove
+    {S : Set ℝ} (hS : S.Countable) (hne : S.Nonempty) (t : ℝ) : Option ℕ :=
+  by
+    classical
+    let e := (someEnum hS hne).1
+    by_cases hex : ∃ n, t < e n
+    · exact some (Nat.find hex)
+    · exact none
+
+  /-- Spezifikation zu `firstIdxAbove`: Falls `some n`, dann ist es wirklich die erste Stelle > t. -/
+  lemma firstIdxAbove_spec
+    {S : Set ℝ} (hS : S.Countable) (hne : S.Nonempty) {t : ℝ} {n : ℕ}
+    (h : firstIdxAbove hS hne t = some n) :
+    let e := (someEnum hS hne).1
+    t < e n ∧ ∀ m, m < n → ¬ t < e m := by
+    classical
+    dsimp [firstIdxAbove] at h
+    let e := (someEnum hS hne).1
+    by_cases hex : ∃ n, t < e n
+    · -- `some (Nat.find hex)`
+      cases h
+      refine ⟨?pos, ?min⟩
+      · exact Nat.find_spec hex
+      · intro m hm
+        exact fun hmI => (not_lt_of_ge (Nat.find_min' hex hmI)) hm
+    · cases h
+
+  end CountableHelpers
 end PerfectFromThick
