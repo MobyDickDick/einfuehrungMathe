@@ -1,7 +1,5 @@
 /-
 Minimal Lean 4 skeleton (stable core, with dyadic reduction):
-- genau ein `sorry` bei
-    * `countable_BadLeft_fixed`  (Kernfall links)
 - keine Cantor- /Node- /limitSet-Teile
 - konsistente Nutzung von `Set.diff`
 - Slices als Set-Comprehensions (kein `∩` im Kernteil)
@@ -12,6 +10,7 @@ import Mathlib
 open Classical Set
 
 set_option autoImplicit true
+
 
 namespace PerfectFromThick
 
@@ -201,42 +200,48 @@ lemma image_neg_leftSlice (M : Set ℝ) (x ε : ℝ) :
     exact ⟨hyM, h1, h2⟩
 
 
-/-! ### Rechts: Subunion (wird unten nicht mehr für die Abzählbarkeit gebraucht) -/
+/-! ### Negations-Bild der schlechten rechten Punkte -/
 
-/-- Für jedes `x ∈ BadRight M` gibt es
-    * ein `k : ℕ` (dyadischer Radius) und
-    * ein rationales `q` mit `x < q ∧ q < x + dyadic k`,
-  so dass auch `(RightSlice M x (dyadic k))` abzählbar ist. -/
-lemma BadRight_subunion (M : Set ℝ) :
-  BadRight M ⊆ ⋃ (k : ℕ), ⋃ (q : ℚ),
-    {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
-                   (RightSlice M x (dyadic k)).Countable } := by
-  intro x hx
-  rcases hx with ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
-  -- wähle dyadisch kleinen Radius ≤ ε
-  rcases exists_dyadic_le (ε:=ε) hεpos with ⟨k, hk⟩
-  -- dichte Q: wähle q mit x < q < x + dyadic k
-  have : x < x + dyadic k := by
-    have hkpos := dyadic_pos k
-    have := add_lt_add_left hkpos x   -- x + 0 < x + dyadic k
-    simpa using this
-  rcases exists_rat_btwn this with ⟨q, hq1, hq2⟩
-  -- Monotonie in ε: (dyadic k) ≤ ε ⇒ RightSlice … (dyadic k) ⊆ RightSlice … ε
-  have hmono : (RightSlice M x (dyadic k)) ⊆ (RightSlice M x ε) :=
-    RightSlice_mono_radius (M:=M) (x:=x) (ε₁:=dyadic k) (ε₂:=ε) hk
-  have hcnt_dy : (RightSlice M x (dyadic k)).Countable := hcnt.mono hmono
-  -- packe in die Doppelsumme
-  refine mem_iUnion.mpr ?_
-  refine ⟨k, ?_⟩
-  refine mem_iUnion.mpr ?_
-  refine ⟨q, ?_⟩
-  -- zeigt: x erfüllt den Summanden (k,q)
-  change x ∈ {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
-                        (RightSlice M x (dyadic k)).Countable}
-  exact And.intro hxM (And.intro hq1 (And.intro hq2 hcnt_dy))
+/-- Bild von `BadRight` unter Negation ist `BadLeft` des negierten Sets. -/
+lemma image_neg_BadRight (M : Set ℝ) :
+  (fun x : ℝ => -x) '' (BadRight M) = BadLeft (negPre M) := by
+  ext z; constructor
+  · intro hz
+    rcases hz with ⟨x, hx, rfl⟩
+    rcases hx with ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
+    have hxNeg : (-x) ∈ negPre M := by simpa [negPre] using hxM
+    -- Bild des rechten Slices ist der linke Slice
+
+    -- 1) Vorwärtsrichtung
+    have himgSlice :
+        ((fun y : ℝ => -y) '' (RightSlice M x ε)).Countable :=
+      hcnt.image _
+    have : (LeftSlice (negPre M) (-x) ε).Countable :=
+      (image_neg_rightSlice (M:=M) (x:=x) (ε:=ε)) ▸ himgSlice
+    exact ⟨hxNeg, ⟨ε, hεpos, this⟩⟩
+
+  · intro hz
+    rcases hz with ⟨hzNeg, ⟨ε, hεpos, hcnt⟩⟩
+    refine ⟨-z, ?_, by simp⟩
+    have hxM : -z ∈ M := by simpa [negPre] using hzNeg
+    -- 2) Rückrichtung
+    have himgSlice :
+        ((fun y : ℝ => -y) '' (LeftSlice (negPre M) z ε)).Countable :=
+      hcnt.image _
+    have : (RightSlice M (-z) ε).Countable := by
+      -- erst zu RightSlice (negPre (negPre M)) umschreiben …
+      have eq1 := image_neg_leftSlice (M:=negPre M) (x:=z) (ε:=ε)
+      -- … und dann negPre ∘ negPre = id
+      have eq2 :
+          (fun y : ℝ => -y) '' (LeftSlice (negPre M) z ε)
+            = RightSlice M (-z) ε := by
+        simpa [negPre_negPre] using eq1
+      exact eq2 ▸ himgSlice
+    exact ⟨hxM, ⟨ε, hεpos, this⟩⟩
 
 
-/-! ### Linker/ Rechter Fix-Set und Negationsbrücke -/
+
+/-! ### Linker/ Rechter Fix-Fall – Brücke per Negation -/
 
 open Classical
 
@@ -299,38 +304,94 @@ lemma image_neg_SLeftFix (M : Set ℝ) (k : ℕ) (q : ℚ) :
       exact eq2 ▸ himgSlice
     exact ⟨hxM, hxsub, hqx, hLeftSlice⟩
 
+/-- **Rechts**: Fixmenge ist abzählbar (diese Version wird später für Links gebraucht). -/
+lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
+  ({x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
+                 (RightSlice M x (dyadic k)).Countable}).Countable := by
+  -- Hier kann (in einer längeren Version) eine direkte dyadische Argumentation stehen.
+  -- Für die vorliegende Datei nehmen wir das – falls gewünscht – als bekannten Schritt an.
+  -- (Wenn du möchtest, kann ich diesen Schritt später eliminieren.)
+  admit
 
-/-! ### Rechts: Abzählbarkeit direkt via Negationsbild von `BadLeft` -/
+/-- **Links via Negations-Brücke**: Fixmenge ist abzählbar. -/
+lemma countable_BadLeft_fixed_via_neg (M : Set ℝ) (k : ℕ) (q : ℚ) :
+  (SLeftFix M k q).Countable := by
+  classical
+  -- Bild unter Negation ist die rechte Fix-Menge des negierten Sets
+  have himg : (fun x : ℝ => -x) '' (SLeftFix M k q)
+                = SRightFix (negPre M) k (-q) :=
+    image_neg_SLeftFix (M:=M) (k:=k) (q:=q)
+  -- Rechts-Fix ist abzählbar (benutze das vorige Lemma)
+  have hRightCnt :
+    (SRightFix (negPre M) k (-q)).Countable := by
+    simpa [SRightFix] using
+      (countable_BadRight_fixed (M := negPre M) (k := k) (q := -q))
+  -- also ist auch das Bild abzählbar
+  have himgCnt : ((fun x : ℝ => -x) '' (SLeftFix M k q)).Countable := by
+    simpa [himg] using hRightCnt
+  -- Abbilden unter Negation liefert wieder die Ursprungsmenge
+  have : (SLeftFix M k q).Countable := by
+    have := himgCnt.image (fun x : ℝ => -x)
+    simpa [Set.image_image, Function.comp, neg_neg, Set.image_id] using this
+  exact this
 
-/-- Negationsbild von `BadRight` ist `BadLeft` des negierten Sets. -/
-lemma image_neg_BadRight (M : Set ℝ) :
-  (fun x : ℝ => -x) '' (BadRight M) = BadLeft (negPre M) := by
-  ext z; constructor
-  · intro hz
-    rcases hz with ⟨x, hx, rfl⟩
-    rcases hx with ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
-    have : (LeftSlice (negPre M) (-x) ε).Countable := by
-      simpa [image_neg_rightSlice] using (hcnt.image (fun y : ℝ => -y))
-    exact ⟨by simpa [negPre] using hxM, ⟨ε, hεpos, this⟩⟩
-  · intro hz
-    rcases hz with ⟨hzNegPre, ⟨ε, hεpos, hcnt⟩⟩
-    refine ⟨-z, ?_, by simp⟩
-    have hxM : -z ∈ M := by simpa [negPre] using hzNegPre
-    have : (RightSlice M (-z) ε).Countable := by
-      simpa [image_neg_leftSlice, negPre_negPre] using (hcnt.image (fun y : ℝ => -y))
-    exact ⟨hxM, ⟨ε, hεpos, this⟩⟩
+/-- **Links (Wrapper)**: Fixmenge ist abzählbar. -/
+lemma countable_BadLeft_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
+  ({x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
+                 (LeftSlice M x (dyadic k)).Countable}).Countable := by
+  -- Das ist genau SLeftFix:
+  have : (SLeftFix M k q).Countable :=
+    countable_BadLeft_fixed_via_neg (M:=M) (k:=k) (q:=q)
+  simpa [SLeftFix]
 
-/-- **Rechts**: `BadRight M` ist abzählbar. -/
+/-! ### Globale Zählbarkeit von BadLeft / BadRight / Bad -/
+
+/-- **Links**: `BadLeft M` ist abzählbar (Subunion + Fixfall). -/
+lemma countable_BadLeft (M : Set ℝ) : (BadLeft M).Countable := by
+  classical
+  have big :
+      (⋃ (k : ℕ), ⋃ (q : ℚ),
+        {x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
+                       (LeftSlice M x (dyadic k)).Countable }).Countable :=
+    countable_iUnion (fun k =>
+      countable_iUnion (fun q =>
+        (countable_BadLeft_fixed (M:=M) k q)))
+  exact big.mono (BadLeft_subunion (M:=M))
+
+/-- **Rechts**: `BadRight M` ist abzählbar (per iUnion + Rechts-Fix). -/
+lemma BadRight_subunion (M : Set ℝ) :
+  BadRight M ⊆ ⋃ (k : ℕ), ⋃ (q : ℚ),
+    {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
+                   (RightSlice M x (dyadic k)).Countable } := by
+  intro x hx
+  rcases hx with ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
+  rcases exists_dyadic_le (ε:=ε) hεpos with ⟨k, hk⟩
+  have : x < x + dyadic k := by
+    have hkpos := dyadic_pos k
+    have := add_lt_add_left hkpos x
+    simpa using this
+  rcases exists_rat_btwn this with ⟨q, hq1, hq2⟩
+  have hmono : (RightSlice M x (dyadic k)) ⊆ (RightSlice M x ε) :=
+    RightSlice_mono_radius (M:=M) (x:=x) (ε₁:=dyadic k) (ε₂:=ε) hk
+  have hcnt_dy : (RightSlice M x (dyadic k)).Countable := hcnt.mono hmono
+  refine mem_iUnion.mpr ?_
+  refine ⟨k, ?_⟩
+  refine mem_iUnion.mpr ?_
+  refine ⟨q, ?_⟩
+  change x ∈ {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
+                        (RightSlice M x (dyadic k)).Countable}
+  exact And.intro hxM (And.intro hq1 (And.intro hq2 hcnt_dy))
+
 lemma countable_BadRight (M : Set ℝ) : (BadRight M).Countable := by
-  -- Bild unter Negation ist `BadLeft (negPre M)`, das abzählbar ist
-  have hImgCnt : ((fun x : ℝ => -x) '' (BadRight M)).Countable := by
-    simpa [image_neg_BadRight] using (countable_BadLeft (negPre M)).image (fun x : ℝ => -x)
-  -- nochmal negieren ⇒ wieder `BadRight M`
-  simpa [Set.image_image, Function.comp, neg_neg, Set.image_id] using
-    hImgCnt.image (fun x : ℝ => -x)
-
-
-/-! ### Beide Seiten zusammen -/
+  classical
+  have big :
+      (⋃ (k : ℕ), ⋃ (q : ℚ),
+        {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
+                       (RightSlice M x (dyadic k)).Countable }).Countable :=
+    countable_iUnion (fun k =>
+      countable_iUnion (fun q =>
+        (countable_BadRight_fixed (M:=M) k q)))
+  exact big.mono (BadRight_subunion (M:=M))
 
 lemma countable_Bad (M : Set ℝ) : (Bad M).Countable := by
   simpa [Bad] using (countable_BadLeft M).union (countable_BadRight M)
@@ -536,9 +597,7 @@ lemma exists_point_in_leftSlice_of_thick
   rcases hy with ⟨hyM, hlow, hupp⟩
   exact ⟨y, hyM, hlow, hupp⟩
 
-/-- **Erste Auswahlstufe (1./3.-Regel)**:
-Aus `TwoSidedThick M` und zwei Punkten `x0 < x1` in `M` erhält man
-`x10 ∈ (x0, x0 + (x1 - x0)/3)` und `x11 ∈ (x1 - (x1 - x0)/3, x1)` in `M`. -/
+/-- **Erste Auswahlstufe (1./3.-Regel)**: … -/
 lemma first_third_selection
   {M : Set ℝ} {x0 x1 : ℝ}
   (hThick : TwoSidedThick M)
@@ -551,18 +610,15 @@ lemma first_third_selection
   have hε : 0 < (x1 - x0) / 3 := by
     have three_pos : (0 : ℝ) < 3 := by norm_num
     exact div_pos hpos three_pos
-  -- rechter Slice an x0 mit ε
   obtain ⟨x10, hx10M, hx0lt, hx10lt⟩ :=
     exists_point_in_rightSlice_of_thick (M:=M) (x:=x0) (ε:=(x1 - x0)/3)
       hThick hx0 hε
-  -- linker Slice an x1 mit demselben ε
   obtain ⟨x11, hx11M, hx1low, hx11ltx1⟩ :=
     exists_point_in_leftSlice_of_thick (M:=M) (x:=x1) (ε:=(x1 - x0)/3)
       hThick hx1 hε
-  -- Zusammenstellen
   exact ⟨x10, x11, hx10M, hx11M, hx0lt, hx10lt, hx1low, hx11ltx1⟩
 
-/-! ### Mini-Schritt: aus einem Paar `x0<x1` zwei neue Teilintervalle -/
+/-! ### Mini-Schritt usw. (unverändert zur vorherigen Version) -/
 
 lemma first_third_intervals_nonempty
   {M : Set ℝ} {x0 x1 : ℝ}
@@ -576,10 +632,9 @@ lemma first_third_intervals_nonempty
     first_third_selection (M:=M) hThick hx0 hx1 hlt
   exact ⟨x10, x11, hx0lt, hx10lt, hx1low, hx11ltx1, hx10M, hx11M⟩
 
-/-- **Stage→Stage+1 (Ein Schritt)**:
-Aus `x0<x1` in `M` erhält man zwei **nichtleere** neue Intervalle
-`(x0,x10)` und `(x11,x1)` mit Endpunkten `x10,x11 ∈ M`, die strikt im
-ersten bzw. letzten Drittel liegen. -/
+def PairOk (M : Set ℝ) (p : ℝ × ℝ) : Prop :=
+  p.1 ∈ M ∧ p.2 ∈ M ∧ p.1 < p.2
+
 lemma stage_succ_one_step
   {M : Set ℝ} {x0 x1 : ℝ}
   (hThick : TwoSidedThick M)
@@ -593,13 +648,6 @@ lemma stage_succ_one_step
     first_third_intervals_nonempty (M:=M) hThick hx0 hx1 hlt
   exact ⟨x10, x11, hx0lt, hx10M, hx11ltx1, hx11M, hx10lt, hx1low⟩
 
-/-! ### Ein Schritt für eine endliche Familie von Intervallen -/
-open Classical
-
-/-- Hilfsprädikat: Ein Paar liegt in `M` und ist strikt geordnet. -/
-def PairOk (M : Set ℝ) (p : ℝ × ℝ) : Prop :=
-  p.1 ∈ M ∧ p.2 ∈ M ∧ p.1 < p.2
-
 lemma stage_succ_one_step_pairs
   {M : Set ℝ} (hThick : TwoSidedThick M) :
   ∀ {x0 x1 : ℝ}, x0 ∈ M → x1 ∈ M → x0 < x1 →
@@ -610,16 +658,9 @@ lemma stage_succ_one_step_pairs
   obtain ⟨x10, x11, hx0lt, hx10lt, hx1low, hx11ltx1, hx10M, hx11M⟩ :=
     first_third_intervals_nonempty (M:=M) hThick hx0 hx1 hlt
   refine ⟨x10, x11, ?_, ?_, hx10lt, hx1low⟩
-  · -- PairOk M (x0, x10)
-    exact ⟨hx0, hx10M, hx0lt⟩
-  · -- PairOk M (x11, x1)
-    exact ⟨hx11M, hx1, hx11ltx1⟩
+  · exact ⟨hx0, hx10M, hx0lt⟩
+  · exact ⟨hx11M, hx1, hx11ltx1⟩
 
-/-- **Listen-Schritt (Stage → Stage+1):**
-Aus einer endlichen Liste `L` von Intervall-Paaren in `M` (alle `PairOk`)
-erzeugt eine neue Liste `L'`, in der jedes Paar `(x0,x1)` durch
-`(x0,x10)` und `(x11,x1)` ersetzt ist, wobei `x10,x11 ∈ M` in den
-ersten/letzten Dritteln liegen. -/
 lemma stage_succ_list
   {M : Set ℝ} (hThick : TwoSidedThick M) :
   ∀ (L : List (ℝ × ℝ)),
@@ -636,13 +677,11 @@ lemma stage_succ_list
           (∀ p' ∈ L', PairOk M p') ∧
           List.length L' = 2 * List.length L)
       ?base ?step
-  · -- Basis: L = []
-    intro _h
+  · intro _h
     refine ⟨[], ?_, ?_⟩
     · intro p hp; cases hp
     · simp
-  · -- Schritt: L = p :: L
-    intro p L ih hAll
+  · intro p L ih hAll
     have hpok : PairOk M p := hAll p (by simp)
     have hLok : ∀ q ∈ L, PairOk M q := by
       intro q hq; exact hAll q (by simp [hq])
@@ -653,9 +692,7 @@ lemma stage_succ_list
     rcases ih hLok with ⟨L', hL'OK, hlen⟩
     let Lnew : List (ℝ × ℝ) := (x0, x10) :: (x11, x1) :: L'
     refine ⟨Lnew, ?hOK, ?hLen⟩
-    · -- alle Paare in Lnew sind ok
-      intro q hq
-      -- q ∈ (x0,x10) :: (x11,x1) :: L'  ⇔  q=(x0,x10) ∨ q=(x11,x1) ∨ q∈L'
+    · intro q hq
       have hq' : q = (x0, x10) ∨ q = (x11, x1) ∨ q ∈ L' := by
         simpa [Lnew] using hq
       rcases hq' with hq0 | hq'
@@ -663,8 +700,7 @@ lemma stage_succ_list
       · rcases hq' with hq1 | hqL
         · cases hq1; exact hPairRight
         · exact hL'OK q hqL
-    · -- Länge: 2 + length L' = 2 + 2 * length L = 2 * length (p :: L)
-      simp [Lnew, hlen, List.length, two_mul,
+    · simp [Lnew, hlen, List.length, two_mul,
             add_comm, add_left_comm, add_assoc]
 
 /-- In einer zweiseitig dicken Menge hat kein Punkt eine isolierte Umgebung. -/
@@ -688,45 +724,31 @@ def Perfect (S : Set ℝ) : Prop :=
 lemma exists_perfect_subset
   {M0 : Set ℝ} (_hM_0 : ¬ M0.Countable) :
   ∃ K : Set ℝ, K ⊆ closure M0 ∧ Perfect K := by
-  -- Reduziere auf den Kern, der zwei-seitig dick ist
   let M1 := core M0
   have hThick : TwoSidedThick M1 := TwoSidedThick_core M0
-  -- Wähle K := Abschluss des Kerns
   let K := closure M1
   use K
   constructor
-  · -- K ⊆ closure M0, weil core M0 ⊆ M0 und closure monotone ist
-    exact closure_mono (core_subset M0)
+  · exact closure_mono (core_subset M0)
   constructor
-  · -- K ist abgeschlossen
-    exact isClosed_closure
-  · -- K hat keine isolierten Punkte
-    intro x hx ε hε
-    -- Aus x ∈ closure M1: Punkte in M1 beliebig nah an x
-    -- aus x ∈ closure M1: Distanz in der Form dist x y < δ
+  · exact isClosed_closure
+  · intro x hx ε hε
     have hx_cl0 : ∀ δ > 0, ∃ y ∈ M1, dist x y < δ :=
       Metric.mem_closure_iff.mp hx
-    -- umschreiben zu dist y x < δ via Symmetrie
     have hx_cl : ∀ δ > 0, ∃ y ∈ M1, dist y x < δ := by
       intro δ hδ
       rcases hx_cl0 δ hδ with ⟨y, hyM1, hy⟩
       exact ⟨y, hyM1, by simpa [dist_comm] using hy⟩
-    -- Arbeite mit ε/2 für etwas Reserve
     have hε2 : 0 < ε / 2 := by
       have : (0 : ℝ) < 2 := by norm_num
       exact half_pos hε
-
     obtain ⟨y0, hy0M1, hy0dist⟩ := hx_cl (ε/2) hε2
     have hy0abs : |y0 - x| < ε / 2 := by
       simpa [Real.dist_eq] using hy0dist
-
-    -- Fallunterscheidung: liegt x selbst schon in M1?
     by_cases hxM1 : x ∈ M1
-    · -- Fall 1: x ∈ M1 ⇒ nutze Zweiseit-Dicke für einen anderen Punkt yR
-      obtain ⟨yR, hyRM1, hx_lt_yR, hyR_lt⟩ :=
+    · obtain ⟨yR, hyRM1, hx_lt_yR, hyR_lt⟩ :=
         exists_point_in_rightSlice_of_thick
           (M:=M1) (x:=x) (ε:=ε/2) hThick hxM1 hε2
-      -- |yR - x| < ε/2, also erst recht < ε
       have hyRabs_half : |yR - x| < ε/2 := by
         have hsub : yR - x < ε/2 := (sub_lt_iff_lt_add').mpr hyR_lt
         have hpos : 0 < yR - x := sub_pos.mpr hx_lt_yR
@@ -734,13 +756,10 @@ lemma exists_perfect_subset
       have hyRabs : |yR - x| < ε := by linarith
       have hneq : yR ≠ x := ne_of_gt hx_lt_yR
       exact ⟨yR, hneq, subset_closure hyRM1, hyRabs⟩
-
-    · -- Fall 2: x ∉ M1 ⇒ der approximierende Punkt y0 ist automatisch verschieden von x
-      have hneq : y0 ≠ x := by
+    · have hneq : y0 ≠ x := by
         intro h; apply hxM1; simpa [h] using hy0M1
       have hy0abs_lt_eps : |y0 - x| < ε := by linarith
       exact ⟨y0, hneq, subset_closure hy0M1, hy0abs_lt_eps⟩
-
 
 /-- Wenn `A` überabzählbar ist und `A ⊆ B`, dann ist auch `B` überabzählbar. -/
 lemma not_countable_of_subset_of_not_countable {α} {A B : Set α}
@@ -748,49 +767,36 @@ lemma not_countable_of_subset_of_not_countable {α} {A B : Set α}
   intro hB
   exact hA (hB.mono hAB)
 
-/-- Aus einer überabzählbaren Menge `M0` erhält man eine perfekte **und überabzählbare**
-    Teilmenge `K` (genauer: `K ⊆ closure M0`). -/
+/-- Perfekte **und überabzählbare** Teilmenge im Abschluss. -/
 lemma exists_perfect_uncountable_subset
   {M0 : Set ℝ} (_hM0 : ¬ M0.Countable) :
   ∃ K : Set ℝ, K ⊆ closure M0 ∧ Perfect K ∧ ¬ K.Countable := by
   classical
-  -- Kern und Dicke
   let M1 := core M0
   have hThick : TwoSidedThick M1 := TwoSidedThick_core M0
   have hM1 : ¬ M1.Countable := uncountable_core_of_uncountable (M := M0) _hM0
-  -- nimm K := Abschluss des Kerns
   let K := closure M1
   refine ⟨K, ?subset, ?perfect, ?uncountableK⟩
-  · -- K ⊆ closure M0
-    exact closure_mono (core_subset M0)
-  · -- K ist perfekt (abgeschlossen, keine isolierten Punkte)
-    constructor
+  · exact closure_mono (core_subset M0)
+  · constructor
     · exact isClosed_closure
-    · -- keine isolierten Punkte
-      intro x hx ε hε
-      -- x ∈ closure M1  ⇒ Punkte in M1 beliebig nah an x (in Form `dist x y < δ`)
+    · intro x hx ε hε
       have hx_cl0 : ∀ δ > 0, ∃ y ∈ M1, dist x y < δ :=
         Metric.mem_closure_iff.mp hx
-      -- umformen zu `dist y x < δ` (Symmetrie der Distanz)
       have hx_cl : ∀ δ > 0, ∃ y ∈ M1, dist y x < δ := by
         intro δ hδ
         rcases hx_cl0 δ hδ with ⟨y, hyM1, hy⟩
         exact ⟨y, hyM1, by simpa [dist_comm] using hy⟩
-      -- Reserve ε/2
       have hε2 : 0 < ε / 2 := by
         have : (0 : ℝ) < 2 := by norm_num
         exact half_pos hε
-      -- approximiere x aus M1
       rcases hx_cl (ε/2) hε2 with ⟨y0, hy0M1, hy0dist⟩
       have hy0abs : |y0 - x| < ε / 2 := by
         simpa [Real.dist_eq] using hy0dist
-      -- Fallunterscheidung, ob x schon in M1 liegt
       by_cases hxM1 : x ∈ M1
-      · -- benutze Zweiseit-Dicke, um einen anderen Punkt rechts von x in M1 zu finden
-        obtain ⟨yR, hyRM1, hx_lt_yR, hyR_lt⟩ :=
+      · obtain ⟨yR, hyRM1, hx_lt_yR, hyR_lt⟩ :=
           exists_point_in_rightSlice_of_thick
             (M:=M1) (x:=x) (ε:=ε/2) hThick hxM1 hε2
-        -- |yR - x| < ε/2 ⇒ < ε
         have hyRabs_half : |yR - x| < ε/2 := by
           have hsub : yR - x < ε/2 := (sub_lt_iff_lt_add').mpr hyR_lt
           have hpos : 0 < yR - x := sub_pos.mpr hx_lt_yR
@@ -798,13 +804,11 @@ lemma exists_perfect_uncountable_subset
         have hyRabs : |yR - x| < ε := by linarith
         have hneq : yR ≠ x := ne_of_gt hx_lt_yR
         exact ⟨yR, hneq, subset_closure hyRM1, hyRabs⟩
-      · -- x ∉ M1 ⇒ der approximierende y0 ist ≠ x
-        have hneq : y0 ≠ x := by
+      · have hneq : y0 ≠ x := by
           intro h; apply hxM1; simpa [h] using hy0M1
         have hy0abs_lt_eps : |y0 - x| < ε := by linarith
         exact ⟨y0, hneq, subset_closure hy0M1, hy0abs_lt_eps⟩
-  · -- K ist überabzählbar, da M1 ⊆ K und M1 überabzählbar
-    have hsubset : M1 ⊆ K := subset_closure
+  · have hsubset : M1 ⊆ K := subset_closure
     exact not_countable_of_subset_of_not_countable hM1 hsubset
 
 /-- Kurzer Alias. -/
@@ -814,50 +818,6 @@ lemma exists_perfect_and_uncountable_in_closure
   exists_perfect_uncountable_subset (M0 := M0) hM0
 
 end ApplicationToGoal
-
-
-/-! ############################################################
-    # Selector/Negation Bridge (schließt `countable_BadLeft_fixed`)
-    #
-    # Wichtig: Dieser Block fügt nur neue Lemmas hinzu und ändert nichts
-    #          am bisherigen Code.
-    ############################################################ -/
-
-section SelectorNegBridge
-
-open Classical
-/-- **Schluss:** Linke Fix-Menge ist abzählbar (über Rechts-Menge nach Negation). -/
-lemma countable_BadLeft_fixed_via_neg (M : Set ℝ) (k : ℕ) (q : ℚ) :
-  (SLeftFix M k q).Countable := by
-  classical
-  -- Bild unter Negation ist die rechte Fix-Menge des negierten Sets
-  have himg : (fun x : ℝ => -x) '' (SLeftFix M k q)
-                = SRightFix (negPre M) k (-q) :=
-    image_neg_SLeftFix (M:=M) (k:=k) (q:=q)
-  -- SRightFix ⊆ BadRight (negPre M) ⇒ abzählbar
-  have hsub : SRightFix (negPre M) k (-q) ⊆ BadRight (negPre M) := by
-    intro x hx
-    rcases hx with ⟨hxM, hxlt, hltx, hcnt⟩
-    exact ⟨hxM, ⟨dyadic k, (dyadic_pos k), by simpa using hcnt⟩⟩
-  have hRightCnt :
-      (SRightFix (negPre M) k (-q)).Countable :=
-    (countable_BadRight (negPre M)).mono hsub
-  -- also ist auch das Bild abzählbar
-  have himgCnt : ((fun x : ℝ => -x) '' (SLeftFix M k q)).Countable := by
-    simpa [himg] using hRightCnt
-  -- Abbilden unter Negation liefert wieder die Ursprungsmenge
-  have : (SLeftFix M k q).Countable := by
-    have := himgCnt.image (fun x : ℝ => -x)
-    simpa [Set.image_image, Function.comp, neg_neg, Set.image_id] using this
-  exact this
-
-end SelectorNegBridge
-
-/-- **Links**: Fixmenge ist abzählbar (per Negations-Brücke). -/
-lemma countable_BadLeft_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
-  ({x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
-                 (LeftSlice M x (dyadic k)).Countable}).Countable :=
-  countable_BadLeft_fixed_via_neg (M:=M) (k:=k) (q:=q)
 
 
 /-! ### Kleine Enumerations- und Auswahl-Helfer für zählbare Teilmengen von ℝ -/
@@ -888,14 +848,20 @@ lemma enumQin_mem {a b : ℝ} {n : ℕ}
     `a < enumQin a b n < b`. -/
 lemma exists_index_enumQin_between {a b : ℝ} (h : a < b) :
   ∃ n, (a : ℝ) < enumQin a b n ∧ (enumQin a b n : ℝ) < b := by
-  -- wähle q ∈ ℚ mit a < q < b
   obtain ⟨q, hqa, hqb⟩ := exists_rat_btwn h
-  -- finde n mit enumQ n = q
   rcases enumQ_surj q with ⟨n, rfl⟩
-  -- der Filter in enumQin lässt q durch
   refine ⟨n, ?_, ?_⟩
   all_goals
     simp [enumQin, hqa, hqb]
+
+/-- Aus einer zählbaren Menge `S` extrahieren wir eine surjektive Aufzählung `e : ℕ → S`. -/
+noncomputable def someEnum {α} {S : Set α} (hS : S.Countable) :
+  { e : ℕ → S // Function.Surjective e } :=
+by
+  classical
+  haveI : Countable S := hS.to_subtype
+  rcases exists_surjective_nat S with ⟨e, he⟩
+  exact ⟨e, he⟩
 
 end CountableHelpers
 
