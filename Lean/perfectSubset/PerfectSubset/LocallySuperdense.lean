@@ -106,11 +106,11 @@ lemma LeftEmpty_countable (M : Set ℝ) : (LeftEmpty M).Countable := by
     | inl hxy' =>
         -- x∈(Ioo a y)∩M, Widerspruch zu hyE
         have hxIn : x ∈ (Ioo (a : ℝ) y) ∩ M := ⟨⟨hax, hxy'⟩, hxM⟩
-        simpa [hyE] using hxIn
+        simp [hyE] at hxIn
     | inr hyx' =>
         -- y∈(Ioo a x)∩M, Widerspruch zu hxE
         have hyIn : y ∈ (Ioo (a : ℝ) x) ∩ M := ⟨⟨hay, hyx'⟩, hyM⟩
-        simpa [hxE] using hyIn
+        simp [hxE] at hyIn
   have hLE_cnt : ∀ a b, (LE a b).Countable := fun a b => (hSub a b).countable
 
   -- Cover: LeftEmpty M ⊆ ⋃_{a,b} LE a b
@@ -128,7 +128,7 @@ lemma LeftEmpty_countable (M : Set ℝ) : (LeftEmpty M).Countable := by
       intro y hy
       have hyI : y ∈ Ioo (x - ε) x := ⟨lt_trans ha1 hy.1.1, hy.1.2⟩
       have : y ∈ ((Ioo (x - ε) x) ∩ M) := ⟨hyI, hy.2⟩
-      simpa [hempty] using this
+      simp [hempty] at this
     -- Eintrag in die große Vereinigung
     refine mem_iUnion.mpr ?_
     refine ⟨a, ?_⟩
@@ -154,11 +154,11 @@ lemma RightEmpty_countable (M : Set ℝ) : (RightEmpty M).Countable := by
     | inl hxy' =>
         -- y ∈ (Ioo x b) ∩ M, Widerspruch zu hxE
         have hyIn : y ∈ (Ioo x (b : ℝ)) ∩ M := ⟨⟨hxy', hyb⟩, hyM⟩
-        simpa [hxE] using hyIn
+        simp [hxE] at hyIn
     | inr hyx' =>
         -- x ∈ (Ioo y b) ∩ M, Widerspruch zu hyE
         have hxIn : x ∈ (Ioo y (b : ℝ)) ∩ M := ⟨⟨hyx', hxb⟩, hxM⟩
-        simpa [hyE] using hxIn
+        simp [hyE] at hxIn
   have hRE_cnt : ∀ a b, (RE a b).Countable := fun a b => (hSub a b).countable
 
   -- Cover: RightEmpty M ⊆ ⋃_{a,b} RE a b
@@ -176,7 +176,7 @@ lemma RightEmpty_countable (M : Set ℝ) : (RightEmpty M).Countable := by
       intro y hy
       have hyI : y ∈ Ioo x (x + ε) := ⟨hy.1.1, lt_trans hy.1.2 hb2⟩
       have : y ∈ ((Ioo x (x + ε)) ∩ M) := ⟨hyI, hy.2⟩
-      simpa [hempty] using this
+      simp [hempty] at this
     refine mem_iUnion.mpr ?_
     refine ⟨a, ?_⟩
     refine mem_iUnion.mpr ?_
@@ -259,7 +259,7 @@ theorem exists_locally_superdense_subset
     by_contra hempty
     have : ((Ioo (x - ε) x) ∩ M3) = (∅ : Set ℝ) := by
       simpa [Set.not_nonempty_iff_eq_empty] using hempty
-    exact hxNotL ⟨hxM3, ⟨ε, hε, by simpa [this]⟩⟩
+    exact hxNotL ⟨hxM3, ⟨ε, hε, by simp [this]⟩⟩
   rcases left_nonempty with ⟨y, hyI, hyM3⟩
 
   -- δL := min (y-(x-ε)) (x-y) > 0, und Ioo(y-δL,y+δL) ⊆ Ioo(x-ε,x)
@@ -290,7 +290,7 @@ theorem exists_locally_superdense_subset
     by_contra hempty
     have : ((Ioo x (x + ε)) ∩ M3) = (∅ : Set ℝ) := by
       simpa [Set.not_nonempty_iff_eq_empty] using hempty
-    exact hxNotR ⟨hxM3, ⟨ε, hε, by simpa [this]⟩⟩
+    exact hxNotR ⟨hxM3, ⟨ε, hε, by simp [this]⟩⟩
   rcases right_nonempty with ⟨y', hyI', hyM3'⟩
   let δR : ℝ := min (y' - x) (x + ε - y')
   have hδR_pos : 0 < δR :=
