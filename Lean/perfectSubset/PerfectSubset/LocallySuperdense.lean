@@ -3,6 +3,16 @@
   so dass für alle x ∈ M₂ und alle ε > 0 beide Mengen
     (x-ε, x) ∩ M₂  und  (x, x+ε) ∩ M₂
   überabzählbar sind.
+
+  Der Beweis geht so:
+  1) "Zweiseitig dünne" Punkte (um die es ein beidseitiges Fenster mit zählbarem Schnitt mit M₁ gibt)
+     bilden eine zählbare Menge `Mr`.
+  2) Setze M₃ := M₁ \ Mr. Dann hat jeder Punkt in M₃ in *jedem* beidseitigen Fenster
+     überabzählbar viele Punkte aus M₁; daraus folgt via Abziehen der zählbaren Mr:
+     in jedem beidseitigen Fenster liegen auch überabzählbar viele Punkte aus M₃.
+  3) "Einseitig leere" Punkte in M₃ (links- bzw. rechts-leer) bilden zählbare Mengen L bzw. R
+     (jeweils über eine ℚ×ℚ-Parametrisierung; pro (a,b) ist der Summand sogar subsingleton).
+  4) Setze M₂ := M₃ \ (L ∪ R). Dann ist M₂ ⊆ M₁ überabzählbar und beidseitig lokal überabzählbar.
 -/
 
 import Mathlib
@@ -10,11 +20,6 @@ import Mathlib
 open Set Topology
 
 namespace LocallySuperdense
-
-/-- Zweiseitig "dünne" Punkte relativ zu `M`:
-    um `x` gibt es ein beidseitiges offenes Intervall, dessen Schnitt mit `M` zählbar ist. -/
-def Thin (M : Set ℝ) : Set ℝ :=
-  {x | x ∈ M ∧ ∃ ε > 0, ((Ioo (x - ε) (x + ε)) ∩ M).Countable}
 
 /-- Hilfslemma: überabzählbar minus zählbar bleibt überabzählbar. -/
 lemma not_countable_diff_of_not_countable_of_countable
@@ -29,191 +34,188 @@ lemma not_countable_diff_of_not_countable_of_countable
     · exact Or.inl ⟨hxA, hxC⟩
   exact hA (hUnionCnt.mono hA_subset)
 
-/-- Die Menge der zweiseitig dünnen Punkte ist zählbar. -/
+/-- Hilfslemma: Ist `A` überabzählbar und `A ⊆ B`, dann ist `B` überabzählbar. -/
+lemma not_countable_of_subset_of_not_countable {α} {A B : Set α}
+    (hA : ¬ A.Countable) (hAB : A ⊆ B) : ¬ B.Countable := by
+  intro hB; exact hA (hB.mono hAB)
+
+/-! ### Schritt 1: Zweiseitig dünne Punkte sind zählbar -/
+
+/-- Zweiseitig "dünne" Punkte relativ zu `M`:
+    um `x` gibt es ein beidseitiges offenes Intervall, dessen Schnitt mit `M` zählbar ist. -/
+def Thin (M : Set ℝ) : Set ℝ :=
+  {x | x ∈ M ∧ ∃ ε > 0, ((Ioo (x - ε) (x + ε)) ∩ M).Countable}
+
+/-- `Thin M` ist zählbar. -/
 lemma Thin_countable (M : Set ℝ) : (Thin M).Countable := by
   classical
-  -- Wir decken Thin M über rationale Fenster, indexiert durch (a,b) ∈ ℚ×ℚ.
-  -- Für (a,b) definieren wir den Summanden:
-  let Summand (p : ℚ × ℚ) : Set ℝ :=
-    {x | x ∈ M ∧ (p.1 : ℝ) < x ∧ x < (p.2 : ℝ) ∧ ((Ioo (p.1 : ℝ) (p.2 : ℝ)) ∩ M).Countable}
-  -- Jeder Summand ist zählbar (als Teilmenge eines zählbaren Schnitts).
-  have hSummand_cnt : ∀ p : ℚ × ℚ, (Summand p).Countable := by
-    intro p
-    classical
-    by_cases hp : ((Ioo (p.1 : ℝ) (p.2 : ℝ)) ∩ M).Countable
-    · -- Dann ist der Summand eine Teilmenge davon
-      exact hp.mono (by
-        intro x hx
-        exact ⟨⟨hx.2.1, hx.2.2.1⟩, hx.1⟩)
-    · -- Falls nicht zählbar, ist der Summand leer (wegen der letzten Konjunktion).
-      have : Summand p ⊆ (∅ : Set ℝ) := by
-        intro x hx; exact by cases hx.2.2.2; exact False.elim (hp ‹_›)
-      exact (countable_empty : (∅ : Set ℝ).Countable).mono this
-  -- Zeige: Thin M ⊆ ⋃_{(a,b)∈ℚ×ℚ} Summand (a,b)
+  -- Für (a,b) ∈ ℚ×ℚ nehmen wir als Summand:
+  --   falls (Ioo a b ∩ M) zählbar: genau diese Menge, sonst ∅.
+  let Summand : (ℚ × ℚ) → Set ℝ := fun p =>
+    if h : ((Ioo (p.1 : ℝ) (p.2 : ℝ)) ∩ M).Countable then
+      ((Ioo (p.1 : ℝ) (p.2 : ℝ)) ∩ M)
+    else (∅ : Set ℝ)
+  have hSummand_cnt : ∀ p, (Summand p).Countable := by
+    intro p; classical
+    by_cases h : ((Ioo (p.1 : ℝ) (p.2 : ℝ)) ∩ M).Countable
+    · simpa [Summand, h]
+    · simpa [Summand, h] using (countable_empty : (∅ : Set ℝ).Countable)
+  -- Cover: Thin M ⊆ ⋃_{(a,b)∈ℚ×ℚ} Summand (a,b)
   have hcover : Thin M ⊆ ⋃ p : ℚ × ℚ, Summand p := by
     intro x hx
-    rcases hx with ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
-    -- Wähle rationale a,b mit x-ε < a < x < b < x+ε
-    have hxlt : x - ε < x := by
-      have : (0 : ℝ) < ε := hεpos; simpa [sub_lt] using (sub_lt_self_iff x).mpr this
-    rcases exists_rat_btwn hxlt with ⟨a, ha1, ha2⟩
-    have hxlt' : x < x + ε := by simpa using (lt_add_of_pos_right x hεpos)
-    rcases exists_rat_btwn hxlt' with ⟨b, hb1, hb2⟩
-    -- Dann (Ioo a b) ⊆ (Ioo (x-ε) (x+ε)); also ist der Schnitt mit M zählbar.
-    have hmono :
-        ((Ioo (a : ℝ) b) ∩ M) ⊆ ((Ioo (x - ε) (x + ε)) ∩ M) := by
-      intro y hy; rcases hy with ⟨hyI, hyM⟩
-      rcases hyI with ⟨hay, hyb⟩
-      have h1 : x - ε < y := lt_trans ha1 hay
-      have h2 : y < x + ε := lt_trans hyb hb2
-      exact ⟨⟨h1, h2⟩, hyM⟩
+    rcases hx with ⟨hxM, ⟨ε, hε, hcnt⟩⟩
+    -- Wähle a,b ∈ ℚ mit x-ε < a < x < b < x+ε
+    have hxlt₁ : x - ε < x := by have : (0 : ℝ) < ε := hε; linarith
+    rcases exists_rat_btwn hxlt₁ with ⟨a, ha1, ha2⟩
+    have hxlt₂ : x < x + ε := by have : (0 : ℝ) < ε := hε; linarith
+    rcases exists_rat_btwn hxlt₂ with ⟨b, hb1, hb2⟩
+    -- (Ioo a b) ⊆ (Ioo (x-ε) (x+ε))
+    have hsub : (Ioo (a : ℝ) b) ⊆ Ioo (x - ε) (x + ε) := by
+      intro y hy; exact ⟨lt_trans ha1 hy.1, lt_trans hy.2 hb2⟩
+    have hmono : ((Ioo (a : ℝ) b) ∩ M) ⊆ ((Ioo (x - ε) (x + ε)) ∩ M) := by
+      intro y hy; exact ⟨hsub hy.1, hy.2⟩
+    -- (Ioo a b ∩ M) ist zählbar, als Teilmenge des zählbaren Fensters
     have hcnt_ab : ((Ioo (a : ℝ) b) ∩ M).Countable := hcnt.mono hmono
-    -- Eintrag in die große Vereinigung
+    -- Eintrag in die große Vereinigung, p = (a,b)
     refine mem_iUnion.mpr ?_
-    refine ⟨(a,b), ?_⟩
-    change x ∈ Summand (a,b)
-    exact ⟨hxM, ha2, hb1, hcnt_ab⟩
-  -- Countable iUnion über ℚ×ℚ
-  have : (⋃ p : ℚ × ℚ, Summand p).Countable :=
-    countable_iUnion (fun p => hSummand_cnt p)
-  exact this.mono hcover
+    refine ⟨(a, b), ?_⟩
+    -- In diesem Summanden ist x enthalten:
+    -- Summand (a,b) = (Ioo a b ∩ M) (weil hcnt_ab) und x ∈ Ioo a b ∩ M
+    have hx_in : x ∈ ((Ioo (a : ℝ) b) ∩ M) := ⟨⟨ha2, hb1⟩, hxM⟩
+    have : Summand (a, b) = ((Ioo (a : ℝ) b) ∩ M) := by
+      classical
+      have h : ((Ioo (a : ℝ) b) ∩ M).Countable := hcnt_ab
+      simpa [Summand, h]
+    simpa [this] using hx_in
+  -- ℚ×ℚ ist zählbar ⇒ iUnion ist zählbar
+  haveI : Countable (ℚ × ℚ) := countable_prod
+  have big : (⋃ p : ℚ × ℚ, Summand p).Countable := countable_iUnion (fun p => hSummand_cnt p)
+  exact big.mono hcover
 
-/-- Punkte mit "links-leerer" Umgebung in `M` (einseitig leer) -/
+/-! ### Schritt 2: Einseitig leere Punkte sind zählbar -/
+
+/-- Punkte mit "links-leerer" Umgebung in `M`. -/
 def LeftEmpty (M : Set ℝ) : Set ℝ :=
   {x | x ∈ M ∧ ∃ ε > 0, ((Ioo (x - ε) x) ∩ M) = ∅}
 
-/-- Punkte mit "rechts-leerer" Umgebung in `M` (einseitig leer) -/
+/-- Punkte mit "rechts-leerer" Umgebung in `M`. -/
 def RightEmpty (M : Set ℝ) : Set ℝ :=
   {x | x ∈ M ∧ ∃ ε > 0, ((Ioo x (x + ε)) ∩ M) = ∅}
 
-/-- Die links-leeren Punkte sind zählbar. -/
+/-- Für rationale Fenster `(a,b)` tragen wir links-leere Punkte zusammen; pro Fenster höchstens
+    ein Punkt ⇒ zählbar. -/
 lemma LeftEmpty_countable (M : Set ℝ) : (LeftEmpty M).Countable := by
   classical
-  -- Decke `LeftEmpty M` über (k,a) ∈ ℕ×ℚ:
-  --   a < x < a + 1/(k+1)  und  (Ioo a x) ∩ M = ∅.
-  let S (k : ℕ) (a : ℚ) : Set ℝ :=
-    {x | x ∈ M ∧ (a : ℝ) < x ∧ x < (a : ℝ) + (1 : ℝ) / (k.succ) ∧
-          ((Ioo (a : ℝ) x) ∩ M) = ∅}
-  -- Jeder S k a ist höchstens einelementig → zählbar.
-  have hSub : ∀ k a, (S k a).Subsingleton := by
-    intro k a
+  -- Fixe Fenster über ℚ×ℚ
+  let LE (a b : ℚ) : Set ℝ :=
+    {x | x ∈ M ∧ (a : ℝ) < x ∧ x < (b : ℝ) ∧ ((Ioo (a : ℝ) x) ∩ M) = ∅}
+  -- Jedes LE a b ist subsingleton ⇒ zählbar
+  have hSub : ∀ a b, (LE a b).Subsingleton := by
+    intro a b
     intro x hx y hy
-    by_contra hne
-    wlog hxy : x < y
-    · exact (lt_or_gt_of_ne hne).elim (fun h => this h) (fun h => by
-        have := this (show y < x from h)
-        simpa [eq_comm] using this.symm)
-    -- Dann x ∈ (a,y) ∩ M, Widerspruch zu der Leere aus `hy`.
-    have hxIn : x ∈ ((Ioo (a : ℝ) y) ∩ M) := by
-      refine ⟨⟨?_, ?_⟩, hx.1⟩
-      · exact lt_trans hx.2.1 hxy
-      · exact lt_of_lt_of_le hxy (by
-            have := hy.2.2.1; exact le_of_lt this)
-    have : ((Ioo (a : ℝ) y) ∩ M) = ∅ := by simpa using hy.2.2.2
-    simpa [this] using hxIn
-  have hS_cnt : ∀ k a, (S k a).Countable := fun k a =>
-    (hSub k a).countable
-  -- Cover: LeftEmpty M ⊆ ⋃_{k,a} S k a
-  have hcover : LeftEmpty M ⊆ ⋃ k, ⋃ a : ℚ, S k a := by
+    by_contra hxy
+    have hlt : x < y ∨ y < x := lt_or_gt_of_ne hxy
+    cases hlt with
+    | inl hxy' =>
+        -- x ∈ (Ioo a y) ∩ M, aber das ist nach hy leer
+        have hxIn : x ∈ (Ioo (a : ℝ) y) ∩ M := by
+          refine ⟨⟨?_, ?_⟩, hx.1⟩
+          · exact lt_trans hx.2.1 hxy'
+          · exact hxy'
+        have : ((Ioo (a : ℝ) y) ∩ M) = ∅ := hy.2.2.2
+        simpa [this] using hxIn
+    | inr hyx' =>
+        -- y ∈ (Ioo a x) ∩ M, aber das ist nach hx leer
+        have hyIn : y ∈ (Ioo (a : ℝ) x) ∩ M := by
+          refine ⟨⟨?_, ?_⟩, hy.1⟩
+          · exact lt_trans hy.2.1 hyx'
+          · exact hyx'
+        have : ((Ioo (a : ℝ) x) ∩ M) = ∅ := hx.2.2.2
+        simpa [this] using hyIn
+  have hLE_cnt : ∀ a b, (LE a b).Countable := fun a b => (hSub a b).countable
+  -- Cover: LeftEmpty M ⊆ ⋃_{a,b} LE a b
+  have hcover : LeftEmpty M ⊆ ⋃ a : ℚ, ⋃ b : ℚ, LE a b := by
     intro x hx
     rcases hx with ⟨hxM, ⟨ε, hε, hempty⟩⟩
-    -- wähle k mit 1/(k+1) < ε
-    rcases exists_nat_one_div_lt hε with ⟨k, hk⟩
-    have hk' : (1 : ℝ) / (k.succ : ℝ) < ε := by
-      simpa [Nat.succ_eq_add_one, Nat.cast_add, Nat.cast_one] using hk
-    -- wähle a rational mit x - 1/(k+1) < a < x
-    have hxlt : x - (1 : ℝ) / (k.succ) < x := by
-      have : 0 < (1 : ℝ) / (k.succ) := one_div_pos.mpr (by exact_mod_cast Nat.succ_pos k)
-      have := sub_lt_sub_left this x
-      simpa using this
-    rcases exists_rat_btwn hxlt with ⟨a, ha1, ha2⟩
-    -- (Ioo a x) ⊆ (Ioo (x-ε) x), also leer.
+    -- wähle a ∈ ℚ mit x-ε < a < x und b ∈ ℚ mit x < b
+    have hxlt₁ : x - ε < x := by have : (0 : ℝ) < ε := hε; linarith
+    rcases exists_rat_btwn hxlt₁ with ⟨a, ha1, ha2⟩
+    rcases exists_rat_btwn (lt_add_of_pos_right x hε) with ⟨b, hb1, _hb2⟩
+    -- (Ioo a x) ⊆ (Ioo (x-ε) x), also leer
     have subEmpty : ((Ioo (a : ℝ) x) ∩ M) = ∅ := by
-      apply eq_empty_iff_forall_not_mem.mpr
+      apply eq_empty_iff_forall_notMem.mpr
       intro y hy
-      have hyI : y ∈ Ioo (x - ε) x := by
-        rcases hy with ⟨⟨hay, hyx⟩, hyM⟩
-        have : x - ε < y := lt_trans (by
-          have : x - (1 : ℝ) / (k.succ) < y := hay
-          exact lt_of_lt_of_le this (by
-            have : (1 : ℝ) / (k.succ : ℝ) ≤ ε := le_of_lt hk'
-            have : x - ε ≤ x - (1 : ℝ) / (k.succ) := sub_le_sub_left this x
-            exact le_of_lt (lt_of_le_of_lt this hay))) hay
-        exact ⟨this, hyx⟩
-      have : y ∈ ((Ioo (x - ε) x) ∩ M) := by
-        rcases hy with ⟨_, hyM⟩; exact ⟨hyI, hyM⟩
+      have hyI : y ∈ Ioo (x - ε) x := ⟨lt_trans ha1 hy.1.1, hy.1.2⟩
+      have : y ∈ ((Ioo (x - ε) x) ∩ M) := ⟨hyI, hy.2⟩
       simpa [hempty] using this
     -- Eintrag in die große Vereinigung
     refine mem_iUnion.mpr ?_
-    refine ⟨k, ?_⟩
-    refine mem_iUnion.mpr ?_
     refine ⟨a, ?_⟩
-    exact ⟨hxM, ha2, by
-            have : (a : ℝ) + (1 : ℝ) / (k.succ) ≤ x := by
-              have := add_lt_add_right ha1 ( (1 : ℝ) / (k.succ))
-              have : (a : ℝ) + (1 : ℝ) / (k.succ) < x + (1 : ℝ) / (k.succ) := by simpa [add_comm, add_left_comm, add_assoc] using this
-              exact le_of_lt (lt_trans this (by
-                have : (1 : ℝ) / (k.succ : ℝ) < ε := hk'
-                have : x + (1 : ℝ) / (k.succ) ≤ x + ε := add_le_add_left (le_of_lt this) x
-                exact lt_of_lt_of_le ?h this))
-            -- kleines Hilfs-Lemma: x < a + 1/(k+1) folgt aus a < x
-            · have : x < (a : ℝ) + (1 : ℝ) / (k.succ) := by
-                have pos : 0 < (1 : ℝ) / (k.succ : ℝ) :=
-                  one_div_pos.mpr (by exact_mod_cast Nat.succ_pos k)
-                have := add_lt_add_of_lt_of_le (le_of_lt ha2) (le_of_lt pos)
-                -- `x ≤ a` ist falsch, wir brauchen nur die triviale obere Schranke:
-                exact lt_of_le_of_lt (le_of_lt ha2) (by
-                  have : (a : ℝ) + 0 < (a : ℝ) + (1 : ℝ) / (k.succ) := add_lt_add_left pos _
-                  simpa [add_comm] using this)
-              exact this,
-          subEmpty⟩
-  -- Zählbarkeit via doppelte iUnion
-  have : (⋃ k, ⋃ a : ℚ, S k a).Countable :=
-    countable_iUnion (fun k => countable_iUnion (fun a => hS_cnt k a))
+    refine mem_iUnion.mpr ?_
+    refine ⟨b, ?_⟩
+    exact ⟨hxM, ha2, by exact hb1, subEmpty⟩
+  -- ℚ×ℚ ist zählbar ⇒ DoppeliUnion zählbar
+  have : (⋃ a : ℚ, ⋃ b : ℚ, LE a b).Countable :=
+    countable_iUnion (fun a => countable_iUnion (fun b => hLE_cnt a b))
   exact this.mono hcover
 
-/-- Die rechts-leeren Punkte sind zählbar (symmetrisch). -/
+/-- Rechts-leere Punkte sind ebenso zählbar (symmetrischer Beweis wie links). -/
 lemma RightEmpty_countable (M : Set ℝ) : (RightEmpty M).Countable := by
   classical
-  -- Spiegelbild-Argument mit (x, x+ε); definieren wir T k a analog zu S.
-  let T (k : ℕ) (a : ℚ) : Set ℝ :=
-    {x | x ∈ M ∧ (a : ℝ) - (1 : ℝ) / (k.succ) < x ∧ (a : ℝ) < x ∧
-          ((Ioo x (a : ℝ)) ∩ M) = ∅}
-  -- Für diese Datei genügt es, LeftEmpty_countable auf -M anzuwenden,
-  -- aber wir bleiben kurz: dieselbe Logik zeigt Zähligkeit.
-  -- Wir reduzieren per Negation:
-  -- Bild unter y ↦ -y vertauscht rechts/links.
-  have hneg :
-      (RightEmpty M) =
-        (fun x : ℝ => -x) ⁻¹' (LeftEmpty (fun z : ℝ => -z) '' M) := by
-    ext x; constructor
-    · intro hx
-      rcases hx with ⟨hxM, ⟨ε, hε, hempty⟩⟩
-      have hx' : -x ∈ (fun z : ℝ => -z) '' M := ⟨x, hxM, rfl⟩
-      have : ((Ioo ((-x) - ε) (-x)) ∩ ((fun z : ℝ => -z) '' M)) = ∅ := by
-        -- (Ioo x (x+ε)) unter Negation wird (Ioo ((-x)-ε) (-x))
-        -- und Leere bleibt erhalten.
-        -- Bequemer ist: wir benutzen Bild-Leere unter Bijektion.
-        -- (Diese Umsetzung ist technisch; in dieser Kurzdatei nehmen wir sie als gegeben.)
-        simpa using (by exact hempty)
-      exact ⟨hx', ⟨ε, hε, this⟩⟩
-    · intro hx
-      rcases hx with ⟨hxImg, ⟨ε, hε, hempty⟩⟩
-      rcases hxImg with ⟨x0, hx0M, hx0eq⟩
-      subst hx0eq
-      -- Rückrichtung analog (wir lassen die Details aus Platzgründen aus,
-      -- es ist die exakte Spiegelung oben).
-      exact ⟨hx0M, ⟨ε, hε, by simpa using hempty⟩⟩
-  -- Aus hneg und Zähligkeit von LeftEmpty für das Bild folgt Behauptung.
-  -- (Bild einer zählbaren Menge und Urbild unter Injektion bleiben zählbar.)
-  -- In dieser Kurzdatei vereinfachen wir: benutzen das bereits bewiesene
-  -- `LeftEmpty_countable` auf M (die Argumente sind vollkommen symmetrisch).
-  -- → direkt:
-  -- (Wer symmetrische Details sehen möchte, kann `x ↦ -x`-Beweis ausformulieren.)
-  -- Endlich:
-  -- (Wir setzen hier LeftEmpty_countable als Hilfslemma voraus und verweisen
-  -- auf die Symmetrie.)
-  simpa [RightEmpty] using LeftEmpty_countable M
+  -- Fixe Fenster über ℚ×ℚ
+  let RE (a b : ℚ) : Set ℝ :=
+    {x | x ∈ M ∧ (a : ℝ) < x ∧ x < (b : ℝ) ∧ ((Ioo x (b : ℝ)) ∩ M) = ∅}
+  -- Jedes RE a b ist subsingleton ⇒ zählbar
+  have hSub : ∀ a b, (RE a b).Subsingleton := by
+    intro a b
+    intro x hx y hy
+    by_contra hxy
+    have hlt : x < y ∨ y < x := lt_or_gt_of_ne hxy
+    cases hlt with
+    | inl hxy' =>
+        -- y ∈ (Ioo x b) ∩ M, aber das ist nach hx leer
+        have hyIn : y ∈ (Ioo x (b : ℝ)) ∩ M := by
+          refine ⟨⟨?_, ?_⟩, hy.1⟩
+          · exact hxy'
+          · exact lt_trans hy.2.2.1 hx.2.2.1 -- y < b und x < y ⇒ x < b
+        have : ((Ioo x (b : ℝ)) ∩ M) = ∅ := hx.2.2.2
+        simpa [this] using hyIn
+    | inr hyx' =>
+        -- x ∈ (Ioo y b) ∩ M, aber das ist nach hy leer
+        have hxIn : x ∈ (Ioo y (b : ℝ)) ∩ M := by
+          refine ⟨⟨?_, ?_⟩, hx.1⟩
+          · exact hyx'
+          · exact lt_trans hx.2.2.1 hy.2.2.1
+        have : ((Ioo y (b : ℝ)) ∩ M) = ∅ := hy.2.2.2
+        simpa [this] using hxIn
+  have hRE_cnt : ∀ a b, (RE a b).Countable := fun a b => (hSub a b).countable
+  -- Cover: RightEmpty M ⊆ ⋃_{a,b} RE a b
+  have hcover : RightEmpty M ⊆ ⋃ a : ℚ, ⋃ b : ℚ, RE a b := by
+    intro x hx
+    rcases hx with ⟨hxM, ⟨ε, hε, hempty⟩⟩
+    -- wähle b ∈ ℚ mit x < b < x+ε und a ∈ ℚ mit a < x
+    have hxlt₂ : x < x + ε := by have : (0 : ℝ) < ε := hε; linarith
+    rcases exists_rat_btwn hxlt₂ with ⟨b, hb1, hb2⟩
+    rcases exists_rat_btwn (sub_lt_self_iff x).mpr hε with ⟨a, _ha1, ha2⟩
+    -- (Ioo x b) ⊆ (Ioo x (x+ε)), also leer
+    have subEmpty : ((Ioo x (b : ℝ)) ∩ M) = ∅ := by
+      apply eq_empty_iff_forall_notMem.mpr
+      intro y hy
+      have hyI : y ∈ Ioo x (x + ε) := ⟨hy.1.1, lt_trans hy.1.2 hb2⟩
+      have : y ∈ ((Ioo x (x + ε)) ∩ M) := ⟨hyI, hy.2⟩
+      simpa [hempty] using this
+    -- Eintrag in die große Vereinigung
+    refine mem_iUnion.mpr ?_
+    refine ⟨a, ?_⟩
+    refine mem_iUnion.mpr ?_
+    refine ⟨b, ?_⟩
+    exact ⟨hxM, by exact ha2, hb1, subEmpty⟩
+  -- ℚ×ℚ ist zählbar ⇒ DoppeliUnion zählbar
+  have : (⋃ a : ℚ, ⋃ b : ℚ, RE a b).Countable :=
+    countable_iUnion (fun a => countable_iUnion (fun b => hRE_cnt a b))
+  exact this.mono hcover
+
+/-! ### Schritt 3: Hauptsatz -/
 
 /-- Hauptsatz (lokal superdichte Teilmenge): Aus `M₁` überabzählbar folgt
     `∃ M₂ ⊆ M₁`, überabzählbar, und für alle `x ∈ M₂, ε>0` sind
@@ -242,21 +244,20 @@ theorem exists_locally_superdense_subset
   have hM2_unc : ¬ M2.Countable := by
     have hLR_cnt : (L ∪ R).Countable := hL_cnt.union hR_cnt
     exact not_countable_diff_of_not_countable_of_countable hM3_unc hLR_cnt
-  -- Schritt 3: beidseitige Überabzählbarkeit in M2
+  -- Kern-Eigenschaft in M3: um jeden y∈M3 und jedes δ>0 ist (Ioo (y-δ,y+δ) ∩ M3) überabzählbar.
   have key_M3 :
       ∀ y ∈ M3, ∀ δ > 0, ¬ ((Ioo (y - δ) (y + δ)) ∩ M3).Countable := by
     intro y hy δ hδ
-    -- Aus y ∈ M3 folgt: (Ioo (y-δ,y+δ))∩M1 überabzählbar
+    -- Aus y ∈ M3 folgt: y ∈ M1 und y ∉ Mr
     have hyM1 : y ∈ M1 := hy.1
     have hyNotThin : y ∉ Mr := hy.2
-    have H : ¬ ((Ioo (y - δ) (y + δ)) ∩ M1).Countable := by
-      -- sonst wäre y zweiseitig dünn
-      intro hcnt
-      exact hyNotThin ⟨hyM1, ⟨δ, hδ, hcnt⟩⟩
-    -- Ziehe Mr (zählbar) ab → immer noch überabzählbar
+    -- Definition von Mr = Thin M1
+    have : ¬ ((Ioo (y - δ) (y + δ)) ∩ M1).Countable := by
+      intro hcnt; exact hyNotThin ⟨hyM1, ⟨δ, hδ, hcnt⟩⟩
     -- (Ioo∩M3) = (Ioo∩M1) \ (Ioo∩Mr)
-    have : ((Ioo (y - δ) (y + δ)) ∩ M3)
-            = ((Ioo (y - δ) (y + δ)) ∩ M1) \ ((Ioo (y - δ) (y + δ)) ∩ Mr) := by
+    have eq₀ :
+      ((Ioo (y - δ) (y + δ)) ∩ M3)
+        = ((Ioo (y - δ) (y + δ)) ∩ M1) \ ((Ioo (y - δ) (y + δ)) ∩ Mr) := by
       ext t; constructor <;> intro ht
       · rcases ht with ⟨htI, ⟨htM1, htNotMr⟩⟩
         exact ⟨⟨htI, htM1⟩, ⟨htI, htNotMr⟩⟩
@@ -264,135 +265,78 @@ theorem exists_locally_superdense_subset
         exact ⟨htI, ⟨htM1, htNotMr⟩⟩
     have hcntMr : ((Ioo (y - δ) (y + δ)) ∩ Mr).Countable :=
       hMr_cnt.mono (by intro t ht; exact ht.2)
-    have : ¬ (((Ioo (y - δ) (y + δ)) ∩ M3)).Countable := by
-      simpa [this] using
-        not_countable_diff_of_not_countable_of_countable H hcntMr
-    exact this
+    simpa [eq₀] using
+      not_countable_diff_of_not_countable_of_countable this hcntMr
   -- Schluss: für x∈M2 sind Halbintervalle gegen M2 überabzählbar
   refine ⟨M2, hM2_subset_M1, hM2_unc, ?_⟩
   intro x hxM2 ε hε
   have hxM3 : x ∈ M3 := hxM2.1
   have hxNotL : x ∉ L := by exact fun h => hxM2.2 (Or.inl h)
   have hxNotR : x ∉ R := by exact fun h => hxM2.2 (Or.inr h)
-  -- Links: (x-ε,x)∩M3 ist nicht leer (sonst x∈L), also enthält y∈M3.
-  -- Um y gibt es unüberzählbar viele M3-Punkte in einem kleineren Intervall ⊆ (x-ε,x).
-  have left_unc_M3 : ¬ ((Ioo (x - ε) x) ∩ M3).Countable := by
-    -- Nichtleere links (sonst x ∈ L)
-    have hne : ((Ioo (x - ε) x) ∩ M3).Nonempty := by
-      by_contra hempty
-      have : ((Ioo (x - ε) x) ∩ M3) = (∅ : Set ℝ) := by
-        simpa [Set.not_nonempty_iff_eq_empty] using hempty
-      exact hxNotL ⟨hxM3, ⟨ε, hε, by simpa [this]⟩⟩
-    rcases hne with ⟨y, hyI, hyM3⟩
-    have hy : y ∈ M3 := hyM3
-    -- kleines δ > 0 mit (y-δ,y+δ) ⊆ (x-ε,x)
-    have : ∃ δ > 0, Ioo (y - δ) (y + δ) ⊆ Ioo (x - ε) x := by
-      have hy1 : x - ε < y := hyI.1
-      have hy2 : y < x := hyI.2
-      let δ := min (y - (x - ε)) (x - y) / 2
-      have hδpos : δ > 0 := by
-        have : 0 < min (y - (x - ε)) (x - y) := by
-          refine lt_min ?_ ?_
-          · have := sub_pos.mpr hy1; linarith
-          · exact sub_pos.mpr hy2
-        have : 0 < min (y - (x - ε)) (x - y) / 2 := by linarith
-        simpa [δ] using this
-      refine ⟨δ, hδpos, ?_⟩
-      intro z hz
-      rcases hz with ⟨hz1, hz2⟩
-      have : x - ε < z := by
-        have : y - δ < z := hz1
-        have : x - ε < y - δ := by
-          have : δ ≤ y - (x - ε) := by
-            have : δ ≤ min (y - (x - ε)) (x - y) := by
-              have : δ = min (y - (x - ε)) (x - y) / 2 := rfl
-              have : min (y - (x - ε)) (x - y) / 2 ≤ min (y - (x - ε)) (x - y) := by
-                have : 0 < (2 : ℝ) := by norm_num
-                have := (div_le_iff (show (0 : ℝ) < 2 by norm_num)).mpr (by
-                  have := le_of_lt (lt_min (sub_pos.mpr hy1) (sub_pos.mpr hy2))
-                  simpa using this)
-                -- etwas grob; genügt für die Inklusion
-                exact le_of_lt (by have := lt_min (sub_pos.mpr hy1) (sub_pos.mpr hy2); linarith)
-              exact this
-            have : x - ε < y - (y - (x - ε)) := by
-              have := sub_lt_sub_left (show 0 < y - (x - ε) from sub_pos.mpr hy1) (x - ε)
-              simpa using this
-            have : x - ε < y - δ := by
-              have := sub_lt_sub_left (lt_of_le_of_lt this (by linarith : δ < y - (x - ε))) (x - ε)
-              simpa using this
-            exact this
-        exact lt_trans this hz1
-      have : z < x := by
-        have : z < y + δ := hz2
-        have : y + δ ≤ x := by
-          have : δ ≤ x - y := by
-            have : δ ≤ min (y - (x - ε)) (x - y) := by
-              -- wie oben, grob
-              exact by
-                have : (0 : ℝ) < 2 := by norm_num
-                exact le_of_lt (lt_min (sub_pos.mpr hy1) (sub_pos.mpr hy2))
-            exact (min_le_iff).1 this |> Or.resolve_left (by exact fun h => False.elim (lt_irrefl _))
-          have := add_le_add_left this y
-          simpa using this
-        exact lt_of_lt_of_le hz2 this
-      exact ⟨this, this_1⟩
-    rcases this with ⟨δ, hδ, hsub⟩
-    have : ¬ ((Ioo (y - δ) (y + δ)) ∩ M3).Countable :=
-      key_M3 y hy δ hδ
-    exact this.mono (by intro z hz; exact ⟨hsub hz.1, hz.2⟩)
+
+  -- Links: (x-ε,x)∩M3 ist nicht leer (sonst x∈L); wähle y darin.
+  have left_nonempty : ((Ioo (x - ε) x) ∩ M3).Nonempty := by
+    by_contra hempty
+    have : ((Ioo (x - ε) x) ∩ M3) = (∅ : Set ℝ) := by
+      simpa [Set.not_nonempty_iff_eq_empty] using hempty
+    exact hxNotL ⟨hxM3, ⟨ε, hε, by simpa [this]⟩⟩
+  rcases left_nonempty with ⟨y, hyI, hyM3⟩
+  -- kleines δ > 0 mit Ioo(y-δ,y+δ) ⊆ Ioo(x-ε,x):
+  -- nimm δ := min (y - (x-ε)) (x - y)  (beides > 0, da y ∈ (x-ε,x))
+  let δL : ℝ := min (y - (x - ε)) (x - y)
+  have hδL_pos : 0 < δL := by
+    have : 0 < y - (x - ε) := by exact sub_pos.mpr hyI.1
+    have : 0 < min (y - (x - ε)) (x - y) := by
+      have : 0 < x - y := sub_pos.mpr hyI.2
+      exact lt_min (sub_pos.mpr hyI.1) this
+    simpa [δL] using this
+  have hsubL : Ioo (y - δL) (y + δL) ⊆ Ioo (x - ε) x := by
+    intro z hz
+    have h1 : x - ε ≤ y - δL := by
+      have : δL ≤ y - (x - ε) := min_le_left _ _
+      have : y - δL ≥ y - (y - (x - ε)) := by exact sub_le_sub_left this y
+      -- y - (y - (x - ε)) = x - ε
+      simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using this
+    have h2 : y + δL ≤ x := by
+      have : δL ≤ x - y := min_le_right _ _
+      have := add_le_add_left this y
+      simpa using this
+    exact ⟨lt_of_le_of_lt h1 hz.1, lt_of_lt_of_le hz.2 h2⟩
+  -- daraus: das große Intervall gegen M3 ist überabzählbar, also auch das linke Halbintervall
+  have bigL : ¬ ((Ioo (y - δL) (y + δL)) ∩ M3).Countable := key_M3 y hyM3 δL hδL_pos
+  have left_unc_M3 : ¬ ((Ioo (x - ε) x) ∩ M3).Countable :=
+    not_countable_of_subset_of_not_countable bigL
+      (by intro z hz; exact ⟨hsubL hz.1, hz.2⟩)
+
   -- Rechts analog:
-  have right_unc_M3 : ¬ ((Ioo x (x + ε)) ∩ M3).Countable := by
-    have hne : ((Ioo x (x + ε)) ∩ M3).Nonempty := by
-      by_contra hempty
-      have : ((Ioo x (x + ε)) ∩ M3) = (∅ : Set ℝ) := by
-        simpa [Set.not_nonempty_iff_eq_empty] using hempty
-      exact hxNotR ⟨hxM3, ⟨ε, hε, by simpa [this]⟩⟩
-    rcases hne with ⟨y, hyI, hyM3⟩
-    have hy : y ∈ M3 := hyM3
-    have : ∃ δ > 0, Ioo (y - δ) (y + δ) ⊆ Ioo x (x + ε) := by
-      have hy1 : x < y := hyI.1
-      have hy2 : y < x + ε := hyI.2
-      let δ := min (y - x) (x + ε - y) / 2
-      have hδpos : δ > 0 := by
-        have : 0 < min (y - x) (x + ε - y) := by
-          refine lt_min ?_ ?_
-          · exact sub_pos.mpr hy1
-          · exact sub_pos.mpr hy2
-        linarith
-      refine ⟨δ, hδpos, ?_⟩
-      intro z hz
-      rcases hz with ⟨hz1, hz2⟩
-      have : x < z := by
-        have : y - δ ≤ z := le_of_lt hz1
-        have : x < y - δ := by
-          have : δ ≤ y - x := by
-            have : δ ≤ min (y - x) (x + ε - y) := by
-              have : 0 < (2 : ℝ) := by norm_num
-              exact le_of_lt (lt_min (sub_pos.mpr hy1) (sub_pos.mpr hy2))
-            exact (min_le_iff).1 this |> Or.resolve_right (by exact fun h => False.elim (lt_irrefl _))
-          have := sub_lt_iff_lt_add'.mpr (by
-            have := (lt_sub_iff_add_lt).mpr (by exact hy1)
-            simpa using this)
-          -- grob; genügt
-          exact lt_of_le_of_lt (by have := add_le_add_left this x; exact this) (by linarith)
-        exact lt_of_lt_of_le this (le_of_lt hz1)
-      have : z < x + ε := by
-        have : z ≤ y + δ := le_of_lt hz2
-        have : y + δ < x + ε := by
-          have : δ ≤ x + ε - y := by
-            have : δ ≤ min (y - x) (x + ε - y) := by
-              exact le_of_lt (lt_min (sub_pos.mpr hy1) (sub_pos.mpr hy2))
-            exact (min_le_iff).1 this |> Or.resolve_left (by exact fun h => False.elim (lt_irrefl _))
-          have := add_le_add_left this y
-          exact lt_of_le_of_lt this (by
-            have : y < x + ε := hy2; exact this)
-        exact lt_of_le_of_lt this (by exact this)
-      exact ⟨this, this_1⟩
-    rcases this with ⟨δ, hδ, hsub⟩
-    have : ¬ ((Ioo (y - δ) (y + δ)) ∩ M3).Countable :=
-      key_M3 y hy δ hδ
-    exact this.mono (by intro z hz; exact ⟨hsub hz.1, hz.2⟩)
-  -- Nun von M3 auf M2 (Abziehen von L ∪ R ist zählbar)
+  have right_nonempty : ((Ioo x (x + ε)) ∩ M3).Nonempty := by
+    by_contra hempty
+    have : ((Ioo x (x + ε)) ∩ M3) = (∅ : Set ℝ) := by
+      simpa [Set.not_nonempty_iff_eq_empty] using hempty
+    exact hxNotR ⟨hxM3, ⟨ε, hε, by simpa [this]⟩⟩
+  rcases right_nonempty with ⟨y', hyI', hyM3'⟩
+  let δR : ℝ := min (y' - x) (x + ε - y')
+  have hδR_pos : 0 < δR := by
+    have : 0 < min (y' - x) (x + ε - y') := by
+      exact lt_min (sub_pos.mpr hyI'.1) (sub_pos.mpr hyI'.2)
+    simpa [δR] using this
+  have hsubR : Ioo (y' - δR) (y' + δR) ⊆ Ioo x (x + ε) := by
+    intro z hz
+    have h1 : x ≤ y' - δR := by
+      have : δR ≤ y' - x := min_le_left _ _
+      have : y' - δR ≥ y' - (y' - x) := by exact sub_le_sub_left this y'
+      simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using this
+    have h2 : y' + δR ≤ x + ε := by
+      have : δR ≤ x + ε - y' := min_le_right _ _
+      have := add_le_add_left this y'
+      simpa using this
+    exact ⟨lt_of_le_of_lt h1 hz.1, lt_of_lt_of_le hz.2 h2⟩
+  have bigR : ¬ ((Ioo (y' - δR) (y' + δR)) ∩ M3).Countable := key_M3 y' hyM3' δR hδR_pos
+  have right_unc_M3 : ¬ ((Ioo x (x + ε)) ∩ M3).Countable :=
+    not_countable_of_subset_of_not_countable bigR
+      (by intro z hz; exact ⟨hsubR hz.1, hz.2⟩)
+
+  -- Jetzt von M3 zu M2 (Abziehen der zählbaren Menge L ∪ R)
   have hLR_cnt : (L ∪ R).Countable := hL_cnt.union hR_cnt
   have left_unc_M2 :
       ¬ ((Ioo (x - ε) x) ∩ M2).Countable := by
@@ -412,6 +356,7 @@ theorem exists_locally_superdense_subset
       · intro hz; exact ⟨⟨hz.1.1, hz.2.1⟩, hz.1.2, hz.2.2⟩
     simpa [this] using
       (not_countable_diff_of_not_countable_of_countable right_unc_M3 hLR_cnt)
+
   exact ⟨left_unc_M2, right_unc_M2⟩
 
 end LocallySuperdense
