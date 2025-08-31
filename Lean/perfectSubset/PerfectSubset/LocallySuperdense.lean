@@ -47,7 +47,7 @@ lemma Thin_countable (M : Set ℝ) : (Thin M).Countable := by
     intro p; classical
     by_cases h : ((Ioo (p.1 : ℝ) (p.2 : ℝ)) ∩ M).Countable
     · simp [Summand, h]
-    · simpa [Summand, h] using (countable_empty : (∅ : Set ℝ).Countable)
+    · simp [Summand, h]
 
   -- Cover: Thin M ⊆ ⋃_{(a,b)} Summand (a,b)
   have hcover : Thin M ⊆ ⋃ p : ℚ × ℚ, Summand p := by
@@ -107,6 +107,8 @@ lemma LeftEmpty_countable (M : Set ℝ) : (LeftEmpty M).Countable := by
         -- x∈(Ioo a y)∩M, Widerspruch zu hyE
         have hxIn : x ∈ (Ioo (a : ℝ) y) ∩ M := ⟨⟨hax, hxy'⟩, hxM⟩
         simpa [hyE] using hxIn
+
+
     | inr hyx' =>
         -- y∈(Ioo a x)∩M, Widerspruch zu hxE
         have hyIn : y ∈ (Ioo (a : ℝ) x) ∩ M := ⟨⟨hay, hyx'⟩, hyM⟩
