@@ -5,7 +5,6 @@ Minimal Lean 4 skeleton (stable core, with dyadic reduction):
 - Slices als Set-Comprehensions (kein `∩` im Kernteil)
 -/
 import Mathlib
-import Mathlib.Topology.Separation
 
 open Classical Set Topology Filter
 
