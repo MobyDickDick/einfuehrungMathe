@@ -342,185 +342,144 @@ lemma countable_BadLeft_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
     countable_BadLeft_fixed_via_neg (M:=M) (k:=k) (q:=q)
   simpa [SLeftFix]
 
-/-! ### Globale Zählbarkeit von BadLeft / BadRight / Bad (ohne Fixmengen) -/
+/-! ### Globale Zählbarkeit von BadLeft / BadRight / Bad -/
 
-open Topology
-noncomputable section
-
-/-- Eine feste Aufzählung von ℚ×ℚ; vermeidet Abhängigkeit von `enumQ`. -/
-private def enumQQ : ℕ → ℚ × ℚ :=
-  Classical.choose (exists_surjective_nat (ℚ × ℚ))
-
-private lemma enumQQ_surj : Function.Surjective enumQQ :=
-  Classical.choose_spec (exists_surjective_nat (ℚ × ℚ))
-
-/-- Zählbare Familie rational begrenzter offener Intervalle. -/
-private def QI (i : ℕ) : Set ℝ :=
-  let ab := enumQQ i
-  Set.Ioo (min ((ab.1 : ℚ) : ℝ) ((ab.2 : ℚ) : ℝ))
-          (max ((ab.1 : ℚ) : ℝ) ((ab.2 : ℚ) : ℝ))
-
-
-/-- Technischer Kern: Die Menge aller `x ∈ M`, für die es **ein rationales** `r>0`
-    mit zählbarem rechten Slice `RightSlice M x r` gibt, ist zählbar. -/
-lemma countable_badRight_over_Q (M : Set ℝ) :
-  ({x : ℝ | x ∈ M ∧ ∃ (r : ℚ), 0 < (r : ℝ) ∧ (RightSlice M x r).Countable}).Countable := by
-  classical
-  -- Zähle über alle rationalen Radien r>0; für fixes r sind die "bad right"-Punkte
-  -- in jedem rationalen Fenster (a,b) kontrollierbar: wir schieben x ein kleines
-  -- rationales Intervall (a,b) mit a<x<b≤x+r hinein, so dass M∩(a,b) zählbar ist.
-  -- Dann liegt x ∈ M ∩ {x | ∃ (a,b ∈ ℚ), a < x ∧ x < b ∧ b - a ≤ r ∧ (M ∩ Ioo a b).Countable }.
-  -- Indexmenge ist ℚ×ℚ×ℚ -> zählbar; jeder Summand zählbar ⇒ Gesamtmenge zählbar.
-  refine (countable_iUnion (f := fun (rq : {rq : ℚ // 0 < (rq : ℝ)}) =>
-    ({x : ℝ | x ∈ M ∧ (RightSlice M x (rq : ℚ)).Countable}))).mpr ?_
-  intro rq
-  -- Fixiere r := rq > 0.
-  have hr : 0 < ((rq : ℚ) : ℝ) := rq.property
-  -- Zerlege nach rationalen Fenstern (a,b) mit b - a ≤ r:
-  -- Für x mit zählbarem RightSlice bei Radius r wählen wir (per Dichte von ℚ)
-  -- `a,b ∈ ℚ` mit a < x < b und b ≤ x + r. Dann ist M∩(a,b) ⊆ RightSlice M x r zählbar
-  -- und x ∈ (a,b). Also gehört x zur (zählbaren) Menge M∩Ioo a b; die Indexmenge ist ℚ×ℚ.
-  refine (countable_iUnion (f := fun (a : ℚ) =>
-    (countable_iUnion (f := fun (b : ℚ) =>
-      ((by
-        -- Für fixes (a,b) zeigen wir: die Kandidaten-x liegen in zählbarem M∩Ioo a b
-        have hbnd : {x : ℝ |
-          x ∈ M ∧ a < x ∧ x < b ∧ (RightSlice M x (rq : ℚ)).Countable}
-          ⊆ (M ∩ Set.Ioo (a : ℝ) b) := by
-          intro x hx; rcases hx with ⟨hxM, hax, hxb, _⟩
-          exact ⟨hxM, ⟨hax, hxb⟩⟩
-        -- Und `M ∩ Ioo a b` ist zählbar, **falls** `M ∩ Ioo a b ⊆ RightSlice M x r`
-        -- für ein geeignetes x – das ist aber genau die Auswahlweise, mit der wir
-        -- die Indexierung bauen. Um sauber zu bleiben, nehmen wir einfach:
-        -- Für fixes (a,b) ist die Menge links eine Teilmenge von M ∩ Ioo a b,
-        -- und wir nehmen als bound, dass M ∩ Ioo a b zählbar **oder leer** ist;
-        -- falls sie unzählbar ist, trägt der Summand nichts bei (weil dann das
-        -- Prädikat nicht erfüllt werden kann: RightSlice wäre unzählbar).
-        -- Daher: wir schränken explizit auf den Fall ein und benutzen `by_cases`.
-        have : (M ∩ Set.Ioo (a : ℝ) b).Countable ∨
-               ¬ (M ∩ Set.Ioo (a : ℝ) b).Countable := em _
-        exact this.elim
-          (fun hcnt => hcnt.mono hbnd)
-          (fun hunc =>
-            -- Wenn M∩(a,b) unzählbar ist, kann es hier keine x geben:
-            -- Denn für jedes x ∈ (a,b) gilt dann (a,b) ⊆ (x, x + r) oder zumindest
-            -- ein nichttrivialer Teil rechts von x, was RightSlice unzählbar macht.
-            -- Formal kapseln wir das als "leere Menge ist zählbar".
-            by
-              have : ({x : ℝ |
-                x ∈ M ∧ a < x ∧ x < b ∧ (RightSlice M x (rq : ℚ)).Countable}
-                = (∅ : Set ℝ)) := by
-                apply le_antisymm
-                · intro x hx; exfalso
-                  rcases hx with ⟨hxM, hax, hxb, hcnt⟩
-                  -- Wähle y ∈ (a,b)∩M rechts von x (Unzählbarkeit ⇒ Nichtleer rechts).
-                  -- Dann ist RightSlice unzählbar; Widerspruch. (Topologisches Standardargument.)
-                  -- Wir benutzen hier die Dichte/Unendlichkeits-Eigenschaft rein klassisch.
-                  have : (Set.Ioo (max (x : ℝ) a) b ∩ M).Nonempty := by
-                    -- Wenn M∩(a,b) unzählbar ist, gibt es auch einen Punkt > x
-                    -- (sonst wäre es höchstens abzählbar).
-                    classical
-                    by_contra hempty
-                    have hsub :
-                      (M ∩ Set.Ioo (a : ℝ) b)
-                      ⊆ {y | y ≤ x} ∪ {y | y ≤ a} ∪ {y | y ≥ b} := by
-                      intro y hy; rcases hy with ⟨hyM, hay, hyb⟩
-                      have : y ≤ x ∨ x < y := le_total y x
-                      cases this with
-                      | inl hle => exact Or.inl hle
-                      | inr hlt =>
-                          have : y ∈ Set.Ioo (max x a) b := ⟨by exact max_lt_iff.mp ⟨hlt, hay⟩.2, hyb⟩
-                          have : y ∈ Set.Ioo (max x a) b ∩ M := ⟨this, hyM⟩
-                          exact (False.elim (hempty ⟨y, this⟩))
-                    -- Die rechte Vereinigung ist abzählbar ⇒ Widerspruch zur Unzählbarkeit.
-                    have hcnt' :
-                      (({y | y ≤ x} ∪ {y | y ≤ a} ∪ {y | y ≥ b}) : Set ℝ).Countable := by
-                      exact ((countable_preimage_mono (f := fun y : ℝ => y) (s := Set.Iic x)).union
-                        ((countable_preimage_mono (f := fun y : ℝ => y) (s := Set.Iic (a : ℝ))).union
-                          (countable_preimage_mono (f := fun y : ℝ => y) (s := Set.Ici (b : ℝ)))))
-                    exact hunc (hcnt'.mono hsub)
-                  rcases this with ⟨y, hy⟩
-                  have hyx : x < y := by
-                    have : y ∈ Set.Ioo (max (x : ℝ) a) b := hy.1
-                    exact lt_of_le_of_lt (le_max_left _ _) this.1
-                  have hyM : y ∈ M := hy.2
-                  have hy_in : y ∈ RightSlice M x (rq : ℚ) := by
-                    have hyb : y < x + (rq : ℚ) := by
-                      -- Weil a < x < y < b und b - a ≤ r ≤ rq (hier nur qualitativ),
-                      -- bekommen wir y < x + rq. Für die vorliegende Konstruktion
-                      -- reicht es, dass das Fenster (x, x+rq) groß genug ist.
-                      -- (Wir nutzen hr: 0 < rq; falls nötig, vergrößert man rq geringfügig.)
-                      have : y < x + (rq : ℚ) := by
-                        have hxlt : x < y := hyx
-                        have : y - x < (rq : ℚ) := by
-                          -- y - x ≤ b - a, wir stehen in (a,b)
-                          have hyb' : y < (b : ℚ) := by
-                            have := hy.1.2
-                            simpa using this
-                          have hxa : (a : ℝ) < x := by
-                            have := hy.1.1
-                            have hax : (a : ℝ) < x := lt_of_lt_of_le this (le_max_left _ _)
-                            exact hax
-                          have : y - x < (b : ℚ) - (a : ℚ) := by
-                            have : y < (b : ℚ) := hyb'
-                            have : y - x < (b : ℚ) - x := sub_lt_sub_right this x
-                            have : (b : ℚ) - x ≤ (b : ℚ) - (a : ℚ) := by
-                              have : (a : ℚ) ≤ x := le_of_lt hxa
-                              exact sub_le_sub_left this _
-                            exact lt_of_lt_of_le this this
-                          exact lt_of_le_of_lt (le_of_lt this) hr
-                        exact (sub_lt_iff_lt_add').mp this
-                      exact hyb
-                    exact ⟨hyM, hyx, hyb⟩
-                  exact (by
-                    -- RightSlice wäre unendlich → Widerspruch zur Zählbarkeit
-                    -- Hier reicht: `RightSlice` enthält unendlich viele Punkte (durch Dichte),
-                    -- formale Ausarbeitung weggelassen (klassischer Schritt).
-                    exact False.elim (by
-                      -- Widerspruch „skizziert“
-                      exact False.intro)) )
-                -- Also ist die linke Menge ∅; ∅ ist zählbar:
-                have : ({x : ℝ |
-                  x ∈ M ∧ a < x ∧ x < b ∧ (RightSlice M x (rq : ℚ)).Countable}
-                  : Set ℝ).Countable := by
-                  simpa [this] using (countable_empty : (∅ : Set ℝ).Countable)
-                exact this
-        ) : ({x : ℝ | x ∈ M ∧ a < x ∧ x < b ∧
-                (RightSlice M x (rq : ℚ)).Countable}).Countable)) )))
-
-/-- **Rechts**: `BadRight M` ist abzählbar. -/
-lemma countable_BadRight (M : Set ℝ) : (BadRight M).Countable := by
-  classical
-  -- Reduktion auf rationale Radien (dyadisch oder beliebig rational):
-  -- Wenn es ein ε>0 mit zählbarem RightSlice gibt, dann auch ein rationales r∈ℚ, 0<r≤ε.
-  have hsubset :
-    BadRight M ⊆ {x : ℝ | x ∈ M ∧ ∃ (r : ℚ), 0 < (r : ℝ) ∧ (RightSlice M x r).Countable} := by
-    intro x hx
-    rcases hx with ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
-    rcases exists_rat_btwn hεpos with ⟨r, hr0, hrε⟩
-    have hmono :
-      RightSlice M x (r : ℝ) ⊆ RightSlice M x ε := by
-      intro y hy; rcases hy with ⟨hyM, hxlt, hylt⟩
-      exact ⟨hyM, hxlt, lt_of_lt_of_le hylt (by exact add_le_add_left (le_of_lt hrε) x)⟩
-    exact ⟨hxM, ⟨r, by exact_mod_cast hr0, hcnt.mono hmono⟩⟩
-  exact (countable_badRight_over_Q M).mono hsubset
-
-/-- **Links**: `BadLeft M` ist abzählbar (via Negationsbrücke). -/
+/-- **Links**: `BadLeft M` ist abzählbar (Subunion + Fixfall). -/
 lemma countable_BadLeft (M : Set ℝ) : (BadLeft M).Countable := by
   classical
-  -- Bild von BadRight unter Negation ist BadLeft des negierten Sets:
-  -- `image_neg_BadRight` liefert die Gleichheit.
-  have : (fun x : ℝ => -x) '' (BadRight (negPre M)) = BadLeft M := by
-    simpa [negPre_negPre] using (image_neg_BadRight (M := negPre M))
-  -- Abzählbarkeit ist invariant unter Bildern zählbarer Mengen.
-  have hR : (BadRight (negPre M)).Countable := countable_BadRight (negPre M)
-  have hImg : ((fun x : ℝ => -x) '' (BadRight (negPre M))).Countable := hR.image _
-  simpa [this]
+  have big :
+      (⋃ (k : ℕ), ⋃ (q : ℚ),
+        {x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
+                       (LeftSlice M x (dyadic k)).Countable }).Countable :=
+    countable_iUnion (fun k =>
+      countable_iUnion (fun q =>
+        (countable_BadLeft_fixed (M:=M) k q)))
+  exact big.mono (BadLeft_subunion (M:=M))
 
-/-- Beide Seiten zusammen. -/
+/-- **Rechts**: `BadRight M` ist abzählbar (per iUnion + Rechts-Fix). -/
+lemma BadRight_subunion (M : Set ℝ) :
+  BadRight M ⊆ ⋃ (k : ℕ), ⋃ (q : ℚ),
+    {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
+                   (RightSlice M x (dyadic k)).Countable } := by
+  intro x hx
+  rcases hx with ⟨hxM, ⟨ε, hεpos, hcnt⟩⟩
+  rcases exists_dyadic_le (ε:=ε) hεpos with ⟨k, hk⟩
+  have : x < x + dyadic k := by
+    have hkpos := dyadic_pos k
+    have := add_lt_add_left hkpos x
+    simpa using this
+  rcases exists_rat_btwn this with ⟨q, hq1, hq2⟩
+  have hmono : (RightSlice M x (dyadic k)) ⊆ (RightSlice M x ε) :=
+    RightSlice_mono_radius (M:=M) (x:=x) (ε₁:=dyadic k) (ε₂:=ε) hk
+  have hcnt_dy : (RightSlice M x (dyadic k)).Countable := hcnt.mono hmono
+  refine mem_iUnion.mpr ?_
+  refine ⟨k, ?_⟩
+  refine mem_iUnion.mpr ?_
+  refine ⟨q, ?_⟩
+  change x ∈ {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
+                        (RightSlice M x (dyadic k)).Countable}
+  exact And.intro hxM (And.intro hq1 (And.intro hq2 hcnt_dy))
+
+lemma countable_BadRight (M : Set ℝ) : (BadRight M).Countable := by
+  classical
+  have big :
+      (⋃ (k : ℕ), ⋃ (q : ℚ),
+        {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
+                       (RightSlice M x (dyadic k)).Countable }).Countable :=
+    countable_iUnion (fun k =>
+      countable_iUnion (fun q =>
+        (countable_BadRight_fixed (M:=M) k q)))
+  exact big.mono (BadRight_subunion (M:=M))
+
 lemma countable_Bad (M : Set ℝ) : (Bad M).Countable := by
   simpa [Bad] using (countable_BadLeft M).union (countable_BadRight M)
 
+
+/-! ### Core und Slice-Algebra -/
+
+/-- Core = entferne Bad-Punkte. (Kein `@[simp]`, um aggressives Unfolding zu vermeiden.) -/
+def core (M : Set ℝ) : Set ℝ := Set.diff M (Bad M)
+
+lemma core_subset (M : Set ℝ) : core M ⊆ M := by
+  intro x hx; exact hx.1
+
+/-- Linker Slice von `Set.diff M (Bad M)` ist `diff` des linken Slices. -/
+lemma leftSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
+  LeftSlice (Set.diff M (Bad M)) x ε = Set.diff (LeftSlice M x ε) (Bad M) := by
+  ext y; constructor <;> intro hy
+  · rcases hy with ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
+    exact ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
+  · rcases hy with ⟨⟨hyM, hlt1, hlt2⟩, hyNotBad⟩
+    exact ⟨⟨hyM, hyNotBad⟩, hlt1, hlt2⟩
+
+/-- Rechter Slice analog. -/
+lemma rightSlice_diff_eq (M : Set ℝ) (x ε : ℝ) :
+  RightSlice (Set.diff M (Bad M)) x ε = Set.diff (RightSlice M x ε) (Bad M) := by
+  ext y; constructor <;> intro hy
+  · rcases hy with ⟨⟨hyM, hyNotBad⟩, hgt, hlt⟩
+    exact ⟨⟨hyM, hgt, hlt⟩, hyNotBad⟩
+  · rcases hy with ⟨⟨hyM, hgt, hlt⟩, hyNotBad⟩
+    exact ⟨⟨hyM, hyNotBad⟩, hgt, hlt⟩
+
+
+/-! ### Mengen-Helfer (ohne `Uncountable.diff`, ohne `ext`) -/
+
+/-- Ist `A` nicht abzählbar und `C` abzählbar, dann ist `A \\ C` nicht abzählbar. -/
+lemma not_countable_diff_of_not_countable_of_countable
+  {α} {A C : Set α}
+  (hA : ¬ A.Countable) (hC : C.Countable) : ¬ (Set.diff A C).Countable := by
+  intro hdiff
+  -- (A ∩ C) ist abzählbar
+  have hcap_cnt : (A ∩ C).Countable := hC.mono (by intro x hx; exact hx.2)
+  -- Vereinigung zweier abzählbarer Mengen ist abzählbar
+  have hUnionCnt : (Set.diff A C ∪ (A ∩ C)).Countable := hdiff.union hcap_cnt
+  -- A ⊆ (A\\C) ∪ (A∩C)
+  have hA_subset : A ⊆ Set.diff A C ∪ (A ∩ C) := by
+    intro x hxA
+    by_cases hxC : x ∈ C
+    · exact Or.inr ⟨hxA, hxC⟩
+    · exact Or.inl ⟨hxA, hxC⟩
+  -- dann wäre A abzählbar — Widerspruch
+  have : A.Countable := hUnionCnt.mono hA_subset
+  exact hA this
+
+
+/-- `core M` ist zweiseitig dick. -/
+lemma TwoSidedThick_core (M : Set ℝ) : TwoSidedThick (core M) := by
+  intro x hx ε hε
+  rcases hx with ⟨hxM, hxNotBad⟩
+  have hBadCnt : (Bad M).Countable := countable_Bad M
+  -- große Slices in `M` sind nicht abzählbar, weil `x ∉ Bad M`
+  have hLeftM  : ¬ (LeftSlice  M x ε).Countable := by
+    intro hcnt; exact hxNotBad (Or.inl ⟨hxM, ⟨ε, hε, hcnt⟩⟩)
+  have hRightM : ¬ (RightSlice M x ε).Countable := by
+    intro hcnt; exact hxNotBad (Or.inr ⟨hxM, ⟨ε, hε, hcnt⟩⟩)
+  -- ziehe die abzählbare Bad-Menge ab
+  have hLeftCore  : ¬ (Set.diff (LeftSlice  M x ε) (Bad M)).Countable :=
+    not_countable_diff_of_not_countable_of_countable hLeftM hBadCnt
+  have hRightCore : ¬ (Set.diff (RightSlice M x ε) (Bad M)).Countable :=
+    not_countable_diff_of_not_countable_of_countable hRightM hBadCnt
+  -- explizite Umschreibungen für `core`
+  have eqL' : LeftSlice (Set.diff M (Bad M)) x ε
+      = Set.diff (LeftSlice M x ε) (Bad M) :=
+    leftSlice_diff_eq (M:=M) (x:=x) (ε:=ε)
+  have eqR' : RightSlice (Set.diff M (Bad M)) x ε
+      = Set.diff (RightSlice M x ε) (Bad M) :=
+    rightSlice_diff_eq (M:=M) (x:=x) (ε:=ε)
+  -- bring die Ziele auf exakt dieselbe Form
+  have eqL : LeftSlice (core M) x ε
+      = Set.diff (LeftSlice M x ε) (Bad M) := by
+    simpa [core] using eqL'
+  have eqR : RightSlice (core M) x ε
+      = Set.diff (RightSlice M x ε) (Bad M) := by
+    simpa [core] using eqR'
+  constructor
+  · -- Ziel: ¬ (LeftSlice (core M) x ε).Countable
+    simpa [eqL] using hLeftCore
+  · -- Ziel: ¬ (RightSlice (core M) x ε).Countable
+    simpa [eqR] using hRightCore
+
+end PerfectFromThick
 
 /-! ## Anwendung auf das Ziel (winzige Ergänzungen) -/
 namespace PerfectFromThick
