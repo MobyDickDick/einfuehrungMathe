@@ -929,51 +929,58 @@ section CountableHelpers
     all_goals
       simp [enumQin, hqa, hqb]
 
-
-  /-- Aus einer zählbaren Menge `S` extrahieren wir eine surjektive
-      Aufzählung `e : ℕ → S`.  Benötigt `S.Nonempty`. -/
-  noncomputable def someEnum {α} {S : Set α}
-    (hS : S.Countable) (hne : S.Nonempty) :
-    { e : ℕ → S // Function.Surjective e } :=
-  by
+  /-- Aus einer zählbaren *und nichtleeren* Menge `S` extrahieren wir eine surjektive
+      Aufzählung `e : ℕ → S`. -/
+  noncomputable def someEnum {α} {S : Set α} (hS : S.Countable) (hne : S.Nonempty) :
+    { e : ℕ → S // Function.Surjective e } := by
     classical
-    -- `S` als Subtyp ist zählbar/nonempty:
     haveI : Countable S := hS.to_subtype
     haveI : Nonempty S := by
       rcases hne with ⟨x, hx⟩
       exact ⟨⟨x, hx⟩⟩
-    -- statt `rcases` über `∃` benutzen wir `Classical.choose`
-    refine ⟨Classical.choose (exists_surjective_nat S), ?_⟩
-    simpa using Classical.choose_spec (exists_surjective_nat S)
+    -- statt `rcases exists_surjective_nat S with ⟨e, he⟩`
+    let e : ℕ → S := Classical.choose (exists_surjective_nat S)
+    have he : Function.Surjective e :=
+      Classical.choose_spec (exists_surjective_nat S)
+    exact ⟨e, he⟩
 
-/-- Wenn `S` zählbar ist und es irgendein Element `> t` gibt, dann gibt es
-    den *kleinsten Index* in einer festen Aufzählung von `S`, dessen Bild `> t` liegt. -/
+
+  /-- Wenn `S` zählbar ist und es irgendein Element `> t` gibt, dann gibt es
+      den *kleinsten Index* in einer festen Aufzählung von `S`, dessen Bild `> t` liegt. -/
   lemma exists_min_index_above
-    {S : Set ℝ} (hS : S.Countable) (hne : S.Nonempty) {t : ℝ}
+    {S : Set ℝ} (hS : S.Countable) {t : ℝ}
     (hex : ∃ y ∈ S, t < y) :
-    ∃ n,
-      t < (↑((someEnum hS hne).1 n) : ℝ) ∧
-      ∀ m, m < n → ¬ t < (↑((someEnum hS hne).1 m) : ℝ) := by
+    ∃ n, (t < (someEnum hS (by rcases hex with ⟨y, hyS, _⟩; exact ⟨y, hyS⟩)).1 n) ∧
+          ∀ m, m < n → ¬ (t < (someEnum hS (by rcases hex with ⟨y, hyS, _⟩; exact ⟨y, hyS⟩)).1 m) := by
     classical
-    -- feste Aufzählung von S und ihre Surjektivität
+    -- Nicht-Leere von `S` aus `hex`
+    have hne : S.Nonempty := by
+      rcases hex with ⟨y, hyS, _⟩
+      exact ⟨y, hyS⟩
     let e := (someEnum hS hne).1
     have esurj : Function.Surjective e := (someEnum hS hne).2
-
-    -- Aus ∃ y∈S, t < y machen wir ∃ n, t < ↑(e n)
-    have hexNat : ∃ n, t < (↑(e n) : ℝ) := by
+    -- Es gibt einen Treffer
+    have hex' : ∃ n, t < e n := by
       rcases hex with ⟨y, hyS, hty⟩
       rcases esurj ⟨y, hyS⟩ with ⟨n, hn⟩
-      exact ⟨n, by simpa [hn] using hty⟩
-
-    -- wähle den kleinsten Index mit t < ↑(e n)
-    refine ⟨Nat.find hexNat, ?_, ?_⟩
-    · -- Positivität am Minimalindex
-      simpa [e] using (Nat.find_spec hexNat)
-    · -- Minimalität: kein m < n mit t < ↑(e m)
-      intro m hm hltm
-      have hle : Nat.find hexNat ≤ m := Nat.find_min' hexNat hltm
-      exact (Nat.not_lt.mpr hle) hm
-
+      refine ⟨n, ?_⟩
+      -- bringe hn auf Ebene der Werte (ℝ):
+      have hnval : ((e n : S) : ℝ) = y := by
+        simpa using congrArg (fun s : S => (s : ℝ)) hn
+      -- jetzt einfach umschreiben
+      simpa [hnval] using hty
+    -- Menge der Indizes mit Treffer
+    let I : Set ℕ := {n | t < e n}
+    have hI : ∃ n, n ∈ I := hex'
+    -- kleinstes Element per `Nat.find`
+    let n := Nat.find hI
+    have hnI : n ∈ I := Nat.find_spec hI
+    refine ⟨n, hnI, ?_⟩
+    intro m hm
+    -- Minimalität von `n`: aus `m ∈ I` folgt `n ≤ m`
+    have hmin : ∀ k, k ∈ I → n ≤ k := by
+      intro k hk; exact Nat.find_min' hI hk
+    exact fun hmI => (not_lt_of_ge (hmin m hmI)) hm
 
   /-- Eine *erste* Position in einer festen Aufzählung von `S`, deren Bild *oberhalb* `t` liegt. -/
   noncomputable def firstIdxAbove
@@ -985,37 +992,38 @@ section CountableHelpers
     · exact some (Nat.find hex)
     · exact none
 
-lemma firstIdxAbove_spec
-  {S : Set ℝ} (hS : S.Countable) (hne : S.Nonempty) {t : ℝ} {n : ℕ}
-  (h : firstIdxAbove hS hne t = some n) :
-  let e := (someEnum hS hne).1
-  t < ↑(e n) ∧ ∀ m, m < n → ¬ t < ↑(e m) := by
-  classical
-  let e := (someEnum hS hne).1
-  by_cases hex : ∃ k, t < (↑(e k) : ℝ)
-  · have hsome : firstIdxAbove hS hne t = some (Nat.find hex) := by
-      simp [firstIdxAbove, e, hex]
-    have hn : n = Nat.find hex := by
-      have : some n = some (Nat.find hex) := by simpa [h] using hsome
-      exact Option.some.inj this
-    have hpos : t < (↑(e (Nat.find hex)) : ℝ) := Nat.find_spec hex
-    have hmin : ∀ m, m < Nat.find hex → ¬ t < (↑(e m) : ℝ) := by
-      intro m hm hlt
-      have hle : Nat.find hex ≤ m := Nat.find_min' hex hlt
-      exact (Nat.not_lt.mpr hle) hm
-    constructor
-    · simpa [hn] using hpos
-    · intro m hm
-      have hm' : m < Nat.find hex := by simpa [hn] using hm
-      exact hmin m hm'
-  · have hnone : firstIdxAbove hS hne t = none := by
-      simp [firstIdxAbove, e, hex]
-    -- Linter-freundlich: nicht `simpa using`, sondern `simp at` + Widerspruch schließen
-    simp [hnone] at h
-
+  lemma firstIdxAbove_spec
+    {S : Set ℝ} (hS : S.Countable) (hne : S.Nonempty) {t : ℝ} {n : ℕ}
+    (h : firstIdxAbove hS hne t = some n) :
+    let e := (someEnum hS hne).1
+    t < e n ∧ ∀ m, m < n → ¬ t < e m := by
+    classical
+    set e := (someEnum hS hne).1 with he
+    by_cases hex : ∃ k, t < e k
+    · -- Definitorische Gleichheit der linken Seite
+      have hdef : firstIdxAbove hS hne t = some (Nat.find hex) := by
+        simpa [firstIdxAbove, he, hex]
+      -- Aus hdef und h folgt Gleichheit der Indizes
+      have hsome : some n = some (Nat.find hex) := by
+        simpa [h] using hdef
+      have hn : n = Nat.find hex := Option.some.inj hsome
+      subst hn
+      refine ⟨Nat.find_spec hex, ?_⟩
+      intro m hm htm
+      have : Nat.find hex ≤ m := Nat.find_min' hex htm
+      exact (not_lt_of_ge this) hm
+    · -- ¬ ∃ k, t < e k  ⇒  ∀ x, e x ≤ t
+      have e_le_t : ∀ x, (e x : ℝ) ≤ t := by
+        intro x
+        have : ¬ t < e x := (not_exists.mp hex) x
+        exact le_of_not_gt this
+      -- damit entfaltet sich firstIdxAbove zum none-Zweig
+      have hnone : firstIdxAbove hS hne t = none := by
+        simpa [firstIdxAbove, he, e_le_t]
+      -- Widerspruch zu `h : = some n`
+      -- Widerspruch zu `h : = some n`
+      have : some n = none := h.symm.trans hnone
+      cases this
 
   end CountableHelpers
-
-
-
 end PerfectFromThick
