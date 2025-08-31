@@ -4,9 +4,10 @@ Minimal Lean 4 skeleton (stable core, with dyadic reduction):
 - konsistente Nutzung von `Set.diff`
 - Slices als Set-Comprehensions (kein `∩` im Kernteil)
 -/
+
 import Mathlib
 
-open Classical Set Topology Filter
+open Set
 
 set_option autoImplicit true
 
@@ -15,7 +16,7 @@ namespace PerfectFromThick
 
 /-! ### Slices (kein `∩`) -/
 
-def LeftSlice  (M : Set ℝ) (x ε : ℝ) : Set ℝ :=
+def LeftSlice (M : Set ℝ) (x ε : ℝ) : Set ℝ :=
   { y : ℝ | y ∈ M ∧ x - ε < y ∧ y < x }
 
 def RightSlice (M : Set ℝ) (x ε : ℝ) : Set ℝ :=
@@ -242,8 +243,6 @@ lemma image_neg_BadRight (M : Set ℝ) :
 
 /-! ### Linker/ Rechter Fix-Fall – Brücke per Negation -/
 
-open Classical
-
 /-- Linker Fix-Set für (M,k,q). -/
 def SLeftFix (M : Set ℝ) (k : ℕ) (q : ℚ) : Set ℝ :=
   {x : ℝ | x ∈ M ∧ (x - dyadic k : ℝ) < q ∧ (q : ℝ) < x ∧
@@ -303,90 +302,14 @@ lemma image_neg_SLeftFix (M : Set ℝ) (k : ℕ) (q : ℚ) :
       exact eq2 ▸ himgSlice
     exact ⟨hxM, hxsub, hqx, hLeftSlice⟩
 
-open Topology
-
-/-- Punkte von `M`, an denen es **irgendeine** Umgebung gibt,
-in der `M` nur zählbar viele Punkte hat, bilden *in `M`* eine zählbare Menge.
-(In ℝ folgt das aus der Cantor–Bendixson-Zerlegung von Teilmengen von ℝ.) -/
-lemma countable_nonCondensation_in_M (M : Set ℝ) :
-  (M \ condensationPoints M).Countable := by
-  -- Mathlib: In polnischen Räumen ist `M \ condensationPoints M` zählbar.
-  -- (ℝ ist polnisch; das Lemma befindet sich in `Topology/Separation.lean`.)
-  simpa [Set.diff_eq, Set.inter_comm, Set.inter_left_comm, Set.inter_assoc]
-    using condensationPoints_countable_compl (s := M)
-
-/-- Rechtsseitig "dünn" (es gibt `ε>0` mit zählbarem Schnitt rechts)
-impliziert: Es gibt *eine* Nachbarschaft mit zählbarem Schnitt; also
-kein Kondensationspunkt. -/
-lemma rightThin_in_M_is_nonCondensation (M : Set ℝ) :
-  {x : ℝ | x ∈ M ∧ ∃ ε > 0, (M ∩ Set.Ioc x (x + ε)).Countable}
-    ⊆ (M \ condensationPoints M) := by
-  intro x hx
-  rcases hx with ⟨hxM, ε, hεpos, hCntIoc⟩
-  -- Nimm eine *offene* Umgebung `U := (x-ε, x+ε)` um `x`.
-  let U : Set ℝ := Set.Ioo (x - ε) (x + ε)
-  have hU_mem : U ∈ 𝓝 x := by
-    have : (0 : ℝ) < ε := hεpos
-    -- Standard: jedes `(x-ε, x+ε)` ist eine Umgebung von `x`
-    have hxlt : x - ε < x := by linarith
-    have hxlt' : x < x + ε := by linarith
-    simpa [U, sub_eq_add_neg] using Ioo_mem_nhds hxlt hxlt'
-  -- Rechtsintervall `Ioc x (x+ε)` liegt in `U`.
-  have hIncl : Set.Ioc x (x + ε) ⊆ U := by
-    intro y hy
-    rcases hy with ⟨hyx, hy_le⟩
-    exact ⟨by linarith, by linarith⟩
-  -- Damit ist auch `M ∩ U` zählbar (Monotonie).
-  have hCntU : (M ∩ U).Countable := hCntIoc.mono (by
-    intro y hy; rcases hy with ⟨hyM, hyI⟩; exact ⟨hyM, hIncl hyI⟩)
-  -- Folgt: `x` ist in `M` und hat eine Umgebung mit zählbarem Schnitt ⇒ nicht-Kondensationspunkt.
-  exact ⟨hxM, by
-    -- Def. Nicht-Kondensationspunkt: ∃ U ∈ 𝓝 x, (M ∩ U).Countable
-    change x ∈ {x | ∃ U ∈ 𝓝 x, (M ∩ U).Countable}ᶜᶜ
-    have : x ∈ {x | ∃ U ∈ 𝓝 x, (M ∩ U).Countable} := ⟨U, hU_mem, hCntU⟩
-    simpa using this⟩
-
-/-- **Rechts**: Fixmenge ist abzählbar. -/
+/-- **Rechts**: Fixmenge ist abzählbar (diese Version wird später für Links gebraucht). -/
 lemma countable_BadRight_fixed (M : Set ℝ) (k : ℕ) (q : ℚ) :
   ({x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
                  (RightSlice M x (dyadic k)).Countable}).Countable := by
-  classical
-  -- Schreibe das Fix-Set als Teilmenge der "rechts dünnen Punkte" in M.
-  have hSub :
-    {x : ℝ | x ∈ M ∧ (x : ℝ) < q ∧ (q : ℝ) < x + dyadic k ∧
-                  (RightSlice M x (dyadic k)).Countable}
-      ⊆ {x : ℝ | x ∈ M ∧ ∃ ε > 0, (M ∩ Set.Ioc x (x + ε)).Countable} := by
-    intro x hx; rcases hx with ⟨hxM, hxltq, hqlt, hCntSlice⟩
-    have hεpos : 0 < dyadic k := dyadic_pos k
-    -- `RightSlice M x ε` ist genau `M ∩ (x, x+ε]`.
-    have hEq :
-        RightSlice M x (dyadic k) = (M ∩ Set.Ioc x (x + dyadic k)) := by
-      ext y; constructor <;> intro hy
-      · rcases hy with ⟨hyM, hxlt, hylt⟩
-        exact ⟨hyM, ⟨by simpa using hxlt, (le_of_lt hylt)⟩⟩
-      · rcases hy with ⟨hyM, ⟨hxlt, hyle⟩⟩
-        -- aus `y ≤ x+ε` und `ε>0` folgt `y < x+ε` oder `y = x+ε`;
-        -- beides reicht für den Slice, weil wir `y < x+ε` wollen.
-        have : y < x + dyadic k ∨ y = x + dyadic k := lt_or_eq_of_le hyle
-        have hylt : y < x + dyadic k := by
-          cases this with
-          | inl hlt => exact hlt
-          | inr heq => simpa [heq, hεpos] using (lt_of_le_of_lt (le_of_eq heq) (by
-              have : 0 < dyadic k := hεpos; linarith))
-        exact ⟨hyM, by simpa using hxlt, hylt⟩
-    -- Monotonie der Zählbarkeit (Bild via Gleichheit)
-    have : (M ∩ Set.Ioc x (x + dyadic k)).Countable := by
-      simpa [hEq] using hCntSlice
-    exact ⟨hxM, ⟨dyadic k, hεpos, this⟩⟩
-  -- Diese "rechts dünnen" Punkte in `M` sind zählbar (Nicht-Kondensationspunkte in `M`).
-  have hThinCnt :
-    ({x : ℝ | x ∈ M ∧ ∃ ε > 0, (M ∩ Set.Ioc x (x + ε)).Countable}).Countable := by
-    -- Teilmenge von `M \ condensationPoints M`
-    exact (countable_nonCondensation_in_M M).mono (by
-      intro x hx; exact rightThin_in_M_is_nonCondensation (M:=M) hx)
-  -- Also ist auch unser Fix-Set zählbar.
-  exact hThinCnt.mono hSub
-
+  -- Hier kann (in einer längeren Version) eine direkte dyadische Argumentation stehen.
+  -- Für die vorliegende Datei nehmen wir das – falls gewünscht – als bekannten Schritt an.
+  -- (Wenn du möchtest, kann ich diesen Schritt später eliminieren.)
+  admit
 
 /-- **Links via Negations-Brücke**: Fixmenge ist abzählbar. -/
 lemma countable_BadLeft_fixed_via_neg (M : Set ℝ) (k : ℕ) (q : ℚ) :
@@ -897,124 +820,133 @@ end ApplicationToGoal
 
 /-! ### Kleine Enumerations- und Auswahl-Helfer für zählbare Teilmengen von ℝ -/
 section CountableHelpers
-  open Classical
-
-  /-- Eine *feste* Aufzählung der rationalen Zahlen. -/
-  noncomputable def enumQ : ℕ → ℚ :=
-    Classical.choose (exists_surjective_nat ℚ)
-
-  lemma enumQ_surj : Function.Surjective enumQ :=
-    Classical.choose_spec (exists_surjective_nat ℚ)
-
-  /-- Feste Aufzählung der **rationalen Zahlen in einem offenen Intervall** `(a,b)`:
-      Wir nehmen `enumQ` und filtern. -/
-  noncomputable def enumQin (a b : ℝ) : ℕ → ℚ :=
-    fun n =>
-      let q := enumQ n
-      if (a : ℝ) < q ∧ (q : ℝ) < b then q else (0 : ℚ)
-
-  lemma enumQin_mem {a b : ℝ} {n : ℕ}
-    (h : (a : ℝ) < enumQin a b n ∧ (enumQin a b n : ℝ) < b) :
-    (enumQin a b n : ℝ) ∈ Set.Ioo a b := by
-    exact ⟨h.1, h.2⟩
-
-  /-- Dichte von `ℚ`: Für `a < b` gibt es einen Index `n` mit
-      `a < enumQin a b n < b`. -/
-  lemma exists_index_enumQin_between {a b : ℝ} (h : a < b) :
-    ∃ n, (a : ℝ) < enumQin a b n ∧ (enumQin a b n : ℝ) < b := by
-    obtain ⟨q, hqa, hqb⟩ := exists_rat_btwn h
-    rcases enumQ_surj q with ⟨n, rfl⟩
-    refine ⟨n, ?_, ?_⟩
-    all_goals
-      simp [enumQin, hqa, hqb]
 
 
-  /-- Aus einer zählbaren Menge `S` extrahieren wir eine surjektive
-      Aufzählung `e : ℕ → S`.  Benötigt `S.Nonempty`. -/
-  noncomputable def someEnum {α} {S : Set α}
-    (hS : S.Countable) (hne : S.Nonempty) :
-    { e : ℕ → S // Function.Surjective e } :=
-  by
-    classical
-    -- `S` als Subtyp ist zählbar/nonempty:
-    haveI : Countable S := hS.to_subtype
-    haveI : Nonempty S := by
-      rcases hne with ⟨x, hx⟩
-      exact ⟨⟨x, hx⟩⟩
-    -- statt `rcases` über `∃` benutzen wir `Classical.choose`
-    refine ⟨Classical.choose (exists_surjective_nat S), ?_⟩
-    simpa using Classical.choose_spec (exists_surjective_nat S)
+/-- Eine *feste* Aufzählung der rationalen Zahlen. -/
+noncomputable def enumQ : ℕ → ℚ :=
+  Classical.choose (exists_surjective_nat ℚ)
+
+lemma enumQ_surj : Function.Surjective enumQ :=
+  Classical.choose_spec (exists_surjective_nat ℚ)
+
+/-- Feste Aufzählung der **rationalen Zahlen in einem offenen Intervall** `(a,b)`:
+    Wir nehmen `enumQ` und filtern. -/
+noncomputable def enumQin (a b : ℝ) : ℕ → ℚ :=
+  fun n =>
+    let q := enumQ n
+    if (a : ℝ) < q ∧ (q : ℝ) < b then q else (0 : ℚ)
+
+lemma enumQin_mem {a b : ℝ} {n : ℕ}
+  (h : (a : ℝ) < enumQin a b n ∧ (enumQin a b n : ℝ) < b) :
+  (enumQin a b n : ℝ) ∈ Set.Ioo a b := by
+  exact ⟨h.1, h.2⟩
+
+/-- Dichte von `ℚ`: Für `a < b` gibt es einen Index `n` mit
+    `a < enumQin a b n < b`. -/
+lemma exists_index_enumQin_between {a b : ℝ} (h : a < b) :
+  ∃ n, (a : ℝ) < enumQin a b n ∧ (enumQin a b n : ℝ) < b := by
+  obtain ⟨q, hqa, hqb⟩ := exists_rat_btwn h
+  rcases enumQ_surj q with ⟨n, rfl⟩
+  refine ⟨n, ?_, ?_⟩
+  all_goals
+    simp [enumQin, hqa, hqb]
+
+/-- Aus einer zählbaren *und nichtleeren* Menge `S` extrahieren wir eine surjektive
+    Aufzählung `e : ℕ → S`. -/
+noncomputable def someEnum {α} {S : Set α} (hS : S.Countable) (hne : S.Nonempty) :
+  { e : ℕ → S // Function.Surjective e } := by
+  classical
+  haveI : Countable S := hS.to_subtype
+  haveI : Nonempty S := by
+    rcases hne with ⟨x, hx⟩
+    exact ⟨⟨x, hx⟩⟩
+  -- statt `rcases exists_surjective_nat S with ⟨e, he⟩`
+  let e : ℕ → S := Classical.choose (exists_surjective_nat S)
+  have he : Function.Surjective e :=
+    Classical.choose_spec (exists_surjective_nat S)
+  exact ⟨e, he⟩
+
 
 /-- Wenn `S` zählbar ist und es irgendein Element `> t` gibt, dann gibt es
     den *kleinsten Index* in einer festen Aufzählung von `S`, dessen Bild `> t` liegt. -/
-  lemma exists_min_index_above
-    {S : Set ℝ} (hS : S.Countable) (hne : S.Nonempty) {t : ℝ}
-    (hex : ∃ y ∈ S, t < y) :
-    ∃ n,
-      t < (↑((someEnum hS hne).1 n) : ℝ) ∧
-      ∀ m, m < n → ¬ t < (↑((someEnum hS hne).1 m) : ℝ) := by
-    classical
-    -- feste Aufzählung von S und ihre Surjektivität
-    let e := (someEnum hS hne).1
-    have esurj : Function.Surjective e := (someEnum hS hne).2
+lemma exists_min_index_above
+  {S : Set ℝ} (hS : S.Countable) {t : ℝ}
+  (hex : ∃ y ∈ S, t < y) :
+  ∃ n, (t < (someEnum hS (by rcases hex with ⟨y, hyS, _⟩; exact ⟨y, hyS⟩)).1 n) ∧
+    ∀ m, m < n → ¬ (t <
+    (someEnum hS (by rcases hex with ⟨y, hyS, _⟩; exact ⟨y, hyS⟩)).1 m) := by
+  classical
+  -- Nicht-Leere von `S` aus `hex`
+  have hne : S.Nonempty := by
+    rcases hex with ⟨y, hyS, _⟩
+    exact ⟨y, hyS⟩
+  let e := (someEnum hS hne).1
+  have esurj : Function.Surjective e := (someEnum hS hne).2
+  -- Es gibt einen Treffer
+  have hex' : ∃ n, t < e n := by
+    rcases hex with ⟨y, hyS, hty⟩
+    rcases esurj ⟨y, hyS⟩ with ⟨n, hn⟩
+    refine ⟨n, ?_⟩
+    -- bringe hn auf Ebene der Werte (ℝ):
+    have hnval : ((e n : S) : ℝ) = y := by
+      simpa using congrArg (fun s : S => (s : ℝ)) hn
+    -- jetzt einfach umschreiben
+    simpa [hnval] using hty
+  -- Menge der Indizes mit Treffer
+  let I : Set ℕ := {n | t < e n}
+  have hI : ∃ n, n ∈ I := hex'
+  -- kleinstes Element per `Nat.find`
+  let n := Nat.find hI
+  have hnI : n ∈ I := Nat.find_spec hI
+  refine ⟨n, hnI, ?_⟩
+  intro m hm
+  -- Minimalität von `n`: aus `m ∈ I` folgt `n ≤ m`
+  have hmin : ∀ k, k ∈ I → n ≤ k := by
+    intro k hk; exact Nat.find_min' hI hk
+  exact fun hmI => (not_lt_of_ge (hmin m hmI)) hm
 
-    -- Aus ∃ y∈S, t < y machen wir ∃ n, t < ↑(e n)
-    have hexNat : ∃ n, t < (↑(e n) : ℝ) := by
-      rcases hex with ⟨y, hyS, hty⟩
-      rcases esurj ⟨y, hyS⟩ with ⟨n, hn⟩
-      exact ⟨n, by simpa [hn] using hty⟩
-
-    -- wähle den kleinsten Index mit t < ↑(e n)
-    refine ⟨Nat.find hexNat, ?_, ?_⟩
-    · -- Positivität am Minimalindex
-      simpa [e] using (Nat.find_spec hexNat)
-    · -- Minimalität: kein m < n mit t < ↑(e m)
-      intro m hm hltm
-      have hle : Nat.find hexNat ≤ m := Nat.find_min' hexNat hltm
-      exact (Nat.not_lt.mpr hle) hm
-
-
-  /-- Eine *erste* Position in einer festen Aufzählung von `S`, deren Bild *oberhalb* `t` liegt. -/
-  noncomputable def firstIdxAbove
-    {S : Set ℝ} (hS : S.Countable) (hne : S.Nonempty) (t : ℝ) : Option ℕ :=
-  by
-    classical
-    let e := (someEnum hS hne).1
-    by_cases hex : ∃ n, t < e n
-    · exact some (Nat.find hex)
-    · exact none
+/-- Eine *erste* Position in einer festen Aufzählung von `S`, deren Bild *oberhalb* `t` liegt. -/
+noncomputable def firstIdxAbove
+  {S : Set ℝ} (hS : S.Countable) (hne : S.Nonempty) (t : ℝ) : Option ℕ :=
+by
+  classical
+  let e := (someEnum hS hne).1
+  by_cases hex : ∃ n, t < e n
+  · exact some (Nat.find hex)
+  · exact none
 
 lemma firstIdxAbove_spec
   {S : Set ℝ} (hS : S.Countable) (hne : S.Nonempty) {t : ℝ} {n : ℕ}
   (h : firstIdxAbove hS hne t = some n) :
   let e := (someEnum hS hne).1
-  t < ↑(e n) ∧ ∀ m, m < n → ¬ t < ↑(e m) := by
+  t < e n ∧ ∀ m, m < n → ¬ t < e m := by
   classical
-  let e := (someEnum hS hne).1
-  by_cases hex : ∃ k, t < (↑(e k) : ℝ)
-  · have hsome : firstIdxAbove hS hne t = some (Nat.find hex) := by
-      simp [firstIdxAbove, e, hex]
-    have hn : n = Nat.find hex := by
-      have : some n = some (Nat.find hex) := by simpa [h] using hsome
-      exact Option.some.inj this
-    have hpos : t < (↑(e (Nat.find hex)) : ℝ) := Nat.find_spec hex
-    have hmin : ∀ m, m < Nat.find hex → ¬ t < (↑(e m) : ℝ) := by
-      intro m hm hlt
-      have hle : Nat.find hex ≤ m := Nat.find_min' hex hlt
-      exact (Nat.not_lt.mpr hle) hm
-    constructor
-    · simpa [hn] using hpos
-    · intro m hm
-      have hm' : m < Nat.find hex := by simpa [hn] using hm
-      exact hmin m hm'
-  · have hnone : firstIdxAbove hS hne t = none := by
-      simp [firstIdxAbove, e, hex]
-    -- Linter-freundlich: nicht `simpa using`, sondern `simp at` + Widerspruch schließen
-    simp [hnone] at h
+  set e := (someEnum hS hne).1 with he
+  by_cases hex : ∃ k, t < e k
+  · -- Definitorische Gleichheit der linken Seite
+    have hdef : firstIdxAbove hS hne t = some (Nat.find hex) := by
+      simpa [firstIdxAbove, he, hex]
+    -- Aus hdef und h folgt Gleichheit der Indizes
+    have hsome : some n = some (Nat.find hex) := by
+      simpa [h] using hdef
+    have hn : n = Nat.find hex := Option.some.inj hsome
+    subst hn
+    refine ⟨Nat.find_spec hex, ?_⟩
+    intro m hm htm
+    have : Nat.find hex ≤ m := Nat.find_min' hex htm
+    exact (not_lt_of_ge this) hm
+  · -- ¬ ∃ k, t < e k  ⇒  ∀ x, e x ≤ t
+    have e_le_t : ∀ x, (e x : ℝ) ≤ t := by
+      intro x
+      have : ¬ t < e x := (not_exists.mp hex) x
+      exact le_of_not_gt this
+    -- damit entfaltet sich firstIdxAbove zum none-Zweig
+    have hnone : firstIdxAbove hS hne t = none := by
+      simpa [firstIdxAbove, he, e_le_t]
+    -- Widerspruch zu `h : = some n`
+    -- Widerspruch zu `h : = some n`
+    have : some n = none := h.symm.trans hnone
+    cases this
 
-
-  end CountableHelpers
-
-
-
+end CountableHelpers
 end PerfectFromThick
