@@ -107,8 +107,6 @@ lemma LeftEmpty_countable (M : Set ℝ) : (LeftEmpty M).Countable := by
         -- x∈(Ioo a y)∩M, Widerspruch zu hyE
         have hxIn : x ∈ (Ioo (a : ℝ) y) ∩ M := ⟨⟨hax, hxy'⟩, hxM⟩
         simpa [hyE] using hxIn
-
-
     | inr hyx' =>
         -- y∈(Ioo a x)∩M, Widerspruch zu hxE
         have hyIn : y ∈ (Ioo (a : ℝ) x) ∩ M := ⟨⟨hay, hyx'⟩, hyM⟩
