@@ -1,4 +1,4 @@
--- Superdense/Phase 2
+-- Superdense/Phase 2.3
 import Mathlib
 
 noncomputable section
@@ -695,4 +695,132 @@ lemma core_subset_M
   exact (K0_subset_M (M := M) (xu := xu) (xo := xo) hxu hxo) hxK0
 
 end Stage
+
+namespace Stage
+
+/-- `midUnion` wächst, wenn man vorne ein weiteres offenes Stück dazupackt. -/
+lemma midUnion_subset_cons (U : Set ℝ) (L : List (Set ℝ)) :
+  midUnion L ⊆ midUnion (U :: L) := by
+  intro x hx
+  have : x ∈ U ∪ midUnion L := Or.inr hx
+  simpa [midUnion_cons] using this
+
+/-- Antitonie des *Kerns* in der zweiten Komponente:
+    Je größer die offene Vereinigung rechts im Komplement, desto kleiner der Kern. -/
+lemma core_antitone_union
+    {M : Set ℝ} {xu xo : ℝ} {A B : Set ℝ}
+    (hAB : A ⊆ B) :
+  (Set.Icc xu xo ∩ (U0' M xu xo ∪ B)ᶜ)
+    ⊆ (Set.Icc xu xo ∩ (U0' M xu xo ∪ A)ᶜ) := by
+  intro x hx
+  rcases hx with ⟨hxIcc, hxCompl⟩
+  have hsubset : (U0' M xu xo ∪ A) ⊆ (U0' M xu xo ∪ B) := by
+    intro y hy
+    rcases hy with hyU0 | hyA
+    · exact Or.inl hyU0
+    · exact Or.inr (hAB hyA)
+  have hcompl := Set.compl_subset_compl.mpr hsubset
+  exact ⟨hxIcc, hcompl hxCompl⟩
+
+/-- Spezialfall für Listen: *Kern* nach Kons eines neuen offenen Stücks
+    ist Teilmenge des alten *Kerns*. -/
+lemma core_mids_cons_subset_noState
+    {M : Set ℝ} {xu xo : ℝ} (s : Stage.State M xu xo) (U : Set ℝ) :
+  (Set.Icc xu xo ∩ (U0' M xu xo ∪ Stage.midUnion (U :: s.mids))ᶜ)
+    ⊆ (Set.Icc xu xo ∩ (U0' M xu xo ∪ Stage.midUnion s.mids)ᶜ) := by
+  intro x hx
+  have hgrow : Stage.midUnion s.mids ⊆ Stage.midUnion (U :: s.mids) :=
+    Stage.midUnion_subset_cons U s.mids
+  exact Stage.core_antitone_union (M:=M) (xu:=xu) (xo:=xo) hgrow hx
+
+/-- Im Startzustand ist der *Kern* genau `K0`. -/
+@[simp] lemma core_init_eq_K0
+    {M : Set ℝ} {xu xo : ℝ}
+    (J : ClosedSeg) (hJsub : segSet J ⊆ Set.Icc xu xo) :
+  core (M := M) (xu := xu) (xo := xo) (init (M:=M) (xu:=xu) (xo:=xo) J hJsub)
+    = K0 M xu xo := by
+  simp [core, init, K0, midUnion_nil]
+
+/-- Es gibt in `s` ein Segment, das `K0` trifft. -/
+def Hits (M : Set ℝ) (xu xo : ℝ) (s : State M xu xo) : Prop :=
+  ∃ J ∈ s.segs, (segSet J ∩ K0 M xu xo).Nonempty
+
+/-- Wie `refineOne`, aber wählt das zu verfeinernde Segment automatisch
+    aus einem Existenzzeugnis. -/
+noncomputable def refineOnceAuto
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (s : State M xu xo)
+    (hSel : Hits M xu xo s)
+  : State M xu xo :=
+by
+  classical
+  -- Wähle ein J und die beiden Beweise nicht-konstruktiv aus hSel
+  let J : ClosedSeg := Classical.choose hSel
+  have hJmem : J ∈ s.segs := (Classical.choose_spec hSel).1
+  have hHit  : (segSet J ∩ K0 M xu xo).Nonempty :=
+    (Classical.choose_spec hSel).2
+  -- Jetzt einfach den einen Schritt ausführen
+  exact refineOne (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo s J hJmem hHit
+
+/-- Beim einen Schritt `refineOne` wird **genau ein** neues offenes Mittelstück
+    vorne an die `mids`-Liste angehängt. Wir brauchen nur die Existenz. -/
+lemma exists_cons_mids_refineOne
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (s : State M xu xo)
+    (J : ClosedSeg) (hJmem : J ∈ s.segs)
+    (hHit : (segSet J ∩ K0 M xu xo).Nonempty) :
+  ∃ U, (refineOne (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo s J hJmem hHit).mids
+        = U :: s.mids := by
+  classical
+  -- In der Definition von `refineOne` wird `mids' := Mid :: s.mids` gesetzt.
+  -- Das gewünschte `U` ist genau dieses `Mid`.
+  -- `simp` entfaltet die Definition bis zur gewünschten Gleichheit.
+  refine ⟨
+    Classical.choose (Classical.choose_spec (Classical.choose_spec
+      (split_once (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo J (s.invSegs hJmem) hHit))),
+    ?_⟩
+  -- Jetzt folgt die Gleichheit der Listen rein definitorisch:
+  simp [refineOne]
+
+/-- Der Kern wird durch einen `refineOne`-Schritt nur **kleiner**. -/
+lemma core_refineOne_subset
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (s : State M xu xo)
+    (J : ClosedSeg) (hJmem : J ∈ s.segs)
+    (hHit : (segSet J ∩ K0 M xu xo).Nonempty) :
+  core (M:=M) (xu:=xu) (xo:=xo)
+    (refineOne (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo s J hJmem hHit)
+    ⊆ core (M:=M) (xu:=xu) (xo:=xo) s := by
+  classical
+  -- Schreibe die neue `mids`-Liste als `U :: s.mids`
+  rcases exists_cons_mids_refineOne (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo s J hJmem hHit
+    with ⟨U, hU⟩
+  -- Reduziere auf die „noState“-Version der Antitonie (reiner Mengenbeweis)
+  intro x hx
+  have hx' :
+      x ∈ (Set.Icc xu xo ∩ (U0' M xu xo ∪ midUnion (U :: s.mids))ᶜ) := by
+    simpa [core, hU] using hx
+  have hx'' :=
+    core_mids_cons_subset_noState (M:=M) (xu:=xu) (xo:=xo) (s:=s) (U:=U) hx'
+  simpa [core] using hx''
+
+/-- Der Kern wird auch beim „automatischen“ Schritt nur **kleiner**. -/
+lemma core_refineOnceAuto_subset
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (s : State M xu xo) (hSel : Hits M xu xo s) :
+  core (refineOnceAuto (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo s hSel) ⊆ core s := by
+  classical
+  -- Variante A: dsimp + exact
+  dsimp [refineOnceAuto]
+  exact core_refineOne_subset (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo s
+    (Classical.choose hSel)
+    ((Classical.choose_spec hSel).1)
+    ((Classical.choose_spec hSel).2)
+
+end Stage
+
 end
