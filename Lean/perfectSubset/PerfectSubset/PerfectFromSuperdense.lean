@@ -1,4 +1,4 @@
--- Superdense/Phase0A.lean
+-- Superdense/Phase 1
 import Mathlib
 
 noncomputable section
@@ -153,4 +153,77 @@ lemma Ioo_subset_of_radius_le {x ε δ : ℝ} (hδε : 0 < δ ∧ δ ≤ ε) :
   · exact lt_of_le_of_lt h1 hyL
   · exact lt_of_lt_of_le hyR h2
 
+-- kleine Rechenhilfen für Mittelpunkts-Umschreibungen
+lemma aux_add_sub_div_two (x y : ℝ) : x + (y - x) / 2 = (x + y) / 2 := by ring
+lemma aux_sub_sub_div_two (x y : ℝ) : y - (y - x) / 2 = (x + y) / 2 := by ring
+
+/-- Trifft ein echtes Segment `J` die Menge `K0 M xu xo`, dann enthält `J`
+    einen **inneren** Punkt aus `M`. -/
+lemma exists_M_interior_of_seg_intersects_K0
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (J : ClosedSeg) (_ : segSet J ⊆ Set.Icc xu xo)
+    (hHit : (segSet J ∩ K0 M xu xo).Nonempty) :
+  ∃ z, z ∈ M ∧ z ∈ Set.Ioo J.a J.b := by
+  classical
+  rcases hHit with ⟨x0, hx0J, hx0K0⟩
+  -- x0 ∈ M
+  have hx0M : x0 ∈ M := (K0_subset_M (M:=M) (xu:=xu) (xo:=xo) hxu hxo) hx0K0
+  -- x0 ∈ Icc J.a J.b
+  rcases hx0J with ⟨hJleft, hJright⟩
+
+  -- Fall 1: x0 = linker Rand
+  by_cases hL : x0 = J.a
+  · have hbgt : x0 < J.b := by simpa [hL] using J.hlt
+    -- ε = halbe Distanz zur rechten Kante
+    have hεpos : 0 < (J.b - x0) / 2 := by
+      have : 0 < J.b - x0 := sub_pos.mpr hbgt
+      have h2 : (0 : ℝ) < 2 := by norm_num
+      exact div_pos this h2
+    set ε := (J.b - x0) / 2 with hεdef
+    rcases exists_left_right_near (M:=M) hM (x:=x0) (ε:=ε) hx0M hεpos
+      with ⟨a', b', haM, hbM, hLa, haLt, hLb, hbLt⟩
+    -- x0 + ε = (x0 + J.b)/2  ⇒  x0 + ε < J.b
+    have hx0eps_lt_b : x0 + ε < J.b := by
+      have hx0_plus_eps_eq_mid : x0 + ε = (x0 + J.b) / 2 := by
+        simp [hεdef, aux_add_sub_div_two]
+      simpa [hx0_plus_eps_eq_mid] using
+        (mid_mem_Ioo (a:=x0) (b:=J.b) hbgt).2
+    refine ⟨b', hbM, ?_⟩
+    constructor
+    · -- J.a < b' aus x0 < b' und x0 = J.a
+      simpa [hL] using hLb
+    · -- b' < J.b aus b' < x0 + ε < J.b
+      exact lt_trans hbLt hx0eps_lt_b
+
+  -- Fall 2: x0 = rechter Rand
+  by_cases hR : x0 = J.b
+  · have halt : J.a < x0 := by simpa [hR] using J.hlt
+    -- ε = halbe Distanz zur linken Kante
+    have hεpos : 0 < (x0 - J.a) / 2 := by
+      have : 0 < x0 - J.a := sub_pos.mpr halt
+      have h2 : (0 : ℝ) < 2 := by norm_num
+      exact div_pos this h2
+    set ε := (x0 - J.a) / 2 with hεdef
+    rcases exists_left_right_near (M:=M) hM (x:=x0) (ε:=ε) hx0M hεpos
+      with ⟨a', b', h_aM, h_bM, hLa, haLt, hLb, hbLt⟩
+    -- J.a < x0 - ε  via Mittelpunktsformel
+    have ha_lt_x0minus : J.a < x0 - ε := by
+      have hx0_minus_eps_eq_mid : x0 - ε = (J.a + x0) / 2 := by
+        have := aux_sub_sub_div_two (x:=J.a) (y:=x0)
+        simpa [hεdef, add_comm] using this
+      have : J.a < (J.a + x0) / 2 := (mid_mem_Ioo (a:=J.a) (b:=x0) halt).1
+      simpa [hx0_minus_eps_eq_mid] using this
+    refine ⟨a', h_aM, ?_⟩
+    constructor
+    · -- J.a < a' aus J.a < x0 - ε und x0 - ε < a'
+      exact lt_trans ha_lt_x0minus hLa
+    · -- a' < J.b aus a' < x0 und x0 = J.b
+      simpa [hR] using haLt
+
+  -- Fall 3: x0 echt innen
+    -- Fall 3: x0 echt innen
+  have hLeft  : J.a < x0 := lt_of_le_of_ne hJleft (ne_comm.mp hL)
+  have hRight : x0 < J.b := lt_of_le_of_ne hJright hR
+  exact ⟨x0, hx0M, ⟨hLeft, hRight⟩⟩
 end
