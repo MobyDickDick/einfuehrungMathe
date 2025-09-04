@@ -821,6 +821,46 @@ lemma core_refineOnceAuto_subset
     ((Classical.choose_spec hSel).1)
     ((Classical.choose_spec hSel).2)
 
-end Stage
+noncomputable def refineTwiceAuto
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (s : State M xu xo)
+    (h1 : Hits M xu xo s)
+    (h2 : Hits M xu xo (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1)) :
+  State M xu xo :=
+  refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo
+    (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1) h2
 
+lemma core_refineTwiceAuto_subset
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (s : State M xu xo)
+    (h1 : Hits M xu xo s)
+    (h2 : Hits M xu xo (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1)) :
+  core (M := M) (xu := xu) (xo := xo)
+       (refineTwiceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2)
+    ⊆ core (M := M) (xu := xu) (xo := xo) s := by
+  classical
+  -- Zustand nach dem ersten Auto-Schritt
+  let s1 := refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1
+  -- Schritt 2 schrumpft den Kern: core(new) ⊆ core(s1)
+  have step2 :
+    core (M := M) (xu := xu) (xo := xo)
+      (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s1 h2)
+      ⊆ core (M := M) (xu := xu) (xo := xo) s1 :=
+    core_refineOnceAuto_subset (M := M) hM (xu := xu) (xo := xo) hxu hxo s1 h2
+  -- Schritt 1 schrumpft den Kern: core(s1) ⊆ core(s)
+  have step1 :
+    core (M := M) (xu := xu) (xo := xo) s1
+      ⊆ core (M := M) (xu := xu) (xo := xo) s :=
+    core_refineOnceAuto_subset (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1
+  -- Zusammensetzen
+  have step2' :
+    core (M := M) (xu := xu) (xo := xo)
+      (refineTwiceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2)
+      ⊆ core (M := M) (xu := xu) (xo := xo) s1 := by
+    simpa [refineTwiceAuto, s1] using step2
+  exact subset_trans step2' step1
+
+end  Stage
 end
