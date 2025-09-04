@@ -1,15 +1,23 @@
 -- Superdense/Phase0A.lean
 import Mathlib
 
+noncomputable section
 open Set
 
-/-- Komplement von `M` im Grundintervall `[x_u,x_o]`. -/
+/-- Lokal *zweiseitig* superdicht in ℝ. -/
+def TwoSidedSuperdense (M : Set ℝ) : Prop :=
+  ¬ M.Countable ∧
+  ∀ ⦃x ε : ℝ⦄, x ∈ M → 0 < ε →
+    ((M ∩ Set.Ioo (x - ε) x).Infinite ∧
+     (M ∩ Set.Ioo x (x + ε)).Infinite)
+
+/-- Komplement von `M` im Grundintervall `[x_u, x_o]`. -/
 def S (M : Set ℝ) (xu xo : ℝ) : Set ℝ :=
   Set.Icc xu xo \ M
 
-/-- Kleiner Radius um `y`, der die Endpunkte schont. -/
+/-- Kleiner Radius um `y`, der die Endpunkte schont (nur `|y - ...|`). -/
 def rad (xu xo y : ℝ) : ℝ :=
-  min (|y - xu|) (|xo - y|) / 4
+  min (|y - xu|) (|y - xo|) / 4
 
 /-- Offene Hülle des Komplements: Vereinigung kleiner offener Intervalle. -/
 def U0' (M : Set ℝ) (xu xo : ℝ) : Set ℝ :=
@@ -23,28 +31,27 @@ lemma U0'_isOpen (M : Set ℝ) (xu xo : ℝ) : IsOpen (U0' M xu xo) := by
   refine isOpen_iUnion ?_
   intro y
   refine isOpen_iUnion ?_
-  intro hy
+  intro _hy
   exact isOpen_Ioo
 
-/-- Für `y ∈ S` ist der Radius positiv, wenn `x_u,x_o ∈ M`. -/
+/-- Für `y ∈ S` ist der Radius positiv, wenn `x_u,x_o ∈ M`.
+    (Die Intervall-Zugehörigkeit von `y` wird nicht benötigt.) -/
 lemma rad_pos_of_mem_S
     {M : Set ℝ} {xu xo y : ℝ}
     (hxu : xu ∈ M) (hxo : xo ∈ M)
-    (hyI : y ∈ Set.Icc xu xo) (hyM : y ∉ M) :
+    (hyM : y ∉ M) :
     0 < rad xu xo y := by
+  -- y ≠ xu, y ≠ xo (sonst wäre y ∈ M, Widerspruch)
   have hy_ne_xu : y ≠ xu := by
     intro h; exact hyM (by simpa [h] using hxu)
   have hy_ne_xo : y ≠ xo := by
     intro h; exact hyM (by simpa [h] using hxo)
-  have h1 : 0 < |y - xu| := by
-    have : y - xu ≠ 0 := sub_ne_zero.mpr hy_ne_xu
-    simpa [abs_pos_iff] using this
-  have h2 : 0 < |xo - y| := by
-    have : xo - y ≠ 0 := sub_ne_zero.mpr (ne_comm.mp hy_ne_xo)
-    simpa [abs_pos_iff] using this
-  have hmin : 0 < min (|y - xu|) (|xo - y|) := lt_min h1 h2
-  have : 0 < min (|y - xu|) (|xo - y|) / 4 := by
-    have h4 : (0 : ℝ) < 4 := by norm_num
+  -- |y - xu| > 0, |y - xo| > 0
+  have h1 : 0 < |y - xu| := abs_pos.mpr (sub_ne_zero.mpr hy_ne_xu)
+  have h2 : 0 < |y - xo| := abs_pos.mpr (sub_ne_zero.mpr hy_ne_xo)
+  have hmin : 0 < min (|y - xu|) (|y - xo|) := lt_min h1 h2
+  have h4 : (0 : ℝ) < 4 := by norm_num
+  have : 0 < min (|y - xu|) (|y - xo|) / 4 := by
     exact div_pos hmin h4
   simpa [rad] using this
 
@@ -56,11 +63,13 @@ lemma S_subset_U0'
   classical
   intro y hyS
   rcases hyS with ⟨hyIcc, hyNotM⟩
-  have hr : 0 < rad xu xo y := rad_pos_of_mem_S (M:=M) hxu hxo hyIcc hyNotM
+  have hr : 0 < rad xu xo y := rad_pos_of_mem_S (M:=M) hxu hxo hyNotM
+  -- y liegt in seiner eigenen Ioo-Nachbarschaft
   have hy_in : y ∈ Set.Ioo (y - rad xu xo y) (y + rad xu xo y) := by
     refine ⟨?L, ?R⟩
     · simpa using sub_lt_self y hr
     · simpa using lt_add_of_pos_right y hr
+  -- und diese liegt in der großen Vereinigung
   unfold U0'
   refine mem_iUnion.mpr ?_
   refine ⟨y, mem_iUnion.mpr ?_⟩
