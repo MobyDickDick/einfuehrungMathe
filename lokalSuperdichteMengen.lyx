@@ -182,7 +182,7 @@ Lokal Superdichte Mengen
 \begin_inset Newline newline
 \end_inset
 
-Version 1
+Version 2
 \end_layout
 
 \begin_layout Author
@@ -489,7 +489,7 @@ ist eine Überdeckung von
 
 \end_inset
 
- ist eine perfekte Teilmenge von 
+ ist eine Teilmenge von 
 \begin_inset Formula $M$
 \end_inset
 
@@ -528,12 +528,12 @@ und für die Länge
 Zudem wird ein Intervall nur dann weiter unterteilt,
  wenn es eine positive Länge besitzt.
  Also schliesse ich daraus,
- dass die resultierende Menge immer noch offen ist (auch wenn ich das jetzt nicht streng beweise).
+ dass die resultierende Menge immer noch offen ist,
+ da jedes Interall eine positive Länge hat.
 \end_layout
 
 \begin_layout Proof
-Wieso ich vermute,
- dass 
+Weiter ist 
 \begin_inset Formula 
 \[
 \left[x_{u},x_{o}\right]\setminus\bigcap_{n\in\mathbb{N}}U_{n}
@@ -545,8 +545,8 @@ Wieso ich vermute,
 \end_layout
 
 \begin_layout Proof
-perfekt ist:
- Weil jeder Punkt der Menge ein Häufungspukt der Menge ist.
+perfekt ist,
+ da jeder Punkt der Menge ein Häufungspunkt der Menge ist.
 \end_layout
 
 \begin_layout Standard
