@@ -1,4 +1,4 @@
--- Superdense/Phase 1
+-- Superdense/Phase 2
 import Mathlib
 
 noncomputable section
@@ -226,4 +226,168 @@ lemma exists_M_interior_of_seg_intersects_K0
   have hLeft  : J.a < x0 := lt_of_le_of_ne hJleft (ne_comm.mp hL)
   have hRight : x0 < J.b := lt_of_le_of_ne hJright hR
   exact ⟨x0, hx0M, ⟨hLeft, hRight⟩⟩
+
+-- ------------------------------------------------------------
+-- Erster Split-Schritt: zwei disjunkte Kinder + offenes Mittelstück
+-- ------------------------------------------------------------
+
+-- Hilfslemma: aus a ≤ b folgt a/2 ≤ b/2 (für ℝ)
+-- Hilfslemma: aus a ≤ b folgt a/2 ≤ b/2 (für ℝ)
+-- Aus a ≤ b folgt a/2 ≤ b/2 (auf ℝ)
+
+-- a ≤ b ⇒ a/2 ≤ b/2  (ohne Mul-/simp-Gymnastik)
+-- Aus a ≤ b folgt a/2 ≤ b/2  (auf ℝ), ohne Mul-/simp-Gymnastik
+lemma half_le_half_of_le {a b : ℝ} (h : a ≤ b) :
+  a / 2 ≤ b / 2 := by
+  -- Standard: Division mit nichtnegativem Nenner erhält ≤
+  simpa using
+    (div_le_div_of_nonneg_right h (show (0 : ℝ) ≤ (2 : ℝ) by norm_num))
+
+-- 0 < t ⇒ t/2 < t  (stabil, ohne div/ring/simp-Gymnastik)
+lemma half_lt_self_of_pos {t : ℝ} (ht : 0 < t) : t / 2 < t := by
+  -- (2)⁻¹ < 1  (weil 1/2 < 1)
+  have inv2_lt_one : (2 : ℝ)⁻¹ < 1 := by
+    have : (1/2 : ℝ) < 1 := by norm_num
+    simpa [one_div] using this
+  -- Schreibe t/2 als t * (2)⁻¹, dann multipliziere mit t>0
+  calc
+    t / 2 = t * (2 : ℝ)⁻¹ := by
+      simp [div_eq_mul_inv]
+    _     < t * 1         := by
+      simpa [one_mul] using mul_lt_mul_of_pos_left inv2_lt_one ht
+    _     = t             := by
+      simp
+-- Erster Split-Schritt: zwei disjunkte Kinder + offenes Mittelstück
+-- Erster Split-Schritt: zwei disjunkte Kinder + offenes Mittelstück
+lemma split_once
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (J : ClosedSeg) (hJsub : segSet J ⊆ Set.Icc xu xo)
+    (hHit : (segSet J ∩ K0 M xu xo).Nonempty) :
+  ∃ (J0 J1 : ClosedSeg) (Mid : Set ℝ),
+    segSet J0 ⊆ segSet J ∧
+    segSet J1 ⊆ segSet J ∧
+    Disjoint (segSet J0) (segSet J1) ∧
+    IsOpen Mid ∧
+    Mid ⊆ Set.Ioo J.a J.b ∧
+    segSet J ⊆ segSet J0 ∪ Mid ∪ segSet J1 ∧
+    (segSet J0 ∩ M).Nonempty ∧
+    (segSet J1 ∩ M).Nonempty := by
+  classical
+  -- innerer M-Punkt z in J
+  obtain ⟨z, hzM, hzI⟩ :=
+    exists_M_interior_of_seg_intersects_K0 (M:=M) hM (xu:=xu) (xo:=xo)
+      hxu hxo J hJsub hHit
+  rcases hzI with ⟨hzL, hzR⟩  -- J.a < z < J.b
+
+  -- ε := Hälfte der minimalen Randdistanz
+  let ε : ℝ := (min (z - J.a) (J.b - z)) / 2
+  have hεpos : 0 < ε := by
+    have h1 : 0 < z - J.a := sub_pos.mpr hzL
+    have h2 : 0 < J.b - z := sub_pos.mpr hzR
+    have hmin : 0 < min (z - J.a) (J.b - z) := lt_min h1 h2
+    have h2pos : (0 : ℝ) < 2 := by norm_num
+    exact div_pos hmin h2pos
+
+  -- Nachbarn um z: ℓ links, r rechts (beide in M)
+  obtain ⟨ℓ, r, hℓM, hrM, hleftL, hleftR, hrightL, hrightR⟩ :=
+    exists_left_right_near (M:=M) hM (x:=z) (ε:=ε) hzM hεpos
+  -- hleftL : z - ε < ℓ ,  hleftR : ℓ < z
+  -- hrightL : z < r      ,  hrightR : r < z + ε
+
+  -- (1) J.a < ℓ
+  have hz_a_pos : 0 < z - J.a := sub_pos.mpr hzL
+  have hε_le_half_left : ε ≤ (z - J.a) / 2 := by
+    have h0 : min (z - J.a) (J.b - z) / 2 ≤ (z - J.a) / 2 :=
+      half_le_half_of_le (min_le_left (z - J.a) (J.b - z))
+    simpa [ε] using h0
+  have half_lt_left : (z - J.a) / 2 < (z - J.a) :=
+    half_lt_self_of_pos hz_a_pos
+  have hJa_plus_eps_lt_z : J.a + ε < z := by
+    have hεlt : ε < z - J.a := lt_of_le_of_lt hε_le_half_left half_lt_left
+    have h' : J.a + ε < J.a + (z - J.a) := add_lt_add_left hεlt J.a
+    have hz_sum : J.a + (z - J.a) = z := by ring
+    simpa [hz_sum] using h'
+  have hJa_lt_z_minus_eps : J.a < z - ε :=
+    (lt_sub_iff_add_lt).mpr hJa_plus_eps_lt_z
+  have hJa_lt_ell : J.a < ℓ := lt_trans hJa_lt_z_minus_eps hleftL
+
+  -- (2) r < J.b
+  have hz_b_pos : 0 < J.b - z := sub_pos.mpr hzR
+  have hε_le_half_right : ε ≤ (J.b - z) / 2 := by
+    have h0 : min (z - J.a) (J.b - z) / 2 ≤ (J.b - z) / 2 :=
+      half_le_half_of_le (min_le_right (z - J.a) (J.b - z))
+    simpa [ε] using h0
+  have half_lt_right : (J.b - z) / 2 < (J.b - z) :=
+    half_lt_self_of_pos hz_b_pos
+  have hz_plus_eps_lt_b : z + ε < J.b := by
+    have hεlt : ε < J.b - z := lt_of_le_of_lt hε_le_half_right half_lt_right
+    have h' : ε + z < (J.b - z) + z := add_lt_add_right hεlt z
+    have h'' : z + ε < (J.b - z) + z := by simpa [add_comm] using h'
+    have hz_sum' : (J.b - z) + z = J.b := by ring
+    simpa [hz_sum'] using h''
+  have h_r_lt_Jb : r < J.b := lt_trans hrightR hz_plus_eps_lt_b
+
+  -- Kinder & Mittelstück
+  let J0 : ClosedSeg := { a := J.a, b := ℓ, hlt := hJa_lt_ell }
+  let J1 : ClosedSeg := { a := r, b := J.b, hlt := h_r_lt_Jb }
+  let Mid : Set ℝ := Set.Ioo ℓ r
+
+  -- Inklusionen der Kinder in J
+  have sub0 : segSet J0 ⊆ segSet J := by
+    intro x hx; rcases hx with ⟨hxL, hxR⟩
+    have hℓ_le_Jb : ℓ ≤ J.b := le_of_lt (lt_trans hleftR hzR)
+    exact ⟨hxL, le_trans hxR hℓ_le_Jb⟩
+  have sub1 : segSet J1 ⊆ segSet J := by
+    intro x hx; rcases hx with ⟨hxL, hxR⟩
+    have hz_le_x : z ≤ x := le_trans (le_of_lt hrightL) hxL
+    have hJa_lt_x : J.a < x := lt_of_lt_of_le hzL hz_le_x
+    exact ⟨le_of_lt hJa_lt_x, hxR⟩
+
+  -- Disjunktheit der Kinder
+  have disj : Disjoint (segSet J0) (segSet J1) := by
+    have hsep : ℓ < r := lt_trans hleftR hrightL
+    refine disjoint_left.mpr ?_
+    intro x hx0 hx1
+    rcases hx0 with ⟨hx0L, hx0R⟩
+    rcases hx1 with ⟨hx1L, hx1R⟩
+    have : r ≤ ℓ := le_trans hx1L hx0R
+    exact (not_le_of_gt hsep) this
+
+  -- Mid ist offen und liegt im Inneren von J
+  have openMid : IsOpen Mid := isOpen_Ioo
+  have midSub : Mid ⊆ Set.Ioo J.a J.b := by
+    intro x hx; rcases hx with ⟨hxL, hxR⟩
+    exact ⟨lt_trans hJa_lt_ell hxL, lt_trans hxR h_r_lt_Jb⟩
+
+  -- Überdeckung: [J.a,J.b] ⊆ [J.a,ℓ] ∪ (ℓ,r) ∪ [r,J.b]
+  -- Achtung: `∪` ist linksassoziativ: (A ∪ B) ∪ C.
+  have cover : segSet J ⊆ segSet J0 ∪ Mid ∪ segSet J1 := by
+    intro x hx; rcases hx with ⟨hxL, hxR⟩
+    by_cases hxl : x ≤ ℓ
+    · -- x ∈ segSet J0 ⇒ Mitglied im linken Summanden (A ∪ B) des großen ∪
+      have hxJ0 : x ∈ segSet J0 := ⟨hxL, hxl⟩
+      exact Or.inl (Or.inl hxJ0)
+    · have hℓlt : ℓ < x := lt_of_not_ge hxl
+      by_cases hxr : x < r
+      · -- x ∈ Mid ⇒ Mitglied im rechten Summanden von (A ∪ B)
+        have hxMid : x ∈ Mid := ⟨hℓlt, hxr⟩
+        exact Or.inl (Or.inr hxMid)
+      · -- sonst r ≤ x ⇒ x ∈ segSet J1 ⇒ rechter äußerer Summand
+        have hx_ge_r : r ≤ x := le_of_not_gt hxr
+        have hxJ1 : x ∈ segSet J1 := ⟨hx_ge_r, hxR⟩
+        exact Or.inr hxJ1
+
+  -- Beide Kinder schneiden M (weil ℓ,r ∈ M)
+  have touch0 : (segSet J0 ∩ M).Nonempty := by
+    refine ⟨ℓ, ?_⟩; constructor
+    · exact ⟨le_of_lt hJa_lt_ell, le_rfl⟩
+    · exact hℓM
+  have touch1 : (segSet J1 ∩ M).Nonempty := by
+    refine ⟨r, ?_⟩; constructor
+    · exact ⟨le_rfl, le_of_lt h_r_lt_Jb⟩
+    · exact hrM
+
+  exact ⟨J0, J1, Mid, sub0, sub1, disj, openMid, midSub, cover, touch0, touch1⟩
+
 end
