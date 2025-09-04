@@ -391,3 +391,227 @@ lemma split_once
   exact ⟨J0, J1, Mid, sub0, sub1, disj, openMid, midSub, cover, touch0, touch1⟩
 
 end
+
+/-
+  -------------------------
+  Phase 2: Iteration scaffold
+  -------------------------
+-/
+noncomputable section
+
+namespace Stage
+
+-- Endliche Vereinigungen als Listen-Unions
+def segUnion (L : List ClosedSeg) : Set ℝ :=
+  {x | ∃ J ∈ L, x ∈ segSet J}
+
+def midUnion (L : List (Set ℝ)) : Set ℝ :=
+  {x | ∃ U ∈ L, x ∈ U}
+
+@[simp] lemma mem_segUnion {L : List ClosedSeg} {x : ℝ} :
+  x ∈ segUnion L ↔ ∃ J ∈ L, x ∈ segSet J := Iff.rfl
+
+@[simp] lemma mem_midUnion {L : List (Set ℝ)} {x : ℝ} :
+  x ∈ midUnion L ↔ ∃ U ∈ L, x ∈ U := Iff.rfl
+
+@[simp] lemma segUnion_nil : segUnion [] = (∅ : Set ℝ) := by
+  ext x; simp [segUnion]
+
+@[simp] lemma midUnion_nil : midUnion [] = (∅ : Set ℝ) := by
+  ext x; simp [midUnion]
+
+@[simp] lemma segUnion_cons (J : ClosedSeg) (L : List ClosedSeg) :
+  segUnion (J :: L) = segSet J ∪ segUnion L := by
+  ext x; constructor
+  · intro hx
+    rcases hx with ⟨K, hKmem, hxK⟩
+    rcases (List.mem_cons).1 hKmem with hK | hK
+    · subst hK; exact Or.inl hxK
+    · exact Or.inr ⟨K, hK, hxK⟩
+  · intro hx
+    rcases hx with hxJ | hxRest
+    · exact ⟨J, by simp, hxJ⟩
+    · rcases hxRest with ⟨K, hKmem, hxK⟩
+      exact ⟨K, List.mem_cons_of_mem _ hKmem, hxK⟩
+
+@[simp] lemma midUnion_cons (U : Set ℝ) (L : List (Set ℝ)) :
+  midUnion (U :: L) = U ∪ midUnion L := by
+  ext x; constructor
+  · -- → Richtung
+    intro hx
+    rcases hx with ⟨V, hVmem, hxV⟩
+    rcases (List.mem_cons).1 hVmem with hV | hV
+    · subst hV
+      exact Or.inl hxV
+    · exact Or.inr ⟨V, hV, hxV⟩
+  · -- ← Richtung
+    intro hx
+    rcases hx with hxU | hxRest
+    · exact ⟨U, by simp, hxU⟩
+    · rcases hxRest with ⟨V, hVmem, hxV⟩
+      exact ⟨V, List.mem_cons_of_mem _ hVmem, hxV⟩
+
+-- Endliche Vereinigung geschlossener Segmente ist geschlossen
+lemma segUnion_closed : ∀ L : List ClosedSeg, IsClosed (segUnion L)
+| []      => by simp [segUnion_nil]           -- ← statt: simpa … using …
+| (J::L)  => by
+    have hJ : IsClosed (segSet J) := segSet_closed J
+    have hL : IsClosed (segUnion L) := segUnion_closed L
+    simpa [segUnion_cons] using hJ.union hL
+
+-- Wenn alle U in L offen sind, ist die endliche Vereinigung offen.
+lemma midUnion_open_of_all_open
+    (L : List (Set ℝ))
+    (h : ∀ U ∈ L, IsOpen U) :
+  IsOpen (midUnion L) := by
+  induction L with
+  | nil =>
+      simp [midUnion_nil]                     -- ← statt: simpa … using …
+  | cons U L ih =>
+      have hU : IsOpen U := h U (by simp)
+      have hL : IsOpen (midUnion L) := ih (by
+        intro V hV; exact h V (by simp [hV]))
+      simpa [midUnion_cons] using hU.union hL
+
+-- Wenn jedes Segment in Icc xu xo liegt, liegt auch die Vereinigung darin.
+lemma segUnion_subset_Icc
+    (L : List ClosedSeg) {xu xo : ℝ}
+    (h : ∀ J ∈ L, segSet J ⊆ Set.Icc xu xo) :
+  segUnion L ⊆ Set.Icc xu xo := by
+  intro x hx
+  rcases hx with ⟨J, hJmem, hxJ⟩
+  exact h J hJmem hxJ
+
+/-- Zustand für die endliche Iteration (fixiert `M`, `xu`, `xo`). -/
+structure State (M : Set ℝ) (xu xo : ℝ) where
+  segs : List ClosedSeg
+  mids : List (Set ℝ)
+  -- Invarianten:
+  invSegs : ∀ {J}, J ∈ segs → segSet J ⊆ Set.Icc xu xo
+  invMids : ∀ {U}, U ∈ mids → IsOpen U
+
+/-- Anfangszustand aus einem Startsegment `J ⊆ [xu,xo]`. -/
+def init {M : Set ℝ} {xu xo : ℝ}
+    (J : ClosedSeg) (hJsub : segSet J ⊆ Set.Icc xu xo)
+  : State M xu xo :=
+{ segs := [J],
+  mids := [],
+  invSegs := by
+    intro J' hJ'
+    have h' : J' = J := by simpa using hJ'
+    simpa [h'] using hJsub,
+  invMids := by
+    intro U hU
+    -- U ∈ [] ist unmöglich
+    cases hU
+}
+
+/-- Bequeme Folgerungen aus den Invarianten des Zustands. -/
+lemma segUnion_subset_Icc_of_state
+    {M : Set ℝ} {xu xo : ℝ} (s : State M xu xo) :
+  segUnion s.segs ⊆ Set.Icc xu xo :=
+  segUnion_subset_Icc s.segs (by
+    intro J hJ; exact s.invSegs hJ)
+
+lemma midUnion_open_of_state
+    {M : Set ℝ} {xu xo : ℝ} (s : State M xu xo) :
+  IsOpen (midUnion s.mids) :=
+  midUnion_open_of_all_open s.mids (by
+    intro U hU; exact s.invMids hU)
+
+/-- Ein einzelner Verfeinerungsschritt:
+    wähle `J ∈ s.segs`, der `K0` trifft, und füge die beiden Kinder sowie das
+    Mittelstück hinzu. (Wir lassen `J` in `s.segs` drin – einfach & robust.) -/
+def refineOne
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (s : State M xu xo)
+    (J : ClosedSeg) (hJmem : J ∈ s.segs)
+    (hHit : (segSet J ∩ K0 M xu xo).Nonempty)
+  : State M xu xo := by
+  classical
+  -- 1) J ⊆ [xu,xo] aus der Invariante
+  have hJsub : segSet J ⊆ Set.Icc xu xo := s.invSegs hJmem
+
+  -- 2) split_once liefert ∃ J0 J1 Mid, …  (in Prop)
+  --    => wir entpacken mit Classical.choose in Typdaten
+  let h := split_once (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo J hJsub hHit
+  -- h : ∃ J0, ∃ J1, ∃ Mid, P J0 J1 Mid
+
+  -- Stufe 1: wähle J0
+  let J0 : ClosedSeg := Classical.choose h
+  let h1 := Classical.choose_spec h
+  -- h1 : ∃ J1, ∃ Mid, P J0 J1 Mid
+
+  -- Stufe 2: wähle J1
+  let J1 : ClosedSeg := Classical.choose h1
+  let h2 := Classical.choose_spec h1
+  -- h2 : ∃ Mid, P J0 J1 Mid
+
+  -- Stufe 3: wähle Mid
+  let Mid : Set ℝ := Classical.choose h2
+  let hprops := Classical.choose_spec h2
+  -- hprops :  segSet J0 ⊆ segSet J
+  --        ∧  segSet J1 ⊆ segSet J
+  --        ∧  Disjoint (segSet J0) (segSet J1)
+  --        ∧  IsOpen Mid
+  --        ∧  Mid ⊆ Ioo J.a J.b
+  --        ∧  segSet J ⊆ segSet J0 ∪ Mid ∪ segSet J1
+  --        ∧  (segSet J0 ∩ M).Nonempty
+  --        ∧  (segSet J1 ∩ M).Nonempty
+
+  -- 3) einzelne Eigenschaften herausziehen
+  have sub0 : segSet J0 ⊆ segSet J := hprops.1
+  have sub1 : segSet J1 ⊆ segSet J := hprops.2.1
+  have _disj : Disjoint (segSet J0) (segSet J1) := hprops.2.2.1
+  have openMid : IsOpen Mid := hprops.2.2.2.1
+  have _midSub : Mid ⊆ Set.Ioo J.a J.b := hprops.2.2.2.2.1
+  have _cover  : segSet J ⊆ segSet J0 ∪ Mid ∪ segSet J1 := hprops.2.2.2.2.2.1
+  have _t0 : (segSet J0 ∩ M).Nonempty := hprops.2.2.2.2.2.2.1
+  have _t1 : (segSet J1 ∩ M).Nonempty := hprops.2.2.2.2.2.2.2
+
+  -- 4) neue Listen (wir lassen J in s.segs stehen – einfach & robust)
+  let segs' := J0 :: J1 :: s.segs
+  let mids' := Mid :: s.mids
+
+  -- 5) Invarianten für neue Segmente (via sub0/sub1 + hJsub)
+  have invJ0 : segSet J0 ⊆ Set.Icc xu xo := by
+    intro x hx; exact hJsub (sub0 hx)
+  have invJ1 : segSet J1 ⊆ Set.Icc xu xo := by
+    intro x hx; exact hJsub (sub1 hx)
+
+  -- 6) neuen State bauen
+  refine
+  { segs := segs',
+    mids := mids',
+    invSegs := ?_ ,
+    invMids := ?_ }
+
+  · -- invSegs' für jedes J' in J0 :: J1 :: s.segs
+    intro J' hJ'
+    have : J' = J0 ∨ J' = J1 ∨ J' ∈ s.segs := by
+      -- Mitgliedschaft in der cons-Liste
+      simpa [segs'] using hJ'
+    rcases this with h0 | h
+    · -- J' = J0
+      simpa [h0] using invJ0
+    rcases h with h1 | hIn
+    · -- J' = J1
+      simpa [h1] using invJ1
+    · -- J' stammt aus s.segs
+      exact s.invSegs hIn
+
+  · -- invMids' für jedes U in Mid :: s.mids
+    intro U hU
+    have : U = Mid ∨ U ∈ s.mids := by
+      simpa [mids'] using hU
+    rcases this with hEq | hOld
+    · -- U = Mid
+      simpa [hEq] using openMid
+    · -- U ∈ alte mids
+      exact s.invMids hOld
+
+
+end Stage
+
+end
