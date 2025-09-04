@@ -610,8 +610,89 @@ def refineOne
       simpa [hEq] using openMid
     · -- U ∈ alte mids
       exact s.invMids hOld
+/-
+  -------------------------
+  Phase 2.1: aktueller Kern des Baus
+  --------------------------/
 
+/-- *Kern* des aktuellen Zustands `s`: Punkte im Grundintervall,
+    die weder in der anfänglichen offenen Hülle `U0'` noch in einem
+    der bisher gesammelten offenen Mittelstücke liegen. -/
+def core {M : Set ℝ} {xu xo : ℝ} (s : Stage.State M xu xo) : Set ℝ :=
+  Set.Icc xu xo ∩ (U0' M xu xo ∪ Stage.midUnion s.mids)ᶜ
+
+/-- Zerlegt den *Kern* als Schnitt von `K0` mit dem Komplement der bereits
+    gesammelten offenen Mittelstücke.  Äquivalent zu De-Morgan + Assoziativität. -/
+lemma core_eq_K0_inter
+    {M : Set ℝ} {xu xo : ℝ} (s : Stage.State M xu xo) :
+  core s = K0 M xu xo ∩ (Stage.midUnion s.mids)ᶜ := by
+  ext x; constructor
+  · intro hx
+    -- `simp` entfaltet `core` und `K0` und benutzt De-Morgan sowie
+    -- Assoziativität/Kommutativität von `∩`.
+    simpa [core, K0, Set.compl_union,
+           Set.inter_assoc, Set.inter_left_comm, Set.inter_right_comm] using hx
+  · intro hx
+    simpa [core, K0, Set.compl_union,
+           Set.inter_assoc, Set.inter_left_comm, Set.inter_right_comm] using hx
+
+
+/-- `core` ist abgeschlossen. -/
+lemma isClosed_core'
+    {M : Set ℝ} {xu xo : ℝ} (s : Stage.State M xu xo) :
+  IsClosed (core s) := by
+  classical
+  have hIcc : IsClosed (Set.Icc xu xo) := isClosed_Icc
+  have hU0 : IsOpen (U0' M xu xo) := U0'_isOpen M xu xo
+  have hMid : IsOpen (Stage.midUnion s.mids) :=
+    Stage.midUnion_open_of_state s
+  have hopen : IsOpen (U0' M xu xo ∪ Stage.midUnion s.mids) :=
+    hU0.union hMid
+  have hCompl : IsClosed (U0' M xu xo ∪ Stage.midUnion s.mids)ᶜ :=
+    hopen.isClosed_compl
+  -- `core s = Icc ∩ (U0' ∪ midUnion)ᶜ`
+  simpa [core, Set.inter_assoc, Set.inter_left_comm, Set.inter_right_comm] using
+    hIcc.inter hCompl
+
+/-- `core ⊆ Icc`. -/
+lemma core_subset_Icc
+    {M : Set ℝ} {xu xo : ℝ} (s : Stage.State M xu xo) :
+  core (M := M) (xu := xu) (xo := xo) s ⊆ Set.Icc xu xo := by
+  intro x hx
+  -- hx : x ∈ Icc xu xo ∩ …
+  rcases (by simpa [core] using hx) with ⟨hxIcc, _⟩
+  exact hxIcc
+
+/-- `core = K0 ∩ (midUnion)ᶜ` liefert `core ⊆ K0`. -/
+lemma core_subset_K0
+    {M : Set ℝ} {xu xo : ℝ} (s : Stage.State M xu xo) :
+  core (M := M) (xu := xu) (xo := xo) s ⊆ K0 M xu xo := by
+  intro x hx
+  have hx' : x ∈ K0 M xu xo ∩ (Stage.midUnion s.mids)ᶜ := by
+    simpa [core_eq_K0_inter] using hx
+  exact hx'.1
+
+
+  -- Andernfalls (ohne `core_eq_K0_inter`) ersetze den obigen Block durch:
+  -- have hxIcc : x ∈ Set.Icc xu xo := (show x ∈ _ from hx).1
+  -- have hxCompl : x ∉ U0' M xu xo ∪ Stage.midUnion s.mids := by
+  --   have : x ∈ (U0' M xu xo ∪ Stage.midUnion s.mids)ᶜ := (show x ∈ _ from hx).2
+  --   simpa using this
+  -- have hxNotU0' : x ∉ U0' M xu xo := by
+  --   intro hxU; exact hxCompl (Or.inl hxU)
+  -- exact ⟨hxIcc, by simpa using hxNotU0'⟩
+
+-- Hauptlemma: core ⊆ M (benötigt Endpunkte in M, wegen K0 ⊆ M)
+lemma core_subset_M
+    {M : Set ℝ} {xu xo : ℝ}
+    (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (s : Stage.State M xu xo) :
+  core (M := M) (xu := xu) (xo := xo) s ⊆ M := by
+  intro x hx
+  -- zuerst in K0 fallen …
+  have hxK0 : x ∈ K0 M xu xo := (core_subset_K0 (s := s)) hx
+  -- … und dann K0 ⊆ M benutzen
+  exact (K0_subset_M (M := M) (xu := xu) (xo := xo) hxu hxo) hxK0
 
 end Stage
-
 end
