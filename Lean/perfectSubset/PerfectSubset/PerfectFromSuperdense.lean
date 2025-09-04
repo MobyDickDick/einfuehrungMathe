@@ -672,7 +672,6 @@ lemma core_subset_K0
     simpa [core_eq_K0_inter] using hx
   exact hx'.1
 
-
   -- Andernfalls (ohne `core_eq_K0_inter`) ersetze den obigen Block durch:
   -- have hxIcc : x ∈ Set.Icc xu xo := (show x ∈ _ from hx).1
   -- have hxCompl : x ∉ U0' M xu xo ∪ Stage.midUnion s.mids := by
@@ -861,6 +860,56 @@ lemma core_refineTwiceAuto_subset
       ⊆ core (M := M) (xu := xu) (xo := xo) s1 := by
     simpa [refineTwiceAuto, s1] using step2
   exact subset_trans step2' step1
+
+/-- Drei automatische Verfeinerungen hintereinander. -/
+def refineThriceAuto
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (s : State M xu xo)
+    (h1 : Hits (M := M) (xu := xu) (xo := xo) s)
+    (h2 : Hits (M := M) (xu := xu) (xo := xo)
+            (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1))
+    (h3 : Hits (M := M) (xu := xu) (xo := xo)
+            (refineTwiceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2))
+  : State M xu xo :=
+  refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo
+    (refineTwiceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2) h3
+
+/-- Der *Kern* wird nach drei Auto-Verfeinerungen nur kleiner. -/
+lemma core_refineThriceAuto_subset
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (s : State M xu xo)
+    (h1 : Hits (M := M) (xu := xu) (xo := xo) s)
+    (h2 : Hits (M := M) (xu := xu) (xo := xo)
+            (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1))
+    (h3 : Hits (M := M) (xu := xu) (xo := xo)
+            (refineTwiceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2))
+  :
+  core (M := M) (xu := xu) (xo := xo)
+        (refineThriceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2 h3)
+    ⊆
+  core (M := M) (xu := xu) (xo := xo) s := by
+  -- Schritt 3 → 2
+  have hA :
+      core (M := M) (xu := xu) (xo := xo)
+            (refineThriceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2 h3)
+        ⊆
+      core (M := M) (xu := xu) (xo := xo)
+            (refineTwiceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2) := by
+    simpa [refineThriceAuto] using
+      core_refineOnceAuto_subset (M := M) hM (xu := xu) (xo := xo) hxu hxo
+        (refineTwiceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2) h3
+  -- Schritt 2 → 0
+  have hB :
+      core (M := M) (xu := xu) (xo := xo)
+            (refineTwiceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2)
+        ⊆
+      core (M := M) (xu := xu) (xo := xo) s :=
+    core_refineTwiceAuto_subset (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2
+  exact hA.trans hB
+
+
 
 end  Stage
 end
