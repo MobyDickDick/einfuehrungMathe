@@ -1132,9 +1132,9 @@ lemma Kω_subset_M
   und liegt im Schnitt `Kω`.
 -/
 
-/-- Ein Selektor `sel` *preservt* den Punkt `x0`, wenn gilt:
-    Für jeden Zustand `s` mit `x0 ∈ core s` bleibt `x0` auch nach einem
-    Auto-Schritt im Kern. -/
+  -- Ein Selektor `sel` *preservt* den Punkt `x0`, wenn gilt:
+  --  Für jeden Zustand `s` mit `x0 ∈ core s` bleibt `x0` auch nach einem
+  --  Auto-Schritt im Kern.  (Bezogen auf `refineOnceAuto` aus der Basisdatei.) -/
 def PreservesPoint
     {M : Set ℝ} {xu xo : ℝ}
     (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
@@ -1144,8 +1144,8 @@ def PreservesPoint
     x0 ∈ core (M := M) (xu := xu) (xo := xo)
           (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s (sel s))
 
-/-- Aus `PreservesPoint sel x0` folgt per Induktion: `x0 ∈ core (refineN … n s)`
-    für alle `n`, sofern `x0 ∈ core s`. -/
+/-- Aus `PreservesPoint sel x0` folgt per Induktion über `n`:
+    `x0 ∈ core (refineN … n s)`, vorausgesetzt `x0 ∈ core s`. -/
 lemma mem_core_refineN_of_preserved {M : Set ℝ} {xu xo : ℝ}
     (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
     (sel : Selector M xu xo) (x0 : ℝ)
@@ -1166,6 +1166,8 @@ lemma mem_core_refineN_of_preserved {M : Set ℝ} {xu xo : ℝ}
       hkeep (refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s) hx_core_n
     simpa [refineN_succ, Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using hx_step
 
+/-- **Nicht-Leerheit von `Kω` ab Init-Zustand**: Wenn `x0 ∈ K0` und ein
+    Selektor `sel` `x0` bewahrt, dann ist `Kω` nicht leer. -/
 lemma Kω_nonempty_of_preserved_point_from_init
     {M : Set ℝ} {xu xo : ℝ}
     (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
@@ -1183,10 +1185,10 @@ lemma Kω_nonempty_of_preserved_point_from_init
   have hcore_eq :
       core (M := M) (xu := xu) (xo := xo) s0 = K0 M xu xo := by
     simp [s0, core_init_eq_K0 (M := M) (xu := xu) (xo := xo) (J := J) hJsub]
-  -- x0 ∈ core s0  (Achtung: um die *Term*-Seite zu rewriten, benutze die **symmetrische** Richtung)
+  -- x0 ∈ core s0  (verwende die *symmetrische* Richtung fürs Umschreiben der Zielsorte)
   have hx0_core : x0 ∈ core (M := M) (xu := xu) (xo := xo) s0 := by
     simpa [← hcore_eq] using hx0K0
-  -- Persistenz von x0 in allen Kernen
+  -- Für alle n bleibt x0 im Kern
   have hx_all :
       ∀ n, x0 ∈ core (M := M) (xu := xu) (xo := xo)
                  (refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s0) := by
