@@ -996,5 +996,77 @@ lemma core_refineN_antitone
   -- Anwenden für das konkrete k aus `n = m + k`
   simpa [hk] using hChain k
 
+
+/-- Die n-te Kernmenge der Iteration: `F n = core (refineN … n s)`. -/
+def F
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo)
+    (n : ℕ) (s : State M xu xo) : Set ℝ :=
+  core (M := M) (xu := xu) (xo := xo)
+       (refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s)
+
+/-- `F n` ist abgeschlossen. -/
+lemma isClosed_F
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo)
+    (n : ℕ) (s : State M xu xo) :
+  IsClosed (F (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s) := by
+  -- Direkt aus `isClosed_core'`.
+  simpa [F] using
+    (isClosed_core' (M := M) (xu := xu) (xo := xo)
+      (s := refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s))
+
+/-- Antitonie von `n ↦ F n`. -/
+lemma F_antitone
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo)
+    (s : State M xu xo) :
+  Antitone (fun n => F (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s) := by
+  -- Nutzen `core_refineN_antitone` und entfalte nur die Definition von `F`.
+  intro m n hmn
+  have h := core_refineN_antitone
+              (M := M) (xu := xu) (xo := xo) hM hxu hxo sel s
+  simpa [F] using h hmn
+
+/-- Grenzmenge `Kω` als Durchschnit über alle `F n`. -/
+def Kω
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo)
+    (s : State M xu xo) : Set ℝ :=
+  ⋂ n : ℕ, F (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s
+
+/-- `Kω` ist abgeschlossen (Durchschnitt abgeschlossener Mengen). -/
+lemma Kω_subset_M
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo)
+    (s : State M xu xo) :
+  Kω (M := M) (xu := xu) (xo := xo) hM hxu hxo sel s ⊆ M := by
+  intro x hx
+  -- x ∈ ⋂ n, F n
+  have hx' :
+      x ∈ ⋂ n, F (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s := by
+    simpa [Kω] using hx
+  -- also ∀ n, x ∈ F n
+  have hx_all :
+      ∀ n, x ∈ F (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s :=
+    (Set.mem_iInter.mp hx')     -- ← hier der Fix
+
+  -- und jedes F n ⊆ M
+  have hFn_subset_M : ∀ n,
+      F (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s ⊆ M := by
+    intro n y hy
+    exact
+      (core_subset_M (M := M) (xu := xu) (xo := xo) hxu hxo
+        (s := refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s))
+      (by simpa [F] using hy)
+
+  exact hFn_subset_M 0 (hx_all 0)
+
+
 end  Stage
 end
