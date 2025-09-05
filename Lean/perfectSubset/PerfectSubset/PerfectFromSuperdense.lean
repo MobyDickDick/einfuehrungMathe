@@ -910,83 +910,91 @@ lemma core_refineThriceAuto_subset
 def Selector (M : Set ℝ) (xu xo : ℝ) :=
   (s : State M xu xo) → Hits M xu xo s
 
-/-- `n` automatische Verfeinerungen hintereinander. -/
-noncomputable def refineN
-    {M : Set ℝ} (hM : TwoSidedSuperdense M)
-    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
-    (pick : Selector M xu xo) :
-    Nat → State M xu xo → State M xu xo
-  | 0, s => s
-  | Nat.succ n, s =>
-      let s₁ :=
-        refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s (pick s)
-      refineN hM hxu hxo pick n s₁
 
-/-- Der *Kern* wird durch `refineN` nur kleiner. -/
-lemma core_refineN_subset
-    {M : Set ℝ} (hM : TwoSidedSuperdense M)
-    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
-    (pick : Selector M xu xo) :
-    ∀ n (s : State M xu xo),
-      core (M := M) (xu := xu) (xo := xo)
-           (refineN (M := M) hM (xu := xu) (xo := xo) hxu hxo pick n s)
-        ⊆ core (M := M) (xu := xu) (xo := xo) s
-| 0, s => by
-  change
-    core (M := M) (xu := xu) (xo := xo) s
-      ⊆ core (M := M) (xu := xu) (xo := xo) s
-  exact Set.Subset.rfl
-  | Nat.succ n, s => by
-      -- Schritt 1: eine Verfeinerung schrumpft den Kern
-      have hstep :
-        core (M := M) (xu := xu) (xo := xo)
-             (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s (pick s))
-          ⊆ core (M := M) (xu := xu) (xo := xo) s :=
-        core_refineOnceAuto_subset (M := M) hM (xu := xu) (xo := xo) hxu hxo s (pick s)
-      -- Schritt 2: die restlichen `n` Verfeinerungen schrumpfen erneut
-      have hind :
-        core (M := M) (xu := xu) (xo := xo)
-             (refineN (M := M) hM (xu := xu) (xo := xo) hxu hxo pick n
-               (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s (pick s)))
-          ⊆ core (M := M) (xu := xu) (xo := xo)
-               (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s (pick s)) :=
-        core_refineN_subset (M := M) hM (xu := xu) (xo := xo) hxu hxo pick n
-          (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s (pick s))
-      -- Verkettung
-      simpa [refineN] using Set.Subset.trans hind hstep
+/-- n-fache Verfeinerung mit Selektor: zuerst n Schritte, dann noch ein Schritt. -/
+def refineN
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo) : Nat → State M xu xo → State M xu xo
+  | 0,     s => s
+  | n+1,   s =>
+      let s' := refineN hM hxu hxo sel n s
+      refineOnceAuto hM hxu hxo s' (sel s')
 
-/-- Bequeme 4-fach-Iteration als Abkürzung. -/
-abbrev refineFourAuto
-    {M : Set ℝ} (hM : TwoSidedSuperdense M)
-    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
-    (pick : Selector M xu xo)
-    (s : State M xu xo) :
-  State M xu xo :=
-  refineN (M := M) hM (xu := xu) (xo := xo) hxu hxo pick 4 s
+@[simp] lemma refineN_zero
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo) (s : State M xu xo) :
+  refineN hM hxu hxo sel 0 s = s := rfl
 
-lemma core_refineFourAuto_subset
-    {M : Set ℝ} (hM : TwoSidedSuperdense M)
-    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
-    (pick : Selector M xu xo)
-    (s : State M xu xo) :
-  core (M := M) (xu := xu) (xo := xo)
-       (refineFourAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo pick s)
-    ⊆ core (M := M) (xu := xu) (xo := xo) s := by
-  simpa [refineFourAuto]
-    using core_refineN_subset (M := M) hM (xu := xu) (xo := xo) hxu hxo pick 4 s
+/-- Nachfolger-Formel für `refineN` (im Rückwärts-Stil trivial). -/
+@[simp] lemma refineN_succ
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo)
+    (n : Nat) (s : State M xu xo) :
+  refineN hM hxu hxo sel (n+1) s
+    =
+  refineOnceAuto hM hxu hxo
+    (refineN hM hxu hxo sel n s)
+    (sel (refineN hM hxu hxo sel n s)) := rfl
 
-/-- Nach beliebig vielen Schritten liegen *alle* Kerne in `M`. -/
-lemma core_refineN_subset_M
-    {M : Set ℝ} (hM : TwoSidedSuperdense M)
-    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
-    (pick : Selector M xu xo)
+/-- **Ein Schritt schrumpft den Kern** (mit Selektor). -/
+lemma core_refineN_succ_subset
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo)
     (n : Nat) (s : State M xu xo) :
   core (M := M) (xu := xu) (xo := xo)
-       (refineN (M := M) hM (xu := xu) (xo := xo) hxu hxo pick n s) ⊆ M := by
-  exact
-    (Set.Subset.trans
-      (core_refineN_subset (M := M) hM (xu := xu) (xo := xo) hxu hxo pick n s)
-      (core_subset_M (M := M) (xu := xu) (xo := xo) hxu hxo s))
+        (refineN hM hxu hxo sel (n+1) s)
+    ⊆
+  core (M := M) (xu := xu) (xo := xo)
+        (refineN hM hxu hxo sel n s) := by
+  -- per Nachfolger-Formel ist der (n+1)-te Zustand eine
+  -- einzelne `refineOnceAuto`-Stufe auf dem n-ten
+  simpa using
+    (core_refineOnceAuto_subset (M := M) (xu := xu) (xo := xo)
+      hM hxu hxo
+      (refineN hM hxu hxo sel n s)
+      (sel (refineN hM hxu hxo sel n s)))
+
+/-- **Antitonie** der Kerne entlang der Iteration (mit Selektor). -/
+lemma core_refineN_antitone
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo)
+    (s : State M xu xo) :
+  Antitone (fun n =>
+    core (M := M) (xu := xu) (xo := xo)
+      (refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s)) := by
+  intro m n hmn
+  -- Schreibe n = m + k
+  obtain ⟨k, hk⟩ := Nat.exists_eq_add_of_le hmn
+
+  -- Hilfsbehauptung: Für jedes k schrumpft der Kern von m+k auf m.
+  have hChain :
+      ∀ k,
+        core (M := M) (xu := xu) (xo := xo)
+          (refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel (m + k) s)
+          ⊆
+        core (M := M) (xu := xu) (xo := xo)
+          (refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel m s) := by
+    intro k
+    induction k with
+    | zero =>
+        -- m + 0 = m
+        simp
+    | succ k ih =>
+        -- Ein Schritt (m+k+1 → m+k) via `core_refineN_succ_subset`
+        -- und dann die Induktionsannahme (m+k → m)
+        exact
+          (subset_trans
+            (core_refineN_succ_subset
+              (M := M) (xu := xu) (xo := xo) hM hxu hxo sel (n := m + k) s)
+            ih)
+
+  -- Anwenden für das konkrete k aus `n = m + k`
+  simpa [hk] using hChain k
 
 end  Stage
 end
