@@ -447,7 +447,7 @@ def midUnion (L : List (Set ℝ)) : Set ℝ :=
 
 -- Endliche Vereinigung geschlossener Segmente ist geschlossen
 lemma segUnion_closed : ∀ L : List ClosedSeg, IsClosed (segUnion L)
-| []      => by simp [segUnion_nil]
+| []      => by simp [segUnion_nil]           -- ← statt: simpa … using …
 | (J::L)  => by
     have hJ : IsClosed (segSet J) := segSet_closed J
     have hL : IsClosed (segUnion L) := segUnion_closed L
@@ -460,7 +460,7 @@ lemma midUnion_open_of_all_open
   IsOpen (midUnion L) := by
   induction L with
   | nil =>
-      simp [midUnion_nil]
+      simp [midUnion_nil]                     -- ← statt: simpa … using …
   | cons U L ih =>
       have hU : IsOpen U := h U (by simp)
       have hL : IsOpen (midUnion L) := ih (by
@@ -666,6 +666,15 @@ lemma core_subset_K0
   have hx' : x ∈ K0 M xu xo ∩ (Stage.midUnion s.mids)ᶜ := by
     simpa [core_eq_K0_inter] using hx
   exact hx'.1
+
+  -- Andernfalls (ohne `core_eq_K0_inter`) ersetze den obigen Block durch:
+  -- have hxIcc : x ∈ Set.Icc xu xo := (show x ∈ _ from hx).1
+  -- have hxCompl : x ∉ U0' M xu xo ∪ Stage.midUnion s.mids := by
+  --   have : x ∈ (U0' M xu xo ∪ Stage.midUnion s.mids)ᶜ := (show x ∈ _ from hx).2
+  --   simpa using this
+  -- have hxNotU0' : x ∉ U0' M xu xo := by
+  --   intro hxU; exact hxCompl (Or.inl hxU)
+  -- exact ⟨hxIcc, by simpa using hxNotU0'⟩
 
 -- Hauptlemma: core ⊆ M (benötigt Endpunkte in M, wegen K0 ⊆ M)
 lemma core_subset_M
@@ -1036,6 +1045,7 @@ lemma core_refineN_antitone
   -- Schreibe n = m + k
   obtain ⟨k, hk⟩ := Nat.exists_eq_add_of_le hmn
 
+
   -- Hilfsbehauptung: Für jedes k schrumpft der Kern von m+k auf m.
   have hChain :
       ∀ k,
@@ -1100,7 +1110,7 @@ lemma Kω_subset_M
   -- also ∀ n, x ∈ F n
   have hx_all :
       ∀ n, x ∈ F (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s :=
-    (Set.mem_iInter.mp hx')
+    (Set.mem_iInter.mp hx')     -- ← hier der Fix
 
   -- und jedes F n ⊆ M
   have hFn_subset_M : ∀ n,
@@ -1112,6 +1122,80 @@ lemma Kω_subset_M
       (by simpa [F] using hy)
 
   exact hFn_subset_M 0 (hx_all 0)
+
+/-
+  -------------------------
+  Phase 2.2: Nicht-Leerheit via *persistent point*
+  -------------------------
+  Ein Selektor bewahrt einen Punkt x0, wenn x0 bei jedem Auto-Schritt
+  nicht in das neue Middle-Open fällt. Dann bleibt x0 in allen `core`
+  und liegt im Schnitt `Kω`.
+-/
+
+/-- Ein Selektor `sel` *preservt* den Punkt `x0`, wenn gilt:
+    Für jeden Zustand `s` mit `x0 ∈ core s` bleibt `x0` auch nach einem
+    Auto-Schritt im Kern. -/
+def PreservesPoint
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo) (x0 : ℝ) : Prop :=
+  ∀ s : State M xu xo,
+    x0 ∈ core (M := M) (xu := xu) (xo := xo) s →
+    x0 ∈ core (M := M) (xu := xu) (xo := xo)
+          (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s (sel s))
+
+/-- Aus `PreservesPoint sel x0` folgt per Induktion: `x0 ∈ core (refineN … n s)`
+    für alle `n`, sofern `x0 ∈ core s`. -/
+lemma mem_core_refineN_of_preserved {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo) (x0 : ℝ)
+    (hkeep : PreservesPoint (M := M) (xu := xu) (xo := xo) hM hxu hxo sel x0)
+    (s : State M xu xo)
+    (hx0Core : x0 ∈ core (M := M) (xu := xu) (xo := xo) s) :
+  ∀ n, x0 ∈ core (M := M) (xu := xu) (xo := xo)
+         (refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s) := by
+  -- Rekursion über n ohne Taktik-Makros (stabil)
+  refine Nat.rec ?base ?step
+  · -- n = 0
+    simpa [refineN] using hx0Core
+  · -- Schritt
+    intro n ih
+    have hx_core_n : x0 ∈ core (M := M) (xu := xu) (xo := xo)
+         (refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s) := ih
+    have hx_step :=
+      hkeep (refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s) hx_core_n
+    simpa [refineN_succ, Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using hx_step
+
+lemma Kω_nonempty_of_preserved_point_from_init
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo)
+    (J : ClosedSeg) (hJsub : segSet J ⊆ Set.Icc xu xo)
+    {x0 : ℝ}
+    (hx0K0 : x0 ∈ K0 M xu xo)
+    (hkeep : PreservesPoint (M := M) (xu := xu) (xo := xo) hM hxu hxo sel x0) :
+  (Kω (M := M) (xu := xu) (xo := xo) hM hxu hxo sel
+      (init (M := M) (xu := xu) (xo := xo) J hJsub)).Nonempty := by
+  classical
+  -- Startzustand als Alias
+  let s0 := init (M := M) (xu := xu) (xo := xo) J hJsub
+  -- core s0 = K0
+  have hcore_eq :
+      core (M := M) (xu := xu) (xo := xo) s0 = K0 M xu xo := by
+    simp [s0, core_init_eq_K0 (M := M) (xu := xu) (xo := xo) (J := J) hJsub]
+  -- x0 ∈ core s0  (Achtung: um die *Term*-Seite zu rewriten, benutze die **symmetrische** Richtung)
+  have hx0_core : x0 ∈ core (M := M) (xu := xu) (xo := xo) s0 := by
+    simpa [← hcore_eq] using hx0K0
+  -- Persistenz von x0 in allen Kernen
+  have hx_all :
+      ∀ n, x0 ∈ core (M := M) (xu := xu) (xo := xo)
+                 (refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s0) := by
+    intro n
+    exact mem_core_refineN_of_preserved (M := M) (xu := xu) (xo := xo)
+      hM hxu hxo sel x0 hkeep s0 hx0_core n
+  -- Also x0 ∈ Kω
+  refine ⟨x0, ?_⟩
+  simpa [Kω] using Set.mem_iInter.mpr hx_all
 
 end Stage
 end
