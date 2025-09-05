@@ -400,6 +400,7 @@ end
 noncomputable section
 
 namespace Stage
+open Set
 
 -- Endliche Vereinigungen als Listen-Unions
 def segUnion (L : List ClosedSeg) : Set ℝ :=
@@ -614,6 +615,7 @@ def refineOne
   -------------------------
   Phase 2.1: aktueller Kern des Baus
   --------------------------/
+
 
 /-- *Kern* des aktuellen Zustands `s`: Punkte im Grundintervall,
     die weder in der anfänglichen offenen Hülle `U0'` noch in einem
@@ -871,6 +873,7 @@ def refineThriceAuto
   refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo
     (refineTwiceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2) h3
 
+
 /-- Der *Kern* wird nach drei Auto-Verfeinerungen nur kleiner. -/
 lemma core_refineThriceAuto_subset
     {M : Set ℝ} (hM : TwoSidedSuperdense M)
@@ -920,6 +923,84 @@ def refineN
   | n+1,   s =>
       let s' := refineN hM hxu hxo sel n s
       refineOnceAuto hM hxu hxo s' (sel s')
+
+/-- Die ω-stufige Kernmenge: Schnitt aller `core` nach `n` Verfeinerungen. -/
+def Kω
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo)
+    (s : State M xu xo) : Set ℝ :=
+  ⋂ n : ℕ,
+    core (M := M) (xu := xu) (xo := xo)
+         (refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s)
+
+/-- `Kω` ist abgeschlossen (Schnitt abgeschlossener Mengen). -/
+lemma isClosed_Kω
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo)
+    (s : State M xu xo) :
+  IsClosed (Kω (M := M) (xu := xu) (xo := xo) hM hxu hxo sel s) := by
+  classical
+  unfold Kω
+  refine isClosed_iInter ?_
+  intro n
+  -- jedes `core` ist abgeschlossen
+  exact isClosed_core'
+          (M := M) (xu := xu) (xo := xo)
+          (s := refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s)
+
+/-- `Kω ⊆ Icc xu xo`. -/
+lemma Kω_subset_Icc
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo)
+    (s : State M xu xo) :
+  Kω (M := M) (xu := xu) (xo := xo) hM hxu hxo sel s ⊆ Set.Icc xu xo := by
+  intro x hx
+  -- aus der ∩-Mitgliedschaft bekommst du Mitgliedschaft in jedem `core`
+  have hx_all :
+      ∀ n, x ∈ core (M := M) (xu := xu) (xo := xo)
+                     (refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s) := by
+    simpa [Kω] using (Set.mem_iInter.mp hx)
+  -- nimm z.B. n = 0 und benutze `core_subset_Icc`
+  have hx0 := hx_all 0
+  exact core_subset_Icc
+          (M := M) (xu := xu) (xo := xo)
+          (s := refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel 0 s)
+          hx0
+
+/-- `Kω` ist kompakt (Variante A: über `Icc ∩ Kω = Kω`). -/
+lemma isCompact_Kω
+    {M : Set ℝ} {xu xo : ℝ}
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo) (s : State M xu xo) :
+  IsCompact (Kω (M := M) (xu := xu) (xo := xo) hM hxu hxo sel s) := by
+  classical
+  -- `Kω` ist abgeschlossen (bereits zuvor bewiesen):
+  have hclosed :
+      IsClosed (Kω (M := M) (xu := xu) (xo := xo) hM hxu hxo sel s) :=
+    isClosed_Kω (M := M) (xu := xu) (xo := xo) hM hxu hxo sel s
+  -- Kompaktheit von `Icc xu xo ∩ Kω`:
+  have hInterCompact :
+      IsCompact (Set.Icc xu xo ∩
+                 Kω (M := M) (xu := xu) (xo := xo) hM hxu hxo sel s) :=
+    (isCompact_Icc).inter_right hclosed
+  -- Gleichheit `Icc ∩ Kω = Kω` wegen `Kω ⊆ Icc`:
+  have hIKω :
+      Set.Icc xu xo ∩
+        Kω (M := M) (xu := xu) (xo := xo) hM hxu hxo sel s
+        =
+        Kω (M := M) (xu := xu) (xo := xo) hM hxu hxo sel s := by
+    ext x; constructor
+    · intro hx; exact hx.2
+    · intro hx
+      exact ⟨
+        (Kω_subset_Icc (M := M) (xu := xu) (xo := xo) hM hxu hxo sel s) hx,
+        hx⟩
+  -- Umschreiben liefert die gewünschte Kompaktheit von `Kω`.
+  simpa [hIKω] using hInterCompact
+
 
 @[simp] lemma refineN_zero
     {M : Set ℝ} {xu xo : ℝ}
@@ -971,6 +1052,7 @@ lemma core_refineN_antitone
   -- Schreibe n = m + k
   obtain ⟨k, hk⟩ := Nat.exists_eq_add_of_le hmn
 
+
   -- Hilfsbehauptung: Für jedes k schrumpft der Kern von m+k auf m.
   have hChain :
       ∀ k,
@@ -1006,17 +1088,6 @@ def F
   core (M := M) (xu := xu) (xo := xo)
        (refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s)
 
-/-- `F n` ist abgeschlossen. -/
-lemma isClosed_F
-    {M : Set ℝ} {xu xo : ℝ}
-    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
-    (sel : Selector M xu xo)
-    (n : ℕ) (s : State M xu xo) :
-  IsClosed (F (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s) := by
-  -- Direkt aus `isClosed_core'`.
-  simpa [F] using
-    (isClosed_core' (M := M) (xu := xu) (xo := xo)
-      (s := refineN (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s))
 
 /-- Antitonie von `n ↦ F n`. -/
 lemma F_antitone
@@ -1030,14 +1101,6 @@ lemma F_antitone
   have h := core_refineN_antitone
               (M := M) (xu := xu) (xo := xo) hM hxu hxo sel s
   simpa [F] using h hmn
-
-/-- Grenzmenge `Kω` als Durchschnit über alle `F n`. -/
-def Kω
-    {M : Set ℝ} {xu xo : ℝ}
-    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
-    (sel : Selector M xu xo)
-    (s : State M xu xo) : Set ℝ :=
-  ⋂ n : ℕ, F (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s
 
 /-- `Kω` ist abgeschlossen (Durchschnitt abgeschlossener Mengen). -/
 lemma Kω_subset_M
@@ -1067,6 +1130,5 @@ lemma Kω_subset_M
 
   exact hFn_subset_M 0 (hx_all 0)
 
-
-end  Stage
+end Stage
 end
