@@ -693,10 +693,6 @@ lemma core_subset_M
   -- … und dann K0 ⊆ M benutzen
   exact (K0_subset_M (M := M) (xu := xu) (xo := xo) hxu hxo) hxK0
 
-end Stage
-
-namespace Stage
-
 /-- `midUnion` wächst, wenn man vorne ein weiteres offenes Stück dazupackt. -/
 lemma midUnion_subset_cons (U : Set ℝ) (L : List (Set ℝ)) :
   midUnion L ⊆ midUnion (U :: L) := by
@@ -909,7 +905,88 @@ lemma core_refineThriceAuto_subset
     core_refineTwiceAuto_subset (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2
   exact hA.trans hB
 
+/-- Ein *Selector* wählt für jeden Zustand `s` ein Segment aus,
+    das `K0` trifft (noncomputable via choice erlaubt). -/
+def Selector (M : Set ℝ) (xu xo : ℝ) :=
+  (s : State M xu xo) → Hits M xu xo s
 
+/-- `n` automatische Verfeinerungen hintereinander. -/
+noncomputable def refineN
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (pick : Selector M xu xo) :
+    Nat → State M xu xo → State M xu xo
+  | 0, s => s
+  | Nat.succ n, s =>
+      let s₁ :=
+        refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s (pick s)
+      refineN hM hxu hxo pick n s₁
+
+/-- Der *Kern* wird durch `refineN` nur kleiner. -/
+lemma core_refineN_subset
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (pick : Selector M xu xo) :
+    ∀ n (s : State M xu xo),
+      core (M := M) (xu := xu) (xo := xo)
+           (refineN (M := M) hM (xu := xu) (xo := xo) hxu hxo pick n s)
+        ⊆ core (M := M) (xu := xu) (xo := xo) s
+| 0, s => by
+  change
+    core (M := M) (xu := xu) (xo := xo) s
+      ⊆ core (M := M) (xu := xu) (xo := xo) s
+  exact Set.Subset.rfl
+  | Nat.succ n, s => by
+      -- Schritt 1: eine Verfeinerung schrumpft den Kern
+      have hstep :
+        core (M := M) (xu := xu) (xo := xo)
+             (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s (pick s))
+          ⊆ core (M := M) (xu := xu) (xo := xo) s :=
+        core_refineOnceAuto_subset (M := M) hM (xu := xu) (xo := xo) hxu hxo s (pick s)
+      -- Schritt 2: die restlichen `n` Verfeinerungen schrumpfen erneut
+      have hind :
+        core (M := M) (xu := xu) (xo := xo)
+             (refineN (M := M) hM (xu := xu) (xo := xo) hxu hxo pick n
+               (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s (pick s)))
+          ⊆ core (M := M) (xu := xu) (xo := xo)
+               (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s (pick s)) :=
+        core_refineN_subset (M := M) hM (xu := xu) (xo := xo) hxu hxo pick n
+          (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s (pick s))
+      -- Verkettung
+      simpa [refineN] using Set.Subset.trans hind hstep
+
+/-- Bequeme 4-fach-Iteration als Abkürzung. -/
+abbrev refineFourAuto
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (pick : Selector M xu xo)
+    (s : State M xu xo) :
+  State M xu xo :=
+  refineN (M := M) hM (xu := xu) (xo := xo) hxu hxo pick 4 s
+
+lemma core_refineFourAuto_subset
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (pick : Selector M xu xo)
+    (s : State M xu xo) :
+  core (M := M) (xu := xu) (xo := xo)
+       (refineFourAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo pick s)
+    ⊆ core (M := M) (xu := xu) (xo := xo) s := by
+  simpa [refineFourAuto]
+    using core_refineN_subset (M := M) hM (xu := xu) (xo := xo) hxu hxo pick 4 s
+
+/-- Nach beliebig vielen Schritten liegen *alle* Kerne in `M`. -/
+lemma core_refineN_subset_M
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (pick : Selector M xu xo)
+    (n : Nat) (s : State M xu xo) :
+  core (M := M) (xu := xu) (xo := xo)
+       (refineN (M := M) hM (xu := xu) (xo := xo) hxu hxo pick n s) ⊆ M := by
+  exact
+    (Set.Subset.trans
+      (core_refineN_subset (M := M) hM (xu := xu) (xo := xo) hxu hxo pick n s)
+      (core_subset_M (M := M) (xu := xu) (xo := xo) hxu hxo s))
 
 end  Stage
 end
