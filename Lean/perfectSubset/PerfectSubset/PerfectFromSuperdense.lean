@@ -222,7 +222,6 @@ lemma exists_M_interior_of_seg_intersects_K0
       simpa [hR] using haLt
 
   -- Fall 3: x0 echt innen
-    -- Fall 3: x0 echt innen
   have hLeft  : J.a < x0 := lt_of_le_of_ne hJleft (ne_comm.mp hL)
   have hRight : x0 < J.b := lt_of_le_of_ne hJright hR
   exact ⟨x0, hx0M, ⟨hLeft, hRight⟩⟩
@@ -231,12 +230,7 @@ lemma exists_M_interior_of_seg_intersects_K0
 -- Erster Split-Schritt: zwei disjunkte Kinder + offenes Mittelstück
 -- ------------------------------------------------------------
 
--- Hilfslemma: aus a ≤ b folgt a/2 ≤ b/2 (für ℝ)
--- Hilfslemma: aus a ≤ b folgt a/2 ≤ b/2 (für ℝ)
--- Aus a ≤ b folgt a/2 ≤ b/2 (auf ℝ)
-
--- a ≤ b ⇒ a/2 ≤ b/2  (ohne Mul-/simp-Gymnastik)
--- Aus a ≤ b folgt a/2 ≤ b/2  (auf ℝ), ohne Mul-/simp-Gymnastik
+-- Aus a ≤ b folgt a/2 ≤ b/2 (auf ℝ), ohne Mul-/simp-Gymnastik
 lemma half_le_half_of_le {a b : ℝ} (h : a ≤ b) :
   a / 2 ≤ b / 2 := by
   -- Standard: Division mit nichtnegativem Nenner erhält ≤
@@ -257,8 +251,7 @@ lemma half_lt_self_of_pos {t : ℝ} (ht : 0 < t) : t / 2 < t := by
       simpa [one_mul] using mul_lt_mul_of_pos_left inv2_lt_one ht
     _     = t             := by
       simp
--- Erster Split-Schritt: zwei disjunkte Kinder + offenes Mittelstück
--- Erster Split-Schritt: zwei disjunkte Kinder + offenes Mittelstück
+
 lemma split_once
     {M : Set ℝ} (hM : TwoSidedSuperdense M)
     {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
@@ -454,7 +447,7 @@ def midUnion (L : List (Set ℝ)) : Set ℝ :=
 
 -- Endliche Vereinigung geschlossener Segmente ist geschlossen
 lemma segUnion_closed : ∀ L : List ClosedSeg, IsClosed (segUnion L)
-| []      => by simp [segUnion_nil]           -- ← statt: simpa … using …
+| []      => by simp [segUnion_nil]
 | (J::L)  => by
     have hJ : IsClosed (segSet J) := segSet_closed J
     have hL : IsClosed (segUnion L) := segUnion_closed L
@@ -467,7 +460,7 @@ lemma midUnion_open_of_all_open
   IsOpen (midUnion L) := by
   induction L with
   | nil =>
-      simp [midUnion_nil]                     -- ← statt: simpa … using …
+      simp [midUnion_nil]
   | cons U L ih =>
       have hU : IsOpen U := h U (by simp)
       have hL : IsOpen (midUnion L) := ih (by
@@ -673,15 +666,6 @@ lemma core_subset_K0
   have hx' : x ∈ K0 M xu xo ∩ (Stage.midUnion s.mids)ᶜ := by
     simpa [core_eq_K0_inter] using hx
   exact hx'.1
-
-  -- Andernfalls (ohne `core_eq_K0_inter`) ersetze den obigen Block durch:
-  -- have hxIcc : x ∈ Set.Icc xu xo := (show x ∈ _ from hx).1
-  -- have hxCompl : x ∉ U0' M xu xo ∪ Stage.midUnion s.mids := by
-  --   have : x ∈ (U0' M xu xo ∪ Stage.midUnion s.mids)ᶜ := (show x ∈ _ from hx).2
-  --   simpa using this
-  -- have hxNotU0' : x ∉ U0' M xu xo := by
-  --   intro hxU; exact hxCompl (Or.inl hxU)
-  -- exact ⟨hxIcc, by simpa using hxNotU0'⟩
 
 -- Hauptlemma: core ⊆ M (benötigt Endpunkte in M, wegen K0 ⊆ M)
 lemma core_subset_M
@@ -1052,7 +1036,6 @@ lemma core_refineN_antitone
   -- Schreibe n = m + k
   obtain ⟨k, hk⟩ := Nat.exists_eq_add_of_le hmn
 
-
   -- Hilfsbehauptung: Für jedes k schrumpft der Kern von m+k auf m.
   have hChain :
       ∀ k,
@@ -1102,7 +1085,7 @@ lemma F_antitone
               (M := M) (xu := xu) (xo := xo) hM hxu hxo sel s
   simpa [F] using h hmn
 
-/-- `Kω` ist abgeschlossen (Durchschnitt abgeschlossener Mengen). -/
+/-- `Kω ⊆ M` (über die Kerne und `K0 ⊆ M`). -/
 lemma Kω_subset_M
     {M : Set ℝ} {xu xo : ℝ}
     (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
@@ -1117,7 +1100,7 @@ lemma Kω_subset_M
   -- also ∀ n, x ∈ F n
   have hx_all :
       ∀ n, x ∈ F (M := M) (xu := xu) (xo := xo) hM hxu hxo sel n s :=
-    (Set.mem_iInter.mp hx')     -- ← hier der Fix
+    (Set.mem_iInter.mp hx')
 
   -- und jedes F n ⊆ M
   have hFn_subset_M : ∀ n,
