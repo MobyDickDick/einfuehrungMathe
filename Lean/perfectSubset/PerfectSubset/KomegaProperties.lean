@@ -60,4 +60,47 @@ namespace Stage
    -- Mitgliedschaft in allen Stufen ⇒ Mitgliedschaft im Schnitt
    simpa [Kω] using Set.mem_iInter.mpr hx
 
+/-- `Kω` liegt in **jeder** Stufen\-Kernmenge. -/
+ theorem Kω_subset_core
+     {M : Set ℝ} {a b : ℝ}
+     (tsd : TwoSidedSuperdense M)
+     (ha : a ∈ M) (hb : b ∈ M)
+     (sel : Selector M a b)
+     (s0 : State M a b)
+     (n : ℕ) :
+     Kω tsd ha hb sel s0 ⊆ core ((refineN tsd ha hb sel n) s0) := by
+   intro x hx
+   classical
+   -- Entfalte `Kω` als Schnitt und picke die n-te Komponente.
+   have hxAll : x ∈ ⋂ n, core ((refineN tsd ha hb sel n) s0) := by
+     simpa [Kω] using hx
+   exact (Set.mem_iInter.mp hxAll) n
+
+/-- Allgemeine Verallgemeinerung von `Kω_subset_M_of_cores`:
+    wenn jede Stufen\-Kernmenge in einer Menge `S` liegt, dann auch `Kω`. -/
+ theorem Kω_subset_of_cores_subset
+     {M : Set ℝ} {a b : ℝ} {S : Set ℝ}
+     (tsd : TwoSidedSuperdense M)
+     (ha : a ∈ M) (hb : b ∈ M)
+     (sel : Selector M a b)
+     (s0 : State M a b)
+     (h : ∀ n : ℕ, core ((refineN tsd ha hb sel n) s0) ⊆ S) :
+     Kω tsd ha hb sel s0 ⊆ S := by
+   intro x hx
+   classical
+   have hxAll : ∀ n, x ∈ core ((refineN tsd ha hb sel n) s0) := by
+     simpa [Kω] using Set.mem_iInter.mp hx
+   exact (h 0) (hxAll 0)
+
+/-- Bequeme Folgerung: Aus `x ∈ Kω` folgt bereits `x ∈ core ((refineN … 0) s0)`. -/
+ theorem mem_core_zero_of_mem_Kω
+     {M : Set ℝ} {a b : ℝ}
+     (tsd : TwoSidedSuperdense M)
+     (ha : a ∈ M) (hb : b ∈ M)
+     (sel : Selector M a b)
+     (s0 : State M a b) {x : ℝ}
+     (hx : x ∈ Kω tsd ha hb sel s0) :
+     x ∈ core ((refineN tsd ha hb sel 0) s0) :=
+   (Kω_subset_core tsd ha hb sel s0 0) hx
+
 end Stage
