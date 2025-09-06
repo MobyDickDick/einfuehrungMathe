@@ -23,8 +23,8 @@ namespace Stage
      (tsd : TwoSidedSuperdense M)
      (ha : a ∈ M) (hb : b ∈ M)
      (sel : Selector M a b)
-     (s0  : State M a b)
-     (h   : ∀ n : ℕ, core ((refineN tsd ha hb sel n) s0) ⊆ M) :
+     (s0 : State M a b)
+     (h : ∀ n : ℕ, core ((refineN tsd ha hb sel n) s0) ⊆ M) :
      Kω tsd ha hb sel s0 ⊆ M := by
    intro x hx
    classical
@@ -41,10 +41,10 @@ namespace Stage
      (tsd : TwoSidedSuperdense M)
      (ha : a ∈ M) (hb : b ∈ M)
      (sel : Selector M a b)
-     (s0  : State M a b) {x : ℝ} :
+     (s0 : State M a b) {x : ℝ} :
      x ∈ Kω tsd ha hb sel s0 ↔ ∀ n : ℕ, x ∈ core ((refineN tsd ha hb sel n) s0) := by
    -- direkte Entfaltung der Definition von `Kω` als Schnitt
-   simpa [Kω]
+   simp [Kω]
 
 /-- Nichtleere von `Kω`, sobald ein Punkt in allen Stufen-Kernen liegt. -/
  theorem Kω_nonempty_of_point_mem_all_cores
@@ -52,9 +52,9 @@ namespace Stage
      (tsd : TwoSidedSuperdense M)
      (ha : a ∈ M) (hb : b ∈ M)
      (sel : Selector M a b)
-     (s0  : State M a b)
-     (x0  : ℝ)
-     (hx  : ∀ n : ℕ, x0 ∈ core ((refineN tsd ha hb sel n) s0)) :
+     (s0 : State M a b)
+     (x0 : ℝ)
+     (hx : ∀ n : ℕ, x0 ∈ core ((refineN tsd ha hb sel n) s0)) :
      (Kω tsd ha hb sel s0).Nonempty := by
    refine ⟨x0, ?_⟩
    -- Mitgliedschaft in allen Stufen ⇒ Mitgliedschaft im Schnitt
