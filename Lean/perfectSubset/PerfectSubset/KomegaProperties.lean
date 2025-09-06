@@ -103,4 +103,30 @@ namespace Stage
      x ∈ core ((refineN tsd ha hb sel 0) s0) :=
    (Kω_subset_core tsd ha hb sel s0 0) hx
 
+/-- Aus `x ∈ Kω` folgt für **jedes** `n` die Mitgliedschaft im `n`-ten Kern. -/
+ theorem mem_core_of_mem_Kω
+     {M : Set ℝ} {a b : ℝ}
+     (tsd : TwoSidedSuperdense M)
+     (ha : a ∈ M) (hb : b ∈ M)
+     (sel : Selector M a b)
+     (s0 : State M a b) {x : ℝ}
+     (hx : x ∈ Kω tsd ha hb sel s0) (n : ℕ) :
+     x ∈ core ((refineN tsd ha hb sel n) s0) :=
+   (Kω_subset_core tsd ha hb sel s0 n) hx
+
+
+/-- Wenn es **ein** `n0` gibt mit `core ((refineN … n0) s0) ⊆ S`, dann schon `Kω ⊆ S`.
+    (Einfach: `Kω ⊆ core_n0 ⊆ S`.) -/
+ theorem Kω_subset_of_core_subset_at
+     {M : Set ℝ} {a b : ℝ} {S : Set ℝ}
+     (tsd : TwoSidedSuperdense M)
+     (ha : a ∈ M) (hb : b ∈ M)
+     (sel : Selector M a b)
+     (s0 : State M a b)
+     (n0 : ℕ)
+     (h : core ((refineN tsd ha hb sel n0) s0) ⊆ S) :
+     Kω tsd ha hb sel s0 ⊆ S := by
+   intro x hx
+   exact h ((Kω_subset_core tsd ha hb sel s0 n0) hx)
+
 end Stage
