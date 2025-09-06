@@ -129,4 +129,44 @@ namespace Stage
    intro x hx
    exact h ((Kω_subset_core tsd ha hb sel s0 n0) hx)
 
+
+/-- Charakterisierung auf Mengenebene: `S ⊆ Kω` genau dann,
+    wenn `S` in **jede** Stufen\-Kernmenge fällt. -/
+ theorem subset_Kω_iff_forall_subset_core
+     {M : Set ℝ} {a b : ℝ} {S : Set ℝ}
+     (tsd : TwoSidedSuperdense M)
+     (ha : a ∈ M) (hb : b ∈ M)
+     (sel : Selector M a b)
+     (s0 : State M a b) :
+     S ⊆ Kω tsd ha hb sel s0 ↔ ∀ n : ℕ, S ⊆ core ((refineN tsd ha hb sel n) s0) := by
+   constructor
+   · intro h n x hx
+     exact (Kω_subset_core tsd ha hb sel s0 n) (h hx)
+   · intro h x hx
+     -- `x ∈ Kω` zeigen: in allen Stufen\-Kernen
+     have hxAll : ∀ n, x ∈ core ((refineN tsd ha hb sel n) s0) := fun n => h n hx
+     simpa [Kω] using Set.mem_iInter.mpr hxAll
+
+/-- Korollar: Hat man `∀ n, S ⊆ core_n`, dann schon `S ⊆ Kω`. -/
+ theorem subset_Kω_of_subset_all_cores
+     {M : Set ℝ} {a b : ℝ} {S : Set ℝ}
+     (tsd : TwoSidedSuperdense M)
+     (ha : a ∈ M) (hb : b ∈ M)
+     (sel : Selector M a b)
+     (s0 : State M a b)
+     (h : ∀ n : ℕ, S ⊆ core ((refineN tsd ha hb sel n) s0)) :
+     S ⊆ Kω tsd ha hb sel s0 :=
+   (subset_Kω_iff_forall_subset_core tsd ha hb sel s0).mpr h
+
+/-- Korollar: Aus `S ⊆ Kω` folgt `S ⊆ core_n` für jedes `n`. -/
+ theorem subset_core_of_subset_Kω
+     {M : Set ℝ} {a b : ℝ} {S : Set ℝ}
+     (tsd : TwoSidedSuperdense M)
+     (ha : a ∈ M) (hb : b ∈ M)
+     (sel : Selector M a b)
+     (s0 : State M a b)
+     (h : S ⊆ Kω tsd ha hb sel s0) (n : ℕ) :
+     S ⊆ core ((refineN tsd ha hb sel n) s0) :=
+   (subset_Kω_iff_forall_subset_core tsd ha hb sel s0).mp h n
+
 end Stage
