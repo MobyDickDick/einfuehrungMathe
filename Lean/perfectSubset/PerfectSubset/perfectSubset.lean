@@ -450,12 +450,12 @@ lemma TwoSidedThick_core (M : Set ℝ) : TwoSidedThick (core M) := by
   rcases hx with ⟨hxM, hxNotBad⟩
   have hBadCnt : (Bad M).Countable := countable_Bad M
   -- große Slices in `M` sind nicht abzählbar, weil `x ∉ Bad M`
-  have hLeftM  : ¬ (LeftSlice  M x ε).Countable := by
+  have hLeftM : ¬ (LeftSlice  M x ε).Countable := by
     intro hcnt; exact hxNotBad (Or.inl ⟨hxM, ⟨ε, hε, hcnt⟩⟩)
   have hRightM : ¬ (RightSlice M x ε).Countable := by
     intro hcnt; exact hxNotBad (Or.inr ⟨hxM, ⟨ε, hε, hcnt⟩⟩)
   -- ziehe die abzählbare Bad-Menge ab
-  have hLeftCore  : ¬ (Set.diff (LeftSlice  M x ε) (Bad M)).Countable :=
+  have hLeftCore : ¬ (Set.diff (LeftSlice  M x ε) (Bad M)).Countable :=
     not_countable_diff_of_not_countable_of_countable hLeftM hBadCnt
   have hRightCore : ¬ (Set.diff (RightSlice M x ε) (Bad M)).Countable :=
     not_countable_diff_of_not_countable_of_countable hRightM hBadCnt

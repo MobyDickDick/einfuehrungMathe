@@ -249,7 +249,7 @@ def refineOneKeep
     (s : State M xu xo)
     (J : ClosedSeg) (hJmem : J ∈ s.segs)
     (hHit : (segSet J ∩ K0 M xu xo).Nonempty)
-  : State M xu xo := by
+ : State M xu xo := by
   classical
   have hJsub : segSet J ⊆ Set.Icc xu xo := s.invSegs hJmem
   let h := split_once_avoiding_point (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo x0 J hJsub hHit
@@ -328,8 +328,8 @@ lemma core_preserved_refineOneKeep
   have hxParts :
       (xu ≤ x0 ∧ x0 ≤ xo) ∧ x0 ∉ U0' M xu xo ∧ ∀ U ∈ s.mids, x0 ∉ U := by
     simpa [core] using hx0Core
-  have hxNotU0   : x0 ∉ U0' M xu xo := hxParts.2.1
-  have hxNotAll  : ∀ U ∈ s.mids, x0 ∉ U := hxParts.2.2
+  have hxNotU0  : x0 ∉ U0' M xu xo := hxParts.2.1
+  have hxNotAll : ∀ U ∈ s.mids, x0 ∉ U := hxParts.2.2
 
   -- Nimm das erste neue Mid aus `refineOneKeep` als `U0`
   rcases exists_cons_mids_refineOneKeep (M:=M) hM (xu:=xu) (xo:=xo)
@@ -362,7 +362,7 @@ noncomputable def refineOnceAutoKeep
   classical
   let J : ClosedSeg := Classical.choose hSel
   have hJmem : J ∈ s.segs := (Classical.choose_spec hSel).1
-  have hHit  : (segSet J ∩ K0 M xu xo).Nonempty :=
+  have hHit : (segSet J ∩ K0 M xu xo).Nonempty :=
     (Classical.choose_spec hSel).2
   exact refineOneKeep (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo x0 s J hJmem hHit
 

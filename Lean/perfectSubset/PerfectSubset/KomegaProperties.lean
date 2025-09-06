@@ -14,6 +14,8 @@
 
 import PerfectSubset.PerfectFromSuperdense
 
+open Filter Topology
+
 namespace Stage
 
 /-- Wenn **jede** endliche Stufe des Kerns bereits in `M` liegt, dann liegt auch `Kω` in `M`.
@@ -114,7 +116,6 @@ namespace Stage
      x ∈ core ((refineN tsd ha hb sel n) s0) :=
    (Kω_subset_core tsd ha hb sel s0 n) hx
 
-
 /-- Wenn es **ein** `n0` gibt mit `core ((refineN … n0) s0) ⊆ S`, dann schon `Kω ⊆ S`.
     (Einfach: `Kω ⊆ core_n0 ⊆ S`.) -/
  theorem Kω_subset_of_core_subset_at
@@ -128,7 +129,6 @@ namespace Stage
      Kω tsd ha hb sel s0 ⊆ S := by
    intro x hx
    exact h ((Kω_subset_core tsd ha hb sel s0 n0) hx)
-
 
 /-- Charakterisierung auf Mengenebene: `S ⊆ Kω` genau dann,
     wenn `S` in **jede** Stufen\-Kernmenge fällt. -/
@@ -168,5 +168,59 @@ namespace Stage
      (h : S ⊆ Kω tsd ha hb sel s0) (n : ℕ) :
      S ⊆ core ((refineN tsd ha hb sel n) s0) :=
    (subset_Kω_iff_forall_subset_core tsd ha hb sel s0).mp h n
+
+/-- **Limitpunkt-Argument (Cantor-Schiene, Schritt 1):**
+    Wenn eine Folge `x : ℕ → ℝ` so gewählt ist, dass `x n ∈ core ((refineN … n) s0)`
+    für alle `n`, die Kerne antiton sind und alle Kerne geschlossen sind, und
+    `x` gegen `x0` konvergiert, dann liegt `x0 ∈ Kω`.
+
+    Idee: Für jedes feste `n` ist `core_{n}` geschlossen und (wegen Antitonie) gilt
+    `x m ∈ core_{n}` für alle hinreichend großen `m`. Über `IsClosed.mem_of_tendsto`
+    folgt `x0 ∈ core_{n}`. Also `x0 ∈ ⋂ n core_{n} = Kω`.
+-/
+ theorem mem_Kω_of_tendsto_in_cores
+     {M : Set ℝ} {a b : ℝ}
+     (tsd : TwoSidedSuperdense M)
+     (ha : a ∈ M) (hb : b ∈ M)
+     (sel : Selector M a b)
+     (s0 : State M a b)
+     (hAntitone : Antitone (fun n : ℕ => core ((refineN tsd ha hb sel n) s0)))
+     (hClosed : ∀ n : ℕ, IsClosed (core ((refineN tsd ha hb sel n) s0)))
+     {x : ℕ → ℝ} {x0 : ℝ}
+     (hx  : ∀ n : ℕ, x n ∈ core ((refineN tsd ha hb sel n) s0))
+     (hconv : Filter.Tendsto x Filter.atTop (nhds x0)) :
+     x0 ∈ Kω tsd ha hb sel s0 := by
+   classical
+   -- Für jedes feste n liegt x0 in core_n (Abschlussargument über Konvergenz)
+   have hx0_in_core : ∀ n : ℕ, x0 ∈ core ((refineN tsd ha hb sel n) s0) := by
+     intro n
+     -- ab irgendeinem Index m ≥ n gilt x m ∈ core_n, da core_m ⊆ core_n (Antitonie)
+     have hEv : ∀ᶠ m in Filter.atTop, x m ∈ core ((refineN tsd ha hb sel n) s0) := by
+       refine Filter.eventually_atTop.2 ?_
+       refine ⟨n, ?_⟩
+       intro m hm
+       have hsub : core ((refineN tsd ha hb sel m) s0) ⊆ core ((refineN tsd ha hb sel n) s0) :=
+         hAntitone hm
+       exact hsub (hx m)
+     -- Abschluss ist abgeschlossen: Grenzwert liegt drin
+     exact (hClosed n).mem_of_tendsto hconv hEv
+   -- Mitgliedschaft in allen Kernen ⇒ Mitgliedschaft im Schnitt = Kω
+   simpa [Kω] using Set.mem_iInter.mpr hx0_in_core
+
+/-- **Konsequenz:** Existiert eine konvergente Auswahl `x n ∈ core_n` mit Grenzwert `x0`,
+    so ist `Kω` nichtleer. -/
+ theorem Kω_nonempty_of_tendsto_in_cores
+     {M : Set ℝ} {a b : ℝ}
+     (tsd : TwoSidedSuperdense M)
+     (ha : a ∈ M) (hb : b ∈ M)
+     (sel : Selector M a b)
+     (s0 : State M a b)
+     (hAntitone : Antitone (fun n : ℕ => core ((refineN tsd ha hb sel n) s0)))
+     (hClosed : ∀ n : ℕ, IsClosed (core ((refineN tsd ha hb sel n) s0)))
+     {x : ℕ → ℝ} {x0 : ℝ}
+     (hx  : ∀ n : ℕ, x n ∈ core ((refineN tsd ha hb sel n) s0))
+     (hconv : Filter.Tendsto x Filter.atTop (nhds x0)) :
+     (Kω tsd ha hb sel s0).Nonempty :=
+   ⟨x0, mem_Kω_of_tendsto_in_cores tsd ha hb sel s0 hAntitone hClosed hx hconv⟩
 
 end Stage

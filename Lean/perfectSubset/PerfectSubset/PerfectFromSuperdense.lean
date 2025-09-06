@@ -222,7 +222,7 @@ lemma exists_M_interior_of_seg_intersects_K0
       simpa [hR] using haLt
 
   -- Fall 3: x0 echt innen
-  have hLeft  : J.a < x0 := lt_of_le_of_ne hJleft (ne_comm.mp hL)
+  have hLeft : J.a < x0 := lt_of_le_of_ne hJleft (ne_comm.mp hL)
   have hRight : x0 < J.b := lt_of_le_of_ne hJright hR
   exact ⟨x0, hx0M, ⟨hLeft, hRight⟩⟩
 
@@ -247,9 +247,9 @@ lemma half_lt_self_of_pos {t : ℝ} (ht : 0 < t) : t / 2 < t := by
   calc
     t / 2 = t * (2 : ℝ)⁻¹ := by
       simp [div_eq_mul_inv]
-    _     < t * 1         := by
+    _     < t * 1        := by
       simpa [one_mul] using mul_lt_mul_of_pos_left inv2_lt_one ht
-    _     = t             := by
+    _     = t            := by
       simp
 
 lemma split_once
@@ -487,7 +487,7 @@ structure State (M : Set ℝ) (xu xo : ℝ) where
 /-- Anfangszustand aus einem Startsegment `J ⊆ [xu,xo]`. -/
 def init {M : Set ℝ} {xu xo : ℝ}
     (J : ClosedSeg) (hJsub : segSet J ⊆ Set.Icc xu xo)
-  : State M xu xo :=
+ : State M xu xo :=
 { segs := [J],
   mids := [],
   invSegs := by
@@ -522,7 +522,7 @@ def refineOne
     (s : State M xu xo)
     (J : ClosedSeg) (hJmem : J ∈ s.segs)
     (hHit : (segSet J ∩ K0 M xu xo).Nonempty)
-  : State M xu xo := by
+ : State M xu xo := by
   classical
   -- 1) J ⊆ [xu,xo] aus der Invariante
   have hJsub : segSet J ⊆ Set.Icc xu xo := s.invSegs hJmem
@@ -560,7 +560,7 @@ def refineOne
   have _disj : Disjoint (segSet J0) (segSet J1) := hprops.2.2.1
   have openMid : IsOpen Mid := hprops.2.2.2.1
   have _midSub : Mid ⊆ Set.Ioo J.a J.b := hprops.2.2.2.2.1
-  have _cover  : segSet J ⊆ segSet J0 ∪ Mid ∪ segSet J1 := hprops.2.2.2.2.2.1
+  have _cover : segSet J ⊆ segSet J0 ∪ Mid ∪ segSet J1 := hprops.2.2.2.2.2.1
   have _t0 : (segSet J0 ∩ M).Nonempty := hprops.2.2.2.2.2.2.1
   have _t1 : (segSet J1 ∩ M).Nonempty := hprops.2.2.2.2.2.2.2
 
@@ -742,13 +742,13 @@ noncomputable def refineOnceAuto
     {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
     (s : State M xu xo)
     (hSel : Hits M xu xo s)
-  : State M xu xo :=
+ : State M xu xo :=
 by
   classical
   -- Wähle ein J und die beiden Beweise nicht-konstruktiv aus hSel
   let J : ClosedSeg := Classical.choose hSel
   have hJmem : J ∈ s.segs := (Classical.choose_spec hSel).1
-  have hHit  : (segSet J ∩ K0 M xu xo).Nonempty :=
+  have hHit : (segSet J ∩ K0 M xu xo).Nonempty :=
     (Classical.choose_spec hSel).2
   -- Jetzt einfach den einen Schritt ausführen
   exact refineOne (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo s J hJmem hHit
@@ -862,7 +862,7 @@ def refineThriceAuto
             (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1))
     (h3 : Hits (M := M) (xu := xu) (xo := xo)
             (refineTwiceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2))
-  : State M xu xo :=
+ : State M xu xo :=
   refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo
     (refineTwiceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2) h3
 
@@ -877,7 +877,7 @@ lemma core_refineThriceAuto_subset
             (refineOnceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1))
     (h3 : Hits (M := M) (xu := xu) (xo := xo)
             (refineTwiceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2))
-  :
+ :
   core (M := M) (xu := xu) (xo := xo)
         (refineThriceAuto (M := M) hM (xu := xu) (xo := xo) hxu hxo s h1 h2 h3)
     ⊆
