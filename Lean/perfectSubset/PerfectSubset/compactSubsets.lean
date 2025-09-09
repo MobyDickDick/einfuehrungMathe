@@ -133,6 +133,8 @@ lemma closure_range_subset_insert
     exact div_pos hxmy_pos (by norm_num)
 
   -- l → x ⇒ schließlich dist(l n, x) < ε
+  -- (tendsto_to_x ist ein kleines Hilfslemma, das du ggf. schon hast;
+  --  sonst kann ich es dir separat liefern.)
   have h_tend : Tendsto l atTop (𝓝 x) := tendsto_to_x l x hl
   have hN1 : ∀ᶠ n in atTop, dist (l n) x < ε :=
     (Metric.tendsto_nhds.mp h_tend) _ hεpos
@@ -155,8 +157,7 @@ lemma closure_range_subset_insert
     exact this
 
   -- Wähle einen Zeugen im Ball(y, ε) ∩ range l
-  have hopen : IsOpen (Metric.ball (α := ℝ) y ε) := by
-    simpa using Metric.isOpen_ball (x := y) (r := ε)
+  have hopen : IsOpen (Metric.ball y ε) := Metric.isOpen_ball
   have hyball : y ∈ Metric.ball y ε := by
     simp [Metric.mem_ball, dist_self, hεpos]
   have hnonempty : (Metric.ball y ε ∩ Set.range l).Nonempty :=
@@ -170,8 +171,8 @@ lemma closure_range_subset_insert
   · -- großer Index: 2ε ≤ dist(l n, y), aber l n ∈ Ball(y, ε) — Widerspruch
     have hbig : 2 * ε ≤ dist (l n) y := hN0 n hge
     have hzBall : dist (l n) y < ε := by
-      have : l n ∈ Metric.ball y ε := hz.1
-      simpa [Metric.mem_ball, Real.dist_eq, dist_comm] using this
+      -- direkt diese Richtung nehmen
+      simpa [Metric.mem_ball, Real.dist_eq] using hz.1
     have hεle : ε ≤ 2 * ε := by
       have : (0 : ℝ) ≤ ε := le_of_lt hεpos; nlinarith
     exact (not_lt_of_ge (le_trans hεle hbig)) hzBall |> False.elim
@@ -191,8 +192,7 @@ lemma closure_range_subset_insert
         intro m hm
         have hne_ym : y ≠ l m := by
           intro h; exact hy_in_T ⟨m, hm, h⟩
-        have hne_my : l m ≠ y := by simpa [eq_comm] using hne_ym
-        exact dist_pos.mpr hne_my
+        exact dist_pos.mpr (by simpa [eq_comm] using hne_ym)
 
       -- Splitte Fälle: T leer oder nicht leer
       by_cases hT : T.Nonempty
@@ -217,12 +217,13 @@ lemma closure_range_subset_insert
 
         -- (Ball(y, δ₀) ∩ range l) = ∅
         have hEmpty : (Metric.ball y δ₀ ∩ Set.range l) = (∅ : Set ℝ) := by
-          apply Set.eq_empty_iff_forall_not_mem.mpr
+          apply Set.eq_empty_iff_forall_notMem.mpr
           intro z hz
           rcases hz with ⟨hzBall, ⟨m, rfl⟩⟩
           by_cases hm' : m < N0
           · -- m < N0 ⇒ dist(l m, y) ≥ δ' ≥ 2*(δ'/2) ≥ 2*δ₀ ⇒ nicht im Ball
-            have hmT : m ∈ T := by simpa [T, Finset.mem_range] using hm'
+            have hmT : m ∈ T := by
+              simpa [T, Finset.mem_range] using hm'
             -- min' ≤ jedes Element der Bildmenge
             have hmin_le : D.min' hDne ≤ dist (l m) y :=
               Finset.min'_le (s := D) (x := dist (l m) y) (H2 := hDmem m hmT)
@@ -236,7 +237,7 @@ lemma closure_range_subset_insert
               le_trans hle2' (by simpa using (le_trans (le_of_eq (by ring)) hδ'le))
             -- Widerspruch mit Ball-Bedingung
             have hzlt : dist (l m) y < δ₀ := by
-              simpa [Metric.mem_ball, dist_comm, Real.dist_eq] using hzBall
+              simpa [Metric.mem_ball, Real.dist_eq] using hzBall
             -- elementar: δ₀ ≤ 2 δ₀
             have hle2 : δ₀ ≤ 2 * δ₀ := by
               have hnonneg : 0 ≤ δ₀ := le_of_lt hδ₀pos
@@ -244,14 +245,14 @@ lemma closure_range_subset_insert
               simpa [one_mul] using (mul_le_mul_of_nonneg_right this hnonneg)
             exact (not_lt_of_ge (le_trans hle2 hge)) hzlt
           · -- m ≥ N0 ⇒ dist(l m, y) ≥ 2ε ≥ ε ≥ δ₀ ⇒ nicht im Ball
-            have hge' : N0 ≤ m := le_of_not_lt hm'
+            have hge' : N0 ≤ m := le_of_not_gt hm'
             have hbig : 2 * ε ≤ dist (l m) y := hN0 m hge'
             have hεδ : δ₀ ≤ ε := min_le_left _ _
             have : δ₀ ≤ dist (l m) y :=
               le_trans hεδ (le_trans (by
                 have : (0 : ℝ) ≤ ε := le_of_lt hεpos; nlinarith) hbig)
             exact (not_lt_of_ge this) (by
-              simpa [Metric.mem_ball, dist_comm, Real.dist_eq] using hzBall)
+              simpa [Metric.mem_ball, Real.dist_eq] using hzBall)
 
         -- Widerspruch zur Abschluss-Charakterisierung
         have : (Metric.ball y δ₀ ∩ Set.range l).Nonempty :=
@@ -263,23 +264,19 @@ lemma closure_range_subset_insert
       · -- **Fall 2: T = ∅** ⇒ daraus folgt N0 = 0, also ∀ m, N0 ≤ m
         have hTempty : T = (∅ : Finset ℕ) := by
           -- ¬T.Nonempty ↔ T = ∅
-          simpa [Finset.nonempty_iff_ne_empty] using hT
-          -- range N0 = ∅  ↔  N0 = 0
-          -- aus T = ∅ folgt N0 = 0 (sonst wäre 0 ∈ range N0)
+          simp [Finset.nonempty_iff_ne_empty] at hT
+          exact hT
         have hN0zero : N0 = 0 := by
+          -- aus T = ∅ folgt N0 = 0 (sonst wäre 0 ∈ range N0)
           by_contra hne
           have hpos : 0 < N0 := Nat.pos_of_ne_zero hne
-          have : 0 ∈ T := by
-            -- 0 < N0  ↔  0 ∈ range N0
-            simpa [T, Finset.mem_range] using hpos
-          -- Widerspruch zu T = ∅
-          simpa [hTempty] using this
-
+          have : 0 ∈ T := by simp [T, Finset.mem_range, hpos]
+          simp [hTempty] at this
         -- wähle δ₀ := min ε (1/2)
         set δ₀ : ℝ := min ε ((1 : ℝ) / 2)
         have hδ₀pos : 0 < δ₀ := lt_min_iff.mpr ⟨hεpos, by norm_num⟩
         have hEmpty : (Metric.ball y δ₀ ∩ Set.range l) = (∅ : Set ℝ) := by
-          apply Set.eq_empty_iff_forall_not_mem.mpr
+          apply Set.eq_empty_iff_forall_notMem.mpr
           intro z hz
           rcases hz with ⟨hzBall, ⟨m, rfl⟩⟩
           -- aus N0=0 folgt N0 ≤ m
@@ -290,13 +287,14 @@ lemma closure_range_subset_insert
             le_trans hεδ (le_trans (by
               have : (0 : ℝ) ≤ ε := le_of_lt hεpos; nlinarith) hbig)
           exact (not_lt_of_ge this) (by
-            simpa [Metric.mem_ball, dist_comm, Real.dist_eq] using hzBall)
+            simpa [Metric.mem_ball, Real.dist_eq] using hzBall)
         -- Widerspruch
         have : (Metric.ball y δ₀ ∩ Set.range l).Nonempty :=
           (mem_closure_iff.1 hy) _
             (by simpa using Metric.isOpen_ball (x := y) (r := δ₀))
             (by simp [Metric.mem_ball, dist_self, hδ₀pos])
         simpa [hEmpty] using this
+
 
 
 end PerfectSubset.CompactSubsets
