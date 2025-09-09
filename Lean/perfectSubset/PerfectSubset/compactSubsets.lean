@@ -255,8 +255,7 @@ lemma closure_range_subset_insert
 
         -- Widerspruch zur Abschluss-Charakterisierung
         have : (Metric.ball y δ₀ ∩ Set.range l).Nonempty :=
-          (mem_closure_iff.1 hy) _
-            (by simpa using Metric.isOpen_ball (x := y) (r := δ₀))
+          (mem_closure_iff.1 hy) _ Metric.isOpen_ball
             (by simp [Metric.mem_ball, dist_self, hδ₀pos])
         simp [hEmpty] at this
 
@@ -289,11 +288,7 @@ lemma closure_range_subset_insert
             simpa [Metric.mem_ball, Real.dist_eq] using hzBall)
         -- Widerspruch
         have : (Metric.ball y δ₀ ∩ Set.range l).Nonempty :=
-          (mem_closure_iff.1 hy) _
-            (by simpa using Metric.isOpen_ball (x := y) (r := δ₀))
+          (mem_closure_iff.1 hy) _ Metric.isOpen_ball
             (by simp [Metric.mem_ball, dist_self, hδ₀pos])
         simp [hEmpty] at this
-
-
-
 end PerfectSubset.CompactSubsets
