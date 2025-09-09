@@ -183,8 +183,7 @@ lemma closure_range_subset_insert
     by_cases hy_in_T : ∃ m ∈ T, y = l m
     · rcases hy_in_T with ⟨m, hmT, hym⟩
       exact Or.inr ⟨m, hym.symm⟩
-    ·
-      -- y ≠ l m für alle m < N0 ⇒ min. Abstand δ' > 0
+    · -- y ≠ l m für alle m < N0 ⇒ min. Abstand δ' > 0
       let D : Finset ℝ := T.image (fun m => dist (l m) y)
       have hDmem : ∀ m ∈ T, dist (l m) y ∈ D := by
         intro m hm; exact Finset.mem_image.mpr ⟨m, hm, rfl⟩
@@ -259,7 +258,7 @@ lemma closure_range_subset_insert
           (mem_closure_iff.1 hy) _
             (by simpa using Metric.isOpen_ball (x := y) (r := δ₀))
             (by simp [Metric.mem_ball, dist_self, hδ₀pos])
-        simpa [hEmpty] using this
+        simp [hEmpty] at this
 
       · -- **Fall 2: T = ∅** ⇒ daraus folgt N0 = 0, also ∀ m, N0 ≤ m
         have hTempty : T = (∅ : Finset ℕ) := by
@@ -280,7 +279,7 @@ lemma closure_range_subset_insert
           intro z hz
           rcases hz with ⟨hzBall, ⟨m, rfl⟩⟩
           -- aus N0=0 folgt N0 ≤ m
-          have hge' : N0 ≤ m := by simpa [hN0zero]
+          have hge' : N0 ≤ m := by simp [hN0zero]
           have hbig : 2 * ε ≤ dist (l m) y := hN0 m hge'
           have hεδ : δ₀ ≤ ε := min_le_left _ _
           have : δ₀ ≤ dist (l m) y :=
@@ -293,7 +292,7 @@ lemma closure_range_subset_insert
           (mem_closure_iff.1 hy) _
             (by simpa using Metric.isOpen_ball (x := y) (r := δ₀))
             (by simp [Metric.mem_ball, dist_self, hδ₀pos])
-        simpa [hEmpty] using this
+        simp [hEmpty] at this
 
 
 
