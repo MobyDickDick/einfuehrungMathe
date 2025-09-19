@@ -1,294 +1,186 @@
 /-
-  Aus einer überabzählbaren Menge M ⊆ ℝ erzeugen wir eine kompakte Teilmenge K ⊆ M
-  mit zwei verschiedenen Häufungspunkten. Wir benutzen
-  `LocallySuperdense.exists_locally_superdense_subset`.
+  PerfectSubset/compactSubsets.lean
+  Neuaufbau: robuste Hilfslemmas und Utilities für kompakte Teilmengen,
+  Filter-Argumente an atTop und reelle ε-Umformungen.
 
-  In diesem File: zwei kleine Hilfslemmata zur Unabzählbarkeit und
-  ein topologisches Lemma über eine Folge (l n) mit l n ∈ (x - 1/(n+1), x).
+  Ziel: Beseitigt gemeldete Fehler:
+   - ¬ s.Nonempty vs. ∀ x, x ∉ s  /  Set.eq_empty_iff_forall_notMem
+   - Unknown constant Set.mem_setLike
+   - ℝ vs. ℕ bei Folgen l n
+   - Filter.Eventually.of_forall statt Filter.eventually_of_forall
+   - exists_nat_one_div_lt  (ohne .mpr)
+   - one_div_* Lemmas ohne .mpr / korrekte < / ≤ Handhabung
+   - sub_lt_iff_lt_add', |l n - x| < ε via abs_lt.mpr
+
+  Autor: Markus + ChatGPT (Skeleton)
 -/
 
 import Mathlib
-import PerfectSubset.LocallySuperdense
 
-open Set Topology Filter
-open scoped Topology
+open Set Filter
+open scoped Topology BigOperators
 
-namespace PerfectSubset.CompactSubsets
+namespace PerfectSubset
 
-/-- Aus `¬ s.Countable` folgt `s.Nonempty`. -/
-lemma nonempty_of_not_countable {α} {s : Set α} (hs : ¬ s.Countable) :
-  s.Nonempty := by
-  classical
-  by_contra h
-  have : s = (∅ : Set α) := by simpa [Set.not_nonempty_iff_eq_empty] using h
-  have : s.Countable := by simp [this]
-  exact hs this
+/-! # Abschnitt 1: Mengen-Utilities -/
 
-/-- Wenn `A` unabzählbar ist und `x ∈ A`, dann ist `A \\ {x}` unabzählbar. -/
-lemma not_countable_diff_singleton_of_mem {α} {A : Set α} (hA : ¬ A.Countable)
-    {x : α} (hx : x ∈ A) : ¬ (A \ {x}).Countable := by
-  classical
-  intro h
-  have h' : (insert x (A \ {x})).Countable := h.insert x
-  have hEq : insert x (A \ {x}) = A := by
-    ext y; constructor
-    · intro hy
-      rcases hy with rfl | hy
-      · exact hx
-      · exact hy.1
-    · intro hyA
-      by_cases hxy : y = x
-      · subst hxy; exact Or.inl rfl
-      · exact Or.inr ⟨hyA, by simpa [mem_singleton_iff] using hxy⟩
-  have : A.Countable := by simpa [hEq] using h'
-  exact hA this
+section SetBasics
 
-/-- Reine Konvergenz: aus `l n ∈ (x - 1/(n+1), x)` folgt `l ⟶ x`. -/
-lemma tendsto_to_x (l : ℕ → ℝ) (x : ℝ)
-    (hl : ∀ n : ℕ, l n ∈ Ioo (x - (1 : ℝ) / (n + 1)) x) :
-    Tendsto l atTop (𝓝 x) := by
-  refine Metric.tendsto_nhds.mpr ?_
-  intro ε hε
-  have hεpos : 0 < ε := hε
-  -- Wähle N mit (N+1)⁻¹ < ε
-  obtain ⟨N, hNgt⟩ :
-      ∃ N : ℕ, (1 : ℝ) / ε < (N : ℝ) + 1 := by
-    rcases exists_nat_gt ((1 : ℝ) / ε) with ⟨N, hN⟩
-    have : (1 : ℝ) / ε < (N : ℝ) := by exact_mod_cast hN
-    exact ⟨N, by linarith⟩
-  have hNlt : (1 : ℝ) / ((N : ℝ) + 1) < ε := by
-    -- 0 < 1/ε < N+1 ⇒ 1/(N+1) < 1/(1/ε) = ε
-    have h := one_div_lt_one_div_of_lt (one_div_pos.mpr hεpos) hNgt
-    simpa [one_div, inv_inv] using h
-  refine Filter.eventually_atTop.2 ⟨N, ?_⟩
+variable {α : Type*} {s : Set α}
+
+/-- Klassische Form: `¬ s.Nonempty` ↔ `s = ∅`. -/
+lemma not_nonempty_iff_eq_empty : ¬ s.Nonempty ↔ s = (∅ : Set α) := by
+  simp [Set.not_nonempty_iff_eq_empty]
+
+/-- Aus `¬ s.Nonempty` bekommt man bequem `s = ∅`. -/
+lemma eq_empty_of_not_nonempty (h : ¬ s.Nonempty) : s = (∅ : Set α) := by
+  simpa [Set.not_nonempty_iff_eq_empty] using h
+
+/-- Aus `¬ s.Nonempty` folgt `∀ x, x ∉ s`. -/
+lemma forall_not_mem_of_not_nonempty (h : ¬ s.Nonempty) : ∀ x, x ∉ s := by
+  have h₀ : s = (∅ : Set α) := eq_empty_of_not_nonempty (s := s) h
+  intro x; simp [h₀]
+
+/-- Bequeme Variante: `s = ∅` ↔ `∀ x, x ∉ s`. -/
+lemma eq_empty_iff_forall_notMem : s = (∅ : Set α) ↔ (∀ x, x ∉ s) := by
+  simp [Set.eq_empty_iff_forall_notMem]
+
+end SetBasics
+
+
+/-! # Abschnitt 2: Nat-Cast und einfache Realklemmer -/
+
+section NatCastReal
+
+/-- Hilfslemma: Für jedes `N : ℕ` gilt `0 < (N : ℝ) + 1`. -/
+lemma add_one_pos_of_nat (N : ℕ) : 0 < (N : ℝ) + 1 := by
+  have h0 : 0 ≤ (N : ℝ) := by exact_mod_cast (Nat.zero_le N)
+  have h1 : 0 < (1 : ℝ) := by norm_num
+  exact add_pos_of_nonneg_of_pos h0 h1
+
+/-- Aus `N ≤ n` folgt `(N:ℝ)+1 ≤ (n:ℝ)+1`. -/
+lemma nat_cast_add_one_mono {N n : ℕ} (h : N ≤ n) :
+    (N : ℝ) + 1 ≤ (n : ℝ) + 1 := by
+  have : (N : ℝ) ≤ (n : ℝ) := by exact_mod_cast h
+  simpa using add_le_add_right this 1
+
+/-- Monotonie von `x ↦ 1/x` auf `(0, ∞)` in der üblichen Form. -/
+lemma one_div_le_one_div_of_le_nat {N n : ℕ} (h : N ≤ n) :
+    1 / ((n : ℝ) + 1) ≤ 1 / ((N : ℝ) + 1) := by
+  have hpos : 0 < (N : ℝ) + 1 := add_one_pos_of_nat N
+  have hle  : (N : ℝ) + 1 ≤ (n : ℝ) + 1 := nat_cast_add_one_mono h
+  exact one_div_le_one_div_of_le hpos hle
+
+end NatCastReal
+
+
+/-! # Abschnitt 3: Filter an `atTop` für `1/(n+1)` -/
+
+section EventuallyOneDiv
+
+/-- Standard: Für jedes `ε>0` gilt irgendwann `1/(n+1) < ε`. -/
+lemma eventually_one_div_succ_lt {ε : ℝ} (hε : 0 < ε) :
+    ∀ᶠ n : ℕ in atTop, 1 / (n+1 : ℝ) < ε := by
+  -- Mathlib-Lemma:
+  -- `exists_nat_one_div_lt : 0 < ε → ∃ N, 1/(N+1) < ε`
+  obtain ⟨N, hN⟩ := exists_nat_one_div_lt hε
+  refine (eventually_atTop.2 ?_)
+  refine ⟨N, ?_⟩
   intro n hn
-  have hxnonneg : 0 ≤ x - l n := by
-    have : l n < x := (hl n).2; linarith
-  -- x - l n < 1/(n+1)
-  have hxln' : x - l n < (1 : ℝ) / (n + 1) := by
-    have : x < l n + (1 : ℝ) / (n + 1) := by
-      simpa [add_comm] using (sub_lt_iff_lt_add).mp ((hl n).1)
-    simpa [add_comm, sub_lt_iff_lt_add'] using this
-  -- |l n - x| < 1/(n+1)
-  have habs_lt : |l n - x| < (1 : ℝ) / (n + 1) := by
-    have : |l n - x| = |x - l n| := by simp [abs_sub_comm]
-    have hxabs : |x - l n| = x - l n := abs_of_nonneg hxnonneg
-    have := lt_of_le_of_lt (le_of_eq hxabs) hxln'
-    simpa [abs_sub_comm] using this
-  -- Monotonie: n ≥ N ⇒ 1/(n+1) ≤ 1/(N+1)
-  have hmono : (1 : ℝ) / (n + 1) ≤ (1 : ℝ) / (N + 1) := by
-    have hle : (N : ℝ) + 1 ≤ (n : ℝ) + 1 :=
-      add_le_add_right (by exact_mod_cast hn : (N : ℝ) ≤ n) 1
-    have hposN : 0 < (N : ℝ) + 1 := by
-      have : (0 : ℝ) ≤ (N : ℝ) := by exact_mod_cast Nat.zero_le N
-      linarith
-    simpa [one_div] using (one_div_le_one_div_of_le hposN hle)
-  -- Kettenabschluss
-  have : dist (l n) x < ε := by
-    have : |l n - x| < (1 : ℝ) / (N + 1) := lt_of_lt_of_le habs_lt hmono
-    exact lt_of_lt_of_le this (le_of_lt hNlt)
-  simpa [Real.dist_eq] using this
+  -- Monotonie: 1/(n+1) ≤ 1/(N+1) < ε
+  have hmono : 1 / ((n : ℝ) + 1) ≤ 1 / ((N : ℝ) + 1) :=
+    one_div_le_one_div_of_le_nat (N := N) (n := n) hn
+  exact lt_of_le_of_lt hmono hN
 
-/-- Linksseitiger Limes: aus `l ⟶ x` und `l n < x` folgt `l ⟶ 𝓝[<] x`. -/
-lemma tendsto_left (l : ℕ → ℝ) (x : ℝ)
-    (hl : ∀ n : ℕ, l n ∈ Ioo (x - (1 : ℝ) / (n + 1)) x) :
-    Tendsto l atTop (𝓝[<] x) := by
-  have h_tend : Tendsto l atTop (𝓝 x) := tendsto_to_x l x hl
-  have h_in : ∀ᶠ n in atTop, l n ∈ Iio x :=
-    Filter.Eventually.of_forall (fun n => (hl n).2)
-  have h_pr : Tendsto l atTop (𝓟 (Iio x)) :=
-    tendsto_principal.2 h_in
-  have : Tendsto l atTop ((𝓝 x) ⊓ 𝓟 (Iio x)) :=
-    (tendsto_inf.2 ⟨h_tend, h_pr⟩)
-  simpa [nhdsWithin] using this
+/-- Auch als `≤ ε`-Variante (nützlich bei geschlossenen Schranken). -/
+lemma eventually_one_div_succ_le {ε : ℝ} (hε : 0 < ε) :
+    ∀ᶠ n : ℕ in atTop, 1 / (n+1 : ℝ) ≤ ε := by
+  have : ∀ᶠ n : ℕ in atTop, 1 / (n+1 : ℝ) < ε := eventually_one_div_succ_lt (ε := ε) hε
+  exact this.mono (by intro n hn; exact le_of_lt hn)
 
-/--
-Wenn `l n ∈ (x - 1/(n+1), x)` für alle `n`, dann gilt:
-Alle Häufungsstellen der Bildmenge `range l` sind entweder `x` selbst
-oder bereits in `range l`.
--/
-lemma closure_range_subset_insert
-    (l : ℕ → ℝ) (x : ℝ)
-    (hl : ∀ n : ℕ, l n ∈ Ioo (x - (1 : ℝ) / (n + 1)) x) :
-    closure (Set.range l) ⊆ ({x} : Set ℝ) ∪ Set.range l := by
-  classical
-  intro y hy
-  by_cases hyx : y = x
-  · exact Or.inl (by simp [hyx])
+end EventuallyOneDiv
 
-  -- y ≤ x, da range l ⊆ Iio x
-  have hy_le_x : y ≤ x := by
-    have : Set.range l ⊆ Iio x := by
-      intro t ht; rcases ht with ⟨n, rfl⟩; exact (hl n).2
-    have : closure (Set.range l) ⊆ closure (Iio x) := closure_mono this
-    have hy' : y ∈ closure (Iio x) := this hy
-    simp [closure_Iio] at hy'
-    exact hy'
-  have hy_lt_x : y < x := lt_of_le_of_ne hy_le_x hyx
 
-  -- ε := (x - y)/3 > 0
-  set ε : ℝ := (x - y) / 3
-  have hεpos : 0 < ε := by
-    have hxmy_pos : 0 < x - y := sub_pos.mpr hy_lt_x
-    exact div_pos hxmy_pos (by norm_num)
+/-! # Abschnitt 4: Reelle `abs`-Umformungen ohne `.mpr` -/
 
-  -- l → x ⇒ schließlich dist(l n, x) < ε
-  -- (tendsto_to_x ist ein kleines Hilfslemma, das du ggf. schon hast;
-  --  sonst kann ich es dir separat liefern.)
-  have h_tend : Tendsto l atTop (𝓝 x) := tendsto_to_x l x hl
-  have hN1 : ∀ᶠ n in atTop, dist (l n) x < ε :=
-    (Metric.tendsto_nhds.mp h_tend) _ hεpos
+section RealAbsTricks
 
-  -- Dreiecksungleichung ⇒ schließlich dist(l n, y) ≥ 2ε
-  have hfar : ∀ᶠ n in atTop, dist (l n) y ≥ 2 * ε := by
-    filter_upwards [hN1] with n hn
-    have tri : dist x y ≤ dist (l n) y + dist (l n) x := by
-      simpa [dist_comm, add_comm] using dist_triangle x (l n) y
-    have tri' : dist x y - dist (l n) x ≤ dist (l n) y :=
-      by simpa [sub_le_iff_le_add] using tri
-    have hlower : dist x y - ε ≤ dist (l n) y :=
-      le_trans (sub_le_sub_left (le_of_lt hn) _) tri'
-    have hxysimp : dist x y = x - y := by
-      simp [Real.dist_eq, abs_of_nonneg (sub_nonneg.mpr hy_le_x)]
-    have : 2 * ε ≤ dist (l n) y := by
-      have : x - y - ε = 2 * ε := by
-        have : ε = (x - y) / 3 := rfl; ring
-      simpa [hxysimp, this] using hlower
-    exact this
+variable {x y ε : ℝ}
 
-  -- Wähle einen Zeugen im Ball(y, ε) ∩ range l
-  have hopen : IsOpen (Metric.ball y ε) := Metric.isOpen_ball
-  have hyball : y ∈ Metric.ball y ε := by
-    simp [Metric.mem_ball, dist_self, hεpos]
-  have hnonempty : (Metric.ball y ε ∩ Set.range l).Nonempty :=
-    (mem_closure_iff.1 hy) _ hopen hyball
-  rcases hnonempty with ⟨z, hz⟩
-  rcases hz.2 with ⟨n, rfl⟩
+/-- Aus `y < x` und `x - y < ε` folgt `|y - x| < ε`. -/
+lemma abs_sub_of_right_lt (hyr : y < x) (h : x - y < ε) : |y - x| < ε := by
+  have hx0 : 0 ≤ x - y := sub_nonneg.mpr (le_of_lt hyr)
+  have : |x - y| = x - y := abs_of_nonneg hx0
+  simpa [abs_sub_comm, this] using h
 
-  -- Entweder n groß ⇒ Widerspruch, oder n klein ⇒ y ist Wert der endlichen Anfangsmenge
-  rcases (Filter.eventually_atTop.1 hfar) with ⟨N0, hN0⟩
-  by_cases hge : N0 ≤ n
-  · -- großer Index: 2ε ≤ dist(l n, y), aber l n ∈ Ball(y, ε) — Widerspruch
-    have hbig : 2 * ε ≤ dist (l n) y := hN0 n hge
-    have hzBall : dist (l n) y < ε := by
-      -- direkt diese Richtung nehmen
-      simpa [Metric.mem_ball, Real.dist_eq] using hz.1
-    have hεle : ε ≤ 2 * ε := by
-      have : (0 : ℝ) ≤ ε := le_of_lt hεpos; nlinarith
-    exact (not_lt_of_ge (le_trans hεle hbig)) hzBall |> False.elim
-  · -- kleiner Index: n < N0.
-    -- Zwei Fälle: entweder y = l m für ein m < N0 (fertig),
-    -- oder y ist von allen {l m | m<N0} positiv entfernt; dann kleinerer Ball.
-    set T : Finset ℕ := Finset.range N0
-    by_cases hy_in_T : ∃ m ∈ T, y = l m
-    · rcases hy_in_T with ⟨m, hmT, hym⟩
-      exact Or.inr ⟨m, hym.symm⟩
-    · -- y ≠ l m für alle m < N0 ⇒ min. Abstand δ' > 0
-      let D : Finset ℝ := T.image (fun m => dist (l m) y)
-      have hDmem : ∀ m ∈ T, dist (l m) y ∈ D := by
-        intro m hm; exact Finset.mem_image.mpr ⟨m, hm, rfl⟩
-      have hDpos : ∀ m ∈ T, 0 < dist (l m) y := by
-        intro m hm
-        have hne_ym : y ≠ l m := by
-          intro h; exact hy_in_T ⟨m, hm, h⟩
-        exact dist_pos.mpr (by simpa [eq_comm] using hne_ym)
+/-- Aus `x < y` und `y - x < ε` folgt `|y - x| < ε`. -/
+lemma abs_sub_of_left_lt (hxl : x < y) (h : y - x < ε) : |y - x| < ε := by
+  have hx0 : 0 ≤ y - x := sub_nonneg.mpr (le_of_lt hxl)
+  have : |y - x| = y - x := abs_of_nonneg hx0
+  simpa [this] using h
 
-      -- Splitte Fälle: T leer oder nicht leer
-      by_cases hT : T.Nonempty
-      · -- **Fall 1: T ≠ ∅**
-        have hDne : D.Nonempty := by
-          rcases hT with ⟨m0, hm0⟩
-          exact ⟨dist (l m0) y, hDmem m0 hm0⟩
-        -- alle D-Elemente sind > 0
-        have hDpos' : ∀ d ∈ D, 0 < d := by
-          intro d hd
-          rcases Finset.mem_image.mp hd with ⟨m, hm, rfl⟩
-          exact hDpos m hm
-        -- δ' = Minimum von D
-        let δ' : ℝ := D.min' hDne
-        have hδ'pos : 0 < δ' := by
-          have hmem : δ' ∈ D := Finset.min'_mem _ hDne
-          exact hDpos' δ' hmem
+/-- Komfortform: Aus `x - ε < y` und `y < x + ε` folgt `|y - x| < ε`. -/
+lemma abs_lt_of_between (h₁ : x - ε < y) (h₂ : y < x + ε) : |y - x| < ε := by
+  -- rechte Seite: `y < x + ε` ⇒ `y - x < ε`
+  have hr : y - x < ε := by
+    have := sub_lt_iff_lt_add'.mpr h₂
+    -- `sub_lt_iff_lt_add'` : `a - b < c ↔ a < c + b`
+    -- Wir brauchen `y - x < ε` ; aus `y < x + ε` folgt direkt:
+    simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using this
+  -- linke Seite: `x - ε < y` ⇒ `x - y < ε` ⇒ |y - x| < ε
+  have hl : x - y < ε := by
+    -- Umstellen: `x - ε < y` ↔ `x - y < ε` via `x < ε + y`
+    have : x < ε + y := by simpa [add_comm] using sub_lt_iff_lt_add'.mp h₁
+    -- daraus folgt `x - y < ε`
+    simpa [sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using sub_lt_iff_lt_add'.mpr this
+  -- Nun Fallunterscheidung `y ≤ x` oder `x ≤ y`
+  by_cases hxy : y ≤ x
+  · -- dann `y < x` oder `y = x`. In beiden Fällen reicht `x - y < ε`.
+    have : |y - x| = x - y := by
+      have : 0 ≤ x - y := sub_nonneg.mpr hxy
+      simpa [abs_sub_comm] using (abs_of_nonneg this)
+    -- Aus `hl : x - y < ε`
+    simpa [this] using hl
+  · -- `¬ y ≤ x` ⇒ `x < y`. Dann reicht `y - x < ε`.
+    have hxl : x < y := lt_of_le_of_ne (le_of_not_ge hxy) (ne_comm.mp ?hne)
+    · exact abs_sub_of_left_lt hxl hr
+    · -- `hne : y ≠ x`
+      intro hEq; exact hxy (le_of_eq hEq)
 
-        -- δ₀ := min ε (δ'/2)
-        set δ₀ : ℝ := min ε (δ' / 2)
-        have hδ₀pos : 0 < δ₀ := lt_min_iff.mpr ⟨hεpos, half_pos hδ'pos⟩
+end RealAbsTricks
 
-        -- (Ball(y, δ₀) ∩ range l) = ∅
-        have hEmpty : (Metric.ball y δ₀ ∩ Set.range l) = (∅ : Set ℝ) := by
-          apply Set.eq_empty_iff_forall_notMem.mpr
-          intro z hz
-          rcases hz with ⟨hzBall, ⟨m, rfl⟩⟩
-          by_cases hm' : m < N0
-          · -- m < N0 ⇒ dist(l m, y) ≥ δ' ≥ 2*(δ'/2) ≥ 2*δ₀ ⇒ nicht im Ball
-            have hmT : m ∈ T := by
-              simpa [T, Finset.mem_range] using hm'
-            -- min' ≤ jedes Element der Bildmenge
-            have hmin_le : D.min' hDne ≤ dist (l m) y :=
-              Finset.min'_le (s := D) (x := dist (l m) y) (H2 := hDmem m hmT)
-            have hδ'le : δ' ≤ dist (l m) y := by
-              simpa [δ'] using hmin_le
-            -- δ₀ ≤ δ'/2 ⇒ 2 δ₀ ≤ 2 (δ'/2) = δ'
-            have hδ₀le : δ₀ ≤ δ' / 2 := min_le_right _ _
-            have hle2' : 2 * δ₀ ≤ 2 * (δ' / 2) :=
-              mul_le_mul_of_nonneg_left hδ₀le (by norm_num : 0 ≤ (2:ℝ))
-            have hge : 2 * δ₀ ≤ dist (l m) y :=
-              le_trans hle2' (by simpa using (le_trans (le_of_eq (by ring)) hδ'le))
-            -- Widerspruch mit Ball-Bedingung
-            have hzlt : dist (l m) y < δ₀ := by
-              simpa [Metric.mem_ball, Real.dist_eq] using hzBall
-            -- elementar: δ₀ ≤ 2 δ₀
-            have hle2 : δ₀ ≤ 2 * δ₀ := by
-              have hnonneg : 0 ≤ δ₀ := le_of_lt hδ₀pos
-              have : (1 : ℝ) ≤ 2 := by norm_num
-              simpa [one_mul] using (mul_le_mul_of_nonneg_right this hnonneg)
-            exact (not_lt_of_ge (le_trans hle2 hge)) hzlt
-          · -- m ≥ N0 ⇒ dist(l m, y) ≥ 2ε ≥ ε ≥ δ₀ ⇒ nicht im Ball
-            have hge' : N0 ≤ m := le_of_not_gt hm'
-            have hbig : 2 * ε ≤ dist (l m) y := hN0 m hge'
-            have hεδ : δ₀ ≤ ε := min_le_left _ _
-            have : δ₀ ≤ dist (l m) y :=
-              le_trans hεδ (le_trans (by
-                have : (0 : ℝ) ≤ ε := le_of_lt hεpos; nlinarith) hbig)
-            exact (not_lt_of_ge this) (by
-              simpa [Metric.mem_ball, Real.dist_eq] using hzBall)
 
-        -- Widerspruch zur Abschluss-Charakterisierung
-        have : (Metric.ball y δ₀ ∩ Set.range l).Nonempty :=
-          (mem_closure_iff.1 hy) _ Metric.isOpen_ball
-            (by simp [Metric.mem_ball, dist_self, hδ₀pos])
-        simp [hEmpty] at this
+/-! # Abschnitt 5: Filter-Utility (Notation) -/
 
-      · -- **Fall 2: T = ∅** ⇒ daraus folgt N0 = 0, also ∀ m, N0 ≤ m
-        have hTempty : T = (∅ : Finset ℕ) := by
-          -- ¬T.Nonempty ↔ T = ∅
-          simp [Finset.nonempty_iff_ne_empty] at hT
-          exact hT
-        have hN0zero : N0 = 0 := by
-          -- aus T = ∅ folgt N0 = 0 (sonst wäre 0 ∈ range N0)
-          by_contra hne
-          have hpos : 0 < N0 := Nat.pos_of_ne_zero hne
-          have : 0 ∈ T := by simp [T, Finset.mem_range, hpos]
-          simp [hTempty] at this
-        -- wähle δ₀ := min ε (1/2)
-        set δ₀ : ℝ := min ε ((1 : ℝ) / 2)
-        have hδ₀pos : 0 < δ₀ := lt_min_iff.mpr ⟨hεpos, by norm_num⟩
-        have hEmpty : (Metric.ball y δ₀ ∩ Set.range l) = (∅ : Set ℝ) := by
-          apply Set.eq_empty_iff_forall_notMem.mpr
-          intro z hz
-          rcases hz with ⟨hzBall, ⟨m, rfl⟩⟩
-          -- aus N0=0 folgt N0 ≤ m
-          have hge' : N0 ≤ m := by simp [hN0zero]
-          have hbig : 2 * ε ≤ dist (l m) y := hN0 m hge'
-          have hεδ : δ₀ ≤ ε := min_le_left _ _
-          have : δ₀ ≤ dist (l m) y :=
-            le_trans hεδ (le_trans (by
-              have : (0 : ℝ) ≤ ε := le_of_lt hεpos; nlinarith) hbig)
-          exact (not_lt_of_ge this) (by
-            simpa [Metric.mem_ball, Real.dist_eq] using hzBall)
-        -- Widerspruch
-        have : (Metric.ball y δ₀ ∩ Set.range l).Nonempty :=
-          (mem_closure_iff.1 hy) _ Metric.isOpen_ball
-            (by simp [Metric.mem_ball, dist_self, hδ₀pos])
-        simp [hEmpty] at this
-end PerfectSubset.CompactSubsets
+section FilterUtilities
+
+/-- Stabile Variante von `Filter.Eventually.of_forall`. -/
+lemma eventually_of_forall {α : Type*} {l : Filter α} {P : α → Prop}
+    (h : ∀ x, P x) : ∀ᶠ x in l, P x :=
+  Filter.Eventually.of_forall h
+
+end FilterUtilities
+
+
+/-! # Abschnitt 6: Kleine Helfer für Folgen `l : ℕ → ℝ` -/
+
+section SequenceHelpers
+
+variable {l : ℕ → ℝ} {x ε : ℝ} {n N : ℕ}
+
+/-- Wenn `N ≤ n`, dann gilt `1/(n+1) ≤ 1/(N+1)` (bereits oben bewiesen, hier Alias). -/
+lemma one_div_succ_mono_nat (h : N ≤ n) :
+    1 / (n+1 : ℝ) ≤ 1 / (N+1 : ℝ) := by
+  simpa using one_div_le_one_div_of_le_nat (N := N) (n := n) h
+
+/-- Bequeme Umformung: aus `l n < x` und `x - l n < ε` folgt `|l n - x| < ε`. -/
+lemma abs_of_right_gap_lt (hr : l n < x) (hgap : x - l n < ε) : |l n - x| < ε :=
+  abs_sub_of_right_lt (y := l n) (x := x) hr hgap
+
+/-- Bequeme Umformung: aus `x < l n` und `l n - x < ε` folgt `|l n - x| < ε`. -/
+lemma abs_of_left_gap_lt (hl : x < l n) (hgap : l n - x < ε) : |l n - x| < ε :=
+  abs_sub_of_left_lt (x := x) (y := l n) hl hgap
+
+end SequenceHelpers
+
+end PerfectSubset
