@@ -115,7 +115,6 @@ lemma nu_eq_kappa_on_compact {K : Set ℝ}
   -- Jetzt stimmt der Index von `nu` mit dem aus `inner_regular_on_compact` überein
   simpa [nu, hcap] using S.inner_regular_on_compact (K := K) hKc hKsub
 
-
 /-- Komplementformel für kompaktes `K ⊆ I01`: `κ(I01 \ K) = 1 - κ(K)`. -/
 lemma kappa_compl_compact {K : Set ℝ}
   (hKc : IsCompact K) (hKsub : K ⊆ I01) :
@@ -193,27 +192,28 @@ lemma zero_le_nu (A : Set ℝ) : 0 ≤ S.nu A := by
 /-- Obere Schranke `ν(A) ≤ 1` (weil alle `κ(T) ≤ κ(I01) = 1`). -/
 lemma nu_le_one (A : Set ℝ) : S.nu A ≤ 1 := by
   classical
+  -- Indexmenge nach oben durch 1 beschränkt
   have bdd :
-    BddAbove {κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ A ∩ I01 ∧ S.kappa T = κ} := by
+      BddAbove {κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ A ∩ I01 ∧ S.kappa T = κ} := by
     refine ⟨1, ?_⟩
     intro z hz
     rcases hz with ⟨T, _, hTsub, rfl⟩
     have : S.kappa T ≤ S.kappa I01 :=
       S.mono_kappa (by intro t ht; exact (hTsub ht).2)
-    simp [S.kappa_I01] at this
-    exact this
+    simpa [S.kappa_I01] using this
+  -- und nicht leer (T = ∅)
   have hne :
-    ({κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ A ∩ I01 ∧ S.kappa T = κ}).Nonempty := by
+      ({κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ A ∩ I01 ∧ S.kappa T = κ}).Nonempty := by
     refine ⟨0, ?_⟩
     refine ⟨∅, isCompact_empty, ?_, by simp [S.kappa_empty]⟩
     intro x hx; cases hx
+  -- daraus csSup ≤ 1
   have h := csSup_le hne (by
     intro z hz
     rcases hz with ⟨T, _, hTsub, rfl⟩
     have : S.kappa T ≤ S.kappa I01 :=
       S.mono_kappa (by intro t ht; exact (hTsub ht).2)
-    simp [S.kappa_I01] at this
-    exact this)
+    simpa [S.kappa_I01] using this)
   simpa [nu] using h
 
 /-! ### Bequeme Korollare -/
@@ -244,8 +244,7 @@ lemma nu_eq_nu_inter_I01 (A : Set ℝ) : S.nu A = S.nu (A ∩ I01) := by
   simp [S.kappa_I01] at h
   exact h
 
-
-/-! ### Familien-Ergebnis κ(𝓤)+ν(𝓚)=1 -/
+/-! ### Familien-Ergebnis κ(𝓤)+ν(𝓚)=1 und Varianten -/
 
 /-- Komplementfamilie zu 𝓤 in [0,1]. -/
 def KFamily (𝓤 : Set (Set ℝ)) : Set (Set ℝ) := {K | ∃ U ∈ 𝓤, K = I01 \ U}
@@ -254,6 +253,8 @@ def KFamily (𝓤 : Set (Set ℝ)) : Set (Set ℝ) := {K | ∃ U ∈ 𝓤, K = I
 def kappaInf (𝓤 : Set (Set ℝ)) : ℝ := sInf (S.kappa '' 𝓤)
 /-- ν(𝓚) := sup { ν(K) | K ∈ 𝓚 } -/
 def nuSup (𝓚 : Set (Set ℝ)) : ℝ := sSup (S.nu '' 𝓚)
+/-- (neu) κ(𝓚) := sup { κ(K) | K ∈ 𝓚 } -/
+def kappaSup (𝓚 : Set (Set ℝ)) : ℝ := sSup (S.kappa '' 𝓚)
 
 /-- Beschränktheit der κ-Bilder. -/
 lemma kappa_image_bdd
@@ -323,6 +324,75 @@ lemma nu_image_bdd
       simp [S.kappa_I01] at this
       exact this)
 
+/-! ### Kleine Helfer für Infimum/Supremum -/
+
+/-- `κ(U)` liegt in der Bildmenge, daher `inf ≤ κ(U)`. -/
+lemma kappaInf_le_of_mem {𝓤 : Set (Set ℝ)} {U : Set ℝ} (hU : U ∈ 𝓤) :
+  S.kappaInf 𝓤 ≤ S.kappa U := by
+  have hbb : BddBelow (S.kappa '' 𝓤) := by
+    refine ⟨0, ?_⟩
+    intro y hy
+    rcases hy with ⟨V, hV, rfl⟩
+    have : S.kappa ∅ ≤ S.kappa V := S.mono_kappa (by intro x hx; cases hx)
+    simpa [S.kappa_empty] using this
+  have : S.kappa U ∈ (S.kappa '' 𝓤) := ⟨U, hU, rfl⟩
+  simpa [kappaInf] using (csInf_le hbb this)
+
+/-- `ν(K)` liegt in der Bildmenge, daher `ν(K) ≤ sup`. -/
+lemma le_nuSup_of_mem
+  {𝓚 : Set (Set ℝ)} {K : Set ℝ}
+  (hK : K ∈ 𝓚)
+  (hb : BddAbove (S.nu '' 𝓚)) :
+  S.nu K ≤ S.nuSup 𝓚 := by
+  have : S.nu K ∈ (S.nu '' 𝓚) := ⟨K, hK, rfl⟩
+  simpa [nuSup] using (le_csSup hb this)
+
+/-! ### Gleichheit `ν(𝓚) = κ(𝓚)` für die Komplementfamilie -/
+
+/-- Für die Komplementfamilie `𝓚 = KFamily 𝓤` gilt punktweise `ν(K) = κ(K)`. -/
+lemma nu_eq_kappa_on_KFamily
+  (𝓤 : Set (Set ℝ))
+  (hUopen : ∀ {U}, U ∈ 𝓤 → IsOpen U)
+  (_ : ∀ {U}, U ∈ 𝓤 → U ⊆ I01) :
+  ∀ {K}, K ∈ KFamily 𝓤 → S.nu K = S.kappa K := by
+  intro K hK
+  rcases hK with ⟨U, hU, rfl⟩
+  -- `K = I01 \ U` ist abgeschlossen in `[0,1]` und damit kompakt
+  have hclosed : IsClosed (I01 \ U) := by
+    have : IsClosed (I01 ∩ Uᶜ) := isClosed_Icc.inter (hUopen hU).isClosed_compl
+    simpa [Set.diff_eq] using this
+  have hsub : (I01 \ U) ⊆ I01 := by intro x hx; exact hx.1
+  have hKc : IsCompact (I01 \ U) :=
+    NaiveLength.compact_of_closed_subset_I01 hclosed hsub
+  simpa using S.nu_eq_kappa_on_compact (K := I01 \ U) hKc hsub
+
+/-- Damit sind auch die Bildmengen identisch: `{ν K | K∈𝓚} = {κ K | K∈𝓚}`. -/
+lemma image_nu_eq_image_kappa_on_KFamily
+  (𝓤 : Set (Set ℝ))
+  (hUopen : ∀ {U}, U ∈ 𝓤 → IsOpen U)
+  (hUsub : ∀ {U}, U ∈ 𝓤 → U ⊆ I01) :
+  (S.nu '' KFamily 𝓤) = (S.kappa '' KFamily 𝓤) := by
+  ext r; constructor
+  · intro hr
+    rcases hr with ⟨K, hK, rfl⟩
+    have h := S.nu_eq_kappa_on_KFamily (𝓤 := 𝓤) hUopen hUsub hK
+    exact ⟨K, hK, h.symm⟩
+  · intro hr
+    rcases hr with ⟨K, hK, rfl⟩
+    have h := S.nu_eq_kappa_on_KFamily (𝓤 := 𝓤) hUopen hUsub hK
+    exact ⟨K, hK, h⟩
+
+/-- Folglich stimmen die Supremumswerte über `𝓚` überein: `ν(𝓚) = κ(𝓚)`. -/
+lemma nuSup_eq_kappaSup_on_KFamily
+  (𝓤 : Set (Set ℝ))
+  (hUopen : ∀ {U}, U ∈ 𝓤 → IsOpen U)
+  (hUsub : ∀ {U}, U ∈ 𝓤 → U ⊆ I01) :
+  S.nuSup (KFamily 𝓤) = S.kappaSup (KFamily 𝓤) := by
+  simpa [nuSup, kappaSup]
+    using congrArg sSup (S.image_nu_eq_image_kappa_on_KFamily (𝓤 := 𝓤) hUopen hUsub)
+
+/-! ### Hauptsatz: κ(𝓤) + ν(𝓚) = 1 -/
+
 /-- Hauptsatz: κ(𝓤) + ν(𝓚) = 1 für 𝓚 = { [0,1]\U | U∈𝓤 }. -/
 theorem kappaInf_add_nuSup_eq_one
   (𝓤 : Set (Set ℝ))
@@ -333,6 +403,7 @@ theorem kappaInf_add_nuSup_eq_one
   S.kappaInf 𝓤 + S.nuSup 𝓚 = 1 := by
   intro 𝓚
   classical
+  -- Beschränktheiten
   have hBddκ := S.kappa_image_bdd 𝓤 hUsubI
   have hneK : 𝓚.Nonempty := by
     rcases hUnonempty with ⟨U0, hU0⟩
@@ -343,6 +414,7 @@ theorem kappaInf_add_nuSup_eq_one
   rcases hBddκ with ⟨hκlb, hκub⟩
   rcases hBddν with ⟨_, hνub⟩
 
+  -- Kürzel
   set α := S.kappaInf 𝓤
   set β := S.nuSup 𝓚
   have hαdef : α = sInf (S.kappa '' 𝓤) := rfl
@@ -364,6 +436,7 @@ theorem kappaInf_add_nuSup_eq_one
         exact this
       have : 1 - β ≤ 1 - S.nu (I01 \ U) := sub_le_sub_left hνleβ 1
       exact hκU ▸ this
+    -- inf ≤ alle κ(U) ⇒ 1 - β ≤ α
     have hne : (S.kappa '' 𝓤).Nonempty := by
       rcases hUnonempty with ⟨U0, hU0⟩
       exact ⟨S.kappa U0, ⟨U0, hU0, rfl⟩⟩
@@ -376,17 +449,20 @@ theorem kappaInf_add_nuSup_eq_one
     have hKbound : ∀ {K}, K ∈ 𝓚 → S.nu K ≤ 1 - α := by
       intro K hK
       rcases hK with ⟨U, hU, rfl⟩
+      -- α ≤ κ(U)
       have hMem : S.kappa U ∈ (S.kappa '' 𝓤) := ⟨U, hU, rfl⟩
       have hαleκU : α ≤ S.kappa U := by
         have := csInf_le hκlb hMem
-        simp
+        simp [] at this
         exact this
+      -- ν(I01\U) = 1 - κ(U) ≤ 1 - α
       have hsum : S.kappa U + S.nu (I01 \ U) = 1 :=
         S.kappa_add_nu_of_open_subset_I01 (U := U) (hUo := hUopens hU) (hUsub := hUsubI hU)
       have hν : S.nu (I01 \ U) = 1 - S.kappa U :=
         eq_sub_of_add_eq (by simpa [add_comm] using hsum)
       have : 1 - S.kappa U ≤ 1 - α := sub_le_sub_left hαleκU (1 : ℝ)
       simpa [hν] using this
+    -- csSup ≤ 1 - α
     have hne' : (S.nu '' 𝓚).Nonempty := by
       rcases hUnonempty with ⟨U0, hU0⟩
       exact ⟨S.nu (I01 \ U0), ⟨I01 \ U0, ⟨U0, hU0, rfl⟩, rfl⟩⟩
@@ -410,6 +486,104 @@ theorem kappaInf_add_nuSup_eq_one
   S.kappa A = sInf (S.kappa '' { U : Set ℝ | IsOpen U ∧ A ⊆ U }) :=
   S.outer_open_sup A
 
+lemma kappaInf_add_kappaSup_on_KFamily_eq_one
+  (𝓤 : Set (Set ℝ))
+  (hUopen : ∀ {U}, U ∈ 𝓤 → IsOpen U)
+  (hUsub : ∀ {U}, U ∈ 𝓤 → U ⊆ I01)
+  (hUnonempty : 𝓤.Nonempty) :
+  let 𝓚 := KFamily 𝓤
+  S.kappaInf 𝓤 + S.kappaSup 𝓚 = 1 := by
+  intro 𝓚
+  have := S.kappaInf_add_nuSup_eq_one 𝓤 hUopen hUsub hUnonempty
+  -- ersetze νSup durch κSup über der Komplementfamilie
+  simpa [S.nuSup_eq_kappaSup_on_KFamily 𝓤 hUopen hUsub] using this
+
+
 end KappaSystem
+
+/-- Für eine Familie `𝓤` von Teilmengen von `[0,1]` (jeweils `U ⊆ I01`)
+    und `𝓚 = { I01 \ U | U ∈ 𝓤 }` gilt:
+    `(⋂₀ 𝓤) ∪ ⋃₀ 𝓚 = I01`.
+    (Die Annahme `𝓤.Nonempty` sorgt dafür, dass `⋂₀ 𝓤 ⊆ I01`.) -/
+lemma interU_union_KFamily_eq_I01
+  (𝓤 : Set (Set ℝ))
+  (hUsub : ∀ ⦃U⦄, U ∈ 𝓤 → U ⊆ I01)
+  (hUnonempty : 𝓤.Nonempty) :
+  (sInter 𝓤) ∪ sUnion (NaiveLength.KappaSystem.KFamily 𝓤) = I01 := by
+  classical
+  -- Inklusion "⊆"
+  have hsubset : (sInter 𝓤) ∪ sUnion (NaiveLength.KappaSystem.KFamily 𝓤) ⊆ I01 := by
+    intro x hx
+    rcases hx with hx | hx
+    · -- x ∈ ⋂₀ 𝓤 ⇒ x ∈ U₀ ⊆ I01 für ein U₀ ∈ 𝓤
+      rcases hUnonempty with ⟨U0, hU0⟩
+      have hxU0 : x ∈ U0 := (mem_sInter.mp hx) U0 hU0
+      exact hUsub hU0 hxU0
+    · -- x ∈ ⋃₀ 𝓚 ⇒ ∃ U∈𝓤, x ∈ I01 \ U ⇒ x ∈ I01
+      rcases mem_sUnion.mp hx with ⟨K, hK, hxK⟩
+      rcases hK with ⟨U, hU, rfl⟩
+      exact hxK.1
+  -- Inklusion "⊇"
+  have hsupset : I01 ⊆ (sInter 𝓤) ∪ sUnion (NaiveLength.KappaSystem.KFamily  𝓤) := by
+    intro x hxI
+    by_cases hAll : ∀ U ∈ 𝓤, x ∈ U
+    · -- x liegt in allen U ⇒ x ∈ ⋂₀ 𝓤
+      left; exact mem_sInter.mpr hAll
+    · -- sonst ∃ U∈𝓤 mit x ∉ U ⇒ x ∈ I01 \ U ⇒ x ∈ ⋃₀ 𝓚
+      right
+      push_neg at hAll
+      rcases hAll with ⟨U, hU, hxNot⟩
+      exact mem_sUnion.mpr ⟨I01 \ U, ⟨U, hU, rfl⟩, ⟨hxI, hxNot⟩⟩
+  exact le_antisymm hsubset hsupset
+
+open Set
+
+
+/-- Die Familie aller *relativ offenen* Obermengen von `M` in `[0,1]`:
+    Ein `U` gehört dazu genau dann, wenn es ein offenes `O ⊆ ℝ` gibt mit
+    `U = I01 ∩ O` und `M ⊆ U`. -/
+def relOpenSupersets (M : Set ℝ) : Set (Set ℝ) :=
+  {U | ∃ O : Set ℝ, IsOpen O ∧ U = I01 ∩ O ∧ M ⊆ U}
+
+/-- Die Familie `relOpenSupersets M` ist unter endlichen Schnitten abgeschlossen. -/
+lemma relOpenSupersets_closed_under_inter (M : Set ℝ) :
+    ∀ {U₁} (_ : U₁ ∈ relOpenSupersets M) {U₂} (_ : U₂ ∈ relOpenSupersets M),
+      U₁ ∩ U₂ ∈ relOpenSupersets M := by
+  intro U₁ h₁ U₂ h₂
+  rcases h₁ with ⟨O₁, hO₁open, rfl, hM₁⟩
+  rcases h₂ with ⟨O₂, hO₂open, rfl, hM₂⟩
+  refine ⟨O₁ ∩ O₂, hO₁open.inter hO₂open, ?_, ?_⟩
+  · ext x; constructor <;> intro hx
+    · rcases hx with ⟨⟨hxI, hxO₁⟩, ⟨_, hxO₂⟩⟩
+      exact ⟨hxI, ⟨hxO₁, hxO₂⟩⟩
+    · rcases hx with ⟨hxI, hxO⟩
+      exact ⟨⟨hxI, hxO.1⟩, ⟨hxI, hxO.2⟩⟩
+  · intro x hxM
+    exact ⟨hM₁ hxM, hM₂ hxM⟩
+
+/-- **Kernlemma:** Für *jedes* `M ⊆ I01` ist der Schnitt aller relativ offenen
+    Obermengen von `M` genau `M` selbst. -/
+lemma sInter_relOpenSupersets_eq (M : Set ℝ) (hM : M ⊆ I01) :
+    sInter (relOpenSupersets M) = M := by
+  -- `⊆`: jedes `U` der Familie enthält `M`
+  have h_right : M ⊆ sInter (relOpenSupersets M) := by
+    intro x hxM
+    refine mem_sInter.mpr ?_; intro U hU
+    rcases hU with ⟨O, _hOopen, rfl, hMU⟩
+    exact hMU hxM
+  -- `⊇`: Punkte außerhalb von `M` werden durch `U = I01 ∩ {x}ᶜ` ausgeschlossen
+  have h_left : sInter (relOpenSupersets M) ⊆ M := by
+    intro x hxAll
+    by_contra hxNot
+    -- Kandidat: relativ offene Obermenge `U0 := I01 ∩ {x}ᶜ` (kommt aus offenem `O0 := {x}ᶜ`)
+    have hU0 : I01 ∩ ({x}ᶜ) ∈ relOpenSupersets M := by
+      refine ⟨{x}ᶜ, isOpen_compl_singleton, rfl, ?_⟩
+      intro y hyM; exact ⟨hM hyM, by simpa [mem_compl] using ne_of_mem_of_not_mem hyM hxNot⟩
+    -- Da `x` in *allen* `U` der Familie liegt, insbesondere in `U0` — Widerspruch
+    have hxU0 : x ∈ I01 ∩ ({x}ᶜ) := (mem_sInter.mp hxAll) _ hU0
+    exact hxU0.2 (by simp)
+  exact le_antisymm h_left h_right
+
+
 
 end NaiveLength
