@@ -584,6 +584,116 @@ lemma sInter_relOpenSupersets_eq (M : Set ℝ) (hM : M ⊆ I01) :
     exact hxU0.2 (by simp)
   exact le_antisymm h_left h_right
 
+/-- Familie der **relativ offenen** Supersets von `M` in `I01`:
+`U ∈ VFamily M` bedeutet: Es gibt ein offenens `V` (in ℝ) mit `U = I01 ∩ V`
+und `M ⊆ U`. (Dann ist automatisch `U ⊆ I01`.) -/
+def VFamily (M : Set ℝ) : Set (Set ℝ) :=
+  {U | ∃ V : Set ℝ, IsOpen V ∧ U = I01 ∩ V ∧ M ⊆ U}
 
+/-- `VFamily M` ist abgeschlossen unter endlichen Schnitten. -/
+lemma VFamily_inter_mem {M U₁ U₂ : Set ℝ}
+  (h₁ : U₁ ∈ VFamily M) (h₂ : U₂ ∈ VFamily M) :
+  (U₁ ∩ U₂) ∈ VFamily M := by
+  rcases h₁ with ⟨V₁, hV₁open, rfl, hMsub₁⟩
+  rcases h₂ with ⟨V₂, hV₂open, rfl, hMsub₂⟩
+  refine ⟨V₁ ∩ V₂, hV₁open.inter hV₂open, ?_, ?_⟩
+  · -- (I01 ∩ V₁) ∩ (I01 ∩ V₂) = I01 ∩ (V₁ ∩ V₂)
+    ext x; constructor
+    · intro hx
+      rcases hx with ⟨⟨hxI, hxV₁⟩, ⟨_, hxV₂⟩⟩
+      exact ⟨hxI, ⟨hxV₁, hxV₂⟩⟩
+    · intro hx
+      rcases hx with ⟨hxI, hxV⟩
+      exact ⟨⟨hxI, hxV.1⟩, ⟨hxI, hxV.2⟩⟩
+  · -- M ⊆ (I01 ∩ V₁) ∩ (I01 ∩ V₂)
+    intro x hxM
+    have hx₁ := hMsub₁ hxM  -- : x ∈ I01 ∩ V₁
+    have hx₂ := hMsub₂ hxM  -- : x ∈ I01 ∩ V₂
+    have hxI  : x ∈ I01 := hx₁.1
+    have hxV₁ : x ∈ V₁  := hx₁.2
+    have hxV₂ : x ∈ V₂  := hx₂.2
+    exact ⟨⟨hxI, hxV₁⟩, ⟨hxI, hxV₂⟩⟩
+
+/-- **Kernlemma:** `M` ist der Schnitt aller relativ offenen Supersets von `M` in `I01`. -/
+lemma inter_VFamily_eq (M : Set ℝ) (hM : M ⊆ I01) :
+  (⋂₀ VFamily M) = M := by
+  -- Inklusion ⊆
+  have hsubset : (⋂₀ VFamily M) ⊆ M := by
+    intro x hx
+    by_contra hxM
+    -- Wähle `V := {x}ᶜ` offen in ℝ, setze `U := I01 ∩ V`.
+    have hVopen : IsOpen ({x}ᶜ : Set ℝ) :=
+      (isClosed_singleton (x := x)).isOpen_compl
+    let U : Set ℝ := I01 ∩ ({x}ᶜ)
+    have hUmem : U ∈ VFamily M := by
+      refine ⟨{x}ᶜ, hVopen, rfl, ?_⟩
+      -- M ⊆ U, da `x ∉ M`
+      intro y hyM
+      have : y ≠ x := by
+        intro hxy; exact hxM (by simpa [hxy] using hyM)
+      exact ⟨hM hyM, this⟩
+    -- Aus `x ∈ ⋂₀ VFamily M` folgt `x ∈ U`, aber `x ∉ U` – Widerspruch.
+    have hxU : x ∈ U := (mem_sInter.mp hx) U hUmem
+    have hxNotU : x ∉ U := by
+      intro hxU'
+      exact (hxU'.2 rfl)
+    exact hxNotU hxU
+  -- Inklusion ⊇
+  have hsupset : M ⊆ (⋂₀ VFamily M) := by
+    intro x hxM
+    apply mem_sInter.mpr
+    intro U hU
+    rcases hU with ⟨V, _hVopen, hUdef, hMsub⟩
+    -- `M ⊆ U` liefert `x ∈ U`.
+    simpa [hUdef] using hMsub hxM
+  exact le_antisymm hsubset hsupset
+
+/-- Zugehörige `K`-Familie: Komplemente der `V`-Mengen **innerhalb** von `I01`. -/
+def KFamilyOf (M : Set ℝ) : Set (Set ℝ) :=
+  {K | ∃ U ∈ VFamily M, K = I01 \ U}
+
+/-- Komplementformel: `[0,1] \ M = ⋃₀ (KFamilyOf M)`. -/
+lemma compl_eq_union_KFamilyOf (M : Set ℝ) (hM : M ⊆ I01) :
+  I01 \ M = ⋃₀ (KFamilyOf M) := by
+  classical
+  -- Nutze `⋂₀ VFamily M = M` und De-Morgan auf `I01`.
+  have hInt := inter_VFamily_eq (M := M) hM
+  -- Punktweise Argument: für `x ∈ I01`
+  ext x; constructor
+  · intro hx
+    rcases hx with ⟨hxI, hxNotM⟩
+    -- Wähle `U := I01 ∩ {x}ᶜ`
+    have hVopen : IsOpen ({x}ᶜ : Set ℝ) :=
+      (isClosed_singleton (x := x)).isOpen_compl
+    let U : Set ℝ := I01 ∩ ({x}ᶜ)
+    have hUmem : U ∈ VFamily M := by
+      refine ⟨{x}ᶜ, hVopen, rfl, ?_⟩
+      intro y hyM
+      have : y ≠ x := by
+        intro h; exact hxNotM (by simpa [h] using hyM)
+      exact ⟨hM hyM, this⟩
+    -- Dann liegt `x` in `I01 \ U`, also auch in der großen Vereinigung.
+    refine mem_sUnion.mpr ?_
+    refine ⟨I01 \ U, ?_, ?_⟩
+    · exact ⟨U, hUmem, rfl⟩
+    · exact ⟨hxI, fun hU => hU.2 rfl⟩
+
+  · intro hx
+    rcases mem_sUnion.mp hx with ⟨K, hK, hxK⟩
+    rcases hK with ⟨U, hU, rfl⟩
+    rcases hxK with ⟨hxI, hxNotU⟩
+    -- Aus `U ∈ VFamily M` folgt `M ⊆ U`; also `x ∉ M`.
+    rcases hU with ⟨V, _hVopen, hUdef, hMsub⟩
+    refine ⟨hxI, ?_⟩
+    intro hxM
+    -- aus `x ∈ M ⊆ U` und `U = I01 ∩ V` folgt `x ∈ V`
+    have hxU' : x ∈ I01 ∩ V := by
+      have hxU : x ∈ U := hMsub hxM
+      simpa [hUdef] using hxU
+    have hxV : x ∈ V := hxU'.2
+    -- damit `x ∈ U` (weil `U = I01 ∩ V`)
+    have : x ∈ U := by
+      simpa [hUdef] using And.intro hxI hxV
+    exact hxNotU this
 
 end NaiveLength
