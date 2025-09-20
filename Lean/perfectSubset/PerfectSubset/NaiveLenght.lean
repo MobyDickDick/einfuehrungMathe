@@ -94,9 +94,13 @@ lemma mono_nu : ∀ {A B}, A ⊆ B → S.nu A ≤ S.nu B := by
     exact this
   have hneA :
       ({κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ A ∩ I01 ∧ S.kappa T = κ}).Nonempty := by
-    refine ⟨0, ?_⟩
-    refine ⟨∅, isCompact_empty, ?_, by simp [S.kappa_empty]⟩
-    intro x hx; cases hx
+    use 0
+    use ∅
+    constructor
+    · exact isCompact_empty
+    · constructor
+      · intro x hx; cases hx
+      · simp [S.kappa_empty]
   apply csSup_le hneA
   intro x hx
   rcases hx with ⟨T, hTc, hTsub, rfl⟩
@@ -112,7 +116,6 @@ lemma nu_eq_kappa_on_compact {K : Set ℝ}
   S.nu K = S.kappa K := by
   classical
   have hcap : K ∩ I01 = K := NaiveLength.inter_I01_of_subset hKsub
-  -- Jetzt stimmt der Index von `nu` mit dem aus `inner_regular_on_compact` überein
   simpa [nu, hcap] using S.inner_regular_on_compact (K := K) hKc hKsub
 
 /-- Komplementformel für kompaktes `K ⊆ I01`: `κ(I01 \ K) = 1 - κ(K)`. -/
@@ -167,17 +170,20 @@ lemma kappa_bounds_of_subset_I01 {A : Set ℝ} (hA : A ⊆ I01) :
   have h1 : S.kappa A ≤ S.kappa I01 := S.mono_kappa hA
   have : S.kappa ∅ ≤ S.kappa A := S.mono_kappa (by intro x hx; cases hx)
   have hnonneg : 0 ≤ S.kappa A := by
-    simp [S.kappa_empty] at this
+    rw [S.kappa_empty] at this
     exact this
-  exact ⟨hnonneg, by simpa [S.kappa_I01] using h1⟩
+  exact ⟨hnonneg, by simpa only [S.kappa_I01] using h1⟩
 
 /-- Generelle untere Schranke `0 ≤ ν(A)` (weil `T=∅` im Index liegt). -/
 lemma zero_le_nu (A : Set ℝ) : 0 ≤ S.nu A := by
   classical
   have idx0 :
     0 ∈ {κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ A ∩ I01 ∧ S.kappa T = κ} := by
-    refine ⟨∅, isCompact_empty, ?_, by simp [S.kappa_empty]⟩
-    intro x hx; cases hx
+    refine ⟨∅, isCompact_empty, ?_, ?_⟩
+    · -- ∅ ⊆ A ∩ I01
+      intro x hx; cases hx
+    · -- S.kappa ∅ = 0
+      exact S.kappa_empty
   have bdd :
     BddAbove {κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ A ∩ I01 ∧ S.kappa T = κ} := by
     refine ⟨1, ?_⟩
@@ -192,7 +198,6 @@ lemma zero_le_nu (A : Set ℝ) : 0 ≤ S.nu A := by
 /-- Obere Schranke `ν(A) ≤ 1` (weil alle `κ(T) ≤ κ(I01) = 1`). -/
 lemma nu_le_one (A : Set ℝ) : S.nu A ≤ 1 := by
   classical
-  -- Indexmenge nach oben durch 1 beschränkt
   have bdd :
       BddAbove {κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ A ∩ I01 ∧ S.kappa T = κ} := by
     refine ⟨1, ?_⟩
@@ -200,14 +205,15 @@ lemma nu_le_one (A : Set ℝ) : S.nu A ≤ 1 := by
     rcases hz with ⟨T, _, hTsub, rfl⟩
     have : S.kappa T ≤ S.kappa I01 :=
       S.mono_kappa (by intro t ht; exact (hTsub ht).2)
-    simpa [S.kappa_I01] using this
-  -- und nicht leer (T = ∅)
+    simpa only [S.kappa_I01] using this
   have hne :
-      ({κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ A ∩ I01 ∧ S.kappa T = κ}).Nonempty := by
+    ({κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ A ∩ I01 ∧ S.kappa T = κ}).Nonempty := by
     refine ⟨0, ?_⟩
-    refine ⟨∅, isCompact_empty, ?_, by simp [S.kappa_empty]⟩
-    intro x hx; cases hx
-  -- daraus csSup ≤ 1
+    refine ⟨∅, isCompact_empty, ?_, ?_⟩
+    · -- ⊆-Teil
+      intro x hx; cases hx
+    · -- Gleichheit κ(∅)=0
+      simp [S.kappa_empty]
   have h := csSup_le hne (by
     intro z hz
     rcases hz with ⟨T, _, hTsub, rfl⟩
@@ -266,13 +272,13 @@ lemma kappa_image_bdd
     intro y hy
     rcases hy with ⟨U, hU, rfl⟩
     have : S.kappa ∅ ≤ S.kappa U := S.mono_kappa (by intro x hx; cases hx)
-    simp [S.kappa_empty] at this
+    rw [S.kappa_empty] at this
     exact this
   · refine ⟨1, ?_⟩
     intro y hy
     rcases hy with ⟨U, hU, rfl⟩
     have : S.kappa U ≤ S.kappa I01 := S.mono_kappa (hUsubI hU)
-    simpa [S.kappa_I01] using this
+    simpa only [S.kappa_I01] using this
 
 /-- Beschränktheit der ν-Bilder. -/
 lemma nu_image_bdd
@@ -285,44 +291,11 @@ lemma nu_image_bdd
   · refine ⟨0, ?_⟩
     intro y hy
     rcases hy with ⟨K, hK, rfl⟩
-    have idx0 :
-      0 ∈ {κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ K ∩ I01 ∧ S.kappa T = κ} := by
-      refine ⟨∅, isCompact_empty, ?_, by simp [S.kappa_empty]⟩
-      intro x hx; cases hx
-    have bddAboveIdx :
-      BddAbove {κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ K ∩ I01 ∧ S.kappa T = κ} := by
-      refine ⟨1, ?_⟩
-      intro z hz
-      rcases hz with ⟨T, _hTc, hTsub, rfl⟩
-      have : S.kappa T ≤ S.kappa I01 :=
-        S.mono_kappa (by intro t ht; exact (hTsub ht).2)
-      simp [S.kappa_I01] at this
-      exact this
-    exact le_csSup bddAboveIdx idx0
+    exact S.zero_le_nu K
   · refine ⟨1, ?_⟩
     intro y hy
     rcases hy with ⟨K, hK, rfl⟩
-    have bddAboveIdx :
-      BddAbove {κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ K ∩ I01 ∧ S.kappa T = κ} := by
-      refine ⟨1, ?_⟩
-      intro z hz
-      rcases hz with ⟨T, _hTc, hTsub, rfl⟩
-      have : S.kappa T ≤ S.kappa I01 :=
-        S.mono_kappa (by intro t ht; exact (hTsub ht).2)
-      simp [S.kappa_I01] at this
-      exact this
-    have hneIdx :
-      ({κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ K ∩ I01 ∧ S.kappa T = κ}).Nonempty := by
-      refine ⟨0, ?_⟩
-      refine ⟨∅, isCompact_empty, ?_, by simp [S.kappa_empty]⟩
-      intro x hx; cases hx
-    exact csSup_le hneIdx (by
-      intro z hz
-      rcases hz with ⟨T, _hTc, hTsub, rfl⟩
-      have : S.kappa T ≤ S.kappa I01 :=
-        S.mono_kappa (by intro t ht; exact (hTsub ht).2)
-      simp [S.kappa_I01] at this
-      exact this)
+    exact S.nu_le_one K
 
 /-! ### Kleine Helfer für Infimum/Supremum -/
 
@@ -357,7 +330,6 @@ lemma nu_eq_kappa_on_KFamily
   ∀ {K}, K ∈ KFamily 𝓤 → S.nu K = S.kappa K := by
   intro K hK
   rcases hK with ⟨U, hU, rfl⟩
-  -- `K = I01 \ U` ist abgeschlossen in `[0,1]` und damit kompakt
   have hclosed : IsClosed (I01 \ U) := by
     have : IsClosed (I01 ∩ Uᶜ) := isClosed_Icc.inter (hUopen hU).isClosed_compl
     simpa [Set.diff_eq] using this
@@ -414,7 +386,6 @@ theorem kappaInf_add_nuSup_eq_one
   rcases hBddκ with ⟨hκlb, hκub⟩
   rcases hBddν with ⟨_, hνub⟩
 
-  -- Kürzel
   set α := S.kappaInf 𝓤
   set β := S.nuSup 𝓚
   have hαdef : α = sInf (S.kappa '' 𝓤) := rfl
@@ -436,7 +407,6 @@ theorem kappaInf_add_nuSup_eq_one
         exact this
       have : 1 - β ≤ 1 - S.nu (I01 \ U) := sub_le_sub_left hνleβ 1
       exact hκU ▸ this
-    -- inf ≤ alle κ(U) ⇒ 1 - β ≤ α
     have hne : (S.kappa '' 𝓤).Nonempty := by
       rcases hUnonempty with ⟨U0, hU0⟩
       exact ⟨S.kappa U0, ⟨U0, hU0, rfl⟩⟩
@@ -462,7 +432,6 @@ theorem kappaInf_add_nuSup_eq_one
         eq_sub_of_add_eq (by simpa [add_comm] using hsum)
       have : 1 - S.kappa U ≤ 1 - α := sub_le_sub_left hαleκU (1 : ℝ)
       simpa [hν] using this
-    -- csSup ≤ 1 - α
     have hne' : (S.nu '' 𝓚).Nonempty := by
       rcases hUnonempty with ⟨U0, hU0⟩
       exact ⟨S.nu (I01 \ U0), ⟨I01 \ U0, ⟨U0, hU0, rfl⟩, rfl⟩⟩
@@ -470,7 +439,6 @@ theorem kappaInf_add_nuSup_eq_one
       csSup_le hne' (by intro y hy; rcases hy with ⟨K, hK, rfl⟩; exact hKbound hK)
     simpa [hβdef] using hβraw
 
-  -- Schluss: α + β = 1
   have hle : α + β ≤ 1 := by
     have h := add_le_add_left h2 α
     simp [sub_eq_add_neg] at h
@@ -495,9 +463,7 @@ lemma kappaInf_add_kappaSup_on_KFamily_eq_one
   S.kappaInf 𝓤 + S.kappaSup 𝓚 = 1 := by
   intro 𝓚
   have := S.kappaInf_add_nuSup_eq_one 𝓤 hUopen hUsub hUnonempty
-  -- ersetze νSup durch κSup über der Komplementfamilie
   simpa [S.nuSup_eq_kappaSup_on_KFamily 𝓤 hUopen hUsub] using this
-
 
 end KappaSystem
 
@@ -515,29 +481,24 @@ lemma interU_union_KFamily_eq_I01
   have hsubset : (sInter 𝓤) ∪ sUnion (NaiveLength.KappaSystem.KFamily 𝓤) ⊆ I01 := by
     intro x hx
     rcases hx with hx | hx
-    · -- x ∈ ⋂₀ 𝓤 ⇒ x ∈ U₀ ⊆ I01 für ein U₀ ∈ 𝓤
-      rcases hUnonempty with ⟨U0, hU0⟩
+    · rcases hUnonempty with ⟨U0, hU0⟩
       have hxU0 : x ∈ U0 := (mem_sInter.mp hx) U0 hU0
       exact hUsub hU0 hxU0
-    · -- x ∈ ⋃₀ 𝓚 ⇒ ∃ U∈𝓤, x ∈ I01 \ U ⇒ x ∈ I01
-      rcases mem_sUnion.mp hx with ⟨K, hK, hxK⟩
+    · rcases mem_sUnion.mp hx with ⟨K, hK, hxK⟩
       rcases hK with ⟨U, hU, rfl⟩
       exact hxK.1
   -- Inklusion "⊇"
   have hsupset : I01 ⊆ (sInter 𝓤) ∪ sUnion (NaiveLength.KappaSystem.KFamily  𝓤) := by
     intro x hxI
     by_cases hAll : ∀ U ∈ 𝓤, x ∈ U
-    · -- x liegt in allen U ⇒ x ∈ ⋂₀ 𝓤
-      left; exact mem_sInter.mpr hAll
-    · -- sonst ∃ U∈𝓤 mit x ∉ U ⇒ x ∈ I01 \ U ⇒ x ∈ ⋃₀ 𝓚
-      right
+    · left; exact mem_sInter.mpr hAll
+    · right
       push_neg at hAll
       rcases hAll with ⟨U, hU, hxNot⟩
       exact mem_sUnion.mpr ⟨I01 \ U, ⟨U, hU, rfl⟩, ⟨hxI, hxNot⟩⟩
   exact le_antisymm hsubset hsupset
 
 open Set
-
 
 /-- Die Familie aller *relativ offenen* Obermengen von `M` in `[0,1]`:
     Ein `U` gehört dazu genau dann, wenn es ein offenes `O ⊆ ℝ` gibt mit
@@ -565,28 +526,22 @@ lemma relOpenSupersets_closed_under_inter (M : Set ℝ) :
     Obermengen von `M` genau `M` selbst. -/
 lemma sInter_relOpenSupersets_eq (M : Set ℝ) (hM : M ⊆ I01) :
     sInter (relOpenSupersets M) = M := by
-  -- `⊆`: jedes `U` der Familie enthält `M`
   have h_right : M ⊆ sInter (relOpenSupersets M) := by
     intro x hxM
     refine mem_sInter.mpr ?_; intro U hU
     rcases hU with ⟨O, _hOopen, rfl, hMU⟩
     exact hMU hxM
-  -- `⊇`: Punkte außerhalb von `M` werden durch `U = I01 ∩ {x}ᶜ` ausgeschlossen
   have h_left : sInter (relOpenSupersets M) ⊆ M := by
     intro x hxAll
     by_contra hxNot
-    -- Kandidat: relativ offene Obermenge `U0 := I01 ∩ {x}ᶜ` (kommt aus offenem `O0 := {x}ᶜ`)
     have hU0 : I01 ∩ ({x}ᶜ) ∈ relOpenSupersets M := by
       refine ⟨{x}ᶜ, isOpen_compl_singleton, rfl, ?_⟩
       intro y hyM; exact ⟨hM hyM, by simpa [mem_compl] using ne_of_mem_of_not_mem hyM hxNot⟩
-    -- Da `x` in *allen* `U` der Familie liegt, insbesondere in `U0` — Widerspruch
     have hxU0 : x ∈ I01 ∩ ({x}ᶜ) := (mem_sInter.mp hxAll) _ hU0
     exact hxU0.2 (by simp)
   exact le_antisymm h_left h_right
 
-/-- Familie der **relativ offenen** Supersets von `M` in `I01`:
-`U ∈ VFamily M` bedeutet: Es gibt ein offenens `V` (in ℝ) mit `U = I01 ∩ V`
-und `M ⊆ U`. (Dann ist automatisch `U ⊆ I01`.) -/
+/-- Familie der **relativ offenen** Supersets von `M` in `I01`. -/
 def VFamily (M : Set ℝ) : Set (Set ℝ) :=
   {U | ∃ V : Set ℝ, IsOpen V ∧ U = I01 ∩ V ∧ M ⊆ U}
 
@@ -597,54 +552,43 @@ lemma VFamily_inter_mem {M U₁ U₂ : Set ℝ}
   rcases h₁ with ⟨V₁, hV₁open, rfl, hMsub₁⟩
   rcases h₂ with ⟨V₂, hV₂open, rfl, hMsub₂⟩
   refine ⟨V₁ ∩ V₂, hV₁open.inter hV₂open, ?_, ?_⟩
-  · -- (I01 ∩ V₁) ∩ (I01 ∩ V₂) = I01 ∩ (V₁ ∩ V₂)
-    ext x; constructor
+  · ext x; constructor
     · intro hx
       rcases hx with ⟨⟨hxI, hxV₁⟩, ⟨_, hxV₂⟩⟩
       exact ⟨hxI, ⟨hxV₁, hxV₂⟩⟩
     · intro hx
       rcases hx with ⟨hxI, hxV⟩
       exact ⟨⟨hxI, hxV.1⟩, ⟨hxI, hxV.2⟩⟩
-  · -- M ⊆ (I01 ∩ V₁) ∩ (I01 ∩ V₂)
-    intro x hxM
-    have hx₁ := hMsub₁ hxM  -- : x ∈ I01 ∩ V₁
-    have hx₂ := hMsub₂ hxM  -- : x ∈ I01 ∩ V₂
-    have hxI  : x ∈ I01 := hx₁.1
-    have hxV₁ : x ∈ V₁  := hx₁.2
-    have hxV₂ : x ∈ V₂  := hx₂.2
-    exact ⟨⟨hxI, hxV₁⟩, ⟨hxI, hxV₂⟩⟩
+  · intro x hxM
+    have hx₁ := hMsub₁ hxM
+    have hx₂ := hMsub₂ hxM
+    exact ⟨⟨hx₁.1, hx₁.2⟩, ⟨hx₂.1, hx₂.2⟩⟩
 
 /-- **Kernlemma:** `M` ist der Schnitt aller relativ offenen Supersets von `M` in `I01`. -/
 lemma inter_VFamily_eq (M : Set ℝ) (hM : M ⊆ I01) :
   (⋂₀ VFamily M) = M := by
-  -- Inklusion ⊆
   have hsubset : (⋂₀ VFamily M) ⊆ M := by
     intro x hx
     by_contra hxM
-    -- Wähle `V := {x}ᶜ` offen in ℝ, setze `U := I01 ∩ V`.
     have hVopen : IsOpen ({x}ᶜ : Set ℝ) :=
       (isClosed_singleton (x := x)).isOpen_compl
     let U : Set ℝ := I01 ∩ ({x}ᶜ)
     have hUmem : U ∈ VFamily M := by
       refine ⟨{x}ᶜ, hVopen, rfl, ?_⟩
-      -- M ⊆ U, da `x ∉ M`
       intro y hyM
       have : y ≠ x := by
         intro hxy; exact hxM (by simpa [hxy] using hyM)
       exact ⟨hM hyM, this⟩
-    -- Aus `x ∈ ⋂₀ VFamily M` folgt `x ∈ U`, aber `x ∉ U` – Widerspruch.
     have hxU : x ∈ U := (mem_sInter.mp hx) U hUmem
     have hxNotU : x ∉ U := by
       intro hxU'
       exact (hxU'.2 rfl)
     exact hxNotU hxU
-  -- Inklusion ⊇
   have hsupset : M ⊆ (⋂₀ VFamily M) := by
     intro x hxM
     apply mem_sInter.mpr
     intro U hU
     rcases hU with ⟨V, _hVopen, hUdef, hMsub⟩
-    -- `M ⊆ U` liefert `x ∈ U`.
     simpa [hUdef] using hMsub hxM
   exact le_antisymm hsubset hsupset
 
@@ -656,13 +600,10 @@ def KFamilyOf (M : Set ℝ) : Set (Set ℝ) :=
 lemma compl_eq_union_KFamilyOf (M : Set ℝ) (hM : M ⊆ I01) :
   I01 \ M = ⋃₀ (KFamilyOf M) := by
   classical
-  -- Nutze `⋂₀ VFamily M = M` und De-Morgan auf `I01`.
   have hInt := inter_VFamily_eq (M := M) hM
-  -- Punktweise Argument: für `x ∈ I01`
   ext x; constructor
   · intro hx
     rcases hx with ⟨hxI, hxNotM⟩
-    -- Wähle `U := I01 ∩ {x}ᶜ`
     have hVopen : IsOpen ({x}ᶜ : Set ℝ) :=
       (isClosed_singleton (x := x)).isOpen_compl
     let U : Set ℝ := I01 ∩ ({x}ᶜ)
@@ -672,28 +613,484 @@ lemma compl_eq_union_KFamilyOf (M : Set ℝ) (hM : M ⊆ I01) :
       have : y ≠ x := by
         intro h; exact hxNotM (by simpa [h] using hyM)
       exact ⟨hM hyM, this⟩
-    -- Dann liegt `x` in `I01 \ U`, also auch in der großen Vereinigung.
     refine mem_sUnion.mpr ?_
-    refine ⟨I01 \ U, ?_, ?_⟩
-    · exact ⟨U, hUmem, rfl⟩
-    · exact ⟨hxI, fun hU => hU.2 rfl⟩
-
+    refine ⟨I01 \ U, ⟨U, hUmem, rfl⟩, ⟨hxI, ?_⟩⟩
+    intro hxU; exact hxU.2 rfl
   · intro hx
     rcases mem_sUnion.mp hx with ⟨K, hK, hxK⟩
     rcases hK with ⟨U, hU, rfl⟩
     rcases hxK with ⟨hxI, hxNotU⟩
-    -- Aus `U ∈ VFamily M` folgt `M ⊆ U`; also `x ∉ M`.
     rcases hU with ⟨V, _hVopen, hUdef, hMsub⟩
     refine ⟨hxI, ?_⟩
     intro hxM
-    -- aus `x ∈ M ⊆ U` und `U = I01 ∩ V` folgt `x ∈ V`
     have hxU' : x ∈ I01 ∩ V := by
       have hxU : x ∈ U := hMsub hxM
       simpa [hUdef] using hxU
     have hxV : x ∈ V := hxU'.2
-    -- damit `x ∈ U` (weil `U = I01 ∩ V`)
     have : x ∈ U := by
       simpa [hUdef] using And.intro hxI hxV
     exact hxNotU this
 
+/-!
+###############################################################################
+# NEUER TAIL: Schnitt/Union-Formel über Familien und robuste Hilfslemmata
+###############################################################################
+-/
+
+namespace KappaSystem
+
+open Set
+open scoped Topology
+
+/-- Für offenes `O` ist `I01 ∩ Oᶜ` abgeschlossen. -/
+lemma closed_I01_inter_compl_open {O : Set ℝ} (hO : IsOpen O) :
+  IsClosed (I01 ∩ Oᶜ) :=
+  isClosed_Icc.inter hO.isClosed_compl
+
+/-- Elementare Gleichheit: `I01 \ (I01 ∩ O) = I01 ∩ Oᶜ`. -/
+lemma diff_I01_inter_open_eq {O : Set ℝ} :
+  I01 \ (I01 ∩ O) = I01 ∩ Oᶜ := by
+  ext x; constructor
+  · intro hx
+    refine ⟨hx.1, ?_⟩
+    intro hxO
+    exact hx.2 ⟨hx.1, hxO⟩
+  · intro hx
+    refine ⟨hx.1, ?_⟩
+    intro hxU
+    exact hx.2 hxU.2
+
+/-- Elementare Gleichheit: `I01 \ (I01 ∩ Oᶜ) = I01 ∩ O`. -/
+lemma diff_I01_inter_compl_eq {O : Set ℝ} :
+  I01 \ (I01 ∩ Oᶜ) = I01 ∩ O := by
+  ext x; constructor
+  · intro hx
+    refine ⟨hx.1, ?_⟩
+    by_contra hxO
+    exact hx.2 ⟨hx.1, by simpa [mem_compl] using hxO⟩
+  · intro hx
+    refine ⟨hx.1, ?_⟩
+    intro hxK
+    exact hxK.2 (by simpa [mem_compl] using hx.2)
+
+/-- Ohne Offenheitsannahmen: `⋃₀ KFamily 𝓤 = I01 \ ⋂₀ 𝓤`. -/
+lemma sUnion_KFamily_eq_compl_sInter (𝓤 : Set (Set ℝ)) :
+  sUnion (KFamily 𝓤) = I01 \ sInter 𝓤 := by
+  classical
+  ext x; constructor
+  · intro hx
+    rcases mem_sUnion.mp hx with ⟨K, hK, hxK⟩
+    rcases hK with ⟨U, hU, rfl⟩
+    rcases hxK with ⟨hxI, hxNotU⟩
+    exact ⟨hxI, by
+      intro hxAll
+      exact hxNotU ((mem_sInter.mp hxAll) U hU)⟩
+  · intro hx
+    rcases hx with ⟨hxI, hxNotAll⟩
+    have : ∃ U ∈ 𝓤, x ∉ U := by
+      by_contra h; push_neg at h
+      exact hxNotAll (by intro U hU; exact h U hU)
+    rcases this with ⟨U, hU, hxNotU⟩
+    exact mem_sUnion.mpr ⟨I01 \ U, ⟨U, hU, rfl⟩, ⟨hxI, hxNotU⟩⟩
+
+/-- Grund-Ungleichung: Für `A ⊆ I01` gilt `ν(A) ≤ 1 - κ(I01 \ A)`. -/
+lemma nu_le_one_sub_kappa_compl_of_subset_I01
+  (S : KappaSystem) {A : Set ℝ} (_ : A ⊆ I01) :
+  S.nu A ≤ 1 - S.kappa (I01 \ A) := by
+  classical
+  let I :=
+    {κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ A ∩ I01 ∧ S.kappa T = κ}
+  have hne : I.Nonempty := by
+    refine ⟨0, ⟨∅, isCompact_empty, ?_, ?_⟩⟩
+    · -- ∅ ⊆ A ∩ I01
+      intro x hx; cases hx
+    · -- κ(∅) = 0
+      exact S.kappa_empty
+      -- alternativ:  by simpa using S.kappa_empty
+  have hbound : ∀ z ∈ I, z ≤ 1 - S.kappa (I01 \ A) := by
+    intro z hz
+    rcases hz with ⟨T, hTc, hTsub, rfl⟩
+    have hTsubA : T ⊆ A   := by intro t ht; exact (hTsub ht).1
+    have hTsubI : T ⊆ I01 := by intro t ht; exact (hTsub ht).2
+    have hcomp : I01 \ A ⊆ I01 \ T := by
+      intro x hx; exact ⟨hx.1, by intro hxT; exact hx.2 (hTsubA hxT)⟩
+    have hmono := S.mono_kappa hcomp
+    have hcompl : S.kappa (I01 \ T) = 1 - S.kappa T :=
+      S.kappa_compl_compact (K := T) hTc hTsubI
+    have : S.kappa (I01 \ A) ≤ 1 - S.kappa T := by
+      rw [hcompl] at hmono
+      exact hmono
+    linarith
+  have bdd : BddAbove I := ⟨1, by
+    intro z hz; rcases hz with ⟨T, _, hTsub, rfl⟩
+    have hmono : S.kappa T ≤ S.kappa I01 :=
+      S.mono_kappa (by intro t ht; exact (hTsub ht).2)
+    have : S.kappa T ≤ 1 := by
+      rw [S.kappa_I01] at hmono
+      exact hmono
+    exact this⟩
+  have hfin : sSup I ≤ 1 - S.kappa (I01 \ A) :=
+    csSup_le hne (by intro z hz; exact hbound z hz)
+  have hnu_eq : S.nu A = sSup I := rfl
+  rw [hnu_eq]
+  exact hfin
+
+/-- Aus der äußeren Offenheits-Charakterisierung:
+Für `M ⊆ I01` und `ε>0` gibt es ein offenes `O ⊇ M` mit
+`κ(O) ≤ κ(M) + ε`. -/
+ lemma exists_open_superset_kappa_within
+  (S : KappaSystem) {M : Set ℝ} (_ : M ⊆ I01)
+  (ε : ℝ) (hε : 0 < ε) :
+  ∃ O : Set ℝ, IsOpen O ∧ M ⊆ O ∧ S.kappa O ≤ S.kappa M + ε := by
+
+  -- Die Familie aller offenen Obermengen von M in ℝ:
+  let A : Set (Set ℝ) := {U | IsOpen U ∧ M ⊆ U}
+  -- A : Set (Set ℝ) := {U | IsOpen U ∧ M ⊆ U}
+  have hEq : S.kappa M = sInf (S.kappa '' A) := by
+    -- ersetze das Ziel explizit durch die expandierte Definition von A
+    change S.kappa M =
+      sInf (S.kappa '' {U : Set ℝ | IsOpen U ∧ M ⊆ U})
+    exact S.kappa_outer_open_sup (A := M)
+
+  -- Nichtleerheit der Bildmenge: `univ` ist offen und enthält M
+  have hA_nonempty : (S.kappa '' A).Nonempty := by
+    refine ⟨S.kappa (Set.univ), ?_⟩
+    exact ⟨Set.univ, And.intro isOpen_univ (by intro x _; trivial), rfl⟩
+
+  -- (optionale) untere Schranke der Bildmenge (hilft zwar hier nicht zwingend,
+  -- ist aber oft nützlich; bewusst ohne `simp`-Loops)
+  have _hBBl : BddBelow (S.kappa '' A) := by
+    refine ⟨0, ?_⟩
+    intro y hy
+    rcases hy with ⟨U, hU, rfl⟩
+    -- 0 ≤ κ(U) via Monotonie von ∅ ⊆ U
+    have hmono : S.kappa ∅ ≤ S.kappa U :=
+      S.mono_kappa (by intro x hx; cases hx)
+    -- κ(∅)=0 in den Typ von `hmono` einsetzen, ergibt 0 ≤ κ(U)
+    exact (S.kappa_empty ▸ hmono)
+
+  -- Widerspruchsbeweis: falls es KEIN so gutes O gibt,
+  -- folgt κ(M)+ε ≤ sInf(Bild) = κ(M), im Widerspruch zu ε>0.
+  by_contra h
+  -- h : ¬ ∃ O, IsOpen O ∧ M ⊆ O ∧ S.kappa O ≤ S.kappa M + ε
+
+  -- Aus h folgt: für alle y in der Bildmenge gilt κ(M)+ε ≤ y
+  have hforall : ∀ y ∈ (S.kappa '' A), S.kappa M + ε ≤ y := by
+    intro y hy
+    rcases hy with ⟨U, hU, rfl⟩
+    -- hU : IsOpen U ∧ M ⊆ U
+    have hnot : ¬ S.kappa U ≤ S.kappa M + ε := by
+      -- direkt aus der Negation-Behauptung h für dieses U
+      exact fun hle => h ⟨U, hU.1, hU.2, hle⟩
+    -- in einer linearen Ordnung ist ¬(a ≤ b) ↔ b < a
+    have : S.kappa M + ε < S.kappa U := lt_of_not_ge hnot
+    exact le_of_lt this
+
+  -- daraus: κ(M)+ε ≤ sInf(Bild)
+  have h_le_inf : S.kappa M + ε ≤ sInf (S.kappa '' A) :=
+    le_csInf hA_nonempty hforall
+
+  -- aber sInf(Bild) = κ(M)
+  -- h_le_inf : S.kappa M + ε ≤ sInf (S.kappa '' A)
+  -- hEq      : S.kappa M = sInf (S.kappa '' A)
+  have hcontra : S.kappa M + ε ≤ S.kappa M := by
+    have h := h_le_inf
+    -- ersetze die rechte Seite via hEq.symm : sInf (S.kappa '' A) = S.kappa M
+    rw [hEq.symm] at h
+    exact h
+
+  -- Widerspruch zu ε>0
+  have : False := by exact not_lt_of_ge hcontra (by linarith : S.kappa M < S.kappa M + ε)
+  exact this.elim
+
+namespace NaiveLength
+
+
+/-- Aus der äußeren Offenheits-Charakterisierung:
+Für `M ⊆ I01` und `ε>0` gibt es ein offenes `O ⊇ M` mit `κ(O) ≤ κ(M) + ε`. -/
+lemma exists_open_superset_kappa_within
+  (S : KappaSystem) {M : Set ℝ} (_ : M ⊆ I01)
+  (ε : ℝ) (hε : 0 < ε) :
+  ∃ O : Set ℝ, IsOpen O ∧ M ⊆ O ∧ S.kappa O ≤ S.kappa M + ε := by
+  classical
+  -- Familie aller offenen Obermengen von M
+  let A : Set (Set ℝ) := {U | IsOpen U ∧ M ⊆ U}
+
+  -- κ(M) = sInf (κ '' A)
+  have hEq : S.kappa M = sInf (S.kappa '' A) := by
+    change S.kappa M = sInf (S.kappa '' {U | IsOpen U ∧ M ⊆ U})
+    exact S.kappa_outer_open_sup (A := M)
+
+  -- Nichtleerheit der Bildmenge (univ ist offen und enthält M)
+  have hA_nonempty : (S.kappa '' A).Nonempty := by
+    refine ⟨S.kappa (Set.univ), ?_⟩
+    refine ⟨Set.univ, And.intro isOpen_univ (by intro _ _; trivial), rfl⟩
+
+  -- Untere Schranke: 0 ≤ κ(U) für alle U in A
+  have _hBBl : BddBelow (S.kappa '' A) := by
+    refine ⟨0, ?_⟩
+    intro y hy
+    rcases hy with ⟨U, _hU, rfl⟩
+    -- ∅ ⊆ U ⇒ κ(∅) ≤ κ(U); κ(∅)=0
+    have hmono : S.kappa ∅ ≤ S.kappa U :=
+      S.mono_kappa (by intro x hx; cases hx)
+    exact (S.kappa_empty ▸ hmono)
+
+  -- Widerspruchsbeweis: es gäbe kein gutes O
+  by_contra h
+  -- Dann gilt für alle y in der Bildmenge: κ(M)+ε ≤ y
+  have hforall : ∀ y ∈ (S.kappa '' A), S.kappa M + ε ≤ y := by
+    intro y hy
+    rcases hy with ⟨U, hU, rfl⟩
+    have hnot : ¬ S.kappa U ≤ S.kappa M + ε := by
+      exact fun hle => h ⟨U, hU.1, hU.2, hle⟩
+    have : S.kappa M + ε < S.kappa U := lt_of_not_ge hnot
+    exact le_of_lt this
+
+  -- ⇒ κ(M)+ε ≤ sInf (κ '' A)
+  have h_le_inf : S.kappa M + ε ≤ sInf (S.kappa '' A) :=
+    le_csInf hA_nonempty hforall
+
+  -- Aber sInf (κ '' A) = κ(M)
+  have hcontra : S.kappa M + ε ≤ S.kappa M := by
+    have hh : S.kappa M + ε ≤ sInf (S.kappa '' A) := h_le_inf
+    -- `rw` ist hier völlig unproblematisch (nur 1 Umschreibung)
+    rw [← hEq] at hh
+    exact hh
+
+  -- Widerspruch zu ε>0
+  have : S.kappa M < S.kappa M + ε := by linarith
+  exact (not_lt_of_ge hcontra) this
+
+
+/-- **Hauptgleichung (Schnitt/Union):**
+Für eine nichtleere Familie `𝓤` **offener** Mengen `U ⊆ I01` gilt
+`κ(⋂₀ 𝓤) + ν(⋃₀ KFamily 𝓤) = 1`. -/
+theorem kappa_sInter_add_nu_sUnionK_eq_one
+  (S : KappaSystem)
+  (𝓤 : Set (Set ℝ))
+  (_ : ∀ {U}, U ∈ 𝓤 → IsOpen U)
+  (hUsub : ∀ {U}, U ∈ 𝓤 → U ⊆ I01)
+  (hUnonempty : 𝓤.Nonempty) :
+  S.kappa (sInter 𝓤) + S.nu (sUnion (KappaSystem.KFamily 𝓤)) = 1 := by
+  classical
+  -- Bezeichner
+  set M : Set ℝ := sInter 𝓤
+
+  -- M ⊆ I01
+  have hMsub : M ⊆ I01 := by
+    intro x hxM
+    rcases hUnonempty with ⟨U0, hU0⟩
+    have hxU0 : x ∈ U0 := (mem_sInter.mp hxM) U0 hU0
+    exact hUsub hU0 hxU0
+
+  -- ⋃ KFamily 𝓤 = I01 \ M
+  have hUnionEq :
+      sUnion (KappaSystem.KFamily 𝓤) = I01 \ M :=
+    (sUnion_KFamily_eq_compl_sInter (𝓤 := 𝓤))
+
+  /- Obere Schranke: ν(⋃ K) ≤ 1 - κ(M) -/
+  have hν_le : S.nu (sUnion (KappaSystem.KFamily 𝓤)) ≤ 1 - S.kappa M := by
+    have hA : (I01 \ M) ⊆ I01 := by
+      intro x hx; exact hx.1
+    have hdd : I01 \ (I01 \ M) = M :=
+      NaiveLength.diff_diff_I01_of_subset (U := M) hMsub
+    -- Hilfslemma für ν(A) ≤ 1 - κ(I01 \ A) auf A := I01 \ M
+    have h0 := nu_le_one_sub_kappa_compl_of_subset_I01 (S := S) (A := I01 \ M) hA
+    -- h0 : S.nu (I01 \ M) ≤ 1 - S.kappa (I01 \ (I01 \ M))
+    -- rechte Seite zu 1 - κ(M) umschreiben
+    have hddκ : S.kappa (I01 \ (I01 \ M)) = S.kappa M :=
+      congrArg S.kappa hdd
+    have hddκ' : 1 - S.kappa (I01 \ (I01 \ M)) = 1 - S.kappa M :=
+      congrArg (fun t => 1 - t) hddκ
+    have h1 : S.nu (I01 \ M) ≤ 1 - S.kappa M := by
+      have h0' := h0
+      rw [hddκ'] at h0'
+      exact h0'
+    -- via ⋃ K = I01 \ M
+    have hEqν : S.nu (sUnion (KappaSystem.KFamily 𝓤)) = S.nu (I01 \ M) :=
+      congrArg S.nu hUnionEq
+    have h1' := h1
+    rw [← hEqν] at h1'
+    exact h1'
+
+  /- Untere Schranke via ε-Argument: 1 - κ(M) ≤ ν(⋃ K) -/
+  have hν_ge : 1 - S.kappa M ≤ S.nu (sUnion (KappaSystem.KFamily 𝓤)) := by
+    refine le_of_forall_pos_le_add ?_
+    intro ε hε
+    -- Wähle offenes O ⊇ M mit κ(O) ≤ κ(M) + ε
+    obtain ⟨O, hOopen, hMsubO, hκO⟩ :=
+      NaiveLength.KappaSystem.exists_open_superset_kappa_within
+        (S := S) (M := M) hMsub ε hε
+
+    -- Relativ offen U' := I01 ∩ O, und K' := I01 \ U'
+    let U' : Set ℝ := I01 ∩ O
+    let K' : Set ℝ := I01 \ U'
+
+    -- K' = I01 ∩ Oᶜ (elementares Mengenkalkül)
+    have hK'def : K' = I01 ∩ Oᶜ := by
+      -- I01 \ (I01 ∩ O) = I01 ∩ Oᶜ
+      ext x; constructor
+      · intro hx
+        refine ⟨hx.1, ?_⟩
+        intro hxO
+        exact hx.2 ⟨hx.1, hxO⟩
+      · intro hx
+        rcases hx with ⟨hxI, hxNotO⟩
+        exact ⟨hxI, by intro hxU; exact hxNotO hxU.2⟩
+
+    -- K' ist abgeschlossen in ℝ (Schnitt von geschlossenem I01 mit abgeschlossenem Oᶜ)
+    have hK'closed : IsClosed K' := by
+      have hc : IsClosed (I01 ∩ Oᶜ) := isClosed_Icc.inter (hOopen.isClosed_compl)
+      -- ersetze Ziel via hK'def ohne simp
+      exact (hK'def ▸ hc)
+
+    -- K' ⊆ I01, K' kompakt
+    have hK'sub : K' ⊆ I01 := by
+      intro x hx
+      have hx' : x ∈ I01 ∩ Oᶜ := by
+        -- benutze hK'def nur links (ohne simp-Loop)
+        have : x ∈ I01 ∩ Oᶜ := by
+          rcases hx with ⟨hxI, hxNotU⟩
+          -- hxNotU : x ∉ U'  (also ¬ (x∈I01 ∧ x∈O))
+          -- daraus folgt x∉O
+          have hNotO : x ∉ O := by
+            intro hxO
+            exact hxNotU ⟨hxI, hxO⟩
+          exact ⟨hxI, hNotO⟩
+        exact this
+      exact hx'.1
+
+    have hK'comp : IsCompact K' :=
+      NaiveLength.compact_of_closed_subset_I01 (K := K') hK'closed hK'sub
+
+    -- U' ⊆ I01 und U' ⊆ O
+    have hU'subI : U' ⊆ I01 := by intro x hx; exact hx.1
+    have hU'subO : U' ⊆ O  := by intro x hx; exact hx.2
+
+    -- M ⊆ U' (weil M ⊆ I01 und M ⊆ O)
+    have hMsubU' : M ⊆ U' := by
+      intro x hxM; exact ⟨hMsub hxM, hMsubO hxM⟩
+
+    -- K' ⊆ I01 \ M ⇒ K' ⊆ ⋃ KFamily 𝓤 (via hUnionEq)
+    have hK'subCompl : K' ⊆ (I01 \ M) := by
+      intro x hx
+      exact ⟨hx.1, by intro hxM; exact hx.2 (hMsubU' hxM)⟩
+
+    have hK'subUnion : K' ⊆ sUnion (KappaSystem.KFamily 𝓤) := by
+      -- benutze nur die Gleichheit hUnionEq gezielt
+      have h := hK'subCompl
+      intro x hx
+      have hx' : x ∈ I01 \ M := h hx
+      have hxUnion : x ∈ sUnion (KappaSystem.KFamily 𝓤) := by
+        simpa [hUnionEq] using hx'
+      exact hxUnion
+
+    -- zuerst die Identität I01 \ K' = U' herstellen
+    have hI01diffK' : I01 \ K' = U' := by
+      change I01 \ K' = U'
+      -- K' ⊆ I01, also die Standard-Identität aus deiner Datei
+      exact NaiveLength.diff_diff_I01_of_subset (U := U') hU'subI
+
+    -- Komplementformel auf K', danach linke Seite zu U' umschreiben
+    have hκU' : S.kappa U' = 1 - S.kappa K' := by
+      have hκ : S.kappa (I01 \ K') = 1 - S.kappa K' :=
+        S.kappa_compl_compact (K := K') hK'comp hK'sub
+      -- linke Seite per hI01diffK' ersetzen (ohne simp)
+      exact (by
+        have h' := hκ
+        -- Ersetze (I01 \ K') durch U'
+        -- also κ(U') = 1 - κ(K')
+        -- mittels `rw`:
+        -- (kein `simp`, nur gezieltes Umschreiben)
+        have : S.kappa U' = 1 - S.kappa K' := by
+          -- `hκ` ist bereits die Gleichheit, nach Umschreiben der linken Seite
+          -- einfach: `rw [hI01diffK'] at h'` und `exact h'`
+          -- in Term-Form:
+          have htmp := hκ
+          -- ersetze linke Seite
+          -- (in Term-Mode nutzen wir `Eq.rec` durch `rw`-Äquivalent)
+          -- einfacher:
+          -- wir schreiben direkt:
+          --   by simpa [hI01diffK'] using hκ
+          -- um `simp` zu vermeiden, machen wir:
+          --   (hI01diffK' ▸ hκ)
+          -- `▸` ersetzt in der Aussage die linke Seite per Gleichheit
+          exact (hI01diffK' ▸ hκ)
+        exact this
+      )
+
+    -- Monotonie κ(U') ≤ κ(O)
+    have hU_subO : U' ⊆ O := by intro x hx; exact hx.2
+    have hκU_leO : S.kappa U' ≤ S.kappa O :=
+      S.mono_kappa hU_subO
+
+    -- daraus: κ(K') ≥ 1 - κ(O)
+    have hκK'_ge_one_sub_κO : S.kappa K' ≥ 1 - S.kappa O := by
+      -- ersetze in der Ungleichung links κ(U') durch 1 - κ(K')
+      have h1' : 1 - S.kappa K' ≤ S.kappa O := (hκU' ▸ hκU_leO)
+      linarith
+
+    -- außerdem: κ(K') ≥ 1 - κ(M) - ε
+    have hκK'_ge : S.kappa K' ≥ 1 - S.kappa M - ε := by
+      have h1 : 1 - S.kappa M - ε ≤ 1 - S.kappa O := by
+        -- aus κ(O) ≤ κ(M) + ε ⇒ 1 - κ(M) - ε ≤ 1 - κ(O)
+        linarith [hκO]
+      exact le_trans h1 hκK'_ge_one_sub_κO
+
+    -- hebe κ(K') zu ν(⋃ K) an
+    have hν_ge' : S.kappa K' ≤ S.nu (sUnion (KappaSystem.KFamily 𝓤)) := by
+      -- 1) Element der Indexmenge in der ν-Definition
+      have hIn :
+        S.kappa K' ∈ {κ : ℝ | ∃ T, IsCompact T ∧
+                              T ⊆ (sUnion (KappaSystem.KFamily 𝓤)) ∩ I01 ∧ S.kappa T = κ} := by
+        refine ⟨K', hK'comp, ?_, rfl⟩
+        intro x hx
+        exact ⟨hK'subUnion hx, hx.1⟩
+      -- 2) Nach oben beschränkt
+      have bdd :
+          BddAbove {κ : ℝ | ∃ T, IsCompact T ∧
+                                T ⊆ (sUnion (KappaSystem.KFamily 𝓤)) ∩ I01 ∧ S.kappa T = κ} := by
+        refine ⟨1, ?_⟩
+        intro z hz
+        rcases hz with ⟨T, _hTc, hTsub, rfl⟩
+        have hmono : S.kappa T ≤ S.kappa I01 :=
+          S.mono_kappa (by intro t ht; exact (hTsub ht).2)
+        -- schreibe κ(I01)=1 ohne simp
+        have hI : S.kappa I01 = 1 := S.kappa_I01
+        have := hmono
+        rw [hI] at this
+        exact this
+      -- 3) csSup-Schritt ⇒ κ(K') ≤ ν(⋃ K)
+      have hcsup :
+        S.kappa K' ≤
+          sSup {κ : ℝ | ∃ T, IsCompact T ∧
+                      T ⊆ (sUnion (KappaSystem.KFamily 𝓤)) ∩ I01 ∧ S.kappa T = κ} :=
+        le_csSup bdd hIn
+
+      -- statt `simpa [KappaSystem.nu]` (führt zu simp-Loop):
+      change
+        S.kappa K' ≤
+          sSup {κ : ℝ | ∃ T, IsCompact T ∧
+                      T ⊆ (sUnion (KappaSystem.KFamily 𝓤)) ∩ I01 ∧ S.kappa T = κ}
+      exact hcsup
+
+    -- Klebeschritt: 1 - κ(M) ≤ ν(⋃ K) + ε
+    have hstep1 : 1 - S.kappa M ≤ S.kappa K' + ε := by linarith [hκK'_ge]
+    have hstep2 : S.kappa K' + ε ≤ S.nu (sUnion (KappaSystem.KFamily 𝓤)) + ε :=
+      add_le_add_right hν_ge' ε
+    exact le_trans hstep1 hstep2
+
+  -- Gleichheit ν(⋃ K) = 1 - κ(M)
+  have hEqν : S.nu (sUnion (KappaSystem.KFamily 𝓤)) = 1 - S.kappa M :=
+    le_antisymm hν_le hν_ge
+
+  -- Schlussrechnung
+  calc
+    S.kappa M + S.nu (sUnion (KappaSystem.KFamily 𝓤))
+        = S.kappa M + (1 - S.kappa M) := by rw [hEqν]
+    _   = 1 := by ring
+
+end NaiveLength
+end KappaSystem
 end NaiveLength
