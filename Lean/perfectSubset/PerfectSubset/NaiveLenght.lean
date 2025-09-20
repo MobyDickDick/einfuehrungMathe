@@ -106,19 +106,32 @@ lemma mono_nu : ∀ {A B}, A ⊆ B → S.nu A ≤ S.nu B := by
     ⟨T, hTc, hTsub', rfl⟩
   exact le_csSup bddB hxB
 
-/-- ν(K) = κ(K) auf kompakten K ⊆ [0,1]. -/
+/-- Für kompaktes `K ⊆ I01`: `ν(K) = κ(K)`. -/
 lemma nu_eq_kappa_on_compact {K : Set ℝ}
   (hKc : IsCompact K) (hKsub : K ⊆ I01) :
   S.nu K = S.kappa K := by
   classical
   have hcap : K ∩ I01 = K := NaiveLength.inter_I01_of_subset hKsub
-  simp [nu, hcap, S.inner_regular_on_compact hKc hKsub]
+  -- Jetzt stimmt der Index von `nu` mit dem aus `inner_regular_on_compact` überein
+  simpa [nu, hcap] using S.inner_regular_on_compact (K := K) hKc hKsub
 
-/-- Komplementformel auf [0,1] für kompakte K. -/
+
+/-- Komplementformel für kompaktes `K ⊆ I01`: `κ(I01 \ K) = 1 - κ(K)`. -/
 lemma kappa_compl_compact {K : Set ℝ}
   (hKc : IsCompact K) (hKsub : K ⊆ I01) :
-  S.kappa (I01 \ K) = 1 - S.kappa K :=
-  S.compl_compact hKc hKsub
+  S.kappa (I01 \ K) = 1 - S.kappa K := by
+  classical
+  exact S.compl_compact hKc hKsub
+
+/-- Komplementformel in Dualform: für kompaktes `K ⊆ I01` gilt `κ(I01 \ K) + ν(K) = 1`. -/
+lemma kappa_add_nu_of_closed_subset {K : Set ℝ}
+  (hKclosed : IsClosed K) (hKsub : K ⊆ I01) :
+  S.kappa (I01 \ K) + S.nu K = 1 := by
+  classical
+  have hKc : IsCompact K := NaiveLength.compact_of_closed_subset_I01 hKclosed hKsub
+  have hνκ : S.nu K = S.kappa K := S.nu_eq_kappa_on_compact hKc hKsub
+  have hκ : S.kappa (I01 \ K) = 1 - S.kappa K := S.kappa_compl_compact hKc hKsub
+  simp [hνκ, hκ, sub_eq_add_neg]
 
 /-! ### Dualität: offenes U und K := I01 \ U -/
 
@@ -212,14 +225,11 @@ lemma nu_eq_nu_inter_I01 (A : Set ℝ) : S.nu A = S.nu (A ∩ I01) := by
     by simp [NaiveLength.inter_I01_of_subset (K := A ∩ I01) hsub]
   simp [nu, hcap]
 
-/-- (simp) ν auf dem Grundintervall. -/
-@[simp] lemma nu_I01 : S.nu I01 = 1 := by
-  have h := S.nu_eq_kappa_on_compact (K := I01)
-    (hKc := isCompact_Icc) (hKsub := by intro x hx; exact hx)
-  simp [S.kappa_I01] at h
-  exact h
-  
-/-- (simp) ν der leeren Menge. -/
+/-- (simp) κ(∅) = 0. -/
+@[simp] lemma kappa_empty' : S.kappa ∅ = 0 :=
+  S.kappa_empty
+
+/-- (simp) ν(∅) = 0. -/
 @[simp] lemma nu_empty : S.nu (∅ : Set ℝ) = 0 := by
   classical
   have h :=
@@ -227,17 +237,13 @@ lemma nu_eq_nu_inter_I01 (A : Set ℝ) : S.nu A = S.nu (A ∩ I01) := by
       isCompact_empty (by intro x hx; cases hx)
   simp [nu, S.kappa_empty]
 
-/-- Für `K` abgeschlossen in `ℝ` und `K ⊆ [0,1]`: `κ(I01\\K) + ν(K) = 1`. -/
-lemma kappa_add_nu_of_closed_subset {K : Set ℝ}
-  (hKclosed : IsClosed K) (hKsub : K ⊆ I01) :
-  S.kappa (I01 \ K) + S.nu K = 1 := by
-  classical
-  have hKc : IsCompact K := NaiveLength.compact_of_closed_subset_I01 hKclosed hKsub
-  have hνκ : S.nu K = S.kappa K := S.nu_eq_kappa_on_compact hKc hKsub
-  have hκ : S.kappa (I01 \ K) = 1 - S.kappa K := S.kappa_compl_compact hKc hKsub
-  have hsum : S.kappa (I01 \ K) + S.nu K = (1 - S.kappa K) + S.kappa K := by
-    simp [hνκ, hκ]
-  simpa [sub_eq_add_neg] using hsum
+/-- (simp) ν([0,1]) = 1. -/
+@[simp] lemma nu_I01 : S.nu I01 = 1 := by
+  have h := S.nu_eq_kappa_on_compact (K := I01)
+    (hKc := isCompact_Icc) (hKsub := by intro x hx; exact hx)
+  simp [S.kappa_I01] at h
+  exact h
+
 
 /-! ### Familien-Ergebnis κ(𝓤)+ν(𝓚)=1 -/
 
