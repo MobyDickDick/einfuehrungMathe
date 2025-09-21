@@ -1201,3 +1201,153 @@ lemma Kω_nonempty_of_preserved_point_from_init
 
 end Stage
 end
+
+/-
+  -------------------------------------------
+  Folgen-Baum ab jedem Punkt in M (robuste Version)
+  -------------------------------------------
+-/
+
+open Set
+
+namespace SeqSpawn
+
+/-- Für jeden Punkt `p ∈ M` zwei Folgen in `M` (links/rechts). -/
+structure LRSeqs (M : Set ℝ) where
+  L : {p // p ∈ M} → ℕ → ℝ
+  R : {p // p ∈ M} → ℕ → ℝ
+  L_mem : ∀ p n, L p n ∈ M
+  R_mem : ∀ p n, R p n ∈ M
+
+namespace LRSeqs
+variable {M : Set ℝ} (S : LRSeqs M)
+
+/-- Ein „Spawn“-Schritt: zu `A` fügen wir für alle `p ∈ A ∩ M`
+    die Werte der linken und rechten Folge hinzu. -/
+def spawn (S : LRSeqs M) (A : Set ℝ) : Set ℝ :=
+  A ∪ ⋃ (p : ℝ) (hp : p ∈ A ∩ M),
+        (Set.range (fun n : ℕ => S.L ⟨p, hp.2⟩ n)
+         ∪ Set.range (fun n : ℕ => S.R ⟨p, hp.2⟩ n))
+
+/-- Iteration: `stage x 0 = {x}`, `stage x (n+1) = spawn (stage x n)`. -/
+def stage (S : LRSeqs M) (x : ℝ) : ℕ → Set ℝ
+  | 0     => {x}
+  | n+1   => S.spawn (S.stage x n)
+
+/-- Gesamterzeugnis: Vereinigung über alle Stufen. -/
+def all (S : LRSeqs M) (x : ℝ) : Set ℝ := ⋃ n : ℕ, S.stage x n
+
+/-- Wenn `A ⊆ M`, dann `spawn A ⊆ M`. -/
+lemma spawn_subset (S : LRSeqs M) {A : Set ℝ} (hAM : A ⊆ M) :
+    S.spawn A ⊆ M := by
+  intro y hy
+  rcases hy with hyA | hyU
+  · exact hAM hyA
+  · -- y ∈ ⋃ p∈A∩M, (range L p ∪ range R p)
+    rcases Set.mem_iUnion.mp hyU with ⟨p, hp⟩
+    rcases Set.mem_iUnion.mp hp with ⟨hpAM, hp'⟩
+    -- aus y ∈ U ∪ V folgern wir y ∈ U ∨ y ∈ V via simp
+    have hsplit :
+      y ∈ Set.range (fun n : ℕ => S.L ⟨p, hpAM.2⟩ n) ∨
+      y ∈ Set.range (fun n : ℕ => S.R ⟨p, hpAM.2⟩ n) := by
+      simpa [Set.mem_union] using
+        (hp' :
+          y ∈ Set.range (fun n : ℕ => S.L ⟨p, hpAM.2⟩ n) ∪
+              Set.range (fun n : ℕ => S.R ⟨p, hpAM.2⟩ n))
+    rcases hsplit with hL | hR
+    · rcases hL with ⟨n, rfl⟩
+      exact S.L_mem ⟨p, hpAM.2⟩ n
+    · rcases hR with ⟨n, rfl⟩
+      exact S.R_mem ⟨p, hpAM.2⟩ n
+
+/-- Wenn `x ∈ M`, dann liegen alle Stufen in `M`. -/
+lemma stage_subset_M (S : LRSeqs M) {x : ℝ} (hx : x ∈ M) :
+    ∀ n, S.stage x n ⊆ M := by
+  intro n
+  induction' n with n ih
+  · intro y hy
+    have : y = x := by
+      simpa [stage] using (mem_singleton_iff.mp hy)
+    simpa [this] using hx
+  · intro y hy
+    have : y ∈ S.spawn (S.stage x n) := by simpa [stage] using hy
+    exact (S.spawn_subset ih) this
+
+/-- Gesamterzeugnis liegt in `M`. -/
+lemma all_subset_M (S : LRSeqs M) {x : ℝ} (hx : x ∈ M) :
+    S.all x ⊆ M := by
+  intro y hy
+  rcases Set.mem_iUnion.mp hy with ⟨n, hyn⟩
+  exact (S.stage_subset_M hx n) hyn
+
+/-- Abzählbarkeit von `spawn A`, wenn `A` abzählbar ist. -/
+lemma countable_spawn (S : LRSeqs M) {A : Set ℝ} (hA : A.Countable) :
+    (S.spawn A).Countable := by
+  classical
+  -- Indexmenge `A ∩ M` ist abzählbar ⇒ Subtyp ebenfalls (Achtung: `to_subtype`, nicht `toSubType`).
+  have hIdx : (A ∩ M).Countable := hA.mono (by intro x hx; exact hx.1)
+  haveI : Countable {p : ℝ // p ∈ A ∩ M} := hIdx.to_subtype
+  -- Für jeden Index ist das Stück abzählbar (Range über ℕ).
+  have hEach :
+      ∀ q : {p : ℝ // p ∈ A ∩ M},
+        (Set.range (fun n : ℕ => S.L ⟨q.1, q.2.2⟩ n)
+         ∪ Set.range (fun n : ℕ => S.R ⟨q.1, q.2.2⟩ n)).Countable := by
+    intro q
+    have hL : (Set.range (fun n : ℕ => S.L ⟨q.1, q.2.2⟩ n)).Countable :=
+      Set.countable_range _
+    have hR : (Set.range (fun n : ℕ => S.R ⟨q.1, q.2.2⟩ n)).Countable :=
+      Set.countable_range _
+    simpa using hL.union hR
+  -- Große Vereinigung über abzählbaren Index ist abzählbar.
+  have hBig :
+      (⋃ (q : {p : ℝ // p ∈ A ∩ M}),
+          (Set.range (fun n : ℕ => S.L ⟨q.1, q.2.2⟩ n)
+           ∪ Set.range (fun n : ℕ => S.R ⟨q.1, q.2.2⟩ n))).Countable :=
+    Set.countable_iUnion (fun q => hEach q)
+  -- `spawn A = A ∪ (große Vereinigung)` ⇒ abzählbar.
+  simpa [spawn] using hA.union hBig
+
+/-- Jede Stufe ist abzählbar. -/
+lemma countable_stage (S : LRSeqs M) (x : ℝ) :
+    ∀ n, (S.stage x n).Countable := by
+  intro n
+  induction' n with n ih
+  · -- n = 0
+    simp [stage]            -- statt: simpa [stage] using (countable_singleton x)
+  · -- n+1
+    simpa [stage] using S.countable_spawn ih
+
+
+/-- Das Gesamterzeugnis ist abzählbar. -/
+lemma countable_all (S : LRSeqs M) (x : ℝ) :
+    (S.all x).Countable :=
+  by simpa [all] using Set.countable_iUnion (fun n => S.countable_stage x n)
+
+/-- Liegt `M ⊆ [xu,xo]`, so liegt auch `all x` darin. -/
+lemma all_subset_Icc (S : LRSeqs M) {xu xo x : ℝ}
+    (hM01 : M ⊆ Set.Icc xu xo) (hx : x ∈ M) :
+    S.all x ⊆ Set.Icc xu xo :=
+  fun _ hy => hM01 (S.all_subset_M hx hy)
+
+/-- Kompaktheit des Abschlusses der Konstruktion innerhalb `[xu,xo]`. -/
+lemma isCompact_closure_all (S : LRSeqs M) {xu xo x : ℝ}
+    (hM01 : M ⊆ Set.Icc xu xo) (hx : x ∈ M) :
+    IsCompact (closure (S.all x)) := by
+  classical
+  -- Erst: `closure (all x) ⊆ [xu,xo]`.
+  have hsubset : closure (S.all x) ⊆ Set.Icc xu xo :=
+    closure_minimal (S.all_subset_Icc (xu:=xu) (xo:=xo) hM01 hx) isClosed_Icc
+  -- Kompaktheit von `[xu,xo] ∩ closure (all x)`.
+  have hInter :
+      IsCompact (Set.Icc xu xo ∩ closure (S.all x)) :=
+    (isCompact_Icc).inter_right isClosed_closure
+  -- Und `Icc ∩ clo = clo` wegen der Inklusion.
+  have hEq :
+      Set.Icc xu xo ∩ closure (S.all x) = closure (S.all x) := by
+    ext y; constructor
+    · intro hy; exact hy.2
+    · intro hy; exact ⟨hsubset hy, hy⟩
+  simpa [hEq] using hInter
+
+end LRSeqs
+end SeqSpawn
