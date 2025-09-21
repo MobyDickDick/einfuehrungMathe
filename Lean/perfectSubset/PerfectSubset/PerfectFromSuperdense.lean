@@ -1351,3 +1351,506 @@ lemma isCompact_closure_all (S : LRSeqs M) {xu xo x : ℝ}
 
 end LRSeqs
 end SeqSpawn
+
+noncomputable section
+namespace Stage
+open Set
+variable {M : Set ℝ} {xu xo : ℝ}
+
+/-! ### Kleine Rechenhilfe -/
+
+/-- Für `t>0` gilt `t/4 < t` (bequem über „zweimal Halbieren“). -/
+lemma quarter_lt_self_of_pos {t : ℝ} (ht : 0 < t) : t / 4 < t := by
+  -- 1/4 < 1 und t > 0 ⇒ t*(1/4) < t*1
+  have h := mul_lt_mul_of_pos_left (by norm_num : (1/4 : ℝ) < 1) ht
+  -- t*(1/4) = t/4 und t*1 = t
+  simpa [div_eq_mul_inv, one_mul] using h
+
+/-! ----------------------------------------------------------------
+    Varianten des Split-Schritts und der Iteration, die einen Punkt x0
+    aus dem neuen Mittel-Stück (Mid) heraushalten.
+    ---------------------------------------------------------------- -/
+
+/-- wie `split_once`, aber das neue `Mid` enthält einen vorgegebenen Punkt `x0` nicht. -/
+lemma split_once_avoid_mid
+    (hM : TwoSidedSuperdense M)
+    (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (J : ClosedSeg) (hJsub : segSet J ⊆ Set.Icc xu xo)
+    (hHit : (segSet J ∩ K0 M xu xo).Nonempty)
+    (x0 : ℝ) (hx0M : x0 ∈ M) :
+  ∃ (J0 J1 : ClosedSeg) (Mid : Set ℝ),
+    segSet J0 ⊆ segSet J ∧
+    segSet J1 ⊆ segSet J ∧
+    Disjoint (segSet J0) (segSet J1) ∧
+    IsOpen Mid ∧
+    Mid ⊆ Set.Ioo J.a J.b ∧
+    segSet J ⊆ segSet J0 ∪ Mid ∪ segSet J1 ∧
+    (segSet J0 ∩ M).Nonempty ∧
+    (segSet J1 ∩ M).Nonempty ∧
+    x0 ∉ Mid := by
+  classical
+  by_cases hx0Ioo : x0 ∈ Set.Ioo J.a J.b
+  · -- interessanter Fall: x0 echt innen ⇒ wir bauen Mid links von x0
+    have hxa : J.a < x0 := hx0Ioo.1
+    have hbx : x0 < J.b := hx0Ioo.2
+    -- kleines ε₀ um x0
+    set ε0 : ℝ := (min (x0 - J.a) (J.b - x0)) / 4 with hε0def
+    have hε0pos : 0 < ε0 := by
+      have : 0 < min (x0 - J.a) (J.b - x0) := lt_min (sub_pos.mpr hxa) (sub_pos.mpr hbx)
+      have h4 : (0 : ℝ) < 4 := by norm_num
+      simpa [ε0, hε0def] using (div_pos this h4)
+    -- ein z ∈ M links von x0
+    obtain ⟨z, hz⟩ := (hM.2 hx0M hε0pos).1.nonempty
+    rcases hz with ⟨hzM, ⟨hzL, hzR⟩⟩
+    have hz_lt_x0 : z < x0 := hzR
+
+    -- ε0 ≤ (x0 - J.a)/4  ⇒  ε0 < x0 - J.a  ⇒  J.a < z
+    have hε0_le_quarter : ε0 ≤ (x0 - J.a) / 4 := by
+      -- Ziel auf die Rohform bringen
+      rw [hε0def]
+      -- Division durch 4 (≥ 0) ist monoton
+      exact
+        div_le_div_of_nonneg_right
+          (min_le_left (x0 - J.a) (J.b - x0))
+          (by norm_num : (0 : ℝ) ≤ 4)
+    have hε0_lt_x0a : ε0 < x0 - J.a :=
+      lt_of_le_of_lt hε0_le_quarter
+        (quarter_lt_self_of_pos (t := x0 - J.a) (sub_pos.mpr hxa))
+    have Ja_lt_x0_minus : J.a < x0 - ε0 := by
+      -- aus ε0 < x0 - J.a folgt J.a + ε0 < x0
+      have := add_lt_add_left hε0_lt_x0a J.a
+      -- und J.a + (x0 - J.a) = x0
+      have hx0eq : J.a + (x0 - J.a) = x0 := by ring
+      simpa [lt_sub_iff_add_lt, hx0eq] using this
+    have Ja_lt_z : J.a < z := lt_trans Ja_lt_x0_minus hzL
+    have z_lt_Jb : z < J.b := lt_trans hzR hbx
+
+    -- ε so klein, dass r < x0 und r < J.b
+    set ε : ℝ := min ((z - J.a) / 2) (min ((x0 - z) / 2) ((J.b - z) / 2)) with hεdef
+    have hεpos : 0 < ε := by
+      have h1 : 0 < (z - J.a) / 2 := by
+        have : 0 < z - J.a := sub_pos.mpr Ja_lt_z
+        have h2 : (0 : ℝ) < 2 := by norm_num
+        exact (div_pos_iff).mpr (Or.inl ⟨this, h2⟩)
+      have h2 : 0 < (x0 - z) / 2 := by
+        have : 0 < x0 - z := sub_pos.mpr hz_lt_x0
+        have h2 : (0 : ℝ) < 2 := by norm_num
+        exact (div_pos_iff).mpr (Or.inl ⟨this, h2⟩)
+      have h3 : 0 < (J.b - z) / 2 := by
+        have : 0 < J.b - z := sub_pos.mpr z_lt_Jb
+        have h2 : (0 : ℝ) < 2 := by norm_num
+        exact (div_pos_iff).mpr (Or.inl ⟨this, h2⟩)
+      have : 0 < min ((z - J.a) / 2) (min ((x0 - z) / 2) ((J.b - z) / 2)) :=
+        lt_min h1 (lt_min h2 h3)
+      simpa [ε, hεdef] using this
+
+    -- Nachbarn um z: ℓ < z < r, mit r < x0 und r < J.b
+    obtain ⟨ℓ, r, hℓM, hrM, hzL', hℓltz, hzR', hzrlt⟩ :=
+      exists_left_right_near (M:=M) hM (x:=z) (ε:=ε) hzM hεpos
+
+    -- r < x0
+    have hr_lt_x0 : r < x0 := by
+      -- ε ≤ (x0 - z)/2
+      have hε_le : ε ≤ (x0 - z) / 2 := by
+        -- erst ≤ rechten Zweig, dann ≤ linken Zweig des rechten mins
+        change
+          min ((z - J.a) / 2) (min ((x0 - z) / 2) ((J.b - z) / 2))
+            ≤ (x0 - z) / 2
+        exact le_trans (min_le_right _ _) (min_le_left _ _)
+      -- r < z + ε ≤ (z + x0)/2 < x0
+      have hz_add_le : z + ε ≤ z + (x0 - z) / 2 := add_le_add_left hε_le _
+      have hz_plus_half : z + (x0 - z) / 2 = (z + x0) / 2 := by
+        simp [aux_add_sub_div_two]
+      have hxmid : (z + x0) / 2 < x0 :=
+        (mid_mem_Ioo (a := z) (b := x0) hz_lt_x0).2
+      have hzlt : z + ε < x0 :=
+        lt_of_le_of_lt (by simpa [hz_plus_half] using hz_add_le) hxmid
+      exact lt_trans hzrlt hzlt
+
+    -- r < J.b
+    have hr_lt_Jb : r < J.b := by
+      -- ε ≤ (J.b - z)/2
+      have hε_le' : ε ≤ (J.b - z) / 2 := by
+        change
+          min ((z - J.a) / 2) (min ((x0 - z) / 2) ((J.b - z) / 2))
+            ≤ (J.b - z) / 2
+        exact le_trans (min_le_right _ _) (min_le_right _ _)
+      -- r < z + ε ≤ (z + J.b)/2 < J.b
+      have hz_add_le' : z + ε ≤ z + (J.b - z) / 2 := add_le_add_left hε_le' _
+      have hz_plus_half' : z + (J.b - z) / 2 = (z + J.b) / 2 := by ring
+      have hzmid' : (z + J.b) / 2 < J.b :=
+        (mid_mem_Ioo (a := z) (b := J.b) z_lt_Jb).2
+      have hzlt' : z + ε < J.b :=
+        lt_of_le_of_lt (by simpa [hz_plus_half'] using hz_add_le') hzmid'
+      exact lt_trans hzrlt hzlt'
+
+    -- Kinder und Mid
+    -- aus ε ≤ (z - J.a)/2 folgt J.a + ε < z ⇒ J.a < z - ε < ℓ
+    have hε_le_left : ε ≤ (z - J.a) / 2 := by
+      have : min ((z - J.a) / 2) (min ((x0 - z) / 2) ((J.b - z) / 2))
+            ≤ (z - J.a) / 2 := min_le_left _ _
+      simp [hεdef]
+    have hhalf_lt : (z - J.a) / 2 < (z - J.a) :=
+      half_lt_self_of_pos (sub_pos.mpr Ja_lt_z)
+    have hJa_plus_eps_lt_z : J.a + ε < z := by
+      have hεlt : ε < z - J.a := lt_of_le_of_lt hε_le_left hhalf_lt
+      have h'    : J.a + ε < J.a + (z - J.a) := add_lt_add_left hεlt J.a
+      have hzSum : J.a + (z - J.a) = z := by ring
+      simpa [hzSum] using h'
+    have hJa_lt_z_minus_eps : J.a < z - ε :=
+      (lt_sub_iff_add_lt).mpr hJa_plus_eps_lt_z
+    have hJa_lt_ell : J.a < ℓ := lt_trans hJa_lt_z_minus_eps hzL'
+
+    let J0 : ClosedSeg := { a := J.a, b := ℓ, hlt := hJa_lt_ell }
+    let J1 : ClosedSeg := { a := r,   b := J.b, hlt := hr_lt_Jb }
+    let Mid : Set ℝ := Set.Ioo ℓ r
+
+    -- Inklusionen in J
+    have sub0 : segSet J0 ⊆ segSet J := by
+      intro x hx; rcases hx with ⟨hxL, hxR⟩
+      have hℓ_le_Jb : ℓ ≤ J.b := le_of_lt (lt_trans hℓltz z_lt_Jb)
+      exact ⟨hxL, le_trans hxR hℓ_le_Jb⟩
+    have sub1 : segSet J1 ⊆ segSet J := by
+      intro x hx; rcases hx with ⟨hxL, hxR⟩   -- hxL : r ≤ x
+      have hz_le_x : z ≤ x := le_trans (le_of_lt hzR') hxL
+      have hJa_lt_x : J.a < x := lt_of_lt_of_le Ja_lt_z hz_le_x
+      exact ⟨le_of_lt hJa_lt_x, hxR⟩
+
+    -- Disjunktheit
+    have disj : Disjoint (segSet J0) (segSet J1) := by
+      have hsep : ℓ < r := lt_trans hℓltz hzR'
+      refine disjoint_left.mpr ?_
+      intro x hx0 hx1
+      have : r ≤ ℓ := le_trans hx1.1 hx0.2
+      exact (not_le_of_gt hsep) this
+
+    -- Mid offen & innen
+    have openMid : IsOpen Mid := isOpen_Ioo
+    have midSub : Mid ⊆ Set.Ioo J.a J.b := by
+      intro x hx
+      exact ⟨lt_trans hJa_lt_ell hx.1, lt_trans hx.2 hr_lt_Jb⟩
+
+    -- Überdeckung von J
+    have cover : segSet J ⊆ segSet J0 ∪ Mid ∪ segSet J1 := by
+      intro x hx
+      by_cases hxl : x ≤ ℓ
+      · exact Or.inl (Or.inl ⟨hx.1, hxl⟩)
+      · have hℓlt : ℓ < x := lt_of_not_ge hxl
+        by_cases hxr : x < r
+        · exact Or.inl (Or.inr ⟨hℓlt, hxr⟩)
+        · have hx_ge_r : r ≤ x := le_of_not_gt hxr
+          exact Or.inr ⟨hx_ge_r, hx.2⟩
+
+    -- beide Kinder treffen M
+    have touch0 : (segSet J0 ∩ M).Nonempty :=
+      ⟨ℓ, ⟨⟨le_of_lt hJa_lt_ell, le_rfl⟩, hℓM⟩⟩
+    have touch1 : (segSet J1 ∩ M).Nonempty :=
+      ⟨r, ⟨⟨le_rfl, le_of_lt hr_lt_Jb⟩, hrM⟩⟩
+
+    -- x0 liegt nicht in Mid (weil r < x0)
+    have hx0_notin : x0 ∉ Mid := by
+      intro hx; exact (not_lt_of_ge (le_of_lt hr_lt_x0)) hx.2
+
+    exact ⟨J0, J1, Mid, sub0, sub1, disj, openMid, midSub, cover, touch0, touch1, hx0_notin⟩
+
+  · -- trivialer Fall: x0 nicht innen ⇒ jedes Mid ⊆ Ioo ⇒ x0 ∉ Mid
+    obtain ⟨J0, J1, Mid, hsub0, hsub1, hdisj, hopen, hmid, hcov, ht0, ht1⟩ :=
+      split_once (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo J hJsub hHit
+    have hx0_notin : x0 ∉ Mid := by
+      intro hx; exact hx0Ioo (hmid hx)
+    exact ⟨J0, J1, Mid, hsub0, hsub1, hdisj, hopen, hmid, hcov, ht0, ht1, hx0_notin⟩
+
+/-- wie `refineOne`, aber wählt `Mid` so, dass `x0 ∉ Mid`. -/
+def refineOneAvoid
+    (hM : TwoSidedSuperdense M)
+    (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (x0 : ℝ) (hx0M : x0 ∈ M)
+    (s : State M xu xo)
+    (J : ClosedSeg) (hJmem : J ∈ s.segs)
+    (hHit : (segSet J ∩ K0 M xu xo).Nonempty) :
+  State M xu xo := by
+  classical
+  -- J ⊆ Icc
+  have hJsub : segSet J ⊆ Set.Icc xu xo := s.invSegs hJmem
+  -- wähle Daten nicht-konstruktiv aus `split_once_avoid_mid`
+  let h := split_once_avoid_mid (M:=M) hM hxu hxo J hJsub hHit x0 hx0M
+  let J0 : ClosedSeg := Classical.choose h
+  let h1 := Classical.choose_spec h
+  let J1 : ClosedSeg := Classical.choose h1
+  let h2 := Classical.choose_spec h1
+  let Mid : Set ℝ := Classical.choose h2
+  let hprops := Classical.choose_spec h2
+
+  -- Teil-Eigenschaften
+  have sub0 : segSet J0 ⊆ segSet J := hprops.1
+  have sub1 : segSet J1 ⊆ segSet J := hprops.2.1
+  have openMid : IsOpen Mid := hprops.2.2.2.1
+
+  -- neue Listen
+  let segs' := J0 :: J1 :: s.segs
+  let mids' := Mid :: s.mids
+
+  -- Invarianten
+  have invJ0 : segSet J0 ⊆ Set.Icc xu xo := by intro x hx; exact hJsub (sub0 hx)
+  have invJ1 : segSet J1 ⊆ Set.Icc xu xo := by intro x hx; exact hJsub (sub1 hx)
+
+  refine
+  { segs := segs',
+    mids := mids',
+    invSegs := ?_,
+    invMids := ?_ }
+  · intro J' hJ'
+    have : J' = J0 ∨ J' = J1 ∨ J' ∈ s.segs := by simpa [segs'] using hJ'
+    rcases this with h0 | h
+    · simpa [h0] using invJ0
+    rcases h with h1 | hIn
+    · simpa [h1] using invJ1
+    · exact s.invSegs hIn
+  · intro U hU
+    have : U = Mid ∨ U ∈ s.mids := by simpa [mids'] using hU
+    rcases this with hEq | hOld
+    · simpa [hEq] using openMid
+    · exact s.invMids hOld
+
+/-- Beim Schritt `refineOneAvoid` wird vorne exakt **ein** neues `Mid`
+    an die Liste `mids` angehängt; außerdem liegt `x0` nicht in diesem `U`. -/
+lemma exists_cons_mids_refineOneAvoid
+    {M : Set ℝ} (hM : TwoSidedSuperdense M)
+    {xu xo : ℝ} (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (x0 : ℝ) (hx0M : x0 ∈ M)
+    (s : State M xu xo)
+    (J : ClosedSeg) (hJmem : J ∈ s.segs)
+    (hHit : (segSet J ∩ K0 M xu xo).Nonempty) :
+  ∃ U,
+      (refineOneAvoid (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo x0 hx0M s J hJmem hHit).mids
+        = U :: s.mids
+    ∧ x0 ∉ U := by
+  classical
+  -- dieselbe Choose-Kaskade wie in `refineOneAvoid`
+  have hJsub : segSet J ⊆ Set.Icc xu xo := s.invSegs hJmem
+  let h  :=
+    split_once_avoid_mid (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo J hJsub hHit x0 hx0M
+  let h1 := Classical.choose_spec h
+  let h2 := Classical.choose_spec h1
+  -- Das U ist genau das Mid, das refineOneAvoid verwendet:
+  let U  : Set ℝ := Classical.choose h2
+
+  -- und direkt die Eigenschaft x0 ∉ U:
+  have hx0not : x0 ∉ U := by
+    simpa [U] using (Classical.choose_spec h2).2.2.2.2.2.2.2.2
+
+  -- reine Definitions-Reduktion: mids = U :: s.mids
+  have hmids :
+      (refineOneAvoid (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo x0 hx0M s J hJmem hHit).mids
+        = U :: s.mids := by
+    -- erst auf das konkrete `Classical.choose h2` reduzieren …
+    have : (refineOneAvoid (M:=M) hM (xu:=xu) (xo:=xo) hxu hxo x0 hx0M s J hJmem hHit).mids
+            = (Classical.choose h2) :: s.mids := by
+      simp [refineOneAvoid]
+    -- … und dann U einsetzen
+    simpa [U] using this
+
+  exact ⟨U, hmids, hx0not⟩
+
+
+/-- Ein Schritt `refineOneAvoid` bewahrt `x0` im Kern. -/
+lemma core_refineOneAvoid_preserves_point
+    (hM : TwoSidedSuperdense M)
+    (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (x0 : ℝ) (hx0M : x0 ∈ M)
+    (s : State M xu xo)
+    (J : ClosedSeg) (hJmem : J ∈ s.segs)
+    (hHit : (segSet J ∩ K0 M xu xo).Nonempty)
+    (hx0core : x0 ∈ core (M := M) (xu := xu) (xo := xo) s) :
+  x0 ∈ core (M:=M) (xu:=xu) (xo:=xo)
+        (refineOneAvoid (M:= M) hM hxu hxo x0 hx0M s J hJmem hHit) := by
+  classical
+  -- aus core-Mitgliedschaft: x0 ∈ Icc und x0 ∉ (U0' ∪ midUnion s.mids)
+  rcases (by simpa [core] using hx0core) with ⟨hx0Icc, hx0Compl⟩
+  have hx0Compl' : x0 ∉ (U0' M xu xo ∪ midUnion s.mids) := by simpa using hx0Compl
+  have hx0_not_U0' : x0 ∉ U0' M xu xo := (not_or.mp hx0Compl').1
+  have hx0_not_oldMidUnion : x0 ∉ midUnion s.mids := (not_or.mp hx0Compl').2
+
+  -- neues Mid + Listenform gewinnen
+  rcases exists_cons_mids_refineOneAvoid (M := M) hM hxu hxo x0 hx0M s J hJmem hHit
+    with ⟨U, hMids, hx0_notU⟩
+
+  -- x0 liegt nicht im neuen Mid-Union
+  have hx0_not_newMidUnion : x0 ∉ midUnion (U :: s.mids) := by
+    have : x0 ∉ U ∪ midUnion s.mids := not_or.mpr ⟨hx0_notU, hx0_not_oldMidUnion⟩
+    simpa [midUnion_cons] using this
+
+  -- und damit im neuen core
+  have hx0Compl'' : x0 ∉ U0' M xu xo ∪ midUnion (U :: s.mids) :=
+    not_or.mpr ⟨hx0_not_U0', hx0_not_newMidUnion⟩
+  simpa [core, hMids] using And.intro hx0Icc hx0Compl''
+
+/-- automatische Variante mit Vermeidung: wähle `J` per `Hits`, splitte ohne x0. -/
+noncomputable def refineOnceAutoAvoid
+    (hM : TwoSidedSuperdense M)
+    (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (x0 : ℝ) (hx0M : x0 ∈ M)
+    (s : State M xu xo)
+    (hSel : Hits M xu xo s) :
+  State M xu xo :=
+by
+  classical
+  let J : ClosedSeg := Classical.choose hSel
+  have hJmem : J ∈ s.segs := (Classical.choose_spec hSel).1
+  have hHit : (segSet J ∩ K0 M xu xo).Nonempty := (Classical.choose_spec hSel).2
+  exact refineOneAvoid (M:=M) hM hxu hxo x0 hx0M s J hJmem hHit
+
+/-- n-fache Verfeinerung mit Vermeidung von `x0`. -/
+def refineNAvoid
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (x0 : ℝ) (hx0M : x0 ∈ M)
+    (sel : Selector M xu xo) : Nat → State M xu xo → State M xu xo
+  | 0,     s => s
+  | n+1,   s =>
+      let s' := refineNAvoid hM hxu hxo x0 hx0M sel n s
+      refineOnceAutoAvoid hM hxu hxo x0 hx0M s' (sel s')
+
+@[simp] lemma refineNAvoid_succ
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (x0 : ℝ) (hx0M : x0 ∈ M)
+    (sel : Selector M xu xo)
+    (n : ℕ) (s : State M xu xo) :
+  refineNAvoid hM hxu hxo x0 hx0M sel (n+1) s
+    =
+  refineOnceAutoAvoid hM hxu hxo x0 hx0M
+    (refineNAvoid hM hxu hxo x0 hx0M sel n s)
+    (sel (refineNAvoid hM hxu hxo x0 hx0M sel n s)) := rfl
+
+/-- Wenn `x0 ∈ core s`, dann bleibt `x0` in allen `core (refineNAvoid … n s)`. -/
+lemma mem_core_refineNAvoid_preserved
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (x0 : ℝ)
+    (s : State M xu xo) (hx0core : x0 ∈ core (M := M) (xu := xu) (xo := xo) s)
+    (sel : Selector M xu xo) :
+  ∀ n, x0 ∈ core (M:=M) (xu:=xu) (xo:=xo)
+         (refineNAvoid (M:=M) (xu:=xu) (xo:=xo) hM hxu hxo x0
+            ((core_subset_M (M:=M) (xu:=xu) (xo:=xo) hxu hxo s) hx0core)
+            sel n s) := by
+  classical
+  have hx0M : x0 ∈ M := (core_subset_M (M:=M) (xu:=xu) (xo:=xo) hxu hxo s) hx0core
+  refine Nat.rec ?base ?step
+  · simpa [refineNAvoid] using hx0core
+  · intro n ih
+    -- wie gehabt:
+    let sn := refineNAvoid (M:=M) (xu:=xu) (xo:=xo) hM hxu hxo x0 hx0M sel n s
+    let J  : ClosedSeg := Classical.choose (sel sn)
+    have hJmem : J ∈ sn.segs := (Classical.choose_spec (sel sn)).1
+    have hHit  : (segSet J ∩ K0 M xu xo).Nonempty := (Classical.choose_spec (sel sn)).2
+
+    -- WICHTIG: hxu hxo VOR x0 hx0M übergeben (und xu/xo als named implizit setzen)
+    have step :=
+      core_refineOneAvoid_preserves_point (M:=M) (xu:=xu) (xo:=xo)
+        hM hxu hxo x0 hx0M sn J hJmem hHit ih
+
+    -- und damit genau das gewünschte Ziel für n.succ erhalten
+    -- (Definition von refineNAvoid entfalten)
+    simpa [refineNAvoid] using step
+/-- ω-Schnitt der Avoid-Iteration. -/
+def KωAvoid
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (x0 : ℝ) (hx0M : x0 ∈ M)
+    (sel : Selector M xu xo)
+    (s : State M xu xo) : Set ℝ :=
+  ⋂ n : ℕ,
+    core (M := M) (xu := xu) (xo := xo)
+      (refineNAvoid (M := M) (xu := xu) (xo := xo) hM hxu hxo x0 hx0M sel n s)
+
+/-- Nicht-Leerheit von `KωAvoid` ab Init-Zustand, sobald `x0 ∈ K0`. -/
+lemma KωAvoid_nonempty_of_x0_in_K0
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (sel : Selector M xu xo)
+    (J : ClosedSeg) (hJsub : segSet J ⊆ Set.Icc xu xo)
+    {x0 : ℝ} (hx0K0 : x0 ∈ K0 M xu xo) :
+  (KωAvoid (M := M) (xu := xu) (xo := xo) hM hxu hxo
+            x0
+            ((K0_subset_M (M:=M) (xu:=xu) (xo:=xo) hxu hxo) hx0K0)
+            sel
+            (init (M:=M) (xu:=xu) (xo:=xo) J hJsub)).Nonempty := by
+  classical
+  -- Startzustand
+  let s0 := init (M:=M) (xu:=xu) (xo:=xo) J hJsub
+
+  -- core s0 = K0
+  have hcore_eq :
+      core (M:=M) (xu:=xu) (xo:=xo) s0 = K0 M xu xo := by
+    simp [s0]
+
+  -- also x0 ∈ core s0
+  have hx0_core : x0 ∈ core (M:=M) (xu:=xu) (xo:=xo) s0 := by
+    simpa [hcore_eq] using hx0K0
+
+  -- x0 bleibt in allen Kernen der Avoid-Iteration
+  have hx_all :
+      ∀ n, x0 ∈ core (M:=M) (xu:=xu) (xo:=xo)
+                 (refineNAvoid (M:=M) (xu:=xu) (xo:=xo) hM hxu hxo x0
+                    ((K0_subset_M (M:=M) (xu:=xu) (xo:=xo) hxu hxo) hx0K0)
+                    sel n s0) := by
+    intro n
+    exact mem_core_refineNAvoid_preserved (M:=M) (xu:=xu) (xo:=xo)
+            hM hxu hxo x0 s0 hx0_core sel n
+
+  -- damit liegt x0 im ω-Schnitt
+  refine ⟨x0, ?_⟩
+  simpa [KωAvoid] using Set.mem_iInter.mpr hx_all
+
+
+/-- `KωAvoid` ist abgeschlossen. -/
+lemma isClosed_KωAvoid
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (x0 : ℝ) (hx0M : x0 ∈ M)
+    (sel : Selector M xu xo)
+    (s : State M xu xo) :
+  IsClosed (KωAvoid (M:=M) (xu:=xu) (xo:=xo) hM hxu hxo x0 hx0M sel s) := by
+  classical
+  unfold KωAvoid
+  refine isClosed_iInter ?_
+  intro n
+  exact isClosed_core'
+          (M := M) (xu := xu) (xo := xo)
+          (s := refineNAvoid (M:=M) (xu:=xu) (xo:=xo) hM hxu hxo x0 hx0M sel n s)
+
+/-- `KωAvoid ⊆ Icc xu xo`. -/
+lemma KωAvoid_subset_Icc
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (x0 : ℝ) (hx0M : x0 ∈ M)
+    (sel : Selector M xu xo)
+    (s : State M xu xo) :
+  KωAvoid (M:=M) (xu:=xu) (xo:=xo) hM hxu hxo x0 hx0M sel s ⊆ Set.Icc xu xo := by
+  intro x hx
+  have hx_all :
+      ∀ n, x ∈ core (M:=M) (xu:=xu) (xo:=xo)
+                     (refineNAvoid (M:=M) (xu:=xu) (xo:=xo) hM hxu hxo x0 hx0M sel n s) := by
+    simpa [KωAvoid] using (Set.mem_iInter.mp hx)
+  have hx0 := hx_all 0
+  exact core_subset_Icc
+          (M := M) (xu := xu) (xo := xo)
+          (s := refineNAvoid (M := M) (xu := xu) (xo := xo) hM hxu hxo x0 hx0M sel 0 s)
+          hx0
+
+/-- Kompaktheit von `KωAvoid`. -/
+lemma isCompact_KωAvoid
+    (hM : TwoSidedSuperdense M) (hxu : xu ∈ M) (hxo : xo ∈ M)
+    (x0 : ℝ) (hx0M : x0 ∈ M)
+    (sel : Selector M xu xo)
+    (s : State M xu xo) :
+  IsCompact (KωAvoid (M:=M) (xu:=xu) (xo:=xo) hM hxu hxo x0 hx0M sel s) := by
+  classical
+  have hclosed : IsClosed (KωAvoid (M:=M) (xu:=xu) (xo:=xo) hM hxu hxo x0 hx0M sel s) :=
+    isClosed_KωAvoid (M:=M) (xu:=xu) (xo:=xo) hM hxu hxo x0 hx0M sel s
+  have hInter :
+      IsCompact (Set.Icc xu xo ∩ KωAvoid (M:=M) (xu:=xu) (xo:=xo) hM hxu hxo x0 hx0M sel s) :=
+    (isCompact_Icc).inter_right hclosed
+  have hEq :
+      Set.Icc xu xo ∩ KωAvoid (M:=M) (xu:=xu) (xo:=xo) hM hxu hxo x0 hx0M sel s
+      = KωAvoid (M:=M) (xu:=xu) (xo:=xo) hM hxu hxo x0 hx0M sel s := by
+    ext y; constructor
+    · intro hy; exact hy.2
+    · intro hy; exact ⟨KωAvoid_subset_Icc (M:=M) (xu:=xu) (xo:=xo) hM hxu hxo x0 hx0M sel s hy, hy⟩
+  simpa [hEq] using hInter
+
+end Stage
