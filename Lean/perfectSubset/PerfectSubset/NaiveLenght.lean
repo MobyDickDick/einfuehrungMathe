@@ -197,7 +197,7 @@ lemma nu_le_one (A : Set ℝ) : S.nu A ≤ 1 := by
 lemma nu_eq_nu_inter_I01 (A : Set ℝ) : S.nu A = S.nu (A ∩ I01) := by
   have hsub : (A ∩ I01) ⊆ I01 := by intro x hx; exact hx.2
   have hcap : (A ∩ I01) ∩ I01 = (A ∩ I01) := by
-    simpa using inter_I01_of_subset (K := A ∩ I01) hsub
+    simp [inter_I01_of_subset, hsub]
   simp [nu, hcap]
 
 @[simp] lemma kappa_empty' : S.kappa ∅ = 0 := S.kappa_empty
@@ -221,7 +221,7 @@ lemma nu_eq_nu_inter_I01 (A : Set ℝ) : S.nu A = S.nu (A ∩ I01) := by
       refine ⟨∅, isCompact_empty, ?_, ?_⟩
       · intro x hx; cases hx
       · simp [S.kappa_empty]
-  simpa [nu, hset]
+  simp [nu]
 
 @[simp] lemma nu_I01 : S.nu I01 = 1 := by
   have h := S.nu_eq_kappa_on_compact (K := I01)
@@ -442,7 +442,6 @@ lemma interU_union_KFamily_eq_I01
 
   exact le_antisymm hsubset hsupset
 
-include S
 
 /-! ## Relativ offene Supersets in I01 -/
 
@@ -460,6 +459,7 @@ lemma VFamily_inter_mem {M U₁ U₂ : Set ℝ}
     · intro hx; rcases hx with ⟨hxI, hxV⟩; exact ⟨⟨hxI, hxV.1⟩, ⟨hxI, hxV.2⟩⟩
   · intro x hxM; exact ⟨hMsub₁ hxM, hMsub₂ hxM⟩
 
+omit S
 /-- Kernlemma: `M` ist der Schnitt aller relativ offenen Supersets von `M` in `I01`. -/
 lemma inter_VFamily_eq (M : Set ℝ) (hM : M ⊆ I01) :
   (⋂₀ VFamily M) = M := by
@@ -496,19 +496,21 @@ lemma inter_VFamily_eq (M : Set ℝ) (hM : M ⊆ I01) :
 
   exact le_antisymm hsubset hsupset
 
+include S
 namespace NaiveLength
 
 /-- Zugehörige `K`-Familie: Komplemente der `V`-Mengen **innerhalb** von `I01`. -/
 def KFamilyOf (M : Set ℝ) : Set (Set ℝ) :=
   {K | ∃ U ∈ VFamily M, K = I01 \ U}
 
+omit S
 /-- Komplementformel: `[0,1] \ M = ⋃₀ (KFamilyOf M)`. -/
 lemma compl_eq_union_KFamilyOf (M : Set ℝ) (hM : M ⊆ I01) :
   I01 \ M = ⋃₀ (KFamilyOf M) := by
   classical
   -- Kernlemma: ⋂ VFamily M = M
   have hInt : (⋂₀ VFamily M) = M :=
-    (inter_VFamily_eq (S := S) (M := M) hM)
+    inter_VFamily_eq (M := M) hM
   ext x; constructor
   · -- → Richtung
     intro hx
@@ -578,7 +580,7 @@ include S
 
 /-- Grund-Ungleichung: Für `A ⊆ I01` gilt `ν(A) ≤ 1 - κ(I01 \ A)`. -/
 lemma nu_le_one_sub_kappa_compl_of_subset_I01
-  {A : Set ℝ} (hA : A ⊆ I01) :
+  {A : Set ℝ} (_ : A ⊆ I01) :
   S.nu A ≤ 1 - S.kappa (I01 \ A) := by
   classical
   let I := {κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ A ∩ I01 ∧ S.kappa T = κ}
@@ -614,7 +616,7 @@ lemma nu_le_one_sub_kappa_compl_of_subset_I01
 Für `M ⊆ I01` und `ε>0` gibt es ein offenes `O ⊇ M` mit
 `κ(O) ≤ κ(M) + ε`. -/
 lemma exists_open_superset_kappa_within
-  {M : Set ℝ} (hM : M ⊆ I01)
+  {M : Set ℝ} (_ : M ⊆ I01)
   (ε : ℝ) (hε : 0 < ε) :
   ∃ O : Set ℝ, IsOpen O ∧ M ⊆ O ∧ S.kappa O ≤ S.kappa M + ε := by
   classical
@@ -637,14 +639,14 @@ lemma exists_open_superset_kappa_within
   have hcontra : S.kappa M + ε ≤ S.kappa M := by simpa [hEq] using h_le_inf
   exact ((not_lt_of_ge hcontra) (by linarith : S.kappa M < S.kappa M + ε)).elim
 
+omit S
 /-- **Hauptgleichung (Schnitt/Union):**
 Für eine nichtleere Familie `𝓤` **offener** Mengen `U ⊆ I01` gilt
 `κ(⋂₀ 𝓤) + ν(⋃₀ KFamily 𝓤) = 1`. -/
  theorem kappa_sInter_add_nu_sUnionK_eq_one
   (S : KappaSystem)
   (𝓤 : Set (Set ℝ))
-  (hUopen : ∀ {U}, U ∈ 𝓤 → IsOpen U)
-  (hUsub  : ∀ {U}, U ∈ 𝓤 → U ⊆ I01)
+  (hUsub : ∀ {U}, U ∈ 𝓤 → U ⊆ I01)
   (hUnonempty : 𝓤.Nonempty) :
   S.kappa (sInter 𝓤) + S.nu (sUnion (KappaSystem.KFamily 𝓤)) = 1 := by
   classical
@@ -731,7 +733,7 @@ Für eine nichtleere Familie `𝓤` **offener** Mengen `U ⊆ I01` gilt
     le_antisymm hν_le hν_ge
   calc
     S.kappa M + S.nu (sUnion (KappaSystem.KFamily 𝓤))
-        = S.kappa M + (1 - S.kappa M) := by simpa [hEqν]
+        = S.kappa M + (1 - S.kappa M) := by simp [hEqν]
     _   = 1 := by ring
 
 end KappaSystem
