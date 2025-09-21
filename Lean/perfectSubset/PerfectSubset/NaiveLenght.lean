@@ -204,7 +204,7 @@ lemma nu_eq_nu_inter_I01 (A : Set ℝ) : S.nu A = S.nu (A ∩ I01) := by
 
 @[simp] lemma nu_empty : S.nu (∅ : Set ℝ) = 0 := by
   classical
-  have : {κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ (∅ : Set ℝ) ∩ I01 ∧ S.kappa T = κ}
+  have hset : {κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ (∅ : Set ℝ) ∩ I01 ∧ S.kappa T = κ}
         = {0} := by
     ext r; constructor
     · intro hr
@@ -221,7 +221,7 @@ lemma nu_eq_nu_inter_I01 (A : Set ℝ) : S.nu A = S.nu (A ∩ I01) := by
       refine ⟨∅, isCompact_empty, ?_, ?_⟩
       · intro x hx; cases hx
       · simp [S.kappa_empty]
-  simp [nu, this]
+  simpa [nu, hset]
 
 @[simp] lemma nu_I01 : S.nu I01 = 1 := by
   have h := S.nu_eq_kappa_on_compact (K := I01)
@@ -231,8 +231,11 @@ lemma nu_eq_nu_inter_I01 (A : Set ℝ) : S.nu A = S.nu (A ∩ I01) := by
 /-! ### Familien: KFamily, κ(𝓤), ν(𝓚) -/
 
 def KFamily (𝓤 : Set (Set ℝ)) : Set (Set ℝ) := {K | ∃ U ∈ 𝓤, K = I01 \ U}
+
 def kappaInf (𝓤 : Set (Set ℝ)) : ℝ := sInf (S.kappa '' 𝓤)
-def nuSup   (𝓚 : Set (Set ℝ)) : ℝ := sSup (S.nu '' 𝓚)
+
+def nuSup (𝓚 : Set (Set ℝ)) : ℝ := sSup (S.nu '' 𝓚)
+
 def kappaSup (𝓚 : Set (Set ℝ)) : ℝ := sSup (S.kappa '' 𝓚)
 
 lemma kappa_image_bdd
@@ -247,7 +250,7 @@ lemma kappa_image_bdd
   · refine ⟨1, ?_⟩
     intro y hy; rcases hy with ⟨U, hU, rfl⟩
     have : S.kappa U ≤ S.kappa I01 := S.mono_kappa (hUsubI hU)
-    simpa [S.kappa_I01] using this
+    simp [S.kappa_I01] at this; exact this
 
 lemma nu_image_bdd
   {𝓚 : Set (Set ℝ)}
@@ -312,6 +315,7 @@ lemma nuSup_eq_kappaSup_on_KFamily
     using congrArg sSup (S.image_nu_eq_image_kappa_on_KFamily (𝓤 := 𝓤) hUopen hUsub)
 
 /-! ### Hauptsatz: κ(𝓤) + ν(𝓚) = 1 -/
+
 theorem kappaInf_add_nuSup_eq_one
   (𝓤 : Set (Set ℝ))
   (hUopens : ∀ {U}, U ∈ 𝓤 → IsOpen U)
@@ -403,6 +407,8 @@ theorem kappaInf_add_nuSup_eq_one
 /-! ## Familien auf [0,1]: strukturelle Gleichheiten -/
 open Set
 
+omit S
+
 lemma interU_union_KFamily_eq_I01
   (𝓤 : Set (Set ℝ))
   (hUsub : ∀ ⦃U⦄, U ∈ 𝓤 → U ⊆ I01)
@@ -436,10 +442,9 @@ lemma interU_union_KFamily_eq_I01
 
   exact le_antisymm hsubset hsupset
 
+include S
 
 /-! ## Relativ offene Supersets in I01 -/
-
-omit S
 
 def VFamily (M : Set ℝ) : Set (Set ℝ) :=
   {U | ∃ V : Set ℝ, IsOpen V ∧ U = I01 ∩ V ∧ M ⊆ U}
@@ -502,7 +507,8 @@ lemma compl_eq_union_KFamilyOf (M : Set ℝ) (hM : M ⊆ I01) :
   I01 \ M = ⋃₀ (KFamilyOf M) := by
   classical
   -- Kernlemma: ⋂ VFamily M = M
-  have hInt : (⋂₀ VFamily M) = M := inter_VFamily_eq (M := M) hM
+  have hInt : (⋂₀ VFamily M) = M :=
+    (inter_VFamily_eq (S := S) (M := M) hM)
   ext x; constructor
   · -- → Richtung
     intro hx
@@ -550,6 +556,8 @@ include S
 ###############################################################################
 -/
 
+omit S
+
 lemma sUnion_KFamily_eq_compl_sInter (𝓤 : Set (Set ℝ)) :
   sUnion (KappaSystem.KFamily 𝓤) = I01 \ sInter 𝓤 := by
   classical
@@ -566,9 +574,11 @@ lemma sUnion_KFamily_eq_compl_sInter (𝓤 : Set (Set ℝ)) :
     rcases this with ⟨U, hU, hxNotU⟩
     exact mem_sUnion.mpr ⟨I01 \ U, ⟨U, hU, rfl⟩, ⟨hxI, hxNotU⟩⟩
 
+include S
+
 /-- Grund-Ungleichung: Für `A ⊆ I01` gilt `ν(A) ≤ 1 - κ(I01 \ A)`. -/
 lemma nu_le_one_sub_kappa_compl_of_subset_I01
-  (S : KappaSystem) {A : Set ℝ} (_ : A ⊆ I01) :
+  {A : Set ℝ} (hA : A ⊆ I01) :
   S.nu A ≤ 1 - S.kappa (I01 \ A) := by
   classical
   let I := {κ : ℝ | ∃ T, IsCompact T ∧ T ⊆ A ∩ I01 ∧ S.kappa T = κ}
@@ -604,7 +614,7 @@ lemma nu_le_one_sub_kappa_compl_of_subset_I01
 Für `M ⊆ I01` und `ε>0` gibt es ein offenes `O ⊇ M` mit
 `κ(O) ≤ κ(M) + ε`. -/
 lemma exists_open_superset_kappa_within
-  (S : KappaSystem) {M : Set ℝ} (_ : M ⊆ I01)
+  {M : Set ℝ} (hM : M ⊆ I01)
   (ε : ℝ) (hε : 0 < ε) :
   ∃ O : Set ℝ, IsOpen O ∧ M ⊆ O ∧ S.kappa O ≤ S.kappa M + ε := by
   classical
@@ -630,7 +640,7 @@ lemma exists_open_superset_kappa_within
 /-- **Hauptgleichung (Schnitt/Union):**
 Für eine nichtleere Familie `𝓤` **offener** Mengen `U ⊆ I01` gilt
 `κ(⋂₀ 𝓤) + ν(⋃₀ KFamily 𝓤) = 1`. -/
-theorem kappa_sInter_add_nu_sUnionK_eq_one
+ theorem kappa_sInter_add_nu_sUnionK_eq_one
   (S : KappaSystem)
   (𝓤 : Set (Set ℝ))
   (hUopen : ∀ {U}, U ∈ 𝓤 → IsOpen U)
@@ -644,15 +654,15 @@ theorem kappa_sInter_add_nu_sUnionK_eq_one
     exact hUsub hU0 ((mem_sInter.mp hxM) U0 hU0)
 
   have hUnionEq : sUnion (KappaSystem.KFamily 𝓤) = I01 \ M :=
-    (sUnion_KFamily_eq_compl_sInter (S := S) (𝓤 := 𝓤))
+    (sUnion_KFamily_eq_compl_sInter (𝓤 := 𝓤))
 
   -- obere Schranke
   have hν_le : S.nu (sUnion (KappaSystem.KFamily 𝓤)) ≤ 1 - S.kappa M := by
     -- Grundlemma direkt anwenden (benannte Argumente, Subset-Beweis inline)
     have h0 :
         S.nu (I01 \ M) ≤ 1 - S.kappa (I01 \ (I01 \ M)) :=
-      KappaSystem.nu_le_one_sub_kappa_compl_of_subset_I01
-        (S := S) (A := I01 \ M)
+      S.nu_le_one_sub_kappa_compl_of_subset_I01
+        (A := I01 \ M)
         (by intro x hx; exact hx.1)
     -- Normalisierungen
     have hIcap : I01 ∩ M = M := by
@@ -670,8 +680,7 @@ theorem kappa_sInter_add_nu_sUnionK_eq_one
     -- Open-Superset-Lemma sicher anwenden
     have hOpenSup :
       ∃ O : Set ℝ, IsOpen O ∧ M ⊆ O ∧ S.kappa O ≤ S.kappa M + ε := by
-      refine KappaSystem.exists_open_superset_kappa_within (S := S) (M := M) ?_ ε hε
-      exact hMsub
+      exact S.exists_open_superset_kappa_within (M := M) hMsub ε hε
     rcases hOpenSup with ⟨O, hOopen, hMsubO, hκO⟩
     let U' : Set ℝ := I01 ∩ O
     let K' : Set ℝ := I01 \ U'
