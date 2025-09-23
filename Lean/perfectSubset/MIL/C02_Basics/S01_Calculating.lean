@@ -80,9 +80,13 @@ section
 variable (a b : ℝ)
 
 example : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b := by
-  rw [mul_add, add_mul, add_mul]
-  rw [← add_assoc, add_assoc (a * a)]
-  rw [mul_comm b a, ← two_mul]
+  rw [mul_add (a + b) a b ]
+  rw [add_mul a b a]
+  rw [add_mul a b b]
+  rw [← add_assoc]
+  rw [add_assoc (a * a)]
+  rw [mul_comm b a]
+  rw [← two_mul]
 
 example : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
   calc
@@ -96,7 +100,7 @@ example : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
 example : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
   calc
     (a + b) * (a + b) = a * a + b * a + (a * b + b * b) := by
-      sorry
+      rw [mul_add]
     _ = a * a + (b * a + a * b) + b * b := by
       sorry
     _ = a * a + 2 * (a * b) + b * b := by

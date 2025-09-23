@@ -16,15 +16,12 @@ compact "skeleton" iteration. No external project dependencies.
 `M` is a field (not a parameter at the head) for maximal robustness. -/
 structure ThirdSplit where
   M : Set ℝ
-  x00  : ℝ
-  x01  : ℝ
-  x10  : ℝ
-  x11  : ℝ
-  mem_x00 : x00 ∈ M
-  mem_x01 : x01 ∈ M
-  mem_x10 : x10 ∈ M
-  mem_x11 : x11 ∈ M
-  le_left  : x00 ≤ x01
+  x00 : ℝ
+  x01 : ℝ
+  x10 : ℝ
+  x11 : ℝ
+  mem_all : x00 ∈ M ∧ x01 ∈ M ∧ x10 ∈ M ∧ x11 ∈ M
+  le_left : x00 ≤ x01
   le_right : x10 ≤ x11
   -- side conditions: keep only the two "short" boundary pieces
   left_short  : x01 < x00 + (x11 - x00) / 3
@@ -56,19 +53,19 @@ structure ThirdSplit where
 
 /-- All four endpoints belong to `M₁`. -/
 @[simp] theorem x00_mem_M1 (s : ThirdSplit) : s.x00 ∈ M1 s := by
-  refine And.intro s.mem_x00 ?_
+  refine And.intro s.mem_all.left ?_
   exact Or.inl ⟨le_rfl, s.le_left⟩
 
 @[simp] theorem x01_mem_M1 (s : ThirdSplit) : s.x01 ∈ M1 s := by
-  refine And.intro s.mem_x01 ?_
+  refine And.intro s.mem_all.right.left ?_
   exact Or.inl ⟨s.le_left, le_rfl⟩
 
 @[simp] theorem x10_mem_M1 (s : ThirdSplit) : s.x10 ∈ M1 s := by
-  refine And.intro s.mem_x10 ?_
+  refine And.intro s.mem_all.right.right.left ?_
   exact Or.inr ⟨le_rfl, s.le_right⟩
 
 @[simp] theorem x11_mem_M1 (s : ThirdSplit) : s.x11 ∈ M1 s := by
-  refine And.intro s.mem_x11 ?_
+  refine And.intro s.mem_all.right.right.right ?_
   exact Or.inr ⟨s.le_right, le_rfl⟩
 
 /-- If the middle gap is wide enough, the two `Icc` blocks are separated. -/
@@ -167,6 +164,58 @@ lemma uncountable_M1_of_locally (s : ThirdSplit)
   exact hA hAc
 
 end Next
+
+/-! ## One more explicit iteration on the two new parts -/
+namespace IterateOnce
+
+/-- Do one more refinement step: after `s`, refine the two fresh parts by
+    `sL` (for the left block) and `sR` (for the right block).
+
+    No side conditions are enforced here; in applications, one typically
+    assumes e.g. `Icc sL.x00 sL.x11 ⊆ Icc s.x00 s.x01` and
+    `Icc sR.x00 sR.x11 ⊆ Icc s.x10 s.x11` to make the geometry nested. -/
+@[simp] def M2 (s sL sR : ThirdSplit) : Set ℝ :=
+  M1 s ∩ (blockSet sL ∪ blockSet sR)
+
+@[simp] theorem mem_M2 {s sL sR : ThirdSplit} {x : ℝ} :
+  x ∈ M2 s sL sR ↔ x ∈ M1 s ∧ x ∈ (blockSet sL ∪ blockSet sR) := Iff.rfl
+
+@[simp] theorem M2_subset_M1 (s sL sR : ThirdSplit) :
+  M2 s sL sR ⊆ M1 s := by intro x hx; exact hx.1
+
+/-- If the children blocks nest into the respective parent blocks, then the
+new selection is already contained in the parent's union. This is often handy
+when chaining many steps. -/
+lemma M2_subset_parentUnion (s sL sR : ThirdSplit)
+  (_ : Icc sL.x00 sL.x11 ⊆ Icc s.x00 s.x01)
+  (_ : Icc sR.x00 sR.x11 ⊆ Icc s.x10 s.x11) :
+  M2 s sL sR ⊆ M1 s := by
+  intro x hx; exact hx.1
+
+end IterateOnce
+
+/-! ## Limit set: `K∞ = ⋂ₙ Kₙ` (closed; subset of every `Kₙ`) -/
+namespace Limit
+open Next
+
+/-- The limit set as the countable intersection of the compact skeleton. -/
+@[simp] def Kinfty (sch : Scheme) : Set ℝ := ⋂ n : ℕ, K sch n
+
+/-- `K∞ ⊆ Kₙ` for every `n`. -/
+@[simp] lemma Kinfty_subset (sch : Scheme) (n : ℕ) :
+  Kinfty sch ⊆ K sch n := by
+  intro x hx
+  -- membership in an intersection gives membership in each component
+  exact (by
+    have hx' := mem_iInter.mp hx
+    exact hx' n)
+
+/-- `K∞` is closed (arbitrary intersections of closed sets are closed). -/
+@[simp] lemma isClosed_Kinfty (sch : Scheme) : IsClosed (Kinfty sch) := by
+  refine isClosed_iInter ?_;
+  intro n; exact isClosed_K sch n
+
+end Limit
 
 end TwoIntervals
 end PerfectSubset
