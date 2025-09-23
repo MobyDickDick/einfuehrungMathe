@@ -217,5 +217,39 @@ open Next
 
 end Limit
 
+/-! ## Next explicit iteration: `M3` (refine both parts again into four) -/
+namespace IterateTwice
+open IterateOnce
+
+/-- One more refinement layer: after `s` and its children `sL, sR`,
+    refine each of those by `sLL, sLR, sRL, sRR`. The result keeps up to
+    four blocks (two per side). -/
+@[simp] def M3 (s sL sR sLL sLR sRL sRR : ThirdSplit) : Set ℝ :=
+  M2 s sL sR ∩ (blockSet sLL ∪ blockSet sLR ∪ blockSet sRL ∪ blockSet sRR)
+
+@[simp] theorem mem_M3 {s sL sR sLL sLR sRL sRR : ThirdSplit} {x : ℝ} :
+  x ∈ M3 s sL sR sLL sLR sRL sRR ↔
+    x ∈ M2 s sL sR ∧ x ∈ (blockSet sLL ∪ blockSet sLR ∪ blockSet sRL ∪ blockSet sRR) := Iff.rfl
+
+@[simp] theorem M3_subset_M2 (s sL sR sLL sLR sRL sRR : ThirdSplit) :
+  M3 s sL sR sLL sLR sRL sRR ⊆ M2 s sL sR := by
+  intro x hx; exact hx.1
+
+@[simp] theorem M3_subset_M1 (s sL sR sLL sLR sRL sRR : ThirdSplit) :
+  M3 s sL sR sLL sLR sRL sRR ⊆ M1 s := by
+  intro x hx; exact (M2_subset_M1 s sL sR) hx.1
+
+/-- If the four grandchildren blocks are geometrically nested into the
+    respective parent blocks, the new selection is still contained in `M1 s`. -/
+lemma M3_subset_parentUnion (s sL sR sLL sLR sRL sRR : ThirdSplit)
+  (_hLL : Icc sLL.x00 sLL.x11 ⊆ Icc sL.x00 sL.x01)
+  (_hLR : Icc sLR.x00 sLR.x11 ⊆ Icc sL.x00 sL.x01)
+  (_hRL : Icc sRL.x00 sRL.x11 ⊆ Icc sR.x00 sR.x01)
+  (_hRR : Icc sRR.x00 sRR.x11 ⊆ Icc sR.x00 sR.x01) :
+  M3 s sL sR sLL sLR sRL sRR ⊆ M1 s := by
+  intro x hx; exact (M2_subset_M1 s sL sR) hx.1
+
+end IterateTwice
+
 end TwoIntervals
 end PerfectSubset
