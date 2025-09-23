@@ -21,7 +21,7 @@ structure ThirdSplit where
   x10 : ℝ
   x11 : ℝ
   mem_all : x00 ∈ M ∧ x01 ∈ M ∧ x10 ∈ M ∧ x11 ∈ M
-  le_left : x00 ≤ x01
+  le_left  : x00 ≤ x01
   le_right : x10 ≤ x11
   -- side conditions: keep only the two "short" boundary pieces
   left_short  : x01 < x00 + (x11 - x00) / 3
@@ -250,6 +250,51 @@ lemma M3_subset_parentUnion (s sL sR sLL sLR sRL sRR : ThirdSplit)
   intro x hx; exact (M2_subset_M1 s sL sR) hx.1
 
 end IterateTwice
+
+/-! ## Full binary branching: all 2^n blocks at step `n` -/
+namespace FullBranch
+open IterateOnce
+
+/-- A full branching scheme: for each step `n` and each binary path of length `n`,
+we provide a `ThirdSplit`. This lets us split **every** current block again.
+
+`Vector Bool n` indexes the 2^n nodes at depth `n`. -/
+structure FullScheme where
+  T : ∀ n : ℕ, Vector Bool n → ThirdSplit
+
+/-- The union of all kept blocks at depth `n`. -/
+@[simp] def Blocks (fs : FullScheme) (n : ℕ) : Set ℝ :=
+  ⋃ p : Vector Bool n, blockSet (fs.T n p)
+
+/-- Membership in `Blocks fs n` ↔ there is a path `p` of length `n` s.t.
+`x` is in that node's two-interval block. -/
+@[simp] theorem mem_Blocks_iff {fs : FullScheme} {n : ℕ} {x : ℝ} :
+  x ∈ Blocks fs n ↔ ∃ p : Vector Bool n, x ∈ blockSet (fs.T n p) := by
+  classical
+  constructor
+  · intro hx; simpa [Blocks] using mem_iUnion.mp hx
+  · intro h;  simpa [Blocks] using mem_iUnion.mpr h
+
+/-- Compact skeleton for full branching: start with the outer span at depth 0
+(as a union over the single length-0 path), then intersect with the union of
+all blocks at each depth. -/
+@[simp] def Kfull (fs : FullScheme) : ℕ → Set ℝ
+  | 0     => ⋃ p : Vector Bool 0, Icc (fs.T 0 p).x00 (fs.T 0 p).x11
+  | n+1   => Kfull fs n ∩ Blocks fs n
+
+@[simp] lemma Kfull_succ_subset (fs : FullScheme) (n : ℕ) :
+  Kfull fs (n+1) ⊆ Kfull fs n := by
+  intro x hx; exact hx.1
+
+/-- Limit set for full branching. -/
+@[simp] def Kinfty_full (fs : FullScheme) : Set ℝ := ⋂ n : ℕ, Kfull fs n
+
+@[simp] lemma Kinfty_full_subset (fs : FullScheme) (n : ℕ) :
+  Kinfty_full fs ⊆ Kfull fs n := by
+  intro x hx; exact (by
+    have hx' := mem_iInter.mp hx; exact hx' n)
+
+end FullBranch
 
 end TwoIntervals
 end PerfectSubset
