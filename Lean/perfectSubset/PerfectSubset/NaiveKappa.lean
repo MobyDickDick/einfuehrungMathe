@@ -66,7 +66,7 @@ lemma isCompact_iUnion_finset
   · -- s = ∅
     have : (⋃ n ∈ (∅ : Finset ℕ), K n) = (∅ : Set ℝ) := by
       ext x; simp
-    simpa [this] using isCompact_empty
+    simp
   · intro a s ha hcomp
     have hsplit :
       (⋃ n ∈ insert a s, K n) = K a ∪ (⋃ n ∈ s, K n) := by
@@ -117,7 +117,7 @@ lemma kappa_union_finset_eq_sum
   · -- s = ∅
     have : (⋃ n ∈ (∅ : Finset ℕ), K n) = (∅ : Set ℝ) := by
       ext x; simp
-    simp [this, NK.empty]
+    simp [NK.empty]
   · intro a s ha hIH
     have hdisj' : Disjoint (K a) (⋃ n ∈ s, K n) :=
       disjoint_singleton_union_finset (K := K) hdisj (a := a) (s := s) ha
@@ -142,15 +142,17 @@ lemma kappa_union_finset_eq_sum
             simpa [Finset.mem_insert] using Or.inr his, hxKi⟩⟩
     calc
       kappa (⋃ n ∈ insert a s, K n)
-          = kappa (K a ∪ (⋃ n ∈ s, K n)) := by simpa [hsplit]
-      _ = kappa (K a) + kappa (⋃ n ∈ s, K n) := NK.add_disjoint_compact hcomp_left hcomp_right hdisj'
-      _ = kappa (K a) + Finset.sum s (fun n => kappa (K n)) := by simpa [hIH]
+          = kappa (K a ∪ (⋃ n ∈ s, K n)) := by simp
+      _ = kappa (K a) + kappa (⋃ n ∈ s, K n) :=
+          NK.add_disjoint_compact hcomp_left hcomp_right hdisj'
+      _ = kappa (K a) + Finset.sum s (fun n => kappa (K n)) := by
+          simp [hIH]
       _ = Finset.sum (insert a s) (fun n => kappa (K n)) := by
         classical
-        -- (insert a s).sum f = f a + s.sum f  ⇒  f a + s.sum f = (insert a s).sum f
-        simpa [Finset.sum_insert, ha] using
-          (Finset.sum_insert (s := s) (a := a) (f := fun n => kappa (K n)) (by simpa using ha)).symm
-
+        exact
+          (Finset.sum_insert
+            (s := s) (a := a) (f := fun n => kappa (K n))
+            (by simpa using ha)).symm
 
 /-! ## Hauptsatz: kompakte Zerlegung mit Nullrest ⇒ Summe = inneres Kompaktmaß -/
 
@@ -161,7 +163,7 @@ lemma kappa_union_finset_eq_sum
 theorem sumBlocks_compactDecomp_eq_nu
     (NK : NaiveKappa kappa)
     {M : Set ℝ} (K : ℕ → Set ℝ)
-    (hKc   : ∀ n, IsCompact (K n))
+    (hKc : ∀ n, IsCompact (K n))
     (hKsub : ∀ n, K n ⊆ M)
     (hdisj : Pairwise (fun i j => Disjoint (K i) (K j)))
     (hRest0 :
@@ -222,7 +224,7 @@ theorem sumBlocks_compactDecomp_eq_nu
         rcases mem_iUnion.mp hx with ⟨n, hxn⟩
         refine mem_iUnion.mpr ⟨n, ?_⟩
         exact mem_iUnion.mpr ⟨n, mem_iUnion.mpr ⟨by
-          simpa [Finset.mem_range] using Nat.lt_succ_self n, hxn⟩⟩
+          simp [Finset.mem_range], hxn⟩⟩
       · intro hx
         rcases mem_iUnion.mp hx with ⟨N, hxUN⟩
         rcases mem_iUnion.mp hxUN with ⟨n, hxUN'⟩
@@ -345,7 +347,7 @@ theorem sumBlocks_compactDecomp_eq_nu
       calc
         kappa (⋃ n ∈ Finset.range (N+1), L ∩ K n)
             = kappa (⋃ n, ⋃ (_ : n < N+1), L ∩ K n) := by
-                simpa [hRewr]
+                simp [hRewr]
         _ = Finset.sum (Finset.range (N+1)) (fun n => kappa (L ∩ K n)) := by
                 simpa [hRewr] using hEq
         _ ≤ Finset.sum (Finset.range (N+1)) (fun n => kappa (K n)) := hsum
