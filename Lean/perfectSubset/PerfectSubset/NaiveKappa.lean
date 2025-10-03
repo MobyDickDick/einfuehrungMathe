@@ -400,5 +400,70 @@ theorem sumBlocks_compactDecomp_eq_nu
   -- Gleichheit
   exact le_antisymm h_le h_ge
 
+open scoped BigOperators
+open Metric
+
+variable {kappa : Set ℝ → ENNReal}
+
+/-- Menge der "dicken" Punkte: in jeder Kugel um `x` hat `M` positive `κ`-Masse. -/
+def thickPoints (kappa : Set ℝ → ENNReal) (M : Set ℝ) : Set ℝ :=
+  {x | ∀ ε > 0, 0 < kappa (ball x ε ∩ M)}
+
+/-- Unter der Annahme, dass der Rest `R := M \ ⋃ n, K n` keinen kompakten Positivteil enthält,
+    liegen alle "dicken" Punkte von `M` im Abschluss von `⋃ n, K n`. -/
+lemma thick_subset_closure_iUnion_of_rest0
+    (NK : NaiveKappa kappa)
+    {M : Set ℝ} (K : ℕ → Set ℝ)
+    (hRest0 :
+      ∀ L : Set ℝ, IsCompact L → L ⊆ M \ ⋃ n, K n → kappa L = 0) :
+    thickPoints kappa M ⊆ closure (⋃ n, K n) := by
+  classical
+  intro x hx
+  -- topologische Charakterisierung des Abschlusses über offene Umgebungen
+  refine (_root_.mem_closure_iff.2 ?_)
+  intro o ho hxmem
+  -- aus Offenheit von o: ∃ ε>0, Metric.ball x ε ⊆ o
+  rcases Metric.mem_nhds_iff.1 (ho.mem_nhds hxmem) with ⟨ε, hεpos, hball_sub⟩
+  -- zeige: die ε-Kugel schneidet ⋃ n, K n
+  have hBallHits : (Metric.ball x ε ∩ ⋃ n, K n).Nonempty := by
+    by_contra hempty
+    -- A := Kugel∩M; alle kompakten Teilmengen von A liegen im Rest ⇒ κ = 0
+    set A : Set ℝ := Metric.ball x ε ∩ M
+    have hAllComp :
+        ∀ C : Set ℝ, IsCompact C → C ⊆ A → kappa C = 0 := by
+      intro C hCc hCsub
+      -- Ziel: C ⊆ M \ ⋃ n, K n
+      have hCsubR : C ⊆ M \ ⋃ n, K n := by
+        intro y hyC
+        have hyBall : y ∈ Metric.ball x ε := (hCsub hyC).1
+        have hyM    : y ∈ M               := (hCsub hyC).2
+        have hyNot  : y ∉ ⋃ n, K n := by
+          intro hyU
+          -- würde y in der Vereinigung liegen, wäre die Schnittmenge nicht leer
+          exact hempty ⟨y, ⟨hyBall, hyU⟩⟩
+        exact ⟨hyM, hyNot⟩
+      exact hRest0 C hCc hCsubR
+    -- zero_of_noPosCompact ⇒ κ(A)=0, widerspricht "dick" (hx)
+    have hA0 : kappa A = 0 := NK.zero_of_noPosCompact A hAllComp
+    have : False := by
+      have hpos : 0 < kappa A := hx ε hεpos
+      simp [hA0] at hpos
+    exact this.elim
+  -- daraus folgt: o schneidet ⋃ n, K n (weil Metric.ball x ε ⊆ o)
+  rcases hBallHits with ⟨y, hyBall, hyU⟩
+  exact ⟨y, ⟨hball_sub hyBall, hyU⟩⟩
+
+/-- Handliche Punktform: Jeder dicke Punkt ist Grenzpunkt von `⋃ K n`.
+    (Für Anwendungen: daraus folgt `∀ ε>0, ∃ n, dist x (K n) < ε`.) -/
+lemma thick_mem_closure_iUnion_of_rest0
+    (NK : NaiveKappa kappa)
+    {M : Set ℝ} (K : ℕ → Set ℝ)
+    (hRest0 :
+      ∀ L : Set ℝ, IsCompact L → L ⊆ M \ ⋃ n, K n → kappa L = 0)
+    {x : ℝ}
+    (hx : x ∈ thickPoints kappa M) :
+    x ∈ closure (⋃ n, K n) :=
+  (thick_subset_closure_iUnion_of_rest0 (NK := NK) (M := M) (K := K) hRest0) hx
+
 end NaiveKappa
 end PerfectSubset

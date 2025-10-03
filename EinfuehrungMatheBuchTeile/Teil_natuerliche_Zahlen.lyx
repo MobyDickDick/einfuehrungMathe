@@ -11645,6 +11645,44 @@ aus einer endlichen Anzahl von Symbolen
 \end_layout
 
 \begin_layout Definition
+Was ich auch noch erwähnen möchte:
+ Es sei 
+\begin_inset Formula $B$
+\end_inset
+
+ das Symbol einer Zeichenkette,
+ welche aus einer Aneinanderreihung von endlich vielen Symbolen 
+\begin_inset Formula $A$
+\end_inset
+
+ bestehe.
+ Wiederum seien weder 
+\begin_inset Formula $A$
+\end_inset
+
+ noch 
+\begin_inset Formula $B$
+\end_inset
+
+ in sich noch bezüglich den anderen Sybolen der Definition widersprüchlich.
+ Dann nehme ich an,
+ dass es immer ein natürliche Zahl 
+\begin_inset Formula $n$
+\end_inset
+
+ derart gibt,
+ dass gilt 
+\begin_inset Formula 
+\[
+B=n\cdot A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
 Weitere Elemente von 
 \begin_inset Formula $\mathbb{N}$
 \end_inset
@@ -11655,7 +11693,11 @@ Weitere Elemente von
 \end_inset
 
  seien genau dann gleich,
- falls für ein beliebiges (natürliches nicht in sich widersprüchliches) Symbol gilt:
+ falls für ein beliebiges (natürliches nicht in sich widersprüchliches) Symbol 
+\begin_inset Formula $A$
+\end_inset
+
+ gilt:
 \begin_inset Formula 
 \[
 m\cdot A=n\cdot A
@@ -13386,7 +13428,7 @@ nolink "false"
 
 \end_inset
 
-der Kommutativität der Äquivalenz schlussfolgern,
+ der Kommutativität der Äquivalenz schlussfolgern,
  dass auch gilt
 \begin_inset Formula 
 \[

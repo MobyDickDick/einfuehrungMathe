@@ -11645,6 +11645,44 @@ aus einer endlichen Anzahl von Symbolen
 \end_layout
 
 \begin_layout Definition
+Was ich auch noch erwähnen möchte:
+ Es sei 
+\begin_inset Formula $B$
+\end_inset
+
+ das Symbol einer Zeichenkette,
+ welche aus einer Aneinanderreihung von endlich vielen Symbolen 
+\begin_inset Formula $A$
+\end_inset
+
+ bestehe.
+ Wiederum seien weder 
+\begin_inset Formula $A$
+\end_inset
+
+ noch 
+\begin_inset Formula $B$
+\end_inset
+
+ in sich noch bezüglich den anderen Sybolen der Definition widersprüchlich.
+ Dann nehme ich an,
+ dass es immer ein natürliche Zahl 
+\begin_inset Formula $n$
+\end_inset
+
+ derart gibt,
+ dass gilt 
+\begin_inset Formula 
+\[
+B=n\cdot A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
 Weitere Elemente von 
 \begin_inset Formula $\mathbb{N}$
 \end_inset
@@ -11655,7 +11693,11 @@ Weitere Elemente von
 \end_inset
 
  seien genau dann gleich,
- falls für ein beliebiges (natürliches nicht in sich widersprüchliches) Symbol gilt:
+ falls für ein beliebiges (natürliches nicht in sich widersprüchliches) Symbol 
+\begin_inset Formula $A$
+\end_inset
+
+ gilt:
 \begin_inset Formula 
 \[
 m\cdot A=n\cdot A
@@ -17104,7 +17146,81 @@ W\equiv\left\{ n\biggm|n\in\mathbb{N}\wedge\neg A_{n}\right\}
 
 ,
  dann wäre das ein Widerspruch zur Voraussetzung,
- 
+ dass 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ wahr sein müsste.
+ Wäre jedoch 
+\begin_inset Formula $m>1$
+\end_inset
+
+,
+ dann müsste für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ mit 
+\begin_inset Formula $n<m$
+\end_inset
+
+ gelten,
+ dass 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ wahr sein müsste und 
+\begin_inset Formula $A_{m}$
+\end_inset
+
+ nicht wahr sein könnte.
+ Das wäre jedoch ein Wiederspruch zur Voraussetzung,
+ dass mit 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ mit 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ folgen müsste,
+ dass auch 
+\begin_inset Formula $A_{m}$
+\end_inset
+
+ sein müsste.
+ Also 
+\begin_inset Formula 
+\[
+\neg\left(\bigwedge_{n=1}^{n<m}A_{n}\Rightarrow A_{m}\right)
+\]
+
+\end_inset
+
+Was jedoch wiederum ein Widerspruch zur Annahme wäre.
+ Somit bin ich der Meinung,
+ dass es kein 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ derart geben könnte,
+ so dass 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ nicht wahr wäre.
+ Also schliesse ich daraus,
+ dass für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ die Aussage 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ wahr sein muss.
+ Darum bin ich der Meinung,
+ dass ich den Nachweis der Richtigkeit der Behauptung erbracht habe und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Chapter
