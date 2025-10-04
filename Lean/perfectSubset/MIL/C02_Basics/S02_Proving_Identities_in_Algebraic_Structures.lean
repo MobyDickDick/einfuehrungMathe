@@ -160,14 +160,43 @@ variable {G : Type*} [Group G]
 
 namespace MyGroup
 
+theorem muleq_self_eq_one {a : G} (h : a * a = a) : a = 1 := by
+  rw [← one_mul a]
+  nth_rw 1 [← inv_mul_cancel a]
+  rw [mul_assoc]
+  rw [h]
+  rw [inv_mul_cancel]
+
 theorem mul_inv_cancel (a : G) : a * a⁻¹ = 1 := by
-  sorry
+  -- Zeige Idempotenz von e := a * a⁻¹
+  have hIdem : (a * a⁻¹) * (a * a⁻¹) = (a * a⁻¹) := by
+    -- (a*a⁻¹)*(a*a⁻¹) = a*((a⁻¹*a)*a⁻¹) = a*(1*a⁻¹) = a*a⁻¹
+    rw [mul_assoc]                      -- (a*a⁻¹)*(a*a⁻¹) = a*(a⁻¹*(a*a⁻¹))
+    rw [← mul_assoc a⁻¹ a a⁻¹]          -- a*(a⁻¹*(a*a⁻¹)) = a*((a⁻¹*a)*a⁻¹)
+    rw [inv_mul_cancel]                 -- a*((a⁻¹*a)*a⁻¹) = a*(1*a⁻¹)
+    rw [one_mul]                        -- a*(1*a⁻¹) = a*a⁻¹
+  -- Idempotentes Element mit linkem Inversen ist 1
+  exact (muleq_self_eq_one (a := a * a⁻¹) hIdem)
 
 theorem mul_one (a : G) : a * 1 = a := by
-  sorry
+  rw [← inv_mul_cancel a]
+  rw [← mul_assoc]
+  rw [mul_inv_cancel]
+  rw [one_mul]
 
-theorem mul_inv_rev (a b : G) : (a * b)⁻¹ = b⁻¹ * a⁻¹ := by
-  sorry
+theorem mul_inv_rev {a b : G} : (a * b)⁻¹ = b⁻¹ * a⁻¹:= by
+  rw [← one_mul (a * b)⁻¹]
+  rw [← inv_mul_cancel  b]
+  nth_rw 2 [← one_mul b]
+  rw [← inv_mul_cancel a]
+  nth_rw 1  [mul_assoc]
+  nth_rw 1  [← mul_assoc]
+  nth_rw 1  [← mul_assoc]
+  nth_rw 1  [←  mul_assoc]
+  nth_rw 1 [mul_assoc (b⁻¹ * a⁻¹) a b]
+  nth_rw 1 [mul_assoc (b⁻¹ * a⁻¹) (a * b) (a * b)⁻¹]
+  rw [mul_inv_cancel (a * b)]
+  rw [mul_one]
 
 end MyGroup
 
