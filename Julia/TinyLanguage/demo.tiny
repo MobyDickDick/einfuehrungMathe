@@ -1,0 +1,28 @@
+/// demo.tiny - port demo for Julia
+operator + (a: Box, b: Box) -> Box {
+  return box(unbox(a) + unbox(b));
+}
+operator == (x: Box, y: Box) -> Bool {
+  return unbox(x) == unbox(y);
+}
+
+// default numerics
+let a = 7 + 5 * 2;
+print(a >= 17);       // True
+
+// object overloading
+let x = box(10);
+let y = box(32);
+let z = x + y;
+print(unbox(z));      // 42
+print(x == y);        // False
+
+// heap & tags
+let n = 3;
+let p = new(n);
+tag(p, Arr);
+heap_set(p, 0, 1);
+heap_set(p, 1, 2);
+heap_set(p, 2, 3);
+print( heap_get(p, 2) ); // 3
+delete(p);

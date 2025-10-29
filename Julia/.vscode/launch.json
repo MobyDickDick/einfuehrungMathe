@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "julia",
+      "request": "launch",
+      "name": "tiny_lang (--run) abs path",
+      "program": "${workspaceFolder}/tiny_lang.jl",
+      "args": ["${workspaceFolder}/TinyLanguage/demo.tiny", "--run"],
+      "cwd": "${workspaceFolder}",
+      "juliaEnv": "@.",
+      "stopOnEntry": false
+    }
+  ]
+}

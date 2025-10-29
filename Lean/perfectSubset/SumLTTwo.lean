@@ -47,7 +47,6 @@ lemma compl_singleton_mem_V {M : Set ℝ} {x : ℝ} (hx : x ∉ M) :
   intro y hy
   have : y ≠ x := by
     intro h; subst h; exact hx hy
-  -- goal `y ∈ {x}ᶜ`
   simp [mem_singleton_iff, this]
 
 /-- If `M₁` and `M₂` are disjoint and cover `[0,1]`, then the intersection over all
@@ -56,28 +55,21 @@ lemma sInter_Both_empty {M₁ M₂ : Set ℝ}
     (hdisj : Disjoint M₁ M₂) (_hcover : Icc (0 : ℝ) 1 ⊆ M₁ ∪ M₂) :
     sInter (Both M₁ M₂) = (∅ : Set ℝ) := by
   classical
-  -- Prove `∀ x, x ∉ ⋂₀ Both M₁ M₂`
   apply eq_empty_iff_forall_notMem.mpr
   intro x hx
-  -- `hxAll` says: for every `S ∈ Both M₁ M₂`, we have `x ∈ S`.
   have hxAll : ∀ S, S ∈ Both M₁ M₂ → x ∈ S := (mem_sInter.mp hx)
-  -- Find one such `S` that avoids `x` in all cases.
   by_cases hx1 : x ∈ M₁
-  · -- then `x ∉ M₂`
-    have hx2 : x ∉ M₂ := (disjoint_left.mp hdisj) hx1
-    -- take S = univ ∩ {x}ᶜ
+  · have hx2 : x ∉ M₂ := (disjoint_left.mp hdisj) hx1
     have S_mem : (univ : Set ℝ) ∩ ({x}ᶜ : Set ℝ) ∈ Both M₁ M₂ := by
       refine ⟨(univ : Set ℝ), univ_mem_V M₁, ({x}ᶜ : Set ℝ),
         compl_singleton_mem_V (M := M₂) hx2, rfl⟩
     have hxS : x ∈ (univ : Set ℝ) ∩ ({x}ᶜ : Set ℝ) := hxAll _ S_mem
     have hxne : x ≠ x := by
-      -- from `x ∈ {x}ᶜ`
       have hxcomp : x ∈ ({x}ᶜ : Set ℝ) := hxS.2
       simp [mem_singleton_iff] at hxcomp
     exact (hxne rfl).elim
   · by_cases hx2 : x ∈ M₂
-    · -- symmetric case: take S = {x}ᶜ ∩ univ
-      have hx1' : x ∉ M₁ := (disjoint_right.mp hdisj) hx2
+    · have hx1' : x ∉ M₁ := (disjoint_right.mp hdisj) hx2
       have S_mem : ({x}ᶜ : Set ℝ) ∩ (univ : Set ℝ) ∈ Both M₁ M₂ := by
         refine ⟨({x}ᶜ : Set ℝ), compl_singleton_mem_V (M := M₁) hx1',
           (univ : Set ℝ), univ_mem_V M₂, rfl⟩
@@ -86,7 +78,7 @@ lemma sInter_Both_empty {M₁ M₂ : Set ℝ}
         have hxcomp : x ∈ ({x}ᶜ : Set ℝ) := hxS.1
         simp [mem_singleton_iff] at hxcomp
       exact (hxne rfl).elim
-    · -- x ∉ M₁ ∪ M₂: again S = {x}ᶜ ∩ univ
+    · -- x ∉ M₁ ∪ M₂
       have S_mem : ({x}ᶜ : Set ℝ) ∩ (univ : Set ℝ) ∈ Both M₁ M₂ := by
         refine ⟨({x}ᶜ : Set ℝ),
           compl_singleton_mem_V (M := M₁) (by simpa using hx1),
@@ -97,7 +89,20 @@ lemma sInter_Both_empty {M₁ M₂ : Set ℝ}
         simp [mem_singleton_iff] at hxcomp
       exact (hxne rfl).elim
 
--- κ wird ab hier benötigt
+/-- Disjointness of `M` and its `[0,1]`-complement. -/
+lemma disjoint_M_iccDiff (M : Set ℝ) : Disjoint M (Icc (0 : ℝ) 1 \ M) :=
+  disjoint_left.mpr (by intro x hxM hxCompl; exact hxCompl.2 hxM)
+
+/-- `Icc (0) 1` is covered by `M ∪ ([0,1]\M)` (no assumption on `M ⊆ [0,1]` needed). -/
+lemma cover_by_iccDiff (M : Set ℝ) :
+    Icc (0 : ℝ) 1 ⊆ M ∪ (Icc (0 : ℝ) 1 \ M) := by
+  intro x hxI
+  by_cases hx : x ∈ M
+  · exact Or.inl hx
+  · exact Or.inr ⟨hxI, hx⟩
+
+/-! ### From here on, we need `Kappa`. -/
+section WithKappa
 variable [Kappa]
 
 /-- The user's meta-assumption (for contradiction): for *all* `V₁ ⊆ V(M₁)`,
@@ -113,16 +118,20 @@ lemma not_AllBig {M₁ M₂ : Set ℝ}
     ¬ AllBig M₁ M₂ := by
   classical
   intro h
-  have h2 := h (V M₁) (V M₂) (by intro U hU; exact hU) (by intro U hU; exact hU)
-  -- sInter is exactly over `Both M₁ M₂`
+  have h2 := h (V M₁) (V M₂) (by intro _U hU; exact hU) (by intro _U hU; exact hU)
   have hEmpty : sInter (Both M₁ M₂) = (∅ : Set ℝ) :=
     sInter_Both_empty (M₁ := M₁) (M₂ := M₂) hdisj hcover
+  -- Avoid the linter warning by turning it directly into `κ ∅ = 2`
+    -- h2 : κ (⋂₀ {S | ∃ U₁ ∈ V M₁, ∃ U₂ ∈ V M₂, S = U₁ ∩ U₂}) = 2
+  -- mache daraus erst die Form mit `Both …`, dann nutze `hEmpty`
   have hBothEq : κ (sInter (Both M₁ M₂)) = 2 := by
     simpa [Both] using h2
-  -- turn it into `0 = 2` explicitly (no `simp at` to avoid "No goals to be solved")
+  have hκEmpty : κ (∅ : Set ℝ) = 2 := by
+    simp [hEmpty] at hBothEq
   have hZeroEqTwo : (0 : ℝ) = 2 := by
-    simp [hEmpty, Kappa.kappa_empty] at hBothEq
-  -- contradiction
+    simp at hκEmpty
+  have hZeroEqTwo : (0 : ℝ) = 2 := by
+    simp at hκEmpty
   have h02ne : (0 : ℝ) ≠ 2 := by norm_num
   exact h02ne hZeroEqTwo
 
@@ -132,24 +141,16 @@ axiom strict_of_not_AllBig
   (M₁ M₂ : Set ℝ) [Kappa] :
   ¬ AllBig M₁ M₂ → κ M₁ < 1 ∨ κ M₂ < 1
 
-/-- Attempted target theorem (still relies on the above axiom).
-We assume:
-* `M₁, M₂ ⊆ [0,1]`, disjoint and cover `[0,1]`,
-* and (for the sake of the user's intended flow) `κ M₁ + κ M₂ = 2`.
-We *try* to conclude `κ M₁ + κ M₂ < 2`.
--/
+/-- Attempted target theorem (still relies on the above axiom). -/
 theorem sum_lt_two_attempt {M₁ M₂ : Set ℝ}
     (hsub₁ : M₁ ⊆ Icc (0 : ℝ) 1) (hsub₂ : M₂ ⊆ Icc (0 : ℝ) 1)
     (hdisj : Disjoint M₁ M₂) (hcover : Icc (0 : ℝ) 1 ⊆ M₁ ∪ M₂)
     (_hsum : κ M₁ + κ M₂ = 2) :
     κ M₁ + κ M₂ < 2 := by
   classical
-  -- The "all families give 2" premise leads to a contradiction:
   have hNotAll : ¬ AllBig M₁ M₂ := not_AllBig (M₁ := M₁) (M₂ := M₂) hdisj hcover
-  -- Use the placeholder axiom for the missing step:
   have hStrict : κ M₁ < 1 ∨ κ M₂ < 1 :=
     strict_of_not_AllBig M₁ M₂ hNotAll
-  -- If one summand is strictly < 1 and both are ≤ 1, the sum is < 2.
   have hle₁ : κ M₁ ≤ 1 := by
     have h := Kappa.mono (A := M₁) (B := Icc (0 : ℝ) 1) hsub₁
     simpa [Kappa.kappa_Icc01] using h
@@ -166,91 +167,44 @@ theorem sum_lt_two_attempt {M₁ M₂ : Set ℝ}
       simpa [add_comm] using h
   simpa [one_add_one_eq_two] using this
 
+/-! ### Specialization to `M` and its `[0,1]`-complement. -/
 
-/-! ### Spezialisierung auf `M` und sein `[0,1]`-Komplement: kein `AllBig` möglich -/
-
-section ComplementSpecialization
-
-open Set
-variable [Kappa]
-
-/-- Disjunktheit von `M` und seinem `[0,1]`-Komplement. -/
-private lemma disjoint_M_iccDiff (M : Set ℝ) :
-    Disjoint M (Icc (0 : ℝ) 1 \ M) :=
-  disjoint_left.mpr (by intro x hxM hxCompl; exact hxCompl.2 hxM)
-
-/-- `Icc (0) 1` ist von `M ∪ ([0,1]\M)` überdeckt, sofern `M ⊆ [0,1]`. -/
-private lemma cover_by_iccDiff (M : Set ℝ) (hM : M ⊆ Icc (0 : ℝ) 1) :
-    Icc (0 : ℝ) 1 ⊆ M ∪ (Icc (0 : ℝ) 1 \ M) := by
-  intro x hxI
-  by_cases hx : x ∈ M
-  · exact Or.inl hx
-  · exact Or.inr ⟨hxI, hx⟩
-
-/-- **Kern-Aussage (Deine gewünschte Formulierung):**
-Angenommen, für *alle* Teilfamilien `T₁ ⊆ 𝒱(M)` und `T₂ ⊆ 𝒱([0,1]\M)` gilt
-`κ (⋂₀ {U₁ ∩ U₂ | U₁ ∈ T₁, U₂ ∈ T₂}) = 2`.
-Dann gilt das insbesondere für die **vollen** Familien `𝒱(M)` und `𝒱([0,1]\M)`,
-was wegen `⋂₀ ... = ∅` zu `0 = 2` führt – Widerspruch.
-Formal: `¬ AllBig M (Icc 0 1 \ M)`. -/
-lemma not_AllBig_M_compl {M : Set ℝ} (hM : M ⊆ Icc (0 : ℝ) 1) :
+/-- No `AllBig` for `M` and its `[0,1]`-complement. -/
+lemma not_AllBig_M_compl {M : Set ℝ} :
     ¬ AllBig M (Icc (0 : ℝ) 1 \ M) := by
-  -- benutze dein allgemeines `not_AllBig` mit den speziellen Disjunktheits- und Cover-Lemmas
   exact
     not_AllBig (M₁ := M) (M₂ := Icc (0 : ℝ) 1 \ M)
       (disjoint_M_iccDiff M)
-      (cover_by_iccDiff M hM)
+      (cover_by_iccDiff M)
 
-/-- Direkt als „Wenn-…-dann-Widerspruch“-Form:
-Die Annahme `AllBig` (für die vollen Familien) impliziert `False`. -/
-lemma contradiction_if_AllBig_fullFamilies {M : Set ℝ} (hM : M ⊆ Icc (0 : ℝ) 1) :
-    AllBig M (Icc (0 : ℝ) 1 \ M) → False :=
-  fun h => (not_AllBig_M_compl (M := M) hM) h
-
-end ComplementSpecialization
-namespace NaiveKappa
-
-open Set
-open scoped Topology
-
-section ExistsT3T4
-variable [Kappa]
-
-/-- Existenz von Teilfamilien `T₃ ⊆ 𝒱(M)` und `T₄ ⊆ 𝒱([0,1]\M)` mit
-`κ (⋂₀ { U₁ ∩ U₂ | U₁ ∈ T₃, U₂ ∈ T₄ }) < 1`.
-
-Wir wählen sogar die vollen Familien `T₃ = 𝒱(M)` und `T₄ = 𝒱([0,1]\M)`, dann ist
-der große Durchschnitt leer und somit `κ = 0 < 1`. -/
-lemma exists_subfamilies_kappa_sInter_lt_one {M : Set ℝ}
-    (hM : M ⊆ Icc (0 : ℝ) 1) :
+/-- If `T₃ = 𝒱(M)` and `T₄ = 𝒱([0,1]\M)`, then the big intersection is empty,
+so `κ` of it is `0 < 1`. Hence there exist subfamilies with κ of the bigcap `< 1`. -/
+lemma exists_subfamilies_kappa_sInter_lt_one {M : Set ℝ} :
     ∃ (T₃ T₄ : Set (Set ℝ)),
       T₃ ⊆ V M ∧ T₄ ⊆ V (Icc (0 : ℝ) 1 \ M) ∧
       κ (sInter {S | ∃ U₁ ∈ T₃, ∃ U₂ ∈ T₄, S = U₁ ∩ U₂}) < 1 := by
   classical
-  -- Wir nehmen die vollen Familien:
   refine ⟨V M, V (Icc (0 : ℝ) 1 \ M), subset_rfl, subset_rfl, ?_⟩
-  -- Disjunktheit und Cover-Eigenschaft:
-  have hdisj : Disjoint M (Icc (0 : ℝ) 1 \ M) := by
-    refine disjoint_left.mpr ?_
-    intro x hxM hxCompl
-    exact hxCompl.2 hxM
-  have hcover : Icc (0 : ℝ) 1 ⊆ M ∪ (Icc (0 : ℝ) 1 \ M) := by
-    intro x hxI
-    by_cases hx : x ∈ M
-    · exact Or.inl hx
-    · exact Or.inr ⟨hxI, hx⟩
-  -- Der große Durchschnitt (über die vollen Familien) ist leer:
+  -- disjointness + cover
+  have hdisj : Disjoint M (Icc (0 : ℝ) 1 \ M) := disjoint_M_iccDiff M
+  have hcover : Icc (0 : ℝ) 1 ⊆ M ∪ (Icc (0 : ℝ) 1 \ M) := cover_by_iccDiff M
+  -- big intersection over full families is empty
   have hEmpty : sInter (Both M (Icc (0 : ℝ) 1 \ M)) = (∅ : Set ℝ) :=
     sInter_Both_empty (M₁ := M) (M₂ := Icc (0 : ℝ) 1 \ M) hdisj hcover
-  -- Also ist κ davon gleich 0:
+  -- turn it into the `⋂₀ {S | ...}` shape
+  have sInter_eq_empty :
+      sInter {S | ∃ U₁ ∈ V M, ∃ U₂ ∈ V (Icc (0 : ℝ) 1 \ M), S = U₁ ∩ U₂}
+        = (∅ : Set ℝ) := by
+    simpa [Both] using hEmpty
+  -- therefore κ of it is 0
   have hZero :
       κ (sInter {S | ∃ U₁ ∈ V M, ∃ U₂ ∈ V (Icc (0 : ℝ) 1 \ M), S = U₁ ∩ U₂}) = 0 := by
-    simpa [Both, hEmpty, Kappa.kappa_empty]
-  -- Und 0 < 1:
+    simp [sInter_eq_empty]
+  -- hence < 1
   have : κ (sInter {S | ∃ U₁ ∈ V M, ∃ U₂ ∈ V (Icc (0 : ℝ) 1 \ M), S = U₁ ∩ U₂}) < 1 := by
-    simpa [hZero] using (show (0 : ℝ) < 1 by norm_num)
+    rw [hZero]; norm_num
   exact this
 
-end ExistsT3T4
+end WithKappa
 
 end NaiveKappa
