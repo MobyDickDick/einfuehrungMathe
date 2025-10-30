@@ -1,6 +1,6 @@
 # tiny_lang.jl — Mini-Sprache in Julia (Lexer → Parser/IR → Julia-Codegen)
 # Features:
-#   - let, print, if/else, while, fn, return, Funktionsaufrufe (auch als Statement)
+#   - define, print, if/else, while, fn, return, Funktionsaufrufe (auch als Statement)
 #   - new(size), delete(ptr), tag(ptr, TypeName)
 #   - Operatoren + - * / und Vergleiche > >= == <= <
 #   - Operator-Overloading:   operator + (a: Box, b: Box) -> Box { ... }
@@ -45,8 +45,9 @@ Lexer(s::String) = Lexer(s, firstindex(s), lastindex(s))
 is_name_start(c::Char) = (c == '_') || isletter(c)
 is_name_char(c::Char)  = (c == '_') || isletter(c) || isdigit(c)
 
+# HART: nur noch "define" (kein "let" mehr)
 const KEYWORDS = Set([
-    "let","print","if","else","while","fn","delete","return","tag","operator","new"
+    "define","print","if","else","while","fn","delete","return","tag","operator","new"
 ])
 
 trace_lex_token(tok::Token) = (TRACE_LEX[] && @info "LEX" kind=tok.kind text=tok.text pos=tok.pos; tok)
@@ -159,7 +160,7 @@ struct OpDef   <: IR
 end
 
 # Expressions
-struct Num   <: IR; txt::String; end         # WICHTIG: Zahl als Text, nicht Float
+struct Num   <: IR; txt::String; end         # Zahl als Text, nicht Float
 struct Var   <: IR; name::String; end
 struct Call  <: IR; name::String; args::Vector{IR}; end
 struct Bin   <: IR; op::String; a::IR; b::IR; end
@@ -245,7 +246,7 @@ end
 function parse_stmt(p::Parser)::IR
     t = p.look
     if t.kind == :KW
-        if t.text == "let"
+        if t.text == "define"                    # HART: nur noch define
             advance!(p)
             name = expect!(p, :NAME).text
             expect!(p, :SYMBOL, "=")
@@ -370,7 +371,7 @@ function parse_factor(p::Parser)
         return New(e)
     elseif t.kind == :NUMBER
         advance!(p)
-        return Num(t.text)             # WICHTIG: unverändert als Text
+        return Num(t.text)             # Zahl unverändert als Text
     elseif t.kind == :NAME
         name = t.text; advance!(p)
         if accept!(p, :SYMBOL, "(")
@@ -576,7 +577,7 @@ function gen_program(stmts::Vector{IR})::String
     emit!(em, "# generated from tiny language (Julia port)")
     for ln in split(RUNTIME_JL, '\n'); emit!(em, ln); end
     emit!(em, "")
-    # erst Operator-Defs generieren (damit Registrierungen vor Nutzungen stehen)
+    # erst Operator-Defs generieren
     for s in stmts
         if s isa OpDef; gen_stmt!(em, s); end
     end
@@ -602,7 +603,6 @@ if abspath(PROGRAM_FILE) == @__FILE__
         println("Usage: julia tiny_lang.jl <source.tiny> [--emit out.jl] [--run] [--trace-lex] [--trace-parse]")
         exit(0)
     end
-    # Trace-Flags
     if any(==("--trace-lex"), ARGS);   TRACE_LEX[] = true;   end
     if any(==("--trace-parse"), ARGS); TRACE_PARSE[] = true; end
 
