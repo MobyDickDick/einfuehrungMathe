@@ -4,12 +4,28 @@
     {
       "type": "julia",
       "request": "launch",
-      "name": "tiny_lang (--run) abs path",
+      "name": "Run TinyLanguage tests",
+      "program": "${workspaceFolder}/test/runtests.jl",
+      "cwd": "${workspaceFolder}/TinyLanguage",
+      "juliaEnv": "@."
+    },
+    {
+      "type": "julia",
+      "request": "launch",
+      "name": "Run demo (--run)",
       "program": "${workspaceFolder}/tiny_lang.jl",
-      "args": ["${workspaceFolder}/TinyLanguage/demo.tiny", "--run"],
-      "cwd": "${workspaceFolder}",
-      "juliaEnv": "@.",
-      "stopOnEntry": false
+      "args": ["demo.tiny", "--run"],
+      "cwd": "${workspaceFolder}/TinyLanguage",
+      "juliaEnv": "@."
+    },
+    {
+      "type": "julia",
+      "request": "launch",
+      "name": "Run demo (trace lex+parse)",
+      "program": "${workspaceFolder}/tiny_lang.jl",
+      "args": ["demo.tiny", "--trace-lex", "--trace-parse", "--run"],
+      "cwd": "${workspaceFolder}/TinyLanguage",
+      "juliaEnv": "@."
     }
   ]
 }
