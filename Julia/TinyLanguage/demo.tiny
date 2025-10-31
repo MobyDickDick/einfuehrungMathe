@@ -7,22 +7,49 @@ operator == (x: Box, y: Box) -> Bool {
 }
 
 // default numerics
-let a = 7 + 5 * 2;
-print(a >= 17);       // True
+define a = 7 + 5 * 2;
+print(a >= 17);       // true
 
 // object overloading
-let x = box(10);
-let y = box(32);
-let z = x + y;
+define x = box(10);
+define y = box(32);
+define z = x + y;
 print(unbox(z));      // 42
-print(x == y);        // False
+print(x == y);        // false
 
-// heap & tags
-let n = 3;
-let p = new(n);
+// heap & tags (new(size))
+define n = 3;
+define p = new(n);
 tag(p, Arr);
 heap_set(p, 0, 1);
 heap_set(p, 1, 2);
 heap_set(p, 2, 3);
-print( heap_get(p, 2) ); // 3
+print(heap_get(p, 2)); // 3
 delete(p);
+
+// array literal via new[ ... ]
+define q = new[10, 20, 12];
+print(heap_get(q, 0)); // 10
+print(heap_get(q, 1)); // 20
+print(heap_get(q, 2)); // 12
+delete(q);
+
+// strings
+define a2 = 17;
+print("Hallo");
+print("a2 = " + a2);
+
+// while + if/else + assignments
+define i = 0;
+define s = 0;
+while (i < 5) {
+  if (i == 3) {
+    define tmp = i * 10;
+    print(tmp);
+  } else {
+    print(i);
+  }
+  s = s + i;
+  i = i + 1;
+}
+print(s); // 10

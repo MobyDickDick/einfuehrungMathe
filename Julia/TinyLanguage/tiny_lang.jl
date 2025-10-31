@@ -1,20 +1,17 @@
 # tiny_lang.jl — Mini-Sprache in Julia (Lexer → Parser/IR → Julia-Codegen)
 # Features:
-#   - define, print, if/else, while, fn, return, Funktionsaufrufe (auch als Statement)
-#   - new(size), delete(ptr), tag(ptr, TypeName)
+#   - define, Zuweisungen (=), print, if/else, while, fn, return, Call-Statement
+#   - new(size), new[items...], delete(ptr), tag(ptr, TypeName)
 #   - Operatoren + - * / und Vergleiche > >= == <= <
-#   - Operator-Overloading:   operator + (a: Box, b: Box) -> Box { ... }
-#   - Heap ist logisch 0-basiert (auf Julia-1-basiert gemappt)
+#   - Operator-Overloading: operator + (a: Box, b: Box) -> Box { ... }
+#   - String-Literale: "text", mit Escapes \" \\ \n \r \t
+#   - Heap logisch 0-basiert (auf Julia-1-basiert gemappt)
 #
 # Aufruf:
 #   julia tiny_lang.jl demo.tiny --run
 #   julia tiny_lang.jl demo.tiny --emit out.jl
-#
-# Optional:
-#   --trace-lex    zeigt Tokens
-#   --trace-parse  zeigt Parser-Erwartungen
-#
-# Keine externen Pakete nötig.
+# Flags:
+#   --trace-lex, --trace-parse
 
 ########################
 # Tracing (optional)
@@ -28,7 +25,7 @@ const TRACE_PARSE = Ref{Bool}(false)
 ########################
 
 struct Token
-    kind::Symbol   # :NAME, :NUMBER, :OP, :SYMBOL, :KW, :EOF
+    kind::Symbol   # :NAME, :NUMBER, :STRING, :OP, :SYMBOL, :KW, :EOF
     text::String
     pos::Int
 end
@@ -45,7 +42,7 @@ Lexer(s::String) = Lexer(s, firstindex(s), lastindex(s))
 is_name_start(c::Char) = (c == '_') || isletter(c)
 is_name_char(c::Char)  = (c == '_') || isletter(c) || isdigit(c)
 
-# HART: nur noch "define" (kein "let" mehr)
+# HART: nur noch "define" (KEIN "let")
 const KEYWORDS = Set([
     "define","print","if","else","while","fn","delete","return","tag","operator","new"
 ])
@@ -71,6 +68,37 @@ function skip_ws_and_comments!(lx::Lexer)
     end
 end
 
+# String-Scanner (unterstützt \" \\ \n \r \t)
+function read_string!(lx::Lexer)
+    pos0 = lx.i
+    lx.i = nextind(lx.s, lx.i)  # skip opening "
+    buf = IOBuffer()
+    while lx.i <= lx.n
+        c = lx.s[lx.i]
+        if c == '"'
+            lx.i = nextind(lx.s, lx.i) # skip closing "
+            return trace_lex_token(Token(:STRING, String(take!(buf)), pos0))
+        elseif c == '\\'
+            lx.i = nextind(lx.s, lx.i)
+            lx.i > lx.n && error("unterminated escape in string starting at $pos0")
+            esc = lx.s[lx.i]
+            lx.i = nextind(lx.s, lx.i)
+            if     esc == 'n';  write(buf, '\n')
+            elseif esc == 't';  write(buf, '\t')
+            elseif esc == 'r';  write(buf, '\r')
+            elseif esc == '"';  write(buf, '"')
+            elseif esc == '\\'; write(buf, '\\')
+            else
+                write(buf, '\\'); write(buf, esc) # unbekannte Escape wörtlich
+            end
+        else
+            write(buf, c)
+            lx.i = nextind(lx.s, lx.i)
+        end
+    end
+    error("unterminated string literal starting at $pos0")
+end
+
 function next_token(lx::Lexer)
     skip_ws_and_comments!(lx)
     pos = lx.i
@@ -78,6 +106,11 @@ function next_token(lx::Lexer)
         return trace_lex_token(Token(:EOF, "", pos))
     end
     c = lx.s[lx.i]
+
+    # STRING
+    if c == '"'
+        return read_string!(lx)
+    end
 
     # NAME / KEYWORD
     if is_name_start(c)
@@ -87,11 +120,7 @@ function next_token(lx::Lexer)
         end
         txt = lx.s[lx.i:prevind(lx.s, j)]
         lx.i = j
-        if txt in KEYWORDS
-            return trace_lex_token(Token(:KW, txt, pos))
-        else
-            return trace_lex_token(Token(:NAME, txt, pos))
-        end
+        return trace_lex_token(Token((txt in KEYWORDS) ? :KW : :NAME, txt, pos))
     end
 
     # NUMBER (Ziffern mit optionalem '.')
@@ -130,8 +159,8 @@ function next_token(lx::Lexer)
         return trace_lex_token(Token(:OP, string(c), pos))
     end
 
-    # Symbole (inkl. '=' als Zuweisungs-SYMBOL)
-    if c in ['(',')','{','}',';',',',':','=']
+    # Symbole (inkl. '[' und ']')
+    if c in ['(',')','{','}','[',']',';',',',':','=']
         lx.i = nextind(lx.s, lx.i)
         return trace_lex_token(Token(:SYMBOL, string(c), pos))
     end
@@ -146,7 +175,8 @@ end
 abstract type IR end
 
 # Statements
-struct Let     <: IR; name::String; expr::IR; end
+struct Let     <: IR; name::String; expr::IR; end             # define name = expr;
+struct Assign  <: IR; name::String; expr::IR; end             # name = expr;
 struct Print   <: IR; expr::IR; end
 struct If      <: IR; cond::IR; then_::Vector{IR}; els::Vector{IR}; end
 struct While   <: IR; cond::IR; body::Vector{IR}; end
@@ -160,11 +190,13 @@ struct OpDef   <: IR
 end
 
 # Expressions
-struct Num   <: IR; txt::String; end         # Zahl als Text, nicht Float
-struct Var   <: IR; name::String; end
-struct Call  <: IR; name::String; args::Vector{IR}; end
-struct Bin   <: IR; op::String; a::IR; b::IR; end
-struct New   <: IR; size::IR; end
+struct Num    <: IR; txt::String; end          # Zahl als Text, nicht Float
+struct Str    <: IR; txt::String; end          # String-Literal (ohne Anführungszeichen)
+struct Var    <: IR; name::String; end
+struct Call   <: IR; name::String; args::Vector{IR}; end
+struct Bin    <: IR; op::String; a::IR; b::IR; end
+struct New    <: IR; size::IR; end             # new(size)
+struct NewLit <: IR; items::Vector{IR}; end    # new[items...]
 
 ########################
 # Parser
@@ -201,6 +233,7 @@ function accept!(p::Parser, kind::Symbol, txt::Union{Nothing,String}=nothing)
     end
     false
 end
+
 
 # program := stmt*
 function parse_program(p::Parser)
@@ -246,7 +279,7 @@ end
 function parse_stmt(p::Parser)::IR
     t = p.look
     if t.kind == :KW
-        if t.text == "define"                    # HART: nur noch define
+        if t.text == "define"
             advance!(p)
             name = expect!(p, :NAME).text
             expect!(p, :SYMBOL, "=")
@@ -297,25 +330,34 @@ function parse_stmt(p::Parser)::IR
             return TagStmt(vname, tname)
         elseif t.text == "operator"
             advance!(p)
-            op = expect!(p, :OP).text            # + - * / > >= < <= ==
+            op = expect!(p, :OP).text
             expect!(p, :SYMBOL, "(")
             a_name = expect!(p, :NAME).text; expect!(p, :SYMBOL, ":"); a_type = expect!(p, :NAME).text
             expect!(p, :SYMBOL, ",")
             b_name = expect!(p, :NAME).text; expect!(p, :SYMBOL, ":"); b_type = expect!(p, :NAME).text
             expect!(p, :SYMBOL, ")")
-            expect!(p, :OP, "-"); expect!(p, :OP, ">")   # '->' als zwei OP-Tokens
-            ret_type = expect!(p, :NAME).text            # dekorativ
+            expect!(p, :OP, "-"); expect!(p, :OP, ">")   # '->'
+            ret_type = expect!(p, :NAME).text
             body = parse_block(p)
             return OpDef(op, a_name, a_type, b_name, b_type, ret_type, body)
         end
     end
-    # call-statement: NAME '(' args? ')' ';'
+    # NAME-Anfang: entweder Assignment:  name = expr;
+    #            oder Call-Statement:   name(args...);
     if t.kind == :NAME
-        name = t.text; advance!(p)
-        expect!(p, :SYMBOL, "(")
-        args = parse_args(p)
-        expect!(p, :SYMBOL, ")"); expect!(p, :SYMBOL, ";")
-        return CallStmt(name, args)
+        name = t.text
+        advance!(p)
+        if accept!(p, :SYMBOL, "=")
+            expr = parse_expr(p)
+            expect!(p, :SYMBOL, ";")
+            return Assign(name, expr)
+        elseif accept!(p, :SYMBOL, "(")
+            args = parse_args(p)
+            expect!(p, :SYMBOL, ")"); expect!(p, :SYMBOL, ";")
+            return CallStmt(name, args)
+        else
+            error("Parse error near pos $(t.pos): after identifier '$name' expected '=' or '('.")
+        end
     end
     error("Parse error near pos $(t.pos): unexpected token $(t.kind) '$(t.text)'")
 end
@@ -366,24 +408,35 @@ end
 function parse_factor(p::Parser)
     t = p.look
     if t.kind == :KW && t.text == "new"
-        advance!(p); expect!(p, :SYMBOL, "(")
-        e = parse_expr(p); expect!(p, :SYMBOL, ")")
-        return New(e)
-    elseif t.kind == :NUMBER
         advance!(p)
-        return Num(t.text)             # Zahl unverändert als Text
+        if accept!(p, :SYMBOL, "(")
+            e = parse_expr(p); expect!(p, :SYMBOL, ")"); return New(e)
+        elseif accept!(p, :SYMBOL, "[")
+            items = IR[]
+            if !(p.look.kind == :SYMBOL && p.look.text == "]")
+                push!(items, parse_expr(p))
+                while accept!(p, :SYMBOL, ",")
+                    push!(items, parse_expr(p))
+                end
+            end
+            expect!(p, :SYMBOL, "]")
+            return NewLit(items)
+        else
+            error("Parse error near pos $(t.pos): expected '(' or '[' after 'new'")
+        end
+    elseif t.kind == :NUMBER
+        advance!(p); return Num(t.text)
+    elseif t.kind == :STRING
+        advance!(p); return Str(t.text)
     elseif t.kind == :NAME
         name = t.text; advance!(p)
         if accept!(p, :SYMBOL, "(")
-            args = parse_args(p); expect!(p, :SYMBOL, ")")
-            return Call(name, args)
+            args = parse_args(p); expect!(p, :SYMBOL, ")"); return Call(name, args)
         else
             return Var(name)
         end
     elseif t.kind == :SYMBOL && t.text == "("
-        advance!(p)
-        e = parse_expr(p); expect!(p, :SYMBOL, ")")
-        return e
+        advance!(p); e = parse_expr(p); expect!(p, :SYMBOL, ")"); return e
     else
         error("Parse error near pos $(t.pos): unexpected token in expression $(t.kind) '$(t.text)'")
     end
@@ -399,7 +452,6 @@ mutable struct Emitter
 end
 Emitter() = Emitter(String[], 0)
 
-# AbstractString akzeptieren (damit auch SubString OK ist)
 function emit!(em::Emitter, s::AbstractString = "")
     push!(em.lines, repeat("    ", em.ind) * String(s))
 end
@@ -416,6 +468,17 @@ function mangle_op(op::String)
     elseif op == "<="; "le"
     else; error("unknown op $op")
     end
+end
+
+# String-Literal korrekt quoten für Julia-Quelltext
+function jl_string_literal(s::AbstractString)
+    x = replace(String(s),
+                "\\" => "\\\\",
+                "\"" => "\\\"",
+                "\n" => "\\n",
+                "\r" => "\\r",
+                "\t" => "\\t")
+    return "\"" * x * "\""
 end
 
 const RUNTIME_JL = """
@@ -476,13 +539,19 @@ function __binop(op, a, b)
         return __ops[key](a, b)
     end
     op = String(op)
-    if op == "+"; return a + b
-    elseif op == "-"; return a - b
-    elseif op == "*"; return a * b
-    elseif op == "/"; return a / b
-    elseif op == ">"; return a > b
+    if op == "+"
+        # String-Konkatenation, wenn mind. ein Operand String ist
+        if a isa AbstractString || b isa AbstractString
+            return string(a, b)
+        else
+            return a + b
+        end
+    elseif op == "-" ; return a - b
+    elseif op == "*" ; return a * b
+    elseif op == "/" ; return a / b
+    elseif op == ">" ; return a > b
     elseif op == ">="; return a >= b
-    elseif op == "<"; return a < b
+    elseif op == "<" ; return a < b
     elseif op == "<="; return a <= b
     elseif op == "=="; return a == b
     else
@@ -497,6 +566,8 @@ unbox(b) = b["v"]
 function gen_expr(em::Emitter, e::IR)::String
     if e isa Num
         return (e::Num).txt
+    elseif e isa Str
+        return jl_string_literal((e::Str).txt)
     elseif e isa Var
         return (e::Var).name
     elseif e isa Call
@@ -505,6 +576,14 @@ function gen_expr(em::Emitter, e::IR)::String
         return string(ee.name, "(", join(args, ", "), ")")
     elseif e isa New
         return string("__new(", gen_expr(em, (e::New).size), ")")
+    elseif e isa NewLit
+        items = (e::NewLit).items
+        assigns = String[
+            string("heap_set(__p, ", i-1, ", ", gen_expr(em, it), ")")
+            for (i, it) in enumerate(items)
+        ]
+        return "(let __p = __new(" * string(length(items)) * "); " *
+               join(assigns, "; ") * "; __p end)"
     elseif e isa Bin
         ee = (e::Bin)
         return string("__binop(\"", ee.op, "\", ", gen_expr(em, ee.a), ", ", gen_expr(em, ee.b), ")")
@@ -516,6 +595,9 @@ end
 function gen_stmt!(em::Emitter, s::IR)
     if s isa Let
         emit!(em, string((s::Let).name, " = ", gen_expr(em, (s::Let).expr)))
+    elseif s isa Assign
+        ss = (s::Assign)
+        emit!(em, string(ss.name, " = ", gen_expr(em, ss.expr)))
     elseif s isa Print
         emit!(em, string("println(", gen_expr(em, (s::Print).expr), ")"))
     elseif s isa If
@@ -572,19 +654,30 @@ function gen_stmt!(em::Emitter, s::IR)
     end
 end
 
+# Main-Wrapper gegen Soft-Scope
 function gen_program(stmts::Vector{IR})::String
     em = Emitter()
     emit!(em, "# generated from tiny language (Julia port)")
     for ln in split(RUNTIME_JL, '\n'); emit!(em, ln); end
     emit!(em, "")
-    # erst Operator-Defs generieren
+
+    # 1) Operator-Definitionen zuerst (Registrierung vor Nutzung)
     for s in stmts
-        if s isa OpDef; gen_stmt!(em, s); end
+        s isa OpDef && gen_stmt!(em, s)
     end
-    # dann den Rest
+    # 2) Funktionsdefinitionen am Top-Level
     for s in stmts
-        if !(s isa OpDef); gen_stmt!(em, s); end
+        s isa Fn && gen_stmt!(em, s)
     end
+    # 3) Rest in eine Main-Funktion kapseln
+    emit!(em, "function __tiny_main__()")
+    em.ind += 1
+    for s in stmts
+        !(s isa OpDef) && !(s isa Fn) && gen_stmt!(em, s)
+    end
+    em.ind -= 1
+    emit!(em, "end")
+    emit!(em, "__tiny_main__()")
     join(em.lines, "\n")
 end
 
@@ -610,9 +703,9 @@ if abspath(PROGRAM_FILE) == @__FILE__
     src_arg = ARGS[1]
     function resolve_src(arg::AbstractString)
         if isabspath(arg) && isfile(arg); return arg; end
-        p1 = joinpath(@__DIR__, arg);                 if isfile(p1); return p1; end
-        p2 = joinpath(@__DIR__, "TinyLanguage", arg); if isfile(p2); return p2; end
-        p3 = joinpath(pwd(), arg);                    if isfile(p3); return p3; end
+        p1 = joinpath(@__DIR__, arg);                 isfile(p1) && return p1
+        p2 = joinpath(@__DIR__, "TinyLanguage", arg); isfile(p2) && return p2
+        p3 = joinpath(pwd(), arg);                    isfile(p3) && return p3
         error("Source file not found: $arg\n  @__DIR__=$(abspath(@__DIR__))\n  pwd()=$(abspath(pwd()))")
     end
     src_path = resolve_src(src_arg)

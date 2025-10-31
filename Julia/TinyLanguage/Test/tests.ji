@@ -1,10 +1,10 @@
 # test/runtests.jl
 using Test
 
-# tiny_lang.jl laden (relativ zum Test-Ordner)
+# tiny_lang laden
 include(joinpath(@__DIR__, "..", "tiny_lang.jl"))
 
-# --- kleine Helpers ----------------------------------------------------------
+# ---------- Helpers ----------
 
 "Tokenize alles, inkl. EOF"
 function lex_all(s::AbstractString)
@@ -18,38 +18,34 @@ function lex_all(s::AbstractString)
     return toks
 end
 
-"Programm kompilieren, in Modul laden und Ausgabe in Buffer schreiben (Julia 1.12 stabil)"
+"Programm kompilieren, im eigenen Modul ausführen, stdout abgreifen"
 function run_tiny(src::AbstractString)
     code = compile_to_julia(String(src))
 
-    io = IOBuffer()               # Buffer im äußeren World
+    io = IOBuffer()                     # Buffer im äußeren world
     m = Module(:TL_Run)
-
-    # Das Modul soll in "io" schreiben:
     Core.eval(m, :(const __cap_io = $io))
     Core.eval(m, :(println(args...) = Base.println(__cap_io, args...)))
 
-    # Generierten Code im Modul ausführen (nutzt das lokale println)
     Base.include_string(m, code, "generated_test.jl")
-
-    # Ausgabe auslesen (ohne __cap_io wieder anzufassen)
     return String(take!(io))
 end
 
+lines(s) = split(chomp(s), '\n')        # robust ggü. CRLF/Whitespace
 
-# --- Tests -------------------------------------------------------------------
+# ---------- Tests ----------
 
-@testset "Lexer basics" begin
-    toks = lex_all("let x = 12;")
+@testset "Lexer basics (define)" begin
+    toks = lex_all("define x = 12;")
     @test [t.kind for t in toks] == [:KW, :NAME, :SYMBOL, :NUMBER, :SYMBOL, :EOF]
-    @test toks[1].text == "let"
+    @test toks[1].text == "define"
     @test toks[2].text == "x"
     @test toks[4].text == "12"
 end
 
-@testset "Arithmetic & print" begin
+@testset "Arithmetic & print with define" begin
     out = run_tiny("""
-        let a = 7 + 5 * 2;
+        define a = 7 + 5 * 2;
         print(a);
     """)
     @test strip(out) == "17"
@@ -59,59 +55,128 @@ end
     out = run_tiny("""
         print(3 >= 3);
         print(2 < 3);
+        print(4 == 4);
+        print(5 > 2);
+        print(1 <= 1);
     """)
-    @test strip(out) == "true\ntrue"
+    @test lines(out) == ["true","true","true","true","true"]
 end
 
-@testset "Function + return + call-stmt" begin
+@testset "Function + return + call" begin
     out = run_tiny("""
         fn add(a,b) { return a + b; }
-        let x = 40;
-        let y = 2;
+        define x = 40;
+        define y = 2;
         print(add(x,y));
     """)
     @test strip(out) == "42"
 end
 
-@testset "Heap new/delete + get/set" begin
+@testset "While + If/Else" begin
     out = run_tiny("""
-        let p = new(2);
-        heap_set(p, 0, 41);
-        heap_set(p, 1, 1);
-        print( heap_get(p, 0) + heap_get(p, 1) );
+        define i = 0;
+        define s = 0;
+        while (i < 5) {
+            if (i == 3) { 
+                define tmp = i * 10;
+                print(tmp);
+            } else {
+                print(i);
+            }
+            s = s + i;
+            i = i + 1;
+        }
+        print(s);
+    """)
+    @test lines(out) == ["0","1","2","30","4","10"]
+end
+
+@testset "Heap new/delete + get/set + tag" begin
+    out = run_tiny("""
+        define p = new(3);
+        tag(p, Arr);
+        heap_set(p, 0, 1);
+        heap_set(p, 1, 2);
+        heap_set(p, 2, 39);
+        print(heap_get(p, 0) + heap_get(p, 1) + heap_get(p, 2));
         delete(p);
     """)
     @test strip(out) == "42"
 end
 
-@testset "operator overloading (Box + Box)" begin
+@testset "Operator overloading (Box + Box)" begin
     out = run_tiny("""
         operator + (a: Box, b: Box) -> Box {
           return box(unbox(a) + unbox(b));
         }
-        let x = box(20);
-        let y = box(22);
-        let z = x + y;
+        define x = box(20);
+        define y = box(22);
+        define z = x + y;
         print(unbox(z));
     """)
     @test strip(out) == "42"
 end
 
-@testset "operator == (Box == Box)" begin
+@testset "Operator == (Box == Box)" begin
     out = run_tiny("""
         operator == (x: Box, y: Box) -> Bool {
           return unbox(x) == unbox(y);
         }
-        let a = box(5);
-        let b = box(5);
-        let c = box(7);
+        define a = box(5);
+        define b = box(5);
+        define c = box(7);
         print(a == b);
         print(a == c);
     """)
-    @test strip(out) == "true\nfalse"
+    @test lines(out) == ["true","false"]
 end
 
-@testset "Syntax error reporting" begin
-    @test_throws ErrorException compile_to_julia("let = 1;")
-    @test_throws ErrorException compile_to_julia("operator + (a: Box, b: Box) Box { }") # fehlt '->'
+@testset "Syntax errors" begin
+    # 'let' gibt es nicht mehr (harte Umstellung)
+    @test_throws ErrorException compile_to_julia("let a = 1;")
+    # 'operator' ohne '->' (Pfeil als '-' und '>' erwartet)
+    @test_throws ErrorException compile_to_julia("operator + (a: Box, b: Box) Box { }")
+    # Call-Statement erwartet NAME '('
+    @test_throws ErrorException compile_to_julia("foo;")
+end
+
+@testset "Pointer of arrays (flat + nested)" begin
+    out = run_tiny("""
+        // flat: new(size) + heap_set/get
+        define p = new(3);
+        heap_set(p, 0, 11);
+        heap_set(p, 1, 22);
+        heap_set(p, 2, 33);
+        print(heap_get(p, 0));
+        print(heap_get(p, 1));
+        print(heap_get(p, 2));
+
+        // flat: array literal new[...]
+        define q = new[7, 8, 9];
+        print(heap_get(q, 0));
+        print(heap_get(q, 1));
+        print(heap_get(q, 2));
+
+        // nested: array of pointers to arrays
+        define a = new[1, 2, 3];
+        define b = new[4, 5];
+        define r = new(2);     // r[0] -> a, r[1] -> b
+        heap_set(r, 0, a);
+        heap_set(r, 1, b);
+
+        // access nested elements
+        print(heap_get(heap_get(r, 0), 2)); // a[2] == 3
+        print(heap_get(heap_get(r, 1), 1)); // b[1] == 5
+
+        // cleanup
+        delete(a);
+        delete(b);
+        delete(p);
+        delete(q);
+        delete(r);
+    """)
+
+    # Windows/macOS/Linux-robust: CRLF/LF normalisieren und in Zeilen splitten
+    lines = split(chomp(replace(out, "\r\n" => "\n", "\r" => "\n")), '\n')
+    @test lines == ["11","22","33","7","8","9","3","5"]
 end
