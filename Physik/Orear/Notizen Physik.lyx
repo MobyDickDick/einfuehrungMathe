@@ -5169,7 +5169,7 @@ Aufgabe 9.3)
 \end_layout
 
 \begin_layout Standard
-Ich halte mich an diee Formel
+Ich halte mich an die Formel
 \begin_inset Formula 
 \begin{align*}
 \Delta t & =\frac{2\cdot D}{v_{c}\cdot\left(\left(\frac{v_{c}}{v}\right)^{2}-1\right)}
@@ -5283,6 +5283,293 @@ v & =v_{c}\cdot\sqrt{\frac{v_{c}\cdot\frac{d}{v_{c}}}{2\cdot D+v_{c}\cdot\frac{d
 \end_inset
 
 
+\end_layout
+
+\begin_layout Exercise
+Aufgabe 5.34)
+\end_layout
+
+\begin_layout Exercise
+Ich befürchte,
+ ich habe die Aufgabe bereits einmal aufgeschrieben....
+\end_layout
+
+\begin_layout Exercise
+Nun,
+ was soll's.
+ Mache ich sie halt noch einmal:
+ Die Grösse 
+\begin_inset Formula 
+\[
+\frac{R^{2}}{T}
+\]
+
+\end_inset
+
+ sei eine Erhaltungsgrösse:
+ Es sei 
+\begin_inset Formula $R_{2}$
+\end_inset
+
+ der Radius der Sonne,
+ wenn sie knapp noch stabil ist (dieser muss kleiner sein als 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+,
+ der momentane Radius der Sonne).
+ 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ sei die Zeit für eine Umdrehung der knapp noch stabilen Sonne.
+ 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+sei die Zeit aktuelle Zeit der Umdrehung der Sonne (27 Tage,
+ das entspricht 
+\begin_inset Formula $27\cdot24\cdot3600\:s=27\cdot24\cdot3600\:s=2332800\:s$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Exercise
+Also gilt
+\begin_inset Formula 
+\begin{equation}
+\frac{R_{2}^{2}}{T_{2}}=\frac{R_{1}^{2}}{T_{1}}\label{eq:Konstanz-Drehimpuls}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Ebenso muss für die knapp stabile Sonne noch gelten,
+ dass die Zentripetalbeschleunigung gleich der Graviatationsbeschleunigung auf der Sonnenoberfläche sein muss.
+ Es muss also gelten:
+\begin_inset Formula 
+\[
+\frac{v_{2}^{2}}{R_{2}}=G\cdot\frac{m_{s}}{R_{2}^{2}}
+\]
+
+\end_inset
+
+Oder also 
+\begin_inset Formula 
+\[
+R_{2}\cdot v_{2}^{2}=G\cdot m_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Nun ist 
+\begin_inset Formula 
+\begin{eqnarray*}
+v_{2} & = & \frac{\triangle s}{\triangle t}=\frac{2\cdot\pi\cdot R_{2}}{T_{2}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Da ich jedoch 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+noch nicht kenne,
+ muss ich die obige Formel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Konstanz-Drehimpuls"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ entsprechend umformen:
+ Es folgt zuerst
+\begin_inset Formula 
+\[
+R_{2}^{2}=T_{2}\frac{R_{1}^{2}}{T_{1}}
+\]
+
+\end_inset
+
+Anschliessend kann ich bilden
+\begin_inset Formula 
+\[
+T_{1}\cdot R_{2}^{2}=T_{2}\cdot R_{1}^{2}
+\]
+
+\end_inset
+
+und schlussendlich
+\begin_inset Formula 
+\[
+T_{1}\cdot\frac{R_{2}^{2}}{R_{1}^{2}}=T_{2}
+\]
+
+\end_inset
+
+Oder umgeschrieben
+\begin_inset Formula 
+\[
+T_{2}=T_{1}\cdot\frac{R_{2}^{2}}{R_{1}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Dieses Resultat setze ich in die Formel für 
+\begin_inset Formula $v_{2}$
+\end_inset
+
+ein und erhalte
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Formula 
+\begin{eqnarray*}
+v_{2} & = & \frac{2\cdot\pi\cdot R_{2}}{T_{1}\cdot\frac{R_{2}^{2}}{R_{1}^{2}}}\\
+ & = & \frac{2\cdot\pi\cdot R_{1}^{2}\cdot R_{2}}{T_{1}\cdot R_{2}^{2}}\\
+ & = & \frac{2\cdot\pi\cdot R_{1}^{2}}{T_{1}\cdot R_{2}}
+\end{eqnarray*}
+
+\end_inset
+
+Mit 
+\begin_inset Formula 
+\[
+\omega_{s}\equiv\frac{2\cdot\pi}{T_{1}}
+\]
+
+\end_inset
+
+(Winkelgeschwindigkeit der Sonne) erhalte ich
+\begin_inset Formula 
+\begin{eqnarray*}
+v_{2} & = & \omega_{s}\cdot\frac{R_{1}^{2}}{R_{2}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Dieses Resultat setze ich nun in die Formel
+\begin_inset Formula 
+\[
+R_{2}\cdot v_{2}^{2}=G\cdot m_{s}
+\]
+
+\end_inset
+
+ein.
+ Ich erhalte die Formel
+\begin_inset Formula 
+\[
+R_{2}\cdot\left(\omega_{s}\cdot\frac{R_{1}^{2}}{R_{2}}\right)^{2}=G\cdot m_{s}
+\]
+
+\end_inset
+
+oder also 
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Formula 
+\[
+\omega_{s}^{2}\cdot\frac{R_{1}^{4}}{R_{2}}=G\cdot m_{s}
+\]
+
+\end_inset
+
+Diese Formel möchte ich nach 
+\begin_inset Formula $R_{2}$
+\end_inset
+
+ auflösen:
+ Ich erhalte zuerst 
+\begin_inset Formula 
+\[
+\omega_{s}^{2}\cdot\frac{R_{1}^{4}}{G\cdot m_{s}}=R_{2}
+\]
+
+\end_inset
+
+Also 
+\begin_inset Formula 
+\[
+R_{2}=\omega_{s}^{2}\cdot\frac{R_{1}^{4}}{G\cdot m_{s}}
+\]
+
+\end_inset
+
+Dann möchte ich noch 
+\begin_inset Formula $\omega_{s}$
+\end_inset
+
+ wieder umschreiben und erhalte
+\begin_inset Formula 
+\[
+R_{2}=\frac{4\cdot\pi^{2}\cdot R_{1}^{4}}{T_{s}^{2}\cdot G\cdot m_{s}}\approx13\:km
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Also,
+ meine Frage für zwischendurch:
+ Wie schnell düst die Erde um die Sonne?
+\end_layout
+
+\begin_layout Exercise
+Der Abstand der Sonne von der Erde beträgt 
+\begin_inset Formula $149597870700\:km$
+\end_inset
+
+ (Quelle:
+ Wikipedia).
+ Ein siderisches Jahr dauert 
+\begin_inset Formula $31558149.54\:s$
+\end_inset
+
+.
+ Das ergibt eine (mittlere Geschwindigkeit) von 
+\begin_inset Formula 
+\[
+v_{E}=\frac{2\cdot\pi\cdot149597870700\:m}{31558149.54\:s}\approx29.8\:\frac{km}{s}
+\]
+
+\end_inset
+
+ 
 \end_layout
 
 \end_body
