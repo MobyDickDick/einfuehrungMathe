@@ -180,3 +180,117 @@ end
     lines = split(chomp(replace(out, "\r\n" => "\n", "\r" => "\n")), '\n')
     @test lines == ["11","22","33","7","8","9","3","5"]
 end
+
+using Test
+
+# ---- Helfer: nur definieren, wenn noch nicht vorhanden ----
+if !isdefined(@__MODULE__, :_tl_included)
+    const _tl_included = true
+    include(joinpath(@__DIR__, "..", "tiny_lang.jl"))
+end
+
+if !isdefined(@__MODULE__, :run_tiny)
+    function run_tiny(src::String)
+        code = compile_to_julia(src)
+        io = IOBuffer()
+        redirect_stdout(io) do
+            Base.include_string(Main, code, "generated_test.jl")
+        end
+        String(take!(io))
+    end
+end
+
+if !isdefined(@__MODULE__, :expect_compile_error)
+    function expect_compile_error(src::String, pat::AbstractString)
+        got = nothing
+        try
+            compile_to_julia(src)
+            @test false "Erwarteter Compile-Error (/$pat/) – aber Kompilation war erfolgreich."
+        catch e
+            got = sprint(showerror, e)
+            @test occursin(Regex(pat), got) ||
+                  @test got == got && false "Fehlermeldung passt nicht:\n$got"
+        end
+    end
+end
+
+normalize_newlines(s) = replace(s, "\r\n" => "\n", "\r" => "\n")
+
+# ===================== Tests =====================
+
+@testset "MUST-USE: ungenutzter Funktionsparameter" begin
+    src = """
+    fn f(a, b) {
+        print(a);
+        return a;
+    }
+    """
+    expect_compile_error(src, "unused parameter\\(s\\) in function f: b")
+end
+
+@testset "MUST-USE: ungenutzte lokale Bindung (Top-Level)" begin
+    src = """
+    define x = 1;
+    print(42);
+    """
+    expect_compile_error(src, "unused local binding\\(s\\): x")
+end
+
+@testset "MUST-USE: ungenutzte lokale Bindung (in Funktion)" begin
+    src = """
+    fn g(a) {
+        define t = 123;
+        print(a);
+        return a;
+    }
+    """
+    expect_compile_error(src, "unused local binding\\(s\\): t")
+end
+
+@testset "MUST-USE: bare call verboten" begin
+    src = """
+    fn h() { return 1; }
+    h();
+    """
+    # Fehler entsteht beim Codegen:
+    expect_compile_error(src, "bare call statements are not allowed")
+end
+
+@testset "MUST-USE: Destrukturierung – alle Felder müssen benutzt werden" begin
+    src = """
+    fn make() { return { p: 1, e: 0 }; }
+    { p, e } = make();
+    print(p);
+    """
+    expect_compile_error(src, "unused local binding\\(s\\): e")
+end
+
+@testset "OK: Destrukturierung – beide Werte benutzt" begin
+    src = """
+    fn make() { return { p: 1, e: 0 }; }
+    { p, e } = make();
+    print(p);
+    print(e);
+    """
+    out = run_tiny(src)
+    @test normalize_newlines(chomp(out)) == "1\n0"
+end
+
+@testset "OK: Funktionsaufruf mit Bindung & Nutzung" begin
+    src = """
+    fn add(a, b) { return a + b; }
+    define r = add(2, 3);
+    print(r);
+    """
+    out = run_tiny(src)
+    @test normalize_newlines(chomp(out)) == "5"
+end
+
+@testset "OK: Funktionsaufruf direkt als Argument (gilt als benutzt)" begin
+    src = """
+    fn one() { return 1; }
+    print(one());
+    """
+    out = run_tiny(src)
+    @test normalize_newlines(chomp(out)) == "1"
+end

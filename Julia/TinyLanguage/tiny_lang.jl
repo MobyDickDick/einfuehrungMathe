@@ -1,11 +1,16 @@
-# tiny_lang.jl — Mini-Sprache in Julia (Lexer → Parser/IR → Julia-Codegen)
+# tiny_lang.jl — Mini-Sprache in Julia (Lexer → Parser/IR → Linter → Julia-Codegen)
 # Features:
-#   - define, Zuweisungen (=), print, if/else, while, fn, return, Call-Statement
-#   - new(size), new[items...], delete(ptr), tag(ptr, TypeName)
-#   - Operatoren + - * / und Vergleiche > >= == <= <
-#   - Operator-Overloading: operator + (a: Box, b: Box) -> Box { ... }
-#   - String-Literale: "text", mit Escapes \" \\ \n \r \t
-#   - Heap logisch 0-basiert (auf Julia-1-basiert gemappt)
+#   - define, Zuweisungen (=), print, if/else, while, fn, return, delete, tag
+#   - Operator-Overloading: operator + (a: T, b: U) -> R { ... }
+#   - Arrays: new(n) und new[items...]; 0-basierte Indizes via heap_get/set
+#   - Strings: "text" mit Escapes \" \\ \n \r \t
+#   - Struct-Literale: { field: expr, ... } (+ Schema-Kurzform mit number/string/bool/any)
+#   - Feldzugriff: obj.field
+#   - Destrukturierung als Statement: {a, b, ...} = expr;
+#   - Linter (MUST-USE):
+#       * Alle Funktionsparameter müssen verwendet werden
+#       * Alle lokalen Bindungen (auch aus Destrukturierung) müssen verwendet werden
+#       * Bare Call-Statements sind verboten (Rückgaben müssen gebunden/benutzt werden)
 #
 # Aufruf:
 #   julia tiny_lang.jl demo.tiny --run
@@ -42,7 +47,7 @@ Lexer(s::String) = Lexer(s, firstindex(s), lastindex(s))
 is_name_start(c::Char) = (c == '_') || isletter(c)
 is_name_char(c::Char)  = (c == '_') || isletter(c) || isdigit(c)
 
-# HART: nur noch "define" (KEIN "let")
+# Schlüsselwörter
 const KEYWORDS = Set([
     "define","print","if","else","while","fn","delete","return","tag","operator","new"
 ])
@@ -159,8 +164,8 @@ function next_token(lx::Lexer)
         return trace_lex_token(Token(:OP, string(c), pos))
     end
 
-    # Symbole (inkl. '[' und ']')
-    if c in ['(',')','{','}','[',']',';',',',':','=']
+    # Symbole (inkl. '.' für Feldzugriff)
+    if c in ['(',')','{','}','[',']',';',',',':','=', '.']
         lx.i = nextind(lx.s, lx.i)
         return trace_lex_token(Token(:SYMBOL, string(c), pos))
     end
@@ -181,12 +186,16 @@ struct Print   <: IR; expr::IR; end
 struct If      <: IR; cond::IR; then_::Vector{IR}; els::Vector{IR}; end
 struct While   <: IR; cond::IR; body::Vector{IR}; end
 struct Fn      <: IR; name::String; params::Vector{String}; body::Vector{IR}; end
-struct CallStmt <: IR; name::String; args::Vector{IR}; end
+struct CallStmt <: IR; name::String; args::Vector{IR}; end     # wird im Codegen verboten (must-use)
 struct Delete  <: IR; ptr::IR; end
 struct Return  <: IR; expr::IR; end
 struct TagStmt <: IR; varname::String; typename::String; end
 struct OpDef   <: IR
     op::String; a_name::String; a_type::String; b_name::String; b_type::String; ret_type::String; body::Vector{IR}
+end
+struct DestructAssign <: IR
+    names::Vector{String}
+    expr::IR
 end
 
 # Expressions
@@ -197,6 +206,8 @@ struct Call   <: IR; name::String; args::Vector{IR}; end
 struct Bin    <: IR; op::String; a::IR; b::IR; end
 struct New    <: IR; size::IR; end             # new(size)
 struct NewLit <: IR; items::Vector{IR}; end    # new[items...]
+struct ObjLit <: IR; fields::Vector{Pair{String, IR}}; end
+struct Field  <: IR; obj::IR; name::String; end
 
 ########################
 # Parser
@@ -233,7 +244,6 @@ function accept!(p::Parser, kind::Symbol, txt::Union{Nothing,String}=nothing)
     end
     false
 end
-
 
 # program := stmt*
 function parse_program(p::Parser)
@@ -276,8 +286,65 @@ function parse_args(p::Parser)
     args
 end
 
+function default_expr_for(tname::String)::IR
+    if tname == "number"; return Num("0")
+    elseif tname == "string"; return Str("")
+    elseif tname == "bool";   return Var("false")
+    elseif tname == "any";    return Var("nothing")
+    else
+        return Var(tname)
+    end
+end
+
+function parse_obj_literal(p::Parser)::IR
+    expect!(p, :SYMBOL, "{")
+    fields = Pair{String,IR}[]
+    while !(p.look.kind == :SYMBOL && p.look.text == "}")
+        fname = expect!(p, :NAME).text
+        expect!(p, :SYMBOL, ":")
+        if p.look.kind == :NAME && (p.look.text in ("number","string","bool","any"))
+            tname = p.look.text
+            advance!(p)
+            fexpr = default_expr_for(tname)
+        else
+            fexpr = parse_expr(p)
+        end
+        push!(fields, fname => fexpr)
+        if !accept!(p, :SYMBOL, ",")
+            break
+        end
+    end
+    expect!(p, :SYMBOL, "}")
+    return ObjLit(fields)
+end
+
+function parse_postfix_dot(p::Parser, base::IR)::IR
+    while p.look.kind == :SYMBOL && p.look.text == "."
+        advance!(p)
+        fname = expect!(p, :NAME).text
+        base = Field(base, fname)
+    end
+    return base
+end
+
 function parse_stmt(p::Parser)::IR
     t = p.look
+
+    # Destrukturierende Zuweisung am Statement-Anfang: {a, b, ...} = expr;
+    if t.kind == :SYMBOL && t.text == "{"
+        advance!(p)
+        names = String[]
+        push!(names, expect!(p, :NAME).text)
+        while accept!(p, :SYMBOL, ",")
+            push!(names, expect!(p, :NAME).text)
+        end
+        expect!(p, :SYMBOL, "}")
+        expect!(p, :SYMBOL, "=")
+        ex = parse_expr(p)
+        expect!(p, :SYMBOL, ";")
+        return DestructAssign(names, ex)
+    end
+
     if t.kind == :KW
         if t.text == "define"
             advance!(p)
@@ -342,8 +409,9 @@ function parse_stmt(p::Parser)::IR
             return OpDef(op, a_name, a_type, b_name, b_type, ret_type, body)
         end
     end
+
     # NAME-Anfang: entweder Assignment:  name = expr;
-    #            oder Call-Statement:   name(args...);
+    #            oder Call-Statement:   name(args...);  (→ verboten im Codegen)
     if t.kind == :NAME
         name = t.text
         advance!(p)
@@ -359,6 +427,7 @@ function parse_stmt(p::Parser)::IR
             error("Parse error near pos $(t.pos): after identifier '$name' expected '=' or '('.")
         end
     end
+
     error("Parse error near pos $(t.pos): unexpected token $(t.kind) '$(t.text)'")
 end
 
@@ -410,7 +479,8 @@ function parse_factor(p::Parser)
     if t.kind == :KW && t.text == "new"
         advance!(p)
         if accept!(p, :SYMBOL, "(")
-            e = parse_expr(p); expect!(p, :SYMBOL, ")"); return New(e)
+            e = parse_expr(p); expect!(p, :SYMBOL, ")")
+            return parse_postfix_dot(p, New(e))
         elseif accept!(p, :SYMBOL, "[")
             items = IR[]
             if !(p.look.kind == :SYMBOL && p.look.text == "]")
@@ -420,23 +490,28 @@ function parse_factor(p::Parser)
                 end
             end
             expect!(p, :SYMBOL, "]")
-            return NewLit(items)
+            return parse_postfix_dot(p, NewLit(items))
         else
             error("Parse error near pos $(t.pos): expected '(' or '[' after 'new'")
         end
     elseif t.kind == :NUMBER
-        advance!(p); return Num(t.text)
+        advance!(p); return parse_postfix_dot(p, Num(t.text))
     elseif t.kind == :STRING
-        advance!(p); return Str(t.text)
+        advance!(p); return parse_postfix_dot(p, Str(t.text))
     elseif t.kind == :NAME
         name = t.text; advance!(p)
         if accept!(p, :SYMBOL, "(")
-            args = parse_args(p); expect!(p, :SYMBOL, ")"); return Call(name, args)
+            args = parse_args(p); expect!(p, :SYMBOL, ")")
+            return parse_postfix_dot(p, Call(name, args))
         else
-            return Var(name)
+            return parse_postfix_dot(p, Var(name))
         end
+    elseif t.kind == :SYMBOL && t.text == "{"
+        base = parse_obj_literal(p)
+        return parse_postfix_dot(p, base)
     elseif t.kind == :SYMBOL && t.text == "("
-        advance!(p); e = parse_expr(p); expect!(p, :SYMBOL, ")"); return e
+        advance!(p); e = parse_expr(p); expect!(p, :SYMBOL, ")")
+        return parse_postfix_dot(p, e)
     else
         error("Parse error near pos $(t.pos): unexpected token in expression $(t.kind) '$(t.text)'")
     end
@@ -489,6 +564,7 @@ const __ops = Dict{Tuple{String, Union{Nothing,String}, Union{Nothing,String}}, 
 __next_ptr = Ref(1)
 
 function __new(n)
+    n < 0 && error("alloc error: negative size")
     p = __next_ptr[]
     __next_ptr[] += 1
     __heap[p] = [0 for _ in 1:Int(n)]
@@ -539,13 +615,7 @@ function __binop(op, a, b)
         return __ops[key](a, b)
     end
     op = String(op)
-    if op == "+"
-        # String-Konkatenation, wenn mind. ein Operand String ist
-        if a isa AbstractString || b isa AbstractString
-            return string(a, b)
-        else
-            return a + b
-        end
+    if op == "+" ; return a + b
     elseif op == "-" ; return a - b
     elseif op == "*" ; return a * b
     elseif op == "/" ; return a / b
@@ -561,6 +631,15 @@ end
 
 box(v) = Dict("__tag__"=>"Box", "v"=>v)
 unbox(b) = b["v"]
+
+# Struct/Objekt-Zugriff
+function field_get(o, k)
+    return o[String(k)]
+end
+function field_set(o, k, v)
+    o[String(k)] = v
+    return nothing
+end
 """
 
 function gen_expr(em::Emitter, e::IR)::String
@@ -587,6 +666,17 @@ function gen_expr(em::Emitter, e::IR)::String
     elseif e isa Bin
         ee = (e::Bin)
         return string("__binop(\"", ee.op, "\", ", gen_expr(em, ee.a), ", ", gen_expr(em, ee.b), ")")
+    elseif e isa ObjLit
+        pairs_src = String[]
+        push!(pairs_src, "\"__tag__\"=>\"Struct\"")
+        for pr in (e::ObjLit).fields
+            fname, fexpr = pr.first, pr.second
+            push!(pairs_src, string("\"", fname, "\"=>", gen_expr(em, fexpr)))
+        end
+        return string("Dict(", join(pairs_src, ", "), ")")
+    elseif e isa Field
+        ee = (e::Field)
+        return string("field_get(", gen_expr(em, ee.obj), ", \"", ee.name, "\")")
     else
         error("unknown expr node")
     end
@@ -629,8 +719,8 @@ function gen_stmt!(em::Emitter, s::IR)
         em.ind -= 1
         emit!(em, "end")
     elseif s isa CallStmt
-        ss = (s::CallStmt); args = [gen_expr(em, a) for a in ss.args]
-        emit!(em, string(ss.name, "(", join(args, ", "), ")"))
+        # MUST-USE: nackte Funktionsaufrufe sind verboten
+        error("call with return value must be bound; bare call statements are not allowed")
     elseif s isa Delete
         emit!(em, string("__delete(", gen_expr(em, (s::Delete).ptr), ")"))
     elseif s isa Return
@@ -649,6 +739,12 @@ function gen_stmt!(em::Emitter, s::IR)
         emit!(em, "end")
         emit!(em, "__register_op(\"$(s.op)\", \"$(s.a_type)\", \"$(s.b_type)\", $(fname))")
         emit!(em, "")
+    elseif s isa DestructAssign
+        ss = (s::DestructAssign)
+        emit!(em, "__tmp_rec__ = " * gen_expr(em, ss.expr))
+        for nm in ss.names
+            emit!(em, string(nm, " = field_get(__tmp_rec__, \"", nm, "\")"))
+        end
     else
         error("unknown stmt node")
     end
@@ -661,15 +757,15 @@ function gen_program(stmts::Vector{IR})::String
     for ln in split(RUNTIME_JL, '\n'); emit!(em, ln); end
     emit!(em, "")
 
-    # 1) Operator-Definitionen zuerst (Registrierung vor Nutzung)
+    # 1) Operator-Definitionen zuerst
     for s in stmts
         s isa OpDef && gen_stmt!(em, s)
     end
-    # 2) Funktionsdefinitionen am Top-Level
+    # 2) Funktionsdefinitionen oben
     for s in stmts
         s isa Fn && gen_stmt!(em, s)
     end
-    # 3) Rest in eine Main-Funktion kapseln
+    # 3) Rest in Main-Funktion
     emit!(em, "function __tiny_main__()")
     em.ind += 1
     for s in stmts
@@ -682,12 +778,126 @@ function gen_program(stmts::Vector{IR})::String
 end
 
 ########################
+# Linter: MUST-USE
+########################
+
+# liest Variablennamen in Ausdrücken
+function uses_in_expr(e::IR, reads::Dict{String,Int})
+    if e isa Var
+        nm = (e::Var).name
+        reads[nm] = get(reads, nm, 0) + 1
+    elseif e isa Bin
+        uses_in_expr((e::Bin).a, reads); uses_in_expr((e::Bin).b, reads)
+    elseif e isa Call
+        for a in (e::Call).args; uses_in_expr(a, reads); end
+    elseif e isa New
+        uses_in_expr((e::New).size, reads)
+    elseif e isa NewLit
+        for it in (e::NewLit).items; uses_in_expr(it, reads); end
+    elseif e isa Field
+        uses_in_expr((e::Field).obj, reads)
+    elseif e isa ObjLit
+        for pr in (e::ObjLit).fields; uses_in_expr(pr.second, reads); end
+    elseif e isa Num || e isa Str
+        return
+    else
+        return
+    end
+end
+
+# sammelt Reads aus Statements
+function lint_stmt_reads!(s::IR, reads::Dict{String,Int})
+    if s isa Let
+        uses_in_expr((s::Let).expr, reads)
+    elseif s isa Assign
+        uses_in_expr((s::Assign).expr, reads)
+    elseif s isa Print
+        uses_in_expr((s::Print).expr, reads)
+    elseif s isa If
+        ss = (s::If); uses_in_expr(ss.cond, reads)
+        for t in ss.then_; lint_stmt_reads!(t, reads); end
+        for t in ss.els;   lint_stmt_reads!(t, reads); end
+    elseif s isa While
+        ss = (s::While); uses_in_expr(ss.cond, reads)
+        for t in ss.body; lint_stmt_reads!(t, reads); end
+    elseif s isa CallStmt
+        # bare call ist ohnehin verboten im Codegen; hier keine Reads
+        return
+    elseif s isa Delete
+        uses_in_expr((s::Delete).ptr, reads)
+    elseif s isa Return
+        uses_in_expr((s::Return).expr, reads)
+    elseif s isa TagStmt
+        return
+    elseif s isa OpDef
+        tmp_reads = Dict{String,Int}()
+        for t in (s::OpDef).body; lint_stmt_reads!(t, tmp_reads); end
+        miss = String[]
+        get(tmp_reads, s.a_name, 0) == 0 && push!(miss, s.a_name)
+        get(tmp_reads, s.b_name, 0) == 0 && push!(miss, s.b_name)
+        if !isempty(miss)
+            error("unused operator parameter(s) in op $(s.op): " * join(miss, ", "))
+        end
+    elseif s isa DestructAssign
+        uses_in_expr((s::DestructAssign).expr, reads)
+    end
+end
+
+# Funktionsparameter müssen verwendet werden
+function lint_fn_params_used!(f::Fn)
+    reads = Dict{String,Int}()
+    for st in f.body
+        lint_stmt_reads!(st, reads)
+    end
+    unused = [p for p in f.params if get(reads, p, 0) == 0]
+    if !isempty(unused)
+        error("unused parameter(s) in function $(f.name): " * join(unused, ", "))
+    end
+    # lokale Bindungen im Funktionskörper ebenfalls prüfen
+    lint_locals_used!(f.body)
+end
+
+# Lokale Bindungen (Let + DestructAssign) müssen gelesen werden
+function lint_locals_used!(stmts::Vector{IR})
+    defs = Dict{String,Int}()   # name -> pos index
+    uses = Dict{String,Int}()
+    # defs sammeln
+    for (i, s) in enumerate(stmts)
+        if s isa Let
+            defs[(s::Let).name] = i
+        elseif s isa DestructAssign
+            for nm in (s::DestructAssign).names
+                defs[nm] = i
+            end
+        end
+    end
+    # reads sammeln
+    for s in stmts
+        lint_stmt_reads!(s, uses)
+    end
+    # unbenutzte melden
+    unused = [n for (n, _) in defs if get(uses, n, 0) == 0]
+    if !isempty(unused)
+        error("unused local binding(s): " * join(unused, ", "))
+    end
+end
+
+########################
 # Driver
 ########################
 
 function compile_to_julia(src::String)::String
     p = Parser(src)
     ir = parse_program(p)
+
+    # Lint: Funktionsparameter & lokale Bindungen
+    for s in ir
+        if s isa Fn
+            lint_fn_params_used!(s)
+        end
+    end
+    lint_locals_used!(ir)
+
     gen_program(ir)
 end
 
