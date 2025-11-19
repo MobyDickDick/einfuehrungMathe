@@ -1,39 +1,50 @@
 using Test
 
-# ---- Helper: Compiler/Runner einbinden ----
+# robust relativ zu diesem Testordner
 include(joinpath(@__DIR__, "..", "tiny_lang.jl"))
 
-# Lauf-Helper: kompiliert in Julia-Code, führt aus, fängt stdout
+"""
+    run_tiny(src::String) -> String
+
+Kompiliert TinyLanguage-Quelltext zu Julia-Code, führt ihn in einem
+frischen, anonymen Modul aus und gibt den Ausgabe-String zurück.
+"""
 function run_tiny(src::String)
-    code = compile_to_julia(src)
-    io = IOBuffer()
-    redirect_stdout(io) do
-        Base.include_string(Main, code, "generated_test.jl")
-    end
-    String(take!(io))
+    # 1. TinyLanguage → Julia-Code
+    code = TinyLanguage.compile_to_julia(src)
+
+    # 2. Frisches Modul für jede Ausführung (kein Main, kein Revise-Ärger)
+    m = Module()
+    Base.include_string(m, code)
+
+    # 3. __tiny_run__ aus dem Modul holen und mit invokelatest ausführen
+    runfun = getfield(m, :__tiny_run__)
+    out_any = Base.invokelatest(runfun)
+    out = String(out_any)
+
+    # 4. Letztes Newline konsistent abschneiden
+    return chomp(out)
 end
 
-# Fehlermeldung erwarten (Regex über Fehlermeldung)
+# Compile-Error erwarten
 function expect_compile_error(src::String, pat::AbstractString)
     try
-        compile_to_julia(src)
-        @test false  # Es MUSS ein Fehler geworfen werden
+        TinyLanguage.compile_to_julia(src)
+        @test false
     catch e
         got = sprint(showerror, e)
         @test occursin(Regex(pat), got)
     end
 end
 
-normalize(s) = replace(chomp(s), "\r\n"=>"\n", "\r"=>"\n")
-
-# ===================== Tests =====================
+# ---------------- Tests ----------------
 
 @testset "Lexer basics (define)" begin
     out = run_tiny("""
         define a = 7;
         print(a);
     """)
-    @test normalize(out) == "7"
+    @test out == "7"
 end
 
 @testset "Arithmetic & print with define" begin
@@ -41,7 +52,7 @@ end
         define a = 7 + 5 * 2;
         print(a);
     """)
-    @test normalize(out) == "17"
+    @test out == "17"
 end
 
 @testset "Comparisons" begin
@@ -52,19 +63,19 @@ end
         print(2 <= 2);
         print(3 == 3);
     """)
-    @test normalize(out) == "true\ntrue\nfalse\ntrue\ntrue"
+    @test out == "true\ntrue\nfalse\ntrue\ntrue"
 end
 
 @testset "Function + return + call" begin
     out = run_tiny("""
         fn add(a, b) {
-            print(a);   // beide Parameter werden verwendet
+            print(a);     // beide Parameter werden verwendet
             return a + b;
         }
         define r = add(10, 5);
         print(r);
     """)
-    @test normalize(out) == "10\n15"
+    @test out == "10\n15"
 end
 
 @testset "While + If/Else" begin
@@ -73,10 +84,10 @@ end
         define s = 0;
         while (i < 4) {
             if (i == 2) {
-                define t = 100;   // muss genutzt werden
+                define t = 100;
                 print(t);
             } else {
-                define u = 1;     // muss genutzt werden
+                define u = 1;
                 print(u);
             }
             s = s + 1;
@@ -84,35 +95,31 @@ end
         }
         print(s);
     """)
-    @test normalize(out) == "1\n1\n100\n1\n4"
+    @test out == "1\n1\n100\n1\n4"
 end
 
-@testset "Heap new/delete + get/set + tag (must-use errors)" begin
+@testset "Heap new/delete + get/set + tag (must-use)" begin
     out = run_tiny("""
         define p = new(3);
 
-        { e } = heap_set(p, 0, 11);
-        print(e.code);
-        { e } = heap_set(p, 1, 22);
-        print(e.code);
-        { e } = heap_set(p, 2, 33);
-        print(e.code);
+        { e } = heap_set(p, 0, 11); print(e.code);
+        { e } = heap_set(p, 1, 22); print(e.code);
+        { e } = heap_set(p, 2, 33); print(e.code);
 
         print(heap_get(p, 0));
         print(heap_get(p, 1));
         print(heap_get(p, 2));
 
-        { e } = tag(p, Arr);
-        print(e.code);
+        { e } = tag(p, Arr); print(e.code);
 
-        { e } = delete(p);
-        print(e.code);
+        { e } = delete(p);   print(e.code);
     """)
-    @test normalize(out) == "0\n0\n0\n11\n22\n33\n0\n0"
+    @test out == "0\n0\n0\n11\n22\n33\n0\n0"
 end
 
 @testset "Pointer of arrays (flat + nested)" begin
     out = run_tiny("""
+        // flat init
         define p = new(3);
         { e } = heap_set(p, 0, 11); print(e.code);
         { e } = heap_set(p, 1, 22); print(e.code);
@@ -121,11 +128,13 @@ end
         print(heap_get(p, 1));
         print(heap_get(p, 2));
 
+        // literal init
         define q = new[7, 8, 9];
         print(heap_get(q, 0));
         print(heap_get(q, 1));
         print(heap_get(q, 2));
 
+        // nested: array of pointers
         define a = new[1, 2, 3];
         define b = new[4, 5];
 
@@ -142,11 +151,10 @@ end
         { e } = delete(q); print(e.code);
         { e } = delete(r); print(e.code);
     """)
-    @test normalize(out) ==
-        "0\n0\n0\n11\n22\n33\n7\n8\n9\n0\n0\n3\n5\n0\n0\n0\n0\n0"
+    @test out == "0\n0\n0\n11\n22\n33\n7\n8\n9\n0\n0\n3\n5\n0\n0\n0\n0\n0"
 end
 
-# --------- Negativ-Tests: MUST-USE ---------
+# ---------- NEGATIVE: MUST-USE ----------
 
 @testset "MUST-USE: ungenutzter Funktionsparameter" begin
     src = """
@@ -185,7 +193,7 @@ end
     expect_compile_error(src, "bare call statements are not allowed")
 end
 
-@testset "MUST-USE: Destrukturierung – alle Felder müssen benutzt werden" begin
+@testset "MUST-USE: Destrukturierung – alle Felder nutzen" begin
     src = """
     fn make() { return { p: 1, e: 0 }; }
     { p, e } = make();
@@ -194,7 +202,7 @@ end
     expect_compile_error(src, "unused local binding\\(s\\): e")
 end
 
-@testset "OK: Destrukturierung – beide Werte benutzt" begin
+@testset "OK: Destrukturierung – beide Werte" begin
     src = """
     fn make() { return { p: 1, e: 0 }; }
     { p, e } = make();
@@ -202,14 +210,14 @@ end
     print(e);
     """
     out = run_tiny(src)
-    @test normalize(out) == "1\n0"
+    @test out == "1\n0"
 end
 
-@testset "OK: Funktionsaufruf als Argument (einwertig)" begin
+@testset "OK: Funktionsaufruf als Argument" begin
     src = """
     fn one() { return 1; }
     print(one());
     """
     out = run_tiny(src)
-    @test normalize(out) == "1"
+    @test out == "1"
 end

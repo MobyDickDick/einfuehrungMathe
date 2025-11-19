@@ -1,31 +1,21 @@
-# tiny_lang.jl — Mini-Sprache in Julia (Lexer → Parser/IR → Linter → Julia-Codegen)
-# Kerneigenschaften:
-#   - define, Zuweisungen (=), print, if/else, while, fn, return, operator-Overloads
-#   - Arrays: new(n) und new[items...]; 0-basierte Indizes via heap_get/set
-#   - Strings: "text" mit Escapes \" \\ \n \r \t
-#   - Struct-Literale: { field: expr, ... } (+ Schema-Kurzform mit number/string/bool/any)
+module TinyLanguage
+
+export compile_to_julia, TRACE_LEX, TRACE_PARSE
+
+# tiny_lang.jl — Mini-Sprache (Lexer → Parser/IR → Linter → Julia-Codegen)
+# Features:
+#   - define, Zuweisung, print, if/else, while, fn, return, operator-Overloads
+#   - Arrays: new(n) und new[items...] (0-basierte Indizes für heap_*)
+#   - Strings mit Escapes \" \\ \n \r \t
+#   - Struct-Literale: { field: expr, ... } (+ Kurzschema number/string/bool/any)
 #   - Feldzugriff: obj.field
-#   - Destrukturierung als Statement: {a, b, ...} = expr;
-#   - Linter (MUST-USE):
-#       * Alle Funktionsparameter müssen verwendet werden
-#       * Alle lokalen Bindungen (auch aus Destrukturierung) müssen verwendet werden
-#       * Bare Call-Statements sind verboten (jede Funktion gibt etwas zurück)
-# Builtins:
-#   - heap_set(p,i,v) -> { e }
-#   - delete(p)       -> { e }
-#   - tag(p, Type)    -> { e }   (2. Arg darf Name sein: tag(p, Arr); wird als "Arr" stringifiziert)
-#   - heap_get(p,i)   -> v       (optional später zu {v,e} erweiterbar)
-#
-# Aufruf:
-#   julia tiny_lang.jl demo.tiny --run
-#   julia tiny_lang.jl demo.tiny --emit out.jl
-# Flags:
-#   --trace-lex, --trace-parse
+#   - Destrukturierung zu Record: {a, b} = expr;
+#   - MUST-USE-Linter: alle Funktionsparameter + lokale Bindungen müssen verwendet werden
+#   - Bare call Statements sind verboten (jede Funktion liefert etwas; wenn ignoriert → Fehler)
 
 ########################
 # Tracing (optional)
 ########################
-
 const TRACE_LEX   = Ref{Bool}(false)
 const TRACE_PARSE = Ref{Bool}(false)
 
@@ -47,24 +37,19 @@ end
 
 Lexer(s::String) = Lexer(s, firstindex(s), lastindex(s))
 
-# Identifier-Regeln
 is_name_start(c::Char) = (c == '_') || isletter(c)
 is_name_char(c::Char)  = (c == '_') || isletter(c) || isdigit(c)
 
-# Schlüsselwörter (ohne 'delete' und 'tag' – die sind normale Funktionsnamen!)
-const KEYWORDS = Set([
-    "define","print","if","else","while","fn","return","operator","new"
-])
+const KEYWORDS = Set(["define","print","if","else","while","fn","return","operator","new"])
 
 trace_lex_token(tok::Token) = (TRACE_LEX[] && @info "LEX" kind=tok.kind text=tok.text pos=tok.pos; tok)
 
 function skip_ws_and_comments!(lx::Lexer)
     while lx.i <= lx.n
         c = lx.s[lx.i]
-        if c == ' ' || c == '\t' || c == '\r' || c == '\n'
+        if c in (' ', '\t', '\r', '\n')
             lx.i = nextind(lx.s, lx.i); continue
         end
-        # Zeilenkommentar //
         ni = (lx.i < lx.n) ? nextind(lx.s, lx.i) : lx.i
         if c == '/' && lx.i < lx.n && lx.s[ni] == '/'
             lx.i = ni
@@ -77,7 +62,6 @@ function skip_ws_and_comments!(lx::Lexer)
     end
 end
 
-# String-Scanner (unterstützt \" \\ \n \r \t)
 function read_string!(lx::Lexer)
     pos0 = lx.i
     lx.i = nextind(lx.s, lx.i)  # skip opening "
@@ -85,11 +69,11 @@ function read_string!(lx::Lexer)
     while lx.i <= lx.n
         c = lx.s[lx.i]
         if c == '"'
-            lx.i = nextind(lx.s, lx.i) # skip closing "
+            lx.i = nextind(lx.s, lx.i)
             return trace_lex_token(Token(:STRING, String(take!(buf)), pos0))
         elseif c == '\\'
             lx.i = nextind(lx.s, lx.i)
-            lx.i > lx.n && error("unterminated escape in string starting at $pos0")
+            lx.i > lx.n && error("unterminated escape in string at $pos0")
             esc = lx.s[lx.i]
             lx.i = nextind(lx.s, lx.i)
             if     esc == 'n';  write(buf, '\n')
@@ -116,31 +100,24 @@ function next_token(lx::Lexer)
     end
     c = lx.s[lx.i]
 
-    # STRING
     if c == '"'
         return read_string!(lx)
     end
 
-    # NAME / KEYWORD
     if is_name_start(c)
         j = nextind(lx.s, lx.i)
-        while j <= lx.n && is_name_char(lx.s[j])
-            j = nextind(lx.s, j)
-        end
+        while j <= lx.n && is_name_char(lx.s[j]); j = nextind(lx.s, j) end
         txt = lx.s[lx.i:prevind(lx.s, j)]
         lx.i = j
         return trace_lex_token(Token((txt in KEYWORDS) ? :KW : :NAME, txt, pos))
     end
 
-    # NUMBER (Ziffern mit optionalem '.')
     if isdigit(c)
-        j = nextind(lx.s, lx.i)
-        hasdot = false
+        j = nextind(lx.s, lx.i); hasdot = false
         while j <= lx.n
             cj = lx.s[j]
             if cj == '.' && !hasdot
-                hasdot = true
-                j = nextind(lx.s, j)
+                hasdot = true; j = nextind(lx.s, j)
             elseif isdigit(cj)
                 j = nextind(lx.s, j)
             else
@@ -152,7 +129,6 @@ function next_token(lx::Lexer)
         return trace_lex_token(Token(:NUMBER, txt, pos))
     end
 
-    # Zweichar-Operatoren: >= <= ==
     if (c == '>' || c == '<' || c == '=')
         j = (lx.i < lx.n) ? nextind(lx.s, lx.i) : lx.i
         if lx.i < lx.n && lx.s[j] == '='
@@ -162,13 +138,11 @@ function next_token(lx::Lexer)
         end
     end
 
-    # Einzel-Operatoren
     if c in ['+','-','*','/','>','<']
         lx.i = nextind(lx.s, lx.i)
         return trace_lex_token(Token(:OP, string(c), pos))
     end
 
-    # Symbole (inkl. '.')
     if c in ['(',')','{','}','[',']',';',',',':','=', '.']
         lx.i = nextind(lx.s, lx.i)
         return trace_lex_token(Token(:SYMBOL, string(c), pos))
@@ -190,7 +164,7 @@ struct Print   <: IR; expr::IR; end
 struct If      <: IR; cond::IR; then_::Vector{IR}; els::Vector{IR}; end
 struct While   <: IR; cond::IR; body::Vector{IR}; end
 struct Fn      <: IR; name::String; params::Vector{String}; body::Vector{IR}; end
-struct CallStmt <: IR; name::String; args::Vector{IR}; end  # verboten (bare call)
+struct CallStmt <: IR; name::String; args::Vector{IR}; end
 struct Return  <: IR; expr::IR; end
 struct OpDef   <: IR
     op::String; a_name::String; a_type::String; b_name::String; b_type::String; ret_type::String; body::Vector{IR}
@@ -247,7 +221,6 @@ function accept!(p::Parser, kind::Symbol, txt::Union{Nothing,String}=nothing)
     false
 end
 
-# program := stmt*
 function parse_program(p::Parser)
     out = IR[]
     while p.look.kind != :EOF
@@ -305,8 +278,7 @@ function parse_obj_literal(p::Parser)::IR
         fname = expect!(p, :NAME).text
         expect!(p, :SYMBOL, ":")
         if p.look.kind == :NAME && (p.look.text in ("number","string","bool","any"))
-            tname = p.look.text
-            advance!(p)
+            tname = p.look.text; advance!(p)
             fexpr = default_expr_for(tname)
         else
             fexpr = parse_expr(p)
@@ -332,7 +304,7 @@ end
 function parse_stmt(p::Parser)::IR
     t = p.look
 
-    # Destrukturierende Zuweisung am Statement-Anfang: {a, b, ...} = expr;
+    # Destrukturierung am Zeilenanfang: {a,b,...} = expr;
     if t.kind == :SYMBOL && t.text == "{"
         advance!(p)
         names = String[]
@@ -401,8 +373,6 @@ function parse_stmt(p::Parser)::IR
         end
     end
 
-    # NAME-Anfang: entweder Assignment:  name = expr;
-    #            oder Call-Statement:   name(args...);  (→ VERBOTEN)
     if t.kind == :NAME
         name = t.text
         advance!(p)
@@ -422,7 +392,6 @@ function parse_stmt(p::Parser)::IR
     error("Parse error near pos $(t.pos): unexpected token $(t.kind) '$(t.text)'")
 end
 
-# Expr-Präzedenz: equality -> comparison -> sum -> term -> factor
 parse_expr(p::Parser) = parse_equality(p)
 
 function parse_equality(p::Parser)
@@ -493,10 +462,9 @@ function parse_factor(p::Parser)
         name = t.text; advance!(p)
         if accept!(p, :SYMBOL, "(")
             args = parse_args(p); expect!(p, :SYMBOL, ")")
-            # Spezialfall: tag(p, Arr) → stringifiziere 2. Arg, wenn NAME
             if name == "tag" && length(args) == 2 && (args[2] isa Var)
                 v = (args[2]::Var).name
-                args = [args[1], Str(v)]  # zweites Argument als String-Literal
+                args = [args[1], Str(v)]
             end
             return parse_postfix_dot(p, Call(name, args))
         else
@@ -541,7 +509,6 @@ function mangle_op(op::String)
     end
 end
 
-# String-Literal korrekt quoten für Julia-Quelltext
 function jl_string_literal(s::AbstractString)
     x = replace(String(s),
                 "\\" => "\\\\",
@@ -553,7 +520,12 @@ function jl_string_literal(s::AbstractString)
 end
 
 const RUNTIME_JL = """
-# --- tiny runtime with overloading (Julia) ---
+# --- tiny runtime with overloading & buffered output ---
+# Bei jedem Include eine frische Ausgabe-Buffer-Instanz (einfach & robust)
+global __OUT = IOBuffer()
+__emitln(x) = (print(__OUT, x); print(__OUT, '\\n'); nothing)
+
+# Heap & Tags & Ops
 const __heap = Dict{Int, Vector{Any}}()
 const __ptr_tags = Dict{Int, String}()
 const __ops = Dict{Tuple{String, Union{Nothing,String}, Union{Nothing,String}}, Function}()
@@ -583,6 +555,9 @@ function __delete(p)
         return __ERR_REC(e)
     end
 end
+
+# TinyLanguage ruft 'delete', nicht '__delete'
+delete(p) = __delete(p)
 
 function heap_get(p, i)
     return __heap[Int(p)][Int(i)+1]
@@ -649,7 +624,7 @@ end
 box(v) = Dict("__tag__"=>"Box", "v"=>v)
 unbox(b) = b["v"]
 
-# Struct/Objekt-Zugriff
+# Struct-Felder
 function field_get(o, k)
     return o[String(k)]
 end
@@ -674,14 +649,9 @@ function gen_expr(em::Emitter, e::IR)::String
         return string("__new(", gen_expr(em, (e::New).size), ")")
     elseif e isa NewLit
         items = (e::NewLit).items
-        assigns = String[
-            string("heap_set(__p, ", i-1, ", ", gen_expr(em, it), ")")
-            for (i, it) in enumerate(items)
-        ]
-        # Hier müssen wir {e} von heap_set ignorieren → Dummy-Bindung lokal
-        # (wir dürfen keine Statements im Ausdruck emittieren; daher let-Block)
         return "(let __p = __new(" * string(length(items)) * "); " *
-               join(["(field_get(heap_set(__p," * string(i-1) * "," * gen_expr(em,it) * "),\"e\"))" for (i,it) in enumerate(items)], "; ") *
+               join(["(field_get(heap_set(__p," * string(i-1) * "," * gen_expr(em,it) * "),\"e\"))"
+                     for (i,it) in enumerate(items)], "; ") *
                "; __p end)"
     elseif e isa Bin
         ee = (e::Bin)
@@ -709,7 +679,7 @@ function gen_stmt!(em::Emitter, s::IR)
         ss = (s::Assign)
         emit!(em, string(ss.name, " = ", gen_expr(em, ss.expr)))
     elseif s isa Print
-        emit!(em, string("println(", gen_expr(em, (s::Print).expr), ")"))
+        emit!(em, "__emitln(" * gen_expr(em, (s::Print).expr) * ")")
     elseif s isa If
         ss = (s::If)
         emit!(em, string("if ", gen_expr(em, ss.cond)))
@@ -733,8 +703,10 @@ function gen_stmt!(em::Emitter, s::IR)
         ss = (s::Fn)
         emit!(em, string("function ", ss.name, "(", join(ss.params, ", "), ")"))
         em.ind += 1
-        if isempty(ss.body); emit!(em, "nothing")
-        else; for st in ss.body; gen_stmt!(em, st); end
+        if isempty(ss.body)
+            emit!(em, "nothing")
+        else
+            for st in ss.body; gen_stmt!(em, st); end
         end
         em.ind -= 1
         emit!(em, "end")
@@ -747,8 +719,10 @@ function gen_stmt!(em::Emitter, s::IR)
         fname = string("__op_", mangle_op(s.op), "_", s.a_type, "_", s.b_type)
         emit!(em, "function $(fname)($(s.a_name), $(s.b_name))")
         em.ind += 1
-        if isempty(s.body); emit!(em, "nothing")
-        else; for st in s.body; gen_stmt!(em, st); end
+        if isempty(s.body)
+            emit!(em, "nothing")
+        else
+            for st in s.body; gen_stmt!(em, st); end
         end
         em.ind -= 1
         emit!(em, "end")
@@ -765,22 +739,21 @@ function gen_stmt!(em::Emitter, s::IR)
     end
 end
 
-# Main-Wrapper
 function gen_program(stmts::Vector{IR})::String
     em = Emitter()
-    emit!(em, "# generated from tiny language (Julia port)")
+    emit!(em, "# generated from tiny language (Julia)")
     for ln in split(RUNTIME_JL, '\n'); emit!(em, ln); end
     emit!(em, "")
 
-    # 1) Operator-Definitionen zuerst
+    # Operatoren zuerst
     for s in stmts
         s isa OpDef && gen_stmt!(em, s)
     end
-    # 2) Funktionsdefinitionen oben
+    # Funktionsdefinitionen
     for s in stmts
         s isa Fn && gen_stmt!(em, s)
     end
-    # 3) Rest in Main-Funktion
+    # Main-Body (ohne Buffer-Reset)
     emit!(em, "function __tiny_main__()")
     em.ind += 1
     for s in stmts
@@ -788,15 +761,22 @@ function gen_program(stmts::Vector{IR})::String
     end
     em.ind -= 1
     emit!(em, "end")
+    emit!(em, "")
+    # Runner, der den Output zurückgibt
+    emit!(em, "function __tiny_run__()")
+    em.ind += 1
+    emit!(em, "seek(__OUT, 0); truncate(__OUT, 0)")
     emit!(em, "__tiny_main__()")
+    emit!(em, "return String(take!(__OUT))")
+    em.ind -= 1
+    emit!(em, "end")
     join(em.lines, "\n")
 end
 
 ########################
-# Linter: MUST-USE
+# Linter (MUST-USE)
 ########################
 
-# liest Variablennamen in Ausdrücken
 function uses_in_expr(e::IR, reads::Dict{String,Int})
     if e isa Var
         nm = (e::Var).name
@@ -813,14 +793,9 @@ function uses_in_expr(e::IR, reads::Dict{String,Int})
         uses_in_expr((e::Field).obj, reads)
     elseif e isa ObjLit
         for pr in (e::ObjLit).fields; uses_in_expr(pr.second, reads); end
-    elseif e isa Num || e isa Str
-        return
-    else
-        return
     end
 end
 
-# sammelt Reads aus Statements
 function lint_stmt_reads!(s::IR, reads::Dict{String,Int})
     if s isa Let
         uses_in_expr((s::Let).expr, reads)
@@ -853,7 +828,6 @@ function lint_stmt_reads!(s::IR, reads::Dict{String,Int})
     end
 end
 
-# Funktionsparameter müssen verwendet werden + lokale Bindungen verwenden
 function lint_fn_params_used!(f::Fn)
     reads = Dict{String,Int}()
     for st in f.body
@@ -866,9 +840,8 @@ function lint_fn_params_used!(f::Fn)
     lint_locals_used!(f.body)
 end
 
-# Lokale Bindungen (Let + DestructAssign) müssen gelesen werden
 function lint_locals_used!(stmts::Vector{IR})
-    defs = Dict{String,Int}()   # name -> pos index
+    defs = Dict{String,Int}()
     uses = Dict{String,Int}()
     for (i, s) in enumerate(stmts)
         if s isa Let
@@ -896,24 +869,32 @@ function compile_to_julia(src::String)::String
     p = Parser(src)
     ir = parse_program(p)
 
-    # Lint: Funktionsparameter & lokale Bindungen
+    # Lint
     for s in ir
-        if s isa Fn
-            lint_fn_params_used!(s)
-        end
+        s isa Fn && lint_fn_params_used!(s)
     end
     lint_locals_used!(ir)
 
     gen_program(ir)
 end
 
+end # module TinyLanguage
+
+# -------------------------- CLI / Script mode --------------------------
+
 if abspath(PROGRAM_FILE) == @__FILE__
     if length(ARGS) < 1
         println("Usage: julia tiny_lang.jl <source.tiny> [--emit out.jl] [--run] [--trace-lex] [--trace-parse]")
         exit(0)
     end
-    if any(==("--trace-lex"), ARGS);   TRACE_LEX[] = true;   end
-    if any(==("--trace-parse"), ARGS); TRACE_PARSE[] = true; end
+
+    # Schalter für Tracing auf dem Modul setzen
+    if any(==("--trace-lex"), ARGS)
+        TinyLanguage.TRACE_LEX[] = true
+    end
+    if any(==("--trace-parse"), ARGS)
+        TinyLanguage.TRACE_PARSE[] = true
+    end
 
     # robuste Pfadauflösung
     src_arg = ARGS[1]
@@ -924,11 +905,12 @@ if abspath(PROGRAM_FILE) == @__FILE__
         p3 = joinpath(pwd(), arg);                    isfile(p3) && return p3
         error("Source file not found: $arg\n  @__DIR__=$(abspath(@__DIR__))\n  pwd()=$(abspath(pwd()))")
     end
+
     src_path = resolve_src(src_arg)
     src = read(src_path, String)
 
     code = try
-        compile_to_julia(src)
+        TinyLanguage.compile_to_julia(src)
     catch err
         showerror(stdout, err, catch_backtrace()); println()
         exit(1)
@@ -937,12 +919,16 @@ if abspath(PROGRAM_FILE) == @__FILE__
     if any(==("--emit"), ARGS)
         idx = findfirst(==("--emit"), ARGS)
         outpath = (idx !== nothing && idx < length(ARGS)) ? ARGS[idx+1] : "out.jl"
-        open(outpath, "w") do io; write(io, code); end
+        open(outpath, "w") do io
+            write(io, code)
+        end
         println("Wrote ", outpath)
     end
 
     if any(==("--run"), ARGS)
         Base.include_string(Main, code, "generated.jl")
+        out = Base.invokelatest(getfield(Main, :__tiny_run__))
+        print(out)
     elseif !any(==("--emit"), ARGS)
         println("Compilation successful. Use --emit out.jl or --run.")
     end
