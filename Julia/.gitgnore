@@ -1,0 +1,33 @@
+# --- Julia generelles Zeug ---
+*.ji
+*.so
+*.dylib
+*.dll
+
+# Coverage / Profiling / Test-Artefakte
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+*.jl.*.mem
+
+# REPL / Editor / Backup / History
+.history/
+*.history
+*~
+*.swp
+*.swo
+*.bak
+
+# VS Code
+.vscode/
+.vscode-test/
+
+# OS-spezifisch
+.DS_Store
+Thumbs.db
+
+# Jupyter (falls du Notebooks nutzt)
+.ipynb_checkpoints/
+
+# Projekt-spezifische Artefakte (falls du sie nicht versionieren willst)
+# Manifest.toml  # auskommentieren, falls du Manifest NICHT im Repo willst
