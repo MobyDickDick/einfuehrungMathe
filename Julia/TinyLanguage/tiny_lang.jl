@@ -1,7 +1,6 @@
 # tiny_lang.jl — Mini-Sprache in Julia (Lexer → Parser/IR → Linter → Julia-Codegen)
-# Features:
-#   - define, Zuweisungen (=), print, if/else, while, fn, return, delete, tag
-#   - Operator-Overloading: operator + (a: T, b: U) -> R { ... }
+# Kerneigenschaften:
+#   - define, Zuweisungen (=), print, if/else, while, fn, return, operator-Overloads
 #   - Arrays: new(n) und new[items...]; 0-basierte Indizes via heap_get/set
 #   - Strings: "text" mit Escapes \" \\ \n \r \t
 #   - Struct-Literale: { field: expr, ... } (+ Schema-Kurzform mit number/string/bool/any)
@@ -10,7 +9,12 @@
 #   - Linter (MUST-USE):
 #       * Alle Funktionsparameter müssen verwendet werden
 #       * Alle lokalen Bindungen (auch aus Destrukturierung) müssen verwendet werden
-#       * Bare Call-Statements sind verboten (Rückgaben müssen gebunden/benutzt werden)
+#       * Bare Call-Statements sind verboten (jede Funktion gibt etwas zurück)
+# Builtins:
+#   - heap_set(p,i,v) -> { e }
+#   - delete(p)       -> { e }
+#   - tag(p, Type)    -> { e }   (2. Arg darf Name sein: tag(p, Arr); wird als "Arr" stringifiziert)
+#   - heap_get(p,i)   -> v       (optional später zu {v,e} erweiterbar)
 #
 # Aufruf:
 #   julia tiny_lang.jl demo.tiny --run
@@ -47,9 +51,9 @@ Lexer(s::String) = Lexer(s, firstindex(s), lastindex(s))
 is_name_start(c::Char) = (c == '_') || isletter(c)
 is_name_char(c::Char)  = (c == '_') || isletter(c) || isdigit(c)
 
-# Schlüsselwörter
+# Schlüsselwörter (ohne 'delete' und 'tag' – die sind normale Funktionsnamen!)
 const KEYWORDS = Set([
-    "define","print","if","else","while","fn","delete","return","tag","operator","new"
+    "define","print","if","else","while","fn","return","operator","new"
 ])
 
 trace_lex_token(tok::Token) = (TRACE_LEX[] && @info "LEX" kind=tok.kind text=tok.text pos=tok.pos; tok)
@@ -94,7 +98,7 @@ function read_string!(lx::Lexer)
             elseif esc == '"';  write(buf, '"')
             elseif esc == '\\'; write(buf, '\\')
             else
-                write(buf, '\\'); write(buf, esc) # unbekannte Escape wörtlich
+                write(buf, '\\'); write(buf, esc)
             end
         else
             write(buf, c)
@@ -164,7 +168,7 @@ function next_token(lx::Lexer)
         return trace_lex_token(Token(:OP, string(c), pos))
     end
 
-    # Symbole (inkl. '.' für Feldzugriff)
+    # Symbole (inkl. '.')
     if c in ['(',')','{','}','[',']',';',',',':','=', '.']
         lx.i = nextind(lx.s, lx.i)
         return trace_lex_token(Token(:SYMBOL, string(c), pos))
@@ -180,16 +184,14 @@ end
 abstract type IR end
 
 # Statements
-struct Let     <: IR; name::String; expr::IR; end             # define name = expr;
-struct Assign  <: IR; name::String; expr::IR; end             # name = expr;
+struct Let     <: IR; name::String; expr::IR; end
+struct Assign  <: IR; name::String; expr::IR; end
 struct Print   <: IR; expr::IR; end
 struct If      <: IR; cond::IR; then_::Vector{IR}; els::Vector{IR}; end
 struct While   <: IR; cond::IR; body::Vector{IR}; end
 struct Fn      <: IR; name::String; params::Vector{String}; body::Vector{IR}; end
-struct CallStmt <: IR; name::String; args::Vector{IR}; end     # wird im Codegen verboten (must-use)
-struct Delete  <: IR; ptr::IR; end
+struct CallStmt <: IR; name::String; args::Vector{IR}; end  # verboten (bare call)
 struct Return  <: IR; expr::IR; end
-struct TagStmt <: IR; varname::String; typename::String; end
 struct OpDef   <: IR
     op::String; a_name::String; a_type::String; b_name::String; b_type::String; ret_type::String; body::Vector{IR}
 end
@@ -199,13 +201,13 @@ struct DestructAssign <: IR
 end
 
 # Expressions
-struct Num    <: IR; txt::String; end          # Zahl als Text, nicht Float
-struct Str    <: IR; txt::String; end          # String-Literal (ohne Anführungszeichen)
+struct Num    <: IR; txt::String; end
+struct Str    <: IR; txt::String; end
 struct Var    <: IR; name::String; end
 struct Call   <: IR; name::String; args::Vector{IR}; end
 struct Bin    <: IR; op::String; a::IR; b::IR; end
-struct New    <: IR; size::IR; end             # new(size)
-struct NewLit <: IR; items::Vector{IR}; end    # new[items...]
+struct New    <: IR; size::IR; end
+struct NewLit <: IR; items::Vector{IR}; end
 struct ObjLit <: IR; fields::Vector{Pair{String, IR}}; end
 struct Field  <: IR; obj::IR; name::String; end
 
@@ -380,21 +382,10 @@ function parse_stmt(p::Parser)::IR
             expect!(p, :SYMBOL, ")")
             body = parse_block(p)
             return Fn(fname, params, body)
-        elseif t.text == "delete"
-            advance!(p); expect!(p, :SYMBOL, "(")
-            pe = parse_expr(p); expect!(p, :SYMBOL, ")"); expect!(p, :SYMBOL, ";")
-            return Delete(pe)
         elseif t.text == "return"
             advance!(p)
             e = parse_expr(p); expect!(p, :SYMBOL, ";")
             return Return(e)
-        elseif t.text == "tag"
-            advance!(p); expect!(p, :SYMBOL, "(")
-            vname = expect!(p, :NAME).text
-            expect!(p, :SYMBOL, ",")
-            tname = expect!(p, :NAME).text
-            expect!(p, :SYMBOL, ")"); expect!(p, :SYMBOL, ";")
-            return TagStmt(vname, tname)
         elseif t.text == "operator"
             advance!(p)
             op = expect!(p, :OP).text
@@ -403,7 +394,7 @@ function parse_stmt(p::Parser)::IR
             expect!(p, :SYMBOL, ",")
             b_name = expect!(p, :NAME).text; expect!(p, :SYMBOL, ":"); b_type = expect!(p, :NAME).text
             expect!(p, :SYMBOL, ")")
-            expect!(p, :OP, "-"); expect!(p, :OP, ">")   # '->'
+            expect!(p, :OP, "-"); expect!(p, :OP, ">")
             ret_type = expect!(p, :NAME).text
             body = parse_block(p)
             return OpDef(op, a_name, a_type, b_name, b_type, ret_type, body)
@@ -411,7 +402,7 @@ function parse_stmt(p::Parser)::IR
     end
 
     # NAME-Anfang: entweder Assignment:  name = expr;
-    #            oder Call-Statement:   name(args...);  (→ verboten im Codegen)
+    #            oder Call-Statement:   name(args...);  (→ VERBOTEN)
     if t.kind == :NAME
         name = t.text
         advance!(p)
@@ -502,6 +493,11 @@ function parse_factor(p::Parser)
         name = t.text; advance!(p)
         if accept!(p, :SYMBOL, "(")
             args = parse_args(p); expect!(p, :SYMBOL, ")")
+            # Spezialfall: tag(p, Arr) → stringifiziere 2. Arg, wenn NAME
+            if name == "tag" && length(args) == 2 && (args[2] isa Var)
+                v = (args[2]::Var).name
+                args = [args[1], Str(v)]  # zweites Argument als String-Literal
+            end
             return parse_postfix_dot(p, Call(name, args))
         else
             return parse_postfix_dot(p, Var(name))
@@ -563,6 +559,12 @@ const __ptr_tags = Dict{Int, String}()
 const __ops = Dict{Tuple{String, Union{Nothing,String}, Union{Nothing,String}}, Function}()
 __next_ptr = Ref(1)
 
+# Fehler-Records
+const __OK  = Dict("__tag__"=>"Error", "code"=>0, "msg"=>"")
+__ERR(msg)  = Dict("__tag__"=>"Error", "code"=>1, "msg"=>String(msg))
+__OK_REC()  = Dict("__tag__"=>"Record", "e"=>__OK)
+__ERR_REC(msg) = Dict("__tag__"=>"Record", "e"=>__ERR(msg))
+
 function __new(n)
     n < 0 && error("alloc error: negative size")
     p = __next_ptr[]
@@ -572,21 +574,36 @@ function __new(n)
 end
 
 function __delete(p)
-    p = Int(p)
-    pop!(__heap, p, nothing)
-    pop!(__ptr_tags, p, nothing)
-    return nothing
+    try
+        p = Int(p)
+        pop!(__heap, p, nothing)
+        pop!(__ptr_tags, p, nothing)
+        return __OK_REC()
+    catch e
+        return __ERR_REC(e)
+    end
 end
 
-heap_get(p, i) = __heap[Int(p)][Int(i)+1]
+function heap_get(p, i)
+    return __heap[Int(p)][Int(i)+1]
+end
+
 function heap_set(p, i, v)
-    __heap[Int(p)][Int(i)+1] = v
-    return nothing
+    try
+        __heap[Int(p)][Int(i)+1] = v
+        return __OK_REC()
+    catch e
+        return __ERR_REC(e)
+    end
 end
 
-function __tag_ptr(p, tag)
-    __ptr_tags[Int(p)] = String(tag)
-    return nothing
+function tag(p, typ)
+    try
+        __ptr_tags[Int(p)] = String(typ)
+        return __OK_REC()
+    catch e
+        return __ERR_REC(e)
+    end
 end
 
 function __get_tag(v)
@@ -661,8 +678,11 @@ function gen_expr(em::Emitter, e::IR)::String
             string("heap_set(__p, ", i-1, ", ", gen_expr(em, it), ")")
             for (i, it) in enumerate(items)
         ]
+        # Hier müssen wir {e} von heap_set ignorieren → Dummy-Bindung lokal
+        # (wir dürfen keine Statements im Ausdruck emittieren; daher let-Block)
         return "(let __p = __new(" * string(length(items)) * "); " *
-               join(assigns, "; ") * "; __p end)"
+               join(["(field_get(heap_set(__p," * string(i-1) * "," * gen_expr(em,it) * "),\"e\"))" for (i,it) in enumerate(items)], "; ") *
+               "; __p end)"
     elseif e isa Bin
         ee = (e::Bin)
         return string("__binop(\"", ee.op, "\", ", gen_expr(em, ee.a), ", ", gen_expr(em, ee.b), ")")
@@ -719,15 +739,10 @@ function gen_stmt!(em::Emitter, s::IR)
         em.ind -= 1
         emit!(em, "end")
     elseif s isa CallStmt
-        # MUST-USE: nackte Funktionsaufrufe sind verboten
-        error("call with return value must be bound; bare call statements are not allowed")
-    elseif s isa Delete
-        emit!(em, string("__delete(", gen_expr(em, (s::Delete).ptr), ")"))
+        ss = (s::CallStmt)
+        error("call with return value must be bound; bare call statements are not allowed (offending call: $(ss.name)())")
     elseif s isa Return
         emit!(em, string("return ", gen_expr(em, (s::Return).expr)))
-    elseif s isa TagStmt
-        ss = (s::TagStmt)
-        emit!(em, string("__tag_ptr(", ss.varname, ", \"", ss.typename, "\")"))
     elseif s isa OpDef
         fname = string("__op_", mangle_op(s.op), "_", s.a_type, "_", s.b_type)
         emit!(em, "function $(fname)($(s.a_name), $(s.b_name))")
@@ -750,7 +765,7 @@ function gen_stmt!(em::Emitter, s::IR)
     end
 end
 
-# Main-Wrapper gegen Soft-Scope
+# Main-Wrapper
 function gen_program(stmts::Vector{IR})::String
     em = Emitter()
     emit!(em, "# generated from tiny language (Julia port)")
@@ -821,14 +836,9 @@ function lint_stmt_reads!(s::IR, reads::Dict{String,Int})
         ss = (s::While); uses_in_expr(ss.cond, reads)
         for t in ss.body; lint_stmt_reads!(t, reads); end
     elseif s isa CallStmt
-        # bare call ist ohnehin verboten im Codegen; hier keine Reads
         return
-    elseif s isa Delete
-        uses_in_expr((s::Delete).ptr, reads)
     elseif s isa Return
         uses_in_expr((s::Return).expr, reads)
-    elseif s isa TagStmt
-        return
     elseif s isa OpDef
         tmp_reads = Dict{String,Int}()
         for t in (s::OpDef).body; lint_stmt_reads!(t, tmp_reads); end
@@ -843,7 +853,7 @@ function lint_stmt_reads!(s::IR, reads::Dict{String,Int})
     end
 end
 
-# Funktionsparameter müssen verwendet werden
+# Funktionsparameter müssen verwendet werden + lokale Bindungen verwenden
 function lint_fn_params_used!(f::Fn)
     reads = Dict{String,Int}()
     for st in f.body
@@ -853,7 +863,6 @@ function lint_fn_params_used!(f::Fn)
     if !isempty(unused)
         error("unused parameter(s) in function $(f.name): " * join(unused, ", "))
     end
-    # lokale Bindungen im Funktionskörper ebenfalls prüfen
     lint_locals_used!(f.body)
 end
 
@@ -861,7 +870,6 @@ end
 function lint_locals_used!(stmts::Vector{IR})
     defs = Dict{String,Int}()   # name -> pos index
     uses = Dict{String,Int}()
-    # defs sammeln
     for (i, s) in enumerate(stmts)
         if s isa Let
             defs[(s::Let).name] = i
@@ -871,11 +879,9 @@ function lint_locals_used!(stmts::Vector{IR})
             end
         end
     end
-    # reads sammeln
     for s in stmts
         lint_stmt_reads!(s, uses)
     end
-    # unbenutzte melden
     unused = [n for (n, _) in defs if get(uses, n, 0) == 0]
     if !isempty(unused)
         error("unused local binding(s): " * join(unused, ", "))
