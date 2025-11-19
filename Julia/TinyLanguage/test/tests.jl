@@ -13,18 +13,19 @@ function run_tiny(src::String)
     # 1. TinyLanguage → Julia-Code
     code = TinyLanguage.compile_to_julia(src)
 
-    # 2. Frisches Modul für jede Ausführung (kein Main, kein Revise-Ärger)
+    # 2. Frisches Modul für diesen Lauf
     m = Module()
+
+    # 3. Generierten Code in dieses Modul laden
     Base.include_string(m, code)
 
-    # 3. __tiny_run__ aus dem Modul holen und mit invokelatest ausführen
-    runfun = getfield(m, :__tiny_run__)
-    out_any = Base.invokelatest(runfun)
-    out = String(out_any)
+    # 4. Ausdruck __tiny_run__() *im Modul selbst* auswerten
+    out_any = Core.eval(m, :( __tiny_run__() ))
 
-    # 4. Letztes Newline konsistent abschneiden
-    return chomp(out)
+    # 5. String + Newline abschneiden
+    return chomp(String(out_any))
 end
+
 
 # Compile-Error erwarten
 function expect_compile_error(src::String, pat::AbstractString)
