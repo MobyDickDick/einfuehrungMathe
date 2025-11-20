@@ -1,23 +1,18 @@
 using Test
-using Base: invokelatest
 
-include(joinpath(@__DIR__, "..", "tiny_lang.jl"))
+include("../tiny_lang.jl")  # lädt module TinyLanguage
 
-"""
-    run_tiny(src::String) -> String
-
-Kompiliert TinyLanguage-Quelltext zu einem Julia-String,
-führt ihn in einem frischen anonymen Modul aus und gibt den
-Ausgabe-String (ohne trailing newline) zurück.
-"""
 function run_tiny(src::String)
-    code = TinyLanguage.compile_to_julia(src)
+    # kompiliert TinyLanguage-Quelltext zu einem Julia-String
+    julia_code = TinyLanguage.compile_to_julia(src)
 
-    m = Module()
-    Base.include_string(m, code)
-    fn = Core.eval(m, :(__tiny_run__))
-    out_any = invokelatest(fn)
-    return chomp(String(out_any))
+    # generierten Julia-Code in anonymes Modul laden
+    mod = Module()
+    Base.include_string(mod, julia_code)
+
+    # __tiny_run__ aufrufen (world-age-sicher)
+    f = getfield(mod, :__tiny_run__)
+    return Base.invokelatest(f)
 end
 
 # Compile-Error erwarten
@@ -38,7 +33,7 @@ end
         define a = 7;
         print(a);
     """)
-    @test out == "7"
+    @test out == "7\n"
 end
 
 @testset "Arithmetic & print with define" begin
@@ -46,7 +41,7 @@ end
         define a = 7 + 5 * 2;
         print(a);
     """)
-    @test out == "17"
+    @test out == "17\n"
 end
 
 @testset "Comparisons" begin
@@ -57,7 +52,7 @@ end
         print(2 <= 2);
         print(3 == 3);
     """)
-    @test out == "true\ntrue\nfalse\ntrue\ntrue"
+    @test out == "true\ntrue\nfalse\ntrue\ntrue\n"
 end
 
 @testset "Function + return + call" begin
@@ -69,7 +64,7 @@ end
         define r = add(10, 5);
         print(r);
     """)
-    @test out == "10\n15"
+    @test out == "10\n15\n"
 end
 
 @testset "While + If/Else" begin
@@ -89,7 +84,7 @@ end
         }
         print(s);
     """)
-    @test out == "1\n1\n100\n1\n4"
+    @test out == "1\n1\n100\n1\n4\n"
 end
 
 @testset "Heap new/delete + get/set + tag (must-use)" begin
@@ -108,7 +103,7 @@ end
 
         { e } = delete(p);   print(e.code);
     """)
-    @test out == "0\n0\n0\n11\n22\n33\n0\n0"
+    @test out == "0\n0\n0\n11\n22\n33\n0\n0\n"
 end
 
 @testset "Pointer of arrays (flat + nested)" begin
@@ -145,7 +140,7 @@ end
         { e } = delete(q); print(e.code);
         { e } = delete(r); print(e.code);
     """)
-    @test out == "0\n0\n0\n11\n22\n33\n7\n8\n9\n0\n0\n3\n5\n0\n0\n0\n0\n0"
+    @test out == "0\n0\n0\n11\n22\n33\n7\n8\n9\n0\n0\n3\n5\n0\n0\n0\n0\n0\n"
 end
 
 # ---------- NEGATIVE: MUST-USE ----------
@@ -204,7 +199,7 @@ end
     print(e);
     """
     out = run_tiny(src)
-    @test out == "1\n0"
+    @test out == "1\n0\n"
 end
 
 @testset "OK: Funktionsaufruf als Argument" begin
@@ -213,5 +208,23 @@ end
     print(one());
     """
     out = run_tiny(src)
-    @test out == "1"
+    @test out == "1\n"
+end
+
+@testset "TypeDef: simple record type" begin
+    src = """
+    type Error {
+        code: number;
+        msg: string;
+    }
+
+    fn make_error(c, m) {
+        return { code: c, msg: m };
+    }
+
+    print(__type_field_type("Error", "code"));
+    print(__type_field_type("Error", "msg"));
+    """
+    out = run_tiny(src)
+    @test out == "number\nstring\n"
 end

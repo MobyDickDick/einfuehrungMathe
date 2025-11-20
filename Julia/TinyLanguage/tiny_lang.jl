@@ -1,56 +1,25 @@
 module TinyLanguage
 
+# tiny_lang.jl — Mini-Sprache (Lexer → Parser/IR → Linter → Julia-Codegen)
+# Features:
+#   - define, Zuweisung, print, if/else, while, fn, return, operator-Overloads
+#   - Arrays: new(n) und new[items...] (0-basierte Indizes für heap_*)
+#   - Strings mit Escapes \" \\ \n \r \t
+#   - Struct-Literale: { field: expr, ... } (+ Kurzschema number/string/bool/any)
+#   - Feldzugriff: obj.field
+#   - Destrukturierung zu Record: {a, b} = expr;
+#   - type-Definitionen: type Name { field: Type; ... }
+#   - MUST-USE-Linter: alle Funktionsparameter + lokale Bindungen müssen verwendet werden
+#   - Bare call Statements sind verboten (jede Funktion liefert etwas; wenn ignoriert → Fehler)
+
+export compile_to_julia
+
 ########################
 # Tracing (optional)
 ########################
 
 const TRACE_LEX   = Ref{Bool}(false)
 const TRACE_PARSE = Ref{Bool}(false)
-
-########################
-# Types (Vorbereitung)
-########################
-
-"Abstrakte Oberklasse aller TinyLanguage-Typen."
-abstract type TLType end
-
-"Primitive Typen wie number, string, bool, any."
-struct TLPrim <: TLType
-    name::Symbol
-end
-
-"Record-Typ mit Namen und benannten Feldern."
-struct TLRecord <: TLType
-    name::Symbol
-    fields::Vector{Pair{Symbol,TLType}}
-end
-
-# Primitive Typen
-const TNumber = TLPrim(:number)
-const TString = TLPrim(:string)
-const TBool   = TLPrim(:bool)
-const TAny    = TLPrim(:any)
-
-# Error-Typ (entspricht Dict("__tag__"=>"Error","code"=>..., "msg"=>...))
-const TError = TLRecord(:Error, [
-    :code => TNumber,
-    :msg  => TString,
-])
-
-# Record-Typ für { e } = ... (entspricht Dict("__tag__"=>"Record","e"=>Error))
-const TErrorRecord = TLRecord(:ErrorRecord, [
-    :e => TError,
-])
-
-"Alle eingebauten Typen (noch ohne statisches Checking, nur Beschreibung)."
-const BUILTIN_TYPES = Dict{Symbol,TLType}(
-    :number      => TNumber,
-    :string      => TString,
-    :bool        => TBool,
-    :any         => TAny,
-    :Error       => TError,
-    :ErrorRecord => TErrorRecord,
-)
 
 ########################
 # Lexer
@@ -73,7 +42,7 @@ Lexer(s::String) = Lexer(s, firstindex(s), lastindex(s))
 is_name_start(c::Char) = (c == '_') || isletter(c)
 is_name_char(c::Char)  = (c == '_') || isletter(c) || isdigit(c)
 
-const KEYWORDS = Set(["define","print","if","else","while","fn","return","operator","new"])
+const KEYWORDS = Set(["define","print","if","else","while","fn","return","operator","new","type"])
 
 trace_lex_token(tok::Token) = (TRACE_LEX[] && @info "LEX" kind=tok.kind text=tok.text pos=tok.pos; tok)
 
@@ -199,12 +168,26 @@ struct While   <: IR; cond::IR; body::Vector{IR}; end
 struct Fn      <: IR; name::String; params::Vector{String}; body::Vector{IR}; end
 struct CallStmt <: IR; name::String; args::Vector{IR}; end
 struct Return  <: IR; expr::IR; end
+
 struct OpDef   <: IR
-    op::String; a_name::String; a_type::String; b_name::String; b_type::String; ret_type::String; body::Vector{IR}
+    op::String
+    a_name::String
+    a_type::String
+    b_name::String
+    b_type::String
+    ret_type::String
+    body::Vector{IR}
 end
+
 struct DestructAssign <: IR
     names::Vector{String}
     expr::IR
+end
+
+"Named Record-Typen (erste Stufe Richtung Klassen)."
+struct TypeDef <: IR
+    name::String                      # z.B. "Error"
+    fields::Vector{Pair{String,String}}  # z.B. "code" => "number"
 end
 
 # Expressions
@@ -300,6 +283,7 @@ function default_expr_for(tname::String)::IR
     elseif tname == "bool";   return Var("false")
     elseif tname == "any";    return Var("nothing")
     else
+        # für unbekannte Typnamen einfach eine Variable mit diesem Namen
         return Var(tname)
     end
 end
@@ -360,11 +344,13 @@ function parse_stmt(p::Parser)::IR
             expr = parse_expr(p)
             expect!(p, :SYMBOL, ";")
             return Let(name, expr)
+
         elseif t.text == "print"
             advance!(p); expect!(p, :SYMBOL, "(")
             e = parse_expr(p)
             expect!(p, :SYMBOL, ")"); expect!(p, :SYMBOL, ";")
             return Print(e)
+
         elseif t.text == "if"
             advance!(p); expect!(p, :SYMBOL, "(")
             c = parse_expr(p); expect!(p, :SYMBOL, ")")
@@ -374,11 +360,13 @@ function parse_stmt(p::Parser)::IR
                 advance!(p); els_blk = parse_block(p)
             end
             return If(c, then_blk, els_blk)
+
         elseif t.text == "while"
             advance!(p); expect!(p, :SYMBOL, "(")
             c = parse_expr(p); expect!(p, :SYMBOL, ")")
             body = parse_block(p)
             return While(c, body)
+
         elseif t.text == "fn"
             advance!(p)
             fname = expect!(p, :NAME).text
@@ -387,10 +375,33 @@ function parse_stmt(p::Parser)::IR
             expect!(p, :SYMBOL, ")")
             body = parse_block(p)
             return Fn(fname, params, body)
+
         elseif t.text == "return"
             advance!(p)
             e = parse_expr(p); expect!(p, :SYMBOL, ";")
             return Return(e)
+
+        elseif t.text == "type"
+            # type Name { field: Type; field2: Type2; ... }
+            advance!(p)
+            tname = expect!(p, :NAME).text
+            expect!(p, :SYMBOL, "{")
+            fields = Pair{String,String}[]
+            while !(p.look.kind == :SYMBOL && p.look.text == "}")
+                fname = expect!(p, :NAME).text
+                expect!(p, :SYMBOL, ":")
+                ftype = expect!(p, :NAME).text
+                push!(fields, fname => ftype)
+                # optionaler Separator , oder ;
+                if accept!(p, :SYMBOL, ",") || accept!(p, :SYMBOL, ";")
+                    # ok
+                else
+                    # kein Separator → while-Bedingung checkt auf "}"
+                end
+            end
+            expect!(p, :SYMBOL, "}")
+            return TypeDef(tname, fields)
+
         elseif t.text == "operator"
             advance!(p)
             op = expect!(p, :OP).text
@@ -515,7 +526,7 @@ function parse_factor(p::Parser)
 end
 
 ########################
-# Codegen
+# Codegen-Runtime (Julia)
 ########################
 
 mutable struct Emitter
@@ -553,10 +564,10 @@ function jl_string_literal(s::AbstractString)
 end
 
 const RUNTIME_JL = """
-# --- tiny runtime with overloading & buffered output ---
-
-# Bei jedem Include eine frische Ausgabe-Buffer-Instanz (einfach & robust)
+# --- tiny runtime with overloading, records & buffered output ---
 global __OUT = IOBuffer()
+global __CAPTURED__ = ""
+
 __emitln(x) = (print(__OUT, x); print(__OUT, '\\n'); nothing)
 
 # Heap & Tags & Ops
@@ -579,7 +590,7 @@ function __new(n)
     return p
 end
 
-function delete(p)
+function __delete(p)
     try
         p = Int(p)
         pop!(__heap, p, nothing)
@@ -663,6 +674,24 @@ function field_set(o, k, v)
     o[String(k)] = v
     return nothing
 end
+
+# --- simple type registry for TinyLanguage ---
+const __types = Dict{String,Any}()
+
+function __register_type(name, fields::Dict{String,String})
+    __types[String(name)] = Dict(
+        "kind" => "record",
+        "fields" => fields,
+    )
+    return nothing
+end
+
+function __type_field_type(tname, fname)
+    T = get(__types, String(tname), nothing)
+    T === nothing && return nothing
+    fs = T["fields"]
+    return get(fs, String(fname), nothing)
+end
 """
 
 function gen_expr(em::Emitter, e::IR)::String
@@ -680,10 +709,13 @@ function gen_expr(em::Emitter, e::IR)::String
         return string("__new(", gen_expr(em, (e::New).size), ")")
     elseif e isa NewLit
         items = (e::NewLit).items
+        # Heap-Initialisierung, Fehler werden ignoriert (Generator-Code, nicht Tiny)
+        assignments = String[]
+        for (i, it) in enumerate(items)
+            push!(assignments, "heap_set(__p, $(i-1), " * gen_expr(em, it) * ")")
+        end
         return "(let __p = __new(" * string(length(items)) * "); " *
-               join(["(field_get(heap_set(__p," * string(i-1) * "," * gen_expr(em,it) * "),\"e\"))"
-                     for (i,it) in enumerate(items)], "; ") *
-               "; __p end)"
+               join(assignments, "; ") * "; __p end)"
     elseif e isa Bin
         ee = (e::Bin)
         return string("__binop(\"", ee.op, "\", ", gen_expr(em, ee.a), ", ", gen_expr(em, ee.b), ")")
@@ -735,7 +767,7 @@ function gen_stmt!(em::Emitter, s::IR)
         emit!(em, string("function ", ss.name, "(", join(ss.params, ", "), ")"))
         em.ind += 1
         if isempty(ss.body)
-            emit!(em, "return nothing")
+            emit!(em, "nothing")
         else
             for st in ss.body; gen_stmt!(em, st); end
         end
@@ -752,7 +784,7 @@ function gen_stmt!(em::Emitter, s::IR)
         emit!(em, "function $(fname)($(ss.a_name), $(ss.b_name))")
         em.ind += 1
         if isempty(ss.body)
-            emit!(em, "return nothing")
+            emit!(em, "nothing")
         else
             for st in ss.body; gen_stmt!(em, st); end
         end
@@ -766,6 +798,13 @@ function gen_stmt!(em::Emitter, s::IR)
         for nm in ss.names
             emit!(em, string(nm, " = field_get(__tmp_rec__, \"", nm, "\")"))
         end
+    elseif s isa TypeDef
+        ss = (s::TypeDef)
+        parts = String[]
+        for pr in ss.fields
+            push!(parts, "\"$(pr.first)\"=>\"$(pr.second)\"")
+        end
+        emit!(em, "__register_type(\"$(ss.name)\", Dict(" * join(parts, ", ") * "))")
     else
         error("unknown stmt node")
     end
@@ -781,27 +820,32 @@ function gen_program(stmts::Vector{IR})::String
     for s in stmts
         s isa OpDef && gen_stmt!(em, s)
     end
+    # Typdefinitionen
+    for s in stmts
+        s isa TypeDef && gen_stmt!(em, s)
+    end
     # Funktionsdefinitionen
     for s in stmts
         s isa Fn && gen_stmt!(em, s)
     end
+
     # Main-Body
     emit!(em, "function __tiny_main__()")
     em.ind += 1
     for s in stmts
-        !(s isa OpDef) && !(s isa Fn) && gen_stmt!(em, s)
+        !(s isa OpDef) && !(s isa Fn) && !(s isa TypeDef) && gen_stmt!(em, s)
     end
     em.ind -= 1
     emit!(em, "end")
-    emit!(em, "")
-    # Runner, der den Output zurückgibt
+
+    # Run-Wrapper mit Output-Capture
     emit!(em, "function __tiny_run__()")
-    em.ind += 1
-    emit!(em, "seek(__OUT, 0); truncate(__OUT, 0)")
-    emit!(em, "__tiny_main__()")
-    emit!(em, "return String(take!(__OUT))")
-    em.ind -= 1
+    emit!(em, "    seek(__OUT, 0); truncate(__OUT, 0)")
+    emit!(em, "    __tiny_main__()")
+    emit!(em, "    global __CAPTURED__ = String(take!(__OUT))")
+    emit!(em, "    return __CAPTURED__")
     emit!(em, "end")
+
     join(em.lines, "\n")
 end
 
@@ -814,17 +858,24 @@ function uses_in_expr(e::IR, reads::Dict{String,Int})
         nm = (e::Var).name
         reads[nm] = get(reads, nm, 0) + 1
     elseif e isa Bin
-        uses_in_expr((e::Bin).a, reads); uses_in_expr((e::Bin).b, reads)
+        uses_in_expr((e::Bin).a, reads)
+        uses_in_expr((e::Bin).b, reads)
     elseif e isa Call
-        for a in (e::Call).args; uses_in_expr(a, reads); end
+        for a in (e::Call).args
+            uses_in_expr(a, reads)
+        end
     elseif e isa New
         uses_in_expr((e::New).size, reads)
     elseif e isa NewLit
-        for it in (e::NewLit).items; uses_in_expr(it, reads); end
+        for it in (e::NewLit).items
+            uses_in_expr(it, reads)
+        end
     elseif e isa Field
         uses_in_expr((e::Field).obj, reads)
     elseif e isa ObjLit
-        for pr in (e::ObjLit).fields; uses_in_expr(pr.second, reads); end
+        for pr in (e::ObjLit).fields
+            uses_in_expr(pr.second, reads)
+        end
     end
 end
 
@@ -847,8 +898,11 @@ function lint_stmt_reads!(s::IR, reads::Dict{String,Int})
     elseif s isa Return
         uses_in_expr((s::Return).expr, reads)
     elseif s isa OpDef
+        # eigene Scope-Prüfung
         tmp_reads = Dict{String,Int}()
-        for t in (s::OpDef).body; lint_stmt_reads!(t, tmp_reads); end
+        for t in (s::OpDef).body
+            lint_stmt_reads!(t, tmp_reads)
+        end
         miss = String[]
         get(tmp_reads, s.a_name, 0) == 0 && push!(miss, s.a_name)
         get(tmp_reads, s.b_name, 0) == 0 && push!(miss, s.b_name)
@@ -857,7 +911,22 @@ function lint_stmt_reads!(s::IR, reads::Dict{String,Int})
         end
     elseif s isa DestructAssign
         uses_in_expr((s::DestructAssign).expr, reads)
+    elseif s isa TypeDef
+        # keine Variablenzugriffe
+        return
     end
+end
+
+function lint_fn_params_used!(f::Fn)
+    reads = Dict{String,Int}()
+    for st in f.body
+        lint_stmt_reads!(st, reads)
+    end
+    unused = [p for p in f.params if get(reads, p, 0) == 0]
+    if !isempty(unused)
+        error("unused parameter(s) in function $(f.name): " * join(unused, ", "))
+    end
+    lint_locals_used!(f.body)
 end
 
 function lint_locals_used!(stmts::Vector{IR})
@@ -881,31 +950,6 @@ function lint_locals_used!(stmts::Vector{IR})
     end
 end
 
-function lint_fn_params_used!(f::Fn)
-    reads = Dict{String,Int}()
-    for st in f.body
-        lint_stmt_reads!(st, reads)
-    end
-    unused = [p for p in f.params if get(reads, p, 0) == 0]
-    if !isempty(unused)
-        error("unused parameter(s) in function $(f.name): " * join(unused, ", "))
-    end
-    lint_locals_used!(f.body)
-end
-
-function lint_op_params_used!(o::OpDef)
-    reads = Dict{String,Int}()
-    for st in o.body
-        lint_stmt_reads!(st, reads)
-    end
-    miss = String[]
-    get(reads, o.a_name, 0) == 0 && push!(miss, o.a_name)
-    get(reads, o.b_name, 0) == 0 && push!(miss, o.b_name)
-    if !isempty(miss)
-        error("unused operator parameter(s) in op $(o.op): " * join(miss, ", "))
-    end
-end
-
 ########################
 # Driver
 ########################
@@ -914,40 +958,23 @@ function compile_to_julia(src::String)::String
     p = Parser(src)
     ir = parse_program(p)
 
-    # Funktions- und Operator-Linting
+    # Lint
     for s in ir
-        if s isa Fn
-            lint_fn_params_used!(s)
-        elseif s isa OpDef
-            lint_op_params_used!(s)
-        end
+        s isa Fn && lint_fn_params_used!(s)
     end
-
-    # Top-Level-Locals
     lint_locals_used!(ir)
 
     gen_program(ir)
 end
 
-export compile_to_julia, TRACE_LEX, TRACE_PARSE,
-       TLType, TLPrim, TLRecord, BUILTIN_TYPES, TError, TErrorRecord
-
-end # module TinyLanguage
-
-########################
-# CLI-Wrapper
-########################
-
+# CLI-Modus, wenn Datei direkt aufgerufen wird
 if abspath(PROGRAM_FILE) == @__FILE__
-    using .TinyLanguage
-    using Base: invokelatest
-
     if length(ARGS) < 1
         println("Usage: julia tiny_lang.jl <source.tiny> [--emit out.jl] [--run] [--trace-lex] [--trace-parse]")
         exit(0)
     end
-    if any(==("--trace-lex"), ARGS);   TinyLanguage.TRACE_LEX[] = true;   end
-    if any(==("--trace-parse"), ARGS); TinyLanguage.TRACE_PARSE[] = true; end
+    if any(==("--trace-lex"), ARGS);   TRACE_LEX[] = true;   end
+    if any(==("--trace-parse"), ARGS); TRACE_PARSE[] = true; end
 
     # robuste Pfadauflösung
     src_arg = ARGS[1]
@@ -962,7 +989,7 @@ if abspath(PROGRAM_FILE) == @__FILE__
     src = read(src_path, String)
 
     code = try
-        TinyLanguage.compile_to_julia(src)
+        compile_to_julia(src)
     catch err
         showerror(stdout, err, catch_backtrace()); println()
         exit(1)
@@ -976,11 +1003,14 @@ if abspath(PROGRAM_FILE) == @__FILE__
     end
 
     if any(==("--run"), ARGS)
-        m = Module()
-        Base.include_string(m, code)
-        fn = Core.eval(m, :(__tiny_run__))
-        invokelatest(fn)
+        mod = Module()
+        Base.include_string(mod, code)
+        f = getfield(mod, :__tiny_run__)
+        Base.invokelatest(f)
+        println(mod.__CAPTURED__)
     elseif !any(==("--emit"), ARGS)
         println("Compilation successful. Use --emit out.jl or --run.")
     end
 end
+
+end # module TinyLanguage
