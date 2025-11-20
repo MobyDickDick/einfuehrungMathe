@@ -1,31 +1,24 @@
 using Test
+using Base: invokelatest
 
-# robust relativ zu diesem Testordner
 include(joinpath(@__DIR__, "..", "tiny_lang.jl"))
 
 """
     run_tiny(src::String) -> String
 
-Kompiliert TinyLanguage-Quelltext zu Julia-Code, führt ihn in einem
-frischen, anonymen Modul aus und gibt den Ausgabe-String zurück.
+Kompiliert TinyLanguage-Quelltext zu einem Julia-String,
+führt ihn in einem frischen anonymen Modul aus und gibt den
+Ausgabe-String (ohne trailing newline) zurück.
 """
 function run_tiny(src::String)
-    # 1. TinyLanguage → Julia-Code
     code = TinyLanguage.compile_to_julia(src)
 
-    # 2. Frisches Modul für diesen Lauf
     m = Module()
-
-    # 3. Generierten Code in dieses Modul laden
     Base.include_string(m, code)
-
-    # 4. Ausdruck __tiny_run__() *im Modul selbst* auswerten
-    out_any = Core.eval(m, :( __tiny_run__() ))
-
-    # 5. String + Newline abschneiden
+    fn = Core.eval(m, :(__tiny_run__))
+    out_any = invokelatest(fn)
     return chomp(String(out_any))
 end
-
 
 # Compile-Error erwarten
 function expect_compile_error(src::String, pat::AbstractString)

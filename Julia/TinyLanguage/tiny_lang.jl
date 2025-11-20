@@ -1,21 +1,9 @@
 module TinyLanguage
 
-export compile_to_julia, TRACE_LEX, TRACE_PARSE
-
-# tiny_lang.jl — Mini-Sprache (Lexer → Parser/IR → Linter → Julia-Codegen)
-# Features:
-#   - define, Zuweisung, print, if/else, while, fn, return, operator-Overloads
-#   - Arrays: new(n) und new[items...] (0-basierte Indizes für heap_*)
-#   - Strings mit Escapes \" \\ \n \r \t
-#   - Struct-Literale: { field: expr, ... } (+ Kurzschema number/string/bool/any)
-#   - Feldzugriff: obj.field
-#   - Destrukturierung zu Record: {a, b} = expr;
-#   - MUST-USE-Linter: alle Funktionsparameter + lokale Bindungen müssen verwendet werden
-#   - Bare call Statements sind verboten (jede Funktion liefert etwas; wenn ignoriert → Fehler)
-
 ########################
 # Tracing (optional)
 ########################
+
 const TRACE_LEX   = Ref{Bool}(false)
 const TRACE_PARSE = Ref{Bool}(false)
 
@@ -521,6 +509,7 @@ end
 
 const RUNTIME_JL = """
 # --- tiny runtime with overloading & buffered output ---
+
 # Bei jedem Include eine frische Ausgabe-Buffer-Instanz (einfach & robust)
 global __OUT = IOBuffer()
 __emitln(x) = (print(__OUT, x); print(__OUT, '\\n'); nothing)
@@ -545,7 +534,7 @@ function __new(n)
     return p
 end
 
-function __delete(p)
+function delete(p)
     try
         p = Int(p)
         pop!(__heap, p, nothing)
@@ -555,9 +544,6 @@ function __delete(p)
         return __ERR_REC(e)
     end
 end
-
-# TinyLanguage ruft 'delete', nicht '__delete'
-delete(p) = __delete(p)
 
 function heap_get(p, i)
     return __heap[Int(p)][Int(i)+1]
@@ -704,7 +690,7 @@ function gen_stmt!(em::Emitter, s::IR)
         emit!(em, string("function ", ss.name, "(", join(ss.params, ", "), ")"))
         em.ind += 1
         if isempty(ss.body)
-            emit!(em, "nothing")
+            emit!(em, "return nothing")
         else
             for st in ss.body; gen_stmt!(em, st); end
         end
@@ -716,17 +702,18 @@ function gen_stmt!(em::Emitter, s::IR)
     elseif s isa Return
         emit!(em, string("return ", gen_expr(em, (s::Return).expr)))
     elseif s isa OpDef
-        fname = string("__op_", mangle_op(s.op), "_", s.a_type, "_", s.b_type)
-        emit!(em, "function $(fname)($(s.a_name), $(s.b_name))")
+        ss = (s::OpDef)
+        fname = string("__op_", mangle_op(ss.op), "_", ss.a_type, "_", ss.b_type)
+        emit!(em, "function $(fname)($(ss.a_name), $(ss.b_name))")
         em.ind += 1
-        if isempty(s.body)
-            emit!(em, "nothing")
+        if isempty(ss.body)
+            emit!(em, "return nothing")
         else
-            for st in s.body; gen_stmt!(em, st); end
+            for st in ss.body; gen_stmt!(em, st); end
         end
         em.ind -= 1
         emit!(em, "end")
-        emit!(em, "__register_op(\"$(s.op)\", \"$(s.a_type)\", \"$(s.b_type)\", $(fname))")
+        emit!(em, "__register_op(\"$(ss.op)\", \"$(ss.a_type)\", \"$(ss.b_type)\", $(fname))")
         emit!(em, "")
     elseif s isa DestructAssign
         ss = (s::DestructAssign)
@@ -753,7 +740,7 @@ function gen_program(stmts::Vector{IR})::String
     for s in stmts
         s isa Fn && gen_stmt!(em, s)
     end
-    # Main-Body (ohne Buffer-Reset)
+    # Main-Body
     emit!(em, "function __tiny_main__()")
     em.ind += 1
     for s in stmts
@@ -828,18 +815,6 @@ function lint_stmt_reads!(s::IR, reads::Dict{String,Int})
     end
 end
 
-function lint_fn_params_used!(f::Fn)
-    reads = Dict{String,Int}()
-    for st in f.body
-        lint_stmt_reads!(st, reads)
-    end
-    unused = [p for p in f.params if get(reads, p, 0) == 0]
-    if !isempty(unused)
-        error("unused parameter(s) in function $(f.name): " * join(unused, ", "))
-    end
-    lint_locals_used!(f.body)
-end
-
 function lint_locals_used!(stmts::Vector{IR})
     defs = Dict{String,Int}()
     uses = Dict{String,Int}()
@@ -861,6 +836,31 @@ function lint_locals_used!(stmts::Vector{IR})
     end
 end
 
+function lint_fn_params_used!(f::Fn)
+    reads = Dict{String,Int}()
+    for st in f.body
+        lint_stmt_reads!(st, reads)
+    end
+    unused = [p for p in f.params if get(reads, p, 0) == 0]
+    if !isempty(unused)
+        error("unused parameter(s) in function $(f.name): " * join(unused, ", "))
+    end
+    lint_locals_used!(f.body)
+end
+
+function lint_op_params_used!(o::OpDef)
+    reads = Dict{String,Int}()
+    for st in o.body
+        lint_stmt_reads!(st, reads)
+    end
+    miss = String[]
+    get(reads, o.a_name, 0) == 0 && push!(miss, o.a_name)
+    get(reads, o.b_name, 0) == 0 && push!(miss, o.b_name)
+    if !isempty(miss)
+        error("unused operator parameter(s) in op $(o.op): " * join(miss, ", "))
+    end
+end
+
 ########################
 # Driver
 ########################
@@ -869,32 +869,39 @@ function compile_to_julia(src::String)::String
     p = Parser(src)
     ir = parse_program(p)
 
-    # Lint
+    # Funktions- und Operator-Linting
     for s in ir
-        s isa Fn && lint_fn_params_used!(s)
+        if s isa Fn
+            lint_fn_params_used!(s)
+        elseif s isa OpDef
+            lint_op_params_used!(s)
+        end
     end
+
+    # Top-Level-Locals
     lint_locals_used!(ir)
 
     gen_program(ir)
 end
 
+export compile_to_julia, TRACE_LEX, TRACE_PARSE
+
 end # module TinyLanguage
 
-# -------------------------- CLI / Script mode --------------------------
+########################
+# CLI-Wrapper
+########################
 
 if abspath(PROGRAM_FILE) == @__FILE__
+    using .TinyLanguage
+    using Base: invokelatest
+
     if length(ARGS) < 1
         println("Usage: julia tiny_lang.jl <source.tiny> [--emit out.jl] [--run] [--trace-lex] [--trace-parse]")
         exit(0)
     end
-
-    # Schalter für Tracing auf dem Modul setzen
-    if any(==("--trace-lex"), ARGS)
-        TinyLanguage.TRACE_LEX[] = true
-    end
-    if any(==("--trace-parse"), ARGS)
-        TinyLanguage.TRACE_PARSE[] = true
-    end
+    if any(==("--trace-lex"), ARGS);   TinyLanguage.TRACE_LEX[] = true;   end
+    if any(==("--trace-parse"), ARGS); TinyLanguage.TRACE_PARSE[] = true; end
 
     # robuste Pfadauflösung
     src_arg = ARGS[1]
@@ -905,7 +912,6 @@ if abspath(PROGRAM_FILE) == @__FILE__
         p3 = joinpath(pwd(), arg);                    isfile(p3) && return p3
         error("Source file not found: $arg\n  @__DIR__=$(abspath(@__DIR__))\n  pwd()=$(abspath(pwd()))")
     end
-
     src_path = resolve_src(src_arg)
     src = read(src_path, String)
 
@@ -919,16 +925,15 @@ if abspath(PROGRAM_FILE) == @__FILE__
     if any(==("--emit"), ARGS)
         idx = findfirst(==("--emit"), ARGS)
         outpath = (idx !== nothing && idx < length(ARGS)) ? ARGS[idx+1] : "out.jl"
-        open(outpath, "w") do io
-            write(io, code)
-        end
+        open(outpath, "w") do io; write(io, code); end
         println("Wrote ", outpath)
     end
 
     if any(==("--run"), ARGS)
-        Base.include_string(Main, code, "generated.jl")
-        out = Base.invokelatest(getfield(Main, :__tiny_run__))
-        print(out)
+        m = Module()
+        Base.include_string(m, code)
+        fn = Core.eval(m, :(__tiny_run__))
+        invokelatest(fn)
     elseif !any(==("--emit"), ARGS)
         println("Compilation successful. Use --emit out.jl or --run.")
     end
