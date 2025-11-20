@@ -8,6 +8,51 @@ const TRACE_LEX   = Ref{Bool}(false)
 const TRACE_PARSE = Ref{Bool}(false)
 
 ########################
+# Types (Vorbereitung)
+########################
+
+"Abstrakte Oberklasse aller TinyLanguage-Typen."
+abstract type TLType end
+
+"Primitive Typen wie number, string, bool, any."
+struct TLPrim <: TLType
+    name::Symbol
+end
+
+"Record-Typ mit Namen und benannten Feldern."
+struct TLRecord <: TLType
+    name::Symbol
+    fields::Vector{Pair{Symbol,TLType}}
+end
+
+# Primitive Typen
+const TNumber = TLPrim(:number)
+const TString = TLPrim(:string)
+const TBool   = TLPrim(:bool)
+const TAny    = TLPrim(:any)
+
+# Error-Typ (entspricht Dict("__tag__"=>"Error","code"=>..., "msg"=>...))
+const TError = TLRecord(:Error, [
+    :code => TNumber,
+    :msg  => TString,
+])
+
+# Record-Typ für { e } = ... (entspricht Dict("__tag__"=>"Record","e"=>Error))
+const TErrorRecord = TLRecord(:ErrorRecord, [
+    :e => TError,
+])
+
+"Alle eingebauten Typen (noch ohne statisches Checking, nur Beschreibung)."
+const BUILTIN_TYPES = Dict{Symbol,TLType}(
+    :number      => TNumber,
+    :string      => TString,
+    :bool        => TBool,
+    :any         => TAny,
+    :Error       => TError,
+    :ErrorRecord => TErrorRecord,
+)
+
+########################
 # Lexer
 ########################
 
@@ -884,7 +929,8 @@ function compile_to_julia(src::String)::String
     gen_program(ir)
 end
 
-export compile_to_julia, TRACE_LEX, TRACE_PARSE
+export compile_to_julia, TRACE_LEX, TRACE_PARSE,
+       TLType, TLPrim, TLRecord, BUILTIN_TYPES, TError, TErrorRecord
 
 end # module TinyLanguage
 

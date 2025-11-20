@@ -187,7 +187,7 @@ end
     expect_compile_error(src, "bare call statements are not allowed")
 end
 
-@testset "MUST-USE: Destrukturierung – alle Felder nutzen" begin
+@Testset "MUST-USE: Destrukturierung – alle Felder nutzen" begin
     src = """
     fn make() { return { p: 1, e: 0 }; }
     { p, e } = make();
