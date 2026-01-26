@@ -25727,7 +25727,7 @@ Satz
 status open
 
 \begin_layout Plain Layout
-der Transitivität von injektiven Funtkionen
+der Transitivität von injektiven Funktionen
 \end_layout
 
 \end_inset
@@ -25747,15 +25747,7 @@ der Transitivität von injektiven Funtkionen
 
  Mengen nicht leere Mengen,
  welche in sich selbst und bezüglich den anderen Symbolen dieses Lemmas widerspruchsfrei seien.
- Weiter seien 
-\begin_inset Formula 
-\[
-f:M_{1}\rightarrow M_{2}
-\]
-
-\end_inset
-
-und 
+ Weiter seien und 
 \begin_inset Formula 
 \[
 g:M_{2}\rightarrow M_{3}
@@ -26333,6 +26325,109 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Es gibt noch eine andere Einschränkung
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Einschraenkung-injektive-Abbildung-ist-injektiv"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $M_{1},M_{2}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $N$
+\end_inset
+
+ Mengen,
+ welche sowohl in sich selbst wie auch in Bezug auf die anderen Symbole des Lemmas widerspruchsfrei seien.
+ Weiter 
+\begin_inset Formula $M_{2}\subset M_{1}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $f:M_{1}\to N$
+\end_inset
+
+ eine injektive Abbildung .
+ Dann ist auch
+\begin_inset Formula 
+\[
+f\biggm|_{M_{2}}:M_{2}\to N
+\]
+
+\end_inset
+
+ eine injektive Abbildung.
+\end_layout
+
+\begin_layout Proof
+Angenommen,
+ es gäbe ein 
+\begin_inset Formula $m_{1},m_{2}\in M_{2}$
+\end_inset
+
+ mit 
+\begin_inset Formula $m_{1}\neq m_{2}$
+\end_inset
+
+ und 
+\begin_inset Formula $f\left(m_{1}\right)=f\left(m_{2}\right)$
+\end_inset
+
+ (also die auf 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ eingeschränkte Funktion sei nicht injektiv).
+ Dann müsste mit 
+\begin_inset Formula $M_{2}\subset M_{1}$
+\end_inset
+
+ auch gelten,
+ dass es ein 
+\begin_inset Formula $m_{1},m_{2}\in M_{1}$
+\end_inset
+
+ derart gäbe,
+ dass 
+\begin_inset Formula $m_{1}\neq m_{2}$
+\end_inset
+
+ ist und gilt 
+\begin_inset Formula $f\left(m_{1}\right)=f\left(m_{2}\right)$
+\end_inset
+
+.
+ Das würde jedoch bedeuten,
+ dass 
+\begin_inset Formula $f$
+\end_inset
+
+ nicht injektiv wäre.
+ Da dies jedoch ein Widerspruch wäre,
+ kann ich daraus schliessen,
+ dass eben für alle 
+\begin_inset Formula $m_{1},m_{2}\in M_{2}$
+\end_inset
+
+ gelten muss:
+\begin_inset Formula 
+\[
+f\left(m_{1}\right)=f\left(m_{2}\right)
+\]
+
+\end_inset
+
+Daher bin ich der Meinung,
+ dass ich den Beweis für die Richtigkeit meiner Behauptung erbracht habe und beende daher an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Standard
@@ -27021,6 +27116,157 @@ ein-eindeutige
  Denn mit ihrer Hilfe können etwa Probleme von einem Wissensfeld auf das andere abgebildet und dort weiter untersucht werden.
  Ist dann das Problem im Bild gelöst,
  dann können sie wieder in das Urbild abgebildet werden.
+\end_layout
+
+\begin_layout Standard
+Es gibt noch einen weiteren Satz,
+ welcher mit bijektiven Funktionen formuliert und beweisen werden kann:
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Bijektion-eingeschränkter-bijektiver-Abbildungen"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $M_{1},N$
+\end_inset
+
+ nichtleere Mengen,
+ welche in sich selbst und bezüglich den anderen Symbolen des Satzes widerspruchsfrei seien.
+ Weiter sei 
+\begin_inset Formula $M_{2}\subset M_{1}$
+\end_inset
+
+ eine nichtleere Teilmenge.
+ Schlussendlich sei 
+\begin_inset Formula 
+\[
+f:M_{1}\to N
+\]
+
+\end_inset
+
+ eine bijektive Abbildung.
+ Dann ist auch die eingeschränkte Funktion
+\begin_inset Formula 
+\begin{eqnarray*}
+f\biggm|_{M_{2}}: & M_{2} & \to f\left(M_{2}\right)\subset N\\
+ & m & \mathbb{\mapsto}f\left(m\right)
+\end{eqnarray*}
+
+\end_inset
+
+eine bijektive Abbildung.
+\end_layout
+
+\begin_layout Proof
+Zuerst möchte ich zeigen,
+ dass 
+\begin_inset Formula $f\left(M_{2}\right)\subset N$
+\end_inset
+
+ ist.
+ Ist 
+\begin_inset Formula $n\in f\left(M_{2}\right)$
+\end_inset
+
+ dann muss es gemäss Definition von 
+\begin_inset Formula $f\left(M_{2}\right)$
+\end_inset
+
+ ein 
+\begin_inset Formula $m\in M_{2}$
+\end_inset
+
+ mit 
+\begin_inset Formula $f\left(m\right)=n$
+\end_inset
+
+ geben.
+ Da jedoch 
+\begin_inset Formula $m\in M_{2}$
+\end_inset
+
+ und 
+\begin_inset Formula $M_{2}\subset M_{1}$
+\end_inset
+
+ ist,
+ muss also auch 
+\begin_inset Formula $m\in M_{1}$
+\end_inset
+
+ sein.
+ Also ist aber 
+\begin_inset Formula $n=f\left(m\right)\in f\left(M_{1}\right)$
+\end_inset
+
+.
+ Und da gemäss der Definition der Bildmenge gelten muss:
+\begin_inset Formula 
+\[
+f\left(M_{1}\right)\subset N
+\]
+
+\end_inset
+
+kann ich also auch schreiben,
+ dass gelten muss:
+\begin_inset Formula 
+\[
+n\in N
+\]
+
+\end_inset
+
+Damit habe ich diesen Teil der Behauptung beweisen.
+ Im Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Einschraenkung-injektive-Abbildung-ist-injektiv"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ habe ich gezeigt,
+ dass 
+\begin_inset Formula 
+\[
+f\biggm|_{M_{2}}
+\]
+
+\end_inset
+
+injektiv sein muss.
+ Darum kann ich gemäss Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Einschraenkung-injektive-Menge-auf-Bildmenge"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ folgern,
+ dass 
+\begin_inset Formula 
+\[
+f\biggm|_{M_{2}}
+\]
+
+\end_inset
+
+sogar bijektiv sein muss.
+ Daher bin ich der Meinung,
+ dass ich den Beweis für die Richtigkeit der Behauptung erbracht habe und beende aus diesem Grund die weitere Beweisführung.
 \end_layout
 
 \begin_layout Section
@@ -34906,6 +35152,135 @@ sein.
  Damit meine ich,
  den zweiten Teil der Behauptung und somit den Beweis für Richtigkeit der ganzen Behauptung erbracht zu haben.
  Darum beende ich an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Section
+Was ist die Boolesche Menge
+\end_layout
+
+\begin_layout Standard
+Die boolesche Menge (benannt nach dem englischen Mathematiker 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Füge hier noch den Wiki-Artikel hinzu
+\end_layout
+
+\end_inset
+
+Boolean) ist m.E.
+ eine Funktion,
+ welche allen Aussagen 
+\begin_inset Formula $A$
+\end_inset
+
+ einen Wahrheitswert zuordnet.
+ Dabei wird eine zuweilen fast schon erschreckende Vereinfachung gemacht.
+ Einerseits werden alle Aussagen zwei verschiedenen Mengen zugeordnet:
+ Entweder ist die Aussage wahr,
+ oder sie ist es nicht.
+ Das kann jetzt so dargestellt werden
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+f:\Omega & \to & \mathbb{B}\equiv\left\{ F,T\right\} 
+\end{eqnarray*}
+
+\end_inset
+
+Es sei 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ die Menge aller Aussagen.
+ Ist eine Aussage 
+\begin_inset Formula $A$
+\end_inset
+
+ wahr,
+ dann werde diese dem Element 
+\begin_inset Formula $T$
+\end_inset
+
+ (
+\begin_inset Quotes cld
+\end_inset
+
+true
+\begin_inset Quotes crd
+\end_inset
+
+,
+ also wahr) zugeordnet.
+ Ist eine Aussage 
+\begin_inset Formula $A$
+\end_inset
+
+ nicht wahr (vielleicht,
+ weil deren Wahrheitswert nicht bekannt ist,
+ sie als logisch falsch erkannt wird oder sie in sich selbst widersprüchlich erkannt wird),
+ dann werde diese auf das Element 
+\begin_inset Formula $F$
+\end_inset
+
+ (
+\begin_inset Quotes cld
+\end_inset
+
+false
+\begin_inset Quotes crd
+\end_inset
+
+,
+ also falsch) zugeordnet.
+ Dann heisse die Menge 
+\begin_inset Formula $\mathbb{B}$
+\end_inset
+
+ die boolesche Menge.
+\end_layout
+
+\begin_layout Proposition
+Es seien 
+\begin_inset Formula $M_{1},M_{2}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $M_{3}$
+\end_inset
+
+ Mengen,
+ welche in in sich selbst sowie bezüglich den anderen Symbolen des Satzes widerspruchsfrei seien.
+ Weiter seien:
+\begin_inset Formula 
+\begin{eqnarray*}
+f_{1}:M_{1} & \to & M_{2}\\
+f_{2}:M_{2} & \to & M_{3}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+Ist dann 
+\begin_inset Formula $f_{2}\circ f_{1}$
+\end_inset
+
+eine bijektive Funktion,
+ dann müssen auch 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+ bijektiv sein.
 \end_layout
 
 \begin_layout Chapter

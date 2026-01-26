@@ -23117,6 +23117,224 @@ status open
 \begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
+name "lem:Gleichheit-von-Symbolen"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $A$
+\end_inset
+
+ sowie 
+\begin_inset Formula $B$
+\end_inset
+
+ Metasymbole,
+ welche gleich seien.
+ Dann müssen die von 
+\begin_inset Formula $A$
+\end_inset
+
+ respektive 
+\begin_inset Formula $B$
+\end_inset
+
+ symbolisierten Symbolen aus gleich vielen einzelnen Symbolen zusammengesetzt sein.
+\end_layout
+
+\begin_layout Proof
+Das ist wieder so eine Fingerübung,
+ welche daraus hinausläuft,
+ dass Du zwar weniger über die Gleichheit von Symbolen,
+ jedoch mehr über die vollständige Induktion erfahren kannst.
+ Es seien also 
+\begin_inset Formula $A$
+\end_inset
+
+ und 
+\begin_inset Formula $B$
+\end_inset
+
+ Metasymbole und es sei 
+\begin_inset Formula $A=B$
+\end_inset
+
+.
+ Das von 
+\begin_inset Formula $A$
+\end_inset
+
+ symbolisierte Symbol sei aus einem einzelnen Symbol aufgebaut.
+ Dann muss gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Gleichheit-von-Symbolen"
+nolink "false"
+
+\end_inset
+
+ auch 
+\begin_inset Formula $B$
+\end_inset
+
+ aus einem Symbol aufgebaut sein.
+ Nun gelte die Behauptung für alle Symbole,
+ welche aus 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ Symbolen aufgebaut sei.
+ Weiter sei 
+\begin_inset Formula $A$
+\end_inset
+
+ ein Symbol,
+ welches aus 
+\begin_inset Formula $n+1$
+\end_inset
+
+ Symbolen aufgebaut sei.
+ Also muss ein Metasymbol 
+\begin_inset Formula $A_{n+1}$
+\end_inset
+
+ derart geben,
+ dass das durch 
+\begin_inset Formula $A_{n+1}$
+\end_inset
+
+ symbolisierte Symbol aus einem Symbol aufgebaut ist.
+ Ebenfalls muss es ein Metasymbol 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ derart derart geben,
+ dass das durch 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ symbolisierte Symbol aus 
+\begin_inset Formula $n$
+\end_inset
+
+ Symbolen besteht.
+ Weiter sei 
+\begin_inset Formula $A=A_{n+1}\,A_{n}$
+\end_inset
+
+.
+ Nun sei 
+\begin_inset Formula $A=B$
+\end_inset
+
+.
+ Gemäß der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Gleichheit-von-Symbolen"
+nolink "false"
+
+\end_inset
+
+ muss darum das durch 
+\begin_inset Formula $B$
+\end_inset
+
+ symbolisierte Symbol ebenfalls mit dem Symbol 
+\begin_inset Formula $A_{n+1}$
+\end_inset
+
+ beginnen.
+ Wenn 
+\begin_inset Formula $B$
+\end_inset
+
+ keine weitere Symbole mehr enthalten würde,
+ dann könnte 
+\begin_inset Formula $B$
+\end_inset
+
+ nicht mehr gleich 
+\begin_inset Formula $A$
+\end_inset
+
+ sein.
+ Also muss auch das Symbol 
+\begin_inset Formula $B_{n}$
+\end_inset
+
+ welches entsteht,
+ indem beim Symbol 
+\begin_inset Formula $B$
+\end_inset
+
+ das erste Symbol (
+\begin_inset Formula $A_{n+1}$
+\end_inset
+
+) entfernt wird ebenfalls gleich demjenigen von 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ symbolisierten Symbol sein.
+ Also muss gemäß der Induktionsvoraussetzung die Anzahl der Symbole von 
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ gleich derjenigen von 
+\begin_inset Formula $B_{n}$
+\end_inset
+
+ sein.
+ Das sind jedoch gemäß der Induktionsvoraussetzung 
+\begin_inset Formula $n$
+\end_inset
+
+ Symbole.
+ Also hat das durch 
+\begin_inset Formula $B$
+\end_inset
+
+ symbolisierte Symbol ebenfalls 
+\begin_inset Formula $n+1$
+\end_inset
+
+ Symbole besitzen.
+ Damit ist jedoch die Induktionsvererbung und somit der ganze Induktionsbeweis erbracht.
+ Da gemäß der Definition von Symbolen alle Symbole aus endlich viele Symbolen zusammengesetzt sind,
+ halte ich den Beweis für erbracht.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Backward References
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Flex Forward References
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
 name "lem:Gleichheit-Symbole-Aequivalenzrelation"
 
 \end_inset
@@ -23379,7 +23597,7 @@ A=A_{n+1}\,A_{n}
  Gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:erstes-Gleichheit-von-Symbolen"
+reference "lem:Gleichheit-von-Symbolen"
 nolink "false"
 
 \end_inset
@@ -23655,7 +23873,7 @@ A=B
 Gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:erstes-Gleichheit-von-Symbolen"
+reference "lem:Gleichheit-von-Symbolen"
 nolink "false"
 
 \end_inset
@@ -23699,7 +23917,7 @@ sein.
  muss gemäß dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lem:erstes-Gleichheit-von-Symbolen"
+reference "lem:Gleichheit-von-Symbolen"
 nolink "false"
 
 \end_inset
@@ -25509,7 +25727,7 @@ Satz
 status open
 
 \begin_layout Plain Layout
-der Transitivität von injektiven Funtkionen
+der Transitivität von injektiven Funktionen
 \end_layout
 
 \end_inset
@@ -25529,15 +25747,7 @@ der Transitivität von injektiven Funtkionen
 
  Mengen nicht leere Mengen,
  welche in sich selbst und bezüglich den anderen Symbolen dieses Lemmas widerspruchsfrei seien.
- Weiter seien 
-\begin_inset Formula 
-\[
-f:M_{1}\rightarrow M_{2}
-\]
-
-\end_inset
-
-und 
+ Weiter seien und 
 \begin_inset Formula 
 \[
 g:M_{2}\rightarrow M_{3}
@@ -26115,6 +26325,109 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Es gibt noch eine andere Einschränkung
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Einschraenkung-injektive-Abbildung-ist-injektiv"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $M_{1},M_{2}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $N$
+\end_inset
+
+ Mengen,
+ welche sowohl in sich selbst wie auch in Bezug auf die anderen Symbole des Lemmas widerspruchsfrei seien.
+ Weiter 
+\begin_inset Formula $M_{2}\subset M_{1}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $f:M_{1}\to N$
+\end_inset
+
+ eine injektive Abbildung .
+ Dann ist auch
+\begin_inset Formula 
+\[
+f\biggm|_{M_{2}}:M_{2}\to N
+\]
+
+\end_inset
+
+ eine injektive Abbildung.
+\end_layout
+
+\begin_layout Proof
+Angenommen,
+ es gäbe ein 
+\begin_inset Formula $m_{1},m_{2}\in M_{2}$
+\end_inset
+
+ mit 
+\begin_inset Formula $m_{1}\neq m_{2}$
+\end_inset
+
+ und 
+\begin_inset Formula $f\left(m_{1}\right)=f\left(m_{2}\right)$
+\end_inset
+
+ (also die auf 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ eingeschränkte Funktion sei nicht injektiv).
+ Dann müsste mit 
+\begin_inset Formula $M_{2}\subset M_{1}$
+\end_inset
+
+ auch gelten,
+ dass es ein 
+\begin_inset Formula $m_{1},m_{2}\in M_{1}$
+\end_inset
+
+ derart gäbe,
+ dass 
+\begin_inset Formula $m_{1}\neq m_{2}$
+\end_inset
+
+ ist und gilt 
+\begin_inset Formula $f\left(m_{1}\right)=f\left(m_{2}\right)$
+\end_inset
+
+.
+ Das würde jedoch bedeuten,
+ dass 
+\begin_inset Formula $f$
+\end_inset
+
+ nicht injektiv wäre.
+ Da dies jedoch ein Widerspruch wäre,
+ kann ich daraus schliessen,
+ dass eben für alle 
+\begin_inset Formula $m_{1},m_{2}\in M_{2}$
+\end_inset
+
+ gelten muss:
+\begin_inset Formula 
+\[
+f\left(m_{1}\right)=f\left(m_{2}\right)
+\]
+
+\end_inset
+
+Daher bin ich der Meinung,
+ dass ich den Beweis für die Richtigkeit meiner Behauptung erbracht habe und beende daher an dieser Stelle die weitere Beweisführung.
 \end_layout
 
 \begin_layout Standard
@@ -26803,6 +27116,157 @@ ein-eindeutige
  Denn mit ihrer Hilfe können etwa Probleme von einem Wissensfeld auf das andere abgebildet und dort weiter untersucht werden.
  Ist dann das Problem im Bild gelöst,
  dann können sie wieder in das Urbild abgebildet werden.
+\end_layout
+
+\begin_layout Standard
+Es gibt noch einen weiteren Satz,
+ welcher mit bijektiven Funktionen formuliert und beweisen werden kann:
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Bijektion-eingeschränkter-bijektiver-Abbildungen"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $M_{1},N$
+\end_inset
+
+ nichtleere Mengen,
+ welche in sich selbst und bezüglich den anderen Symbolen des Satzes widerspruchsfrei seien.
+ Weiter sei 
+\begin_inset Formula $M_{2}\subset M_{1}$
+\end_inset
+
+ eine nichtleere Teilmenge.
+ Schlussendlich sei 
+\begin_inset Formula 
+\[
+f:M_{1}\to N
+\]
+
+\end_inset
+
+ eine bijektive Abbildung.
+ Dann ist auch die eingeschränkte Funktion
+\begin_inset Formula 
+\begin{eqnarray*}
+f\biggm|_{M_{2}}: & M_{2} & \to f\left(M_{2}\right)\subset N\\
+ & m & \mathbb{\mapsto}f\left(m\right)
+\end{eqnarray*}
+
+\end_inset
+
+eine bijektive Abbildung.
+\end_layout
+
+\begin_layout Proof
+Zuerst möchte ich zeigen,
+ dass 
+\begin_inset Formula $f\left(M_{2}\right)\subset N$
+\end_inset
+
+ ist.
+ Ist 
+\begin_inset Formula $n\in f\left(M_{2}\right)$
+\end_inset
+
+ dann muss es gemäss Definition von 
+\begin_inset Formula $f\left(M_{2}\right)$
+\end_inset
+
+ ein 
+\begin_inset Formula $m\in M_{2}$
+\end_inset
+
+ mit 
+\begin_inset Formula $f\left(m\right)=n$
+\end_inset
+
+ geben.
+ Da jedoch 
+\begin_inset Formula $m\in M_{2}$
+\end_inset
+
+ und 
+\begin_inset Formula $M_{2}\subset M_{1}$
+\end_inset
+
+ ist,
+ muss also auch 
+\begin_inset Formula $m\in M_{1}$
+\end_inset
+
+ sein.
+ Also ist aber 
+\begin_inset Formula $n=f\left(m\right)\in f\left(M_{1}\right)$
+\end_inset
+
+.
+ Und da gemäss der Definition der Bildmenge gelten muss:
+\begin_inset Formula 
+\[
+f\left(M_{1}\right)\subset N
+\]
+
+\end_inset
+
+kann ich also auch schreiben,
+ dass gelten muss:
+\begin_inset Formula 
+\[
+n\in N
+\]
+
+\end_inset
+
+Damit habe ich diesen Teil der Behauptung beweisen.
+ Im Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Einschraenkung-injektive-Abbildung-ist-injektiv"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ habe ich gezeigt,
+ dass 
+\begin_inset Formula 
+\[
+f\biggm|_{M_{2}}
+\]
+
+\end_inset
+
+injektiv sein muss.
+ Darum kann ich gemäss Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Einschraenkung-injektive-Menge-auf-Bildmenge"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ folgern,
+ dass 
+\begin_inset Formula 
+\[
+f\biggm|_{M_{2}}
+\]
+
+\end_inset
+
+sogar bijektiv sein muss.
+ Daher bin ich der Meinung,
+ dass ich den Beweis für die Richtigkeit der Behauptung erbracht habe und beende aus diesem Grund die weitere Beweisführung.
 \end_layout
 
 \begin_layout Section
@@ -34688,6 +35152,95 @@ sein.
  Damit meine ich,
  den zweiten Teil der Behauptung und somit den Beweis für Richtigkeit der ganzen Behauptung erbracht zu haben.
  Darum beende ich an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Section
+Was ist die Boolesche Menge
+\end_layout
+
+\begin_layout Standard
+Die boolesche Menge (benannt nach dem englischen Mathematiker 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Füge hier noch den Wiki-Artikel hinzu
+\end_layout
+
+\end_inset
+
+Boolean) ist m.E.
+ eine Funktion,
+ welche allen Aussagen 
+\begin_inset Formula $A$
+\end_inset
+
+ einen Wahrheitswert zuordnet.
+ Dabei wird eine zuweilen fast schon erschreckende Vereinfachung gemacht.
+ Einerseits werden alle Aussagen zwei verschiedenen Mengen zugeordnet:
+ Entweder ist die Aussage wahr,
+ oder sie ist es nicht.
+ Das kann jetzt so dargestellt werden
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+f:\Omega & \to & \mathbb{B}\equiv\left\{ F,T\right\} 
+\end{eqnarray*}
+
+\end_inset
+
+Es sei 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ die Menge aller Aussagen.
+ Ist eine Aussage 
+\begin_inset Formula $A$
+\end_inset
+
+ wahr,
+ dann werde diese dem Element 
+\begin_inset Formula $T$
+\end_inset
+
+ (
+\begin_inset Quotes cld
+\end_inset
+
+true
+\begin_inset Quotes crd
+\end_inset
+
+,
+ also wahr) zugeordnet.
+ Ist eine Aussage 
+\begin_inset Formula $A$
+\end_inset
+
+ nicht wahr (vielleicht,
+ weil deren Wahrheitswert nicht bekannt ist,
+ sie als logisch falsch erkannt wird oder sie in sich selbst widersprüchlich erkannt wird),
+ dann werde diese auf das Element 
+\begin_inset Formula $F$
+\end_inset
+
+ (
+\begin_inset Quotes cld
+\end_inset
+
+false
+\begin_inset Quotes crd
+\end_inset
+
+,
+ also falsch) zugeordnet.
+ Dann heisse die Menge 
+\begin_inset Formula $\mathbb{B}$
+\end_inset
+
+ die boolesche Menge.
 \end_layout
 
 \begin_layout Chapter

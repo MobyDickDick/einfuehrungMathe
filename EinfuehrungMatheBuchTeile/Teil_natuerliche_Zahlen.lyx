@@ -12644,6 +12644,28 @@ Zu Beginn möchte ich zeigen:
 \end_layout
 
 \begin_layout Lemma
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Lemma
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+der Äquivalenzrelation der Gleicheheit von natürlichen Zahlen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "lem:Gleichheit-natuerliche-Zahlen-ist-Aequivalenzrelation"
@@ -17238,6 +17260,18 @@ Doch zuerst die Definition der Addition von natürlichen Zahlen:
 \end_layout
 
 \begin_layout Definition
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Addition natürlicher Zahlen
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "def:Addition-natuerlicher-Zahlen"
@@ -17292,7 +17326,112 @@ definiert,
 \end_layout
 
 \begin_layout Definition
-Ich möchte zu allererst zeigen,
+Da die Addition sehr häufig verwendet wird,
+ sind zwei Definition noch wichtig:
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ und 
+\begin_inset Formula $m$
+\end_inset
+
+ heissen die Summanden
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Summanden
+\end_layout
+
+\end_inset
+
+ (also,
+ 
+\begin_inset Quotes cld
+\end_inset
+
+das was zu einer Summe benötigt wird
+\begin_inset Quotes crd
+\end_inset
+
+),
+ das Resultat (also die natürliche Zahl 
+\begin_inset Formula $n+m$
+\end_inset
+
+ wird Summe
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Summe
+\end_layout
+
+\end_inset
+
+ genannt.
+\end_layout
+
+\begin_layout Standard
+Interessant ist m.E.
+ auch,
+ dass die Addition als Funktion verstanden werden kann:
+\begin_inset Formula 
+\begin{eqnarray*}
++:\mathbb{N}\times\mathbb{N} & \to & \mathbb{N}\\
+\left(n,1\right) & \mapsto & n+1\\
+\left(n,m+1\right) & \mapsto & \left(n+m\right)+1
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dabei ist zu beachten,
+ dass 
+\begin_inset Formula $n+1$
+\end_inset
+
+ nun nicht weiter erklärt wird.
+\end_layout
+
+\begin_layout Definition
+Ich möchte zu Beginn zeigen,
  dass gilt:
 \end_layout
 
@@ -17781,7 +17920,7 @@ nolink "false"
 \end_inset
 
  eine Äquivalenzrelation ist,
- kann ich schlussflgern,
+ kann ich schlussfolgern,
  dass auch gelten muss
 \begin_inset Formula 
 \[
@@ -17900,7 +18039,7 @@ nolink "false"
 \end_inset
 
  eine Äquivalenzrelation ist,
- kann ich schlussflgern,
+ kann ich schlussfolgern,
  dass auch gelten muss
 \begin_inset Formula 
 \[
@@ -17928,7 +18067,7 @@ n_{3}\cdot A\,n_{2}\cdot A=\left(n_{3}+n_{2}\right)\cdot A
 
 \end_inset
 
-Daraus kann ich wiederum gemäss dem Lemma emma 
+Daraus kann ich wiederum gemäss dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Gleichheit-natuerliche-Zahlen-ist-Aequivalenzrelation"
@@ -18937,9 +19076,962 @@ status open
 \end_layout
 
 \begin_layout Standard
+Für das folgende benötige eine neue Notation.
+ 
+\end_layout
+
+\begin_layout Definition
+Es seien 
+\begin_inset Formula $m,\:n\in\mathbb{N}$
+\end_inset
+
+ natürliche Zahlen mit 
+\begin_inset Formula $n\geq m$
+\end_inset
+
+.
+ Weiter sei für alle 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ mit 
+\begin_inset Formula $m\leq k\leq n$
+\end_inset
+
+ 
+\begin_inset Formula $a_{k}\in\mathbb{N}$
+\end_inset
+
+.
+ Dann sei definiert:
+\begin_inset Formula 
+\[
+\sum_{k=m}^{m}a_{k}\equiv a_{m}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Ist 
+\begin_inset Formula $p\in\mathbb{N}$
+\end_inset
+
+ mit 
+\begin_inset Formula $m\leq p+1\leq n$
+\end_inset
+
+ dann gelte 
+\begin_inset Formula 
+\[
+\sum_{k=m}^{p+1}a_{k}\equiv\left(\sum_{k=m}^{p}a_{k}\right)+a_{p+1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Und noch eine letzte Festlegung (welche nicht von mir stammt,
+ aber die ich so gelernt habe):
+\end_layout
+
+\begin_layout Definition
+Ist 
+\begin_inset Formula $m<n$
+\end_inset
+
+,
+ dann gilt:
+\begin_inset Formula 
+\[
+\sum_{k=n}^{m}a_{k}\equiv0
+\]
+
+\end_inset
+
+Da leuchtet mir zwar so nicht ein,
+ ist aber offenbar so definiert.
+\end_layout
+
+\begin_layout Definition
+Allgemeiner definiert:
+ Ist 
+\begin_inset Formula 
+\[
+T:\mathbb{N}\rightarrow\Omega
+\]
+
+\end_inset
+
+ eine beliebige Abbildung der Menge 
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+ auf Menge aller Aussagen dann sei 
+\begin_inset Formula 
+\[
+\sum_{k\in T\left(\mathbb{N}\right)}a_{k}\equiv0
+\]
+
+\end_inset
+
+ gleich der Summe aller
+\end_layout
+
+\begin_layout Standard
+Wenn ich Beispiele machen möchte:
+ Ist 
+\begin_inset Formula $a_{1}=4$
+\end_inset
+
+,
+ 
+\begin_inset Formula $a_{2}=1$
+\end_inset
+
+,
+ 
+\begin_inset Formula $a_{3}=7$
+\end_inset
+
+,
+ dann gilt:
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \sum_{k=1}^{3}a_{k}\\
+ & = & \left(\sum_{k=1}^{2}a_{k}\right)+a_{3}\\
+ & = & \left(\sum_{k=1}^{2}a_{k}\right)+7\\
+ & = & \left(\sum_{k=1}^{1}a_{k}+a_{2}\right)+7\\
+ & = & \left(\sum_{k=1}^{1}a_{k}+1\right)+7\\
+ & = & \left(a_{1}+1\right)+7\\
+ & = & \left(4+1\right)+7\\
+ & = & 5+7\\
+ & = & 12
+\end{eqnarray*}
+
+\end_inset
+
+Ebenso wäre jedoch
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \sum_{k=3}^{1}a_{k}\\
+ & = & 0
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Ich kann jetzt den Satz der Kommutation und der Assoziation zusammenfügen und hoffe,
  dass das Chaos nicht zu gross wird.
+ Zuerst möchte ich mir überlegen,
+ wie ich die assoziative Klammerung in den Griff kriege:
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Addition-multi-assoziativ"
+
+\end_inset
+
+Es seien für 
+\begin_inset Formula $k,n\in\mathbb{N}$
+\end_inset
+
+ mit 
+\begin_inset Formula $k\leq n$
+\end_inset
+
+ die natürlichen Zahlen 
+\begin_inset Formula $a_{k}\in\mathbb{N}$
+\end_inset
+
+.
+ Weiter sei 
+\begin_inset Formula $A_{k}$
+\end_inset
+
+ eine Summe der Zahlen 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+bis 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+,
+ jedoch in einer beliebigen Klammerung.
+ Beispiel:
+ Es sei für 
+\begin_inset Formula $n=3$
+\end_inset
+
+ die Summe 
+\begin_inset Formula $a_{1}+\left(a_{2}+a_{3}\right)$
+\end_inset
+
+ gegeben.
+ Dann ist das Resultat der Summe unabhängig von der Klammerung.
+ Es gilt daher insbesondere:
+\begin_inset Formula 
+\[
+A=\sum_{l=1}^{n}a_{l}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Auch wenn das Lemma ein wenig schwammig formuliert ist,
+ hoffe ich,
+ dass einigermassen klar ist,
+ was ich damit gemeint habe.
+ Es sei 
+\begin_inset Formula $n=1$
+\end_inset
+
+.
+ Dann ist es nur auf eine Art möglich,
+ eine Summe mit einem Summanden zu erstellen.
+ Diese Art ist 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+ Und somit ist 
+\begin_inset Formula 
+\[
+A=\sum_{l=1}^{1}a_{l}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Also gilt das Resultat für 
+\begin_inset Formula $n=1$
+\end_inset
+
+.
+ Damit habe ich jedoch den Beweis für die Richtigkeit der Induktionsverankerung erbracht.
+ Ich werde mir erlauben,
+ auch für 
+\begin_inset Formula $n=2$
+\end_inset
+
+ zu zeigen,
+ dass der Beweis auch für 
+\begin_inset Formula $n=2$
+\end_inset
+
+ gültig ist.
+ Für 
+\begin_inset Formula $n=2$
+\end_inset
+
+ gibt es ebenfalls nur eine mögliche Art,
+ die Summe zu bilden.
+ Und zwar ist diese 
+\begin_inset Formula 
+\[
+a_{1}+a_{2}=\sum_{l=1}^{2}a_{l}
+\]
+
+\end_inset
+
+Also kann ich auch in diesem Fall davon ausgehen,
+ dass jede Art der Summe das gleiche Resultat erbringt.
+ Nun gelte die Aussage für 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ Ich kann annehmen,
+ dass 
+\begin_inset Formula $n\ge2$
+\end_inset
+
+ ist.
+ Ist also 
+\begin_inset Formula $A$
+\end_inset
+
+ eine Summe mit 
+\begin_inset Formula $l\in\mathbb{N}$
+\end_inset
+
+ und 
+\begin_inset Formula $l\le n$
+\end_inset
+
+ Summanden,
+ deren Summanden zwar nach Index geordnet,
+ aber ansonsten beliebig geklammert ist.
+ Dann gelte nach Voraussetzung
+\begin_inset Formula 
+\[
+A=\sum_{i=1}^{l}a_{i}
+\]
+
+\end_inset
+
+Nun sei ein Ausdruck mit 
+\begin_inset Formula $n+1$
+\end_inset
+
+ Summanden gegeben,
+ bei welchem die Summanden der Reihe nach geordnet,
+ aber beliebig geklammert sind.
+ Aufgrund der Voraussetzung muss 
+\begin_inset Formula $n\geq3$
+\end_inset
+
+ sein.
+ Also kann ich schliessen,
+ dass es zwei Ausdrücke 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ und 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ derart geben muss,
+ dass 
+\begin_inset Formula 
+\[
+A=A_{1}+A_{2}
+\]
+
+\end_inset
+
+ ist.
+ Dann können beide Ausdrücke 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ höchstens 
+\begin_inset Formula $n$
+\end_inset
+
+ Summanden besitzen.
+ Denn ansonsten hätte 
+\begin_inset Formula $A$
+\end_inset
+
+ mehr als 
+\begin_inset Formula $n+1$
+\end_inset
+
+ Summanden,
+ im Widerspruch zur Voraussetzung.
+ Da jetzt beide Ausdrücke höchstens 
+\begin_inset Formula $n$
+\end_inset
+
+ Summanden besitzen können,
+ kann ich mit geeigneten natürlichen Zahlen 
+\begin_inset Formula $r,s\in\mathbb{N}$
+\end_inset
+
+ sowie für 
+\begin_inset Formula $i,j\in\mathbb{N}$
+\end_inset
+
+ mit 
+\begin_inset Formula $i\le r$
+\end_inset
+
+und 
+\begin_inset Formula $r_{i}\in\mathbb{N}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $j\le s$
+\end_inset
+
+ und 
+\begin_inset Formula $s_{j}\in\mathbb{N}$
+\end_inset
+
+ schreiben 
+\begin_inset Formula 
+\[
+A_{1}=\sum_{i=1}^{r}r_{i}=\sum_{i=1}^{r}a_{i}
+\]
+
+\end_inset
+
+und 
+\begin_inset Formula 
+\[
+A_{2}=\sum_{i=1}^{r}s_{j}=\sum_{i=r+1}^{n+1}a_{i}
+\]
+
+\end_inset
+
+Dann kann ich also schreiben:
+\begin_inset Formula 
+\[
+A=\sum_{i=1}^{r}a_{i}+\sum_{i=r+1}^{n+1}a_{i}=\sum_{i=1}^{r}a_{i}+\sum_{i=r+1}^{n+1}a_{i}
+\]
+
+\end_inset
+
+Nun gibt es zwei Fälle:
+ Entweder ist 
+\begin_inset Formula $r+1<n+1$
+\end_inset
+
+ oder es ist 
+\begin_inset Formula $r+1=n+1$
+\end_inset
+
+.
+ Ist 
+\begin_inset Formula $r+1<n+1$
+\end_inset
+
+,
+ dann kann ich schreiben
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\sum_{i=1}^{r}a_{i}+\sum_{i=r+1}^{n+1}a_{i}=\sum_{i=1}^{r}a_{i}+\left(\sum_{i=r+1}^{n}a_{i}+\sum_{i=n+1}^{n+1}a_{i}\right)=\sum_{i=1}^{r}a_{i}+\left(\sum_{i=r+1}^{n}a_{i}+a_{n+1}\right)
+\]
+
+\end_inset
+
+Da die Addition gemäss des Satzes 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-natuerlicher-Zahlen-assoziativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ist assoziativ ist,
+ kann ich dann schreiben
+\begin_inset Formula 
+\[
+\sum_{i=1}^{r}a_{i}+\left(\sum_{i=r+1}^{n}a_{i}+a_{n+1}\right)=\left(\sum_{k=1}^{r}a_{i}+\sum_{i=r+1}^{n}a_{i}\right)+a_{n+1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Da jetzt der erste Summand wieder eine Summe aus 
+\begin_inset Formula $n$
+\end_inset
+
+ Summenden ist,
+ muss gemäss der Induktionsvoraussetzung gelten:
+\begin_inset Formula 
+\[
+\sum_{i=1}^{r}a_{i}+\sum_{i=r+1}^{n}a_{i}=\sum_{i=1}^{n}a_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Somit muss gelten
+\begin_inset Formula 
+\[
+A=\sum_{i=1}^{r}a_{i}+\sum_{i=r+1}^{n+1}a_{i}=\sum_{i=r+1}^{n}a_{i}=\sum_{i=1}^{n+1}a_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Ist 
+\begin_inset Formula $r+1=n+1$
+\end_inset
+
+,
+ dann kann ich schreiben 
+\begin_inset Formula 
+\[
+\sum_{i=1}^{r}a_{i}+\sum_{i=r+1}^{n+1}a_{i}=\sum_{i=1}^{n}a_{i}+a_{n+1}=\sum_{i=1}^{n+1}a_{i}
+\]
+
+\end_inset
+
+was wiederum die Behauptung ist.
+ Also kann ich in jedem Fall schliessen,
+ dass 
+\begin_inset Formula $A$
+\end_inset
+
+ unabhängig von der Klammerung immer den gleichen Wert besitzt.
+ Damit beende ich den Beweis an dieser Stelle.
+\end_layout
+
+\begin_layout Standard
+Der nächste Satz und Beweis zeigt mir meines Erachtens eindrücklich,
+ wie unglaublich schwierig Mathematik sein kann,
+ wenn sie ernst genommen wird.
+ Es geht um die Frage,
+ ob wirklich jede Summe von beliebig vielen natürlichen Zahlen immer gleich ist,
+ wenn die einzelnen Summanden in einer beliebigen Reihenfolge addiert werden.
+ Natürlich wäre es ein Leichtes,
+ einen Beweis aufzuschreiben,
+ welcher zwar 
+\begin_inset Quotes cld
+\end_inset
+
+logisch
+\begin_inset Quotes crd
+\end_inset
+
+ (also 
+\begin_inset Quotes cld
+\end_inset
+
+einsichtig
+\begin_inset Quotes crd
+\end_inset
+
+) aussieht.
+ Aber es nicht wirklich ist.
+ Welcher einfach das wiedergibt,
+ was hinsichtlich des erhoffen Resultats plausibel tönt.
+ Es jedoch nicht sein muss.
+\end_layout
+
+\begin_layout Standard
+Für den nächsten Beweis benötige ich einen neuen Begriff.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Permutation
+\end_layout
+
+\end_inset
+
+Es sei 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ eine natürliche Zahl.
+ Dann heisse die Abbildung 
+\begin_inset Formula 
+\[
+\sigma_{n}:\left\{ k\in\mathbb{N}\bigm|k\leq n\right\} \to\left\{ k\in\mathbb{N}\bigm|k\leq n\right\} 
+\]
+
+\end_inset
+
+genau dann eine Permutation,
+ falls sie bijektiv ist.
+\end_layout
+
+\begin_layout Standard
+Als Beispiel kannst Du Dir ein Kartenspiel vorstellen.
+ Der Einfach halber seien die Kartenwerte Zahlen von 1 bis 36.
+ Wenn Dir das zu wenig anschaulich ist,
+ kannst Du ein Kartenset nehmen und dann jeder Karte einen Zahlenwert zuweisen.
+ Dann mischest Du die Karten und schreibst die Werte der gemischten fortlaufend auf.
+ Dann erhältst Du eine Permutation.
+\end_layout
+
+\begin_layout Standard
+Also gilt der Satz:
  
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Addition-natuerlicher-Zahlen-ist-multi-kommutativ"
+
+\end_inset
+
+Es sei 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ und 
+\begin_inset Formula $\sigma_{n}$
+\end_inset
+
+ eine Permutation.
+ Weiter seien für 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ 
+\begin_inset Formula $n_{k}$
+\end_inset
+
+ natürliche Zahlen Dann gilt:
+\begin_inset Formula 
+\[
+\sum_{k=1}^{n}n_{\sigma\left(k\right)}=\sum_{k=1}^{n}n_{k}
+\]
+
+\end_inset
+
+In Worten:
+ Die Summe hängt nicht von der Reihenfolge der Summanden ab.
+\end_layout
+
+\begin_layout Proof
+Ist 
+\begin_inset Formula $n=1$
+\end_inset
+
+,
+ dann existiert nur gerade eine Permutation.
+ Diese ist 
+\begin_inset Formula 
+\begin{eqnarray*}
+\sigma:\left\{ 1\right\}  & \to & \left\{ 1\right\} \\
+1 & \mapsto & 1
+\end{eqnarray*}
+
+\end_inset
+
+Dann ist gemäss Voraussetzung
+\begin_inset Formula 
+\[
+\sum_{k=1}^{1}n_{\sigma\left(k\right)}=n_{\sigma\left(1\right)}=n_{1}=\sum_{k=1}^{1}n_{1}
+\]
+
+\end_inset
+
+Also ist die Induktionsvoraussetzung bewiesen.
+ 
+\end_layout
+
+\begin_layout Proof
+Nun gelte für alle 
+\begin_inset Formula $l\in\mathbb{N}$
+\end_inset
+
+ der Fall
+\begin_inset Formula 
+\[
+\sum_{k=1}^{l}n_{\sigma\left(k\right)}=\sum_{k=1}^{l}n_{k}
+\]
+
+\end_inset
+
+Jetzt sei 
+\begin_inset Formula 
+\[
+\sum_{k=1}^{n+1}n_{\sigma\left(k\right)}
+\]
+
+\end_inset
+
+Dann wird es aufwändig.
+ Der einfachste Fall ist derjenige,
+ in welchem gilt 
+\begin_inset Formula $n_{\sigma\left(n+1\right)}=n_{n+1}$
+\end_inset
+
+.
+ In diesem Fall kann ich schreiben
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \sum_{k=1}^{n+1}n_{\sigma\left(k\right)}\\
+ & = & \sum_{k=1}^{n}n_{\sigma\left(k\right)}+n_{\sigma\left(n+1\right)}\\
+ & = & \sum_{k=1}^{n}n_{\sigma\left(k\right)}+n_{n+1}
+\end{eqnarray*}
+
+\end_inset
+
+Dann gilt gemäss Induktionsvoraussetzung:
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{k=1}^{n}n_{\sigma\left(k\right)} & = & \sum_{k=1}^{n}n_{k}
+\end{eqnarray*}
+
+\end_inset
+
+Und somit auch
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \sum_{k=1}^{n}n_{\sigma\left(k\right)}+n_{n+1}\\
+ & = & \sum_{k=1}^{n}n_{1}+n_{n+1}\\
+ & = & \sum_{k=1}^{n+1}n_{k}
+\end{eqnarray*}
+
+\end_inset
+
+Also habe ich in diesem Fall insgesamt:
+\begin_inset Formula 
+\[
+\sigma_{n}:\left\{ k\in\mathbb{N}\bigm|k\leq n\right\} \to\left\{ k\in\mathbb{N}\bigm|k\leq n\right\} 
+\]
+
+\end_inset
+
+was ja gerade der Behauptung der Induktionsvererbung entspricht.
+ 
+\end_layout
+
+\begin_layout Proof
+Ist jedoch für ein anderes 
+\begin_inset Formula $\kappa\in\mathbb{N}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\sigma_{\kappa} & = & n+1
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+dann möchte ich eine andere Permutation 
+\begin_inset Formula 
+\[
+\mu_{n+1}:\left\{ k\in\mathbb{N}\bigm|k\leq n+1\right\} \to\left\{ k\in\mathbb{N}\bigm|k\leq n+1\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+derart suchen,
+ dass gilt
+\begin_inset Formula 
+\[
+\sum_{k=1}^{n+1}n_{\sigma\left(k\right)}=\sum_{k=1}^{n+1}n_{\mu\left(k\right)}
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+\mu\left(n+1\right)=n+1
+\]
+
+\end_inset
+
+Dann kann ich aufgrund der Induktionsvoraussetzung schreiben,
+ dass gilt:
+\begin_inset Formula 
+\[
+\sum_{k=1}^{n}n_{\mu\left(k\right)}=\sum_{k=1}^{n}n_{k}
+\]
+
+\end_inset
+
+und somit auch 
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \sum_{k=1}^{n+1}n_{\mu\left(k\right)}\\
+ & = & \sum_{k=1}^{n}n_{\mu\left(k\right)}+n_{\mu\left(n++\right)}\\
+ & = & \sum_{k=1}^{n}n_{k}+n_{n+1}\\
+ & = & \sum_{k=1}^{n+1}n_{k}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Aber noch bin ich nicht so weit,
+ dass ich davon ausgehen kann,
+ dass es eine Permutation 
+\begin_inset Formula $\mu$
+\end_inset
+
+ gibt,
+ welche das gewünschte leistet.
+ Da ich noch eine 
+\begin_inset Formula $0$
+\end_inset
+
+ habe,
+ mit welcher ich argumentieren kann,
+ muss ich drei Fälle untersuchen.
+\end_layout
+
+\begin_layout Proof
+Ist 
+\begin_inset Formula $\kappa=1$
+\end_inset
+
+,
+ dann kann ich schreiben:
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \sum_{k=1}^{n+1}n_{\sigma\left(k\right)}\\
+ & = & n_{\sigma\left(1\right)}+\sum_{k=2}^{n+1}n_{\sigma\left(k\right)}
+\end{eqnarray*}
+
+\end_inset
+
+Da die Addition gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-natuerlicher-Zahlen-ist-kommutativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kommutativ ist,
+ kann ich schreiben:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{eqnarray*}
+n_{\sigma\left(1\right)}+\sum_{k=2}^{n+1}n_{\sigma\left(k\right)} & = & \sum_{k=2}^{n+1}n_{\sigma\left(k\right)}+n_{\sigma\left(1\right)}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+dann kann ich,
+ da die Klammerungen gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Addition-multi-assoziativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ja keine Rolle spielen,
+ schreiben:
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \sum_{k=2}^{n+1}n_{\sigma\left(k\right)}\\
+ & = & \sum_{k=1}^{n}n_{\sigma\left(k+1\right)}
+\end{eqnarray*}
+
+\end_inset
+
+Denn ist 
+\begin_inset Formula $n=1$
+\end_inset
+
+,
+ dann ist
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \sum_{k=2}^{2}n_{\sigma\left(k\right)}\\
+ & = & n_{\sigma\left(2\right)}\\
+ & = & n_{\sigma\left(1+1\right)}\\
+ & = & \sum_{k=1}^{1}n_{\sigma\left(k+1\right)}
+\end{eqnarray*}
+
+\end_inset
+
+Und gilt die Behauptung für 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+,
+ gilt also
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \sum_{k=2}^{n+1}n_{\sigma\left(k\right)}\\
+ & = & \sum_{k=1}^{n}n_{\sigma\left(k+1\right)}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Dann kann ich schreiben
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \sum_{k=2}^{n+2}n_{\sigma\left(k\right)}\\
+ & = & \sum_{k=2}^{n+1}n_{\sigma\left(k\right)}+n_{\sigma\left(n+2\right)}\\
+ & = & \sum_{k=1}^{n}n_{\sigma\left(k+1\right)}+n_{\sigma\left(\left(n+1\right)+1\right)}\\
+ & = & \sum_{k=1}^{n}n_{\sigma\left(k+1\right)}+\sum_{k=n+1}^{n+1}n_{\sigma\left(k+1\right)}\\
+ & = & \sum_{k=1}^{n+1}n_{\sigma\left(k+1\right)}
+\end{eqnarray*}
+
+\end_inset
+
+Somit gilt gemäss vollständiger Induktion die Behauptung
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{k=2}^{n+1}n_{\sigma\left(k\right)} & = & \sum_{k=1}^{n}n_{\sigma\left(k+1\right)}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Dann ist:
+\begin_inset Formula 
+\begin{eqnarray*}
+\mu_{n}:\left\{ k\in\mathbb{N}\bigm|k\leq n\right\}  & \to & \left\{ k\in\mathbb{N}\bigm|k\leq n\right\} \\
+k & \mapsto & \sigma_{n}\left(k+1\right)
+\end{eqnarray*}
+
+\end_inset
+
+eine Permutation.
+ Denn für alle 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ mit 
 \end_layout
 
 \begin_layout Section
@@ -19217,11 +20309,33 @@ und
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Jedoch ist diese Definition ist hier nicht gedacht.
  Es sei hier definiert:
 \end_layout
 
 \begin_layout Definition
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Multiplikation natürlicher Zahlen
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "def:Multiplikation-natuerlicher-Zahlen"
+
+\end_inset
+
 Es sein 
 \begin_inset Formula $n,m\in\mathbb{N}$
 \end_inset
@@ -19230,7 +20344,7 @@ Es sein
  Dann sei
 \begin_inset Formula 
 \[
-1\cdot n\equiv n
+m\cdot1\equiv m
 \]
 
 \end_inset
@@ -19238,12 +20352,1559 @@ Es sein
 sowie
 \begin_inset Formula 
 \[
-\left(m+1\right)\cdot n\equiv m\cdot n+n
+m\cdot\left(n+1\right)\equiv m\cdot n+m
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Definition
+Der Punkt wird oft weggelassen.
+ Da ein Symbol in der Mathematik oft aus einem einzelnen Buchstaben besteht,
+ ist das oft kein Problem.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Definition-Multiplikation-ueber-erster-Faktor-ist-aequivalent"
+
+\end_inset
+
+Für alle 
+\begin_inset Formula $m,n\in\mathbb{N}$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\[
+\left(m+1\right)\cdot n=m\cdot n+n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Es sei 
+\begin_inset Formula $n=1$
+\end_inset
+
+.
+ Dann gilt für beliebige 
+\begin_inset Formula $m\in\mathbb{N}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\left(m+1\right)\cdot1=m+1=m\cdot1+1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Also zusammengefasst
+\begin_inset Formula 
+\[
+\left(m+1\right)\cdot1=m\cdot1+1
+\]
+
+\end_inset
+
+womit die Induktionsverankerung bewiesen wäre.
+\end_layout
+
+\begin_layout Proof
+Nun gelte die Behauptung für ein bestimmtes 
+\begin_inset Formula $m\in\mathbb{N}$
+\end_inset
+
+ und ein beliebiges 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(m+1\right)\cdot n=m\cdot n+m
+\]
+
+\end_inset
+
+Dann ist 
+\begin_inset Formula 
+\[
+\left(m+1\right)\cdot\left(n+1\right)=\left(m+1\right)\cdot n+m+1
+\]
+
+\end_inset
+
+Dann kann ich in diese Gleichung die Induktionsvoraussetzung einfügen und erhalte
+\begin_inset Formula 
+\[
+\left(m+1\right)\cdot n+m+1=m\cdot n+n+m+1
+\]
+
+\end_inset
+
+Da die Addition kommutativ und assoziativ ist,
+ kann ich dann folgern dass gilt:
+\begin_inset Formula 
+\[
+m\cdot n+n+m+1=m\cdot n+m+n+1
+\]
+
+\end_inset
+
+Gemäss Definition der Multiplikation von natürlichen Zahlen gilt
+\begin_inset Formula 
+\[
+m\cdot\left(n+1\right)=m\cdot n+n
+\]
+
+\end_inset
+
+Das bedeutet,
+ dass auch gilt 
+\begin_inset Formula 
+\[
+m\cdot n+n=m\cdot\left(n+1\right)
+\]
+
+\end_inset
+
+und somit auch 
+\begin_inset Formula 
+\[
+m\cdot n+m+n+1=m\cdot\left(n+1\right)+\left(n+1\right)
+\]
+
+\end_inset
+
+Die Klammer bei beim zweiten Ausdruck 
+\begin_inset Formula $n+1$
+\end_inset
+
+ gilt,
+ da die Addition assoziativ ist.
+ Zusammengesetzt kann ich also folgern,
+ dass gilt:
+\begin_inset Formula 
+\[
+\left(m+1\right)\cdot\left(n+1\right)=m\cdot\left(n+1\right)+\left(n+1\right)
+\]
+
+\end_inset
+
+Damit habe ich jedoch die Induktionsvererbung und somit die Gültigkeit des ganzen Lemmas bewiesen.
+ Aus diesem Grund beende ich an dieser Stelle die witere Beweisführung.
+\end_layout
+
+\begin_layout Standard
+Der letzte Satz ist für mich insofern eine Erleichterung,
+ als er zeigt,
+ dass es nicht erheblich ist,
+ ob ich die Mulitiplikation über den ersten oder den zweiten Faktor definiere.
+ Es kommt biedes mal das Gleiche heraus,
+ was doch irgendwie zuversichtlich stimmt
+\end_layout
+
+\begin_layout Section
+Zwischenbemerkung
+\end_layout
+
+\begin_layout Standard
+Ich bin auch nur ein Mensch.
+ Also werde ich an dieser Stelle erlauben,
+ nach und nach unseriöser zu werden.
+ Es mag sein,
+ dass ich zukünftig versuche,
+ die logischen Löcher in der Argumentation zu stopfen.
+ Aber zum jetztigen Zeitpunkt werde ich mir erlauben,
+ hinzuweisen,
+ wo eventuell noch logische Schwächen versteckt sein könnten.
+\end_layout
+
+\begin_layout Standard
+Es könnte möglich sein,
+ dass insgesamt vier Lemmata formuliert und bewiesen werden sollten:
+\end_layout
+
+\begin_layout Conjecture
+Es seien 
+\begin_inset Formula $n_{1},\,n_{2},\,n_{3}$
+\end_inset
+
+ sowie 
+\begin_inset Formula $n_{4}$
+\end_inset
+
+ natürliche Zahlen.
+ Zudem sei 
+\begin_inset Formula $n_{1}=n_{3}$
+\end_inset
+
+ und 
+\begin_inset Formula $n_{2}=n_{4}$
+\end_inset
+
+.
+ Dann gilt:
+ 
+\begin_inset Formula 
+\[
+n_{1}+n_{2}=n_{3}+n_{4}
+\]
+
+\end_inset
+
+sowie
+\begin_inset Formula 
+\[
+n_{1}\cdot n_{2}=n_{3}\cdot n_{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Es sei 
+\begin_inset Formula $A$
+\end_inset
+
+ ein beliebiges Symbol,
+ welches in sich selbst sowie in Bezug auf die anderen Symbole des Beweises Widerspruchsfrei sei.
+ Dann gilt gemäss Definition der natürlichen Zahlen sowie der Addition der natürlichen Zahlen:
+ 
+\begin_inset Formula 
+\[
+\left(n_{1}+n_{2}\right)\cdot A\equiv n_{1}\cdot A\,n_{2}\cdot A
+\]
+
+\end_inset
+
+Weiter muss mit 
+\begin_inset Formula $n_{1}=n_{3}$
+\end_inset
+
+ per Definition der natürlichen Zahlen gelten
+\begin_inset Formula 
+\[
+n_{1}\cdot A=n_{3}\cdot A
+\]
+
+\end_inset
+
+Und gemäss der Voruassetzung 
+\begin_inset Formula $n_{2}=n_{4}$
+\end_inset
+
+ muss ebenfalls gelten
+\begin_inset Formula 
+\[
+n_{2}\cdot A=n_{4}\cdot A
+\]
+
+\end_inset
+
+Nun wende ich den Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gleichheit-von-Teilsymbolen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ zweimal hintereinander an,
+ und zwar zuerst auf 
+\begin_inset Formula 
+\[
+n_{1}\cdot A=n_{3}\cdot A
+\]
+
+\end_inset
+
+Dann erhalte ich 
+\begin_inset Formula 
+\[
+n_{1}\cdot A\,n_{2}\cdot A=n_{3}\cdot A\,n_{2}\cdot A
+\]
+
+\end_inset
+
+Annschliessend wende ich die Gleichheit 
+\begin_inset Formula 
+\[
+n_{2}\cdot A=n_{4}\cdot A
+\]
+
+\end_inset
+
+auf 
+\begin_inset Formula $n_{3}\cdot A$
+\end_inset
+
+ an und erhalte 
+\begin_inset Formula 
+\[
+n_{3}\cdot A\,n_{2}\cdot A=n_{3}\cdot A\,n_{4}\cdot A
+\]
+
+\end_inset
+
+Und da die Symbolgleichheit als Äquivalenzrelation transitiv ist,
+ erhalte ich aus den Gleichungen
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+n_{1}\cdot A\,n_{2}\cdot A=n_{3}\cdot A\,n_{2}\cdot A
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+n_{3}\cdot A\,n_{2}\cdot A=n_{3}\cdot A\,n_{4}\cdot A
+\]
+
+\end_inset
+
+Die Gleichung 
+\begin_inset Formula 
+\begin{eqnarray*}
+n_{1}\cdot A\,n_{2}\cdot A & = & n_{3}\cdot A\,n_{4}\cdot A
+\end{eqnarray*}
+
+\end_inset
+
+Das muss jedoch gemäss der Definition der Additon der natürlichen Zahlen bedeuten,
+ dass gilt:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\left(n_{1}+n_{2}\right)\cdot A=n_{1}\cdot A\,n_{2}\cdot A
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+n_{3}\cdot A\,n_{4}\cdot A & = & \left(n_{3}+n_{4}\right)\cdot A
+\end{eqnarray*}
+
+\end_inset
+
+Wiederum gemäss der Transitivität der Symbogleichheit kann ich daraus schliessen,
+ dass gilt:
+\begin_inset Formula 
+\[
+n_{1}+n_{2}=n_{3}+n_{4}
+\]
+
+\end_inset
+
+ Damit habe ich den ersten Teil der Behauptung bewiesen.
+ Nun möchte ich den zweiten Teil der Behauptung beweisen:
+\end_layout
+
+\begin_layout Proof
+Es seien 
+\begin_inset Formula $n_{1}\in N$
+\end_inset
+
+ sowie 
+\begin_inset Formula $n_{2}=1$
+\end_inset
+
+.
+ Dann muss gemäss der Definition der Multiplikation von natürlichen Zahlen gelten:
+ 
+\begin_inset Formula 
+\[
+n_{1}\cdot1=n_{1}
+\]
+
+\end_inset
+
+Und da 
+\begin_inset Formula $n_{1}=n_{3}$
+\end_inset
+
+ ist und die Gleichheit von natürlichen Zahlen eine Äquivalenzrelation ist,
+ kann ich daraus folgern,
+ dass gilt ebenfalls 
+\begin_inset Formula 
+\[
+n_{1}\cdot1=n_{3}
+\]
+
+\end_inset
+
+Und es muss gemäss der Definition der Multiplikation ebenfalls gelten:
+ 
+\begin_inset Formula 
+\[
+n_{3}\cdot1=n_{3}
+\]
+
+\end_inset
+
+Und weill Gleichheit von natürlichen Zahlen als Aquivalenzrelation ebenfalls symmtetrisch ist,
+ muss auch gelten:
+\begin_inset Formula 
+\[
+n_{3}=n_{3}\cdot1
+\]
+
+\end_inset
+
+ Und da die Gleicheit von natürlichen Zahlen als Äquivalenzrelation transitiv ist,
+ kann ich schlussenldich auch schreiben:
+ 
+\begin_inset Formula 
+\[
+n_{1}\cdot1=n_{3}\cdot1
+\]
+
+\end_inset
+
+Also gilt die Gleichheit mindestenes dann,
+ wenn 
+\begin_inset Formula $n_{2}=n_{4}=1$
+\end_inset
+
+ ist.
+ Nun gelte die Gleichheit auch für ein bestimmtes 
+\begin_inset Formula $n_{2}\in\mathbb{N}$
+\end_inset
+
+.
+ Es gelte als 
+\begin_inset Formula 
+\[
+n_{1}\cdot n_{2}=n_{3}\cdot n_{4}
+\]
+
+\end_inset
+
+Dann schreibe ich 
+\begin_inset Formula $n_{1}\cdot\left(n_{2}+1\right)$
+\end_inset
+
+ Dieser Ausdruck ist per Definition 
+\begin_inset Formula 
+\[
+n_{1}\cdot\left(n_{2}+1\right)=n_{1}\cdot n_{2}+n_{1}
+\]
+
+\end_inset
+
+Nun muss gemäss der Induktionsvoraussetzujng gelten:
+\begin_inset Formula 
+\[
+n_{1}\cdot n_{2}=n_{3}\cdot n_{4}
+\]
+
+\end_inset
+
+Weiter muss gemäss Voraussetzung gelten 
+\begin_inset Formula $n_{1}=n_{3}$
+\end_inset
+
+.
+ Also kann ich gemäss des ersten Satzes folgern,
+ dass gelten muss:
+\begin_inset Formula 
+\[
+n_{1}\cdot n_{2}+n_{1}=n_{3}\cdot n_{4}+n_{3}
+\]
+
+\end_inset
+
+Gemäss Definiton der Multiplikation muss gelten:
+ 
+\begin_inset Formula 
+\[
+n_{3}\cdot\left(n_{4}+1\right)=n_{3}\cdot n_{4}+n_{3}
+\]
+
+\end_inset
+
+Und da die Symbolgleichheit als Äquivalenzrelation ebenfalls symmetrisch ist,
+ kann ich folgern,
+ dass gilt:
+\begin_inset Formula 
+\[
+n_{3}\cdot n_{4}+n_{3}=n_{3}\cdot\left(n_{4}+1\right)
+\]
+
+\end_inset
+
+Und weil die Symbolgleihheit als Äquivalenzrelation ebenfalls transitiv ist,
+ kann ich dadurch folgern,
+ dass ebenfalls gilt:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+n_{1}\cdot\left(n_{2}+1\right)=n_{3}\cdot\left(n_{4}+1\right)
+\]
+
+\end_inset
+
+Somit kan nich gemäss dem Satz der vollständigen Induktion folgern,
+ dass für alle 
+\begin_inset Formula $n_{1},n_{2},n_{3},n_{4}\in\mathbb{N}$
+\end_inset
+
+ gilt,
+ dass mit 
+\begin_inset Formula 
+\[
+n_{1}=n_{3}\wedge n_{2}=n_{4}
+\]
+
+\end_inset
+
+ folgt:
+\begin_inset Formula 
+\[
+n_{1}\cdot n_{2}=n_{3}\cdot n_{4}
+\]
+
+\end_inset
+
+Somit meine ich auch den zweiten Satz bewiesen zu haben und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Section
+Distributiv- und Assoziativgesetzte der natürlich Mulitplipkation
+\end_layout
+
+\begin_layout Standard
+Ich habe gedacht,
+ ich könne zuerst die Assoziativität der Multiplikaton zeigen.
+ Aber offenbar muss ich zuerst die Distritbutivität der Mulitiplikation zeigen.
+\end_layout
+
+\begin_layout Proposition
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Rechtsdistributivgesetz der Multiplikation und Addition er natürlichen Zahlen
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Rechtsdistributivgesetz-natuerliche-Zahlen"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $m,n$
+\end_inset
+
+ und 
+\begin_inset Formula $p\in\mathbb{N}$
+\end_inset
+
+.
+ Dann gilt
+\begin_inset Formula 
+\[
+m\cdot\left(n+p\right)=m\cdot n+m\cdot p
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Ist 
+\begin_inset Formula $p=1$
+\end_inset
+
+ dann gilt,
+ geäss der Definition der Multiplikaton:
+\begin_inset Formula 
+\[
+m\cdot\left(n+1\right)=m\cdot n+m
+\]
+
+\end_inset
+
+Jeoch ist ist gemäss Definiton 
+\begin_inset Formula $m\cdot1=m$
+\end_inset
+
+,
+ und die Symbolgleicheit eine Äquivalenzrelation ist,
+ gilt ebenfalls
+\begin_inset Formula 
+\[
+m=m\cdot1
+\]
+
+\end_inset
+
+Und wiederum,
+ da die Symbolgleichheit gilt,
+ ist ebenfalls;
+\begin_inset Formula 
+\[
+m\cdot\left(n+1\right)=m\cdot n+m\cdot1
+\]
+
+\end_inset
+
+Damit ist jedoch das Distributivgesetz für 
+\begin_inset Formula $1$
+\end_inset
+
+ bewiesen.
+\end_layout
+
+\begin_layout Proof
+Nun gelte das Distributivgesetzt für 
+\begin_inset Formula $p\in\mathbb{N}$
+\end_inset
+
+.
+ Es gilt also 
+\begin_inset Formula 
+\[
+m\cdot\left(n+p\right)=m\cdot n+m\cdot p
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Nun möchte ich den Ausdruck 
+\begin_inset Formula 
+\[
+m\cdot\left(n+\left(p+1\right)\right)
+\]
+
+\end_inset
+
+umformen.
+ Gemäss des Satzes 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-natuerlicher-Zahlen-assoziativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Assoziazivität der Addition muss gelten:
+\begin_inset Formula 
+\[
+n+\left(p+1\right)=\left(n+p\right)+1
+\]
+
+\end_inset
+
+Gemäss der Symbolgleicheheit von Zeichenketten muss dann aber auch gelten:
+\begin_inset Formula 
+\[
+m\cdot\left(n+\left(p+1\right)\right)=m\cdot\left(\left(n+p\right)+1\right)
+\]
+
+\end_inset
+
+Dann kann ich auf den Ausdruck 
+\begin_inset Formula $m\cdot\left(\left(n+p\right)+1\right)$
+\end_inset
+
+ das Distributivgesetzt anwenden.
+ Dann kann ich gemäss der ersten Zeile der Derfinition der Multiplikation schreiben:
+\begin_inset Formula 
+\[
+m\cdot\left(\left(n+p\right)+1\right)=m\cdot\left(n+p\right)+m
+\]
+
+\end_inset
+
+Nun kann ich die Induktionsvoraussetzung verwenden und erhalte:
+\begin_inset Formula 
+\[
+m\cdot\left(n+p\right)=m\cdot n+m\cdot p
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Also gilt gemäss der Symbolgleichheit von Symbolen
+\begin_inset Formula 
+\[
+m\cdot\left(n+p\right)+m=\left(m\cdot n+m\cdot p\right)+m
+\]
+
+\end_inset
+
+Nun ist die Additon gemäss des Satzes 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-natuerlicher-Zahlen-assoziativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ assoziativ,
+ und darum kann ich schreiben:
+ 
+\begin_inset Formula 
+\[
+\left(m\cdot n+m\cdot p\right)+m=m\cdot n+\left(m\cdot p+m\right)
+\]
+
+\end_inset
+
+Nun kann ich schliessen,
+ dass gelten muss (zweite Zeile der Definition der Assoziativität der Addition,
+ sozusagen rückwärts angewendet:
+\begin_inset Formula 
+\[
+m\cdot p+m=m\cdot\left(p+1\right)
+\]
+
+\end_inset
+
+Also muss gemäss der Symbolgleichheit auch gelten:
+\begin_inset Formula 
+\[
+m\cdot n+\left(m\cdot p+m\right)=m\cdot n+m\cdot\left(p+1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Nun kann ich,
+ die die Symbolgleichheit als Äquivalenzrelation auch transitiv ist,
+ schliessen,
+ das aus dem Geschriebenen gilt
+\begin_inset Formula 
+\begin{eqnarray*}
+m\cdot\left(n+\left(p+1\right)\right) & = & m\cdot\left(\left(n+p\right)+1\right)\,\wedge\\
+m\cdot\left(\left(n+p\right)+1\right) & = & m\cdot\left(n+p\right)+m\,\wedge\\
+m\cdot\left(n+p\right)+m & = & \left(m\cdot n+m\cdot p\right)+m\,\wedge\\
+\left(m\cdot n+m\cdot p\right)+m & = & m\cdot n+\left(m\cdot p+m\right)\,\wedge\\
+m\cdot n+\left(m\cdot p+m\right) & = & m\cdot n+m\cdot\left(p+1\right)
+\end{eqnarray*}
+
+\end_inset
+
+Das bedeutet jedoch:
+ Verwende ich viermal hintereinander das Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gleichheit-natuerliche-Zahlen-ist-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Äquivalenzrelation der Gleichheit von Symbolen,
+ dann erhalte ich die Aussage 
+\begin_inset Formula 
+\begin{eqnarray*}
+m\cdot\left(n+\left(p+1\right)\right) & = & m\cdot n+m\cdot\left(p+1\right)
+\end{eqnarray*}
+
+\end_inset
+
+und somit genau die Aussagen,
+ dessen Beweis für die Richtigkeit derselben erbringen wollte.
+ 
+\end_layout
+
+\begin_layout Standard
+Ich versuche,
+ zu zeigen,
+ dass die Multiplikation und Addition linksdistributiv ist:
+\end_layout
+
+\begin_layout Proof
+Nun möchte ich noch den Beweis für die Richtigkeit der zweiten Behauptung erbringen:
+ Zuerst möchte ich zeigen,
+ dass für alle 
+\begin_inset Formula $m,p\in\mathbb{N}$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\begin{eqnarray*}
+\left(m+1\right)\cdot p & = & m\cdot p+p
+\end{eqnarray*}
+
+\end_inset
+
+Das gilt sicher wenn 
+\begin_inset Formula $p=1$
+\end_inset
+
+ ist.
+ Denn in diesem Fall gilt gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Multiplikation-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Multiplikation von natürlichen Zahlen
+\begin_inset Formula 
+\begin{eqnarray*}
+\left(m+1\right)\cdot1 & = & m+1
+\end{eqnarray*}
+
+\end_inset
+
+Und da gemäss Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Multiplikation-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Multiplikation von natürlichen Zahlen ebenfalls gilt:
+ 
+\begin_inset Formula $m=m\cdot1$
+\end_inset
+
+ kann ich aufgrund des Lemmas 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Addition-gleicher-natuerlicher-Zahlen-mit-natuerlicher-Zahl"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ sagen,
+ dass gilt:
+\begin_inset Formula 
+\[
+\left(m+1\right)\cdot1=m\cdot1+1\cdot1
+\]
+
+\end_inset
+
+Das ist jedoch die Behauptung im Fall,
+ dass 
+\begin_inset Formula $p=1$
+\end_inset
+
+ ist.
+ Nun gelte die Behautpung für eine bestimmte natürliche Zahl 
+\begin_inset Formula $p\in\mathbb{N}.$
+\end_inset
+
+Es gelte also
+\begin_inset Formula 
+\[
+\left(m+1\right)\cdot p=m\cdot p+p
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Dann ist gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Multiplikation-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Multiplikation von natürlichen Zahlen:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\left(m+1\right)\cdot\left(p+1\right)=\left(m+1\right)\cdot p+\left(m+1\right)
+\]
+
+\end_inset
+
+Gemäss der Voraussetzung der Induktionsvererbung gilt dann:
+\begin_inset Formula 
+\[
+\left(m+1\right)\cdot\left(p+1\right)=m\cdot p+p+m+1
+\]
+
+\end_inset
+
+Die Addition ist jedoch kommutativ und assiozativ.
+ Also kann ich schreiben:
+\begin_inset Formula 
+\[
+m\cdot p+p+m+1=m\cdot p+m+p+1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Multiplikation-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Multiplikation von natürlichen Zahlen kann ich schreiben,
+ dass gilt:
+\begin_inset Formula 
+\[
+m\cdot\left(p+1\right)=m\cdot p+m
+\]
+
+\end_inset
+
+Also muss auch (da die Gleichheit von natürlichen Zahlen eine Äquivalenzrelation und darum auch symmetrisch ist) gelten:
+\begin_inset Formula 
+\[
+m\cdot p+m=m\cdot\left(p+1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Also kann ich insgesamt schreiben,
+ dass gelten muss 
+\begin_inset Formula 
+\[
+\left(m+1\right)\cdot\left(p+1\right)=m\cdot\left(p+1\right)+\left(p+1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Gemäss Induktionsvoraussetzung kann ich für be
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\left(m+1\right)\cdot p=m\cdot p+p
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Multiplikation-natuerlicher-Zahlen-ist-assoziativ"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $m,n,p\in\mathbb{N}$
+\end_inset
+
+.
+ Dann gilt 
+\begin_inset Formula 
+\[
+\left(m\cdot n\right)\cdot p=m\cdot\left(n\cdot p\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+In Worten:
+ Die Multiplikaton ist assoziativ
+\end_layout
+
+\begin_layout Proof
+Es sie 
+\begin_inset Formula $p=1$
+\end_inset
+
+.
+ Dann ist gemäss des 1.
+ Teils der Defnition der Mulitiplikation von natürlichen Zahlen
+\begin_inset Formula 
+\[
+\left(m\cdot n\right)\cdot1=m\cdot n
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+n\cdot1=n
+\]
+
+\end_inset
+
+Somit muss auch gelten 
+\begin_inset Formula 
+\[
+\left(m\cdot n\right)\cdot1=m\cdot n
+\]
+
+\end_inset
+
+und mit 
+\begin_inset Formula 
+\[
+n\cdot1=n
+\]
+
+\end_inset
+
+muss also,
+ da die Gleichheit von natürlichen Zahlen gemäss Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gleichheit-natuerliche-Zahlen-ist-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ eine Äquivalenzrelation ist auch gelten,
+ ass die Äquivalenzrelation symmetrisch ist und darum auch gilt:
+\begin_inset Formula 
+\[
+n=n\cdot1
+\]
+
+\end_inset
+
+und somit also auch 
+\begin_inset Formula 
+\[
+m\cdot n=m\cdot\left(n\cdot1\right)
+\]
+
+\end_inset
+
+Wiederum gemäss des Satzes 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gleichheit-natuerliche-Zahlen-ist-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Äquivalenzrelation der natürlichen Zahlen kann ich dann folgern,
+ dass gelten muss:
+\begin_inset Formula 
+\[
+\left(m\cdot n\right)\cdot1=m\cdot\left(n\cdot1\right)
+\]
+
+\end_inset
+
+Damit die Verankerung des Induktionsbeweises geglückt.
+ Nun gelte für 
+\begin_inset Formula $m,n$
+\end_inset
+
+ und 
+\begin_inset Formula $p\in\mathbb{N}$
+\end_inset
+
+ die Behauptung
+\begin_inset Formula 
+\[
+\left(m\cdot n\right)\cdot p=m\cdot\left(n\cdot p\right)
+\]
+
+\end_inset
+
+Dann ist 
+\begin_inset Formula $\left(m\cdot n\right)\cdot\left(p+1\right)$
+\end_inset
+
+ definiert als 
+\begin_inset Formula 
+\[
+\left(m\cdot n\right)\cdot\left(p+1\right)=m\cdot n\cdot p+\left(m\cdot n\right)\cdot1
+\]
+
+\end_inset
+
+Gemäss des ersten Teils der Definition der Multiplikation von natürlichen Zahlen ist
+\begin_inset Formula 
+\[
+\left(m\cdot n\right)\cdot1=m\cdot n
+\]
+
+\end_inset
+
+Also habe ich bis hierher insgesamt 
+\begin_inset Formula 
+\begin{equation}
+\left(m\cdot n\right)\cdot\left(p+1\right)=m\cdot n\cdot p+m\cdot n\label{eq:Natuerliche-Zalhlen-Beweis-Gl_1}
+\end{equation}
+
+\end_inset
+
+ Nun rechne ich 
+\begin_inset Quotes cld
+\end_inset
+
+von der anderen Seite
+\begin_inset Quotes crd
+\end_inset
+
+:
+ Es gilt gemäss des Zweiten Teils der Definition der Multiplikation von natürlichen Zahlen:
+\begin_inset Formula 
+\[
+n\cdot\left(p+1\right)=n\cdot p+n\cdot1
+\]
+
+\end_inset
+
+Wiederum gilt gemäss des ersten Teils der Definition der natürlichen Zahlen:
+\begin_inset Formula 
+\[
+n\cdot1=n
+\]
+
+\end_inset
+
+ und somit auch 
+\begin_inset Formula 
+\[
+n\cdot\left(p+1\right)=n\cdot p+n
+\]
+
+\end_inset
+
+Somit muss auch gelten 
+\begin_inset Formula 
+\[
+m\cdot\left(n\cdot\left(p+1\right)\right)=m\cdot\left(n\cdot p+n\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Nun wende ich das Distributivgesetz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Distributivgesetz-Konjunktion-Disjunktion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Multiplikation und der Addition der natürlichen Zahlen an und erhalte die Gleichung 
+\begin_inset Formula 
+\[
+m\cdot\left(n\cdot\left(p+1\right)\right)=m\cdot n\cdot p+m\cdot n
+\]
+
+\end_inset
+
+Nun vergleiche ich mit der Gleichung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Natuerliche-Zalhlen-Beweis-Gl_1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ oben kann,
+ da die Gleichheit der natürlichen Zahlen eine Äquivalenzrelation ist (vergleiche mit dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gleichheit-natuerliche-Zahlen-ist-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) schliessen,
+ dass gilt:
+\begin_inset Formula 
+\[
+\left(m\cdot n\right)\cdot\left(p+1\right)=m\cdot\left(n\cdot\left(p+1\right)\right)
+\]
+
+\end_inset
+
+Somit habe ich auch die Induktionsvererbung und somit den Nachweis für die Richtigkeit der ganzen Behauptung erbracht.
+ Also erlaube mir,
+ an die weitere Beweisführung der Behauptung zu beenden.
+\end_layout
+
+\begin_layout Standard
+Ich möchte noch zeigen:
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Multiplikation-natuerliche-Zahlen-ist-für-1-kommutativ"
+
+\end_inset
+
+Es sei 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ Dann gilt 
+\begin_inset Formula $1\cdot n=n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Es sei 
+\begin_inset Formula $n=1$
+\end_inset
+
+.
+ Dann gilt gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Multiplikation-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Multiplikation von natürlichen Zahlen:
+\begin_inset Formula 
+\[
+1\cdot n=1\cdot1=1=n=n\cdot1
+\]
+
+\end_inset
+
+Also auch,
+ da die Gleichheit von natürlichen Zahlen als Äquivalenzrelation transitiv ist:
+\begin_inset Formula 
+\[
+1\cdot n=n\cdot1
+\]
+
+\end_inset
+
+Also gilt die Induktionsverankerung.
+ Zur Induktionsvererbung:
+ Es gelte nun für 
+\begin_inset Formula 
+\[
+1\cdot n=n\cdot1
+\]
+
+\end_inset
+
+Dann ist gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Multiplikation-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Multiplikation von natürlichen Zahlen
+\begin_inset Formula 
+\[
+1\cdot\left(n+1\right)=1\cdot n+1\cdot1
+\]
+
+\end_inset
+
+Gemäss der Annahme der Induktionsvererbung muss dann gilt dann auch:
+\begin_inset Formula 
+\[
+1\cdot n+1\cdot1=n\cdot1+1\cdot1
+\]
+
+\end_inset
+
+Und da die Multiplikation gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Distributivgesetz-Konjunktion-Disjunktion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Distributivität von Multiplikation und Addition muss gelten:
+\begin_inset Formula 
+\[
+n\cdot1+1\cdot1=\left(n+1\right)\cdot1
+\]
+
+\end_inset
+
+Da die Gleichheit von natürlichen Zahlen als Äquivalenzrelation transitiv ist,
+ kann ich also auch schreiben:
+\begin_inset Formula 
+\[
+1\cdot\left(n+1\right)=\left(n+1\right)\cdot1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Also habe ich auch diesen Fall bewiesen.
+ Aus diesem Grund betrachte ich den Beweis für die Richtigkeit des Lemmas als erbracht und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Proposition
+Die Multiplikation von natürlichen Zahlen ist kommutativ.
+ Es ist also mit 
+\begin_inset Formula $m,n\in\mathbb{N}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+m\cdot n=n\cdot m
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Der Fall 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Multiplikation-natuerliche-Zahlen-ist-für-1-kommutativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ 
+\begin_inset Formula $m=1$
+\end_inset
+
+ habe ich bereits erbracht.
+ Es gilt also:
+\begin_inset Formula 
+\[
+1\cdot m=m\cdot1
+\]
+
+\end_inset
+
+Und da die Gleichheit von natürlichen Zahlen als Äquivalenzrelation symmetrisch ist,
+ kann ich darum auch schreiben:
+\begin_inset Formula 
+\[
+m\cdot1=1\cdot m
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Damit ist der Beweis für die Richtigkeit der Verankerung des Induktionsbeweises erbracht.
+ Nun gelte nach Voraussetzung für ein natürliches 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+m\cdot n=n\cdot m
+\]
+
+\end_inset
+
+Gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Multiplikation-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Multiplikation von natürlichen Zahlen kann ich dann schreiben
+\begin_inset Formula 
+\[
+m\cdot\left(n+1\right)=m\cdot n+m
+\]
+
+\end_inset
+
+Da nun die Induktionsvoraussetzung gilt,
+ kann ich das schreiben als 
+\begin_inset Formula 
+\[
+m\cdot n+m=n\cdot m+m
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Ich habe jetzt im Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Definition-Multiplikation-ueber-erster-Faktor-ist-aequivalent"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ zu zeigen versucht,
+ dass für den obigen Ausdruck gilt:
+\begin_inset Formula 
+\[
+n\cdot m+m=\left(n+1\right)\cdot m
+\]
+
+\end_inset
+
+Da die Gleichheit von natürlichen Zahlen als Äquivalenzrelation auch transitiv ist,
+ kann ich daher schliessen,
+ dass gilt:
+\begin_inset Formula 
+\[
+m\cdot\left(n+1\right)=\left(n+1\right)\cdot m
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Damit habe ich jedoch die Induktionsvererbung und somit die ganze Behauptung bewiesen.
+ Aus diesem Grund erlaube ich mir,
+ die weitere Beweisführung an dieser Stelle zu beenden.
+\end_layout
+
+\begin_layout Standard
+Nun könnte ich versuchen,
+ die Subtraktion und die Division zu definieren.
+ Es wäre irgendwie beides möglich.
+ Aber das wäre übers Knie gebrochen.
+ Daher erspare ich mir an dieser Stelle die weiteren entsprechenden Überlegungen.
+ Jedoch werde ich sicher versuchen,
+ gelegentlich darauf zurückzukommen.
 \end_layout
 
 \begin_layout Section
@@ -19596,6 +22257,20 @@ alle Handschläge wurden doppelt gezählt
  nach einem Beweis nicht alle weiteren Anstrengungen ruhen zu lassen - auch wenn die Funktion von Beweisen oftmals ist,
  ein Gefühl der Plausibilität zu erzeugen.
  Aber oft sind die Beweise recht vage.
+\end_layout
+
+\begin_layout Section
+Was ist die Potenzfunktion
+\end_layout
+
+\begin_layout Standard
+Auch wenn es schwierig zu sein scheint macht es an dieser Durchaus sind,
+ sich mit der Potenzfunktion zu beschäfigten.
+ Ich möchte mit der Defnition beginnen:
+\end_layout
+
+\begin_layout Definition
+Es sei
 \end_layout
 
 \end_body
