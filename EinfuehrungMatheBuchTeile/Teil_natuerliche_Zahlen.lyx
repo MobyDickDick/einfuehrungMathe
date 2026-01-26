@@ -19866,7 +19866,7 @@ und somit auch
  &  & \sum_{k=1}^{n+1}n_{\mu\left(k\right)}\\
  & = & \sum_{k=1}^{n}n_{\mu\left(k\right)}+n_{\mu\left(n++\right)}\\
  & = & \sum_{k=1}^{n}n_{k}+n_{n+1}\\
- & = & \sum_{k=1}^{n+1}n_{k}
+ & = & \sum_{k=1}^{n+1}n_{k}1
 \end{eqnarray*}
 
 \end_inset
@@ -19883,27 +19883,49 @@ Aber noch bin ich nicht so weit,
 
  gibt,
  welche das gewünschte leistet.
- Da ich noch eine 
-\begin_inset Formula $0$
-\end_inset
-
- habe,
- mit welcher ich argumentieren kann,
- muss ich drei Fälle untersuchen.
-\end_layout
-
-\begin_layout Proof
-Ist 
-\begin_inset Formula $\kappa=1$
+ eine Permutation.
+ Ist 
+\begin_inset Formula $n=1$
 \end_inset
 
 ,
- dann kann ich schreiben:
+ also 
+\begin_inset Formula $n+1=2$
+\end_inset
+
+,
+ dann gibt es zwei Fälle:
+ 
+\begin_inset Formula $\sigma\left(2\right)=2$
+\end_inset
+
+,
+ dann muss 
+\begin_inset Formula $\sigma\left(1\right)=1$
+\end_inset
+
+sein.
+ Denn ansonsten wäre 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ nicht injektiv uns somit auch nicht bijektiv.
+ Dann hätte ich die gewünschte Permutation bereits gefunden.
+ Ist jedoch 
+\begin_inset Formula $\sigma\left(2\right)=1$
+\end_inset
+
+,
+ dann muss 
+\begin_inset Formula $\sigma\left(1\right)=2$
+\end_inset
+
+ sein.
+ Also lautet in diesem Fall die Summe
 \begin_inset Formula 
-\begin{eqnarray*}
- &  & \sum_{k=1}^{n+1}n_{\sigma\left(k\right)}\\
- & = & n_{\sigma\left(1\right)}+\sum_{k=2}^{n+1}n_{\sigma\left(k\right)}
-\end{eqnarray*}
+\[
+n_{\sigma\left(1\right)}+n_{\sigma\left(2\right)}=n_{2}+n_{1}
+\]
 
 \end_inset
 
@@ -19919,119 +19941,73 @@ nolink "false"
 \end_inset
 
  kommutativ ist,
- kann ich schreiben:
-\end_layout
+ muss dann auch gelten:
+\begin_inset Formula 
+\[
+n_{2}+n_{1}=n_{1}+n_{2}
+\]
 
-\begin_layout Proof
+\end_inset
+
+Das ist jetzt gerade die Behauptung vom ganzen Satz.
+ Doch an dieser Stelle möchte ich festhalten,
+ dass die Permutation:
+ 
 \begin_inset Formula 
 \begin{eqnarray*}
-n_{\sigma\left(1\right)}+\sum_{k=2}^{n+1}n_{\sigma\left(k\right)} & = & \sum_{k=2}^{n+1}n_{\sigma\left(k\right)}+n_{\sigma\left(1\right)}
+\mu:\left\{ 1,2\right\}  & \to & \left\{ 1,2\right\} \\
+1 & \mapsto & \sigma\left(2\right)=1\\
+2 & \mapsto & \sigma\left(1\right)=2
 \end{eqnarray*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
-dann kann ich,
- da die Klammerungen gemäss dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Addition-multi-assoziativ"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- ja keine Rolle spielen,
- schreiben:
+die gesuchte Permutation derart ist,
+ dass gilt:
 \begin_inset Formula 
 \begin{eqnarray*}
- &  & \sum_{k=2}^{n+1}n_{\sigma\left(k\right)}\\
- & = & \sum_{k=1}^{n}n_{\sigma\left(k+1\right)}
+ &  & \sum_{k=1}^{n}n_{\mu\left(k\right)}\\
+ & = & n_{\mu\left(1\right)}+n_{\mu\left(2\right)}\\
+ & = & n_{\sigma\left(2\right)}+n_{\sigma\left(1\right)}\\
+ & = & n_{1}+n_{2}\\
+ & = & n_{2}+n_{1}\\
+ & = & n_{\sigma\left(1\right)}+n_{\sigma\left(2\right)}\\
+ & = & \sum_{k=1}^{2}n_{\sigma\left(k\right)}
 \end{eqnarray*}
 
 \end_inset
 
-Denn ist 
-\begin_inset Formula $n=1$
+oder eben
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{k=1}^{2} & n_{\mu\left(k\right)} & =\sum_{k=1}^{2}n_{\sigma\left(n\right)}
+\end{eqnarray*}
+
+\end_inset
+
+und 
+\begin_inset Formula $\mu\left(2\right)=2$
+\end_inset
+
+.
+ Ist 
+\begin_inset Formula $n=3$
 \end_inset
 
 ,
- dann ist
-\begin_inset Formula 
-\begin{eqnarray*}
- &  & \sum_{k=2}^{2}n_{\sigma\left(k\right)}\\
- & = & n_{\sigma\left(2\right)}\\
- & = & n_{\sigma\left(1+1\right)}\\
- & = & \sum_{k=1}^{1}n_{\sigma\left(k+1\right)}
-\end{eqnarray*}
-
-\end_inset
-
-Und gilt die Behauptung für 
-\begin_inset Formula $n\in\mathbb{N}$
+ dann gibt es drei Fälle:
+ Ist 
+\begin_inset Formula $\sigma\left(3\right)=3$
 \end_inset
 
 ,
- gilt also
-\begin_inset Formula 
-\begin{eqnarray*}
- &  & \sum_{k=2}^{n+1}n_{\sigma\left(k\right)}\\
- & = & \sum_{k=1}^{n}n_{\sigma\left(k+1\right)}
-\end{eqnarray*}
-
+ dann habe ich bereits die gewünschte Permutation.
+ Ist 
+\begin_inset Formula $\sigma\left(2\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
-Dann kann ich schreiben
-\end_layout
-
-\begin_layout Proof
-\begin_inset Formula 
-\begin{eqnarray*}
- &  & \sum_{k=2}^{n+2}n_{\sigma\left(k\right)}\\
- & = & \sum_{k=2}^{n+1}n_{\sigma\left(k\right)}+n_{\sigma\left(n+2\right)}\\
- & = & \sum_{k=1}^{n}n_{\sigma\left(k+1\right)}+n_{\sigma\left(\left(n+1\right)+1\right)}\\
- & = & \sum_{k=1}^{n}n_{\sigma\left(k+1\right)}+\sum_{k=n+1}^{n+1}n_{\sigma\left(k+1\right)}\\
- & = & \sum_{k=1}^{n+1}n_{\sigma\left(k+1\right)}
-\end{eqnarray*}
-
-\end_inset
-
-Somit gilt gemäss vollständiger Induktion die Behauptung
-\begin_inset Formula 
-\begin{eqnarray*}
-\sum_{k=2}^{n+1}n_{\sigma\left(k\right)} & = & \sum_{k=1}^{n}n_{\sigma\left(k+1\right)}
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Dann ist:
-\begin_inset Formula 
-\begin{eqnarray*}
-\mu_{n}:\left\{ k\in\mathbb{N}\bigm|k\leq n\right\}  & \to & \left\{ k\in\mathbb{N}\bigm|k\leq n\right\} \\
-k & \mapsto & \sigma_{n}\left(k+1\right)
-\end{eqnarray*}
-
-\end_inset
-
-eine Permutation.
- Denn für alle 
-\begin_inset Formula $k\in\mathbb{N}$
-\end_inset
-
- mit 
+=3,
+ dann kann ich diesen Fall auf den vorherigen Fall zurückführen.
 \end_layout
 
 \begin_layout Section
