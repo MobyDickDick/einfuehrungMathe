@@ -26058,6 +26058,131 @@ Dies ist jedoch gerade die Behauptung.
 \end_layout
 
 \begin_layout Standard
+Nun kann ich die obigen Lemmas verbinden und erhalte den Satz:
+\end_layout
+
+\begin_layout Proposition
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Satz 
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+der Transitivität bijektiver Funktionen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Transitvitaet-bijektiver-Funktionen"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $M_{1},M_{2}$
+\end_inset
+
+ und 
+\begin_inset Formula $M_{3}$
+\end_inset
+
+ nicht leere Mengen,
+ welche in sich selbst und bezüglich den anderen Symbolen dieses Lemmas widerspruchsfrei seien.
+ Weiter seien 
+\begin_inset Formula 
+\[
+f:M_{1}\rightarrow M_{2}
+\]
+
+\end_inset
+
+und 
+\begin_inset Formula 
+\[
+g:M_{2}\rightarrow M_{3}
+\]
+
+\end_inset
+
+Funktionen,
+ welche bijektiv seinen.
+ Dann ist auch 
+\begin_inset Formula 
+\begin{align*}
+g\circ f: & M_{1}\rightarrow M_{3}\\
+ & e_{1}\mapsto g\left(f\left(e_{1}\right)\right)
+\end{align*}
+
+\end_inset
+
+bijektiv.
+\end_layout
+
+\begin_layout Proof
+Gemäss Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Transitvitaet-injektiver-Funktionen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ist die Funktion 
+\begin_inset Formula $g\circ f$
+\end_inset
+
+ injektiv,
+ gemäss Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Transitvitaet-surjektiver-Funktionen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ist die Funktion 
+\begin_inset Formula $g\circ f$
+\end_inset
+
+ auch surjektiv.
+ Also ist gemäss Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:bijektive-Abbildung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ 
+\begin_inset Formula $g\circ f$
+\end_inset
+
+ auch bijektiv.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Flex Backward References
 status open
 
@@ -26068,10 +26193,9 @@ status open
 \end_inset
 
 
-\begin_inset Newline linebreak
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Flex Forward References
 status open
 
@@ -27267,6 +27391,266 @@ f\biggm|_{M_{2}}
 sogar bijektiv sein muss.
  Daher bin ich der Meinung,
  dass ich den Beweis für die Richtigkeit der Behauptung erbracht habe und beende aus diesem Grund die weitere Beweisführung.
+\end_layout
+
+\begin_layout Standard
+Hier kommt noch eine kleines Lemma:
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Funktion-doppelte-Ausfuehrung-Identitaet"
+
+\end_inset
+
+Es sei M
+\begin_inset Formula $_{1}$
+\end_inset
+
+ eine Menge,
+ welche in sich selbst und in Bezug auf die anderen Symbole des Lemmas widerspruchsfrei seien.
+ Weiter sei c
+\begin_inset Formula 
+\[
+f:M_{1}\to M_{1}
+\]
+
+\end_inset
+
+ eine Abbildung für welche gelte:
+\begin_inset Formula 
+\[
+f\circ f=Id\biggm|_{M\left(1\right)}
+\]
+
+\end_inset
+
+Dann gilt:
+\begin_inset Formula 
+\[
+f^{-1}=f
+\]
+
+\end_inset
+
+In Worten:
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ ist bijektiv und ihre eigene inverse Funktion.
+\end_layout
+
+\begin_layout Proof
+Gemäss Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Pruefung-auf-bijektive-Abbildung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ist 
+\begin_inset Formula 
+\[
+g:M_{1}\to M_{1}
+\]
+
+\end_inset
+
+ dann dann die zu 
+\begin_inset Formula $f$
+\end_inset
+
+ inverse Funktion,
+ wenn gilt 
+\begin_inset Formula 
+\[
+f\circ g=Id\biggm|_{M\left(1\right)}
+\]
+
+\end_inset
+
+ sowie 
+\begin_inset Formula 
+\[
+g\circ f=Id\biggm|_{M\left(1\right)}
+\]
+
+\end_inset
+
+Aber wenn ich 
+\begin_inset Formula $g\equiv f$
+\end_inset
+
+ nehme,
+ dann gilt dies gerade nach Annahme über 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Also habe ich die zu 
+\begin_inset Formula $f$
+\end_inset
+
+ inverse Funktion gefunden und gezeigt,
+ dass 
+\begin_inset Formula $f$
+\end_inset
+
+ tatsächlich bijektiv ist.
+ Aus diesem Grund behaupte ich,
+ den Beweis für die Richtigkeit der Behauptung erbracht zu haben und beende an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Standard
+Ich möchte eine kleine Anwendung dieses Lemmas aufschreiben:
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:Transposition"
+
+\end_inset
+
+Es sei 
+\begin_inset Formula $M$
+\end_inset
+
+ das Symbol einer Menge,
+ welche in sich selbst und in Bezug auf die anderen Symbole der Definition widerspruchsfrei sei.
+ Weiter seien 
+\begin_inset Formula $a,b\in M$
+\end_inset
+
+ zwei Symbole (welche verschieden sein können,
+ jedoch nicht müssen).
+ Dann heisse 
+\begin_inset Formula 
+\begin{eqnarray*}
+T:M & \to & M\\
+a & \mapsto & b\\
+b & \mapsto & a\\
+m\in M\backslash\left\{ a,b\right\}  & \mapsto & m
+\end{eqnarray*}
+
+\end_inset
+
+die Transposition
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Transposition
+\end_layout
+
+\end_inset
+
+ von 
+\begin_inset Formula $a$
+\end_inset
+
+ und 
+\begin_inset Formula $b$
+\end_inset
+
+ oder eine Transposition.
+\end_layout
+
+\begin_layout Standard
+Es gilt nun das
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Bijektivitaet-Transposition"
+
+\end_inset
+
+Es sei 
+\begin_inset Formula $M$
+\end_inset
+
+ eine Menge,
+ welche in sich selbst und in Bezug auf die anderen Symbole des Lemmas widerspruchsfrei sei.
+ Weiter sei 
+\begin_inset Formula $T$
+\end_inset
+
+ die Transposition von 
+\begin_inset Formula $a,b\in M$
+\end_inset
+
+.
+ Dann ist 
+\begin_inset Formula $T$
+\end_inset
+
+ bijektiv und ihre eigene inverse Funktion.
+\end_layout
+
+\begin_layout Proof
+Es gilt per Definition
+\begin_inset Formula 
+\begin{eqnarray*}
+T\left(T\left(a\right)\right) & = & T\left(b\right)=a\\
+T\left(T\left(b\right)\right) & = & T\left(a\right)=b\\
+m\in M\backslash\left\{ a,b\right\} \Rightarrow T\left(T\left(m\right)\right) & = & T\left(m\right)=m
+\end{eqnarray*}
+
+\end_inset
+
+Also ist
+\begin_inset Formula 
+\[
+T\circ T=Id\biggm|_{M}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Somit gilt gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Funktion-doppelte-Ausfuehrung-Identitaet"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ oben,
+ dass 
+\begin_inset Formula $T$
+\end_inset
+
+ bijektiv und ihre eigene inverse Funktion ist.
 \end_layout
 
 \begin_layout Section
@@ -30208,16 +30592,6 @@ nolink "false"
 \end_inset
 
  zugeordnet werden kann.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-aktuelle Stelle
-\end_layout
-
-\end_inset
-
  Gemäß Voraussetzung des Satzes kann die Menge 
 \begin_inset Formula $M$
 \end_inset
@@ -34133,7 +34507,7 @@ g\circ h\left(P\right)=m_{2}
 
 \begin_layout Proof
 Jetzt habe ich gezeigt,
- dass giltdass gilt
+ dass gilt
 \begin_inset Formula 
 \[
 \forall P\in\mathbb{P}_{f}:\,g\circ h\left(P\right)=P
@@ -35243,44 +35617,192 @@ false
  die boolesche Menge.
 \end_layout
 
-\begin_layout Proposition
-Es seien 
-\begin_inset Formula $M_{1},M_{2}$
+\begin_layout Standard
+Es gibt spezielle Funktionen,
+ welche ich im folgenden beschreiben möchte.
+ Ein bekanntes Beispiel sind die Addition (
+\begin_inset Quotes cld
 \end_inset
 
- sowie 
-\begin_inset Formula $M_{3}$
+Zusammenzählen
+\begin_inset Quotes crd
 \end_inset
 
- Mengen,
- welche in in sich selbst sowie bezüglich den anderen Symbolen des Satzes widerspruchsfrei seien.
- Weiter seien:
+),
+ Subtraktion (
+\begin_inset Quotes cld
+\end_inset
+
+Abziehen
+\begin_inset Quotes crd
+\end_inset
+
+),
+ Multiplikation (
+\begin_inset Quotes cld
+\end_inset
+
+Malnehmen
+\begin_inset Quotes crd
+\end_inset
+
+) sowie Division (
+\begin_inset Quotes cld
+\end_inset
+
+geteilt rechnen
+\begin_inset Quotes crd
+\end_inset
+
+).
+ Wobei die Division eigentlich aus dem Rahmen fällt.
+ Aber mehr davon später.
+ Diese Funktionen können als 
+\begin_inset Quotes cld
+\end_inset
+
+Verknüpfungen
+\begin_inset Quotes crd
+\end_inset
+
+ beschrieben werden.
+ Sie verknüpfen zwei Zahlen zu einer dritten - falls dies möglich ist.
+ Und da fangen die Probleme auch schon an.
+ Denn für die Definition einer Funktion ist es notwendig,
+ dass die Resultat von allen möglichen Bildelementen definiert ist.
+ Dennoch möchte ich jetzt die typische Definition einer Verknüpfung aufschreiben:
+\end_layout
+
+\begin_layout Definition
+Es sei 
+\begin_inset Formula $M$
+\end_inset
+
+ eine nichtleere Menge,
+ welche in sich selbst und in Bezug auf die anderen Symbole der Definition widerspruchsfrei sei.
+ Weiter sei 
 \begin_inset Formula 
-\begin{eqnarray*}
-f_{1}:M_{1} & \to & M_{2}\\
-f_{2}:M_{2} & \to & M_{3}
-\end{eqnarray*}
+\[
+\oplus:M\times M\to M
+\]
+
+\end_inset
+
+ eine Funktion.
+ Dann wird die Funktion 
+\begin_inset Formula $\oplus$
+\end_inset
+
+ eine Verknüpfung genannt.
+ Üblicherweise wird für alle 
+\begin_inset Formula $a,b\in M$
+\end_inset
+
+ geschrieben:
+\begin_inset Formula 
+\[
+a\oplus b\equiv\oplus\left(a,b\right)
+\]
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Proposition
-Ist dann 
-\begin_inset Formula $f_{2}\circ f_{1}$
+\begin_layout Definition
+Dann heisse die Schreibweise 
+\begin_inset Formula $a\oplus b$
 \end_inset
 
-eine bijektive Funktion,
- dann müssen auch 
-\begin_inset Formula $f_{1}$
+ die Infix-Schreibweise und 
+\begin_inset Formula $\oplus\left(a,b\right)$
 \end_inset
 
- und 
-\begin_inset Formula $f_{2}$
+ die Präfix-Schreibweise der Funktion 
+\begin_inset Formula $\oplus$
 \end_inset
 
- bijektiv sein.
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Dabei kann die Funktion 
+\begin_inset Formula $\oplus$
+\end_inset
+
+ als Addition von natürlichen Zahlen oder als Subtraktion von ganzen Zahlen verstanden werden.
+ Weiter kann sie als Multiplikation von natürlichen Zahlen verstanden werden.
+ Und ja,
+ als ganz grosse Ausnahme kann diese Funktion auch als Division von Zahlen der Menge 
+\begin_inset Formula $\mathbb{Q\backslash}\left\{ 0\right\} $
+\end_inset
+
+ verstanden werden (Bruchzahlen ohne die Zahl Null).
+ Vielleicht denkst du jetzt:
+ 
+\begin_inset Quotes cld
+\end_inset
+
+Warum nicht alle Bruchzahlen?
+\begin_inset Quotes crd
+\end_inset
+
+ Weil die Division durch die Zahl Null eigentlich ein Unding ist.
+ Ein grosser Teil der Analysis beschäftigt sich mich der Frage,
+ was denn unter Brüchen wie
+\begin_inset Formula 
+\[
+\frac{1}{0}
+\]
+
+\end_inset
+
+oder sogar 
+\begin_inset Formula 
+\[
+\frac{0}{0}
+\]
+
+\end_inset
+
+verstanden werden könne?
+ (Kurzer Hinweis:
+ Wenn nur die Zahlen grösser als Null betrachtet werden,
+ kann mit gutem Gewissen geschrieben werden:
+\begin_inset Formula 
+\[
+\frac{1}{0}=\infty
+\]
+
+\end_inset
+
+Wenn alle Zahlen betrachtet werden,
+ dann kann mit Fug und Recht behauptet werden,
+ dass gilt
+\begin_inset Formula 
+\[
+\frac{0}{0}
+\]
+
+\end_inset
+
+entspricht jeder möglichen Zahl - und ist damit als Rechenergebnis prinzipiell unbrauchbar.
+ Aber (und da wird es meines Erachtens interessant):
+ Unter bestimmten Umständen kann dem Bruch
+\begin_inset Formula 
+\[
+\frac{0}{0}
+\]
+
+\end_inset
+
+genau eine Zahl zugeordnet werden.
+\end_layout
+
+\begin_layout Standard
+Nun möchte ich mir jedoch überlegen,
+ ob Verknüpfungen noch bestimmte Eigenschaften besitzen können.
 \end_layout
 
 \begin_layout Chapter

@@ -19669,6 +19669,93 @@ Als Beispiel kannst Du Dir ein Kartenspiel vorstellen.
 \end_layout
 
 \begin_layout Standard
+Ich brauche nun ein 
+\end_layout
+
+\begin_layout Lemma
+Es seien 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ und 
+\begin_inset Formula $\mu_{n},\sigma_{n}:\left\{ k\in\mathbb{N}\bigm|k\leq n\right\} \to\left\{ k\in\mathbb{N}\bigm|k\leq n\right\} $
+\end_inset
+
+ zwei Permutationen.
+ Dann ist auch 
+\begin_inset Formula 
+\[
+\mu_{n}\circ\sigma_{n}
+\]
+
+\end_inset
+
+ eine Permutation.
+\end_layout
+
+\begin_layout Proof
+Die Abbildung 
+\begin_inset Formula 
+\[
+\mu_{n}\circ\sigma_{n}
+\]
+
+\end_inset
+
+ ist als Verknüpfung zweier bijektiver Funktionen gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Transitvitaet-bijektiver-Funktionen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ mindestens bijektiv.
+ Da der Bildbereich mit dem Urbildbereich übereinstimmt,
+ kann ich daraus folgern,
+ dass auch der Bildbereich von 
+\begin_inset Formula $\mu_{n}\circ\sigma_{n}$
+\end_inset
+
+ die Bildmenge 
+\begin_inset Formula $\left\{ k\in\mathbb{N}\bigm|k\leq n\right\} $
+\end_inset
+
+ besitzt Somit kann ich folgern,
+ dass auch 
+\begin_inset Formula 
+\[
+\mu_{n}\circ\sigma_{n}
+\]
+
+\end_inset
+
+die Menge 
+\begin_inset Formula $\left\{ k\in\mathbb{N}\bigm|k\leq n\right\} $
+\end_inset
+
+ bijektiv auf sich selbst abbildet und somit eine Permutation ist.
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\end_layout
+
+\begin_layout Standard
 Also gilt der Satz:
  
 \end_layout
@@ -19875,6 +19962,7 @@ und somit auch
 \end_layout
 
 \begin_layout Proof
+\paragraph_spacing single
 Aber noch bin ich nicht so weit,
  dass ich davon ausgehen kann,
  dass es eine Permutation 
@@ -19883,53 +19971,229 @@ Aber noch bin ich nicht so weit,
 
  gibt,
  welche das gewünschte leistet.
- eine Permutation.
+ Jedoch gibt es m.E.
+ nur zwei Fälle,
+ welche genauer untersucht werden müssen:
  Ist 
-\begin_inset Formula $n=1$
+\begin_inset Formula $\sigma\left(n\right)=n$
 \end_inset
 
 ,
- also 
-\begin_inset Formula $n+1=2$
+ dann habe ich die gewünschte Permutation.
+ Ist jedoch 
+\begin_inset Formula $\sigma\left(n\right)\neq n$
 \end_inset
 
 ,
- dann gibt es zwei Fälle:
- 
-\begin_inset Formula $\sigma\left(2\right)=2$
+ dann muss es ein 
+\begin_inset Formula $l\in\mathbb{N}$
 \end_inset
 
-,
- dann muss 
-\begin_inset Formula $\sigma\left(1\right)=1$
+ mit 
+\begin_inset Formula $l<n$
 \end_inset
 
-sein.
- Denn ansonsten wäre 
+ derart geben,
+ dass gilt 
+\begin_inset Formula $\sigma\left(l\right)=n$
+\end_inset
+
+.
+ Denn da 
 \begin_inset Formula $\sigma$
 \end_inset
 
- nicht injektiv uns somit auch nicht bijektiv.
- Dann hätte ich die gewünschte Permutation bereits gefunden.
- Ist jedoch 
-\begin_inset Formula $\sigma\left(2\right)=1$
+ bijektiv ist,
+ muss es eine bijektive Umkehrfunktion 
+\begin_inset Formula $\sigma^{-1}$
 \end_inset
 
-,
- dann muss 
-\begin_inset Formula $\sigma\left(1\right)=2$
+ von 
+\begin_inset Formula $\sigma$
 \end_inset
 
- sein.
- Also lautet in diesem Fall die Summe
+ geben,
+ so dass gilt:
+ 
 \begin_inset Formula 
 \[
-n_{\sigma\left(1\right)}+n_{\sigma\left(2\right)}=n_{2}+n_{1}
+\sigma\circ\sigma^{-1}=I
 \]
 
 \end_inset
 
-Da die Addition gemäss dem Satz 
+ (wobei mit 
+\begin_inset Formula $I$
+\end_inset
+
+ die Identische Funktion bezeichnet werde).
+ Also ist 
+\begin_inset Formula $\sigma^{-1}\left(n\right)$
+\end_inset
+
+ eindeutig bestimmt.
+ Nun bilde ich die folgende Permutation:
+\begin_inset Formula 
+\begin{eqnarray*}
+\mu:\left\{ k\in\mathbb{N}\bigm|k\leq n\right\}  & \to & \left\{ k\in\mathbb{N}\bigm|k\leq n\right\} \\
+n & \mapsto & \sigma\left(\sigma^{-1}\left(n\right)\right)=n\\
+\sigma^{-1}\left(n\right) & \mapsto & \sigma\left(n\right)\\
+l\in\left\{ k\in\mathbb{N}\bigm|k\leq n\right\} \backslash\left\{ n,\sigma^{-1}\left(n\right)\right\}  & \mapsto & \sigma\left(l\right)
+\end{eqnarray*}
+
+\end_inset
+
+ Es stellt sich mir die Frage,
+ ob ich 
+\begin_inset Formula $\mu$
+\end_inset
+
+ als Verkettung von zwei noch einfacheren Permutationen dargestellt werden kann.
+ Und das geht m.E..
+ Wenn ich definiere:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{eqnarray*}
+\lambda:\left\{ k\in\mathbb{N}\bigm|k\leq n\right\}  & \to & \left\{ k\in\mathbb{N}\bigm|k\leq n\right\} \\
+n & \mapsto & \sigma^{-1}\left(n\right)\\
+\sigma^{-1}\left(n\right) & \mapsto & n\\
+l\in\left\{ k\in\mathbb{N}\bigm|k\leq n\right\} \backslash\left\{ n,\sigma^{-1}\left(n\right)\right\}  & \mapsto & l
+\end{eqnarray*}
+
+\end_inset
+
+Dann ist diese Permutation eine besonders einfache Permutation.
+ Wie aus der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Transposition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ersichtlich ist,
+ ist 
+\begin_inset Formula $\mu$
+\end_inset
+
+ eine Transposition.
+ Denn sie vertauscht die Elemente 
+\begin_inset Formula $n_{\sigma^{-1}\left(n\right)}$
+\end_inset
+
+ und 
+\begin_inset Formula $n_{n}$
+\end_inset
+
+.
+ Die anderen Elemente bleiben unberührt.
+ Übrigens ist besteht in dieser Notation oben keine Gefahr,
+ dass 
+\begin_inset Formula $n$
+\end_inset
+
+ durch die Abbildung 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ wieder auf 
+\begin_inset Formula $n$
+\end_inset
+
+ abgebildet würde (wie es in der Informatik der Fall wäre).
+ Denn die Urbildmenge und die Bildmenge werden als getrennt betrachtet.
+ 
+\end_layout
+
+\begin_layout Proof
+Dann kann ich mindestens schreiben:
+\begin_inset Formula 
+\[
+\mu=\sigma\circ\lambda
+\]
+
+\end_inset
+
+Oder aber 
+\begin_inset Formula 
+\[
+\sigma=\mu\circ\lambda^{-1}=\mu\circ\lambda
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Denn gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Bijektivitaet-Transposition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ muss 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ bijektiv und die inverse Abbildung muss gleich der Abbildung sein.
+ Aber muss trotzdem zeigen,
+ dass gilt:
+\begin_inset Formula 
+\[
+\sum_{k=1}^{n+1}n_{\sigma\left(k\right)}=\sum_{k=1}^{n+1}n_{\mu\left(k\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Das ist zwar nicht sehr kompliziert,
+ jedoch aufwändig.
+ Denn es gibt ein paar Spezialfälle,
+ welche berücksichtigt werden müssen.
+ Ist 
+\begin_inset Formula $\sigma^{-1}\left(n\right)=1$
+\end_inset
+
+ Dann kann ich schreiben
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{k=1}^{n+1}n_{\sigma\left(k\right)}=\sum_{k=1}^{1}n_{\sigma\left(k\right)}+\sum_{k=2}^{n}n_{\sigma\left(2\right)}+\sum_{k=n+1}^{n+1}n_{k} & = & n_{1}+\sum_{k=2}^{n}n_{\sigma\left(k\right)}+n_{\sigma\left(n+1\right)}
+\end{eqnarray*}
+
+\end_inset
+
+und da die Addition ist,
+ kann ich die Summe 
+\begin_inset Formula $\sum_{k=2}^{n}n_{\sigma\left(k\right)}$
+\end_inset
+
+ wirklich als eine Zahl behandeln.
+ Nun ist die Addition von natürlichen Zahlen ja gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-natuerlicher-Zahlen-assoziativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ assoziativ und gemäss dem Satz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Addition-natuerlicher-Zahlen-ist-kommutativ"
@@ -19941,55 +20205,169 @@ nolink "false"
 \end_inset
 
  kommutativ ist,
- muss dann auch gelten:
-\begin_inset Formula 
-\[
-n_{2}+n_{1}=n_{1}+n_{2}
-\]
-
-\end_inset
-
-Das ist jetzt gerade die Behauptung vom ganzen Satz.
- Doch an dieser Stelle möchte ich festhalten,
- dass die Permutation:
- 
+ kann also schreiben:
 \begin_inset Formula 
 \begin{eqnarray*}
-\mu:\left\{ 1,2\right\}  & \to & \left\{ 1,2\right\} \\
-1 & \mapsto & \sigma\left(2\right)=1\\
-2 & \mapsto & \sigma\left(1\right)=2
+ &  & \sum_{k=1}^{n+1}n_{\sigma\left(k\right)}\\
+ & = & \sum_{k=1}^{n}n_{\sigma\left(k\right)}+n_{\sigma\left(n+1\right)}\\
+ & = & \left(n_{\sigma\left(1\right)}+\sum_{k=2}^{n}n_{\sigma\left(k\right)}\right)+n_{\sigma\left(n+1\right)}\\
+ & = & \left(\sum_{k=2}^{n}n_{\sigma\left(k\right)}+n_{\sigma\left(1\right)}\right)+n_{\sigma\left(n+1\right)}\\
+ & = & \sum_{k=2}^{n}n_{\sigma\left(k\right)}+\left(n_{\mu\left(1\right)}+n_{\sigma\left(n+1\right)}\right)\\
+ & = & \sum_{k=2}^{n}n_{\sigma\left(k\right)}+\left(n_{\sigma\left(n+1\right)}+n_{\sigma\left(1\right)}\right)\\
+ & = & \left(\sum_{k=2}^{n}n_{\sigma\left(k\right)}+n_{\sigma\left(n+1\right)}\right)+n_{\sigma\left(1\right)}\\
+ & = & \left(n_{\sigma\left(n+1\right)}+\sum_{k=2}^{n}n_{\sigma\left(k\right)}\right)+n_{\sigma\left(1\right)}
 \end{eqnarray*}
 
 \end_inset
 
-die gesuchte Permutation derart ist,
- dass gilt:
+Das bedeutet,
+ dass gilt 
 \begin_inset Formula 
 \begin{eqnarray*}
- &  & \sum_{k=1}^{n}n_{\mu\left(k\right)}\\
- & = & n_{\mu\left(1\right)}+n_{\mu\left(2\right)}\\
- & = & n_{\sigma\left(2\right)}+n_{\sigma\left(1\right)}\\
- & = & n_{1}+n_{2}\\
- & = & n_{2}+n_{1}\\
- & = & n_{\sigma\left(1\right)}+n_{\sigma\left(2\right)}\\
- & = & \sum_{k=1}^{2}n_{\sigma\left(k\right)}
+ &  & \left(n_{1}+\sum_{k=2}^{n}n_{\sigma\left(k\right)}\right)+n_{\sigma\left(n+1\right)}\\
+ & = & \left(n_{\sigma\left(n+1\right)}+\sum_{k=2}^{n}n_{\sigma\left(k\right)}\right)+n_{\mu\left(1\right)}
 \end{eqnarray*}
 
 \end_inset
 
-oder eben
+Und da gemäss Voraussetzung 
+\begin_inset Formula $\mu_{1}=n$
+\end_inset
+
++1 sein muss kann ich auch schreiben
 \begin_inset Formula 
 \begin{eqnarray*}
-\sum_{k=1}^{2} & n_{\mu\left(k\right)} & =\sum_{k=1}^{2}n_{\sigma\left(n\right)}
+ &  & \left(n_{1}+\sum_{k=2}^{n}n_{\sigma\left(k\right)}\right)+n_{\sigma\left(n+1\right)}\\
+ & = & \left(n_{\sigma\left(n+1\right)}+\sum_{k=2}^{n}n_{\sigma\left(k\right)}\right)+n_{n+1}
 \end{eqnarray*}
 
 \end_inset
 
-und 
-\begin_inset Formula $\mu\left(2\right)=2$
+
+\end_layout
+
+\begin_layout Proof
+Genau gleich kann ich in den anderen zwei Fällen argumentieren:
+ Ist 
+\begin_inset Formula $1<\sigma^{-1}\left(n\right)<n$
 \end_inset
 
-.
+,
+ dann gilt
+\end_layout
+
+\begin_layout Proof
+Und da gilt 
+\begin_inset Formula $\mu=\sigma\circ\lambda$
+\end_inset
+
+ und 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ und 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ bijektiv sind,
+ muss auch 
+\begin_inset Formula $\mu$
+\end_inset
+
+ bijektiv sein.
+ Also muss 
+\begin_inset Formula $\mu\biggm|_{\left\{ k\in\mathbb{N}\biggm|k\leq n\right\} }$
+\end_inset
+
+ebenfalls bijektiv sein.
+ Weiter muss gelten
+\begin_inset Formula 
+\begin{eqnarray*}
+\mu\left(\left\{ k\in\mathbb{N}\biggm|k\leq n\right\} \right) & \equiv & \left\{ l\in\mathbb{N}\biggm|\exists m\in\mathbb{N}\wedge m\leq n\wedge l=\mu\left(m\right)\right\} 
+\end{eqnarray*}
+
+\end_inset
+
+muss 
+\begin_inset Formula $\left\{ k\in\mathbb{N}\biggm|k\leq n\right\} $
+\end_inset
+
+ sein.
+ Da 
+\begin_inset Formula $\mu\biggm|_{\left\{ k\in\mathbb{N}\biggm|k\leq n\right\} }$
+\end_inset
+
+ bijektiv ist,
+ muss 
+\begin_inset Formula $\mu$
+\end_inset
+
+ injektiv sein.
+ Die Frage ist,
+ welches der Bildbereich von 
+\begin_inset Formula $\mu\biggm|_{\left\{ k\in\mathbb{N}\biggm|k\leq n\right\} }$
+\end_inset
+
+ ist.
+ Gäbe es ein 
+\begin_inset Formula $k_{0}\in\left\{ k\in\mathbb{N}\biggm|k\leq n\right\} $
+\end_inset
+
+ derart,
+ dass 
+\begin_inset Formula $k_{0}$
+\end_inset
+
+ nicht im Bild von 
+\begin_inset Formula $\mu\biggm|_{\left\{ k\in\mathbb{N}\biggm|k\leq n\right\} }$
+\end_inset
+
+ enthalten wäre,
+ dann wäre 
+\begin_inset Formula $k_{0}$
+\end_inset
+
+ auch nicht im Bild von 
+\begin_inset Formula $\mu$
+\end_inset
+
+ enthalten.
+ Das würde jedoch bedeuten,
+ dass 
+\begin_inset Formula $\mu$
+\end_inset
+
+ nicht 
+\begin_inset Formula $\left\{ k\in\mathbb{N}\biggm|k\leq n\right\} $
+\end_inset
+
+ bijektiv auf sich selbst abbilden würde,
+ was ein Widerspruch zur Annahme wäre.
+ Also muss 
+\begin_inset Formula $\mu\biggm|_{\left\{ k\in\mathbb{N}\biggm|k\leq n\right\} }$
+\end_inset
+
+ die Menge 
+\begin_inset Formula $\left\{ k\in\mathbb{N}\biggm|k\leq n\right\} $
+\end_inset
+
+ bijektiv auf sich selbst abbilden und darum eine Permutation sein.
+ Also kann ich nach Induktionsannahme folgern,
+ dass gilt
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{k=1}^{n+1}n_{\sigma\left(k\right)} & = & \sum_{k=1}^{n+1}n_{\mu\left(k\right)}\\
+ & = & \sum_{k=1}^{n}n_{\mu\left(k\right)}+n_{n+1}\\
+ & = & \sum_{k=1}^{n}n_{k}+n_{n+1}\\
+ & = & \sum_{k=1}^{n+1}n_{k}
+\end{eqnarray*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
