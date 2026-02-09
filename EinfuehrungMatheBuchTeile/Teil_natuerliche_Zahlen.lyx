@@ -19595,6 +19595,156 @@ was wiederum die Behauptung ist.
 \end_layout
 
 \begin_layout Standard
+Da ich jetzt weiss,
+ dass die Addition die Klammerung keine Rolle spielt bezüglich dem Resultat der Addition (der Summe),
+ kann ich das nächste Lemma formulieren und beweisen:
+\end_layout
+
+\begin_layout Corollary
+Es seien 
+\begin_inset Formula $k,\:m,\:n\in\mathbb{N}$
+\end_inset
+
+ und für 
+\begin_inset Formula $k\leq n$
+\end_inset
+
+ sei 
+\begin_inset Formula $a_{k}\in\mathbb{N}$
+\end_inset
+
+.
+ Ist 
+\begin_inset Formula $m<n$
+\end_inset
+
+,
+ dann gilt;
+\begin_inset Formula 
+\[
+\sum_{l=1}^{m}a_{k}+\sum_{l=m+1}^{n}a_{k}=\sum_{k=1}^{n}a_{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Das ist ein Spezialfall des Lemmas 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Addition-multi-assoziativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ oben.
+ Ich kann diesen Spezialfall noch einmal mit Hilfe der vollständigen Induktion beweisen.
+ Setze dazu 
+\begin_inset Formula $n=m+i$
+\end_inset
+
+ mit einer geeigneten natürlichen Zahl 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Ist 
+\begin_inset Formula $i=1$
+\end_inset
+
+ und somit 
+\begin_inset Formula $n=m+1$
+\end_inset
+
+,
+ dann gilt gemäss Definition der Summe
+\begin_inset Formula 
+\[
+\sum_{l=1}^{m}a_{k}+a_{m+1}=\sum_{l=1}^{m+1}a_{k}=\sum_{l=1}^{n}a_{k}
+\]
+
+\end_inset
+
+und somit der Beweis erbracht.
+ Gilt 
+\begin_inset Formula 
+\[
+\sum_{l=1}^{m}a_{k}+\sum_{l=m+1}^{m+i}a_{k}=\sum_{k=1}^{m+i}a_{k}
+\]
+
+\end_inset
+
+Dann kann ich schreiben
+\begin_inset Formula 
+\[
+\sum_{l=1}^{m}a_{k}+\sum_{l=m+1}^{m+i+1}a_{k}=\sum_{l=1}^{m}a_{k}+\left(\sum_{l=m+1}^{m+i}a_{k}+a_{m+i+1}\right)
+\]
+
+\end_inset
+
+Da die Addition gemäss Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-natuerlicher-Zahlen-assoziativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ assoziativ ist,
+ kann ich schreiben 
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\sum_{l=1}^{m}a_{k}+\left(\sum_{l=m+1}^{m+i}a_{k}+a_{mi+1}\right)=\left(\sum_{l=1}^{m}a_{k}+\sum_{l=m+1}^{m+i}a_{k}\right)+a_{m+i+1}
+\]
+
+\end_inset
+
+Dann gilt jedoch gemäss Induktionsvoraussetzung 
+\begin_inset Formula 
+\[
+\left(\sum_{l=1}^{m}a_{k}+\sum_{l=m+1}^{m+i}a_{k}\right)+a_{m+i+1}=\sum_{l=1}^{m+i}a_{k}+a_{m+i+1}
+\]
+
+\end_inset
+
+Und gemäss Definition des Symbols der Summe kann ich schreiben 
+\begin_inset Formula 
+\[
+\sum_{l=1}^{m+i}a_{k}+a_{m+i+1}=\sum_{l=1}^{m+i+1}a_{k}
+\]
+
+\end_inset
+
+Da die Gleichheit von natürlichen Zahlen als Äquivalenzrelation transitiv ist,
+ kann ich aus dem Geschriebenen schliessen,
+ dass gilt:
+\begin_inset Formula 
+\[
+\sum_{l=1}^{m}a_{k}+\sum_{l=m+1}^{m+i+1}a_{k}=\sum_{l=1}^{m+i+1}a_{k}
+\]
+
+\end_inset
+
+Genau das wollte ich beweisen.
+ also habe ich für alle möglichen 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ den Beweis für die Richtigkeit der Behauptung erbracht und beende somit an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Standard
 Der nächste Satz und Beweis zeigt mir meines Erachtens eindrücklich,
  wie unglaublich schwierig Mathematik sein kann,
  wenn sie ernst genommen wird.
@@ -20303,7 +20453,7 @@ Und da gilt
 \end_inset
 
 ebenfalls bijektiv sein.
- Weiter muss gelten
+ Weiter muss mit
 \begin_inset Formula 
 \begin{eqnarray*}
 \mu\left(\left\{ k\in\mathbb{N}\biggm|k\leq n\right\} \right) & \equiv & \left\{ l\in\mathbb{N}\biggm|\exists m\in\mathbb{N}\wedge m\leq n\wedge l=\mu\left(m\right)\right\} 
@@ -20311,8 +20461,13 @@ ebenfalls bijektiv sein.
 
 \end_inset
 
-muss 
-\begin_inset Formula $\left\{ k\in\mathbb{N}\biggm|k\leq n\right\} $
+gelten:
+ 
+\begin_inset Formula 
+\[
+\mu\left(\left\{ k\in\mathbb{N}\biggm|k\leq n\right\} \right)=\left\{ k\in\mathbb{N}\biggm|k\leq n\right\} 
+\]
+
 \end_inset
 
  sein.
@@ -20355,6 +20510,11 @@ muss
 \end_inset
 
  enthalten.
+ Denn nach Konstruktion ist ja 
+\begin_inset Formula $\mu\left(n+1\right)=n+1$
+\end_inset
+
+.
  Das würde jedoch bedeuten,
  dass 
 \begin_inset Formula $\mu$
@@ -20390,7 +20550,13 @@ muss
 
 \end_inset
 
+Damit hätte ich den Beweis für die Richtigkeit meiner Behauptung meines Erachtens erbracht und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+\end_layout
 
+\begin_layout Standard
+Das Verrückte an diese Beweis ist meines Erachtens,
+ wie kompliziert er ist,
+ wenn er gründlich bewiesen werden soll.
 \end_layout
 
 \begin_layout Section
@@ -20963,7 +21129,7 @@ n_{1}\cdot A=n_{3}\cdot A
 
 \end_inset
 
-Und gemäss der Voruassetzung 
+Und gemäss der Voraussetzung 
 \begin_inset Formula $n_{2}=n_{4}$
 \end_inset
 
@@ -21126,7 +21292,7 @@ n_{3}\cdot1=n_{3}
 
 \end_inset
 
-Und weill Gleichheit von natürlichen Zahlen als Aquivalenzrelation ebenfalls symmtetrisch ist,
+Und weil Gleichheit von natürlichen Zahlen als Aquivalenzrelation ebenfalls symmetrisch ist,
  muss auch gelten:
 \begin_inset Formula 
 \[
@@ -21135,8 +21301,8 @@ n_{3}=n_{3}\cdot1
 
 \end_inset
 
- Und da die Gleicheit von natürlichen Zahlen als Äquivalenzrelation transitiv ist,
- kann ich schlussenldich auch schreiben:
+ Und da die Gleichheit von natürlichen Zahlen als Äquivalenzrelation transitiv ist,
+ kann ich schlussendlich auch schreiben:
  
 \begin_inset Formula 
 \[
@@ -21145,7 +21311,7 @@ n_{1}\cdot1=n_{3}\cdot1
 
 \end_inset
 
-Also gilt die Gleichheit mindestenes dann,
+Also gilt die Gleichheit mindestens dann,
  wenn 
 \begin_inset Formula $n_{2}=n_{4}=1$
 \end_inset
@@ -21176,7 +21342,7 @@ n_{1}\cdot\left(n_{2}+1\right)=n_{1}\cdot n_{2}+n_{1}
 
 \end_inset
 
-Nun muss gemäss der Induktionsvoraussetzujng gelten:
+Nun muss gemäss der Induktionsvoraussetzung gelten:
 \begin_inset Formula 
 \[
 n_{1}\cdot n_{2}=n_{3}\cdot n_{4}
@@ -21217,7 +21383,7 @@ n_{3}\cdot n_{4}+n_{3}=n_{3}\cdot\left(n_{4}+1\right)
 
 \end_inset
 
-Und weil die Symbolgleihheit als Äquivalenzrelation ebenfalls transitiv ist,
+Und weil die Symbolgleichheit als Äquivalenzrelation ebenfalls transitiv ist,
  kann ich dadurch folgern,
  dass ebenfalls gilt:
 \end_layout
@@ -21230,7 +21396,7 @@ n_{1}\cdot\left(n_{2}+1\right)=n_{3}\cdot\left(n_{4}+1\right)
 
 \end_inset
 
-Somit kan nich gemäss dem Satz der vollständigen Induktion folgern,
+Somit kann ich gemäss dem Satz der vollständigen Induktion folgern,
  dass für alle 
 \begin_inset Formula $n_{1},n_{2},n_{3},n_{4}\in\mathbb{N}$
 \end_inset
@@ -21256,13 +21422,13 @@ Somit meine ich auch den zweiten Satz bewiesen zu haben und beende aus diesem Gr
 \end_layout
 
 \begin_layout Section
-Distributiv- und Assoziativgesetzte der natürlich Mulitplipkation
+Distributiv- und Assoziativgesetzte der natürlichen Multiplikation
 \end_layout
 
 \begin_layout Standard
 Ich habe gedacht,
- ich könne zuerst die Assoziativität der Multiplikaton zeigen.
- Aber offenbar muss ich zuerst die Distritbutivität der Mulitiplikation zeigen.
+ ich könne zuerst die Assoziativität der Multiplikation zeigen.
+ Aber offenbar muss ich zuerst die Distritbutivität der Multiplikation zeigen.
 \end_layout
 
 \begin_layout Proposition
@@ -21310,7 +21476,7 @@ Ist
 \end_inset
 
  dann gilt,
- geäss der Definition der Multiplikaton:
+ gemäss der Definition der Multiplikation:
 \begin_inset Formula 
 \[
 m\cdot\left(n+1\right)=m\cdot n+m
@@ -21318,12 +21484,12 @@ m\cdot\left(n+1\right)=m\cdot n+m
 
 \end_inset
 
-Jeoch ist ist gemäss Definiton 
+Jedoch ist ist gemäss Definition 
 \begin_inset Formula $m\cdot1=m$
 \end_inset
 
 ,
- und die Symbolgleicheit eine Äquivalenzrelation ist,
+ und die Symbolgleichheit eine Äquivalenzrelation ist,
  gilt ebenfalls
 \begin_inset Formula 
 \[
@@ -21350,12 +21516,12 @@ Damit ist jedoch das Distributivgesetz für
 \end_layout
 
 \begin_layout Proof
-Nun gelte das Distributivgesetzt für 
+Nun gelte das Distributivgesetz für 
 \begin_inset Formula $p\in\mathbb{N}$
 \end_inset
 
 .
- Es gilt also 
+ Es gilt also s
 \begin_inset Formula 
 \[
 m\cdot\left(n+p\right)=m\cdot n+m\cdot p
@@ -21387,7 +21553,7 @@ nolink "false"
 
 \end_inset
 
- der Assoziazivität der Addition muss gelten:
+ der Assoziativität der Addition muss gelten:
 \begin_inset Formula 
 \[
 n+\left(p+1\right)=\left(n+p\right)+1
@@ -21395,7 +21561,7 @@ n+\left(p+1\right)=\left(n+p\right)+1
 
 \end_inset
 
-Gemäss der Symbolgleicheheit von Zeichenketten muss dann aber auch gelten:
+Gemäss der Symbolgleichheit von Zeichenketten muss dann aber auch gelten:
 \begin_inset Formula 
 \[
 m\cdot\left(n+\left(p+1\right)\right)=m\cdot\left(\left(n+p\right)+1\right)
@@ -21407,8 +21573,8 @@ Dann kann ich auf den Ausdruck
 \begin_inset Formula $m\cdot\left(\left(n+p\right)+1\right)$
 \end_inset
 
- das Distributivgesetzt anwenden.
- Dann kann ich gemäss der ersten Zeile der Derfinition der Multiplikation schreiben:
+ das Distributivgesetz anwenden.
+ Dann kann ich gemäss der ersten Zeile der Definition der Multiplikation schreiben:
 \begin_inset Formula 
 \[
 m\cdot\left(\left(n+p\right)+1\right)=m\cdot\left(n+p\right)+m
@@ -21523,7 +21689,46 @@ und somit genau die Aussagen,
 \begin_layout Standard
 Ich versuche,
  zu zeigen,
- dass die Multiplikation und Addition linksdistributiv ist:
+ dass die Multiplikation und Addition links-distributiv ist:
+\end_layout
+
+\begin_layout Proposition
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+Links-Distributivität der Multiplikation und Addition der natürlichen Zahlen
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Linksdistributivgesetz-natuerliche-Zahlen"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $m,n$
+\end_inset
+
+ und 
+\begin_inset Formula $p\in\mathbb{N}$
+\end_inset
+
+.
+ Dann gilt
+\begin_inset Formula 
+\[
+\left(m+n\right)\cdot p=m\cdot p+n\cdot p
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Proof
@@ -21581,6 +21786,10 @@ nolink "false"
 \begin_inset Formula $m=m\cdot1$
 \end_inset
 
+ sowie 
+\begin_inset Formula $1\cdot1=1$
+\end_inset
+
  kann ich aufgrund des Lemmas 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -21592,7 +21801,7 @@ nolink "false"
 
 \end_inset
 
- sagen,
+ über die Gleichheit der Addition von gleichen Zahlen sagen,
  dass gilt:
 \begin_inset Formula 
 \[
@@ -21607,7 +21816,7 @@ Das ist jedoch die Behauptung im Fall,
 \end_inset
 
  ist.
- Nun gelte die Behautpung für eine bestimmte natürliche Zahl 
+ Nun gelte die Behauptung für eine bestimmte natürliche Zahl 
 \begin_inset Formula $p\in\mathbb{N}.$
 \end_inset
 
@@ -21653,7 +21862,7 @@ Gemäss der Voraussetzung der Induktionsvererbung gilt dann:
 
 \end_inset
 
-Die Addition ist jedoch kommutativ und assiozativ.
+Die Addition ist jedoch kommutativ und assoziativ.
  Also kann ich schreiben:
 \begin_inset Formula 
 \[
@@ -21711,13 +21920,164 @@ Also kann ich insgesamt schreiben,
 \end_layout
 
 \begin_layout Proof
-Gemäss Induktionsvoraussetzung kann ich für be
+Nun habe ich jedoch noch nicht die Gültigkeit des ganze Satzes bewiesen.
+ Ich habe erst bewiesen,
+ dass gelten muss:
+\begin_inset Formula 
+\[
+\forall m,p\in\mathbb{N}:\:\left(m+1\right)\cdot p=m\cdot p+p
+\]
+
+\end_inset
+
+Ich möchte nun zeigen,
+ dass diese Behauptung für alle 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ gilt:
+\begin_inset Formula 
+\[
+\forall m,n,p\in\mathbb{N}:\:\left(m+n\right)\cdot p=m\cdot p+n\cdot p
+\]
+
+\end_inset
+
+Ich habe eben gezeigt,
+ dass der Fall 
+\begin_inset Formula $n=1$
+\end_inset
+
+ richtig sein muss.
+ Nun nehme ich an,
+ dass die Aussage für 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ richtig sei:
+ Es gelte also
+\begin_inset Formula 
+\[
+\left(m+n\right)\cdot p=m\cdot p+n\cdot p
+\]
+
+\end_inset
+
+Nun möchte ich zeigen,
+ dass dies auch der Fall für 
+\begin_inset Formula $n+1$
+\end_inset
+
+ ist,
+ also gilt:
+\begin_inset Formula 
+\[
+\left(m+\left(n+1\right)\right)\cdot p=m\cdot p+\left(n+1\right)\cdot p
+\]
+
+\end_inset
+
+Ich kann sicher sagen,
+ dass gelten muss (da die Addition gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-natuerlicher-Zahlen-ist-kommutativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ kommutativ ist
+\begin_inset Formula 
+\[
+n+1=1+n
+\]
+
+\end_inset
+
+weiter muss auch gelten (da die Addition gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-natuerlicher-Zahlen-assoziativ"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ assoziativ ist),
+ dass gilt:
+\begin_inset Formula 
+\[
+m+\left(1+n\right)=\left(m+1\right)+n
+\]
+
+\end_inset
+
+Also kann ich schliessen dass gilt:
+\begin_inset Formula 
+\[
+m+\left(n+1\right)=\left(m+1\right)+n
+\]
+
+\end_inset
+
+Gemäss der Induktionsvoraussetzung kann ich jedoch schreiben
+\begin_inset Formula 
+\[
+\left(\left(m+1\right)+n\right)\cdot p=\left(m+1\right)\cdot p+n\cdot p
+\]
+
+\end_inset
+
+Daraus kann ich schliessen,
+ dass ebenfalls gelten muss:
+\begin_inset Formula 
+\[
+\left(m+\left(n+1\right)\right)\cdot p=\left(m+1\right)\cdot p+n\cdot p
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Proof
+Weiter oben habe ich schon gezeigt,
+ dass gelten muss:
 \begin_inset Formula 
 \[
 \left(m+1\right)\cdot p=m\cdot p+p
+\]
+
+\end_inset
+
+Darum kann ich ebenfalls schliessen,
+ dass gelten muss
+\begin_inset Formula 
+\[
+\left(m+1\right)\cdot p+n\cdot p=m\cdot p+p+n\cdot p
+\]
+
+\end_inset
+
+Nun möchte ich noch den Teil 
+\begin_inset Formula $p+n\cdot p$
+\end_inset
+
+ umformen zu 
+\begin_inset Formula $\left(n+1\right)\cdot p$
+\end_inset
+
+.
+ Gemäss der Induktionsverankerung kann ich sicher schliessen,
+ dass gilt
+\begin_inset Formula 
+\[
+p\cdot\left(n+1\right)=p\cdot n+p
 \]
 
 \end_inset
@@ -21750,7 +22110,7 @@ Es seien
 
 \begin_layout Proposition
 In Worten:
- Die Multiplikaton ist assoziativ
+ Die Multiplikation ist assoziativ
 \end_layout
 
 \begin_layout Proof

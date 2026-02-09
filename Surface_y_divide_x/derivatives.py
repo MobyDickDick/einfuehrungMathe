@@ -1,32 +1,35 @@
 import ast
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib import cm
 from matplotlib.widgets import TextBox, Button
 
-# ---------------------------
-# Kompaktifizierung R -> (-1,1), robust bei inf/overflow
-# ---------------------------
-def s(u):
+# ============================================================
+#  Kompaktifizierung mit Zoom-Parameter k:
+#    s(u,k) = k u / sqrt(1 + k^2 u^2)
+# ============================================================
+def s_k(u, k):
     u = np.asarray(u, dtype=float)
+    kk = float(k)
     with np.errstate(all="ignore"):
-        out = u / np.sqrt(1.0 + u*u)
+        out = (kk * u) / np.sqrt(1.0 + (kk * kk) * u * u)
     out = np.where(np.isinf(u), np.sign(u), out)
     return out
 
-def s_inv(t):
+def s_inv_k(t, k):
     t = np.asarray(t, dtype=float)
+    kk = float(k)
     with np.errstate(all="ignore"):
-        return t / np.sqrt(1.0 - t*t)
+        return t / (kk * np.sqrt(1.0 - t * t))
 
-def s_prime(u):
+def s_prime_k(u, k):
     u = np.asarray(u, dtype=float)
+    kk = float(k)
     with np.errstate(all="ignore"):
-        return 1.0 / np.power(1.0 + u*u, 1.5)
+        return kk / np.power(1.0 + (kk * kk) * u * u, 1.5)
 
-# ---------------------------
+# ============================================================
 # Sichere (eingeschränkte) Formel-Auswertung
-# ---------------------------
+# ============================================================
 _ALLOWED_FUNCS = {
     "sin": np.sin, "cos": np.cos, "tan": np.tan,
     "arcsin": np.arcsin, "arccos": np.arccos, "arctan": np.arctan,
@@ -98,10 +101,10 @@ def make_user_function(expr: str):
 
     return f, expr
 
-# ---------------------------
-# f(x0) robust: direkt oder Grenzwert-Schätzung
-# ---------------------------
-def eval_at_or_limit(f, x0, n=60):
+# ============================================================
+# f(x0): direkt / Grenzwert / sonst: warnen + f(x0)=0 annehmen
+# ============================================================
+def eval_at_or_limit_or_assume0(f, x0, n=60):
     with np.errstate(all="ignore"):
         try:
             v = f(np.array([x0], dtype=float))[0]
@@ -109,7 +112,7 @@ def eval_at_or_limit(f, x0, n=60):
             v = np.nan
 
     if np.isfinite(v):
-        return float(v), False
+        return float(v), "direct", "OK"
 
     base = max(1.0, abs(x0))
     eps_list = np.logspace(-2, -14, n) * base
@@ -125,46 +128,61 @@ def eval_at_or_limit(f, x0, n=60):
                 except Exception:
                     pass
 
-    if len(vals) < 6:
-        raise ValueError("f(x0) nicht auswertbar und kein stabiler Grenzwert erkennbar.")
+    if len(vals) >= 12:
+        tail = np.array(vals[-12:], dtype=float)
+        med = float(np.median(tail))
+        mad = float(np.median(np.abs(tail - med)))
+        stable = (mad < 0.05 * (abs(med) + 1.0))
+        if stable and np.isfinite(med):
+            return float(med), "limit", "f(x0) nicht direkt definierbar; Grenzwert scheint stabil."
 
-    tail = vals[-min(20, len(vals)):]
-    return float(np.median(tail)), True
+    return 0.0, "assumed0", "FEHLER: f(x0) nicht bestimmbar (kein stabiler Grenzwert). Setze f(x0)=0 (Annahme)."
 
-# ---------------------------
-# 3D-Surface: z = x/y in kompaktifizierten Koordinaten
-# ---------------------------
-def build_surface(ax, N=180, eps=1e-3, gap=0.02, alpha=0.35):
-    t = np.linspace(-1 + eps, 1 - eps, N)
-    u_pos = np.linspace(gap, 1 - eps, N // 2)
-    u_neg = np.linspace(-1 + eps, -gap, N // 2)
+# ============================================================
+# Achsen-Ticks: Positionen s(v,k), Labels v
+# ============================================================
+def set_compact_ticks(ax3d, values, k):
+    vals = np.array(values, dtype=float)
+    pos = s_k(vals, k)
+    labels = [str(v) for v in values]
+    ax3d.set_xticks(pos); ax3d.set_xticklabels(labels)
+    ax3d.set_yticks(pos); ax3d.set_yticklabels(labels)
+    ax3d.set_zticks(pos); ax3d.set_zticklabels(labels)
 
-    def plot_sheet(u_vals):
-        T, U = np.meshgrid(t, u_vals)
-        X = s_inv(T)
-        Y = s_inv(U)
-        Z = s(X / Y)
-        return ax.plot_surface(
+# ============================================================
+# 3D Ebene z = y/x einfarbig
+# ============================================================
+def draw_plane(ax3d, k, N=180, eps=1e-3, gap_x=0.02, alpha=0.25):
+    u = np.linspace(-1 + eps, 1 - eps, N)
+    t_pos = np.linspace(gap_x, 1 - eps, N // 2)
+    t_neg = np.linspace(-1 + eps, -gap_x, N // 2)
+
+    def sheet(t_vals):
+        T, U = np.meshgrid(t_vals, u)
+        X = s_inv_k(T, k)
+        Y = s_inv_k(U, k)
+        Z = s_k(Y / X, k)
+
+        fc = np.ones((*Z.shape, 4))
+        fc[..., 0] = 0.25
+        fc[..., 1] = 0.45
+        fc[..., 2] = 0.95
+        fc[..., 3] = alpha
+
+        surf = ax3d.plot_surface(
             T, U, Z,
-            cmap=cm.coolwarm,
             linewidth=0,
             antialiased=True,
-            alpha=alpha,
             shade=False,
+            facecolors=fc
         )
+        return surf
 
-    return plot_sheet(u_pos), plot_sheet(u_neg)
+    return [sheet(t_neg), sheet(t_pos)]
 
-def choose_x_range(x0):
-    R = max(5.0, 2.0 * abs(x0) + 1.0)
-    R = min(R, 50.0)
-    return x0 - R, x0 + R
-
-def inv_label(v):
-    if abs(v) >= 1.0:
-        return "∞"
-    return f"{(v / np.sqrt(1 - v*v)):.2g}"
-
+# ============================================================
+# 2D helpers
+# ============================================================
 def should_compactify_y(yvals, threshold=1e3):
     y = np.asarray(yvals, dtype=float)
     y = y[np.isfinite(y)]
@@ -175,81 +193,117 @@ def should_compactify_y(yvals, threshold=1e3):
     mag = max(abs(lo), abs(hi), 1.0)
     return (mag > threshold) or (span > 2 * threshold)
 
-# ---------------------------
+def robust_ylim_from_percentiles(y, p_lo=1, p_hi=99, pad_frac=0.10):
+    y = np.asarray(y, dtype=float)
+    y = y[np.isfinite(y)]
+    if y.size < 10:
+        return None
+    lo, hi = np.percentile(y, [p_lo, p_hi])
+    if not np.isfinite(lo) or not np.isfinite(hi) or lo == hi:
+        return None
+    pad = pad_frac * (hi - lo)
+    return (lo - pad, hi + pad)
+
+def estimate_local_window(f, x0, f0):
+    """
+    Heuristik für Local-Zoom-Fenster um x0:
+    - schätze typische Steigung über einige h (geometrisch abgestuft)
+    - wähle W so, dass Δf im Plot grob sichtbar bleibt, aber nicht explodiert
+    """
+    base = max(1.0, abs(x0))
+    hs = np.array([1e-2, 3e-3, 1e-3, 3e-4, 1e-4, 3e-5, 1e-5]) * base
+    slopes = []
+    with np.errstate(all="ignore"):
+        for h in hs:
+            try:
+                v = (f(x0 + h) - f0) / h
+                if np.isfinite(v):
+                    slopes.append(abs(float(v)))
+            except Exception:
+                pass
+    if len(slopes) == 0:
+        # fallback: kleines Fenster
+        return max(1e-3 * base, 1e-6)
+
+    s_med = float(np.median(slopes))
+    # Ziel: Funktionsänderung ~ 0.2*|f0| + 1 innerhalb des Fensters
+    target_df = 0.2 * (abs(f0) + 1.0) + 1.0
+    W = target_df / (s_med + 1e-12)
+
+    # Grenzen (sonst wird es albern)
+    W = float(np.clip(W, 1e-12 * base, 0.5 * base))
+    return W
+
+# ============================================================
 # Hauptprogramm
-# ---------------------------
+# ============================================================
 def main():
     plt.close("all")
     fig = plt.figure(figsize=(12, 7))
 
-    # WICHTIG: mehr Platz unten, damit Statuszeile + Buttons Platz haben
     gs = fig.add_gridspec(
-        1, 2,
-        width_ratios=[1.35, 1.0],
+        1, 2, width_ratios=[1.35, 1.0],
         left=0.05, right=0.98,
-        bottom=0.22,   # <-- vorher 0.08; jetzt deutlich mehr
-        top=0.88,
-        wspace=0.25
+        bottom=0.22, top=0.88, wspace=0.25
     )
     ax3d = fig.add_subplot(gs[0, 0], projection="3d")
     ax2d = fig.add_subplot(gs[0, 1])
 
-    # 3D surface
-    build_surface(ax3d, N=180, eps=1e-3, gap=0.02, alpha=0.35)
+    DEFAULT_K = 1.0
 
-    ax3d.set_xlim(-1, 1)
-    ax3d.set_ylim(-1, 1)
-    ax3d.set_zlim(-1, 1)
+    state = {
+        "k": DEFAULT_K,
+        "plane_on": True,
+        "plane_artists": [],
+        "plot_mode": "local",   # "local" oder "global"
+        "clip_on": True,        # robust y-limits an/aus
+    }
+
+    # 3D Setup
+    ax3d.set_xlim(-1, 1); ax3d.set_ylim(-1, 1); ax3d.set_zlim(-1, 1)
     ax3d.set_box_aspect((1, 1, 1))
-    ax3d.set_xlabel("s(x)")
-    ax3d.set_ylabel("s(y)")
-    ax3d.set_zlabel("s(z)")
-    ax3d.set_title("Kompaktifizierte Fläche z = x/y und Differenzenquotient-Kurve")
+    ax3d.set_xlabel("h (kompakt)")
+    ax3d.set_ylabel("Δf (kompakt)")
+    ax3d.set_zlabel("Δf/h (kompakt)")
+    ax3d.set_title("Kompaktifizierte Fläche z = y/x (x=h, y=Δf) + Differenzenquotient-Kurve")
 
-    ticks = np.array([-0.9, -0.6, -0.3, 0.0, 0.3, 0.6, 0.9])
-    ticklabels = [inv_label(v) for v in ticks]
-    ax3d.set_xticks(ticks); ax3d.set_xticklabels(ticklabels)
-    ax3d.set_yticks(ticks); ax3d.set_yticklabels(ticklabels)
-    ax3d.set_zticks(ticks); ax3d.set_zticklabels(ticklabels)
+    tick_values = [-10, -1, -0.5, 0, 0.5, 1, 10]
+    set_compact_ticks(ax3d, tick_values, state["k"])
 
-    # 3D Kurve (Outline + Linie + Punkte)
+    # 3D Kurve
     line3d_bg, = ax3d.plot([], [], [], color="black", linewidth=6, alpha=0.9)
     line3d, = ax3d.plot([], [], [], color="red", linewidth=3, alpha=1.0)
     curve_pts = ax3d.scatter([], [], [], color="red", s=10, depthshade=False)
-    marker3d = ax3d.scatter([], [], [], color="red", s=55, depthshade=False)
+    far_pts = ax3d.scatter([], [], [], color="red", s=35, depthshade=False)
 
-    # Start-View (für Reset)
-    start_elev, start_azim, start_dist = 22.0, -55.0, 9.0
+    # Origin-Anker + (0,0,*) Marker/Wolke
+    ax3d.scatter([0.0], [0.0], [0.0], color="red", s=55, depthshade=False)
+    marker3d = ax3d.scatter([], [], [], color="red", s=70, depthshade=False)
+    marker_cloud = ax3d.scatter([], [], [], color="red", s=18, depthshade=False, alpha=0.8)
+
+    start_elev, start_azim = 22.0, -55.0
     ax3d.view_init(elev=start_elev, azim=start_azim)
-    ax3d.dist = start_dist
 
-    # 2D plot
+    # 2D Plot
     ax2d.grid(True)
     f_line2d, = ax2d.plot([], [], linewidth=2)
     tan_line2d, = ax2d.plot([], [], linewidth=2, linestyle="--")
     pt2d = ax2d.scatter([], [], s=40, zorder=3)
 
-    # ---------------------------
-    # Statusleiste (eigene Achse), damit nichts überdeckt wird
-    # ---------------------------
-    status_ax = fig.add_axes([0.05, 0.13, 0.93, 0.06])  # oberhalb der Buttonzeile
-    status_ax.axis("off")
+    # Status
+    status_ax = fig.add_axes([0.05, 0.13, 0.93, 0.06]); status_ax.axis("off")
     status_text = status_ax.text(0.0, 0.5, "", va="center", ha="left", fontsize=10)
 
-    # ---------------------------
-    # Eingabefelder
-    # ---------------------------
+    # Eingaben
     axbox_f = plt.axes([0.12, 0.92, 0.62, 0.05])
     axbox_x0 = plt.axes([0.78, 0.92, 0.10, 0.05])
     axbtn_update = plt.axes([0.90, 0.92, 0.08, 0.05])
 
     tb_f = TextBox(axbox_f, "f(x) = ", initial="sin(x)/x")
-    tb_x0 = TextBox(axbox_x0, "x0 = ", initial="5")
+    tb_x0 = TextBox(axbox_x0, "x0 = ", initial="0")
     btn_update = Button(axbtn_update, "Update")
 
-    # ---------------------------
-    # 3D Navigation Buttons (unterhalb der Statusleiste)
-    # ---------------------------
+    # Controls unten
     nav_y = 0.06
     nav_w = 0.05
     nav_h = 0.06
@@ -261,7 +315,12 @@ def main():
     ax_down  = plt.axes([nav_x0 + 0.165, nav_y, nav_w, nav_h])
     ax_zoom_in  = plt.axes([nav_x0 + 0.220, nav_y, nav_w, nav_h])
     ax_zoom_out = plt.axes([nav_x0 + 0.275, nav_y, nav_w, nav_h])
-    ax_reset = plt.axes([nav_x0 + 0.335, nav_y, 0.08, nav_h])
+    ax_plane = plt.axes([nav_x0 + 0.335, nav_y, 0.08, nav_h])
+    ax_reset = plt.axes([nav_x0 + 0.425, nav_y, 0.08, nav_h])
+
+    # neue Buttons (rechts unten daneben)
+    ax_mode = plt.axes([nav_x0 + 0.515, nav_y, 0.10, nav_h])
+    ax_clip = plt.axes([nav_x0 + 0.625, nav_y, 0.10, nav_h])
 
     btn_left  = Button(ax_left,  "←")
     btn_right = Button(ax_right, "→")
@@ -269,41 +328,44 @@ def main():
     btn_down  = Button(ax_down,  "↓")
     btn_zoom_in  = Button(ax_zoom_in,  "+")
     btn_zoom_out = Button(ax_zoom_out, "-")
+    btn_plane = Button(ax_plane, "Plane")
     btn_reset = Button(ax_reset, "Reset")
 
-    def redraw3d():
-        fig.canvas.draw_idle()
+    btn_mode = Button(ax_mode, "Local")
+    btn_clip = Button(ax_clip, "Clip on")
 
+    # Plane render
+    def clear_plane():
+        for a in state["plane_artists"]:
+            try:
+                a.remove()
+            except Exception:
+                pass
+        state["plane_artists"] = []
+
+    def render_plane():
+        clear_plane()
+        if state["plane_on"]:
+            state["plane_artists"] = draw_plane(ax3d, state["k"], N=180, gap_x=0.02, alpha=0.25)
+
+    render_plane()
+
+    # Navigation (invertiert)
     def rotate(da=0.0, de=0.0):
         az = ax3d.azim + da
         el = ax3d.elev + de
         el = max(-89.0, min(89.0, el))
         ax3d.view_init(elev=el, azim=az)
-        redraw3d()
-
-    def zoom(factor):
-        d = getattr(ax3d, "dist", 10.0)
-        d = d * factor
-        d = max(2.0, min(30.0, d))
-        ax3d.dist = d
-        redraw3d()
-
-    def reset_view(_=None):
-        ax3d.view_init(elev=start_elev, azim=start_azim)
-        ax3d.dist = start_dist
-        redraw3d()
+        fig.canvas.draw_idle()
 
     btn_left.on_clicked(lambda _: rotate(da=-8.0))
     btn_right.on_clicked(lambda _: rotate(da=+8.0))
-    btn_up.on_clicked(lambda _: rotate(de=+6.0))
-    btn_down.on_clicked(lambda _: rotate(de=-6.0))
-    btn_zoom_in.on_clicked(lambda _: zoom(0.85))
-    btn_zoom_out.on_clicked(lambda _: zoom(1.18))
-    btn_reset.on_clicked(reset_view)
+    btn_up.on_clicked(lambda _: rotate(de=-6.0))
+    btn_down.on_clicked(lambda _: rotate(de=+6.0))
 
-    # ---------------------------
-    # Update-Funktion
-    # ---------------------------
+    # ------------------------------------------------------------
+    # Update
+    # ------------------------------------------------------------
     def update(_=None):
         nonlocal pt2d
 
@@ -312,49 +374,45 @@ def main():
         try:
             x0 = float(x0_in)
         except ValueError:
-            status_text.set_text("Fehler: x0 ist keine Zahl.")
+            status_text.set_text("FEHLER: x0 ist keine Zahl.")
             fig.canvas.draw_idle()
             return
 
         try:
             f, expr_norm = make_user_function(expr_in)
         except Exception as e:
-            status_text.set_text(f"Fehler in f(x): {e}")
+            status_text.set_text(f"FEHLER in f(x): {e}")
             fig.canvas.draw_idle()
             return
 
-        # h sampling (ohne 0)
-        hmin, hmax = 1e-6, 1e1
-        hs_pos = np.logspace(np.log10(hmin), np.log10(hmax), 600)
-        hs = np.concatenate((-hs_pos[::-1], hs_pos))
+        # f(x0): direkt/limit/assumed0
+        f0, f0_mode, f0_msg = eval_at_or_limit_or_assume0(f, x0)
 
-        # f(x0)
-        try:
-            f0, used_limit = eval_at_or_limit(f, x0)
-        except Exception as e:
-            status_text.set_text(f"Fehler: f(x0) nicht bestimmbar: {e}")
-            fig.canvas.draw_idle()
-            return
+        # 3D: h-Parameter
+        hs_line = np.linspace(-2.0, 2.0, 1600)
+        hs_line = hs_line[np.abs(hs_line) > 1e-6]
+        hs_far = np.array([-10.0, -5.0, -3.0, 3.0, 5.0, 10.0], dtype=float)
 
-        # 3D Kurve
-        try:
-            with np.errstate(all="ignore"):
-                fx = f(x0 + hs)
-            delta = fx - f0
-            dq = delta / hs
-        except Exception as e:
-            status_text.set_text(f"Auswertefehler: {e}")
-            fig.canvas.draw_idle()
-            return
+        with np.errstate(all="ignore"):
+            fx_line = np.asarray(f(x0 + hs_line), dtype=float)
+        delta_line = fx_line - f0
+        dq_line = delta_line / hs_line
 
-        Xc, Yc, Zc = s(delta), s(hs), s(dq)
-        mask = np.isfinite(Xc) & np.isfinite(Yc) & np.isfinite(Zc)
-        Xc, Yc, Zc = Xc[mask], Yc[mask], Zc[mask]
+        with np.errstate(all="ignore"):
+            fx_far = np.asarray(f(x0 + hs_far), dtype=float)
+        delta_far = fx_far - f0
+        dq_far = delta_far / hs_far
 
-        line3d_bg.set_data(Xc, Yc)
-        line3d_bg.set_3d_properties(Zc)
-        line3d.set_data(Xc, Yc)
-        line3d.set_3d_properties(Zc)
+        k = state["k"]
+
+        Xc = s_k(hs_line, k)
+        Yc = s_k(delta_line, k)
+        Zc = s_k(dq_line, k)
+        m = np.isfinite(Xc) & np.isfinite(Yc) & np.isfinite(Zc)
+        Xc, Yc, Zc = Xc[m], Yc[m], Zc[m]
+
+        line3d_bg.set_data(Xc, Yc); line3d_bg.set_3d_properties(Zc)
+        line3d.set_data(Xc, Yc);    line3d.set_3d_properties(Zc)
 
         if Xc.size > 0:
             step = max(1, Xc.size // 250)
@@ -362,107 +420,182 @@ def main():
         else:
             curve_pts._offsets3d = ([], [], [])
 
-        # Derivat approx
-        d_approx = np.nan
-        try:
-            h0 = 1e-6
-            with np.errstate(all="ignore"):
-                d_approx = (f(x0 + h0) - f(x0 - h0)) / (2*h0)
-        except Exception:
-            pass
+        Xf = s_k(hs_far, k)
+        Yf = s_k(delta_far, k)
+        Zf = s_k(dq_far, k)
+        mf = np.isfinite(Xf) & np.isfinite(Yf) & np.isfinite(Zf)
+        far_pts._offsets3d = (Xf[mf], Yf[mf], Zf[mf])
 
-        if np.isfinite(d_approx):
-            marker3d._offsets3d = ([0.0], [0.0], [float(s(d_approx))])
+        # (0,0,*) Stabilität
+        h_tests = np.array([1e-2, 3e-3, 1e-3, 3e-4, 1e-4, 3e-5, 1e-5], dtype=float) * max(1.0, abs(x0))
+        vals = []
+        with np.errstate(all="ignore"):
+            for h0 in h_tests:
+                try:
+                    v = (f(x0 + h0) - f0) / h0
+                    if np.isfinite(v):
+                        vals.append(float(v))
+                except Exception:
+                    pass
+
+        marker_cloud._offsets3d = ([], [], [])
+        if len(vals) >= 4:
+            tail = np.array(vals[-4:], dtype=float)
+            med = float(np.median(tail))
+            mad = float(np.median(np.abs(tail - med)))
+            stable = (mad < 0.05 * (abs(med) + 1.0))
+            if stable and np.isfinite(med):
+                marker3d._offsets3d = ([0.0], [0.0], [float(s_k(med, k))])
+            else:
+                marker3d._offsets3d = ([0.0], [0.0], [0.0])
+                zcloud = np.linspace(-1, 1, 25)
+                marker_cloud._offsets3d = (np.zeros_like(zcloud), np.zeros_like(zcloud), zcloud)
         else:
-            marker3d._offsets3d = ([], [], [])
+            marker3d._offsets3d = ([0.0], [0.0], [0.0])
+            zcloud = np.linspace(-1, 1, 25)
+            marker_cloud._offsets3d = (np.zeros_like(zcloud), np.zeros_like(zcloud), zcloud)
 
-        # 2D Plot
-        xL, xR = choose_x_range(x0)
-        xs = np.linspace(xL, xR, 2000)
+        # --------------------------------------------------------
+        # 2D Plot: Local/Global + Clip
+        # --------------------------------------------------------
+        if state["plot_mode"] == "global":
+            xL, xR = -5.0, 5.0
+        else:
+            W = estimate_local_window(f, x0, f0)
+            xL, xR = x0 - W, x0 + W
+            # falls x0=0, trotzdem sinnvolle Breite
+            if xL == xR:
+                xL, xR = -1e-3, 1e-3
+
+        xs = np.linspace(xL, xR, 2500)
+
         with np.errstate(all="ignore"):
             ys_raw = np.asarray(f(xs), dtype=float)
 
-        compact = should_compactify_y(ys_raw, threshold=1e3)
+        # Tangente nur wenn nicht assumed0
+        d_approx = np.nan
+        try:
+            h0 = 1e-6 * max(1.0, abs(x0))
+            with np.errstate(all="ignore"):
+                d_approx = (f(x0 + h0) - f(x0 - h0)) / (2 * h0)
+        except Exception:
+            pass
+
+        compact2d = should_compactify_y(ys_raw, threshold=1e3)
 
         if ax2d.legend_ is not None:
             ax2d.legend_.remove()
 
-        if not compact:
-            m = np.isfinite(xs) & np.isfinite(ys_raw)
-            xs2, ys2 = xs[m], ys_raw[m]
-            f_line2d.set_data(xs2, ys2)
-            f_line2d.set_label("f(x)")
+        if not compact2d:
+            m2 = np.isfinite(xs) & np.isfinite(ys_raw)
+            f_line2d.set_data(xs[m2], ys_raw[m2]); f_line2d.set_label("f(x)")
 
-            if np.isfinite(d_approx):
+            if np.isfinite(d_approx) and (f0_mode != "assumed0"):
                 yt = f0 + d_approx * (xs - x0)
                 mt = np.isfinite(yt)
-                tan_line2d.set_data(xs[mt], yt[mt])
-                tan_line2d.set_label("Tangente in x0")
+                tan_line2d.set_data(xs[mt], yt[mt]); tan_line2d.set_label("Tangente")
             else:
-                tan_line2d.set_data([], [])
-                tan_line2d.set_label("Tangente (n/a)")
+                tan_line2d.set_data([], []); tan_line2d.set_label("Tangente (n/a)")
 
             pt2d.remove()
-            pt2d = ax2d.scatter([x0], [f0], s=40, zorder=3, label="(x0, f(x0))")
+            lab = "(x0,f(x0))" if f0_mode != "assumed0" else "(x0,f(x0)=0 angenommen)"
+            pt2d = ax2d.scatter([x0], [f0], s=40, zorder=3, label=lab)
 
-            ax2d.set_title("f(x) und Tangente in x0 (linear)")
+            ax2d.set_title("f(x) und Tangente (linear)")
             ax2d.set_ylabel("f(x)")
             ax2d.set_xlim(xL, xR)
 
-            if ys2.size > 0:
-                lo, hi = np.percentile(ys2, [2, 98])
-                if np.isfinite(lo) and np.isfinite(hi) and lo != hi:
-                    pad = 0.15 * (hi - lo)
-                    ax2d.set_ylim(lo - pad, hi + pad)
+            if state["clip_on"]:
+                yl = robust_ylim_from_percentiles(ys_raw, p_lo=1, p_hi=99, pad_frac=0.10)
+                if yl is not None:
+                    ax2d.set_ylim(*yl)
+            else:
+                # default autoscale is ok
+                pass
 
         else:
-            ys = s(ys_raw)
-            m = np.isfinite(xs) & np.isfinite(ys)
-            xs2, ys2 = xs[m], ys[m]
-            f_line2d.set_data(xs2, ys2)
-            f_line2d.set_label("s(f(x))")
+            ys = s_k(ys_raw, 1.0)
+            m2 = np.isfinite(xs) & np.isfinite(ys)
+            f_line2d.set_data(xs[m2], ys[m2]); f_line2d.set_label("s(f(x))")
 
-            g0 = float(s(f0))
-            if np.isfinite(d_approx) and np.isfinite(f0):
-                gprime = float(s_prime(f0) * d_approx)
+            g0 = float(s_k(f0, 1.0))
+            if np.isfinite(d_approx) and (f0_mode != "assumed0") and np.isfinite(f0):
+                gprime = float(s_prime_k(f0, 1.0) * d_approx)
                 yt = g0 + gprime * (xs - x0)
                 mt = np.isfinite(yt)
-                tan_line2d.set_data(xs[mt], yt[mt])
-                tan_line2d.set_label("Tangente an s(f) in x0")
+                tan_line2d.set_data(xs[mt], yt[mt]); tan_line2d.set_label("Tangente an s(f)")
             else:
-                tan_line2d.set_data([], [])
-                tan_line2d.set_label("Tangente (n/a)")
+                tan_line2d.set_data([], []); tan_line2d.set_label("Tangente (n/a)")
 
             pt2d.remove()
-            pt2d = ax2d.scatter([x0], [g0], s=40, zorder=3, label="(x0, s(f(x0)))")
+            lab = "(x0,s(f(x0)))" if f0_mode != "assumed0" else "(x0,s(0) angenommen)"
+            pt2d = ax2d.scatter([x0], [g0], s=40, zorder=3, label=lab)
 
-            ax2d.set_title("f(x) und Tangente in x0 (y kompaktifiziert)")
+            ax2d.set_title("f(x) und Tangente (kompakt y)")
             ax2d.set_ylabel("s(·)")
             ax2d.set_xlim(xL, xR)
-
             ax2d.set_ylim(-1, 1)
-            ax2d.set_yticks(ticks)
-            ax2d.set_yticklabels(ticklabels)
 
         ax2d.legend(loc="best")
 
-        suffix = " (f(x0) via Grenzwert)" if used_limit else ""
-        mode = "2D: kompakt" if compact else "2D: linear"
-        if np.isfinite(d_approx):
-            status_text.set_text(
-                f"f(x) = {expr_norm}   |   x0 = {x0:g}   |   approx f'(x0) ≈ {d_approx:.6g}{suffix}   |   {mode}"
-            )
-        else:
-            status_text.set_text(
-                f"f(x) = {expr_norm}   |   x0 = {x0:g}   |   approx f'(x0) n/a{suffix}   |   {mode}"
-            )
+        warn = f" | {f0_msg}" if f0_msg != "OK" else ""
+        status_text.set_text(
+            f"f(x)={expr_norm} | x0={x0:g} | f(x0)={f0:g} [{f0_mode}] | k={state['k']:.3g} "
+            f"| Plane={'on' if state['plane_on'] else 'off'} | 2D={state['plot_mode']} | Clip={'on' if state['clip_on'] else 'off'}{warn}"
+        )
 
         fig.canvas.draw_idle()
 
+    # Wire update
     btn_update.on_clicked(update)
     tb_f.on_submit(update)
     tb_x0.on_submit(update)
 
+    # Zoom über k
+    def apply_zoom(factor):
+        state["k"] = float(np.clip(state["k"] * factor, 0.25, 30.0))
+        set_compact_ticks(ax3d, tick_values, state["k"])
+        render_plane()
+        update()
+
+    btn_zoom_in.on_clicked(lambda _: apply_zoom(1.35))
+    btn_zoom_out.on_clicked(lambda _: apply_zoom(1 / 1.35))
+
+    # Plane toggle
+    def toggle_plane(_=None):
+        state["plane_on"] = not state["plane_on"]
+        render_plane()
+        fig.canvas.draw_idle()
+
+    btn_plane.on_clicked(toggle_plane)
+
+    # Mode toggle (Local/Global)
+    def toggle_mode(_=None):
+        state["plot_mode"] = "global" if state["plot_mode"] == "local" else "local"
+        btn_mode.label.set_text("Global" if state["plot_mode"] == "global" else "Local")
+        update()
+
+    btn_mode.on_clicked(toggle_mode)
+
+    # Clip toggle
+    def toggle_clip(_=None):
+        state["clip_on"] = not state["clip_on"]
+        btn_clip.label.set_text("Clip on" if state["clip_on"] else "Clip off")
+        update()
+
+    btn_clip.on_clicked(toggle_clip)
+
+    # Reset: View + Zoom(k=1) + Ebene + Kurven
+    def reset_all(_=None):
+        ax3d.view_init(elev=start_elev, azim=start_azim)
+        state["k"] = DEFAULT_K
+        set_compact_ticks(ax3d, tick_values, state["k"])
+        render_plane()
+        update()
+
+    btn_reset.on_clicked(reset_all)
+
+    # initial
     update()
     plt.show()
 
