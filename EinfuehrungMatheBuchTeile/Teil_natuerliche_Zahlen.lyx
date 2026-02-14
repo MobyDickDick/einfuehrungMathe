@@ -19048,6 +19048,12 @@ n_{1}+\left(n_{2}+1\right)=\left(n_{2}+1\right)+n_{1}
 
 \end_layout
 
+\begin_layout Proof
+Aus diesem Grund behaupte ich,
+ dass die Induktionsvererbung und somit den gesamten Beweis für die Richtigkeit der Behauptung erbracht habe.
+ Also beende ich an dieser Stelle die weitere Beweisführung.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Flex Backward References
 status open
@@ -20891,156 +20897,6 @@ Der Punkt wird oft weggelassen.
  ist das oft kein Problem.
 \end_layout
 
-\begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:Definition-Multiplikation-ueber-erster-Faktor-ist-aequivalent"
-
-\end_inset
-
-Für alle 
-\begin_inset Formula $m,n\in\mathbb{N}$
-\end_inset
-
- gilt:
-\begin_inset Formula 
-\[
-\left(m+1\right)\cdot n=m\cdot n+n
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Es sei 
-\begin_inset Formula $n=1$
-\end_inset
-
-.
- Dann gilt für beliebige 
-\begin_inset Formula $m\in\mathbb{N}$
-\end_inset
-
- 
-\begin_inset Formula 
-\[
-\left(m+1\right)\cdot1=m+1=m\cdot1+1
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Also zusammengefasst
-\begin_inset Formula 
-\[
-\left(m+1\right)\cdot1=m\cdot1+1
-\]
-
-\end_inset
-
-womit die Induktionsverankerung bewiesen wäre.
-\end_layout
-
-\begin_layout Proof
-Nun gelte die Behauptung für ein bestimmtes 
-\begin_inset Formula $m\in\mathbb{N}$
-\end_inset
-
- und ein beliebiges 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\left(m+1\right)\cdot n=m\cdot n+m
-\]
-
-\end_inset
-
-Dann ist 
-\begin_inset Formula 
-\[
-\left(m+1\right)\cdot\left(n+1\right)=\left(m+1\right)\cdot n+m+1
-\]
-
-\end_inset
-
-Dann kann ich in diese Gleichung die Induktionsvoraussetzung einfügen und erhalte
-\begin_inset Formula 
-\[
-\left(m+1\right)\cdot n+m+1=m\cdot n+n+m+1
-\]
-
-\end_inset
-
-Da die Addition kommutativ und assoziativ ist,
- kann ich dann folgern dass gilt:
-\begin_inset Formula 
-\[
-m\cdot n+n+m+1=m\cdot n+m+n+1
-\]
-
-\end_inset
-
-Gemäss Definition der Multiplikation von natürlichen Zahlen gilt
-\begin_inset Formula 
-\[
-m\cdot\left(n+1\right)=m\cdot n+n
-\]
-
-\end_inset
-
-Das bedeutet,
- dass auch gilt 
-\begin_inset Formula 
-\[
-m\cdot n+n=m\cdot\left(n+1\right)
-\]
-
-\end_inset
-
-und somit auch 
-\begin_inset Formula 
-\[
-m\cdot n+m+n+1=m\cdot\left(n+1\right)+\left(n+1\right)
-\]
-
-\end_inset
-
-Die Klammer bei beim zweiten Ausdruck 
-\begin_inset Formula $n+1$
-\end_inset
-
- gilt,
- da die Addition assoziativ ist.
- Zusammengesetzt kann ich also folgern,
- dass gilt:
-\begin_inset Formula 
-\[
-\left(m+1\right)\cdot\left(n+1\right)=m\cdot\left(n+1\right)+\left(n+1\right)
-\]
-
-\end_inset
-
-Damit habe ich jedoch die Induktionsvererbung und somit die Gültigkeit des ganzen Lemmas bewiesen.
- Aus diesem Grund beende ich an dieser Stelle die witere Beweisführung.
-\end_layout
-
-\begin_layout Standard
-Der letzte Satz ist für mich insofern eine Erleichterung,
- als er zeigt,
- dass es nicht erheblich ist,
- ob ich die Mulitiplikation über den ersten oder den zweiten Faktor definiere.
- Es kommt biedes mal das Gleiche heraus,
- was doch irgendwie zuversichtlich stimmt
-\end_layout
-
 \begin_layout Section
 Zwischenbemerkung
 \end_layout
@@ -21052,7 +20908,7 @@ Ich bin auch nur ein Mensch.
  Es mag sein,
  dass ich zukünftig versuche,
  die logischen Löcher in der Argumentation zu stopfen.
- Aber zum jetztigen Zeitpunkt werde ich mir erlauben,
+ Aber zum jetzigen Zeitpunkt werde ich mir erlauben,
  hinzuweisen,
  wo eventuell noch logische Schwächen versteckt sein könnten.
 \end_layout
@@ -21062,7 +20918,13 @@ Es könnte möglich sein,
  dass insgesamt vier Lemmata formuliert und bewiesen werden sollten:
 \end_layout
 
-\begin_layout Conjecture
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Substitutionsregel-Addition-Mulitplikation-natuerlicher-Zahlen"
+
+\end_inset
+
 Es seien 
 \begin_inset Formula $n_{1},\,n_{2},\,n_{3}$
 \end_inset
@@ -21107,7 +20969,7 @@ Es sei
 \end_inset
 
  ein beliebiges Symbol,
- welches in sich selbst sowie in Bezug auf die anderen Symbole des Beweises Widerspruchsfrei sei.
+ welches in sich selbst sowie in Bezug auf die anderen Symbole des Beweises widerspruchsfrei sei.
  Dann gilt gemäss Definition der natürlichen Zahlen sowie der Addition der natürlichen Zahlen:
  
 \begin_inset Formula 
@@ -21169,7 +21031,7 @@ n_{1}\cdot A\,n_{2}\cdot A=n_{3}\cdot A\,n_{2}\cdot A
 
 \end_inset
 
-Annschliessend wende ich die Gleichheit 
+Anschliessend wende ich die Gleichheit 
 \begin_inset Formula 
 \[
 n_{2}\cdot A=n_{4}\cdot A
@@ -21217,7 +21079,7 @@ n_{1}\cdot A\,n_{2}\cdot A & = & n_{3}\cdot A\,n_{4}\cdot A
 
 \end_inset
 
-Das muss jedoch gemäss der Definition der Additon der natürlichen Zahlen bedeuten,
+Das muss jedoch gemäss der Definition der Addition der natürlichen Zahlen bedeuten,
  dass gilt:
 \end_layout
 
@@ -21237,7 +21099,7 @@ n_{3}\cdot A\,n_{4}\cdot A & = & \left(n_{3}+n_{4}\right)\cdot A
 
 \end_inset
 
-Wiederum gemäss der Transitivität der Symbogleichheit kann ich daraus schliessen,
+Wiederum gemäss der Transitivität der Symbolgleichheit kann ich daraus schliessen,
  dass gilt:
 \begin_inset Formula 
 \[
@@ -21292,7 +21154,7 @@ n_{3}\cdot1=n_{3}
 
 \end_inset
 
-Und weil Gleichheit von natürlichen Zahlen als Aquivalenzrelation ebenfalls symmetrisch ist,
+Und weil Gleichheit von natürlichen Zahlen als Äquivalenzrelation ebenfalls symmetrisch ist,
  muss auch gelten:
 \begin_inset Formula 
 \[
@@ -21364,7 +21226,7 @@ n_{1}\cdot n_{2}+n_{1}=n_{3}\cdot n_{4}+n_{3}
 
 \end_inset
 
-Gemäss Definiton der Multiplikation muss gelten:
+Gemäss Definition der Multiplikation muss gelten:
  
 \begin_inset Formula 
 \[
@@ -21422,7 +21284,493 @@ Somit meine ich auch den zweiten Satz bewiesen zu haben und beende aus diesem Gr
 \end_layout
 
 \begin_layout Section
-Distributiv- und Assoziativgesetzte der natürlichen Multiplikation
+Distributiv- und Assoziativgesetze der natürlichen Multiplikation
+\end_layout
+
+\begin_layout Standard
+Ich beginne mit einführenden Lemmata:
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:multiplikation-natuerlicher-Zahlen-ist-linksidentitiv"
+
+\end_inset
+
+Es sei 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ Dann gilt 
+\begin_inset Formula 
+\[
+1\cdot n=n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Es sei 
+\begin_inset Formula $n=1$
+\end_inset
+
+.
+ Dann gilt gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Multiplikation-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Multiplikation von natürlichen Zahlen
+\begin_inset Formula 
+\[
+1\cdot1=1
+\]
+
+\end_inset
+
+was jedoch genau der Behauptung für 
+\begin_inset Formula $n=1$
+\end_inset
+
+ entspricht.
+ Damit ich die Induktionsverankerung bewiesen.
+ Nun möchte ich die Induktionsvererbung beweisen.
+ Es gelte die Behauptung für 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+1\cdot n=n
+\]
+
+\end_inset
+
+Gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Multiplikation-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Multiplikation kann ich schreiben
+\begin_inset Formula 
+\[
+1\cdot\left(n+1\right)=1\cdot n+1\cdot1
+\]
+
+\end_inset
+
+Gemäss der Substitutionsregel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Substitutionsregel-Addition-Mulitplikation-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ und der Induktionsvoraussetzung muss dann gelten
+\begin_inset Formula 
+\[
+1\cdot n+1\cdot1=n+1
+\]
+
+\end_inset
+
+und insgesamt also 
+\begin_inset Formula 
+\[
+1\cdot\left(n+1\right)=n+1
+\]
+
+\end_inset
+
+Das ist jedoch gerade der Behauptung der Induktionsvererbung.
+ Aus diesem Grund bin ich der Meinung,
+ dass ich den Beweis für die Richtigkeit der ganzen Behauptung erbracht habe und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "llem:multiplikation-natuerlicher-Zahlen-ist-linksidentitiv"
+
+\end_inset
+
+Für alle 
+\begin_inset Formula $m,n\in\mathbb{N}$
+\end_inset
+
+ gilt:
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Formula 
+\[
+\left(n+1\right)\cdot m=n\cdot m+m
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Es sei 
+\begin_inset Formula $m=1$
+\end_inset
+
+.
+ Dann gilt für beliebige 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\left(n+1\right)\cdot1=n+1=n\cdot1+1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Gemäss Definition der Multiplikation gilt:
+ 
+\begin_inset Formula 
+\[
+n\cdot1=n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Also gilt zusammengefasst:
+\begin_inset Formula 
+\[
+\left(n+1\right)\cdot1=n\cdot1+1
+\]
+
+\end_inset
+
+womit die Induktionsverankerung bewiesen wäre.
+\end_layout
+
+\begin_layout Proof
+Nun gelte die Behauptung für ein bestimmtes 
+\begin_inset Formula $m\in\mathbb{N}$
+\end_inset
+
+ und ein beliebiges 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(n+1\right)\cdot m=n\cdot m+m
+\]
+
+\end_inset
+
+Dann ist gemäss der Definition der Multiplikation:
+\begin_inset Formula 
+\[
+\left(n+1\right)\cdot\left(m+1\right)=\left(n+1\right)\cdot m+n+1
+\]
+
+\end_inset
+
+Dann kann ich in diese Gleichung die Induktionsvoraussetzung einfügen und erhalte
+\begin_inset Formula 
+\[
+\left(n+1\right)\cdot m+n+1=n\cdot m+m+n+1
+\]
+
+\end_inset
+
+Da die Addition kommutativ und assoziativ ist,
+ kann ich dann folgern dass gilt:
+\begin_inset Formula 
+\[
+n\cdot m+m+n+1=n\cdot m+n+m+1
+\]
+
+\end_inset
+
+Gemäss Definition der Multiplikation von natürlichen Zahlen gilt
+\begin_inset Formula 
+\[
+n\cdot\left(m+1\right)=n\cdot m+n
+\]
+
+\end_inset
+
+Das bedeutet,
+ dass auch gilt 
+\begin_inset Formula 
+\[
+n\cdot m+n=n\cdot\left(m+1\right)
+\]
+
+\end_inset
+
+und somit auch 
+\begin_inset Formula 
+\[
+n\cdot m+n+m+1=n\cdot\left(m+1\right)+\left(m+1\right)
+\]
+
+\end_inset
+
+Die Klammer bei beim zweiten Ausdruck 
+\begin_inset Formula $n+1$
+\end_inset
+
+ gilt,
+ da die Addition assoziativ ist.
+ Zusammengesetzt kann ich also folgern,
+ dass gilt:
+\begin_inset Formula 
+\[
+\left(n+1\right)\cdot\left(m+1\right)=n\cdot\left(m+1\right)+\left(m+1\right)
+\]
+
+\end_inset
+
+Damit habe ich jedoch die Induktionsvererbung und somit die Gültigkeit des ganzen Lemmas bewiesen.
+ Aus diesem Grund beende ich an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Standard
+Der letzte Satz ist für mich insofern eine Erleichterung,
+ als er zeigt,
+ dass es nicht erheblich ist,
+ ob ich die Multiplikation über den ersten oder den zweiten Faktor definiere.
+ Es kommt beides mal das Gleiche heraus,
+ was doch irgendwie zuversichtlich stimmt.
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Kommutativität-der-Multiplikation-natuerlicher-Zahlen"
+
+\end_inset
+
+Es seien 
+\begin_inset Formula $m,n\in\mathbb{N}$
+\end_inset
+
+,
+ also natürliche Zahlen.
+ Dann gilt 
+\begin_inset Formula 
+\[
+m\cdot n=n\cdot m
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Es sei 
+\begin_inset Formula $n=1$
+\end_inset
+
+.
+ Dann gilt per Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Multiplikation-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Multiplikation der natürlichen Zahlen 
+\begin_inset Formula 
+\[
+m\cdot1=m
+\]
+
+\end_inset
+
+Weiter oben habe ich im Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:multiplikation-natuerlicher-Zahlen-ist-linksidentitiv"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ gezeigt,
+ dass gilt gilt:
+\begin_inset Formula 
+\[
+1\cdot\dot{m=m}
+\]
+
+\end_inset
+
+Und da die Gleichheit von natürlichen zahlen als Äquivalenzrelation symmetrisch ist,
+ muss auch gelten
+\begin_inset Formula 
+\[
+m=1\cdot m
+\]
+
+\end_inset
+
+Somit muss auch gelten (da die Gleichheit von natürlichen Zahlen als Äquivalenzrelation auch transitiv ist)
+\begin_inset Formula 
+\[
+m\cdot1=1\cdot m
+\]
+
+\end_inset
+
+Damit habe ich die Induktionsverankerung bewiesen.
+ Nun gelte
+\begin_inset Formula 
+\[
+m\cdot n=n\cdot m
+\]
+
+\end_inset
+
+Dann gilt gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Multiplikation-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Multiplikation der natürlichen Zahlen:
+\begin_inset Formula 
+\[
+m\cdot\left(n+1\right)=m\cdot n+m
+\]
+
+\end_inset
+
+Dann gilt gemäss Induktionsvoraussetzung
+\begin_inset Formula 
+\[
+m\cdot n=n\cdot m
+\]
+
+\end_inset
+
+Also gilt gemäss der Substitutionsregel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Substitutionsregel-Addition-Mulitplikation-natuerlicher-Zahlen"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+m\cdot n+m=n\cdot m+m
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Ich habe im Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:multiplikation-natuerlicher-Zahlen-ist-linksidentitiv"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ oben gezeigt,
+ dass gilt:
+\begin_inset Formula 
+\[
+\left(n+1\right)\cdot m=n\cdot m+m
+\]
+
+\end_inset
+
+Und somit muss,
+ da die Gleichheit von natürlichen Zahlen als Äquivalenzrelation auch symmetrisch ist,
+ auch gelten:
+\begin_inset Formula 
+\[
+n\cdot m+m=\left(n+1\right)\cdot m
+\]
+
+\end_inset
+
+Da die Gleichheit von natürlichen Zahlen als Äquivalenzrelation auch transitiv ist,
+ muss somit auch gelte
+\begin_inset Formula 
+\[
+m\cdot\left(n+1\right)=\left(n+1\right)\cdot m
+\]
+
+\end_inset
+
+Da ist jedoch gerade der Beweis der Induktionsvererbung.
+ Also bin ich der Meinung,
+ dass die Richtigkeit der Behauptung erbracht habe und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
+\end_layout
+
+\begin_layout Standard
+Manchmal ist schwierig,
+ den richtigen Weg zu erkennen:
+ Zuerst wollte ich das Kommutativgesetz der Multiplikation beweisen,
+ dann das Distributivgesetz,
+ und dann habe ich bemerkt,
+ dass die richtige Mischung es offenbar ausmacht.
 \end_layout
 
 \begin_layout Standard
@@ -21625,7 +21973,7 @@ nolink "false"
 
 Nun kann ich schliessen,
  dass gelten muss (zweite Zeile der Definition der Assoziativität der Addition,
- sozusagen rückwärts angewendet:
+ sozusagen rückwärts angewendet:z
 \begin_inset Formula 
 \[
 m\cdot p+m=m\cdot\left(p+1\right)
@@ -21733,190 +22081,7 @@ Es seien
 
 \begin_layout Proof
 Nun möchte ich noch den Beweis für die Richtigkeit der zweiten Behauptung erbringen:
- Zuerst möchte ich zeigen,
- dass für alle 
-\begin_inset Formula $m,p\in\mathbb{N}$
-\end_inset
-
- gilt:
-\begin_inset Formula 
-\begin{eqnarray*}
-\left(m+1\right)\cdot p & = & m\cdot p+p
-\end{eqnarray*}
-
-\end_inset
-
-Das gilt sicher wenn 
-\begin_inset Formula $p=1$
-\end_inset
-
- ist.
- Denn in diesem Fall gilt gemäss der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Multiplikation-natuerlicher-Zahlen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Multiplikation von natürlichen Zahlen
-\begin_inset Formula 
-\begin{eqnarray*}
-\left(m+1\right)\cdot1 & = & m+1
-\end{eqnarray*}
-
-\end_inset
-
-Und da gemäss Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Multiplikation-natuerlicher-Zahlen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Multiplikation von natürlichen Zahlen ebenfalls gilt:
  
-\begin_inset Formula $m=m\cdot1$
-\end_inset
-
- sowie 
-\begin_inset Formula $1\cdot1=1$
-\end_inset
-
- kann ich aufgrund des Lemmas 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Addition-gleicher-natuerlicher-Zahlen-mit-natuerlicher-Zahl"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- über die Gleichheit der Addition von gleichen Zahlen sagen,
- dass gilt:
-\begin_inset Formula 
-\[
-\left(m+1\right)\cdot1=m\cdot1+1\cdot1
-\]
-
-\end_inset
-
-Das ist jedoch die Behauptung im Fall,
- dass 
-\begin_inset Formula $p=1$
-\end_inset
-
- ist.
- Nun gelte die Behauptung für eine bestimmte natürliche Zahl 
-\begin_inset Formula $p\in\mathbb{N}.$
-\end_inset
-
-Es gelte also
-\begin_inset Formula 
-\[
-\left(m+1\right)\cdot p=m\cdot p+p
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Dann ist gemäss der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Multiplikation-natuerlicher-Zahlen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Multiplikation von natürlichen Zahlen:
-\end_layout
-
-\begin_layout Proof
-\begin_inset Formula 
-\[
-\left(m+1\right)\cdot\left(p+1\right)=\left(m+1\right)\cdot p+\left(m+1\right)
-\]
-
-\end_inset
-
-Gemäss der Voraussetzung der Induktionsvererbung gilt dann:
-\begin_inset Formula 
-\[
-\left(m+1\right)\cdot\left(p+1\right)=m\cdot p+p+m+1
-\]
-
-\end_inset
-
-Die Addition ist jedoch kommutativ und assoziativ.
- Also kann ich schreiben:
-\begin_inset Formula 
-\[
-m\cdot p+p+m+1=m\cdot p+m+p+1
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-gemäss der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Multiplikation-natuerlicher-Zahlen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Multiplikation von natürlichen Zahlen kann ich schreiben,
- dass gilt:
-\begin_inset Formula 
-\[
-m\cdot\left(p+1\right)=m\cdot p+m
-\]
-
-\end_inset
-
-Also muss auch (da die Gleichheit von natürlichen Zahlen eine Äquivalenzrelation und darum auch symmetrisch ist) gelten:
-\begin_inset Formula 
-\[
-m\cdot p+m=m\cdot\left(p+1\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Also kann ich insgesamt schreiben,
- dass gelten muss 
-\begin_inset Formula 
-\[
-\left(m+1\right)\cdot\left(p+1\right)=m\cdot\left(p+1\right)+\left(p+1\right)
-\]
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Proof
@@ -22352,271 +22517,6 @@ Ich möchte noch zeigen:
 \end_layout
 
 \begin_layout Lemma
-\begin_inset CommandInset label
-LatexCommand label
-name "lem:Multiplikation-natuerliche-Zahlen-ist-für-1-kommutativ"
-
-\end_inset
-
-Es sei 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
-.
- Dann gilt 
-\begin_inset Formula $1\cdot n=n$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Es sei 
-\begin_inset Formula $n=1$
-\end_inset
-
-.
- Dann gilt gemäss der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Multiplikation-natuerlicher-Zahlen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Multiplikation von natürlichen Zahlen:
-\begin_inset Formula 
-\[
-1\cdot n=1\cdot1=1=n=n\cdot1
-\]
-
-\end_inset
-
-Also auch,
- da die Gleichheit von natürlichen Zahlen als Äquivalenzrelation transitiv ist:
-\begin_inset Formula 
-\[
-1\cdot n=n\cdot1
-\]
-
-\end_inset
-
-Also gilt die Induktionsverankerung.
- Zur Induktionsvererbung:
- Es gelte nun für 
-\begin_inset Formula 
-\[
-1\cdot n=n\cdot1
-\]
-
-\end_inset
-
-Dann ist gemäss der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Multiplikation-natuerlicher-Zahlen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Multiplikation von natürlichen Zahlen
-\begin_inset Formula 
-\[
-1\cdot\left(n+1\right)=1\cdot n+1\cdot1
-\]
-
-\end_inset
-
-Gemäss der Annahme der Induktionsvererbung muss dann gilt dann auch:
-\begin_inset Formula 
-\[
-1\cdot n+1\cdot1=n\cdot1+1\cdot1
-\]
-
-\end_inset
-
-Und da die Multiplikation gemäss dem Satz 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:Distributivgesetz-Konjunktion-Disjunktion"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Distributivität von Multiplikation und Addition muss gelten:
-\begin_inset Formula 
-\[
-n\cdot1+1\cdot1=\left(n+1\right)\cdot1
-\]
-
-\end_inset
-
-Da die Gleichheit von natürlichen Zahlen als Äquivalenzrelation transitiv ist,
- kann ich also auch schreiben:
-\begin_inset Formula 
-\[
-1\cdot\left(n+1\right)=\left(n+1\right)\cdot1
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Also habe ich auch diesen Fall bewiesen.
- Aus diesem Grund betrachte ich den Beweis für die Richtigkeit des Lemmas als erbracht und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
-\end_layout
-
-\begin_layout Proposition
-Die Multiplikation von natürlichen Zahlen ist kommutativ.
- Es ist also mit 
-\begin_inset Formula $m,n\in\mathbb{N}$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-m\cdot n=n\cdot m
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Der Fall 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Multiplikation-natuerliche-Zahlen-ist-für-1-kommutativ"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- 
-\begin_inset Formula $m=1$
-\end_inset
-
- habe ich bereits erbracht.
- Es gilt also:
-\begin_inset Formula 
-\[
-1\cdot m=m\cdot1
-\]
-
-\end_inset
-
-Und da die Gleichheit von natürlichen Zahlen als Äquivalenzrelation symmetrisch ist,
- kann ich darum auch schreiben:
-\begin_inset Formula 
-\[
-m\cdot1=1\cdot m
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Damit ist der Beweis für die Richtigkeit der Verankerung des Induktionsbeweises erbracht.
- Nun gelte nach Voraussetzung für ein natürliches 
-\begin_inset Formula $n\in\mathbb{N}$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-m\cdot n=n\cdot m
-\]
-
-\end_inset
-
-Gemäss der Definition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Multiplikation-natuerlicher-Zahlen"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- der Multiplikation von natürlichen Zahlen kann ich dann schreiben
-\begin_inset Formula 
-\[
-m\cdot\left(n+1\right)=m\cdot n+m
-\]
-
-\end_inset
-
-Da nun die Induktionsvoraussetzung gilt,
- kann ich das schreiben als 
-\begin_inset Formula 
-\[
-m\cdot n+m=n\cdot m+m
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Ich habe jetzt im Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Definition-Multiplikation-ueber-erster-Faktor-ist-aequivalent"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- zu zeigen versucht,
- dass für den obigen Ausdruck gilt:
-\begin_inset Formula 
-\[
-n\cdot m+m=\left(n+1\right)\cdot m
-\]
-
-\end_inset
-
-Da die Gleichheit von natürlichen Zahlen als Äquivalenzrelation auch transitiv ist,
- kann ich daher schliessen,
- dass gilt:
-\begin_inset Formula 
-\[
-m\cdot\left(n+1\right)=\left(n+1\right)\cdot m
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Damit habe ich jedoch die Induktionsvererbung und somit die ganze Behauptung bewiesen.
- Aus diesem Grund erlaube ich mir,
- die weitere Beweisführung an dieser Stelle zu beenden.
-\end_layout
-
-\begin_layout Standard
 Nun könnte ich versuchen,
  die Subtraktion und die Division zu definieren.
  Es wäre irgendwie beides möglich.
