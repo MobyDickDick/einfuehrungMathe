@@ -73,7 +73,6 @@ eqs-within-sections
 figs-within-sections
 fixltx2e
 todonotes
-backforwardref
 \end_modules
 \maintain_unincluded_children no
 \language ngerman
@@ -1233,28 +1232,6 @@ Damit glaube ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -1479,28 +1456,6 @@ Somit meine ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -1746,28 +1701,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -1893,28 +1826,6 @@ Somit bin ich der Meinung,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -2282,28 +2193,6 @@ Damit habe ich den Beweis für die Richtigkeit der Behauptung erbracht.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -2586,28 +2475,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -2767,28 +2634,6 @@ Diese Aussage wollte ich jedoch gerade beweisen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -3377,28 +3222,6 @@ Dies ist jedoch gerade die Behauptung.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -3584,28 +3407,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -3690,28 +3491,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -4684,28 +4463,6 @@ Damit ist auch der zweite Teil der Behauptung bewiesen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -4866,28 +4623,6 @@ x\inØ\Leftrightarrow x\inØ
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -5236,28 +4971,6 @@ In Worten:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -6385,28 +6098,6 @@ Somit behaupte ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -6955,28 +6646,6 @@ Also bin ich der Meinung,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -7352,28 +7021,6 @@ Dies ist jedoch gerade die Behauptung,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -8004,28 +7651,6 @@ Somit meine ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -8260,28 +7885,6 @@ Genau dies wollte ich jedoch zeigen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -9248,28 +8851,6 @@ Das war jedoch gerade zu beweisen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -9554,28 +9135,6 @@ Damit hätte ich die Behauptung des Satzes bewiesen und beende aus diesem Grund 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -10229,28 +9788,6 @@ Dies ist jedoch genau die Aussage,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -10369,28 +9906,6 @@ Dies ist jedoch gerade die Behauptung.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -10582,28 +10097,6 @@ x\in A\cap B\Leftrightarrow\left(x\in M\wedge\neg\left(x\in M\right)\right)\wedg
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -10818,28 +10311,6 @@ Angewandt auf das Element
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -11071,28 +10542,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -11446,28 +10895,6 @@ Damit meine ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -11712,11 +11139,7 @@ B\cap A & =B\cap C\\
 A\cup B & =C\cup B\\
 B\cup A & =B\cup C\\
 A\backslash B & =C\backslash B\\
-B\backslash A & =B\backslash C\\
-A\cap\textrm{Ø} & =\textrm{Ø}\\
-A\cup\textrm{Ø} & =A\\
-A\backslash\textrm{Ø} & =A\\
-\textrm{Ø}\backslash A & =\textrm{Ø}
+B\backslash A & =B\backslash C
 \end{align*}
 
 \end_inset
@@ -12855,17 +12278,7 @@ x\in A\wedge\neg\left(x\in B\right)\Leftrightarrow x\in C\wedge\neg\left(x\in B\
 \end_layout
 
 \begin_layout Proof
-Die Aussage 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-aktuelle Stelle 30.09.2024
-\end_layout
-
-\end_inset
-
-
+Die Aussage
 \begin_inset Formula 
 \[
 x\in A\wedge\neg\left(x\in B\right)
@@ -12876,7 +12289,7 @@ x\in A\wedge\neg\left(x\in B\right)
  ist gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "def:Schnittmenge"
+reference "def:Differenzmenge"
 plural "false"
 caps "false"
 noprefix "false"
@@ -12887,12 +12300,16 @@ nolink "false"
  der Schnittmenge äquivalent zur Aussage
 \begin_inset Formula 
 \[
-x\in A\cap B
+x\in A\backslash B
 \]
 
 \end_inset
 
- Also kann ich gegenüber dem Substitutionssatz 
+
+\end_layout
+
+\begin_layout Proof
+Also kann ich gegenüber dem Substitutionssatz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prop:Substitutionssatz-Aequivalenz"
@@ -12903,11 +12320,11 @@ nolink "false"
 
 \end_inset
 
- der Äquivalenz folgern,
+ der Äquivalenz kann ich folgern,
  dass aus der Aussage 
 \begin_inset Formula 
 \[
-x\in A\wedge x\in B\Leftrightarrow x\in C\wedge x\in B
+x\in A\wedge x\in B\Leftrightarrow x\in C\wedge\neg\left(x\in B\right)
 \]
 
 \end_inset
@@ -12915,7 +12332,7 @@ x\in A\wedge x\in B\Leftrightarrow x\in C\wedge x\in B
 die Aussage
 \begin_inset Formula 
 \[
-x\in A\cap B\Leftrightarrow x\in C\wedge x\in B
+x\in A\backslash B\Leftrightarrow x\in C\wedge\neg\left(x\in B\right)
 \]
 
 \end_inset
@@ -12924,7 +12341,7 @@ folgt.
  Da die Aussage 
 \begin_inset Formula 
 \[
-x\in A\wedge x\in B\Leftrightarrow x\in C\wedge B
+x\in A\wedge x\in B\Leftrightarrow x\in C\wedge\neg\left(x\in B\right)
 \]
 
 \end_inset
@@ -12933,7 +12350,7 @@ als wahr angenommen werden kann,
  muss also auch die Aussage 
 \begin_inset Formula 
 \[
-x\in A\cap B\Leftrightarrow x\in C\wedge x\in B
+x\in A\backslash B\Leftrightarrow x\in C\backslash B
 \]
 
 \end_inset
@@ -12945,7 +12362,7 @@ x\in A\cap B\Leftrightarrow x\in C\wedge x\in B
 Ebenso ist die Aussage 
 \begin_inset Formula 
 \[
-x\in C\wedge x\in B
+x\in C\wedge\neg\left(x\in B\right)
 \]
 
 \end_inset
@@ -12953,7 +12370,7 @@ x\in C\wedge x\in B
 gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "def:Schnittmenge"
+reference "def:Differenzmenge"
 plural "false"
 caps "false"
 noprefix "false"
@@ -12964,7 +12381,7 @@ nolink "false"
  der Schnittmenge gleichwertig zur Aussage 
 \begin_inset Formula 
 \[
-x\in C\cap B
+x\in C\backslash B
 \]
 
 \end_inset
@@ -12983,7 +12400,7 @@ nolink "false"
  der Transitivität der Äquivalenz die Aussage 
 \begin_inset Formula 
 \[
-x\in A\cap B\Leftrightarrow x\in C\wedge x\in B
+x\in A\backslash B\Leftrightarrow x\in C\wedge\neg\left(x\in B\right)
 \]
 
 \end_inset
@@ -12991,7 +12408,7 @@ x\in A\cap B\Leftrightarrow x\in C\wedge x\in B
 äquivalent zur Aussage
 \begin_inset Formula 
 \[
-x\in A\cap B\Leftrightarrow x\in C\cap B
+x\in A\backslash B\Leftrightarrow x\in C\backslash B
 \]
 
 \end_inset
@@ -12999,7 +12416,7 @@ x\in A\cap B\Leftrightarrow x\in C\cap B
 Da nun die Aussage 
 \begin_inset Formula 
 \[
-x\in A\cap B\Leftrightarrow x\in C\wedge x\in B
+x\in A\backslash B\Leftrightarrow x\in C\wedge\neg\left(x\in B\right)
 \]
 
 \end_inset
@@ -13009,7 +12426,7 @@ nach Voraussetzung über die enthaltenen Mengen wahr ist,
  dass unter diesen Umständen auch die Aussage 
 \begin_inset Formula 
 \[
-x\in A\cap B\Leftrightarrow x\in C\cap B
+x\in A\backslash B\Leftrightarrow x\in C\backslash B
 \]
 
 \end_inset
@@ -13029,7 +12446,7 @@ nolink "false"
  der Mengengleichheit ist die letzte Aussage jedoch äquivalent zur Aussage
 \begin_inset Formula 
 \[
-A\cap B=C\cap B
+A\backslash B=C\backslash B
 \]
 
 \end_inset
@@ -13039,35 +12456,18 @@ Also kann ich ebenso folgern,
  da es die Aussage
 \begin_inset Formula 
 \[
-x\in A\cap B\Leftrightarrow x\in C\wedge B
+x\in A\backslash B\Leftrightarrow x\in C\backslash B
 \]
 
 \end_inset
 
  ebenfalls ist.
- Damit habe ich den ersten Teil des Beweises erbracht.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-aktuelle Stelle 30.09.2024
-\end_layout
-
-\end_inset
-
-
+ Damit habe ich den fünften Teil des Beweises erbracht.
 \end_layout
 
 \begin_layout Proof
-Zum Beweis der Aussage
-\begin_inset Formula 
-\[
-B\cap A=B\cap C
-\]
-
-\end_inset
-
-falls alle beteiligten Mengen nicht leer sind und gilt
+Nun möchte ich die Aussage beweisen,
+ dass aus der Mengengleichheit 
 \begin_inset Formula 
 \[
 A=C
@@ -13075,6 +12475,32 @@ A=C
 
 \end_inset
 
+ die Aussage
+\begin_inset Formula 
+\[
+B\backslash A=B\backslash C
+\]
+
+\end_inset
+
+folgt,
+ sofern alle drei Mengen 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ 
+\begin_inset Formula $B$
+\end_inset
+
+ und 
+\begin_inset Formula $C$
+\end_inset
+
+ nichtleere Mengen sind.
+\end_layout
+
+\begin_layout Proof
 Die Aussage
 \begin_inset Formula 
 \[
@@ -13083,7 +12509,7 @@ A=C
 
 \end_inset
 
- ist gemäss der formalen Definition 
+ist gemäss der formalen Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Mengengleichheit-Definition-Formal"
@@ -13098,6 +12524,25 @@ nolink "false"
 \begin_inset Formula 
 \[
 x\in A\Leftrightarrow x\in C
+\]
+
+\end_inset
+
+Gemäss dem Äquivalenz-Negationssatz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Aequivalenz-Negations-Satz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ist diese Aussage äquivalent zur Aussage
+\begin_inset Formula 
+\[
+\neg\left(x\in A\right)\Leftrightarrow\neg\left(x\in C\right)
 \]
 
 \end_inset
@@ -13126,7 +12571,7 @@ nolink "false"
  ebenso die Aussage
 \begin_inset Formula 
 \[
-x\in B\wedge x\in A\Leftrightarrow x\in B\wedge x\in C
+x\in B\wedge\neg\left(x\in A\right)\Leftrightarrow x\in B\wedge\neg\left(x\in C\right)
 \]
 
 \end_inset
@@ -13135,7 +12580,7 @@ x\in B\wedge x\in A\Leftrightarrow x\in B\wedge x\in C
  Die Aussage 
 \begin_inset Formula 
 \[
-x\in B\wedge x\in A
+x\in B\wedge\neg\left(x\in A\right)
 \]
 
 \end_inset
@@ -13143,7 +12588,7 @@ x\in B\wedge x\in A
  ist gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "def:Schnittmenge"
+reference "def:Differenzmenge"
 plural "false"
 caps "false"
 noprefix "false"
@@ -13154,7 +12599,7 @@ nolink "false"
  der Schnittmenge äquivalent zur Aussage
 \begin_inset Formula 
 \[
-x\in A\cap A
+x\in B\backslash A
 \]
 
 \end_inset
@@ -13174,7 +12619,7 @@ nolink "false"
  dass aus der Aussage 
 \begin_inset Formula 
 \[
-x\in B\wedge x\in A\Leftrightarrow x\in B\wedge x\in C
+x\in B\wedge\neg\left(x\in A\right)\Leftrightarrow x\in B\wedge\neg\left(x\in C\right)
 \]
 
 \end_inset
@@ -13182,7 +12627,7 @@ x\in B\wedge x\in A\Leftrightarrow x\in B\wedge x\in C
 die Aussage
 \begin_inset Formula 
 \[
-x\in B\cap A\Leftrightarrow x\in B\wedge x\in C
+x\in B\backslash A\Leftrightarrow x\in B\wedge\neg\left(x\in C\right)
 \]
 
 \end_inset
@@ -13191,7 +12636,7 @@ folgt.
  Da die Aussage 
 \begin_inset Formula 
 \[
-x\in B\wedge x\in A\Leftrightarrow x\in B\wedge x\in C
+x\in B\wedge\neg\left(x\in A\right)\Leftrightarrow x\in B\wedge\neg\left(x\in C\right)
 \]
 
 \end_inset
@@ -13200,7 +12645,7 @@ als wahr angenommen werden kann,
  muss also auch die Aussage 
 \begin_inset Formula 
 \[
-x\in B\cap A\Leftrightarrow x\in B\wedge x\in C
+x\in B\backslash A\Leftrightarrow x\in B\wedge\neg\left(x\in C\right)
 \]
 
 \end_inset
@@ -13212,7 +12657,7 @@ x\in B\cap A\Leftrightarrow x\in B\wedge x\in C
 Ebenso ist die Aussage 
 \begin_inset Formula 
 \[
-x\in B\wedge x\in C
+x\in B\wedge\neg\left(x\in C\right)
 \]
 
 \end_inset
@@ -13220,7 +12665,7 @@ x\in B\wedge x\in C
 gemäss der Definition 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "def:Schnittmenge"
+reference "def:Differenzmenge"
 plural "false"
 caps "false"
 noprefix "false"
@@ -13231,7 +12676,7 @@ nolink "false"
  der Schnittmenge gleichwertig zur Aussage 
 \begin_inset Formula 
 \[
-x\in B\cap C
+x\in B\backslash C
 \]
 
 \end_inset
@@ -13250,7 +12695,7 @@ nolink "false"
  der Transitivität der Äquivalenz die Aussage 
 \begin_inset Formula 
 \[
-x\in B\cap A\Leftrightarrow x\in B\wedge x\in C
+x\in B\backslash A\Leftrightarrow x\in B\wedge\neg\left(x\in C\right)
 \]
 
 \end_inset
@@ -13258,7 +12703,7 @@ x\in B\cap A\Leftrightarrow x\in B\wedge x\in C
 äquivalent zur Aussage
 \begin_inset Formula 
 \[
-x\in B\cap A\Leftrightarrow x\in B\cap C
+x\in B\backslash A\Leftrightarrow x\in B\backslash C
 \]
 
 \end_inset
@@ -13266,7 +12711,7 @@ x\in B\cap A\Leftrightarrow x\in B\cap C
 Da nun die Aussage 
 \begin_inset Formula 
 \[
-x\in B\cap A\Leftrightarrow x\in B\wedge x\in C
+x\in B\backslash A\Leftrightarrow x\in B\wedge\neg\left(x\in C\right)
 \]
 
 \end_inset
@@ -13276,7 +12721,7 @@ nach Voraussetzung über die enthaltenen Mengen wahr ist,
  dass unter diesen Umständen auch die Aussage 
 \begin_inset Formula 
 \[
-x\in B\cap A\Leftrightarrow x\in B\cap C
+x\in B\backslash A\Leftrightarrow x\in B\backslash C
 \]
 
 \end_inset
@@ -13296,7 +12741,7 @@ nolink "false"
  der Mengengleichheit ist die letzte Aussage jedoch äquivalent zur Aussage
 \begin_inset Formula 
 \[
-B\cap A=B\cap C
+B\backslash A=B\backslash C
 \]
 
 \end_inset
@@ -13306,13 +12751,176 @@ Also kann ich ebenso folgern,
  da es die Aussage
 \begin_inset Formula 
 \[
-x\in B\cap A\Leftrightarrow x\in B\wedge C
+x\in B\backslash A\Leftrightarrow x\in B\backslash C
 \]
 
 \end_inset
 
  ebenfalls ist.
- Damit habe ich den zweiten Teil des Beweises erbracht.
+ Damit habe ich den sechsten Teil des Beweises erbracht.
+\end_layout
+
+\begin_layout Proof
+Das war der erste Teil der 
+\begin_inset Quotes gld
+\end_inset
+
+Ochsentour
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Nun kommt der zweite Teil des Beweises.
+ Ich möchte die Richtigkeit der Beweise erbringen,
+ falls eine oder mehrere der Mengen 
+\begin_inset Formula $A,B$
+\end_inset
+
+ oder 
+\begin_inset Formula $C$
+\end_inset
+
+ leer sind.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+aktuelle Stelle 20.10.2024
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Proof
+Ich möchte den Beweis der ersten Behauptung erbringen.
+ Es seien 
+\begin_inset Formula $A,\,B$
+\end_inset
+
+ sowie 
+\begin_inset Formula $C$
+\end_inset
+
+ Mengen und 
+\begin_inset Formula $A=C$
+\end_inset
+
+.
+ Weiter sei 
+\begin_inset Formula $A\equiv\emptyset$
+\end_inset
+
+.
+ Dann sei also 
+\begin_inset Formula 
+\[
+\emptyset=C
+\]
+
+\end_inset
+
+Also muss auch 
+\begin_inset Formula $C$
+\end_inset
+
+ die leere Menge sein.
+ Daher kann ich gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:leere-Menge-Eigenschaften"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ bezüglich der Eigenschaften der leeren Menge folgern,
+ dass gilt
+\begin_inset Formula 
+\[
+A\cap B=\emptyset\cap B=\emptyset
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Da die Mengengleichheit gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Mengengleichheit"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ transitiv ist,
+ kann ich dass gilt
+\begin_inset Formula 
+\[
+A\cap B=\emptyset
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Ebenfalls muss gelten 
+\begin_inset Formula 
+\[
+C\cap B=\emptyset\cap B=\emptyset
+\]
+
+\end_inset
+
+Gemäss der Eigenschaften der leeren Menge muss weiter gelten,
+ dass 
+\begin_inset Formula $\emptyset=\emptyset$
+\end_inset
+
+ ist.
+ Da die Gleichheit von Mengen transitiv uns symmetrisch ist (gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Mengengleichheit-ist-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ist die Mengengleichheit eine Äquivalenzrelation,
+ und da gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Äquivalenzrelation eine jede Äquivalenzrelation transitiv,
+ also ist auch die Mengengleichheit transitiv sowie symmetris) kann ich aus 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -14200,28 +13808,6 @@ Da ich nun annehme,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -15189,28 +14775,6 @@ bewiesen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -16266,28 +15830,6 @@ Somit habe ich zeigt,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -16546,28 +16088,6 @@ wahr.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -17497,28 +17017,6 @@ Die oben definierte Relation
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -18425,28 +17923,6 @@ Ist
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -18916,28 +18392,6 @@ Damit hätte ich die zweite Behauptung und insgesamt den ganzen Satz bewiesen un
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -19236,28 +18690,6 @@ transitiv ist.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -19523,28 +18955,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -20785,28 +20195,6 @@ eben auch wahr.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -21211,28 +20599,6 @@ ist.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -21379,28 +20745,6 @@ Dies ist jedoch gerade die Behauptung.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -21606,28 +20950,6 @@ Damit ist auch der Beweis für die Surjektivität von
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -22147,28 +21469,6 @@ Da nun alle Behauptungen des Beweises bewiesen wurden,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -22767,28 +22067,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -24288,28 +23566,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -24696,28 +23952,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -25216,28 +24450,6 @@ In Worten:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout

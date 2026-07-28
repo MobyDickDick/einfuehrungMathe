@@ -73,7 +73,6 @@ eqs-within-sections
 figs-within-sections
 fixltx2e
 todonotes
-backforwardref
 \end_modules
 \maintain_unincluded_children no
 \language ngerman
@@ -2406,28 +2405,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -23882,28 +23859,6 @@ Denn sind beide Behauptungen
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -35390,28 +35345,6 @@ nachgeprüft 20.11.2019
 \end_inset
 
 
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \begin_inset Newline linebreak
@@ -35890,28 +35823,6 @@ wahr sein muss.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -36091,28 +36002,6 @@ nachgeprüft 20.11.2019
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -36907,28 +36796,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -38388,28 +38255,6 @@ nachgeprüft 20.11.2019
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -41930,28 +41775,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -45423,28 +45246,6 @@ am 24.11.2019 nachgeprüft
 \end_inset
 
 
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -46775,28 +46576,6 @@ am 24.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \begin_inset Newline linebreak
@@ -48662,28 +48441,6 @@ am 25.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -51614,28 +51371,6 @@ am 24.11.2019 nachgeprüft
 \end_inset
 
 
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -53815,28 +53550,6 @@ am 13.01.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -55607,28 +55320,6 @@ am 25.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -57634,28 +57325,6 @@ am 25.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -58646,28 +58315,6 @@ am 25.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -60525,28 +60172,6 @@ name "tab:2-Teil-Verweise-Beweis-alternativer-Satz-Aequivalenz-Implikation-Repli
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -63875,28 +63500,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -67295,28 +66898,6 @@ am 26.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -70707,28 +70288,6 @@ am 26.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -74653,28 +74212,6 @@ gilt.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -77991,28 +77528,6 @@ am 26.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -78732,28 +78247,6 @@ am 26.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -79522,28 +79015,6 @@ am 26.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -80060,28 +79531,6 @@ Tabelle Verweise Beweis des Satzes der Äquivalenz von Aussage und Aussage
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -80200,28 +79649,6 @@ wahr ist.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -81447,28 +80874,6 @@ am 26.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -84355,28 +83760,6 @@ am 26.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -84494,28 +83877,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -85918,28 +85279,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -88890,28 +88229,6 @@ am 27.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -91876,28 +91193,6 @@ am 27.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -93645,28 +92940,6 @@ am 22.12.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -95109,28 +94382,6 @@ am 23.12.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -104915,28 +104166,6 @@ am 28.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -113200,28 +112429,6 @@ am 28.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -118731,28 +117938,6 @@ Somit denke ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -121765,28 +120950,6 @@ am 29.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -128858,28 +128021,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -132879,28 +132020,6 @@ am 7.12.2019 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -138241,28 +137360,6 @@ Nun bin ich an der Stelle,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -143658,28 +142755,6 @@ am 02.02.2021 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -144667,28 +143742,6 @@ am 7.12.2019 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -146583,28 +145636,6 @@ am 8.12.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -148161,28 +147192,6 @@ wahr ist.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -149766,28 +148775,6 @@ am 29.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -151300,28 +150287,6 @@ am 29.11.2019 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -152444,28 +151409,6 @@ am 21.12.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -153382,28 +152325,6 @@ am 21.12.2020 so gut wie möglich nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -155854,28 +154775,6 @@ am 30.11.2019 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -158360,28 +157259,6 @@ am 13.12.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -160135,28 +159012,6 @@ Also bin ich der Meinung,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -161901,28 +160756,6 @@ Somit bin ich der Meinung,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -169931,28 +168764,6 @@ am 1.5.2021 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -183427,28 +182238,6 @@ am 14.11.2020 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -184430,28 +183219,6 @@ am 7.12.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -185313,28 +184080,6 @@ Damit meine ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -186948,28 +185693,6 @@ Diese Aussage wollte ich jedoch zeigen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -188811,28 +187534,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -190638,28 +189339,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -193513,28 +192192,6 @@ am 14.12.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -196495,28 +195152,6 @@ am 22.12.2019 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -199168,28 +197803,6 @@ am 21.12.2019 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -199339,28 +197952,6 @@ Darum glaube an dieser Stelle den Beweis erbracht zu haben und beende darum an d
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -201200,28 +199791,6 @@ am 25.12.2019 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -203684,28 +202253,6 @@ name "tab:3.-Teil-Verweise-Beweis-Satz-Zusammenhang-NAND-NOR-Verknuepfung"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -205504,28 +204051,6 @@ am 28.12.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -207359,28 +205884,6 @@ am 28.12.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -209720,28 +208223,6 @@ Nun glaube ich behaupten zu können,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -211731,28 +210212,6 @@ am 15.03.2020 geprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -214658,28 +213117,6 @@ Somit behaupte ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -217569,28 +216006,6 @@ Somit behaupte ich an dieser Stelle,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -220490,28 +218905,6 @@ am 09.03.2020 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -223415,28 +221808,6 @@ am 10.3.2020 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -226425,28 +224796,6 @@ am 12.3.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -229373,28 +227722,6 @@ am 13.03.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -235301,28 +233628,6 @@ am 15.03.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -238225,28 +236530,6 @@ am 22.03.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -241158,28 +239441,6 @@ am 22.03.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -244145,28 +242406,6 @@ am 22.03.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -247116,28 +245355,6 @@ am 22.03.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -250055,28 +248272,6 @@ am 29.03.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -252971,28 +251166,6 @@ am 23.03.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -255880,28 +254053,6 @@ am 31.3.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -258899,28 +257050,6 @@ am 5.4.2020 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -262193,28 +260322,6 @@ am 14.04.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -265201,28 +263308,6 @@ am 14.04.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -268827,28 +266912,6 @@ wurde am 16.04.2020 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -271834,28 +269897,6 @@ am 17.04.2020 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -275389,28 +273430,6 @@ am 13.04.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -278304,28 +276323,6 @@ am 02.05.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -281402,28 +279399,6 @@ am 05.10.2022 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -284499,28 +282474,6 @@ am 07.10.2022 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -287546,28 +285499,6 @@ am 15.10.2022 überprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -290616,28 +288547,6 @@ am 17.10.2022
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -290847,28 +288756,6 @@ Dies war jedoch gerade zu beweisen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -291383,28 +289270,6 @@ Das bedeutet jedoch,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -292461,28 +290326,6 @@ Damit glaube ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -292707,28 +290550,6 @@ Somit meine ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -292974,28 +290795,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -293121,28 +290920,6 @@ Somit bin ich der Meinung,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -293510,28 +291287,6 @@ Damit habe ich den Beweis für die Richtigkeit der Behauptung erbracht.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -293814,28 +291569,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -293995,28 +291728,6 @@ Diese Aussage wollte ich jedoch gerade beweisen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -294605,28 +292316,6 @@ Dies ist jedoch gerade die Behauptung.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -294812,28 +292501,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -294918,28 +292585,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -295912,28 +293557,6 @@ Damit ist auch der zweite Teil der Behauptung bewiesen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -296094,28 +293717,6 @@ x\inØ\Leftrightarrow x\inØ
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -296464,28 +294065,6 @@ In Worten:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -297613,28 +295192,6 @@ Somit behaupte ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -298183,28 +295740,6 @@ Also bin ich der Meinung,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -298580,28 +296115,6 @@ Dies ist jedoch gerade die Behauptung,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -299232,28 +296745,6 @@ Somit meine ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -299488,28 +296979,6 @@ Genau dies wollte ich jedoch zeigen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -300476,28 +297945,6 @@ Das war jedoch gerade zu beweisen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -300782,28 +298229,6 @@ Damit hätte ich die Behauptung des Satzes bewiesen und beende aus diesem Grund 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -301457,28 +298882,6 @@ Dies ist jedoch genau die Aussage,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -301597,28 +299000,6 @@ Dies ist jedoch gerade die Behauptung.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -301810,28 +299191,6 @@ x\in A\cap B\Leftrightarrow\left(x\in M\wedge\neg\left(x\in M\right)\right)\wedg
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -302046,28 +299405,6 @@ Angewandt auf das Element
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -302299,28 +299636,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -302674,28 +299989,6 @@ Damit meine ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -305428,28 +302721,6 @@ Da ich nun annehme,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -306417,28 +303688,6 @@ bewiesen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -307494,28 +304743,6 @@ Somit habe ich zeigt,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -307774,28 +305001,6 @@ wahr.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -308725,28 +305930,6 @@ Die oben definierte Relation
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -309653,28 +306836,6 @@ Ist
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -310144,28 +307305,6 @@ Damit hätte ich die zweite Behauptung und insgesamt den ganzen Satz bewiesen un
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -310464,28 +307603,6 @@ transitiv ist.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -310751,28 +307868,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -312013,28 +309108,6 @@ eben auch wahr.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -312439,28 +309512,6 @@ ist.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -312607,28 +309658,6 @@ Dies ist jedoch gerade die Behauptung.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -312834,28 +309863,6 @@ Damit ist auch der Beweis für die Surjektivität von
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -313375,28 +310382,6 @@ Da nun alle Behauptungen des Beweises bewiesen wurden,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -313995,28 +310980,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -315516,28 +312479,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -315924,28 +312865,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout
@@ -316444,28 +313363,6 @@ In Worten:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
 
 
 \end_layout

@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 643
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -13,56 +13,42 @@
 % Wenn Probleme beim Exportieren auftreten, können Sie sich
 % an das LyX-Dokumentationsteam wenden.
 % EMail: lyx-docs@lists.lyx.org
-
 % wenn pdflatex benutzt wird:
 \usepackage{ifpdf}
 \ifpdf
-
 % Fonts fuer huebschere PDF-Ansichten
 \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
-
 \fi % Ende von: wenn pdflatex benutzt wird
-
 % Setzt den Link fuer Spruenge zu Gleitabbildungen
 % auf den Anfang des Gelitobjekts und nicht aufs Ende
 \usepackage[figure]{hypcap}
-
 % Ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
  \pdfbookmark[1]{\contentsname}{}
  \myTOC }
-
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
-
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX}}
-
 % Definiere den Operator Id
 \DeclareMathOperator{\Id}{Id}
-
 \usepackage{xlop}
 \usepackage{paralist}
-
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{thmtools}
 \usepackage[makeroom]{cancel}
-
 \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 \newcommand{\includebackwardreferences}{<includebackwardreferences>}
 \newcommand{\includeforwardreferences}{<includeforwardreferences>}
-
 % Wasserzeichen
-
 % \usepackage{draftwatermark} % Das Paket mit der Funktionalität
 % \SetWatermarkText{Entwurf} % Der Hintergrundtext
 % \SetWatermarkLightness{0.9}
 % \SetWatermarkFontSize{2cm} % Die Ausgangsgröße
-
 \renewcommand{\numberline}[1]{#1~}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
@@ -73,7 +59,6 @@ eqs-within-sections
 figs-within-sections
 fixltx2e
 todonotes
-backforwardref
 \end_modules
 \maintain_unincluded_children no
 \language ngerman
@@ -137,11 +122,19 @@ backforwardref
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
-\use_refstyle 0
+\justification default
+\crossref_package prettyref
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \branch Frage
 \selected 1
 \filename_suffix 0
@@ -177,6 +170,7 @@ backforwardref
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \end_header
 
 \begin_body
@@ -5141,7 +5135,7 @@ name "fig:Symbole-Uebersicht"
 
 
 \begin_inset Graphics
-	filename ../Users/marku/myCloud/Mathe/Symbole/Symbole.svg
+	filename C:/Users/marku/myCloud/Mathe/Symbole/Symbole.svg
 	scale 80
 
 \end_inset
@@ -5161,7 +5155,7 @@ placement document
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -5909,7 +5903,7 @@ name "fig:spezielle-Funktionsbezeichnungen"
 
 
 \begin_inset Graphics
-	filename ../Symbole/SymboleSpezielleFunktionsbezeichnungen.svg
+	filename ../SymboleSpezielleFunktionsbezeichnungen.svg
 	scale 80
 
 \end_inset
