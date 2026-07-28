@@ -1,0 +1,558 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsbook
+\begin_preamble
+% Präambel nicht verändern!!!
+%
+% Die Präambel stellt sicher, dass das Benutzerhandbuch korrekt
+% in die Formate pdf, ps und dvi exportiert werden kann.
+% Wenn Probleme beim Exportieren auftreten, können Sie sich
+% an das LyX-Dokumentationsteam wenden.
+% EMail: lyx-docs@lists.lyx.org
+
+% wenn pdflatex benutzt wird:
+\usepackage{ifpdf}
+\ifpdf
+
+% Fonts fuer huebschere PDF-Ansichten
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % Ende von: wenn pdflatex benutzt wird
+
+% Setzt den Link fuer Spruenge zu Gleitabbildungen
+% auf den Anfang des Gelitobjekts und nicht aufs Ende
+\usepackage[figure]{hypcap}
+
+% Ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC }
+
+% Damit der Index den Namen "Stichwortverzeichnis" erhält
+\addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% Definiere den Operator Id
+\DeclareMathOperator{\Id}{Id}
+
+\usepackage{xlop}
+\usepackage{paralist}
+
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+
+
+% Wasserzeichen
+
+% \usepackage{draftwatermark} % Das Paket mit der Funktionalität
+% \SetWatermarkText{Entwurf} % Der Hintergrundtext
+% \SetWatermarkLightness{0.9}
+% \SetWatermarkFontSize{2cm} % Die Ausgangsgröße
+\end_preamble
+\options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
+\use_default_options true
+\begin_removed_modules
+eqs-within-sections
+figs-within-sections
+\end_removed_modules
+\begin_modules
+theorems-ams
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children no
+\language german-ch
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Beweisversuch der Kontinuumshypothese"
+\pdf_author "Markus Demarmels"
+\pdf_subject "LyX"
+\pdf_keywords "LyX"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\branch Frage
+\selected 1
+\filename_suffix 0
+\color #00ff00 #ff00ff
+\end_branch
+\branch Antwort
+\selected 0
+\filename_suffix 0
+\color #aa55ff #55aa00
+\end_branch
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Versuch
+\end_layout
+
+\begin_layout Standard
+Es sei 
+\begin_inset Formula $M\subset\left[0,1\right]$
+\end_inset
+
+ sowie 
+\begin_inset Formula $\mathbb{V}$
+\end_inset
+
+ die Mengen aller offener Überdeckungen von 
+\begin_inset Formula $M$
+\end_inset
+
+ und 
+\begin_inset Formula $\mathbb{W}$
+\end_inset
+
+ die Menge aller kompakter Teilmengen von 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ Ich möcht gerne zeigen,
+ dass gilt
+\begin_inset Formula 
+\[
+\nu\left(M\right)=\kappa\left(M\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sup\left\{ \lambda\left(T\right)\bigg|T\in\mathbb{W}\right\} =\inf\left\{ \lambda\left(U\right)\bigg|U\in\mathbb{V}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für alle 
+\begin_inset Formula $T\in\mathbb{W}$
+\end_inset
+
+ und für alle 
+\begin_inset Formula $U\in\mathbb{V}$
+\end_inset
+
+ist 
+\begin_inset Formula $U\backslash T$
+\end_inset
+
+ eine offene Menge.
+ 
+\end_layout
+
+\begin_layout Standard
+Es ist sicher 
+\begin_inset Formula 
+\[
+\bigcap_{U\in\mathbb{V}\wedge M\subset U}U=\bigcup_{T\in\mathbb{W}\wedge T\subset M}T
+\]
+
+\end_inset
+
+Das bedeutet sicher 
+\begin_inset Formula 
+\[
+\bigcap_{U\in\mathbb{V}\wedge M\subset U}U\backslash\bigcup_{T\in\mathbb{W}\wedge T\subset M}T=\textrm{Ø}
+\]
+
+\end_inset
+
+oder aber (nach De Morgan)
+\begin_inset Formula 
+\[
+\bigcap_{U\in\mathbb{V}\wedge M\subset U}\bigcap_{T\in\mathbb{W}\wedge T\subset M}U\backslash T=\textrm{Ø}
+\]
+
+\end_inset
+
+Also kann ich mindesten schreiben
+\begin_inset Formula 
+\[
+\inf\left\{ \lambda\left(U\backslash T\right)\bigm|T\subset M\subset U\wedge T\in\mathbb{W}\wedge U\in\text{\ensuremath{\mathbb{V}}}\right\} =0
+\]
+
+\end_inset
+
+Also ist 
+\begin_inset Formula 
+\[
+\inf\left\{ \lambda\left(U\right)-\lambda\left(T\right)\bigm|T\subset M\subset U\wedge T\in\mathbb{W}\wedge U\in\text{\ensuremath{\mathbb{V}}}\right\} =0
+\]
+
+\end_inset
+
+oder aber 
+\begin_inset Formula 
+\[
+\inf\left\{ \lambda\left(U\right)\bigm|M\subset U\wedge U\in\text{\ensuremath{\mathbb{V}}}\right\} -\sup\left\{ \lambda\left(T\right)\bigm|T\subset M\wedge T\in\right\} =0
+\]
+
+\end_inset
+
+oder schlussendlich
+\begin_inset Formula 
+\[
+\inf\left\{ \lambda\left(U\right)\bigm|M\subset U\wedge U\in\text{\ensuremath{\mathbb{V}}}\right\} =\sup\left\{ \lambda\left(T\right)\bigm|T\subset M\wedge T\in\right\} 
+\]
+
+\end_inset
+
+Dies bedeutet jedoch 
+\begin_inset Formula 
+\[
+\kappa\left(M\right)=\nu\left(M\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aber es geht auch weniger formal:
+ Ich möchte zeigen,
+ dasss 
+\begin_inset Formula $\nu\left(M\right)=\kappa\left(M\right)$
+\end_inset
+
+ist.
+\end_layout
+
+\begin_layout Standard
+Mit 
+\begin_inset Formula 
+\[
+\nu\left(M\right)\equiv\sup\left\{ \lambda\left(T\right)\bigm|T\subset M\wedge T\in\mathbb{W}\right\} 
+\]
+
+\end_inset
+
+muss sicher gelten Dass es eine Folge von abgeschlossene Mengen 
+\begin_inset Formula $\left(T_{k}\right)_{k\in\mathbb{N}}$
+\end_inset
+
+ derart gibt,
+ dass 
+\begin_inset Formula 
+\[
+\lim_{k\rightarrow\infty}\lambda\left(T_{k}\right)=\nu\left(M\right)
+\]
+
+\end_inset
+
+sowie 
+\begin_inset Formula 
+\[
+T_{k}\subset T_{k+1}
+\]
+
+\end_inset
+
+ ist.
+ Dann ist die Fage ob es möglich ist,
+ dass 
+\begin_inset Formula 
+\[
+\kappa\left(M\backslash\bigcup_{k\in\mathbb{N}}T_{k}\right)>0
+\]
+
+\end_inset
+
+ist.
+ Wäre dem so,
+ dann müsste es eine kompakte Teilmenge
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $T_{W}\in M\backslash\bigcup_{k\in\mathbb{N}}T_{k}$
+\end_inset
+
+mit 
+\begin_inset Formula 
+\[
+\lambda\left(T_{W}\right)>0
+\]
+
+\end_inset
+
+(jede Menge mit einem positiven Mass muss eine kompakte Teilmenge mit positivem Mass besitzen).
+ 
+\end_layout
+
+\begin_layout Standard
+Ist 
+\begin_inset Formula $x\in T_{W}$
+\end_inset
+
+ dann ist 
+\begin_inset Formula $x\in M\backslash\bigcup_{k\in\mathbb{N}}T_{k}$
+\end_inset
+
+ also insbesondere 
+\begin_inset Formula $x\notin$
+\end_inset
+
+
+\begin_inset Formula $\left(2\bigcup_{k\in\mathbb{N}}T_{k}\right)$
+\end_inset
+
+ und darum auch für alle 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ 
+\begin_inset Formula $x\notin T_{k}$
+\end_inset
+
+ .
+ Also ist 
+\begin_inset Formula $T_{W}$
+\end_inset
+
+ paareise disjunkt zu allen 
+\begin_inset Formula $T_{k}$
+\end_inset
+
+.
+ Nun mus es jedoch für 
+\begin_inset Formula $\varepsilon:=\lambda\left(T_{W}\right)$
+\end_inset
+
+ ein 
+\begin_inset Formula $j\in\mathbb{N}$
+\end_inset
+
+mit 
+\begin_inset Formula $\lambda\left(T_{j}\right)>\nu\left(M\right)-\varepsilon$
+\end_inset
+
+ geben.
+ Da 
+\begin_inset Formula $T_{W}$
+\end_inset
+
+ und 
+\begin_inset Formula $T_{j}$
+\end_inset
+
+ sicher disjunkt sein müssen,
+ kann ich darum schreiben
+\begin_inset Formula 
+\begin{align*}
+ & \lambda\left(T_{j}\cup T_{W}\right)\\
+= & \lambda\left(T_{j}\right)+\lambda\left(T_{W}\right)\\
+> & \nu\left(M\right)-\varepsilon+\lambda\left(T_{W}\right)\\
+= & \nu\left(M\right)-\lambda\left(T_{W}\right)/2+\lambda\left(T_{W}\right)\\
+= & \nu\left(M\right)+\lambda\left(T_{W}\right)/2\\
+> & \nu\left(M\right)
+\end{align*}
+
+\end_inset
+
+sein.
+ Da jedoch 
+\begin_inset Formula $T_{j}$
+\end_inset
+
+ und 
+\begin_inset Formula $T_{W}$
+\end_inset
+
+ kompakte Mengen sind,
+ muss gelten,
+ dass 
+\begin_inset Formula $T_{j}\cup T_{W}$
+\end_inset
+
+ wieder eine kompakte Menge ist.
+ Also hätte ich gezeigt,
+ dass eine kompakte Menge 
+\begin_inset Formula $T_{j}\cup T_{W}$
+\end_inset
+
+ derart geben müsste,
+ dass 
+\begin_inset Formula $\lambda\left(T_{j}\cup T_{W}\right)>\nu\left(M\right)=\sup\left\{ \lambda\left(T\right)\bigm|T\subset M\wedge T\in\mathbb{W}\right\} $
+\end_inset
+
+wäre.
+ Das ist jedoch ein Widerspruch zur Definition des Supremums.
+ Also muss gelten
+\begin_inset Formula 
+\[
+\kappa\left(M\backslash\bigcup_{k\in\mathbb{N}}T_{k}\right)=0
+\]
+
+\end_inset
+
+Nun ist jedoch
+\begin_inset Formula 
+\[
+\kappa\left(M\right)\leq\kappa\left(\bigcup_{k\in\mathbb{N}}T_{k}\right)+\kappa\left(M\backslash\bigcup_{k\in\mathbb{N}}T_{k}\right)
+\]
+
+\end_inset
+
+Aber das
+\begin_inset Formula 
+\[
+\kappa\left(M\backslash\bigcup_{k\in\mathbb{N}}T_{k}\right)=0
+\]
+
+\end_inset
+
+ist,
+ kann ich schliessen,
+ dass gilt
+\begin_inset Formula 
+\[
+\kappa\left(M\right)\leq\kappa\left(\bigcup_{k\in\mathbb{N}}T_{k}\right)
+\]
+
+\end_inset
+
+Und da per Definition gilt
+\begin_inset Formula 
+\[
+\bigcup_{k\in\mathbb{N}}T_{k}\subset M
+\]
+
+\end_inset
+
+ muss auch gelten
+\begin_inset Formula 
+\[
+\kappa\left(\bigcup_{k\in\mathbb{N}}T_{k}\right)\leq\kappa\left(M\right)
+\]
+
+\end_inset
+
+ Insgesamt also 
+\begin_inset Formula 
+\[
+\kappa\left(\bigcup_{k\in\mathbb{N}}T_{k}\right)=\kappa\left(M\right)
+\]
+
+\end_inset
+
+Aufgrund der Konstruktion von 
+\begin_inset Formula 
+\[
+\bigcup_{k\in\mathbb{N}}T_{k}
+\]
+
+\end_inset
+
+bedeutet dies jedoch,
+ dass auch gilt
+\begin_inset Formula 
+\[
+\nu\left(M\right)=\lim_{k\rightarrow\infty}\lambda\left(T_{k}\right)=\kappa\left(M\right)
+\]
+
+\end_inset
+
+Also hätte ich noch einmal den Beweis für die Richtigkeit der Behauptung erbracht.
+\end_layout
+
+\end_body
+\end_document

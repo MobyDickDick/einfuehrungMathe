@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 362.65097 220.97573"
+   width="362.65097"
+   height="220.97572"
+   version="1.1"
+   id="svg7"
+   sodipodi:docname="TypCarInTheLoop.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="3.026417"
+     inkscape:cx="304.32026"
+     inkscape:cy="123.08284"
+     inkscape:window-width="1920"
+     inkscape:window-height="1094"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg7" />
+  <!-- Bodenlinie -->
+  <line
+     x1="13.996053"
+     y1="213.77295"
+     x2="345.66489"
+     y2="213.77295"
+     stroke="#000000"
+     stroke-width="2"
+     id="line1"
+     style="stroke-width:0.71452;stroke-dasharray:none" />
+  <line
+     x1="212.85062"
+     y1="64.863159"
+     x2="344.26657"
+     y2="64.863159"
+     stroke="#000000"
+     stroke-width="2"
+     id="line1-6"
+     style="stroke-width:0.449765;stroke-dasharray:none" />
+  <line
+     x1="239.47589"
+     y1="213.20232"
+     x2="347.44302"
+     y2="213.20232"
+     stroke="#000000"
+     stroke-width="2"
+     id="line1-3"
+     style="stroke-width:1.78077;stroke-dasharray:none" />
+  <!-- Rampe -->
+  <path
+     d="M 0.00334001,32.911289 C 30.799043,33.022658 42.314219,29.864934 49.48914,37.836866 c 138.00214,153.331794 0.170082,0.52923 136.8049,153.518274"
+     fill="none"
+     stroke="#000000"
+     stroke-width="1.84716"
+     id="path1"
+     sodipodi:nodetypes="csc" />
+  <path
+     id="path11"
+     d="m 38.4466,21.901388 c 12.848709,-0.05452 13.053819,-0.912802 19.390713,6.520842 10.623566,12.462229 0.921699,1.015471 23.912084,27.881005 0.996289,1.164218 2.053971,2.400384 3.177362,3.713561"
+     style="fill:none;stroke:#000000;stroke-width:0.92358;stroke-dasharray:none;stroke-opacity:1"
+     sodipodi:nodetypes="cssc" />
+  <!-- Looping -->
+  <circle
+     cx="238.84033"
+     cy="139.31589"
+     r="73.886414"
+     fill="none"
+     stroke="#000000"
+     stroke-width="1.84716"
+     id="circle1" />
+  <!-- Auto A oben auf der Rampe -->
+  <rect
+     x="6.0981469"
+     y="14.63258"
+     width="27.707403"
+     height="13.853702"
+     rx="4.6179008"
+     ry="4.6179008"
+     stroke="#000000"
+     fill="none"
+     stroke-width="1.84716"
+     id="rect2" />
+  <circle
+     cx="10.716047"
+     cy="28.486282"
+     r="3.6943204"
+     fill="#000000"
+     id="circle2"
+     style="stroke-width:0.92358" />
+  <circle
+     cx="29.187649"
+     cy="28.486282"
+     r="3.6943204"
+     fill="#000000"
+     id="circle3"
+     style="stroke-width:0.92358" />
+  <text
+     x="15.797185"
+     y="10.550982"
+     font-family="serif"
+     font-size="14.7773px"
+     id="text3"
+     style="stroke-width:0.92358">A</text>
+  <!-- Auto B im Looping oben -->
+  <g
+     id="g7"
+     transform="matrix(-0.92358013,0,0,-0.92358013,607.84082,186.71196)">
+    <rect
+       x="380"
+       y="110"
+       width="40"
+       height="15"
+       rx="5"
+       ry="5"
+       stroke="#000000"
+       fill="none"
+       stroke-width="2"
+       id="rect3" />
+    <circle
+       cx="385"
+       cy="125"
+       r="4"
+       fill="#000000"
+       id="circle4" />
+    <circle
+       cx="415"
+       cy="125"
+       r="4"
+       fill="#000000"
+       id="circle5" />
+  </g>
+  <text
+     x="234.43822"
+     y="56.323166"
+     font-family="serif"
+     font-size="14.7773px"
+     id="text5"
+     style="stroke-width:0.92358">B</text>
+  <!-- Pfeile -->
+  <path
+     d="m 209.30124,76.826144 q -13.10587,8.172198 -26.21175,24.516586"
+     fill="none"
+     stroke="#000000"
+     stroke-width="1.86988"
+     marker-end="url(#arrowhead)"
+     id="path6"
+     style="stroke-width:0.92358;stroke-dasharray:none" />
+  <!-- Höhe h -->
+  <line
+     x1="17.181108"
+     y1="36.531071"
+     x2="17.181108"
+     y2="210.37614"
+     stroke="#000000"
+     stroke-width="0.903151"
+     stroke-dasharray="4"
+     id="line6"
+     style="stroke-dasharray:none" />
+  <text
+     x="29.179319"
+     y="116.92196"
+     font-family="serif"
+     font-size="16.1215px"
+     id="text6"
+     transform="scale(0.91661725,1.0909679)"
+     style="stroke-width:1.0076">h</text>
+  <!-- Durchmesser 2R -->
+  <line
+     x1="329.3512"
+     y1="68.380455"
+     x2="329.3512"
+     y2="209.67802"
+     stroke="#000000"
+     stroke-width="0.903118"
+     stroke-dasharray="4"
+     id="line7"
+     style="stroke-dasharray:none" />
+  <text
+     x="333.3735"
+     y="142.24202"
+     font-family="serif"
+     font-size="14.7773px"
+     id="text7"
+     style="stroke-width:0.92358">2R</text>
+  <!-- Definiere Pfeilspitze -->
+  <defs
+     id="defs7">
+    <rect
+       x="23.129662"
+       y="45.928898"
+       width="35.190128"
+       height="23.294872"
+       id="rect12" />
+    <marker
+       id="arrowhead"
+       markerWidth="10"
+       markerHeight="7"
+       refX="0"
+       refY="3.5"
+       orient="auto">
+      <polygon
+         points="10,3.5 0,7 0,0 "
+         fill="#000000"
+         id="polygon7" />
+    </marker>
+  </defs>
+  <text
+     xml:space="preserve"
+     id="text12"
+     style="white-space:pre;shape-inside:url(#rect12);display:inline;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1"
+     transform="matrix(0.92358013,0,0,0.92358013,-21.609257,-45.400127)" />
+  <path
+     style="fill:#000000;fill-opacity:1;stroke-width:0.92358"
+     d="m 17.181109,33.594198 2.768436,4.951638 h -5.536873 z"
+     id="path2"
+     sodipodi:nodetypes="cccc" />
+  <path
+     style="fill:#000000;fill-opacity:1;stroke-width:0.92358"
+     d="m 86.06569,56.773059 0.908727,5.599745 -5.203231,-1.892968 z"
+     id="path2-7"
+     sodipodi:nodetypes="cccc" />
+  <path
+     style="fill:#000000;fill-opacity:1;stroke-width:0.92358"
+     d="m 17.181109,213.45526 2.768436,-4.95164 h -5.536873 z"
+     id="path2-2"
+     sodipodi:nodetypes="cccc"
+     inkscape:transform-center-x="-3.9921108"
+     inkscape:transform-center-y="-20.176342" />
+  <path
+     style="fill:#000000;fill-opacity:1;stroke-width:0.92358"
+     d="m 329.35119,212.2072 2.76844,-4.95164 h -5.53688 z"
+     id="path2-2-7"
+     sodipodi:nodetypes="cccc"
+     inkscape:transform-center-x="-3.9921068"
+     inkscape:transform-center-y="-20.17634" />
+  <path
+     style="fill:#000000;fill-opacity:1;stroke-width:0.92358"
+     d="m 329.35119,64.992533 2.76844,4.951637 h -5.53688 z"
+     id="path2-2-7-2"
+     sodipodi:nodetypes="cccc"
+     inkscape:transform-center-x="-3.9921068"
+     inkscape:transform-center-y="20.176343" />
+</svg>

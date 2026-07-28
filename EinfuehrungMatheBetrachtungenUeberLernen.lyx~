@@ -1,0 +1,557 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsbook
+\begin_preamble
+% Präambel nicht verändern!!!
+%
+% Die Präambel stellt sicher, dass das Benutzerhandbuch korrekt
+% in die Formate pdf, ps und dvi exportiert werden kann.
+% Wenn Probleme beim Exportieren auftreten, können Sie sich
+% an das LyX-Dokumentationsteam wenden.
+% EMail: lyx-docs@lists.lyx.org
+
+% wenn pdflatex benutzt wird:
+\usepackage{ifpdf}
+\ifpdf
+
+% Fonts fuer huebschere PDF-Ansichten
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % Ende von: wenn pdflatex benutzt wird
+
+% Setzt den Link fuer Spruenge zu Gleitabbildungen
+% auf den Anfang des Gelitobjekts und nicht aufs Ende
+\usepackage[figure]{hypcap}
+
+% Ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC }
+
+% Damit der Index den Namen "Stichwortverzeichnis" erhält
+\addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+% Definiere den Operator Id
+\DeclareMathOperator{\Id}{Id}
+
+\usepackage{xlop}
+\usepackage{paralist}
+
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage[makeroom]{cancel}
+
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+\newcommand{\includebackwardreferences}{<includebackwardreferences>}
+\newcommand{\includeforwardreferences}{<includeforwardreferences>}
+
+% Wasserzeichen
+
+% \usepackage{draftwatermark} % Das Paket mit der Funktionalität
+% \SetWatermarkText{Entwurf} % Der Hintergrundtext
+% \SetWatermarkLightness{0.9}
+% \SetWatermarkFontSize{2cm} % Die Ausgangsgröße
+
+\renewcommand{\numberline}[1]{#1~}
+\end_preamble
+\options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+fixltx2e
+todonotes
+backforwardref
+\end_modules
+\maintain_unincluded_children no
+\language german-ch
+\language_package auto
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "cmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Einfuehrung in Mathe"
+\pdf_author "Markus Demarmels"
+\pdf_subject "LyX"
+\pdf_keywords "LyX"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=blue, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\branch Frage
+\selected 1
+\filename_suffix 0
+\color #00ff00 #ff00ff
+\end_branch
+\branch Antwort
+\selected 0
+\filename_suffix 0
+\color #aa55ff #55aa00
+\end_branch
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swiss
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Einführung Mathematik Lernbetrachtungen
+\begin_inset Newline newline
+\end_inset
+
+
+\size large
+Version 0.1.1
+\end_layout
+
+\begin_layout Author
+©Markus Demarmels,
+ markus.demarmels@bluewin.ch
+\end_layout
+
+\begin_layout Date
+letzte Änderung:
+ 02.12.2025
+\end_layout
+
+\begin_layout Dedicatory
+Für meine Patenkinder Seraina und Jaël und für meine Kinder Flurina und Michael:
+ Ich wünsche Euch Lebensfreude
+\end_layout
+
+\begin_layout Quotation
+Ich konnte es nie,
+ ich kann es nicht,
+ ich werde es nie können - aber habe trotzdem Spaß daran.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Vorwort
+\end_layout
+
+\begin_layout Standard
+Ich habe das Kunststück fertiggebracht,
+ ca.
+ 800 Seiten Einführung in die Mathematik zu schreiben,
+ ohne je eine brauchbare Einführung für Kinder,
+ Jugendliche und Personen,
+ welche sich mit Mathematik beschäftigen möchten,
+ geschrieben zu haben.
+ Das ist natürlich nicht so toll.
+ Darum möchte ich im Folgenden Überlegungen aufschreiben,
+ wie das Zahlenkonzept eingeführt werden könnte,
+ ohne dass es für die beteiligten Personen mühsam werden könnte.
+\end_layout
+
+\begin_layout Standard
+Jedoch möchte ich das nicht logisch aufbauend,
+ als festes umumstösslichens Programm aufschreiben.
+ Das wäre auch total widersinnig.
+ Vielmehr sollen einzelne Anregungen aufgeschrieben werden,
+ in der Hoffnung,
+ dass da mehr kommt.
+\end_layout
+
+\begin_layout Chapter
+Symbolische Entwicklung
+\end_layout
+
+\begin_layout Standard
+Ich möchte ein Spiel vorstellen,
+ welches die symbolische Entwicklung auf spielersiche Weise fördert:
+ Das Vorlesen von Kinderbüchern.
+ Und eine Variante dazu.
+ Dazu braucht es ein Kind,
+ eine Person welche vorliest,
+ und einige Zeit.
+ Und wie es s ofür mich typisch ist,
+ möchte ich jetzt ganz genau beschreiben,
+ was da gemacht werden könnte.
+\end_layout
+
+\begin_layout Standard
+Natürlich ist es sehr schön,
+ wenn das Vorlesen mit Kuscheln kombiniert werden kann.
+ Sofern es die Umstände zulassen.
+ Wenn das Kind nicht die Tochter oder der Sohn ist,
+ dann kann sich das Kind bei der Mutter oder dem Vater kuscheln.
+ Auf keinen Fall ein fremdes Kind kuscheln!
+ Das ist an der Grenze eines Sexualdeliktes,
+ und das ist auch gut so,
+ dass die körperliche Integrität des Kinds unbedingt gewahrt werden muss.
+\end_layout
+
+\begin_layout Standard
+Um was es geht:
+ Vor allem um das 
+\begin_inset Quotes cld
+\end_inset
+
+pläuderlen
+\begin_inset Quotes crd
+\end_inset
+
+.
+ Ja,
+ ich finde,
+ das ist am Wichtigsten.
+ Es ist wichtig,
+ einfach zu versuchen,
+ die gemeinsame Aufmerksamkeit auf das Bilderbuch zu lenken.
+ Beispielsweise ein Buch über Tiere.
+ Dann ist die symbolische Entwicklung weitgehend abgeschlossen.
+ Denn das Bild einer Ente ist keine Ente.
+ Das Bild einer Kuh ist keine Kuh.
+ Das Bild eines Geissbock ist keine Geissbock.
+\end_layout
+
+\begin_layout Standard
+Besonders lustig ist es,
+ wenn dann das Mami oder der Papi fragt:
+ 
+\begin_inset Quotes cld
+\end_inset
+
+Wie macht eine Geiss?
+\begin_inset Quotes crd
+\end_inset
+
+ (...) 
+\begin_inset Quotes cld
+\end_inset
+
+Eine Geiss macht:
+ Mähähähä
+\begin_inset Quotes crd
+\end_inset
+
+.
+ Auf gut Deutsch:
+ Die Eltern machen ein Spiel.
+ Ich tue so,
+ als sei ich eine Geiss.
+ Aber Du weisst und ich weiss es auch,
+ dass ich keine Gesiss bin.
+ Sondern ein Mensch.
+ Und als Krönung dieses Spiels (wenn ich davon ausgehen kann,
+ dass es das Kind zu langweilen beginngt),
+ kann ich auf eine Kuh zeigen und fragen:
+ 
+\begin_inset Quotes cld
+\end_inset
+
+Wie macht eine Kuh?
+\begin_inset Quotes crd
+\end_inset
+
+ (...) 
+\begin_inset Quotes cld
+\end_inset
+
+Eine Kuh macht:
+ Mähähähä
+\begin_inset Quotes crd
+\end_inset
+
+ Um dann nach einer kurzen Pause anzufügen:
+ 
+\begin_inset Quotes cld
+\end_inset
+
+Nein,
+ die Kuh macht nicht:
+ Mähähähähä
+\begin_inset Quotes crd
+\end_inset
+
+ (...) 
+\begin_inset Quotes cld
+\end_inset
+
+Eine Kuh macht Muh
+\begin_inset Quotes crd
+\end_inset
+
+ Ich habe damals bei meinen Kindern ein Kichern provoziert,
+ was mich sehr gefreut hat.
+ Sie konnten damals noch nicht reden.
+ Aber es war eine Form von Kommunikaton.
+ Und die Lektion war:
+ 
+\begin_inset Quotes cld
+\end_inset
+
+Auch ich als Papi mache manchmal Fehler
+\begin_inset Quotes crd
+\end_inset
+
+.
+ Und sehe diese aber auch ein.
+ Sowieso halte ich es für den wichtigesten Teil der symbolischen Erziehung,
+ Kinder niemals zu belügen.
+ Wenn es gar nicht geht,
+ dann halt die Antwort explizit verweigern.
+ Manchmal ist eine ehrliche Antwort eine zu grosse Zumutung.
+ Aber von Lügen als 
+\begin_inset Quotes cld
+\end_inset
+
+Geschäftsmodell
+\begin_inset Quotes crd
+\end_inset
+
+ halte ich überhaupt nichts.
+ Und sich über Kinder lächerlich zu machen finde ich auch eine extrem schlechte Idee.
+ Denn Kinder sind auf Gedeih und Verderb ihren Eltern ausgeliefert.
+ Eine Geringschätzung der Kinder ist für diese immer eine Verletzung.
+ Natürlich bin auch ich nicht von Fehl und Tadel.
+ Ich habe mich ein Mal über meinen Sohn und seinen Cousin lustig gemacht.
+ Aber ich habe ihn nicht verletzt.
+ Hätte ich das,
+ hätte ich natürlich sofort aufgehört damit.
+\end_layout
+
+\begin_layout Standard
+Und mir ist bewusst,
+ dass die symbolisch Entwicklung weit über das hinausgeht,
+ über das ich an dieser Stelle schreiben kann.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset index_print
+LatexCommand printindex
+type "idx"
+name "Stichwortverzeichnis"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Damit der Index den Namen 
+\emph on
+Stichwortverzeichnis
+\emph default
+ erhält,
+ wurde im \SpecialChar LaTeX
+-Vorspann
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+addto
+\backslash
+captionsngerman {
+\backslash
+renewcommand{
+\backslash
+indexname} {Stichwortverzeichnis}}
+\end_layout
+
+\begin_layout Plain Layout
+eingefügt.
+ Denn voreingestellt ist 
+\begin_inset Quotes gld
+\end_inset
+
+Index
+\begin_inset Quotes grd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Das Paket 
+\series bold
+Babel
+\series default
+ sorgt dafür,
+ dass die Legenden in der ausgewählten Sprache erscheinen.
+ Ehe man Legenden ändern kann,
+ muss es geladen werden.
+ Außerdem wird 
+\series bold
+Babel
+\series default
+ von \SpecialChar LyX
+ automatisch nach dem \SpecialChar LaTeX
+-Vorspann geladen.
+ Das ruft aber keine Probleme hervor.
+\end_layout
+
+\begin_layout Plain Layout
+Möchte man andere Legenden ändern,
+ ersetzt man 
+\series bold
+
+\backslash
+indexname
+\series default
+ durch 
+\series bold
+
+\backslash
+<Legende>Name
+\series default
+.
+ Eine Auflistung der möglichen Namen findet man unter 
+\begin_inset Formula $\text{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=fixnam}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Möchte man Legenden für andere Sprachen ändern,
+ ersetzt man 
+\series bold
+ngerman
+\series default
+ durch die Dokumentsprache und
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+captionsgerman
+\series default
+ durch 
+\series bold
+
+\backslash
+captions<Dokumentsprache>
+\series default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
