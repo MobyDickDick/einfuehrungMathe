@@ -39,7 +39,7 @@
 \usepackage{paralist}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{thmtools}
+\usepackage{cancel}
 \usepackage[makeroom]{cancel}
 \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 \newcommand{\includebackwardreferences}{<includebackwardreferences>}
@@ -1537,13 +1537,6 @@ nolink "false"
 
  müssen diese Symbole jedoch ungleich sein.
  Damit glaube ich auch in diesem Fall und somit in allen Fällen den Beweis für die Ungleichheit der Symbole erbracht zu haben.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newline linebreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -14443,21 +14436,6 @@ Definition
 \end_inset
 
 
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mathbb{N}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset label
 LatexCommand label
 name "enu:definition-N-natuerliche-Zahlen"
@@ -22029,10 +22007,6 @@ aktuelle Stelle 18.08.2024,
 \end_inset
 
  
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Section

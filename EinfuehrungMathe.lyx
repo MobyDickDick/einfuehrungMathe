@@ -39,7 +39,6 @@
 \usepackage{paralist}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{thmtools}
 \usepackage[makeroom]{cancel}
 \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 % Wasserzeichen
@@ -184,7 +183,7 @@ Einführung Mathematik
 \begin_layout Title
 
 \size large
-Version 0.1.196
+Version 0.1.197
 \end_layout
 
 \begin_layout Author
@@ -194,7 +193,7 @@ Markus Demarmels,
 
 \begin_layout Date
 letzte Änderung:
- 02.09.2024
+ 07.08.2026
 \end_layout
 
 \begin_layout Dedicatory
@@ -237,6 +236,17 @@ LatexCommand tableofcontents
 \begin_inset CommandInset include
 LatexCommand include
 filename "EinfuehrungMatheBuchTeile/Teil_Einleitung.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "EinfuehrungMatheBuchTeile/Teil_Symbole.lyx"
 literal "false"
 
 \end_inset

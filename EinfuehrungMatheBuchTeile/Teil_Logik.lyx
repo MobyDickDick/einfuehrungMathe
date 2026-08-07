@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 643
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -13,56 +13,41 @@
 % Wenn Probleme beim Exportieren auftreten, können Sie sich
 % an das LyX-Dokumentationsteam wenden.
 % EMail: lyx-docs@lists.lyx.org
-
 % wenn pdflatex benutzt wird:
 \usepackage{ifpdf}
 \ifpdf
-
 % Fonts fuer huebschere PDF-Ansichten
 \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
-
 \fi % Ende von: wenn pdflatex benutzt wird
-
 % Setzt den Link fuer Spruenge zu Gleitabbildungen
 % auf den Anfang des Gelitobjekts und nicht aufs Ende
 \usepackage[figure]{hypcap}
-
 % Ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
  \pdfbookmark[1]{\contentsname}{}
  \myTOC }
-
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
-
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX}}
-
 % Definiere den Operator Id
 \DeclareMathOperator{\Id}{Id}
-
 \usepackage{xlop}
 \usepackage{paralist}
-
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{thmtools}
 \usepackage[makeroom]{cancel}
-
 \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 \newcommand{\includebackwardreferences}{<includebackwardreferences>}
 \newcommand{\includeforwardreferences}{<includeforwardreferences>}
-
 % Wasserzeichen
-
 % \usepackage{draftwatermark} % Das Paket mit der Funktionalität
 % \SetWatermarkText{Entwurf} % Der Hintergrundtext
 % \SetWatermarkLightness{0.9}
 % \SetWatermarkFontSize{2cm} % Die Ausgangsgröße
-
 \renewcommand{\numberline}[1]{#1~}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
@@ -136,11 +121,19 @@ todonotes
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
-\use_refstyle 0
+\justification default
+\crossref_package prettyref
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \branch Frage
 \selected 1
 \filename_suffix 0
@@ -176,6 +169,7 @@ todonotes
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \end_header
 
 \begin_body
@@ -1398,11 +1392,7 @@ pageformat default
 status open
 
 \begin_layout Plain Layout
-Menge aller Aussagen 
-\begin_inset Formula $\Omega$
-\end_inset
-
-
+Menge aller Aussagen
 \end_layout
 
 \end_inset
@@ -2405,7 +2395,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -4947,7 +4936,7 @@ Ich möchte ein Beispiel machen:
  dass gilt
 \begin_inset Formula 
 \[
-\sum_{k=0}^{n}\left(2\cdot k+1\right)=\left(n+1\right)^{2}
+\sum^{n}_{k=0}\left(2\cdot k+1\right)=\left(n+1\right)^{2}
 \]
 
 \end_inset
@@ -22631,12 +22620,54 @@ Sheffer-Notation
 \end_inset
 
 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-prefix "Sheffer-Notation"
-symbol "Sheffer-Notation"
-description "NAND-Verknüüfung"
-literal "true"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Sheffer-Notation
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+Sheffer-Notation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+NAND-Verkn
+\backslash
+"{u}
+\backslash
+"{u}fung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -23859,7 +23890,6 @@ Denn sind beide Behauptungen
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -35344,12 +35374,6 @@ nachgeprüft 20.11.2019
 
 \end_inset
 
-
-
-
-\begin_inset Newline linebreak
-\end_inset
-
 Es bleibt mir noch,
  ein zweites Beispiel des Satzes der doppelten Negation zu liefern.
  Falls die Aussage wahr ist,
@@ -35824,7 +35848,6 @@ wahr sein muss.
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Section
@@ -36002,7 +36025,6 @@ nachgeprüft 20.11.2019
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \end_layout
 
@@ -36796,7 +36818,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -38255,7 +38276,6 @@ nachgeprüft 20.11.2019
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -41776,7 +41796,6 @@ nolink "false"
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -45246,8 +45265,6 @@ am 24.11.2019 nachgeprüft
 \end_inset
 
 
-
-
 \end_layout
 
 \begin_layout Standard
@@ -46570,15 +46587,6 @@ am 24.11.2019 nachgeprüft
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-
-\begin_inset Newline linebreak
 \end_inset
 
 Wenn Du die Tabelle 
@@ -48442,7 +48450,6 @@ am 25.11.2019 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -49538,30 +49545,6 @@ name "tab:Verschaerfte-verschaerfte-Schlussfolgerung-1"
 \begin_inset space \hfill{}
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -51369,8 +51352,6 @@ am 24.11.2019 nachgeprüft
 \end_layout
 
 \end_inset
-
-
 
 
 \end_layout
@@ -53551,7 +53532,6 @@ am 13.01.2020 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -55320,7 +55300,6 @@ am 25.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -57326,7 +57305,6 @@ am 25.11.2019 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -58315,7 +58293,6 @@ am 25.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -60172,7 +60149,6 @@ name "tab:2-Teil-Verweise-Beweis-alternativer-Satz-Aequivalenz-Implikation-Repli
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -63500,7 +63476,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -66899,7 +66874,6 @@ am 26.11.2019 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -70288,7 +70262,6 @@ am 26.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -74213,7 +74186,6 @@ gilt.
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -77529,7 +77501,6 @@ am 26.11.2019 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Section
@@ -78247,7 +78218,6 @@ am 26.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -79016,7 +78986,6 @@ am 26.11.2019 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -79532,7 +79501,6 @@ Tabelle Verweise Beweis des Satzes der Äquivalenz von Aussage und Aussage
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -79649,7 +79617,6 @@ wahr ist.
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -80874,7 +80841,6 @@ am 26.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -82678,33 +82644,6 @@ am 26.11.2019 nachgeprüft
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Warum kommutiert die Disjunktion?
 \end_layout
@@ -83761,7 +83700,6 @@ am 26.11.2019 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Section
@@ -83877,7 +83815,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -85279,7 +85216,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -88229,7 +88165,6 @@ am 27.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -91194,7 +91129,6 @@ am 27.11.2019 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -92941,7 +92875,6 @@ am 22.12.2020 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -94382,7 +94315,6 @@ am 23.12.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -98974,33 +98906,6 @@ name "tab:Verweise-Lemma-Konjunktion-Minimumprinzip-3-Argumente-Teil-3"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Damit möchte ich gleich zum nächsten Satz wechseln.
 \end_layout
 
@@ -101135,33 +101040,6 @@ am 27.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Das Interessante an diesem Satz besteht meines Erachtens darin,
  dass er die Konjunktion mit der Disjunktion verknüpft.
 \end_layout
@@ -102003,33 +101881,6 @@ nachgeprüft am 20.11.2019
 
 Somit erachte ich den Beweis des Satzes als erwiesen und erlaube mir,
  den Beweis an dieser Stelle zu beenden.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -104167,7 +104018,6 @@ am 28.11.2019 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -105904,33 +105754,6 @@ am 28.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Ich hatte übrigens einmal die Idee,
  dass ich zeigen könne,
  dass ich anstelle von 
@@ -106796,33 +106619,6 @@ am 14.11.2020 überprüft
 \begin_inset space \hfill{}
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -108851,33 +108647,6 @@ am 4.1.2020 überprüft
 \begin_inset space \hfill{}
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -111364,33 +111133,6 @@ am 30.11.2020 nachgeprüft
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Implikation Implikation aus Äquivalenz
 \end_layout
@@ -112429,7 +112171,6 @@ am 28.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -114968,33 +114709,6 @@ am 28.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Ich gebe es zu,
  so ganz wohl ist es mir mit diesem Beweis nicht.
  Die Frage treibt mich regelmäßig herum:
@@ -116898,33 +116612,6 @@ am 28.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Zum eben formulierten Satz möchte ich noch anfügen,
  dass er eigentlich ein billiger Taschenspielertrick ist.
  Denn wenn Du Dir die Definition 
@@ -117938,7 +117625,6 @@ Somit denke ich,
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -120040,33 +119726,6 @@ am 28.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Ich habe das obige Lemma als Warnung aufgeschrieben,
  weil diese Art von Fehlüberlegung meines Erachtens schnell einmal auftreten kann.
  Trotzdem möchte alle ermuntern auch dann Mathematik zu betreiben,
@@ -120950,7 +120609,6 @@ am 29.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -123245,33 +122903,6 @@ am 29.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Die Aussage 
 \begin_inset Formula 
 \[
@@ -124137,33 +123768,6 @@ Verweise des zweiten Teils des Maximumprinzips der Disjunktion
 \begin_inset space \hfill{}
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -126195,33 +125799,6 @@ am 29.11.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 In diesem Fall trügt also der Schein nicht.
  Wenn ich zeigen will,
  dass zwei Aussagen 
@@ -128022,7 +127599,6 @@ nolink "false"
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Section
@@ -129127,33 +128703,6 @@ am 29.11.2019 nachgeprüft
 \begin_inset space \hfill{}
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -130937,33 +130486,6 @@ am 22.10.2020 nachgeprüft
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex Backward References
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Satz der Trivialität
 \end_layout
@@ -132020,7 +131542,6 @@ am 7.12.2019 überprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -137360,7 +136881,6 @@ Nun bin ich an der Stelle,
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -142756,7 +142276,6 @@ am 02.02.2021 überprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -143742,7 +143261,6 @@ am 7.12.2019 überprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -145637,7 +145155,6 @@ am 8.12.2019 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -147192,7 +146709,6 @@ wahr ist.
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -148776,7 +148292,6 @@ am 29.11.2019 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -150288,7 +149803,6 @@ am 29.11.2019 überprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -151410,7 +150924,6 @@ am 21.12.2020 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -152325,7 +151838,6 @@ am 21.12.2020 so gut wie möglich nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -154775,7 +154287,6 @@ am 30.11.2019 überprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -157260,7 +156771,6 @@ am 13.12.2019 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Section
@@ -159013,7 +158523,6 @@ Also bin ich der Meinung,
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Section
@@ -160756,7 +160265,6 @@ Somit bin ich der Meinung,
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -168764,7 +168272,6 @@ am 1.5.2021 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -182239,7 +181746,6 @@ am 14.11.2020 überprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Chapter
@@ -183220,7 +182726,6 @@ am 7.12.2019 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Section
@@ -184080,7 +183585,6 @@ Damit meine ich,
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -185693,7 +185197,6 @@ Diese Aussage wollte ich jedoch zeigen.
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -187535,7 +187038,6 @@ nolink "false"
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -189339,7 +188841,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -192192,7 +191693,6 @@ am 14.12.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -195153,7 +194653,6 @@ am 22.12.2019 überprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -197804,7 +197303,6 @@ am 21.12.2019 überprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Section
@@ -197952,7 +197450,6 @@ Darum glaube an dieser Stelle den Beweis erbracht zu haben und beende darum an d
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -199791,7 +199288,6 @@ am 25.12.2019 überprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -202254,7 +201750,6 @@ name "tab:3.-Teil-Verweise-Beweis-Satz-Zusammenhang-NAND-NOR-Verknuepfung"
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -204051,7 +203546,6 @@ am 28.12.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -205884,7 +205378,6 @@ am 28.12.2019 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -208224,7 +207717,6 @@ Nun glaube ich behaupten zu können,
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -210212,7 +209704,6 @@ am 15.03.2020 geprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -213118,7 +212609,6 @@ Somit behaupte ich,
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -216006,7 +215496,6 @@ Somit behaupte ich an dieser Stelle,
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -218905,7 +218394,6 @@ am 09.03.2020 überprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -221808,7 +221296,6 @@ am 10.3.2020 überprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -224797,7 +224284,6 @@ am 12.3.2020 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -227722,7 +227208,6 @@ am 13.03.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -233629,7 +233114,6 @@ am 15.03.2020 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Section
@@ -236530,7 +236014,6 @@ am 22.03.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -239441,7 +238924,6 @@ am 22.03.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -242407,7 +241889,6 @@ am 22.03.2020 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -245356,7 +244837,6 @@ am 22.03.2020 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -248273,7 +247753,6 @@ am 29.03.2020 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -251167,7 +250646,6 @@ am 23.03.2020 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -254053,7 +253531,6 @@ am 31.3.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -257050,7 +256527,6 @@ am 5.4.2020 überprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -260323,7 +259799,6 @@ am 14.04.2020 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -263308,7 +262783,6 @@ am 14.04.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -266913,7 +266387,6 @@ wurde am 16.04.2020 überprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -269897,7 +269370,6 @@ am 17.04.2020 überprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -273431,7 +272903,6 @@ am 13.04.2020 nachgeprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -276323,7 +275794,6 @@ am 02.05.2020 nachgeprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -279400,7 +278870,6 @@ am 05.10.2022 überprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Proposition
@@ -282475,7 +281944,6 @@ am 07.10.2022 überprüft
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Standard
@@ -285499,7 +284967,6 @@ am 15.10.2022 überprüft
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -288548,7 +288015,6 @@ am 17.10.2022
 
 \begin_layout Standard
 
-
 \end_layout
 
 \begin_layout Chapter
@@ -288756,7 +288222,6 @@ Dies war jedoch gerade zu beweisen.
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -289270,7 +288735,6 @@ Das bedeutet jedoch,
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 

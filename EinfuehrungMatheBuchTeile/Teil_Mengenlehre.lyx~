@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 643
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -13,56 +13,42 @@
 % Wenn Probleme beim Exportieren auftreten, können Sie sich
 % an das LyX-Dokumentationsteam wenden.
 % EMail: lyx-docs@lists.lyx.org
-
 % wenn pdflatex benutzt wird:
 \usepackage{ifpdf}
 \ifpdf
-
 % Fonts fuer huebschere PDF-Ansichten
 \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
-
 \fi % Ende von: wenn pdflatex benutzt wird
-
 % Setzt den Link fuer Spruenge zu Gleitabbildungen
 % auf den Anfang des Gelitobjekts und nicht aufs Ende
 \usepackage[figure]{hypcap}
-
 % Ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
  \pdfbookmark[1]{\contentsname}{}
  \myTOC }
-
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
-
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX}}
-
 % Definiere den Operator Id
 \DeclareMathOperator{\Id}{Id}
-
 \usepackage{xlop}
 \usepackage{paralist}
-
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{thmtools}
 \usepackage[makeroom]{cancel}
-
 \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 \newcommand{\includebackwardreferences}{<includebackwardreferences>}
 \newcommand{\includeforwardreferences}{<includeforwardreferences>}
-
 % Wasserzeichen
-
 % \usepackage{draftwatermark} % Das Paket mit der Funktionalität
 % \SetWatermarkText{Entwurf} % Der Hintergrundtext
 % \SetWatermarkLightness{0.9}
 % \SetWatermarkFontSize{2cm} % Die Ausgangsgröße
-
 \renewcommand{\numberline}[1]{#1~}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
@@ -73,7 +59,6 @@ eqs-within-sections
 figs-within-sections
 fixltx2e
 todonotes
-backforwardref
 \end_modules
 \maintain_unincluded_children no
 \language ngerman
@@ -137,11 +122,19 @@ backforwardref
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
-\use_refstyle 0
+\justification default
+\crossref_package prettyref
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \branch Frage
 \selected 1
 \filename_suffix 0
@@ -177,6 +170,7 @@ backforwardref
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \end_header
 
 \begin_body
@@ -1233,29 +1227,6 @@ Damit glaube ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -1479,29 +1450,6 @@ Somit meine ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -1746,29 +1694,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -1893,29 +1818,6 @@ Somit bin ich der Meinung,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -2282,29 +2184,6 @@ Damit habe ich den Beweis für die Richtigkeit der Behauptung erbracht.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -2586,29 +2465,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -2767,29 +2623,6 @@ Diese Aussage wollte ich jedoch gerade beweisen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -3377,29 +3210,6 @@ Dies ist jedoch gerade die Behauptung.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -3584,29 +3394,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -3690,29 +3477,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -4684,29 +4448,6 @@ Damit ist auch der zweite Teil der Behauptung bewiesen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -4866,29 +4607,6 @@ x\inØ\Leftrightarrow x\inØ
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5236,29 +4954,6 @@ In Worten:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -6385,29 +6080,6 @@ Somit behaupte ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -6955,29 +6627,6 @@ Also bin ich der Meinung,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -7352,29 +7001,6 @@ Dies ist jedoch gerade die Behauptung,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -8004,29 +7630,6 @@ Somit meine ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -8260,29 +7863,6 @@ Genau dies wollte ich jedoch zeigen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -9248,29 +8828,6 @@ Das war jedoch gerade zu beweisen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -9554,29 +9111,6 @@ Damit hätte ich die Behauptung des Satzes bewiesen und beende aus diesem Grund 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -10229,29 +9763,6 @@ Dies ist jedoch genau die Aussage,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -10369,29 +9880,6 @@ Dies ist jedoch gerade die Behauptung.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -10582,29 +10070,6 @@ x\in A\cap B\Leftrightarrow\left(x\in M\wedge\neg\left(x\in M\right)\right)\wedg
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -10818,29 +10283,6 @@ Angewandt auf das Element
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -11071,29 +10513,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -11446,29 +10865,6 @@ Damit meine ich,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -13424,6 +12820,30 @@ A\cap B=\emptyset\cap B=\emptyset
 \end_layout
 
 \begin_layout Proof
+Da die Mengengleichheit gemäss dem Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Transitivitaet-Mengengleichheit"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ transitiv ist,
+ kann ich dass gilt
+\begin_inset Formula 
+\[
+A\cap B=\emptyset
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
 Ebenfalls muss gelten 
 \begin_inset Formula 
 \[
@@ -13438,7 +12858,38 @@ Gemäss der Eigenschaften der leeren Menge muss weiter gelten,
 \end_inset
 
  ist.
- Da die Gleichheit von Mengen transitiv ist.
+ Da die Gleichheit von Mengen transitiv uns symmetrisch ist (gemäss dem Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Mengengleichheit-ist-Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ist die Mengengleichheit eine Äquivalenzrelation,
+ und da gemäss der Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Aequivalenzrelation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ der Äquivalenzrelation eine jede Äquivalenzrelation transitiv,
+ also ist auch die Mengengleichheit transitiv sowie symmetris) kann ich aus 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -13861,7 +13312,7 @@ oder
 Ich möchte gerne Beispiele einfügen:
 \begin_inset Formula 
 \[
-\forall n\in\mathbb{N}:\thinspace\sum_{k=1}^{n}k=\frac{1}{2}\cdot n\cdot\left(n+1\right)
+\forall n\in\mathbb{N}:\thinspace\sum^{n}_{k=1}k=\frac{1}{2}\cdot n\cdot\left(n+1\right)
 \]
 
 \end_inset
@@ -14326,29 +13777,6 @@ Da ich nun annehme,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -15315,29 +14743,6 @@ bewiesen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -15762,14 +15167,14 @@ Ist
 \end_inset
 
  auch 
-\begin_inset Formula $M_{1}^{2}$
+\begin_inset Formula $M^{2}_{1}$
 \end_inset
 
  geschrieben werden.
  Es gelte also definitionsgemäß
 \begin_inset Formula 
 \[
-M_{1}^{2}\equiv M_{1}\times M_{1}
+M^{2}_{1}\equiv M_{1}\times M_{1}
 \]
 
 \end_inset
@@ -16392,29 +15797,6 @@ Somit habe ich zeigt,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -16672,29 +16054,6 @@ wahr.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -17623,29 +16982,6 @@ Die oben definierte Relation
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -17951,7 +17287,7 @@ Relation,
 Ein Beispiel für eine Relation,
  welche nicht total ist,
  ist die Relation 
-\begin_inset Formula $d_{\mathbb{N}}^{+}$
+\begin_inset Formula $d^{+}_{\mathbb{N}}$
 \end_inset
 
  (
@@ -17967,7 +17303,7 @@ Distanz
  Diese kann wie folgt beschrieben werden:
 \begin_inset Formula 
 \[
-\left(n_{1},n_{2}\right)\in d_{\mathbb{N}}^{+}\Lleftarrow\mathllap{\Rrightarrow}n_{1}-n_{2}\in\mathbb{N}
+\left(n_{1},n_{2}\right)\in d^{+}_{\mathbb{N}}\Lleftarrow\mathllap{\Rrightarrow}n_{1}-n_{2}\in\mathbb{N}
 \]
 
 \end_inset
@@ -17977,12 +17313,12 @@ Distanz
 
 \begin_layout Standard
 Es ist beispielsweise 
-\begin_inset Formula $\left(2,1\right)\in d_{\mathbb{N}}^{+}$
+\begin_inset Formula $\left(2,1\right)\in d^{+}_{\mathbb{N}}$
 \end_inset
 
 ,
  es gilt jedoch nicht 
-\begin_inset Formula $\left(1,2\right)\in d_{\mathbb{N}}^{+}$
+\begin_inset Formula $\left(1,2\right)\in d^{+}_{\mathbb{N}}$
 \end_inset
 
 .
@@ -18551,29 +17887,6 @@ Ist
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -19042,29 +18355,6 @@ Damit hätte ich die zweite Behauptung und insgesamt den ganzen Satz bewiesen un
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -19362,29 +18652,6 @@ transitiv ist.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -19649,29 +18916,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -20911,29 +20155,6 @@ eben auch wahr.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -21337,29 +20558,6 @@ ist.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -21505,29 +20703,6 @@ Dies ist jedoch gerade die Behauptung.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -21732,29 +20907,6 @@ Damit ist auch der Beweis für die Surjektivität von
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -22273,29 +21425,6 @@ Da nun alle Behauptungen des Beweises bewiesen wurden,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -22893,29 +22022,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -24414,29 +23520,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -24822,29 +23905,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -25342,29 +24402,6 @@ In Worten:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Backward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex Forward References
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -25402,7 +24439,7 @@ eine surjektive Abbildung.
  Nun sei die Relation 
 \begin_inset Formula 
 \begin{align*}
-\cong & \subset M_{1}^{2}\\
+\cong & \subset M^{2}_{1}\\
 m_{1}\cong m_{2} & \Leftrightarrow f\left(m_{1}\right)=f\left(m_{2}\right)
 \end{align*}
 

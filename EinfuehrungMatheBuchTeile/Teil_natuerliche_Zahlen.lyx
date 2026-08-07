@@ -39,7 +39,6 @@
 \usepackage{paralist}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{thmtools}
 \usepackage[makeroom]{cancel}
 \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 \newcommand{\includebackwardreferences}{<includebackwardreferences>}
@@ -1537,13 +1536,6 @@ nolink "false"
 
  müssen diese Symbole jedoch ungleich sein.
  Damit glaube ich auch in diesem Fall und somit in allen Fällen den Beweis für die Ungleichheit der Symbole erbracht zu haben.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newline linebreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -14440,21 +14432,6 @@ Definition
  da es eine Verbeugung vor dem Mathematiker Peano sein soll.
  Immerhin habe ich das Symbol 
 \begin_inset Formula $\mathbb{N}$
-\end_inset
-
-
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mathbb{N}$
-\end_inset
-
-
-\end_layout
-
 \end_inset
 
 
