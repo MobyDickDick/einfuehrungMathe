@@ -87,6 +87,8 @@ Der Text behauptet die zweite Verbindung nur mit „Also müsste … wahr sein�
 
 ## B6 – Die Quantorendefinitionen lassen die Bindung der Variablen verloren gehen
 
+Fortschreibung vom 3. November 2026 zu B6–B8: Die ausführliche Prüfung mit Gegenbeispielen, Ersatzformeln, kurzen Beweisen und verfolgten Abhängigkeiten steht in [05 – Mengenlehre und Quantoren](C:/Users/marku/myCloud/Mathe/Arbeitsnotizen/05_Mengenlehre_und_Quantoren.md). Sie berücksichtigt auch die früheren Quantorendefinitionen im Logikteil und zusätzliche Folgefehler bei symmetrischer Differenz, Teilmengengesetzen, Relationen und Partitionen. Die nachfolgenden ersten Befunde bleiben als ursprünglicher Prüfstand erhalten.
+
 **Fundstelle:** [Mengenlehre, Definition `def:Quantoren`, Zeile 12986](C:/Users/marku/myCloud/Mathe/EinfuehrungMatheBuchTeile/Teil_Mengenlehre.lyx:12986).
 
 Unter anderem steht dort sinngemäss:
