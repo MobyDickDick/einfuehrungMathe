@@ -6,6 +6,8 @@ Stand: 1. November 2026. Gezielte erste Prüfung, keine vollständige Fehlerlist
 
 ## B1 – Die Definition von „Aussage“ reicht für die spätere Wahrheitslogik nicht aus
 
+Fortschreibung vom 3. November 2026 zu B1–B2: Die ausführliche Prüfung samt lokalen Reparaturvorschlägen steht in [04 – Aussagenbegriff und Widerspruchsfreiheit](C:/Users/marku/myCloud/Mathe/Arbeitsnotizen/04_Aussagenbegriff_und_Widerspruchsfreiheit.md). Sie ergänzt insbesondere die Prüfung von Ω, Selbstbezug und Negation sowie einen Beweis zur offenen Ersetzungsfrage. Die nachfolgenden ersten Befunde bleiben als ursprünglicher Prüfstand erhalten.
+
 **Fundstelle:** [Logik, Zeilen 554–645](C:/Users/marku/myCloud/Mathe/EinfuehrungMatheBuchTeile/Teil_Logik.lyx:554).
 
 **Text:** „Aussagen sind Anneinanderreihungen von Symbolen“. Danach: „Jeder umgangssprachliche Satz ist also eine Aussage.“ Auch „dies ist“ wird unter dieser Definition als Aussage zugelassen.
