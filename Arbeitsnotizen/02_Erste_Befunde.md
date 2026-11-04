@@ -162,6 +162,8 @@ Die anschliessende Übertragung auf Mengenelemente verwendet diese richtige Stru
 
 ## B9 – Die Einordnung rationaler und irrationaler Zahlen enthält klare Falschaussagen
 
+Fortschreibung vom 4. November 2026 zu B9–B10: Die ausführliche Prüfung steht in [06 – Rechnen und Zahlbereiche](C:/Users/marku/myCloud/Mathe/Arbeitsnotizen/06_Rechnen_und_Zahlbereiche.md). Sie enthält eine berichtigte Zahlbereichsübersicht, die genaue Prüfung der Additions- und Induktionsbeweise, die Voraussetzungen der rekursiven Multiplikation sowie die einschlägigen Restposten zu Bruchrechnung, ggT/kgV, Euklid und √2. Die Handschlagformel und ihre beiden Grundargumente bleiben richtig; die falsche Gleichung steht in der aktuellen Fassung bei 19118 und 22333. Die nachfolgenden ersten Befunde bleiben als ursprünglicher Prüfstand erhalten.
+
 **Fundstellen:** [Zahlenteil, Zeilen 15835–16008](C:/Users/marku/myCloud/Mathe/EinfuehrungMatheBuchTeile/Teil_natuerliche_Zahlen.lyx:15835).
 
 - **„Jede rationale Zahl ist eine irrationale Zahl.“ – Falsch.** Rationale und irrationale Zahlen schliessen sich aus. Irrationale Zahlen sind gerade die reellen Zahlen, die nicht rational sind. Zum Beispiel ist \(1=1/1\) rational und nicht irrational. Gemeinsam bilden beide die reellen Zahlen.
