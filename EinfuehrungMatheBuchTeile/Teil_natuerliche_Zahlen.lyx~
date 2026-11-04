@@ -39,7 +39,6 @@
 \usepackage{paralist}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{cancel}
 \usepackage[makeroom]{cancel}
 \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 \newcommand{\includebackwardreferences}{<includebackwardreferences>}
@@ -254,6 +253,49 @@ Das wäre dann schon alles,
  Damit ist der Inhalt dieses Abschnitts eigentlich schon beschrieben.
  Und jetzt wir das Ganze noch praktisch beliebig ausführlich noch einmal beschrieben.
  
+\end_layout
+
+\begin_layout Chapter
+Vorüberlegungen zu den natürlichen Zahlen
+\end_layout
+
+\begin_layout Standard
+Ich habe ein Buch über das Zählen gelesen:
+ Benjamin Wardhaugh,
+ Zählen,
+ Die Geschichte von den Anfängen der Mathematik.
+ Hier möchte ich darlegen,
+ was ich aus diesem Buch m.E.
+ gelesen habe.
+ Ich schreibe,
+ ohne mit dem Buch zu vergleichen,
+ also aus dem Gedächtnis.
+\end_layout
+
+\begin_layout Standard
+Es ist klar,
+ dass nichts klar ist.
+ Die Anfänge der Zahlensysteme sind im Dunkeln,
+ es gibt sehr viele Versuche,
+ zu zählen.
+ Pikanterweise wird sozusagen als Abgesang ein ethnische Gruppe (Pirahã) vorgestellt,
+ welche offenbar gar keinen Zahlbegriff kennen.
+ Zu meiner Überraschung wird die Wurzel zum aktuellen Zahlensystem in den fernöstlichen Zählrahmen (
+\begin_inset Quotes gld
+\end_inset
+
+Abakus
+\begin_inset Quotes grd
+\end_inset
+
+,
+ aber im Buch werden diese anders genannt) gesehen.
+\end_layout
+
+\begin_layout Standard
+Auch überrascht,
+ als ich gelesen habe,
+ dass das Kopfrechnen oder das schriftliche Rechnen eigentlich nie im praktischen Gebrauch waren.
 \end_layout
 
 \begin_layout Chapter
@@ -890,10 +932,6 @@ A=C
  
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
@@ -1112,10 +1150,6 @@ hat sich jedoch in diesem Fall gegenüber demjenigen Fall,
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 Das führt mich zur nächsten Fragestellung:
  Kann gezeigt werden,
  ob und wenn ja warum die Aneinanderreihung von Symbolen assoziativ ist?
@@ -1304,10 +1338,6 @@ D\,C=A\,E
 Das ist jedoch gerade die Behauptung.
  Also bin ich der Meinung,
  dass ich den Beweis für die Richtigkeit der Behauptung erbracht habe und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
@@ -2364,10 +2394,6 @@ sein muss und beende somit den Beweis an dieser Stelle.
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 Nachbetrachtung:
  Würde dieser Satz nicht zutreffen,
  dann wäre unsere ganze Gesellschaft eine ganz andere!
@@ -2794,10 +2820,6 @@ C\,B
 identisch sein müssen.
  Damit hoffe ich,
  den Beweis für die Richtigkeit der Behauptung erbracht zu haben und beende darum an dieser Stelle wiederum die weitere Beweisführung.
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
@@ -3654,7 +3676,19 @@ Somit hoffe ich,
 \end_layout
 
 \begin_layout Standard
-
+Ich muss zugeben,
+ ich werde mit meinen eigenen Beweisführung nicht warm.
+ Ich habe den Verdacht,
+ dass es fast einfach wäre,
+ den Satz als Axiom zu formulieren.
+ Da wäre eventuell viel gewonnen.
+ Es ist m.E.
+ schon fast eine urmenschliche Erfahrung,
+ dass zwei Zeichenketten,
+ welche aus lauter gleichen Symbolen bestehen können,
+ mit einander vergleichen zu können und feststellen zu können,
+ welche Zeichenkette mehr Symbole besitzt.
+ Aber ich belasse es fürs erste so.
 \end_layout
 
 \begin_layout Standard
@@ -3980,10 +4014,6 @@ nolink "false"
 
 Aus diesem Grund behaupte ich,
  den Beweis für die Richtigkeit der Behauptung erbracht zu haben und beende also auch die weitere Beweisführung.
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
@@ -4531,10 +4561,6 @@ Somit meine ich,
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 Ich probiere weiter zu zeigen:
 \end_layout
 
@@ -4751,10 +4777,6 @@ B<D
 
 \begin_layout Proof
 Damit hätte ich auch die andere Richtung der Behauptung insgesamt also den Beweis für die Richtigkeit der gesamten Aussage erbracht und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
@@ -5515,10 +5537,6 @@ Damit hoffe ich,
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 Auch von diesem Lemma gibt es ein kleines Korollar:
 \end_layout
 
@@ -5685,10 +5703,6 @@ Das wäre jedoch gerade die Behauptung.
 Nun möchte ich zeigen:
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
@@ -5834,10 +5848,6 @@ B<D
 
 Damit meine ich,
  den Beweis für die Richtigkeit der Behauptung erbracht zu haben und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
@@ -6326,10 +6336,6 @@ B\leq C\Leftrightarrow C\geq B
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
@@ -6827,10 +6833,6 @@ kleiner oder gleich Beziehung
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 Ich kann nun schreiben:
 \end_layout
 
@@ -7130,10 +7132,6 @@ B=C
 
 \begin_layout Proof
 Damit meine ich den Beweis für die Richtigkeit der Behauptung erbracht zu haben und beende aus diesem Grund an dieser Stelle die weitere Beweisführung.
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
