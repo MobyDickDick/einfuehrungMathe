@@ -169,6 +169,8 @@ Dieser Einschub legt die Rolle der endlichen Ketten und der strukturellen Indukt
 
 ## 5. Was nach diesem kleinen Abschnitt noch offen bleibt
 
+Fortschreibung vom 8. November 2026: Die folgende Fortsetzung ist inzwischen als Arbeitspaket 9 in [10 – Distributivität und Assoziativität](C:/Users/marku/myCloud/Mathe/Arbeitsnotizen/10_Distributivitaet_und_Assoziativitaet.md) vollständig ausgearbeitet. Die Tabelle hält den ursprünglichen Anschlussplan fest.
+
 Für einen späteren Ausbau liegt folgende Reihenfolge nahe; sie gehört noch nicht zum obigen Manuskriptentwurf:
 
 | Fortsetzung | Passender Beweisweg |
