@@ -2,6 +2,8 @@
 
 Stand: 7. November 2026. Ergebnis von Arbeitspaket 8 aus der [Aufgabenliste](C:/Users/marku/myCloud/Mathe/Arbeitsnotizen/Aufgabenliste.md). Diese Datei enthält einen Vorschlag und einen ausformulierten Schreibentwurf neben dem Manuskript. Die LyX-Quellen, Exporte und Sicherungen wurden nicht verändert. Fundstellen bezeichnen die heutigen LyX-Quellzeilen, keine Buchseiten.
 
+Fortschreibung vom 11. November 2026: Der erste Haltepunkt bis einschliesslich `m·1=m` ist mit den ausgewählten örtlichen Additionskorrekturen inzwischen in beide Peano-Folgekapitel übernommen. Die Übernahme ist in [13 – Erste örtliche Übernahme ins Manuskript](C:/Users/marku/myCloud/Mathe/Arbeitsnotizen/13_Erste_oertliche_Uebernahme_ins_Manuskript.md) dokumentiert. Die beiden anschliessenden Multiplikationsbeweise bleiben als Arbeitspaket 13 zur Übernahme offen. Die folgenden ursprünglichen Fundstellen bezeichnen den Stand dieses Entwurfs vor der Übernahme.
+
 ## 1. Der kleine Anschluss
 
 **Mein Vorschlag ist, unmittelbar nach Deiner Multiplikationsdefinition bis zum Satz `m·n=n·m` weiterzuschreiben und dort zunächst aufzuhören.** Dazu genügen zwei Hilfssätze und ein Satz mit jeweils einem vollständigen Induktionsbeweis. Damit lässt sich die im Symbolteil schon angesprochene Vertauschbarkeit der Faktoren tatsächlich begründen, statt sie nur anzukündigen.

@@ -2,6 +2,8 @@
 
 Stand: 4. November 2026. Ergebnis von Arbeitspaket 5 aus der [Aufgabenliste](C:/Users/marku/myCloud/Mathe/Arbeitsnotizen/Aufgabenliste.md). Grundlage sind die aktuell durch `EinfuehrungMathe.lyx` eingebundenen LyX-Quellen, einschliesslich der vorhandenen lokalen Änderungen im Zahlenteil. Zeilenangaben bezeichnen diese Quellen, keine Buchseiten oder älteren TeX-Exporte. Die Prüfung steht neben dem Manuskript; Manuskript, PDF, Sicherungen und Autosavedateien wurden nicht verändert.
 
+Fortschreibung vom 11. November 2026: Die beiden örtlichen Assoziativitätskorrekturen und der Induktionsersatz für den Additionskommutativitätsbeweis aus den Abschnitten 2–3 sind in beide Peano-Folgekapitel übernommen. Einzelheiten und aktuelle Fundstellen stehen in [13 – Erste örtliche Übernahme ins Manuskript](C:/Users/marku/myCloud/Mathe/Arbeitsnotizen/13_Erste_oertliche_Uebernahme_ins_Manuskript.md). Die übrigen Befunde bleiben als Übernahmearbeiten offen; die folgenden Zeilenangaben bezeichnen den damaligen Prüfstand.
+
 ## 1. Ergebnis und Reichweite
 
 **Die Addition durch Verketten und die rekursive Multiplikation passen zu deiner Zahlenidee. Die üblichen Rechengesetze lassen sich daran anschliessen.** Bei der Addition sind mehrere Beweise bereits im Kern richtig. Der ausgeschriebene Kommutativitätsbeweis enthält dagegen tatsächlich falsche Gleichungen. Beim Handschlagbeispiel stimmen die Formel und die Induktionsidee; eine Zwischenzeile verliert einen Summanden. Die Darstellung der Zahlbereiche braucht eine fachliche Berichtigung: rational und irrational schliessen sich innerhalb der reellen Zahlen aus; imaginär ist ein anderer Begriff.
