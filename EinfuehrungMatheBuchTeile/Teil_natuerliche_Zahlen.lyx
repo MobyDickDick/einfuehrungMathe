@@ -16063,6 +16063,10 @@ Der erste Satz ist derart einfach,
 Doch zuerst die Definition der Addition von natürlichen Zahlen:
 \end_layout
 
+\begin_layout Standard
+Für die folgenden Rechenbeweise lege ich ein festes, nichtleeres Grundsymbol und eine feste Zerlegung in solche Grundsymbole zugrunde. Betrachtet werden genau die nichtleeren Ketten, die daraus durch endliches Anhängen entstehen. Jede solche Kette wird eindeutig durch eine positive natürliche Zahl bezeichnet; gleiche Ketten haben dieselbe Zahl. Das Verketten zweier solcher Ketten liefert wieder eine solche Kette. Deshalb bestimmt die folgende Gleichung genau eine natürliche Zahl als Summe. Die vollständige Induktion ab 1 verwende ich hier als Grundlage; ihre Anwendung setzt den endlichen Kettenaufbau voraus.
+\end_layout
+
 \begin_layout Definition
 Es seien 
 \begin_inset Formula $n,m\in\mathbb{N}$
@@ -16564,7 +16568,15 @@ nolink "false"
 
 \end_inset
 
-Jetzt kann ich die Induktionsvoraussetzung für 
+Jetzt kann ich den Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-mit-Eins"
+nolink "false"
+
+\end_inset
+
+ über die Addition mit dem Nachfolger für 
 \begin_inset Formula $n_{1}$
 \end_inset
 
@@ -17001,7 +17013,15 @@ nolink "false"
  dass gilt:
 \begin_inset Formula 
 \[
-\left(n_{1}+\left(n_{2}+n_{3}\right)\right)\cdot A=\left(n_{1}+\left(n_{2}+n_{3}\right)\right)\cdot A
+\left(\left(n_{1}+n_{2}\right)+n_{3}\right)\cdot A=\left(n_{1}+\left(n_{2}+n_{3}\right)\right)\cdot A
+\]
+
+\end_inset
+
+Nach der Festlegung der Zahlengleichheit folgt daraus
+\begin_inset Formula 
+\[
+\left(n_{1}+n_{2}\right)+n_{3}=n_{1}+\left(n_{2}+n_{3}\right)
 \]
 
 \end_inset
@@ -17089,175 +17109,23 @@ n_{2}+n_{1}=n_{1}+n_{2}
 \end_layout
 
 \begin_layout Proof
-Den Beweis möchte ich in zwei Teilen gestalten.
- Es sei 
-\begin_inset Formula $A$
+Ich halte 
+\begin_inset Formula $n_{1}\in\mathbb{N}$
 \end_inset
 
- ein Symbol,
- welches in sich selbst und mit den anderen Symbolen dieses Beweises widerspruchsfrei sei.
- Es sei 
-\begin_inset Formula $n_{2}=1$
-\end_inset
-
-.
- Gemäß der Definition der Addition kann ich schreiben
-\begin_inset Formula 
-\[
-\left(n_{1}+1\right)\cdot A=n_{1}\cdot A\,A
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Dann muss zusammen mit dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Kommutation-n-1-natuerliche-Zahlen"
-nolink "false"
-
-\end_inset
-
- gelten
-\begin_inset Formula 
-\begin{eqnarray*}
- &  & \left(n_{1}+1\right)\cdot A\\
- & = & n_{1}\cdot A\,A\\
- & = & A\,n_{1}\cdot A\\
- & = & \left(1+n_{1}\right)\cdot A
-\end{eqnarray*}
-
-\end_inset
-
-Somit kann ich folgern,
- dass gilt
-\begin_inset Formula 
-\[
-n_{1}+1=1+n_{2}
-\]
-
-\end_inset
-
-Nun sei 
-\begin_inset Formula $n_{2}\neq1$
-\end_inset
-
-.
- Ich möchte nun zeigen,
- dass es dann für 
-\begin_inset Formula $n_{4}\in\mathbb{N}$
-\end_inset
-
- mit 
-\begin_inset Formula $1\leq n_{4}<n_{2}$
-\end_inset
-
- gelten muss
-\begin_inset Formula 
-\[
-\left(n_{1}+n_{2}\right)\cdot A=\left(n_{2}-n_{4}\right)\cdot A\,n_{1}\cdot A\,\left(n_{4}\right)\cdot A
-\]
-
-\end_inset
-
-Den Anfang für 
-\begin_inset Formula $n_{3}=1$
-\end_inset
-
- sei wie folgt gemacht
-\begin_inset Formula 
-\begin{eqnarray*}
- &  & \left(n_{1}+n_{2}\right)\cdot A\\
- & = & n_{1}\cdot A\,n_{2}\cdot A\\
- & = & n_{1}\cdot A\,n_{3}\cdot A\,A\\
-\end{eqnarray*}
-
-\end_inset
-
-Nun muss gemäß dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Kommutation-n-1-natuerliche-Zahlen"
-nolink "false"
-
-\end_inset
-
- wiederum anwenden,
- diesmal jedoch auf das Symbol
-\begin_inset Formula 
-\[
-n_{1}\cdot A\,n_{3}\cdot A
-\]
-
-\end_inset
-
-Ich erhalte die Aussage
-\begin_inset Formula 
-\[
-n_{1}\cdot A\,n_{3}\cdot A=A\,n_{1}\cdot A\,n_{3}\cdot A
-\]
-
-\end_inset
-
-Dann kann ich genau die gleiche Aussage beliebig lange durchspielen,
- sofern 
-\begin_inset Formula $n_{3}$
-\end_inset
-
- ungleich 
-\begin_inset Formula $1$
-\end_inset
-
- ist.
- Also erhalte ich für solche beliebigen 
-\begin_inset Formula $n_{3}$
-\end_inset
-
- die Aussage 
-\begin_inset Formula 
-\[
-\left(n_{1}+n_{2}\right)\cdot A=\left(n_{2}-n_{3}\right)\cdot A\,n_{1}\cdot A\,n_{3}\cdot A
-\]
-
-\end_inset
-
- da die Summe 
-\begin_inset Formula $n_{2}-n_{4}+n_{4}$
-\end_inset
-
- immer gleich viel sein muss,
- nämlich 
+ beliebig, aber fest und führe die vollständige Induktion über 
 \begin_inset Formula $n_{2}$
 \end_inset
 
-.
- Denn jedes Symbol,
- welches ich vom Symbol 
-\begin_inset Formula 
-\[
-n_{2}\cdot A
-\]
-
+. Die Induktionsaussage ist 
+\begin_inset Formula $n_{1}+n_{2}=n_{2}+n_{1}$
 \end_inset
 
- wegnehme,
- muss ich links vom Symbol 
-\begin_inset Formula $n_{1}\cdot A$
+. Für den Anfang 
+\begin_inset Formula $n_{2}=1$
 \end_inset
 
- wieder einfügen.
- Ist jedoch 
-\begin_inset Formula 
-\[
-n_{3}=1
-\]
-
-\end_inset
-
-dann kann ich das Lemma 
+ gilt nach dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Kommutation-n-1-natuerliche-Zahlen"
@@ -17265,20 +17133,73 @@ nolink "false"
 
 \end_inset
 
- ein letztes Mal anwenden.
- Es resultiert
 \begin_inset Formula 
-\begin{eqnarray*}
- &  & \left(n_{1}+n_{2}\right)\cdot A\\
- & = & \left(n_{2}-1\right)\cdot A\,n_{1}\cdot A\,1\cdot A\\
- & = & \left(n_{2}-1\right)\cdot A\,n_{1}\cdot A\,A\\
- & = & \left(n_{2}-1\right)\cdot A\,A\,n_{1}\cdot A\\
- & = & n_{2}\cdot A\,n_{1}\cdot A
-\end{eqnarray*}
+\[
+n_{1}+1=1+n_{1}
+\]
 
 \end_inset
 
-was jedoch die Behauptung ist.
+Damit ist der Induktionsanfang bewiesen.
+\end_layout
+
+\begin_layout Proof
+Nun gelte für eine beliebige natürliche Zahl 
+\begin_inset Formula $n_{2}$
+\end_inset
+
+ die Induktionsannahme 
+\begin_inset Formula $n_{1}+n_{2}=n_{2}+n_{1}$
+\end_inset
+
+. Dann gilt für ihren Nachfolger:
+\begin_inset Formula 
+\[
+\begin{aligned}
+n_{1}+(n_{2}+1)
+ &= (n_{1}+n_{2})+1 &&\text{(Addition mit dem Nachfolger)}\\
+ &= (n_{2}+n_{1})+1 &&\text{(Induktionsannahme)}\\
+ &= n_{2}+(n_{1}+1) &&\text{(Addition mit dem Nachfolger)}\\
+ &= n_{2}+(1+n_{1}) &&\text{(Kommutation mit 1)}\\
+ &= (n_{2}+1)+n_{1} &&\text{(Assoziativität der Addition).}
+\end{aligned}
+\]
+
+\end_inset
+
+Für die erste und dritte Umformung benutze ich den Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-mit-Eins"
+nolink "false"
+
+\end_inset
+
+, für die vierte das Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Kommutation-n-1-natuerliche-Zahlen"
+nolink "false"
+
+\end_inset
+
+ und für die letzte den bereits bewiesenen Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-natuerlicher-Zahlen-assoziativ"
+nolink "false"
+
+\end_inset
+
+. Damit ist auch der Induktionsschritt erbracht. Nach vollständiger Induktion gilt die Behauptung für alle 
+\begin_inset Formula $n_{2}\in\mathbb{N}$
+\end_inset
+
+. Da 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ beliebig gewählt war, gilt sie für alle Paare natürlicher Zahlen. Ich habe dabei keine Subtraktion und keine allgemeine Kommutativität der Addition vorausgesetzt.
 \end_layout
 
 \begin_layout Lemma
@@ -18865,6 +18786,110 @@ sowie
 
 \end_layout
 
+\begin_layout Subsection
+Die Eins als zweiter Faktor
+\end_layout
+
+\begin_layout Standard
+Nun haben wir die Multiplikation definiert. Dabei setze ich die Grundlage endlicher Rekursion voraus: Für festes 
+\begin_inset Formula $n$
+\end_inset
+
+ beginnt der Aufbau mit 
+\begin_inset Formula $n$
+\end_inset
+
+ und bei jedem Nachfolgerschritt wird 
+\begin_inset Formula $n$
+\end_inset
+
+ addiert. Jede positive natürliche Zahl entsteht nach endlich vielen Nachfolgerschritten aus 1. Der Aufbau liefert daher für jeden ersten Faktor eine natürliche Zahl. Zwei Zuordnungen mit demselben Anfang und demselben Übergang stimmen durch vollständige Induktion bei allen ersten Faktoren überein. So wird die Multiplikation eindeutig bestimmt.
+\end_layout
+
+\begin_layout Standard
+Zunächst noch zum Punkt zwischen den Symbolen: Bei 
+\begin_inset Formula $m\cdot A$
+\end_inset
+
+ steht rechts ein Grundsymbol, aus dem eine Kette gebildet wird. Bei 
+\begin_inset Formula $m\cdot n$
+\end_inset
+
+ stehen dagegen zwei natürliche Zahlen, und das Ergebnis ist wieder eine natürliche Zahl. Unsere natürlichen Zahlen beginnen weiterhin mit 1. Ich möchte nun einen ersten kleinen Rechenschritt begründen.
+\end_layout
+
+\begin_layout Lemma
+Es sei 
+\begin_inset Formula $m\in\mathbb{N}$
+\end_inset
+
+. Dann gilt
+\begin_inset Formula 
+\[
+m\cdot1=m
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Dass 
+\begin_inset Formula $1\cdot m=m$
+\end_inset
+
+ gilt, steht bereits in der Definition. Hier steht die Eins jedoch auf der anderen Seite des Punkts. Ich möchte deshalb nicht einfach die Faktoren vertauschen, sondern die Behauptung durch vollständige Induktion über 
+\begin_inset Formula $m$
+\end_inset
+
+ beweisen. Für 
+\begin_inset Formula $m=1$
+\end_inset
+
+ gilt nach der Definition 
+\begin_inset Formula $1\cdot1=1$
+\end_inset
+
+. Damit ist der Induktionsanfang erledigt.
+\end_layout
+
+\begin_layout Proof
+Es sei nun 
+\begin_inset Formula $m$
+\end_inset
+
+ eine beliebige natürliche Zahl, für die 
+\begin_inset Formula $m\cdot1=m$
+\end_inset
+
+ gilt. Dann folgt
+\begin_inset Formula 
+\[
+\begin{aligned}
+(m+1)\cdot1
+ &=m\cdot1+1 &&\text{(Definition der Multiplikation)}\\
+ &=m+1 &&\text{(Induktionsannahme).}
+\end{aligned}
+\]
+
+\end_inset
+
+Die Behauptung gilt somit auch für den Nachfolger von 
+\begin_inset Formula $m$
+\end_inset
+
+, also nach vollständiger Induktion für jede natürliche Zahl 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Damit ist ein erstes kleines Stück geschafft. Für diesen Beweis habe ich die Multiplikationsdefinition und die vollständige Induktion gebraucht. Das Vertauschen beliebiger Faktoren ist damit noch nicht bewiesen.
+\end_layout
+
 \begin_layout Section
 Über die Anzahl der Begrüßungen
 \end_layout
@@ -19237,6 +19262,10 @@ Der erste Satz ist derart einfach,
 
 \begin_layout Standard
 Doch zuerst die Definition der Addition von natürlichen Zahlen:
+\end_layout
+
+\begin_layout Standard
+Für die folgenden Rechenbeweise lege ich ein festes, nichtleeres Grundsymbol und eine feste Zerlegung in solche Grundsymbole zugrunde. Betrachtet werden genau die nichtleeren Ketten, die daraus durch endliches Anhängen entstehen. Jede solche Kette wird eindeutig durch eine positive natürliche Zahl bezeichnet; gleiche Ketten haben dieselbe Zahl. Das Verketten zweier solcher Ketten liefert wieder eine solche Kette. Deshalb bestimmt die folgende Gleichung genau eine natürliche Zahl als Summe. Die vollständige Induktion ab 1 verwende ich hier als Grundlage; ihre Anwendung setzt den endlichen Kettenaufbau voraus.
 \end_layout
 
 \begin_layout Definition
@@ -19751,7 +19780,15 @@ nolink "false"
 
 \end_inset
 
-Jetzt kann ich die Induktionsvoraussetzung für 
+Jetzt kann ich den Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-mit-Eins-1"
+nolink "false"
+
+\end_inset
+
+ über die Addition mit dem Nachfolger für 
 \begin_inset Formula $n_{1}$
 \end_inset
 
@@ -20192,7 +20229,15 @@ nolink "false"
  dass gilt:
 \begin_inset Formula 
 \[
-\left(n_{1}+\left(n_{2}+n_{3}\right)\right)\cdot A=\left(n_{1}+\left(n_{2}+n_{3}\right)\right)\cdot A
+\left(\left(n_{1}+n_{2}\right)+n_{3}\right)\cdot A=\left(n_{1}+\left(n_{2}+n_{3}\right)\right)\cdot A
+\]
+
+\end_inset
+
+Nach der Festlegung der Zahlengleichheit folgt daraus
+\begin_inset Formula 
+\[
+\left(n_{1}+n_{2}\right)+n_{3}=n_{1}+\left(n_{2}+n_{3}\right)
 \]
 
 \end_inset
@@ -20284,175 +20329,23 @@ n_{2}+n_{1}=n_{1}+n_{2}
 \end_layout
 
 \begin_layout Proof
-Den Beweis möchte ich in zwei Teilen gestalten.
- Es sei 
-\begin_inset Formula $A$
+Ich halte 
+\begin_inset Formula $n_{1}\in\mathbb{N}$
 \end_inset
 
- ein Symbol,
- welches in sich selbst und mit den anderen Symbolen dieses Beweises widerspruchsfrei sei.
- Es sei 
-\begin_inset Formula $n_{2}=1$
-\end_inset
-
-.
- Gemäß der Definition der Addition kann ich schreiben
-\begin_inset Formula 
-\[
-\left(n_{1}+1\right)\cdot A=n_{1}\cdot A\,A
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-Dann muss zusammen mit dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Kommutation-n-1-natuerliche-Zahlen"
-nolink "false"
-
-\end_inset
-
- gelten
-\begin_inset Formula 
-\begin{eqnarray*}
- &  & \left(n_{1}+1\right)\cdot A\\
- & = & n_{1}\cdot A\,A\\
- & = & A\,n_{1}\cdot A\\
- & = & \left(1+n_{1}\right)\cdot A
-\end{eqnarray*}
-
-\end_inset
-
-Somit kann ich folgern,
- dass gilt
-\begin_inset Formula 
-\[
-n_{1}+1=1+n_{2}
-\]
-
-\end_inset
-
-Nun sei 
-\begin_inset Formula $n_{2}\neq1$
-\end_inset
-
-.
- Ich möchte nun zeigen,
- dass es dann für 
-\begin_inset Formula $n_{4}\in\mathbb{N}$
-\end_inset
-
- mit 
-\begin_inset Formula $1\leq n_{4}<n_{2}$
-\end_inset
-
- gelten muss
-\begin_inset Formula 
-\[
-\left(n_{1}+n_{2}\right)\cdot A=\left(n_{2}-n_{4}\right)\cdot A\,n_{1}\cdot A\,\left(n_{4}\right)\cdot A
-\]
-
-\end_inset
-
-Den Anfang für 
-\begin_inset Formula $n_{3}=1$
-\end_inset
-
- sei wie folgt gemacht
-\begin_inset Formula 
-\begin{eqnarray*}
- &  & \left(n_{1}+n_{2}\right)\cdot A\\
- & = & n_{1}\cdot A\,n_{2}\cdot A\\
- & = & n_{1}\cdot A\,n_{3}\cdot A\,A\\
-\end{eqnarray*}
-
-\end_inset
-
-Nun muss gemäß dem Lemma 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:Kommutation-n-1-natuerliche-Zahlen"
-nolink "false"
-
-\end_inset
-
- wiederum anwenden,
- diesmal jedoch auf das Symbol
-\begin_inset Formula 
-\[
-n_{1}\cdot A\,n_{3}\cdot A
-\]
-
-\end_inset
-
-Ich erhalte die Aussage
-\begin_inset Formula 
-\[
-n_{1}\cdot A\,n_{3}\cdot A=A\,n_{1}\cdot A\,n_{3}\cdot A
-\]
-
-\end_inset
-
-Dann kann ich genau die gleiche Aussage beliebig lange durchspielen,
- sofern 
-\begin_inset Formula $n_{3}$
-\end_inset
-
- ungleich 
-\begin_inset Formula $1$
-\end_inset
-
- ist.
- Also erhalte ich für solche beliebigen 
-\begin_inset Formula $n_{3}$
-\end_inset
-
- die Aussage 
-\begin_inset Formula 
-\[
-\left(n_{1}+n_{2}\right)\cdot A=\left(n_{2}-n_{3}\right)\cdot A\,n_{1}\cdot A\,n_{3}\cdot A
-\]
-
-\end_inset
-
- da die Summe 
-\begin_inset Formula $n_{2}-n_{4}+n_{4}$
-\end_inset
-
- immer gleich viel sein muss,
- nämlich 
+ beliebig, aber fest und führe die vollständige Induktion über 
 \begin_inset Formula $n_{2}$
 \end_inset
 
-.
- Denn jedes Symbol,
- welches ich vom Symbol 
-\begin_inset Formula 
-\[
-n_{2}\cdot A
-\]
-
+. Die Induktionsaussage ist 
+\begin_inset Formula $n_{1}+n_{2}=n_{2}+n_{1}$
 \end_inset
 
- wegnehme,
- muss ich links vom Symbol 
-\begin_inset Formula $n_{1}\cdot A$
+. Für den Anfang 
+\begin_inset Formula $n_{2}=1$
 \end_inset
 
- wieder einfügen.
- Ist jedoch 
-\begin_inset Formula 
-\[
-n_{3}=1
-\]
-
-\end_inset
-
-dann kann ich das Lemma 
+ gilt nach dem Lemma 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:Kommutation-n-1-natuerliche-Zahlen"
@@ -20460,20 +20353,73 @@ nolink "false"
 
 \end_inset
 
- ein letztes Mal anwenden.
- Es resultiert
 \begin_inset Formula 
-\begin{eqnarray*}
- &  & \left(n_{1}+n_{2}\right)\cdot A\\
- & = & \left(n_{2}-1\right)\cdot A\,n_{1}\cdot A\,1\cdot A\\
- & = & \left(n_{2}-1\right)\cdot A\,n_{1}\cdot A\,A\\
- & = & \left(n_{2}-1\right)\cdot A\,A\,n_{1}\cdot A\\
- & = & n_{2}\cdot A\,n_{1}\cdot A
-\end{eqnarray*}
+\[
+n_{1}+1=1+n_{1}
+\]
 
 \end_inset
 
-was jedoch die Behauptung ist.
+Damit ist der Induktionsanfang bewiesen.
+\end_layout
+
+\begin_layout Proof
+Nun gelte für eine beliebige natürliche Zahl 
+\begin_inset Formula $n_{2}$
+\end_inset
+
+ die Induktionsannahme 
+\begin_inset Formula $n_{1}+n_{2}=n_{2}+n_{1}$
+\end_inset
+
+. Dann gilt für ihren Nachfolger:
+\begin_inset Formula 
+\[
+\begin{aligned}
+n_{1}+(n_{2}+1)
+ &= (n_{1}+n_{2})+1 &&\text{(Addition mit dem Nachfolger)}\\
+ &= (n_{2}+n_{1})+1 &&\text{(Induktionsannahme)}\\
+ &= n_{2}+(n_{1}+1) &&\text{(Addition mit dem Nachfolger)}\\
+ &= n_{2}+(1+n_{1}) &&\text{(Kommutation mit 1)}\\
+ &= (n_{2}+1)+n_{1} &&\text{(Assoziativität der Addition).}
+\end{aligned}
+\]
+
+\end_inset
+
+Für die erste und dritte Umformung benutze ich den Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-mit-Eins-1"
+nolink "false"
+
+\end_inset
+
+, für die vierte das Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Kommutation-n-1-natuerliche-Zahlen"
+nolink "false"
+
+\end_inset
+
+ und für die letzte den bereits bewiesenen Satz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Addition-natuerlicher-Zahlen-assoziativ-1"
+nolink "false"
+
+\end_inset
+
+. Damit ist auch der Induktionsschritt erbracht. Nach vollständiger Induktion gilt die Behauptung für alle 
+\begin_inset Formula $n_{2}\in\mathbb{N}$
+\end_inset
+
+. Da 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ beliebig gewählt war, gilt sie für alle Paare natürlicher Zahlen. Ich habe dabei keine Subtraktion und keine allgemeine Kommutativität der Addition vorausgesetzt.
 \end_layout
 
 \begin_layout Standard
@@ -22078,6 +22024,110 @@ sowie
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Die Eins als zweiter Faktor
+\end_layout
+
+\begin_layout Standard
+Nun haben wir die Multiplikation definiert. Dabei setze ich die Grundlage endlicher Rekursion voraus: Für festes 
+\begin_inset Formula $n$
+\end_inset
+
+ beginnt der Aufbau mit 
+\begin_inset Formula $n$
+\end_inset
+
+ und bei jedem Nachfolgerschritt wird 
+\begin_inset Formula $n$
+\end_inset
+
+ addiert. Jede positive natürliche Zahl entsteht nach endlich vielen Nachfolgerschritten aus 1. Der Aufbau liefert daher für jeden ersten Faktor eine natürliche Zahl. Zwei Zuordnungen mit demselben Anfang und demselben Übergang stimmen durch vollständige Induktion bei allen ersten Faktoren überein. So wird die Multiplikation eindeutig bestimmt.
+\end_layout
+
+\begin_layout Standard
+Zunächst noch zum Punkt zwischen den Symbolen: Bei 
+\begin_inset Formula $m\cdot A$
+\end_inset
+
+ steht rechts ein Grundsymbol, aus dem eine Kette gebildet wird. Bei 
+\begin_inset Formula $m\cdot n$
+\end_inset
+
+ stehen dagegen zwei natürliche Zahlen, und das Ergebnis ist wieder eine natürliche Zahl. Unsere natürlichen Zahlen beginnen weiterhin mit 1. Ich möchte nun einen ersten kleinen Rechenschritt begründen.
+\end_layout
+
+\begin_layout Lemma
+Es sei 
+\begin_inset Formula $m\in\mathbb{N}$
+\end_inset
+
+. Dann gilt
+\begin_inset Formula 
+\[
+m\cdot1=m
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Dass 
+\begin_inset Formula $1\cdot m=m$
+\end_inset
+
+ gilt, steht bereits in der Definition. Hier steht die Eins jedoch auf der anderen Seite des Punkts. Ich möchte deshalb nicht einfach die Faktoren vertauschen, sondern die Behauptung durch vollständige Induktion über 
+\begin_inset Formula $m$
+\end_inset
+
+ beweisen. Für 
+\begin_inset Formula $m=1$
+\end_inset
+
+ gilt nach der Definition 
+\begin_inset Formula $1\cdot1=1$
+\end_inset
+
+. Damit ist der Induktionsanfang erledigt.
+\end_layout
+
+\begin_layout Proof
+Es sei nun 
+\begin_inset Formula $m$
+\end_inset
+
+ eine beliebige natürliche Zahl, für die 
+\begin_inset Formula $m\cdot1=m$
+\end_inset
+
+ gilt. Dann folgt
+\begin_inset Formula 
+\[
+\begin{aligned}
+(m+1)\cdot1
+ &=m\cdot1+1 &&\text{(Definition der Multiplikation)}\\
+ &=m+1 &&\text{(Induktionsannahme).}
+\end{aligned}
+\]
+
+\end_inset
+
+Die Behauptung gilt somit auch für den Nachfolger von 
+\begin_inset Formula $m$
+\end_inset
+
+, also nach vollständiger Induktion für jede natürliche Zahl 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Damit ist ein erstes kleines Stück geschafft. Für diesen Beweis habe ich die Multiplikationsdefinition und die vollständige Induktion gebraucht. Das Vertauschen beliebiger Faktoren ist damit noch nicht bewiesen.
 \end_layout
 
 \begin_layout Section
